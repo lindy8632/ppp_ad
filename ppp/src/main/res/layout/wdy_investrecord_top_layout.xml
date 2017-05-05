@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_30dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:gravity="center_vertical">
+		
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/prompt_logo2"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/common_measure_10dp"
+            android:paddingRight="@dimen/common_measure_10dp"
+            android:text="点击此处查看“提示”>>"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_18dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

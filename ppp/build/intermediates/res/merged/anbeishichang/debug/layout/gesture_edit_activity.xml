@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gesture_pwd_bg" >
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_67dp"
+        android:background="@color/transparent"
+        android:paddingLeft="@dimen/common_measure_23dp"
+        android:paddingRight="@dimen/common_measure_23dp"
+        android:layout_alignParentTop="true" >
+        
+        <ImageView 
+            android:id="@+id/gesture_edit_activity_top_leftbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/common_topbar_left_btn_selector"/>
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="设置手势密码"
+            android:textSize="@dimen/common_measure_26dp"
+            android:textColor="@color/white" />
+
+       <!--  <TextView
+            android:id="@+id/text_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="right"
+            android:text="取消"
+            android:textSize="18sp"
+            android:textColor="@drawable/gesture_cancel_text_color" /> -->
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/gesture_tip_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_layout"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.ylfcf.ppp.widget.LockIndicator
+            android:id="@+id/lock_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip" />
+
+        <TextView
+            android:id="@+id/text_tip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="绘制解锁图案"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/common_measure_20dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/gesture_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gesture_tip_layout"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dip" >
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/text_reset"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/gesture_container"
+        android:layout_marginTop="@dimen/common_measure_18dp"
+        android:text="跳过此步"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

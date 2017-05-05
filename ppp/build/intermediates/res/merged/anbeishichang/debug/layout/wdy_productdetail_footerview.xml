@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="@dimen/common_measure_5dp"
+            android:paddingTop="@dimen/common_measure_5dp"
+            android:text="费用"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_16dp" />
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/yxb_element_item_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/common_measure_5dp"
+                android:text="加入费率：0.00% "
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/common_measure_5dp"
+                android:paddingBottom="@dimen/common_measure_5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="延期费用：请参见"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_16dp" />
+
+                <TextView
+                    android:id="@+id/wdy_productdetail_footerview_compacttv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="《薪盈计划服务协议书》"
+                    android:textColor="@color/common_topbar_bg_color"
+                    android:textSize="@dimen/common_measure_16dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/common_measure_20dp"
+            android:layout_weight="1"
+            android:text="*提示：\n1. 本产品不参与平台其他优惠活动。\n2.元立方金服拥有本产品的最终解释权。"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_16dp" />
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:layout_marginBottom="@dimen/common_measure_50dp"
+        android:background="@color/edittext_line_color" />
+    
+    <Button
+        android:id="@+id/wdy_productdetail_footerview_bidBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_63dp"
+        android:layout_marginBottom="@dimen/common_measure_50dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:background="@drawable/blue_fillet_btn_selector"
+        android:text="@string/borrow_detail_bidBtn"
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_measure_26dp" />
+
+</LinearLayout>

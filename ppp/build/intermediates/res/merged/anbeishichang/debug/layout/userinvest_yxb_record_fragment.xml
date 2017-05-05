@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <com.ylfcf.ppp.widget.PagerSlidingTabStrip
+            android:id="@+id/userinvest_yxb_record_fragment_tab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_55dp"
+            android:layout_marginLeft="@dimen/common_measure_16dp"
+            android:layout_marginRight="@dimen/common_measure_16dp"
+            android:layout_marginTop="@dimen/common_measure_24dp"
+            android:background="@color/white" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/userinvest_yxb_record_fragment_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/userinvest_yxb_record_fragment_tab" />
+    </RelativeLayout>
+
+</LinearLayout>

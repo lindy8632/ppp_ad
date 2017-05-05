@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <com.ylfcf.ppp.widget.ArcProgressbar
+            android:id="@+id/first_page_subject_yxb_arcps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_65dp"
+            android:gravity="center_horizontal"
+            android:text="预期年化收益"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" >
+
+            <!-- 年化收益 -->
+
+            <TextView
+                android:id="@+id/first_page_subject_year_get_interest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="6.0"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_90dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="%"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_40dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/first_page_subject_yxb_invest_btn"
+            android:layout_width="@dimen/common_measure_173dp"
+            android:layout_height="@dimen/common_measure_52dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/common_measure_7dp"
+            android:background="@drawable/style_rect_fillet_yxb"
+            android:text="立即认购"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_26dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_5dp"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/first_page_subject_yxb_rate_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已加入："
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <com.ylfcf.ppp.widget.RiseNumberTextView
+            android:id="@+id/first_page_subject_hasraise_rate"
+            android:layout_width="@dimen/common_measure_60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="0.00"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <TextView
+            android:id="@+id/first_page_subject_yxb_rate_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_20dp" />
+    </LinearLayout>
+
+</LinearLayout>

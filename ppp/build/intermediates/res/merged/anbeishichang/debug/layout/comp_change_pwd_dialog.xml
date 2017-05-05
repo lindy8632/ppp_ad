@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/common_measure_20dp"
+    android:layout_marginRight="@dimen/common_measure_20dp"
+    android:background="@drawable/style_rect_fillet_filling_white_dialog"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_measure_30dp"
+        android:orientation="horizontal">
+        
+		<ImageView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="@dimen/common_measure_3dp"
+		    android:scaleType="fitCenter"
+		    android:src="@drawable/prompt_logo_orange"/>
+		
+		<TextView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="@dimen/common_measure_5dp"
+		    android:text="为保护您的账户安全，请尽快修改初始登录密码！"
+		    android:textSize="@dimen/common_measure_20dp"
+		    android:textColor="@color/gray"/>
+        
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/comp_change_pwd_dialog_sure_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="马上修改"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_24dp" />
+        
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="fill_parent"
+            android:background="@color/edittext_line_color" />
+        
+        <Button
+            android:id="@+id/comp_change_pwd_dialog_cancel_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="稍后修改"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

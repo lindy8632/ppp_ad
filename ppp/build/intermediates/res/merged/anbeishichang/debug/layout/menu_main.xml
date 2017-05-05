@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/transparent"
+    android:orientation="vertical"
+    android:tag="menu.main" >
+	<!-- 顶部title -->
+    <FrameLayout
+        android:id="@+id/menu.main.topbar"
+        android:layout_width="fill_parent"
+        android:layout_height="52.6dp"
+        android:padding="0dp"
+        android:layout_alignParentTop="true"
+        android:tag="menu.main.topbar" >
+    </FrameLayout>
+
+	
+	<RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	    <!-- 中间的主内容 -->
+	    <FrameLayout
+	        android:id="@+id/menu.main.content"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:padding="0dp"
+	        android:layout_alignWithParentIfMissing="true"
+	        android:orientation="vertical"
+	        android:tag="menu.main.content" >
+	    </FrameLayout>
+	    <!-- 底部导航 -->
+	    <FrameLayout
+	        android:id="@+id/menu.main.gnb"
+	        android:layout_width="fill_parent"
+	        android:layout_height="50dp"
+	        android:padding="0dp"
+	        android:layout_alignParentBottom="true"
+	        android:orientation="vertical"
+	        android:tag="menu.main.gnb" >
+	    </FrameLayout>
+	</RelativeLayout>    
+</LinearLayout>

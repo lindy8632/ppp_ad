@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/style_rect_fillet_filling_white_dialog">
+    
+    <Button
+        android:id="@+id/lottery_detail_poplayout_delbtn"
+        android:layout_width="@dimen/common_measure_30dp"
+        android:layout_height="@dimen/common_measure_30dp"
+        android:background="@drawable/delete_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/common_measure_10dp"
+        android:layout_marginTop="@dimen/common_measure_10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lottery_detail_poplayout_delbtn"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/lottery_detail_poplayout_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/common_measure_20dp"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+
+    </ScrollView>
+
+</RelativeLayout>

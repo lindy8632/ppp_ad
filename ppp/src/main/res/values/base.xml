@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="domain">www.ylfcf.com</string>
+    <string name="port">5222</string>
+    
+    <string-array name="managers">
+        <item>com.ylfcf.base.util.LogManager</item>
+        <item>com.ylfcf.base.app.ActivityManager</item>
+        
+        <item>com.ylfcf.ppp.util.SettingsManager</item>
+    </string-array>
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_110dp"
+        android:layout_marginBottom="@dimen/common_measure_10dp"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:background="@drawable/style_rect_filling_click_selector"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/common_measure_5dp"
+            android:paddingTop="@dimen/common_measure_10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="@dimen/common_measure_10dp"
+                android:gravity="center_vertical"
+                android:text="类型："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+
+            <TextView
+                android:id="@+id/funds_details_item_type"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/funds_details_item_time"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_18dp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@drawable/style_xuxian_gray"
+            android:layerType="software" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="影响金额："
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <TextView
+                    android:id="@+id/funds_details_item_changed_money"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginRight="@dimen/common_measure_10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:textColor="@color/common_topbar_bg_color"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView	
+                    android:id="@+id/funds_details_item_textname1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="可用余额："
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <TextView
+                    android:id="@+id/funds_details_item_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/style_rect_fillet_filling_white_3dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_40dp"
+        android:background="@drawable/style_rect_fillet_filling_gray_top_3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_20dp"
+            android:text="礼品详情"
+            android:layout_centerVertical="true"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+        <Button
+            android:id="@+id/lxj5_mynf_details_dialog_delbtn"
+            android:layout_width="@dimen/common_measure_32dp"
+            android:layout_height="@dimen/common_measure_32dp"
+            android:layout_marginRight="@dimen/common_measure_20dp"
+            android:background="@drawable/qxj_del_btn_logo"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:text="牧怡绵羊奶营养全面："
+        android:textColor="@color/red"
+        android:textSize="@dimen/common_measure_18dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/mynf_details"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/common_measure_18dp"/>
+    <Button
+        android:id="@+id/lxj5_mynf_details_dialog_okbtn"
+        android:layout_width="@dimen/common_measure_120dp"
+        android:layout_height="@dimen/common_measure_40dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginBottom="@dimen/common_measure_20dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/long_red_btn_selector"
+        android:text="知道了"
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_measure_18dp"/>
+
+</LinearLayout>

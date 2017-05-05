@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/style_rect_fillet_filling_white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dealpwd_error_popwindow_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_15dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="@dimen/common_measure_20dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:background="@drawable/style_rect_fillet_filling_blue2"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_measure_20dp" >
+
+        <LinearLayout
+            android:id="@+id/dealpwd_error_popwindow_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_5dp"
+                android:src="@drawable/prompt_logo2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_10dp"
+                android:text="如需帮助，\n请拨打客服电话：021-31033898-817"
+                android:textColor="@color/common_topbar_bg_color"
+                android:textSize="@dimen/common_measure_18dp" />
+        </LinearLayout>
+        
+        <TextView 
+            android:id="@+id/dealpwd_error_popwindow_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"
+            android:text="为保证您的资金安全，请您使用“找回提现密码”。"
+            android:visibility="gone"/>
+        
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/dealpwd_error_popwindow_repeat"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_38dp"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_fillet_btn_selector"
+            android:text="重新输入"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <Button
+            android:id="@+id/dealpwd_error_popwindow_getback_pwd"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_38dp"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:layout_marginRight="@dimen/common_measure_30dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_fillet_btn_selector"
+            android:text="找回提现密码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_20dp" />
+    </LinearLayout>
+
+</LinearLayout>

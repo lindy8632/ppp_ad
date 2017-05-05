@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sign_temp_activity_mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_854dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/sign_temp_activity_bg" />
+            
+            <RelativeLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentBottom="true">
+                <!-- 敬请期待 -->
+                <Button 
+                    android:id="@+id/sign_topic_temp_activity_jqqd_btn"
+                    android:layout_width="@dimen/common_measure_200dp"
+                    android:layout_height="@dimen/common_measure_67dp"
+                    android:layout_marginBottom="@dimen/common_measure_60dp"
+                    android:background="@drawable/sign_activity_wait_btn"
+                    android:visibility="gone"/>
+                
+                <!-- 活动结束 -->
+                <Button 
+                    android:id="@+id/sign_topic_temp_activity_end_btn"
+                    android:layout_width="@dimen/common_measure_200dp"
+                    android:layout_height="@dimen/common_measure_67dp"
+                    android:layout_marginBottom="@dimen/common_measure_60dp"
+                    android:background="@drawable/sign_activity_end_btn"
+                    android:visibility="gone"/>
+                
+                <Button 
+                    android:id="@+id/sign_topic_temp_activity_sign_btn"
+                    android:layout_width="@dimen/common_measure_200dp"
+                    android:layout_height="@dimen/common_measure_67dp"
+                    android:layout_marginBottom="@dimen/common_measure_60dp"
+                    android:layout_marginRight="@dimen/common_measure_10dp"
+                    android:background="@drawable/sign_activity_sign_btn"
+                    android:visibility="gone"/>
+                
+                <Button 
+                    android:id="@+id/sign_topic_temp_activity_share_btn"
+                    android:layout_width="@dimen/common_measure_200dp"
+                    android:layout_height="@dimen/common_measure_67dp"
+                    android:layout_marginBottom="@dimen/common_measure_60dp"
+                    android:layout_marginLeft="@dimen/common_measure_10dp"
+                    android:layout_toRightOf="@+id/sign_topic_temp_activity_sign_btn"
+                    android:background="@drawable/sign_activity_shared_btn"
+                    android:visibility="gone"/>
+                
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

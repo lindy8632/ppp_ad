@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/invitate_activity_main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <!-- 未实名认证 -->
+
+                <LinearLayout
+                    android:id="@+id/invitate_activity_unverify_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_measure_40dp"
+                        android:layout_marginRight="@dimen/common_measure_40dp"
+                        android:layout_marginTop="@dimen/common_measure_60dp"
+                        android:gravity="center_horizontal"
+                        android:text="请先实名认证，以获得您的专属推广码，轻松赚提成！"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_24dp" />
+
+                    <Button
+                        android:id="@+id/invitate_activity_verify_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/common_measure_63dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:layout_marginTop="@dimen/common_measure_70dp"
+                        android:background="@drawable/blue_fillet_btn_selector"
+                        android:text="立即实名认证"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_measure_24dp" />
+                </LinearLayout>
+
+                <!-- 已完成实名认证 -->
+
+                <LinearLayout
+                    android:id="@+id/invitate_activity_verify_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_50dp"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_measure_40dp"
+                        android:layout_marginRight="@dimen/common_measure_40dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="方法一：将您的专属推荐码"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/common_measure_18dp" />
+						
+                        <TextView
+                    		android:id="@+id/invitate_activity_code"
+                    		android:layout_width="wrap_content"
+                    		android:layout_height="wrap_content"
+                    		android:textColor="@color/common_topbar_bg_color"
+                    		android:textSize="@dimen/common_measure_18dp" />
+
+                		<TextView
+                    		android:layout_width="wrap_content"
+                    		android:layout_height="wrap_content"
+                    		android:text="告知好友"
+                    		android:textColor="@color/gray"
+                    		android:textSize="@dimen/common_measure_18dp" />
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="记得！好友注册元立方账户时，须在“推荐码”一栏正确填写您的手机号，您才可以获得佣金哟~"
+                            android:textColor="@color/gray1"
+                            android:textSize="@dimen/common_measure_18dp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_measure_40dp"
+                        android:layout_marginRight="@dimen/common_measure_40dp"
+                        android:layout_marginTop="@dimen/common_measure_20dp"
+                        android:text="方法二：邀请好友扫码并完成注册"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_18dp" />
+
+                    <ImageView
+                        android:id="@+id/invitate_activity_qrcode"
+                        android:layout_width="@dimen/common_measure_180dp"
+                        android:layout_height="@dimen/common_measure_180dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/common_measure_20dp"
+                        android:clickable="false"
+                        android:scaleType="fitCenter" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_measure_40dp"
+                        android:layout_marginRight="@dimen/common_measure_40dp"
+                        android:layout_marginTop="@dimen/common_measure_20dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="方法三："
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/common_measure_18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="点击“立即邀请”，将活动页面分享给微信好友或者朋友圈"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/common_measure_18dp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/invitate_activity_btn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/common_measure_58dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:layout_marginTop="@dimen/common_measure_60dp"
+                        android:background="@drawable/blue_fillet_btn_selector"
+                        android:text="立即邀请"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_measure_24dp" />
+
+                    <LinearLayout
+                        android:id="@+id/invitate_activity_friends_count_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_20dp"
+                        android:gravity="center_horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="已成功邀请"
+                            android:textColor="@color/gray1"
+                            android:textSize="@dimen/common_measure_18dp" />
+
+                        <TextView
+                            android:id="@+id/invitate_activity_count_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0位"
+                            android:textColor="@color/common_topbar_bg_color"
+                            android:textSize="@dimen/common_measure_18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="好友>>"
+                            android:textColor="@color/gray1"
+                            android:textSize="@dimen/common_measure_18dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_30dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="点击"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <TextView
+                    android:id="@+id/invitate_activity_know_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="“了解更多”"
+                    android:textColor="@color/common_topbar_bg_color"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="，手把手教您轻松赚佣金！"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_30dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:text="提示："
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/common_measure_18dp" 
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(1)"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="  元立方推广员系统2.0上线后，推荐码已统一变更为您的注册手机号，同时老推荐码停止使用但不影响您的佣金计算。"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:paddingBottom="@dimen/common_measure_40dp"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(2)"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="  如您修改了注册手机号，则您的推荐码也将同步更新为新手机号，老推荐码（即老手机号）停止使用但不影响您的佣金计算。"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

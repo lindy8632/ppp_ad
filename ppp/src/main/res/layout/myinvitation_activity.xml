@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_25dp"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <TextView
+            android:id="@+id/myinvitation_activity_friends_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="位好友，帮我赚取"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <TextView
+            android:id="@+id/myinvitation_activity_money_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:background="@drawable/style_rect_fillet_filling_blue2"
+        android:orientation="vertical"
+        android:padding="@dimen/common_measure_10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_5dp"
+                android:src="@drawable/prompt_logo2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_5dp"
+                android:text="“佣金”将在好友投资的标的起息后予以显示并按“预计到账时间”发放。"
+                android:textColor="@color/common_topbar_bg_color"
+                android:textSize="@dimen/common_measure_18dp" />
+        </LinearLayout>
+        
+        <Button 
+            android:id="@+id/myinvitation_activity_top_btn"
+            android:layout_width="@dimen/common_measure_150dp"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:layout_marginTop="@dimen/common_measure_10dp"
+            android:layout_marginBottom="@dimen/common_measure_10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/style_rect_fillet_filling_blue"
+            android:text="轻松赚佣金"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/white"/>
+        
+    </LinearLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/myinvitation_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingBottom="@dimen/common_measure_30dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="@dimen/common_measure_10dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:listSelector="#00000000"
+        android:scrollbars="none" 
+        android:smoothScrollbar="true"/>
+
+</LinearLayout>

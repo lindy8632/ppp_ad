@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/user_verify_activity_mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <!-- 用户实名认证页面 -->
+
+    <include layout="@layout/common_topbar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:background="@drawable/style_rect_fillet_filling_blue2"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/common_measure_15dp"
+        android:paddingLeft="@dimen/common_measure_10dp"
+        android:paddingRight="@dimen/common_measure_10dp"
+        android:paddingTop="@dimen/common_measure_15dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_5dp"
+            android:src="@drawable/prompt_logo2" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_5dp"
+            android:layout_weight="1"
+            android:text=" * 认购产品前须先完成实名认证!"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_18dp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/user_verify_activity_realname"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_66dp"
+        android:layout_marginTop="@dimen/common_measure_25dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:background="@drawable/style_rect_fillet_filling_edit_white"
+        android:hint="请输入真实姓名"
+        android:maxLength="12"
+        android:paddingLeft="@dimen/common_measure_30dp"
+        android:paddingRight="@dimen/common_measure_30dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/edittext_hint_color"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/common_measure_22dp" />
+
+    <EditText
+        android:id="@+id/user_verify_activity_idnumber"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_66dp"
+        android:layout_marginTop="@dimen/common_measure_6dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:background="@drawable/style_rect_fillet_filling_edit_white"
+        android:hint="请输入身份证号码"
+        android:maxLength="18"
+        android:paddingLeft="@dimen/common_measure_30dp"
+        android:paddingRight="@dimen/common_measure_30dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/edittext_hint_color"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/common_measure_22dp" />
+
+    <Button
+        android:id="@+id/user_verify_activity_sure_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_63dp"
+        android:layout_marginTop="@dimen/common_measure_30dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:background="@drawable/blue_fillet_btn_selector"
+        android:text="提交信息"
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_measure_26dp" />
+
+</LinearLayout>

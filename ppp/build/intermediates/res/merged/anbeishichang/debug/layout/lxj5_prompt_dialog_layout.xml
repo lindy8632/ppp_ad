@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/style_rect_fillet_filling_white_3dp"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_40dp"
+        android:layout_marginBottom="@dimen/common_measure_20dp"
+        android:background="@drawable/style_rect_fillet_filling_gray_top_3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_20dp"
+            android:layout_centerVertical="true"
+            android:text="信息提示"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+        <Button
+            android:id="@+id/lxj5_prompt_dialog_delbtn"
+            android:layout_width="@dimen/common_measure_32dp"
+            android:layout_height="@dimen/common_measure_32dp"
+            android:layout_marginRight="@dimen/common_measure_20dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/qxj_del_btn_logo"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/lxj5_prompt_dialog_toptext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:textColor="@color/red"
+        android:textSize="@dimen/common_measure_20dp"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/lxj5_prompt_dialog_bottomtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/common_measure_20dp"
+        android:gravity="center_horizontal"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginBottom="@dimen/common_measure_20dp">
+
+        <Button
+            android:id="@+id/lxj5_prompt_dialog_leftbtn"
+            android:layout_width="@dimen/common_measure_120dp"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:background="@drawable/long_red_btn_selector"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/lxj5_prompt_dialog_rightbtn"
+            android:layout_width="@dimen/common_measure_120dp"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:layout_toRightOf="@+id/lxj5_prompt_dialog_leftbtn"
+            android:background="@drawable/style_rect_fillet_filling_gray"
+            android:text="取消"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/gray"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

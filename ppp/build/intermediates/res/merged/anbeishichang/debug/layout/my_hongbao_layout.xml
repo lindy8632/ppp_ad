@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+    
+    <!-- 我的红包 -->
+	<include 
+	    layout="@layout/common_topbar"/>
+	
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <com.ylfcf.ppp.widget.PagerSlidingTabStrip
+            android:id="@+id/my_hongbao_tab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_55dp" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/my_hongbao_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/my_hongbao_tab" />
+    </RelativeLayout>
+
+</LinearLayout>

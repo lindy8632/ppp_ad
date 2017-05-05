@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/yqhy_temp_activity_mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <com.ylfcf.ppp.widget.MyScrollView
+        android:id="@+id/xcfl_temp_activity_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_1840dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/yqhy_temp_activity" />
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_1840dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+                
+                <Button 
+                    android:id="@+id/yqhy_temp_activity_btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_60dp"
+                    android:background="@drawable/yqhy_btn01_enabled"
+                    android:layout_above="@+id/yqhy_temp_activity_btn2"
+                    android:layout_marginBottom="@dimen/common_measure_15dp"
+                    android:layout_marginLeft="@dimen/common_measure_70dp"
+                    android:layout_marginRight="@dimen/common_measure_70dp"/>
+                
+                <Button 
+                    android:id="@+id/yqhy_temp_activity_btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_60dp"
+                    android:background="@drawable/yqhy_btn02_enabled"
+                    android:layout_above="@+id/yqhy_temp_activity_btn3"
+                    android:layout_marginLeft="@dimen/common_measure_70dp"
+                    android:layout_marginRight="@dimen/common_measure_70dp"
+                    android:layout_marginBottom="@dimen/common_measure_15dp"
+                    android:layout_gravity="bottom"/>
+                
+                <Button 
+                    android:id="@+id/yqhy_temp_activity_btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_60dp"
+                    android:background="@drawable/yqhy_btn03_enabled"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/common_measure_60dp"
+                    android:layout_marginLeft="@dimen/common_measure_70dp"
+                    android:layout_marginRight="@dimen/common_measure_70dp"
+                    android:layout_gravity="bottom"/>
+                
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </com.ylfcf.ppp.widget.MyScrollView>
+
+</LinearLayout>

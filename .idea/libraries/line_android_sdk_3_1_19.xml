@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="line-android-sdk-3.1.19">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ppp/libs/line-android-sdk-3.1.19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

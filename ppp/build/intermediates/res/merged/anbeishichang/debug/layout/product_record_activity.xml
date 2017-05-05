@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/product_record_activity_toplayout"
+        layout="@layout/common_topbar" />
+
+    <com.ylfcf.ppp.widget.RefreshLayout
+        android:id="@+id/product_record_activity_refreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/product_record_activity_toplayout"
+        android:visibility="gone"  >
+
+        <ListView
+            android:id="@+id/product_record_activity_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:scrollbars="none"/>
+    </com.ylfcf.ppp.widget.RefreshLayout>
+
+    <include
+        android:id="@+id/product_record_activity_nodata_layout"
+        android:layout_centerHorizontal="true"
+        layout="@layout/nodata_layout"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <!-- 2017年 开年红 乐享返现 未实名认证 -->
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_250dp"
+        android:background="@drawable/style_rect_fillet_filling_white_dialog"
+        android:orientation="vertical">
+        
+	    <ImageView 
+	        android:id="@+id/user_fragment_lxfx_noverify_dialog_layout_delbtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="@dimen/common_measure_10dp"
+	        android:layout_marginTop="@dimen/common_measure_10dp"
+	        android:layout_alignParentTop="true"
+	        android:layout_alignParentRight="true"
+	        android:src="@drawable/delete_btn"/>
+	    
+	    <LinearLayout 
+	        android:id="@+id/user_fragment_lxfx_noverify_dialog_layout_toptext_layout"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/user_fragment_lxfx_noverify_dialog_layout_delbtn"
+	        android:layout_marginTop="@dimen/common_measure_10dp"
+	        android:gravity="center_horizontal"
+	        android:orientation="horizontal">
+	        
+	        <TextView 
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="@dimen/common_measure_20dp"
+	        	android:layout_marginRight="@dimen/common_measure_20dp"
+	        	android:gravity="center_horizontal"
+	            android:text="2月6日~2月28日期间，完成实名认证就可领取加息券一张！"
+	            android:textSize="@dimen/common_measure_22dp"
+	            android:textColor="@color/gray"/>
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:id="@+id/user_fragment_lxfx_noverify_dialog_layout_bottomtext_layout"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/common_measure_40dp"
+	        android:gravity="center_vertical"	
+	        android:layout_marginTop="@dimen/common_measure_10dp"
+	        android:layout_below="@+id/user_fragment_lxfx_noverify_dialog_layout_toptext_layout"
+	        android:orientation="horizontal">
+	        
+	        <CheckBox 
+	            android:id="@+id/user_fragment_lxfx_noverify_dialog_cb"
+	            android:layout_width="@dimen/common_measure_20dp"
+	            android:layout_height="@dimen/common_measure_20dp"
+	            android:layout_marginLeft="@dimen/common_measure_20dp"
+	            android:button="@drawable/checkbox_selector"
+	            android:checked="false"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="@dimen/common_measure_10dp"
+	            android:text="不再显示此提示"
+	            android:textSize="@dimen/common_measure_18dp"
+	            android:textColor="@color/gray"/>
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:id="@+id/user_fragment_lxfx_noverify_dialog_layout_btn_layout"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/user_fragment_lxfx_noverify_dialog_layout_bottomtext_layout"
+	        android:layout_marginTop="@dimen/common_measure_10dp"
+	        android:gravity="center_horizontal"
+	        android:orientation="horizontal">
+	        
+	        <Button 
+	            android:id="@+id/user_fragment_lxfx_noverify_dialog_layout_leftBtn"
+	            android:layout_width="@dimen/common_measure_150dp"
+	            android:layout_height="@dimen/common_measure_50dp"
+	            android:layout_marginRight="@dimen/common_measure_5dp"
+	            android:background="@drawable/blue_fillet_btn_selector"
+	            android:text="了解详情"
+	            android:textColor="@color/white"
+	            android:textSize="@dimen/common_measure_20dp"/>
+	        
+	        <Button 
+	            android:id="@+id/user_fragment_lxfx_noverify_dialog_layout_rightBtn"
+	            android:layout_width="@dimen/common_measure_150dp"
+	            android:layout_height="@dimen/common_measure_50dp"
+	            android:layout_marginLeft="@dimen/common_measure_5dp"
+	            android:background="@drawable/blue_fillet_btn_selector"
+	            android:text="取消"
+	            android:textColor="@color/white"
+	            android:textSize="@dimen/common_measure_20dp"/>
+	        
+	    </LinearLayout>
+	    
+	</RelativeLayout>
+
+</LinearLayout>
+

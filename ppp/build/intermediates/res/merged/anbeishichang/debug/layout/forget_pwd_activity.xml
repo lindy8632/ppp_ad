@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/forget_pwd_toplayout"
+        layout="@layout/common_topbar" />
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:orientation="horizontal">
+        
+		<Button 
+		    android:id="@+id/forget_pwd_activity_nav_personal_btn"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="1"
+		    android:background="@drawable/login_nav_selector"
+		    android:gravity="center"
+		    android:text="个人用户"
+		    android:textSize="@dimen/common_measure_20dp"
+		    android:textColor="@color/common_topbar_bg_color"
+		    android:textStyle="bold"
+		    android:enabled="false"/>   
+		    
+		<Button 
+		    android:id="@+id/forget_pwd_activity_nav_company_btn"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="1"
+		    android:background="@drawable/login_nav_selector"
+		    android:gravity="center"
+		    android:text="企业用户"
+		    android:textSize="@dimen/common_measure_20dp"
+		    android:textColor="@color/gray"
+		    android:textStyle="bold"
+		    android:enabled="true"/>    
+        
+    </LinearLayout>
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <include 
+            android:id="@+id/forget_pwd_activity_personal_mainlayout"
+            layout="@layout/forget_pwd_personal_layout"/>
+        
+        <include 
+            android:id="@+id/forget_pwd_activity_company_mainlayout"
+            layout="@layout/forget_pwd_company_layout"
+            android:visibility="gone"/>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:layout_width="@dimen/common_measure_335dp"
+            android:layout_height="@dimen/common_measure_48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/common_measure_148dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ylf_logo" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- 元信宝项目介绍 -->
+
+    <include layout="@layout/common_topbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/common_measure_20dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:singleLine="true"
+                android:text="项目特点"
+                android:textColor="@color/common_topbar_bg_color"
+                android:textSize="@dimen/common_measure_18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（一）高投资收益率，资金流动性非常高，如货币基金般灵活；"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（二）标的资金投向真实的固定收益品种和风险较低的其他投资品种；"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（三）预期收益远高于货币基金；"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（四）随时赎回，当日处理赎回申请。\n"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:singleLine="true"
+                android:text="投资范围"
+                android:textColor="@color/common_topbar_bg_color"
+                android:textSize="@dimen/common_measure_18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.6"
+                android:text="@string/yxb_xmjs_tzfw"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:singleLine="true"
+                android:text="还款来源"
+                android:textColor="@color/common_topbar_bg_color"
+                android:textSize="@dimen/common_measure_18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:text="第一还款来源："
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="固定收益类别中债务人溢价回购。融资方回购款来源于政府回款，拥有政府的信用担保，安全可靠。"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:text="第二还款来源："
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="投资项目产生的现金流。投资标的全面详细尽调，项目安全可靠；项目还款来源的财政拨款、税收返还、投资收益等，可有效利用社会资金，促成项目的按期兑付。"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:text="第三还款来源："
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.6"
+                android:text="元立方平台的风险备用金，随时支付投资的本息，足以满足投资人的流动性需求。\n"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:singleLine="true"
+                android:text="安全保障"
+                android:textColor="@color/common_topbar_bg_color"
+                android:textSize="@dimen/common_measure_18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（一）债权转让公开、透明；资金流向清晰、明确；"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（二）为保证投资者账户资金安全，元立方金服就网络安全责任进行投保，并与中国太平洋财产保险股份有限公司上海分公司签订保险合同；"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（三）固定类收益的交易对手定期溢价回购，实现投资人收益；"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（四）管理团队独有的分散投资策略，丰富的项目运作经验，统筹安排尽职调查，源头上严控风险；"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_30dp"
+                android:lineSpacingMultiplier="1.6"
+                android:text="（五）投资标的项目担保、土地抵押措施齐全，为资金安全提供保证。"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp" />
+            
+            <Button
+                android:id="@+id/yxb_project_intro_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_63dp"
+                android:layout_marginBottom="@dimen/common_measure_50dp"
+                android:background="@drawable/blue_fillet_btn_selector"
+                android:text="立即认购"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_measure_26dp" />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

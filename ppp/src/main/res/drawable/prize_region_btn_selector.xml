@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 礼品专区按钮 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/prize_region_btn_enable" android:state_enabled="true"/>
+    <item android:drawable="@drawable/prize_region_btn_unenable" android:state_enabled="false"/>
+</selector>

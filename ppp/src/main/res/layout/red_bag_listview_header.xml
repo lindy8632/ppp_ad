@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<TextView 
+	    android:id="@+id/red_bag_listview_header_text"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:singleLine="true"
+        android:text="不使用红包"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/common_measure_20dp"
+        android:gravity="center_vertical"/>
+    
+</LinearLayout>

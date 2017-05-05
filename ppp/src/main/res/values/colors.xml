@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- 除首页颜色为纯白色，其余页面的大背景颜色均为F5F5F5 -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#ff0000</color>
+    <color name="orange">#ffa500</color>
+    <color name="yellow">#F5B800</color>
+    <color name="yellow1">#FFCC33</color>
+    <color name="yellow2">#FFF776</color>
+    <color name="yellow3">#fff1e3</color>
+    <color name="yellow4">#8d6501</color>
+    <color name="blue">#3366FF</color>
+    <color name="blue1">#0086d8</color>
+    <color name="blue3">#2EA5ED</color>
+    <color name="blue4">#98D8FE</color>
+    <color name="blue5">#E1F3FF</color>
+    <color name="blue6">#d4eaf7</color>
+    <color name="transparent">#00000000</color>
+    <color name="url">#EF5400</color>
+    <color name="subDescription">#828282</color>
+    <color name="time">#b5b5b5</color>
+	<color name="green">#00ff00</color>
+	<color name="green1">#53c184</color>
+	<color name="green_text">#00744a</color>
+	<color name="search_url_text_normal">#ff33b5e5</color>
+	<color name="gray">#848284</color>
+	<color name="gray1">#A0A2A0</color>
+	<color name="gray_trans">#44000000</color>
+	<color name="gray2">#888888</color>
+	<color name="gray3">#868686</color>
+	<color name="gray4">#666666</color>
+	<color name="gray5">#333333</color>
+    <color name="gray6">#edeaea</color>
+	<color name="chatgray">#d4d6d9</color>
+	<color name="purple">#6f79dd</color>
+	<color name="topic_chongzhisong_topcolor">#af0029</color>
+	<color name="topic_yyyjiaxi_topcolor">#FF3D3D</color>
+	
+    <color name="common.listbackground">#e8e8e8</color>
+    <color name="common.emptybackground">#dadada</color>
+    <color name="common.description">#666666</color>
+    <color name="commonBackground">#E0E0E0</color>
+    <color name="child_background">#F5F5F5</color>
+    
+	<color name="gnb">#1d84bd</color>
+	
+	<color name="transparent_background">#30000000</color>
+	
+	<color name="wish_deliver_edit_hint_color">#BBBBBB</color>
+	
+	<color name="umeng_comm_yellow">#F5B800</color>
+    <color name="umeng_comm_green">#3DF500</color>
+    <color name="umeng_comm_text_topic_light_color">#F5003D</color>
+    <color name="umeng_comm_linked_text">#3D00F5</color>
+    
+    <color name="defult_text_color">#868686</color>
+    <color name="default_text_color_end">#31B2FE</color> 
+    
+    <color name="edittext_line_color">#e5e5e5</color>
+    <color name="common_topbar_bg_color">#31B2FE</color>
+    <color name="edittext_hint_color">#cccccc</color>
+    <color name="signed_today_bg_color">#3366FF</color>
+    <color name="first_page_suying_color">#FF7222</color>
+    <color name="first_page_baoying_color">#33B1FE</color>
+    <color name="first_page_wenying_color">#34D0AB</color>
+    
+    <!-- 理财页面 -->
+    <color name="orange_text">#FD7323</color>
+    <color name="licai_xsb_btn_color">#fc2b3e</color>
+    <color name="licai_wdy_btn_color">#1f40cd</color>
+    <color name="licai_xsmb_btn_color">#ff6600</color>
+    <color name="licai_yyy_btn_color">#ffc62e</color>
+    <!-- 产品详情页面 -->
+    <color name="cyan">#9CB7D1</color>
+    <color name="deep_blue">#153067</color>
+    
+    <color name="gesture_circle_blue">#B9E5FF</color>
+    
+    <!-- 元信宝详情页面三个长条的颜色 -->
+    <color name="yxb_ylf_color">#f7a188</color>
+    <color name="yxb_yeb_color">#95dbff</color>
+    <color name="yxb_bank_color">#76e3bc</color>
+    
+    <!-- 首页元信宝弧形进度条 -->
+    <color name="yxb_arc_ps_bar">#f95b4f</color>
+    <color name="yxb_arc_ps_bg"> #ffa573</color>
+    
+    <!-- 会员专区颜色 -->
+    <color name="prize_region_color1">#E08E26</color>
+    <color name="prize_region_color2">#764C04</color>
+    <color name="prize_prompt_bg_color">#141192</color>
+    
+    <!-- 会员福利计划礼品列表 -->
+    <color name="prize_region_gift_item_bg">#fee697</color>
+    <color name="prize_region_gift_item_tv_color">#8b5c06</color>
+</resources>

@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bid_activity_mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/bid_zxd_activity_title_layout"
+        layout="@layout/common_topbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_225dp"
+                android:background="@drawable/bid_activity_top_bg"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="@dimen/common_measure_20dp"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/bid_zxd_activity_prompt_logo"
+                            android:layout_width="@dimen/common_measure_30dp"
+                            android:layout_height="@dimen/common_measure_40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true" />
+
+                        <TextView
+                            android:id="@+id/bid_zxd_activity_borrow_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/common_measure_10dp"
+                            android:layout_marginTop="@dimen/common_measure_8dp"
+                            android:layout_toRightOf="@+id/bid_zxd_activity_prompt_logo"
+                            android:singleLine="true"
+                            android:textColor="@color/deep_blue"
+                            android:textSize="@dimen/common_measure_24dp" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_measure_10dp"
+                        android:layout_marginBottom="@dimen/common_measure_15dp"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标的剩余可投金额（元）"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common_measure_18dp" />
+						
+                        <LinearLayout 
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            
+                            <TextView
+                            	android:id="@+id/bid_zxd_activity_borrow_balance"
+                            	android:layout_width="match_parent"
+                            	android:layout_height="wrap_content"
+                            	android:layout_weight="1"
+                            	android:text="0.00"
+                            	android:textColor="@color/white"
+                            	android:textSize="@dimen/common_measure_36dp" />
+                            
+                            <TextView 
+                            	android:id="@+id/bid_zxd_activity_dtdz_btn"
+                            	android:layout_width="wrap_content"
+                            	android:layout_height="fill_parent"
+                            	android:gravity="center_vertical"
+                            	android:layout_marginRight="@dimen/common_measure_50dp"
+                            	android:text="多投多赚"
+                            	android:textColor="@color/white"
+                            android:textSize="@dimen/common_measure_20dp" 
+                            android:visibility="gone"/>
+                            
+                        </LinearLayout>
+                        
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/common_measure_1dp"
+                    android:layout_marginLeft="@dimen/common_measure_18dp"
+                    android:layout_marginRight="@dimen/common_measure_18dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="@dimen/common_measure_30dp"
+                    android:layout_marginRight="@dimen/common_measure_30dp"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="可用余额："
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_measure_18dp" />
+
+                    <TextView
+                        android:id="@+id/bid_zxd_activity_user_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_measure_22dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/common_measure_5dp"
+                        android:text="元"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_measure_18dp" />
+
+                    <Button
+                        android:id="@+id/bid_zxd_activity_recharge_btn"
+                        android:layout_width="@dimen/common_measure_120dp"
+                        android:layout_height="@dimen/common_measure_40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/style_rect_fillet_white"
+                        android:gravity="center"
+                        android:text="去充值"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_measure_24dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:background="@color/edittext_line_color" />
+
+            <!-- 投资金额 -->
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_121dp"
+                android:background="@color/white" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/common_measure_30dp"
+                    android:layout_marginRight="@dimen/common_measure_15dp"
+                    android:orientation="horizontal" >
+
+                    <!-- 递减 -->
+
+                    <Button
+                        android:id="@+id/bid_zxd_activity_discend_btn"
+                        android:layout_width="@dimen/common_measure_48dp"
+                        android:layout_height="@dimen/common_measure_48dp"
+                        android:background="@drawable/descend_btn_seletor" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_measure_10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/common_measure_50dp" >
+
+                            <EditText
+                                android:id="@+id/bid_zxd_activity_invest_et"
+                                android:layout_width="@dimen/common_measure_240dp"
+                                android:layout_height="@dimen/common_measure_48dp"
+                                android:layout_centerHorizontal="true"
+                                android:background="@null"
+                                android:gravity="center_horizontal"
+                                android:hint="请输入投资金额"
+                                android:inputType="number"
+                                android:textCursorDrawable="@null"
+                                android:textColor="@color/gray2"
+                                android:textColorHint="@color/edittext_hint_color"
+                                android:textSize="@dimen/common_measure_24dp" />
+
+                            <View
+                                android:id="@+id/bid_zxd_activity_line"
+                                android:layout_width="fill_parent"
+                                android:layout_height="@dimen/common_measure_1dp"
+                                android:layout_below="@+id/bid_zxd_activity_invest_et"
+                                android:layout_marginLeft="@dimen/common_measure_5dp"
+                                android:background="@color/gray1" />
+
+                            <ImageView
+                                android:id="@+id/bid_zxd_activity_delete"
+                                android:layout_width="@dimen/common_measure_23dp"
+                                android:layout_height="@dimen/common_measure_23dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/bid_zxd_activity_invest_et"
+                                android:src="@drawable/delete_btn" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bid_zxd_activity_line"
+                            android:layout_marginTop="@dimen/common_measure_10dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal" >
+                            
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="享"
+                                android:textColor="@color/gray2"
+                                android:textSize="@dimen/common_measure_16dp" />
+                            
+                            <TextView
+                                android:id="@+id/bid_zxd_activity_nhsy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="6.0%"
+                                android:textColor="@color/orange_text"
+                                android:textSize="@dimen/common_measure_16dp" />
+                            
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="年化利率"
+                                android:textColor="@color/gray2"
+                                android:textSize="@dimen/common_measure_16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/common_measure_10dp"
+                                android:text="预期收益"
+                                android:textColor="@color/gray2"
+                                android:textSize="@dimen/common_measure_16dp" />
+
+                            <!-- 预计收益 -->
+
+                            <TextView
+                                android:id="@+id/bid_zxd_activity_yjsy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0.00"
+                                android:textColor="@color/orange_text"
+                                android:textSize="@dimen/common_measure_16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="元"
+                                android:textColor="@color/gray2"
+                                android:textSize="@dimen/common_measure_16dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- 递增 -->
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/common_measure_73dp"
+                        android:layout_height="wrap_content" >
+
+                        <Button
+                            android:id="@+id/bid_zxd_activity_increase_btn"
+                            android:layout_width="@dimen/common_measure_48dp"
+                            android:layout_height="@dimen/common_measure_48dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/common_measure_15dp"
+                            android:background="@drawable/increase_btn_selector" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bid_zxd_activity_increase_btn"
+                            android:layout_marginTop="@dimen/common_measure_10dp"
+                            android:gravity="center_horizontal"
+                            android:text="100元递增"
+                            android:textColor="@color/edittext_line_color"
+                            android:textSize="@dimen/common_measure_16dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color" />
+
+            <View
+                android:id="@+id/bid_zxd_activity_line1"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:layout_marginTop="@dimen/common_measure_12dp"
+                android:background="@color/edittext_line_color" />
+
+            <!-- 元金币 -->
+
+            <LinearLayout
+                android:id="@+id/bid_zxd_activity_yjb_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_80dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/common_measure_30dp"
+                android:paddingRight="@dimen/common_measure_30dp" >
+
+                <ImageView
+                    android:layout_width="@dimen/common_measure_30dp"
+                    android:layout_height="@dimen/common_measure_30dp"
+                    android:src="@drawable/yuanjinbi_logo" />
+
+                <EditText
+                    android:id="@+id/bid_zxd_activity_yuanmoney_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_measure_20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="请输入元金币金额"
+                    android:inputType="number"
+                    android:textCursorDrawable="@null"
+                    android:textColor="@color/gray2"
+                    android:textColorHint="@color/edittext_hint_color"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元"
+                    android:textColor="@color/edittext_hint_color"
+                    android:textSize="@dimen/common_measure_24dp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/bid_zxd_activity_line2"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color" />
+
+            <!-- 元金币余额 -->
+
+            <LinearLayout
+                android:id="@+id/bid_zxd_activity_yjb_balance_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:layout_marginTop="@dimen/common_measure_10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="可使用"
+                    android:textColor="@color/gray2"
+                    android:textSize="@dimen/common_measure_16dp" />
+                <!-- 可用的元金币 -->
+
+                <TextView
+                    android:id="@+id/bid_zxd_activity_used_yjb_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/common_topbar_bg_color"
+                    android:textSize="@dimen/common_measure_16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元金币（余额："
+                    android:textColor="@color/gray2"
+                    android:textSize="@dimen/common_measure_16dp" />
+
+                <!-- 元金币余额 -->
+
+                <TextView
+                    android:id="@+id/bid_zxd_activity_balance_yjb_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/common_topbar_bg_color"
+                    android:textSize="@dimen/common_measure_16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="元金币）"
+                    android:textColor="@color/gray2"
+                    android:textSize="@dimen/common_measure_16dp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/bid_zxd_activity_line3"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color" />
+
+            <!-- 体验金 -->
+
+            <LinearLayout
+                android:id="@+id/bid_zxd_activity_tyj_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_80dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/common_measure_30dp"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="@dimen/common_measure_30dp"
+                    android:layout_height="@dimen/common_measure_30dp"
+                    android:src="@drawable/tiyanjin_logo" />
+
+                <EditText
+                    android:id="@+id/bid_zxd_activity_tyj_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_measure_20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="请选择体验金"
+                    android:inputType="number"
+                    android:textColor="@color/gray2"
+                    android:textColorHint="@color/edittext_hint_color"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <RelativeLayout
+                    android:id="@+id/bid_zxd_activity_tyj_arrow_layout"
+                    android:layout_width="@dimen/common_measure_100dp"
+                    android:layout_height="fill_parent" >
+
+                    <ImageView
+                        android:layout_width="@dimen/common_measure_18dp"
+                        android:layout_height="@dimen/common_measure_20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/common_measure_30dp"
+                        android:src="@drawable/arrow_logo" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/bid_zxd_activity_line4"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color"
+                android:visibility="gone" />
+
+            <!-- 红包 -->
+
+            <LinearLayout
+                android:id="@+id/bid_zxd_activity_hb_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_80dp"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/common_measure_30dp"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="@dimen/common_measure_30dp"
+                    android:layout_height="@dimen/common_measure_30dp"
+                    android:src="@drawable/red_bag" />
+
+                <EditText
+                    android:id="@+id/bid_zxd_activity_hb_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_measure_20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="请选择红包"
+                    android:inputType="number"
+                    android:textColor="@color/gray2"
+                    android:textColorHint="@color/edittext_hint_color"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <RelativeLayout
+                    android:id="@+id/bid_zxd_activity_hb_arrow_layout"
+                    android:layout_width="@dimen/common_measure_100dp"
+                    android:layout_height="fill_parent" >
+
+                    <ImageView
+                        android:layout_width="@dimen/common_measure_18dp"
+                        android:layout_height="@dimen/common_measure_20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/common_measure_30dp"
+                        android:src="@drawable/arrow_logo" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/bid_zxd_activity_line6"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color"
+                android:visibility="gone" />
+
+            <!-- 加息券 -->
+
+            <LinearLayout
+                android:id="@+id/bid_zxd_activity_jxq_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_80dp"
+                android:layout_marginTop="@dimen/common_measure_10dp" 
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/common_measure_30dp"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="@dimen/common_measure_36dp"
+                    android:layout_height="@dimen/common_measure_36dp"
+                    android:src="@drawable/jxq_bg" />
+
+                <EditText
+                    android:id="@+id/bid_zxd_activity_jxq_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_measure_20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:hint="请选择加息券"
+                    android:inputType="number"
+                    android:textColor="@color/gray2"
+                    android:textColorHint="@color/edittext_hint_color"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <RelativeLayout
+                    android:id="@+id/bid_zxd_activity_jxq_arrow_layout"
+                    android:layout_width="@dimen/common_measure_100dp"
+                    android:layout_height="fill_parent" >
+
+                    <ImageView
+                        android:layout_width="@dimen/common_measure_18dp"
+                        android:layout_height="@dimen/common_measure_20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/common_measure_30dp"
+                        android:src="@drawable/arrow_logo" />
+                </RelativeLayout>
+            </LinearLayout>
+            
+            <View
+                android:id="@+id/bid_zxd_activity_line5"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color"
+                android:visibility="gone" />
+            
+            <TextView 
+                android:id="@+id/bid_zxd_activity_use_prompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/bid_zxd_activity_borrow_bidBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_63dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp"
+                android:background="@drawable/blue_fillet_btn_selector"
+                android:text="确认投资"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_measure_26dp" />
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_15dp"
+                android:layout_marginLeft="@dimen/common_measure_30dp"
+                android:layout_marginBottom="@dimen/common_measure_50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                
+                <CheckBox 
+                    android:id="@+id/bid_zxd_activity_cb"
+			    	android:layout_width="@dimen/common_measure_20dp"
+			    	android:layout_height="@dimen/common_measure_20dp"
+			    	android:layout_marginRight="@dimen/common_measure_10dp"
+			    	android:button="@drawable/checkbox_selector"
+			    	android:checked="true"/>       
+                
+                <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我已阅读并同意"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp"/>
+                
+                <TextView 
+                    android:id="@+id/bid_zxd_activity_compact_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="《借款协议》"
+                    android:textColor="@color/common_topbar_bg_color"
+                    android:textSize="@dimen/common_measure_18dp"/>
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

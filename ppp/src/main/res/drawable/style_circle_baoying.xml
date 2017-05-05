@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:shape="oval">
+    <!-- 首页保盈的空心圆 -->
+    
+    <!-- 描边 -->
+    <stroke
+        android:width="@dimen/common_measure_2dp"
+        android:color="@color/first_page_baoying_color"/>
+    <!-- 填满 -->
+    <solid
+        android:color="@color/transparent"/>
+    
+</shape>

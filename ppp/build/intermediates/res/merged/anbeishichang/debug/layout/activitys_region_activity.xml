@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <include 
+        layout="@layout/common_topbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/child_background"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <!-- 5月份活动 每周一抢现金 -->
+
+            <LinearLayout
+                android:id="@+id/activitys_region_activity_qxj5_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_170dp"
+                    android:background="@drawable/activity_qxj5_bg" />
+
+                <TextView
+                    android:id="@+id/activitys_region_qxj5_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/common_topbar_bg_color"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+            </LinearLayout>
+
+            <!-- 邀请好友 -->
+
+            <LinearLayout
+                android:id="@+id/activitys_region_activity_yqhy_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp" 
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_170dp"
+                    android:background="@drawable/activity_tgy_bg" />
+
+                <TextView
+                    android:id="@+id/activitys_region_yqhy_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/common_topbar_bg_color"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_20dp" />
+                
+            </LinearLayout>
+            
+            <!-- 会员福利计划2期 -->
+
+            <LinearLayout
+                android:id="@+id/activitys_region_activity_prizeregion2_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp" 
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_170dp"
+                    android:background="@drawable/activity_prizeregion2_bg" />
+
+                <TextView
+                    android:id="@+id/activitys_region_prizeregion2_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/common_topbar_bg_color"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_20dp" />
+            </LinearLayout>
+            
+            <!-- 签到 -->
+
+            <LinearLayout
+                android:id="@+id/activitys_region_activity_sign_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp" 
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_170dp"
+                    android:background="@drawable/activity_sign_bg" />
+
+                <TextView
+                    android:id="@+id/activitys_region_sign_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/common_topbar_bg_color"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_20dp" />
+            </LinearLayout>
+
+            <!-- 领压岁钱 -->
+
+            <LinearLayout
+                android:id="@+id/activitys_region_activity_ysq_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_170dp"
+                    android:background="@drawable/activity_yasuiqian_bg" />
+
+                <TextView
+                    android:id="@+id/activitys_region_ysq_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/common_topbar_bg_color"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_20dp" />
+            </LinearLayout>
+
+            <!-- 秒标 -->
+
+            <LinearLayout
+                android:id="@+id/activitys_region_activity_mb_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_170dp"
+                    android:background="@drawable/activity_mb_bg" />
+
+                <TextView
+                    android:id="@+id/activitys_region_mb_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/common_topbar_bg_color"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_20dp" />
+            </LinearLayout>
+
+            <!-- 会员礼品专区 -->
+
+            <LinearLayout
+                android:id="@+id/activitys_region_activity_prizeregion_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp" 
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_170dp"
+                    android:background="@drawable/activity_prize_region_bg" />
+
+                <TextView
+                    android:id="@+id/activitys_region_prizeregion_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/common_topbar_bg_color"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_20dp" />
+            </LinearLayout>
+
+            <!-- 限时返现 -->
+
+            <LinearLayout
+                android:id="@+id/activitys_region_activity_xsfx_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp"
+                android:layout_marginBottom="@dimen/common_measure_50dp" 
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_170dp"
+                    android:background="@drawable/activity_tzfx_bg" />
+
+                <TextView
+                    android:id="@+id/activitys_region_xsfx_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/common_topbar_bg_color"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_20dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

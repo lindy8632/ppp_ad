@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_30dp"
+            android:gravity="center_horizontal"
+            android:text="关于变更支付通道的说明"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_22dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_20dp"
+            android:text="尊敬的元立方金服用户："
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.5"
+            android:text="\n\t\t\t\t您好！\n\t\t\t\t为了提供更好的支付体验，元立方金服已于2016年6月29日将快捷支付通道升级为宝付支付。为了您的账户资金安全，已绑定过银行卡的用户，需重新绑定银行卡进行升级。\n\t\t\t\t给您造成不便，敬请谅解！"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_18dp" />
+
+        <Button
+            android:id="@+id/recharge_channel_activity_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_63dp"
+            android:layout_marginLeft="@dimen/common_measure_20dp"
+            android:layout_marginRight="@dimen/common_measure_20dp"
+            android:layout_marginTop="@dimen/common_measure_30dp"
+            android:background="@drawable/blue_fillet_btn_selector"
+            android:text="我知道了"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_26dp" />
+    </LinearLayout>
+
+</LinearLayout>

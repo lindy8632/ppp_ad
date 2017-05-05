@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lxfx_temp_activity_mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <com.ylfcf.ppp.widget.MyScrollView
+        android:id="@+id/lxfx_temp_activity_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_854dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/lxfx_temp_activity_bg" />
+            
+            <RelativeLayout 
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_40dp"
+                android:layout_marginTop="@dimen/common_measure_648dp">
+                
+                <Button 
+                    android:id="@+id/lxfx_temp_activity_leftbtn"
+                    android:layout_width="@dimen/common_measure_79dp"
+                    android:layout_height="@dimen/common_measure_28dp"
+                    android:background="@drawable/lxfx_temp_btns_left"
+                    android:layout_toLeftOf="@+id/lxfx_temp_activity_middlebtn"
+                    android:text="立即返现"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_16dp"/>
+                
+                <Button 
+                    android:id="@+id/lxfx_temp_activity_middlebtn"
+                    android:layout_width="@dimen/common_measure_93dp"
+                    android:layout_height="@dimen/common_measure_28dp"
+                    android:layout_marginLeft="@dimen/common_measure_8dp"
+                    android:layout_marginRight="@dimen/common_measure_8dp"
+                    android:background="@drawable/lxfx_temp_btns_middle_enable"
+                    android:layout_centerHorizontal="true"
+                    android:text="领取加息券"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_16dp"/>
+                
+                <Button 
+                    android:id="@+id/lxfx_temp_activity_rightbtn"
+                    android:layout_width="@dimen/common_measure_79dp"
+                    android:layout_height="@dimen/common_measure_28dp"
+                    android:background="@drawable/lxfx_temp_btns_right"
+                    android:layout_toRightOf="@+id/lxfx_temp_activity_middlebtn"
+                    android:text="分享"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_16dp"/>
+                
+            </RelativeLayout>
+            
+        </RelativeLayout>
+    </com.ylfcf.ppp.widget.MyScrollView>
+
+</LinearLayout>

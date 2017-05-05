@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/style_rect_fillet_filling_white_dialog"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:id="@+id/gesture_login_pwd_layout_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_15dp"
+        android:gravity="center_horizontal"
+        android:text="密码校验"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/common_measure_20dp"/>
+    
+    <EditText 
+        android:id="@+id/gesture_login_pwd_layout_et"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_25dp"
+        android:paddingLeft="@dimen/common_measure_10dp"
+        android:hint="请输入登录密码"
+        android:password="true"
+        android:maxLength="16"
+        android:singleLine="true"
+        android:textCursorDrawable="@null"
+        android:textColorHint="@color/edittext_hint_color"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/common_measure_18dp"
+        android:background="@drawable/style_rect_fillet_gray"/>
+    
+    <TextView 
+        android:id="@+id/gesture_login_pwd_prompt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_5dp"
+        android:layout_marginBottom="@dimen/common_measure_5dp"
+        android:textColor="@color/orange_text"
+        android:textSize="@dimen/common_measure_16dp"/>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <Button 
+        android:id="@+id/gesture_login_pwd_layout_sure_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:background="@null"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/common_topbar_bg_color"
+        android:textSize="@dimen/common_measure_24dp"/>
+        
+
+</LinearLayout>

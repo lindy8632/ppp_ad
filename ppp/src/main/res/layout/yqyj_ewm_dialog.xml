@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <!-- 二维码邀请有奖 -->
+    <ImageView 
+        android:id="@+id/yqyj_ewm_img"
+        android:layout_centerInParent="true"
+        android:layout_width="@dimen/common_measure_350dp"
+        android:layout_height="@dimen/common_measure_350dp"/>
+
+</RelativeLayout>

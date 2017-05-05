@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/style_rect_fillet_filling_white">
+    
+    <LinearLayout 
+        android:id="@+id/withdraw_rule_pop_content"
+        android:layout_width="match_parent"	
+        android:layout_height="@dimen/common_measure_130dp"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/common_measure_15dp"
+        android:orientation="vertical">
+        
+        <TextView
+            android:id="@+id/common_popwindow_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:gravity="center"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/gray1"/>
+        
+    </LinearLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <Button 
+        android:id="@+id/common_popwindow_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:background="@null"
+        android:gravity="center"
+        android:textColor="@color/common_topbar_bg_color"
+        android:textSize="@dimen/common_measure_20dp"
+        android:text="我知道了"/>
+
+</LinearLayout>
+
+

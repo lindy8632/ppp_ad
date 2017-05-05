@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+   <LinearLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/common_measure_18dp"
+       android:layout_marginRight="@dimen/common_measure_18dp"
+       android:orientation="horizontal">
+       
+       <ImageView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/borrow_details_icon1"
+           android:scaleType="fitCenter"/>
+       
+       <TextView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="@dimen/common_measure_5dp"
+           android:text="资金用途"
+           android:textColor="@color/gray1"
+           android:textSize="@dimen/common_measure_20dp"/>
+       
+   </LinearLayout> 
+   
+   <!-- 资金用途 -->
+   <TextView 
+       android:id="@+id/production_fragment_zjyt"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/common_measure_18dp"
+       android:layout_marginRight="@dimen/common_measure_18dp"
+       android:textColor="@color/gray1"
+       android:textSize="@dimen/common_measure_18dp"/>
+   
+   <LinearLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/common_measure_18dp"
+       android:layout_marginRight="@dimen/common_measure_18dp"
+       android:orientation="horizontal">
+       
+       <ImageView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/borrow_details_icon2"
+           android:scaleType="fitCenter"/>
+       
+       <TextView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="@dimen/common_measure_5dp"
+           android:text="融资方介绍"
+           android:textColor="@color/gray1"
+           android:textSize="@dimen/common_measure_20dp"/>
+       
+   </LinearLayout> 
+   
+   <!-- 融资介绍 -->
+   <TextView 
+       android:id="@+id/production_fragment_rzjs"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/common_measure_18dp"
+       android:layout_marginRight="@dimen/common_measure_18dp"
+       android:textColor="@color/gray1"
+       android:textSize="@dimen/common_measure_18dp"/>
+   
+   <LinearLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/common_measure_18dp"
+       android:layout_marginRight="@dimen/common_measure_18dp"
+       android:orientation="horizontal">
+       
+       <ImageView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/borrow_details_icon3"
+           android:scaleType="fitCenter"/>
+       
+       <TextView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="@dimen/common_measure_5dp"
+           android:text="担保措施"
+           android:textColor="@color/gray1"
+           android:textSize="@dimen/common_measure_20dp"/>
+       
+   </LinearLayout> 
+   
+   <!-- 担保措施 -->
+   <TextView 
+       android:id="@+id/production_fragment_dbcs"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/common_measure_18dp"
+       android:layout_marginRight="@dimen/common_measure_18dp"
+       android:textColor="@color/gray1"
+       android:textSize="@dimen/common_measure_18dp"/>
+   
+   <LinearLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/common_measure_18dp"
+       android:layout_marginRight="@dimen/common_measure_18dp"
+       android:orientation="horizontal">
+       
+       <ImageView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/borrow_details_icon4"
+           android:scaleType="fitCenter"/>
+       
+       <TextView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="@dimen/common_measure_5dp"
+           android:text="投资亮点"
+           android:textColor="@color/gray1"
+           android:textSize="@dimen/common_measure_20dp"/>
+       
+   </LinearLayout> 
+   
+   <!-- 投资亮点-->
+   <TextView 
+       android:id="@+id/production_fragment_tzld"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="@dimen/common_measure_18dp"
+       android:layout_marginRight="@dimen/common_measure_18dp"
+       android:textColor="@color/gray1"
+       android:textSize="@dimen/common_measure_18dp"/>
+
+</LinearLayout>

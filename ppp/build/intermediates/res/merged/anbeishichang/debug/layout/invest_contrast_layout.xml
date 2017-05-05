@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+    <LinearLayout 
+        android:layout_width="@dimen/common_measure_150dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:gravity="center_vertical|right"
+            android:text="元信宝"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_14dp"/>
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:gravity="center_vertical|right"
+            android:text="余*宝"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_14dp"/>
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:gravity="center_vertical|right"
+            android:text="银行活期"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_14dp"/>
+        
+    </LinearLayout>
+    
+    <View 
+        android:layout_width="@dimen/common_measure_1dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/common_measure_10dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        
+		<LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:orientation="horizontal">
+		    
+		    <View 
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"/>
+		    
+		    <View 
+		        android:layout_width="@dimen/common_measure_1dp"
+		        android:layout_height="match_parent"
+		        android:background="@color/edittext_line_color"/>
+		    
+		    <View 
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"/>
+		    
+		    <View 
+		        android:layout_width="@dimen/common_measure_1dp"
+		        android:layout_height="match_parent"
+		        android:background="@color/edittext_line_color"/>
+		    
+		    <View 
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"/>
+		    
+		    <View 
+		        android:layout_width="@dimen/common_measure_1dp"
+		        android:layout_height="match_parent"
+		        android:background="@color/edittext_line_color"/>
+		    
+		    <View 
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"/>
+		    
+		</LinearLayout>     
+		
+		<LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:orientation="vertical">
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:gravity="center_vertical"
+		        android:orientation="horizontal">
+		        
+		        <View 
+		            android:layout_width="@dimen/common_measure_320dp"
+		            android:layout_height="@dimen/common_measure_40dp"
+		            android:background="@color/yxb_ylf_color"/>
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="@dimen/common_measure_5dp"
+		            android:text="1.64元"
+		            android:textColor="@color/gray1"
+		            android:textSize="@dimen/common_measure_14dp"/>
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:gravity="center_vertical"
+		        android:orientation="horizontal">
+		        
+		        <View 
+		            android:layout_width="@dimen/common_measure_210dp"
+		            android:layout_height="@dimen/common_measure_40dp"
+		            android:background="@color/yxb_yeb_color"/>
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="@dimen/common_measure_5dp"
+		            android:text="1.10元"
+		            android:textColor="@color/gray1"
+		            android:textSize="@dimen/common_measure_14dp"/>
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:gravity="center_vertical"
+		        android:orientation="horizontal">
+		        
+		        <View 
+		            android:layout_width="@dimen/common_measure_105dp"
+		            android:layout_height="@dimen/common_measure_40dp"
+		            android:background="@color/yxb_bank_color"/>
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="@dimen/common_measure_5dp"
+		            android:text="0.55元"
+		            android:textColor="@color/gray1"
+		            android:textSize="@dimen/common_measure_14dp"/>
+		        
+		    </LinearLayout>
+		    
+		</LinearLayout>
+		
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" 
+            android:layout_alignParentBottom="true"/>
+        
+    </RelativeLayout>
+
+</LinearLayout>

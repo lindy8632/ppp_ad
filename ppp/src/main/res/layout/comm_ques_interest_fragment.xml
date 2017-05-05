@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/comm_ques_interest_mainlayout"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <!-- 收益和利率 -->
+
+        <LinearLayout
+            android:id="@+id/comm_ques_interest_1t_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/comm_ques_interest_1t"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:id="@+id/comm_ques_interest_arrow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comm_ques_interest_1t_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/common_measure_20dp"
+                    android:text="@string/comm_ques_interest_1t_1d"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/comm_ques_interest_2t_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/comm_ques_interest_2t"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:id="@+id/comm_ques_interest_arrow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comm_ques_interest_2t_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/common_measure_20dp"
+                    android:text="@string/comm_ques_interest_2t_1d"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/comm_ques_interest_3t_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/comm_ques_interest_3t"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:id="@+id/comm_ques_interest_arrow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comm_ques_interest_3t_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/common_measure_20dp"
+                    android:text="@string/comm_ques_interest_3t_1d"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/comm_ques_interest_4t_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/comm_ques_interest_4t"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:id="@+id/comm_ques_interest_arrow4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comm_ques_interest_4t_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/common_measure_20dp"
+                    android:text="@string/comm_ques_interest_4t_1d"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/comm_ques_interest_5t_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/comm_ques_interest_5t"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:id="@+id/comm_ques_interest_arrow5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comm_ques_interest_5t_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/common_measure_20dp"
+                    android:text="@string/comm_ques_interest_5t_1d"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/comm_ques_interest_6t_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/comm_ques_interest_6t"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:id="@+id/comm_ques_interest_arrow6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comm_ques_interest_6t_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/common_measure_20dp"
+                    android:text="@string/comm_ques_interest_6t_1d"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/comm_ques_interest_7t_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/comm_ques_interest_7t"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:id="@+id/comm_ques_interest_arrow7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comm_ques_interest_7t_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/common_measure_20dp"
+                    android:text="@string/comm_ques_interest_7t_1d"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/comm_ques_interest_8t_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/comm_ques_interest_8t"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:id="@+id/comm_ques_interest_arrow8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comm_ques_interest_8t_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.4"
+                    android:layout_marginBottom="@dimen/common_measure_20dp"
+                    android:text="@string/comm_ques_interest_8t_1d"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+    <View 
+        android:layout_width="@dimen/common_measure_1dp"
+        android:layout_height="match_parent"
+        android:background="@color/edittext_line_color"/>
+    
+    <TextView 
+        android:id="@+id/yxb_element_item_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/common_measure_5dp"
+        android:paddingBottom="@dimen/common_measure_5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textColor="@color/common_topbar_bg_color"
+        android:textSize="@dimen/common_measure_16dp"/>
+    
+    <View 
+        android:layout_width="@dimen/common_measure_1dp"
+        android:layout_height="match_parent"
+        android:background="@color/edittext_line_color"/>
+    
+    <TextView 
+        android:id="@+id/yxb_element_item_value"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:padding="@dimen/common_measure_5dp"
+        android:gravity="center_vertical"
+        android:layout_weight="4"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/common_measure_16dp"/>
+    
+    <View 
+        android:layout_width="@dimen/common_measure_1dp"
+        android:layout_height="match_parent"
+        android:background="@color/edittext_line_color"/>
+
+</LinearLayout>

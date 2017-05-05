@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/style_rect_fillet_filling_white"
+    android:orientation="vertical">
+    
+    <TextView 
+        android:id="@+id/recharge_rule_pop_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:text="请选择开户行"
+        android:textColor="@color/common_topbar_bg_color"
+        android:textSize="@dimen/common_measure_22dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/common_measure_20dp"/>
+    
+    <ListView 
+        android:id="@+id/recharge_spinner_poplayout_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="@color/edittext_line_color"
+        android:dividerHeight="@dimen/common_measure_1dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+        
+    </ListView>
+    
+</LinearLayout>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="master-nineoldandroids-library">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ppp/libs/master-nineoldandroids-library.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

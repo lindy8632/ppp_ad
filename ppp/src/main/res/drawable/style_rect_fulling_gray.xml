@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:shape="rectangle">
+    <!-- 蓝色的中间充满的的矩形圆角框 -->
+    
+    <solid 
+        android:color="@color/edittext_line_color"/>
+    
+</shape>

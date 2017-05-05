@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:shape="oval">
+    <!-- 黄色的圆 -->
+    
+    <!-- 填充 -->
+    <solid
+        android:color="@color/edittext_line_color"/><!-- 填充的颜色 -->
+    
+</shape>
+

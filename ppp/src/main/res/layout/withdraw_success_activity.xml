@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:layout_marginTop="@dimen/common_measure_50dp"
+        android:gravity="center_vertical" >
+
+        <ImageView
+            android:id="@+id/recharge_result_img"
+            android:layout_width="@dimen/common_measure_49dp"
+            android:layout_height="@dimen/common_measure_56dp"
+            android:layout_marginLeft="@dimen/common_measure_60dp"
+            android:src="@drawable/recharge_result_logo" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/common_measure_20dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提现申请成功"
+                android:textColor="@color/green1"
+                android:textSize="@dimen/common_measure_22dp" />
+
+            <TextView
+                android:id="@+id/withdraw_success_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="银行处理中，预计T+1个工作日内到账"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/common_measure_18dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:layout_marginLeft="@dimen/common_measure_80dp"
+        android:layout_marginRight="@dimen/common_measure_80dp"
+        android:layout_marginTop="@dimen/common_measure_5dp"
+        android:background="@color/green1" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提现金额："
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <TextView
+            android:id="@+id/withdraw_result_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_20dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/withdraw_result_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_63dp"
+        android:layout_marginTop="@dimen/common_measure_80dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:background="@drawable/blue_fillet_btn_selector"
+        android:text="查看提现申请"
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_measure_26dp" />
+
+</LinearLayout>

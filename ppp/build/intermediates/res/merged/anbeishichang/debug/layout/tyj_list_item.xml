@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:layout_marginRight="@dimen/common_measure_30dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_28dp"
+                android:layout_height="@dimen/common_measure_34dp"
+                android:src="@drawable/tiyanjin_logo" />
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_10dp"
+                android:text="额度："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"/>
+            <TextView 
+                android:id="@+id/tyj_list_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_18dp"/>
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="元"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"/>
+            
+            <Button 
+                android:id="@+id/tyj_list_item_btn"
+                android:layout_width="@dimen/common_measure_120dp"
+                android:layout_height="@dimen/common_measure_20dp"
+                android:gravity="center"
+                android:text="使用我的体验金"
+                android:textColor="@color/common_topbar_bg_color"
+                android:textSize="@dimen/common_measure_16dp"
+                android:background="@drawable/style_rect_fillet_blue"/>
+            
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View 
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@drawable/style_xuxian_gray"
+        android:layerType="software"/>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_40dp"
+        android:layout_marginLeft="@dimen/common_measure_30dp"
+        android:layout_marginRight="@dimen/common_measure_30dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        
+        <TextView 
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="使用限制："
+        	android:textSize="@dimen/common_measure_18dp"
+        	android:textColor="@color/gray1"/>
+        
+        <TextView 
+            android:id="@+id/tyj_list_item_uselimit"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="@dimen/common_measure_18dp"
+        	android:textColor="@color/gray1"/>
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_40dp"
+        android:layout_marginLeft="@dimen/common_measure_30dp"
+        android:layout_marginRight="@dimen/common_measure_30dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        
+        <TextView 
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="有效期："
+        	android:textSize="@dimen/common_measure_18dp"
+        	android:textColor="@color/gray1"/>
+        
+        <TextView 
+            android:id="@+id/tyj_list_item_time"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="@dimen/common_measure_18dp"
+        	android:textColor="@color/gray1"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/style_rect_fillet_filling_white_dialog"
+    android:orientation="vertical" >
+
+    <!-- 元信宝赎回成功 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_125dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="@dimen/common_measure_28dp"
+            android:layout_height="@dimen/common_measure_28dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:src="@drawable/yxb_redeem_success_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="赎回成功！"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color" />
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:orientation="horizontal">
+        
+        <Button
+        	android:id="@+id/yxb_redeem_success_dialog_chadetails_btn"
+        	android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:layout_weight="1"
+        	android:background="@null"
+        	android:gravity="center"
+        	android:text="查看资金明细"
+        	android:textColor="@color/common_topbar_bg_color"
+        	android:textSize="@dimen/common_measure_24dp" />
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+        <Button
+        	android:id="@+id/yxb_redeem_success_dialog_close_btn"
+        	android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:layout_weight="1"
+        	android:background="@null"
+        	android:gravity="center"
+        	android:text="关闭"
+        	android:textColor="@color/common_topbar_bg_color"
+        	android:textSize="@dimen/common_measure_24dp" />
+        
+    </LinearLayout>
+
+</LinearLayout>

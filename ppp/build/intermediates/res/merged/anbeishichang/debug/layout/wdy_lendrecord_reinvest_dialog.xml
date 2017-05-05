@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/style_rect_fillet_filling_white_dialog"
+    android:orientation="vertical" >
+    
+    <Button 
+        android:id="@+id/wdy_lendrecord_reinvest_dialog_delete"
+        android:layout_width="@dimen/common_measure_30dp"
+        android:layout_height="@dimen/common_measure_30dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_gravity="right|top"
+        android:background="@drawable/delete_btn"/>
+    
+    <!-- 投资金额的布局 -->
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        
+        <ImageView 
+            android:id="@+id/wdy_lendrecord_reinvest_logo"
+            android:layout_width="@dimen/common_measure_40dp"
+            android:layout_height="@dimen/common_measure_40dp"/>
+        
+        <TextView 
+            android:id="@+id/wdy_lendrecord_reinvest_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:text=""
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+    </LinearLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <!-- android:background="@drawable/style_rect_fillet_filling_blue" -->
+        <Button 
+            android:id="@+id/wdy_lendrecord_reinvest_leftbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="确定"
+            android:background="@null"
+            android:gravity="center"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_24dp"/>
+         
+        <View 
+            android:id="@+id/wdy_lendrecord_reinvest_line"
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+        <Button 
+            android:id="@+id/wdy_lendrecord_reinvest_rightbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="去充值"
+            android:background="@null"
+            android:gravity="center"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_24dp"/>
+        
+    </LinearLayout>
+
+</LinearLayout>

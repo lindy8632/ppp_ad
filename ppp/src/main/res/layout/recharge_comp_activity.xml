@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+    
+    <include 
+        layout="@layout/common_topbar"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/recharge_notice_top_img" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_measure_20dp"
+        android:background="@drawable/style_rect_fillet_filling_blue2"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/common_measure_20dp"
+        android:paddingLeft="@dimen/common_measure_10dp"
+        android:paddingRight="@dimen/common_measure_10dp"
+        android:paddingTop="@dimen/common_measure_20dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_5dp"
+            android:src="@drawable/prompt_logo2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_5dp"
+            android:text="企业客户目前仅支持网银充值，请您前往PC端进行充值。"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_18dp" />
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/recharge_comp_activity_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_63dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:background="@drawable/blue_fillet_btn_selector"
+        android:text="我知道了"
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_measure_26dp" />
+
+</LinearLayout>

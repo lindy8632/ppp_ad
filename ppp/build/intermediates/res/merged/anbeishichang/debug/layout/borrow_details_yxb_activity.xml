@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_210dp"
+                android:background="@drawable/yxb_details_top_bg"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/common_measure_25dp"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:gravity="center_vertical" >
+
+                    <ImageView
+                        android:layout_width="@dimen/common_measure_13dp"
+                        android:layout_height="@dimen/common_measure_18dp"
+                        android:layout_marginLeft="@dimen/common_measure_30dp"
+                        android:layout_marginRight="@dimen/common_measure_5dp"
+                        android:src="@drawable/my_account_logo_ljsy" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="当日剩余募集额度（元）："
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_measure_18dp" />
+                </LinearLayout>
+                
+				<!-- 当日剩余募集额度 -->
+                <TextView
+                    android:id="@+id/borrow_details_yxb_activity_raisemoney"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_45dp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/common_measure_65dp" >
+
+                    <!-- 预期年化收益率 -->
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="@dimen/common_measure_1dp"
+                        android:layout_weight="1"
+                        android:background="#33FFFFFF"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="预期年化收益率"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common_measure_18dp" />
+                        
+						<!-- 预期年化收益 -->
+                        <TextView
+                            android:id="@+id/borrow_details_yxb_activity_year_rate"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:gravity="top|center_horizontal"
+                            android:text="6%"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common_measure_18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="@dimen/common_measure_1dp"
+                        android:layout_weight="1"
+                        android:background="#22FFFFFF"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center_horizontal"
+                            android:text="今日剩余可赎回额度"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common_measure_18dp" />
+
+                        <!-- 今日剩余可赎回额度 -->
+                        <TextView
+                            android:id="@+id/borrow_details_yxb_activity_apply_withdraw_money"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:gravity="top|center_horizontal"
+                            android:text="0.00元"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common_measure_18dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:paddingTop="@dimen/common_measure_15dp"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:text="1万元投资元信宝日收益对比"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_20dp" />
+
+            <!-- 收益对比图 -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_200dp"
+                android:paddingTop="@dimen/common_measure_15dp"
+                android:paddingBottom="@dimen/common_measure_20dp"
+                android:paddingRight="@dimen/common_measure_20dp"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+                
+                <include 
+                    layout="@layout/invest_contrast_layout"/>
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_measure_5dp"
+                    android:layout_marginLeft="@dimen/common_measure_30dp"
+                    android:layout_marginRight="@dimen/common_measure_30dp"
+                    android:layout_marginTop="@dimen/common_measure_15dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="单笔加入："
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_18dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="不低于100元且为100元的整数倍"
+                        android:textColor="@color/gray1"
+                        android:textSize="@dimen/common_measure_18dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_measure_5dp"
+                    android:layout_marginLeft="@dimen/common_measure_30dp"
+                    android:layout_marginRight="@dimen/common_measure_30dp"
+                    android:layout_marginTop="@dimen/common_measure_5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="最高认购额度："
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_18dp" />
+
+                    <!-- 个人最高认购额度 -->
+                    <TextView
+                        android:id="@+id/borrow_details_yxb_activity_max_invest_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50万"
+                        android:textColor="@color/gray1"
+                        android:textSize="@dimen/common_measure_18dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_measure_5dp"
+                    android:layout_marginLeft="@dimen/common_measure_30dp"
+                    android:layout_marginRight="@dimen/common_measure_30dp"
+                    android:layout_marginTop="@dimen/common_measure_5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="起息日期："
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_18dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="购买成功后T+1日起息"
+                        android:textColor="@color/gray1"
+                        android:textSize="@dimen/common_measure_18dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_measure_5dp"
+                    android:layout_marginLeft="@dimen/common_measure_30dp"
+                    android:layout_marginRight="@dimen/common_measure_30dp"
+                    android:layout_marginTop="@dimen/common_measure_5dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="冻结期："
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_18dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7天"
+                        android:textColor="@color/gray1"
+                        android:textSize="@dimen/common_measure_18dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_measure_15dp"
+                    android:layout_marginLeft="@dimen/common_measure_30dp"
+                    android:layout_marginRight="@dimen/common_measure_30dp"
+                    android:layout_marginTop="@dimen/common_measure_5dp"
+                    android:text="冻结期后，随时可申请赎回，最快T+0日到账（注：T为赎回申请日）"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_14dp" />
+            </LinearLayout>
+            
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:background="@color/edittext_line_color" />
+
+            <!-- 项目介绍 -->
+            <LinearLayout
+                android:id="@+id/borrow_details_yxb_xmjs_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:background="@drawable/long_btn_click_selector"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/common_measure_30dp"
+                android:paddingRight="@dimen/common_measure_30dp" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="项目介绍"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color" />
+
+            <!-- 产品要素 -->
+            <LinearLayout
+                android:id="@+id/borrow_details_yxb_cpys_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:background="@drawable/long_btn_click_selector"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/common_measure_30dp"
+                android:paddingRight="@dimen/common_measure_30dp" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="产品要素"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+            
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color" />
+
+            <!-- 常见问题 -->
+            <LinearLayout
+                android:id="@+id/borrow_details_yxb_cjwt_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_66dp"
+                android:background="@drawable/long_btn_click_selector"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/common_measure_30dp"
+                android:paddingRight="@dimen/common_measure_30dp" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="常见问题"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_20dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:background="@drawable/my_account_arrow"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+            
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:layout_marginBottom="@dimen/common_measure_20dp"
+                android:background="@color/edittext_line_color" />
+            
+            <Button
+                android:id="@+id/borrow_details_yxb_activity_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_63dp"
+                android:layout_marginBottom="@dimen/common_measure_30dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:background="@drawable/blue_fillet_btn_selector"
+                android:text="立即认购"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_measure_24dp" />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

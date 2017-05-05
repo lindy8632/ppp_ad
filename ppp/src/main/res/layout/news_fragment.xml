@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+    
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/news_fragment_pull_refresh_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        android:scrollbars="none"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="#00000000"
+        ptr:ptrMode="both" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    
+    <TextView 
+        android:id="@+id/news_fragment_nodata"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/common_measure_20dp"
+        android:text="暂无数据"
+        android:visibility="gone"/>
+
+</RelativeLayout>

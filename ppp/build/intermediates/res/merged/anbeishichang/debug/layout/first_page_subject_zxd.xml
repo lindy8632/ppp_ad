@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <!-- 政信贷系列 -->
+    
+    <RelativeLayout 
+        android:id="@+id/first_page_subject_zxd_mainlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_304dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/common_measure_30dp">
+        
+        <ImageView 
+            android:id="@+id/first_page_subject_zxd_circleimage"
+            android:layout_width="@dimen/common_measure_293dp"
+            android:layout_height="@dimen/common_measure_293dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/style_circle_baoying"/>
+        
+        <ImageView 
+            android:layout_width="@dimen/common_measure_270dp"
+            android:layout_height="@dimen/common_measure_270dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/first_page_circle_baoying"/>
+        
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_55dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+            
+            <LinearLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_70dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_35dp" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="~"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_35dp" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_70dp" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_35dp" />
+                
+            </LinearLayout>
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="预期年化收益率"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_measure_20dp"/>
+            
+            <Button 
+                android:id="@+id/first_page_subject_zxd_invest_btn"
+                android:layout_width="@dimen/common_measure_170dp"
+                android:layout_height="@dimen/common_measure_50dp"
+                android:layout_marginTop="@dimen/common_measure_25dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/style_rect_fillet_white1"
+                android:text="立即投资"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_measure_24dp"/>
+            
+        </LinearLayout>
+        
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_measure_20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前在售产品："
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+        <TextView 
+            android:id="@+id/first_page_subject_zxd_cur_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+    </LinearLayout>
+    
+</LinearLayout>

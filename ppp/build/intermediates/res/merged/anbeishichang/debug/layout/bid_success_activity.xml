@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/bid_success_activity_title_layout"
+        layout="@layout/common_topbar" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_50dp"
+        android:layout_marginTop="@dimen/common_measure_100dp"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/bid_success_activity_duihao"
+            android:layout_width="@dimen/common_measure_45dp"
+            android:layout_height="@dimen/common_measure_45dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/duihao" />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/bid_success_activity_duihao"
+            android:layout_marginLeft="@dimen/common_measure_5dp"
+            android:layout_centerVertical="true"
+            android:text="恭喜你！投资成功！"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_22dp"/>
+        
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/bid_success_activity_prompt_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:gravity="center"
+        android:text="恭喜您获得了1次抽奖机会，可前往微信服务号“元立方”参与抽奖，抽奖机会当天有效。"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/common_measure_20dp"
+        android:visibility="gone"/>
+
+    <!-- 继续投资 -->
+    <Button
+        android:id="@+id/bid_success_activity_continue_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_63dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_62dp"
+        android:background="@drawable/blue_fillet_btn_selector"
+        android:text="继续投资"
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_measure_26dp" />
+    
+    <TextView 
+        android:id="@+id/bid_success_activity_cat_record"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:gravity="center"
+        android:text="查看投资记录"
+        android:textSize="@dimen/common_measure_18dp"
+        android:textColor="@color/common_topbar_bg_color"/>
+
+</LinearLayout>

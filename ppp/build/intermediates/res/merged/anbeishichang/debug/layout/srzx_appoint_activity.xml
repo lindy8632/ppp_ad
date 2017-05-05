@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/srzx_appoint_activity_mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <com.ylfcf.ppp.widget.MyScrollView
+        android:id="@+id/srzx_appoint_activity_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_2547dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/srzx_appoint_activity_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_2547dp"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_710dp">
+                    
+                    <LinearLayout
+                        android:id="@+id/srzx_appoint_activity_personal_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_measure_400dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:background="@drawable/srzx_appoint_personal_bg"
+                        android:orientation="vertical"
+                        android:visibility="visible" >
+
+                        <!-- 预约金额 -->
+
+                        <EditText
+                            android:id="@+id/srzx_appoint_activity_money"
+                            android:layout_width="@dimen/common_measure_190dp"
+                            android:layout_height="@dimen/common_measure_30dp"
+                            android:layout_marginLeft="@dimen/common_measure_170dp"
+                            android:layout_marginTop="@dimen/common_measure_55dp"
+                            android:background="@null"
+                            android:hint="10万起，递增额度1万"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:textColor="@color/gray"
+                            android:textColorHint="@color/gray1"
+                            android:textSize="@dimen/common_measure_18dp" />
+
+                        <!--
+                         选择期限 android:layout_width="@dimen/common_measure_165dp"
+                	    android:layout_height="@dimen/common_measure_30dp"
+                        -->
+
+                        <Spinner
+                            android:id="@+id/srzx_appoint_activity_spinner"
+                            android:layout_width="@dimen/common_measure_165dp"
+                            android:layout_height="@dimen/common_measure_30dp"
+                            android:layout_marginLeft="@dimen/common_measure_222dp"
+                            android:layout_marginTop="@dimen/common_measure_14dp"
+                            android:background="@null"
+                            android:entries="@array/srzx_appoint_interest_period"
+                            android:popupBackground="@drawable/style_rect_fillet_filling_red"
+                            android:spinnerMode="dropdown" />
+
+                        <!-- 年化收益率 -->
+
+                        <TextView
+                            android:id="@+id/srzx_appoint_activity_rate"
+                            android:layout_width="@dimen/common_measure_150dp"
+                            android:layout_height="@dimen/common_measure_30dp"
+                            android:layout_marginLeft="@dimen/common_measure_248dp"
+                            android:layout_marginTop="@dimen/common_measure_14dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/common_measure_18dp" />
+
+                        <!-- 计划买入时间 -->
+
+                        <LinearLayout
+                            android:id="@+id/srzx_appoint_activity_plan_layout"
+                            android:layout_width="@dimen/common_measure_170dp"
+                            android:layout_height="@dimen/common_measure_30dp"
+                            android:layout_marginLeft="@dimen/common_measure_218dp"
+                            android:layout_marginTop="@dimen/common_measure_14dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/srzx_appont_activity_plan_time"
+                                android:layout_width="@dimen/common_measure_140dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/common_measure_16dp" />
+                        </LinearLayout>
+
+                        <!-- 图片验证码 -->
+
+                        <LinearLayout
+                            android:layout_width="@dimen/common_measure_270dp"
+                            android:layout_height="@dimen/common_measure_36dp"
+                            android:layout_marginLeft="@dimen/common_measure_150dp"
+                            android:layout_marginTop="@dimen/common_measure_12dp"
+                            android:orientation="horizontal" >
+
+                            <EditText
+                                android:id="@+id/srzx_appoint_activity_et_authcode"
+                                android:layout_width="@dimen/common_measure_100dp"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:gravity="center_vertical"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/common_measure_18dp" />
+
+                            <com.ylfcf.ppp.widget.AuthImageView
+                                android:id="@+id/srzx_appoint_activity_image_authcode"
+                                android:layout_width="@dimen/common_measure_90dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/common_measure_20dp" />
+
+                            <Button
+                                android:id="@+id/srzx_appoint_activity_image_authcode_change"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/common_measure_10dp"
+                                android:layout_weight="1"
+                                android:background="@null" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/srzx_appoint_activity_commit_btn"
+                            android:layout_width="@dimen/common_measure_200dp"
+                            android:layout_height="@dimen/common_measure_36dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/common_measure_15dp"
+                            android:background="@null" />
+                    </LinearLayout>
+                    
+                    <!-- 企业用户 -->
+                    <LinearLayout
+                        android:id="@+id/srzx_appoint_activity_company_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_measure_400dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:background="@drawable/srzx_appoint_company_bg"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <!-- 预约金额 -->
+
+                        <EditText
+                            android:id="@+id/srzx_appoint_activity_comp_money"
+                            android:layout_width="@dimen/common_measure_190dp"
+                            android:layout_height="@dimen/common_measure_30dp"
+                            android:layout_marginLeft="@dimen/common_measure_170dp"
+                            android:layout_marginTop="@dimen/common_measure_70dp"
+                            android:background="@null"
+                            android:hint="10万起，递增额度1万"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:textColor="@color/gray"
+                            android:textColorHint="@color/gray1"
+                            android:textSize="@dimen/common_measure_18dp" />
+
+                        <!--
+                         选择期限 android:layout_width="@dimen/common_measure_165dp"
+                	    android:layout_height="@dimen/common_measure_30dp"
+                        -->
+
+                        <Spinner
+                            android:id="@+id/srzx_appoint_activity_comp_spinner"
+                            android:layout_width="@dimen/common_measure_165dp"
+                            android:layout_height="@dimen/common_measure_30dp"
+                            android:layout_marginLeft="@dimen/common_measure_222dp"
+                            android:layout_marginTop="@dimen/common_measure_18dp"
+                            android:background="@null"
+                            android:entries="@array/srzx_appoint_interest_period"
+                            android:popupBackground="@drawable/style_rect_fillet_filling_red"
+                            android:spinnerMode="dropdown" />
+
+                        <!-- 计划买入时间 -->
+
+                        <LinearLayout
+                            android:id="@+id/srzx_appoint_activity_plan_comp_layout"
+                            android:layout_width="@dimen/common_measure_170dp"
+                            android:layout_height="@dimen/common_measure_30dp"
+                            android:layout_marginLeft="@dimen/common_measure_218dp"
+                            android:layout_marginTop="@dimen/common_measure_18dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/srzx_appont_activity_plan_comp_time"
+                                android:layout_width="@dimen/common_measure_140dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/common_measure_16dp" />
+                        </LinearLayout>
+
+                        <!-- 图片验证码 -->
+
+                        <LinearLayout
+                            android:layout_width="@dimen/common_measure_270dp"
+                            android:layout_height="@dimen/common_measure_36dp"
+                            android:layout_marginLeft="@dimen/common_measure_150dp"
+                            android:layout_marginTop="@dimen/common_measure_18dp"
+                            android:orientation="horizontal" >
+
+                            <EditText
+                                android:id="@+id/srzx_appoint_activity_et_comp_authcode"
+                                android:layout_width="@dimen/common_measure_100dp"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:gravity="center_vertical"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/common_measure_18dp" />
+
+                            <com.ylfcf.ppp.widget.AuthImageView
+                                android:id="@+id/srzx_appoint_activity_image_comp_authcode"
+                                android:layout_width="@dimen/common_measure_90dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/common_measure_20dp" />
+
+                            <Button
+                                android:id="@+id/srzx_appoint_activity_image_authcode_comp_change"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/common_measure_10dp"
+                                android:layout_weight="1"
+                                android:background="@null" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/srzx_appoint_activity_commit_comp_btn"
+                            android:layout_width="@dimen/common_measure_200dp"
+                            android:layout_height="@dimen/common_measure_36dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/common_measure_15dp"
+                            android:background="@null" />
+                    </LinearLayout>
+                    
+                    <RelativeLayout 
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_measure_35dp"
+                        android:gravity="center"
+                        android:layout_alignParentTop="true">
+                        
+                        <TextView 
+                            android:id="@+id/srzx_appoint_activity_nav_personal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_toLeftOf="@+id/srzx_appoint_activity_middle_line"
+                            android:gravity="center_vertical"
+                            android:text="个人预约"
+                            android:textColor="@color/yellow2"
+                            android:textSize="@dimen/common_measure_22dp"
+                            android:textStyle="bold"/>
+                        
+                        <View 
+                            android:id="@+id/srzx_appoint_activity_middle_line"
+                            android:layout_width="@dimen/common_measure_2dp"
+                            android:layout_height="@dimen/common_measure_22dp"
+                            android:layout_marginLeft="@dimen/common_measure_5dp"
+                            android:layout_marginRight="@dimen/common_measure_5dp"
+                            android:layout_centerInParent="true"
+                            android:background="@color/yellow"/>
+                        
+                        <TextView 
+                            android:id="@+id/srzx_appoint_activity_nav_company"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_toRightOf="@+id/srzx_appoint_activity_middle_line"
+                            android:text="企业预约"
+                            android:textColor="@color/yellow"
+                            android:textSize="@dimen/common_measure_22dp"
+                            android:textStyle="bold"/>
+                        
+                    </RelativeLayout>
+                    
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_1dp"
+                    android:layout_marginTop="@dimen/common_measure_780dp" />
+
+                <ListView
+                    android:id="@+id/srzx_appoint_activity_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_measure_200dp"
+                    android:layout_marginLeft="@dimen/common_measure_50dp"
+                    android:layout_marginRight="@dimen/common_measure_50dp"
+                    android:layout_marginTop="@dimen/common_measure_100dp"
+                    android:divider="@drawable/dash_line_orange"
+                    android:dividerHeight="@dimen/common_measure_1dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.ylfcf.ppp.widget.MyScrollView>
+
+</LinearLayout>

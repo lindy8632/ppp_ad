@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/style_rect_fillet_filling_white_dialog"
+    android:orientation="vertical" >
+	
+    <TextView 
+        android:id="@+id/yxb_redeem_edit_empty_dialog_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:text=""
+        android:singleLine="true"
+        android:gravity="center"
+        android:textSize="@dimen/common_measure_20dp"
+        android:textColor="@color/gray"/>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <Button 
+        android:id="@+id/yxb_redeem_empty_dialog_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:background="@null"
+        android:text="确定"
+        android:textSize="@dimen/common_measure_24dp"
+        android:textColor="@color/common_topbar_bg_color"
+        android:gravity="center"/>
+
+</LinearLayout>

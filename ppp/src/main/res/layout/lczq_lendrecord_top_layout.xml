@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:orientation="horizontal">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="累计投资金额："
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+        <TextView 
+            android:id="@+id/lczq_lendrecord_top_layout_totalinvestmoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:orientation="horizontal">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="累计延期："
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+        <TextView 
+            android:id="@+id/lczq_lendrecord_top_layout_totaldelaydays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="天"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:orientation="horizontal">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预期收益："
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+        <TextView 
+            android:id="@+id/lczq_lendrecord_top_layout_totalinterest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bid_wdy_lend_record_interest"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"/>
+        
+    </LinearLayout>
+
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:layout_marginTop="@dimen/common_measure_30dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_40dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="计划加入日期"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_16dp"
+            android:gravity="center"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="实际加入日期"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_16dp"
+            android:gravity="center"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="加入金额(元)"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_16dp"
+            android:gravity="center"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="操作"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_16dp"
+            android:gravity="center"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+    </LinearLayout>
+    
+</LinearLayout>

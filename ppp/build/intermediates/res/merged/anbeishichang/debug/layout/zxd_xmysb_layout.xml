@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/common_measure_20dp"
+    android:layout_marginRight="@dimen/common_measure_20dp"
+    android:orientation="vertical" >
+    
+    <!-- 项目要素表 -->
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/common_measure_60dp">
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="借款方"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:id="@+id/zxd_xmysb_layout_jkf_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="@dimen/common_measure_5dp"
+            android:layout_weight="3"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+    </LinearLayout>
+    
+    <!-- 借款方介绍 -->
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/common_measure_60dp">
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="借款方介绍"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:id="@+id/zxd_xmysb_layout_jkfjs_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="@dimen/common_measure_5dp"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+    </LinearLayout>
+    
+    <!-- 推荐方 -->
+    <View 
+        android:id="@+id/zxd_xmysb_tjf_line1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <LinearLayout 
+        android:id="@+id/zxd_xmysb_layout_tjf_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/common_measure_60dp">
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="推荐方"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:id="@+id/zxd_xmysb_layout_tjf_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="@dimen/common_measure_5dp"
+            android:layout_weight="3"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+    </LinearLayout>
+    
+    <!-- 推荐方介绍 -->
+    <View 
+        android:id="@+id/zxd_xmysb_tjf_line2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <LinearLayout 
+        android:id="@+id/zxd_xmysb_layout_tjf_intro_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/common_measure_60dp">
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="推荐方介绍"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:id="@+id/zxd_xmysb_layout_tjfjs_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="@dimen/common_measure_5dp"
+            android:layout_weight="3"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+    </LinearLayout>
+    
+    <!-- 担保方 -->
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/common_measure_60dp">
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="担保方"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:id="@+id/zxd_xmysb_layout_dbf_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="@dimen/common_measure_5dp"
+            android:layout_weight="3"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+    </LinearLayout>
+
+    <!-- 担保方介绍 -->
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/common_measure_60dp">
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="担保方介绍"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <TextView 
+            android:id="@+id/zxd_xmysb_layout_dbfjs_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="@dimen/common_measure_5dp"
+            android:layout_weight="3"
+            android:textSize="@dimen/common_measure_18dp"
+            android:textColor="@color/gray"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+        
+    </LinearLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+    
+</LinearLayout>

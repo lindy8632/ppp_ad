@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background"
+    android:orientation="vertical" >
+    
+    <include 
+        layout="@layout/common_topbar"/>
+    
+    <LinearLayout 
+        android:id="@+id/funds_details_activity_navlayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_40dp"
+        android:layout_marginLeft="@dimen/common_measure_40dp"            
+        android:layout_marginRight="@dimen/common_measure_40dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginBottom="@dimen/common_measure_10dp"
+        android:background="@drawable/style_funds_details_nav_layout"
+        android:orientation="horizontal">
+        
+        <Button 
+            android:id="@+id/funds_details_activity_nav_zxd_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_20dp"
+            android:text="固定期限类产品"
+            android:tag="0"/>
+        
+        <View 
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_topbar_bg_color"/>
+        
+        <Button 
+            android:id="@+id/funds_details_activity_nav_yxb_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/style_funds_details_nav_yyy"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_20dp"
+            android:text="活期（元信宝）"
+            android:tag="0"/>
+        
+    </LinearLayout>
+    
+    <FrameLayout 
+        android:id="@+id/funds_details_activity_mainlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+    
+</LinearLayout>
