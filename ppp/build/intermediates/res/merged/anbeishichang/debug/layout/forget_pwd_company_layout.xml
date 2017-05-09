@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/common_measure_5dp"
-                android:text="企业客户请拨打服务热线：021-31033898-817（工作日9:00-18:00）找回登录密码！"
+                android:text="企业客户请拨打服务热线：400-150-1568（工作日9:00-18:00）找回登录密码！"
                 android:textColor="@color/common_topbar_bg_color"
                 android:textSize="@dimen/common_measure_18dp" />
         </LinearLayout>

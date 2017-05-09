@@ -98,7 +98,7 @@ public class DealPwdErrorPopwindow extends PopupWindow implements
 			break;
 		case R.id.dealpwd_error_popwindow_layout:
 			//°ïÖú
-			contactUs("02131033898");
+			contactUs("4001501568");
 			break;
 		default:
 			break;

@@ -156,7 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="如需业务咨询或寻求帮助，\n均可拨打服务热线：021-31033898-817（工作日9:00-18:00）"
+            android:text="如需业务咨询或寻求帮助，\n均可拨打服务热线：400-150-1568（工作日9:00-18:00）"
             android:textSize="@dimen/common_measure_16dp"
             android:textColor="@color/gray"/>
         

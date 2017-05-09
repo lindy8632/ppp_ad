@@ -205,7 +205,7 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 			startActivity(intentCommQues);
 			break;
 		case R.id.more_kfrx_layout:
-			contactUs("02131033898");
+			contactUs("4001501568");
 			break;
 		case R.id.more_jcxbb_layout:
 			checkVersion(Util.getClientVersion(mainActivity));

@@ -1,6 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import android.Manifest;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,11 +8,9 @@ import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.Display;
@@ -227,14 +224,6 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 		JPushInterface.init(this);     		// 初始化 JPush
 //		JPushInterface.setAliasAndTags(MainFragmentActivity.this, "test", null);
 		
-		//android6.0上权限的适配
-		if(Build.VERSION.SDK_INT >= 23){
-			String[] mPermissionList = new String[]{
-					Manifest.permission.WRITE_EXTERNAL_STORAGE,
-					Manifest.permission.SYSTEM_ALERT_WINDOW};
-			ActivityCompat.requestPermissions(this,mPermissionList, 100);
-		}
-
 		mApp.addActivity(this);
 		loadingDialog = new LoadingDialog(MainFragmentActivity.this, "正在加载...", R.anim.loading);
 		
@@ -341,7 +330,7 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 //			}, 2000L);
 //		}
 	}
-	
+
 	class DownloadChangeObserver extends ContentObserver {
 		public DownloadChangeObserver(Handler handler) {
 			super(handler);

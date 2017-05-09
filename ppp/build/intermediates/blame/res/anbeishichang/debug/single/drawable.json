@@ -1,43 +1,39 @@
 [
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_right_pressed.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_right_pressed.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\long_btn_click_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\long_btn_click_selector.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sina.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sina.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_left_pressed.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_left_pressed.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_normal.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_normal.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qzone_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qzone_on.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white_dialog.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white_dialog.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\gradient.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\gradient.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_fetch_image.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_fetch_image.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_top_blue.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_top_blue.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_right_normal.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_right_normal.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_cyan.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_cyan.xml"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_xsmb.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_xsmb.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_yellow.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_yellow.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_normal.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_normal.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue.xml",
@@ -48,24 +44,12 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_twitter.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_back_icon.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_back_icon.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue_left_3dp.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue_left_3dp.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_shape_solid_grey.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_shape_solid_grey.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_gray.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_gray.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_video.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_video.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_login_pressed.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_login_pressed.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_douban_on.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_douban_on.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_cab_background_internal_bg.xml",
@@ -76,16 +60,32 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\background_tab.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_back_icon.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_back_icon.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_wdy.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_wdy.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_seekbar_track_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_right_bt.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_right_bt.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_textfield_search_material.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_default_avatar.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_default_avatar.png"
     },
     {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_textfield_search_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_textfield_search_material.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_nav_bar_bg.png",
@@ -120,68 +120,56 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_dialog_material_background_dark.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_red.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_red.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_location_on.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_location_on.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qq_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qq_on.png"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_white.9.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_white.9.png"
     },
     {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\product_item_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\product_item_selector.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_action_back_selected.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_action_back_selected.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\increase_btn_selector.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\increase_btn_selector.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\product_item_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\product_item_selector.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\guoqing_jiaxi_details_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\guoqing_jiaxi_details_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_douban_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_douban_off.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_login.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_login.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\indicator_bg_top.xml",
         "source": "D:\\GitRepository\\ppp_ad\\library\\build\\intermediates\\bundles\\default\\res\\drawable\\indicator_bg_top.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_click_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_click_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white_3dp.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white_3dp.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_yxb_btn.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_yxb_btn.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_renren_on.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_renren_on.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_check_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_check_material.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_shape_solid_grey.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_shape_solid_grey.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_white.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_white.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_delete.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_delete.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_selected.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_selected.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_copy.png",
@@ -192,24 +180,24 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_pic.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\edittext_bg_style.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\edittext_bg_style.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_copyurl.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_copyurl.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_yyy.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_yyy.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_borderless_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_oauth_check_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_oauth_check_off.png"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\wheel_val.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\wheel_val.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wechat.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wechat.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_baoying_btn.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_baoying_btn.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_blue.xml",
@@ -220,10 +208,6 @@
         "source": "D:\\GitRepository\\ppp_ad\\library\\build\\intermediates\\bundles\\default\\res\\drawable\\indicator_bg_bottom.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_web.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_web.png"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qq_off.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qq_off.png"
     },
@@ -232,48 +216,64 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_action_back.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_location_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_location_on.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\descend_btn_seletor.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\descend_btn_seletor.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_grey_blue.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_grey_blue.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_shareboard_item_background.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_shareboard_item_background.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_wenying.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_wenying.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_check_material.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qzone_on.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qzone_on.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\guoqing_jiaxi_details_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\guoqing_jiaxi_details_selector.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_gray.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_gray.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\wheel_bg.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\wheel_bg.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_gray.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_gray.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_renren_off.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_renren_off.png"
     },
     {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_yellow1.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_yellow1.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_funds_details_nav_yxb.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_funds_details_nav_yxb.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_refersh.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_refersh.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_btn_bg.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_btn_bg.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_yellow1.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_yellow1.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_search_icon.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_search_icon.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\orange_btn_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\orange_btn_selector.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_music.png",
@@ -292,24 +292,36 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\white_jianbian.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_to_button.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_to_button.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qq_on.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qq_on.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_bind_bg.9.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_bind_bg.9.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_top_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_top_blue.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_web.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_web.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_small_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_yellow.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_yellow.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sina.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sina.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_to_button.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_to_button.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_yxb.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_yxb.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sina_off.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sina_off.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_login_pressed.png",
@@ -324,20 +336,24 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_follow_off.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wechat.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wechat.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_back_bt.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_back_bt.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_dialog_material_background_light.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_dialog_material_background_light.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\orange_btn_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\orange_btn_selector.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\edittext_bg_style.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\edittext_bg_style.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue_right_3dp.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue_right_3dp.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_red.xml",
@@ -348,10 +364,6 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_gesture_blue.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_dialog_material_background_dark.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_dialog_material_background_dark.xml"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_orange.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_orange.xml"
     },
@@ -360,12 +372,16 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\guoqing_jiaxibtn_selector.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_douban_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_douban_on.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_red1.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_red1.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_grey_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_grey_blue.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_gesture_white.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_gesture_white.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white_bottom_3dp.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white_bottom_3dp.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_fulling_orange1.xml",
@@ -374,6 +390,14 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_yxb_btn1.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_yxb_btn1.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_location_ic.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_location_ic.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\descend_btn_seletor.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\descend_btn_seletor.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_item_background_holo_light.xml",
@@ -388,52 +412,72 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_right_bt_selected.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_window_shadow_pad.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_window_shadow_pad.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_full_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_full_material.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fulling_gray.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fulling_gray.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_right_pressed.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_right_pressed.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_blue1.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_blue1.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\prize_region_btn_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\prize_region_btn_selector.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_orange.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_orange.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sina_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sina_on.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\btn_rect_filling_orange_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\btn_rect_filling_orange_selector.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_follow_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_follow_off.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\prize_region_btn_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\prize_region_btn_selector.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_delete.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_delete.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_blue.9.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_blue.9.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_red.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_red.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_login_normal.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_login_normal.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_tx_on.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_tx_on.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_tx_off.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_tx_off.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_right_bt_selected.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_right_bt_selected.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wxcircle.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wxcircle.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\gradient.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\gradient.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\sina_web_default.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\sina_web_default.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_gray.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_gray.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_gray_top_3dp.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_gray_top_3dp.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\blue_btn_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\blue_btn_selector.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_purple.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_purple.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_gray1.xml",
@@ -448,6 +492,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_xsmb_gray.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wxcircle_gray.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wxcircle_gray.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_text_cursor_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_text_cursor_material.xml"
     },
@@ -456,12 +504,12 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_menu_default.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_white.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_white.9.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_orange.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_orange.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_gray.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_gray.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fulling_gray.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fulling_gray.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_white.xml",
@@ -472,24 +520,12 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_right_bt_normal.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_purple.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_purple.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_action_back_selected.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_action_back_selected.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_blue1.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_blue1.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_switch_thumb_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_switch_thumb_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\indicator_bg_top.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\library\\build\\intermediates\\bundles\\default\\res\\drawable\\indicator_bg_top.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white_3dp.xml",
@@ -500,24 +536,24 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\blue_fillet_btn_selector.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_oauth_check_on.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_oauth_check_on.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_button_right.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_button_right.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_edit_bg.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_edit_bg.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wechat_gray.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wechat_gray.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_gray.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_gray.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_left_normal.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_left_normal.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_back_bt_normal.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_back_bt_normal.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_edit_bg.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_edit_bg.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_suying.xml",
@@ -532,84 +568,84 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\long_red_btn_selector.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_red.9.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_red.9.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_white_blue.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_white_blue.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_right_bt.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_right_bt.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_click_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_click_selector.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue_left_3dp.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue_left_3dp.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_white1.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_white1.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_action_back_normal.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_action_back_normal.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_selected.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_selected.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_funds_details_nav_layout.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_funds_details_nav_layout.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_gray1.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_gray1.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_cyan.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_cyan.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_borderless_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_borderless_material.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\common_topbar_left_btn_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\common_topbar_left_btn_selector.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\slid_tab_background.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\slid_tab_background.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_xsb.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_xsb.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_left_pressed.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_left_pressed.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_google.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_google.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_action_back.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_action_back.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_douban_off.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_douban_off.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_right_normal.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_right_normal.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_orange.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_orange.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_cab_background_internal_bg.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_cab_background_internal_bg.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_x_button.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_x_button.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_fetch_image.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_fetch_image.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_bind_bg.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_bind_bg.9.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_xuxian_gray.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_xuxian_gray.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_funds_details_nav_yyy.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_funds_details_nav_yyy.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_hor_progressbar_orange.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_hor_progressbar_orange.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\slid_tab_background.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\slid_tab_background.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_blue.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_blue.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_search_icon.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_search_icon.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_fulling_deepblue.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_fulling_deepblue.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_baoying.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_baoying.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_shareboard_item_background.xml",
@@ -622,10 +658,6 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_blue.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_blue.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\blue_fillet_btn_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\blue_fillet_btn_selector.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_follow_on.png",
@@ -652,32 +684,20 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_xsb.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wechat_gray.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wechat_gray.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_button_right.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_button_right.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_follow_check.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_follow_check.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_back_bt_selected.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_back_bt_selected.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_small_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_grey.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_grey.9.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\bid_activity_bottom_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\bid_activity_bottom_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_xuxian_gray.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_xuxian_gray.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_textfield_search_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_textfield_search_material.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_oauth_check.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_oauth_check.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_seekbar_thumb_material.xml",
@@ -688,6 +708,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\checkbox_selector.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_red_blue.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_red_blue.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\wechat_fav.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\wechat_fav.png"
     },
@@ -696,24 +720,24 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_light_bar_bg.9.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\toggle_seletor.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\toggle_seletor.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_wenying_btn.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_wenying_btn.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_left_normal.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_left_normal.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\toggle_seletor.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\toggle_seletor.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qzone_off.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qzone_off.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_back_bt_normal.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_back_bt_normal.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_suying_btn.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_suying_btn.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white_dialog.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white_dialog.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_click_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_click_selector.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_grey.9.png",
@@ -728,822 +752,6 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\gesture_cancel_text_color.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\blue_btn_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\blue_btn_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_button_left.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_button_left.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_pic.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_pic.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_action_back_normal.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_action_back_normal.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_login.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_login.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_window_shadow_pad.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_window_shadow_pad.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_text_cursor_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_text_cursor_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white_bottom_3dp.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white_bottom_3dp.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\login_nav_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\login_nav_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sidebar_normal.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sidebar_normal.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_button.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_button.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\long_red_btn_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\long_red_btn_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_gray.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_gray.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\login_nav_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\login_nav_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_gray.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_gray.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\long_btn_click_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\long_btn_click_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_left_pressed.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_left_pressed.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\sina_web_default.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\sina_web_default.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white_dialog.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white_dialog.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_top_blue.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_top_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_radio_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_radio_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_fulling_deepblue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_fulling_deepblue.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue1.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue1.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_normal.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_normal.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\wheel_val.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\wheel_val.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_hor_progressbar_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_hor_progressbar_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue_left_3dp.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue_left_3dp.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_douban_on.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_douban_on.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_back_icon.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_back_icon.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_wdy.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_wdy.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_menu_default.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_menu_default.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_renren_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_renren_on.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_right_bt.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_right_bt.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_holo_dark.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_click_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_click_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_oauth_check.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_oauth_check.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_yxb.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_yxb.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\product_item_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\product_item_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\increase_btn_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\increase_btn_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\white_jianbian.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\white_jianbian.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\guoqing_jiaxibtn_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\guoqing_jiaxibtn_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_blue.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_blue.9.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_red.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_red.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_edit_text_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_edit_text_material.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_gray_top_3dp.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_gray_top_3dp.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\background_tab.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\background_tab.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_action_back_selected.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_action_back_selected.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_funds_details_nav_layout.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_funds_details_nav_layout.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_login.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_login.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\indicator_bg_bottom.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\library\\build\\intermediates\\bundles\\default\\res\\drawable\\indicator_bg_bottom.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_yxb_btn.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_yxb_btn.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_shape_solid_grey.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_shape_solid_grey.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_selected.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_selected.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_x_button.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_x_button.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_copyurl.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_copyurl.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_yyy.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_yyy.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_back_bt.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_back_bt.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_baoying_btn.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_baoying_btn.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_oauth_check_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_oauth_check_on.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_wenying_btn.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_wenying_btn.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_grey_blue.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_grey_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_check_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_check_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_tx_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_tx_off.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_cab_background_top_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_cab_background_top_material.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\guoqing_jiaxi_details_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\guoqing_jiaxi_details_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_twitter.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_twitter.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_orange.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_orange.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_gray.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_gray.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_gesture_white.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_gesture_white.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_more.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_more.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_gray.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_gray.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sidebar_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sidebar_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sidebar_normal.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sidebar_normal.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_funds_details_nav_yxb.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_funds_details_nav_yxb.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_refersh.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_refersh.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\wheel_bg.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\wheel_bg.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_search_icon.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_search_icon.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\orange_btn_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\orange_btn_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qq_on.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qq_on.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_baoying_btn.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_baoying_btn.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sina_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sina_off.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_web.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_web.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_tx_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_tx_on.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_red_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_red_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_yellow.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_yellow.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sina.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sina.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_to_button.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_to_button.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sina_off.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sina_off.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\common_topbar_left_btn_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\common_topbar_left_btn_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wechat.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wechat.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_red.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_red.9.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_tab_indicator_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_tab_indicator_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_renren_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_renren_off.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue_right_3dp.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue_right_3dp.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_red1.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_red1.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_yxb_btn1.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_yxb_btn1.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_blue.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_light_bar_bg.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_light_bar_bg.9.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_tab_indicator_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_tab_indicator_material.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_gesture_white.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_gesture_white.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white_bottom_3dp.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white_bottom_3dp.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_transparent_corner.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_transparent_corner.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_default_avatar.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_default_avatar.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_funds_details_nav_dqvip.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_funds_details_nav_dqvip.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_location_ic.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_location_ic.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\descend_btn_seletor.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\descend_btn_seletor.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_nav_bar_bg.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_nav_bar_bg.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_orange.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_orange.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_full_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_full_material.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_right_pressed.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_right_pressed.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_orange.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_orange.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_blue1.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_blue1.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_orange.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_orange.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\btn_rect_filling_orange_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\btn_rect_filling_orange_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_holo_dark.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sidebar_selected.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sidebar_selected.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\prize_region_btn_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\prize_region_btn_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_delete.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_delete.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_xsmb.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_xsmb.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_blue.9.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_blue.9.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_tx_on.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_tx_on.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wxcircle.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wxcircle.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_refersh.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_refersh.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\sina_web_default.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\sina_web_default.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_gray_top_3dp.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_gray_top_3dp.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\blue_btn_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\blue_btn_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_purple.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_purple.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wxcircle_gray.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wxcircle_gray.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_orange.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_orange.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fulling_gray.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fulling_gray.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_cab_background_top_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_cab_background_top_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_item_background_holo_light.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_item_background_holo_light.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_shape_solid_black.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_shape_solid_black.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_yyy.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_yyy.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_orange.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_orange.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_oauth_check_on.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_oauth_check_on.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_gesture_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_gesture_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_button_right.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_button_right.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qzone_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qzone_off.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_left_normal.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_tab_left_normal.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_right_bt_normal.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_right_bt_normal.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_copy.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_copy.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_radio_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_radio_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\srzx_invest_logo.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\srzx_invest_logo.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_location_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_location_off.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_red.9.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_red.9.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_holo_light.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_click_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_click_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue2.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue2.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\btn_rect_filling_orange_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\btn_rect_filling_orange_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_white1.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_white1.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_edit_white.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_edit_white.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_white_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_white_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_funds_details_nav_layout.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_funds_details_nav_layout.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_cyan.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_cyan.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\common_topbar_left_btn_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\common_topbar_left_btn_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_suying_btn.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_suying_btn.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_item_background_holo_dark.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_baoying.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_baoying.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_orange.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_orange.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_x_button.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_x_button.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_seekbar_track_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_seekbar_track_material.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_xuxian_gray.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_xuxian_gray.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_hor_progressbar_orange.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_hor_progressbar_orange.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\slid_tab_background.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\slid_tab_background.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_fulling_deepblue.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_fulling_deepblue.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\long_btn_click_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\long_btn_click_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\wechat_fav.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\wechat_fav.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_baoying.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_baoying.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_white1.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_white1.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_gray.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_gray.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_funds_details_nav_yxb.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_funds_details_nav_yxb.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_seekbar_thumb_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_follow_on.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_follow_on.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_music.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_music.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wxcircle_gray.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wxcircle_gray.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_xsmb_gray.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_xsmb_gray.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wechat_gray.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wechat_gray.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_white.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_white.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_red1.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_red1.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_follow_check.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_follow_check.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\popwindow_background_style.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\popwindow_background_style.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_small_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_oauth_check.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_oauth_check.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_follow_check.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_follow_check.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_button.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_button.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_suying.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_suying.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_wxcircle.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_wxcircle.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_copyurl.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_copyurl.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_red_blue.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_red_blue.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_wenying_btn.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_wenying_btn.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\toggle_seletor.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\toggle_seletor.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\checkbox_selector.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\checkbox_selector.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_suying_btn.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_suying_btn.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_click_selector.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_click_selector.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\gesture_cancel_text_color.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\gesture_cancel_text_color.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_ratingbar_full_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_ratingbar_full_material.xml"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_location_off.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_location_off.png"
     },
@@ -1554,14 +762,6 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_wenying.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_wenying.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_licai_wdy.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_licai_wdy.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_facebook.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_facebook.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_tab_button_left.xml",
@@ -1576,68 +776,44 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_edit_white.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_yellow1.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_yellow1.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_location_ic.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_location_ic.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qq_off.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qq_off.png"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_window_shadow_pad.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_window_shadow_pad.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_transparent_corner.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_transparent_corner.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_blue.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_blue.xml"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_more.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_more.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_hor_progressbar_orange.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_hor_progressbar_orange.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_sidebar_normal.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_sidebar_normal.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_first_page_invest_yxb_btn.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_first_page_invest_yxb_btn.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_btn_colored_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_btn_colored_material.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_at_button.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_at_button.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_hor_progressbar_blue.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_hor_progressbar_blue.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue_right_3dp.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue_right_3dp.xml"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_oauth_check_off.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_oauth_check_off.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_fulling_orange1.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_fulling_orange1.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_filling_gray.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_filling_gray.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_item_background_holo_dark.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\login_nav_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\login_nav_selector.xml"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_btn_bg.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_btn_bg.xml"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_edit_text_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_edit_text_material.xml"
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_gray.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_gray.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_switch_thumb_material.xml",

@@ -1,9 +1,5 @@
 [
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\imageLoaderLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\imageLoaderLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\ic_launcher.png"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\imageLoaderLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
         "source": "D:\\GitRepository\\ppp_ad\\imageLoaderLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\ic_launcher.png"
     }

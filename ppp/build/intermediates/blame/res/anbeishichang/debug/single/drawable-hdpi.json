@@ -4,14 +4,6 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\umeng_socialize_light_bar_bg_pad.9.png"
     },
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi\\umeng_socialize_light_bar_bg_pad.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\umeng_socialize_light_bar_bg_pad.9.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi\\product_item_bg.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\product_item_bg.9.png"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi\\list_item_bg.9.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\list_item_bg.9.png"
     },
@@ -22,13 +14,5 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi\\product_item_bg.9.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\product_item_bg.9.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi\\list_item_bg.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\list_item_bg.9.png"
-    },
-    {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi\\umeng_socialize_nav_bar_bg_pad.9.png",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\umeng_socialize_nav_bar_bg_pad.9.png"
     }
 ]

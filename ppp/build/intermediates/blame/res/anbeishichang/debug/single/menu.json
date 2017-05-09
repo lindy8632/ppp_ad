@@ -1,9 +1,5 @@
 [
     {
-        "merged": "D:\\StudioWorkspace\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\menu\\main.xml",
-        "source": "D:\\StudioWorkspace\\ppp_ad\\ppp\\src\\main\\res\\menu\\main.xml"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\menu\\main.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\menu\\main.xml"
     }

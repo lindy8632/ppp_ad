@@ -25,7 +25,6 @@ import com.ylfcf.ppp.entity.AppInfo;
 import com.ylfcf.ppp.ui.MainFragmentActivity.OnDownLoadListener;
 import com.ylfcf.ppp.util.MarketUtils;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
 
 /**
  * 版本更新的window

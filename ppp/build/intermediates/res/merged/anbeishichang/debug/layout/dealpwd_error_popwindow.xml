@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/common_measure_10dp"
-                android:text="如需帮助，\n请拨打客服电话：021-31033898-817"
+                android:text="如需帮助，\n请拨打客服电话：400-150-1568"
                 android:textColor="@color/common_topbar_bg_color"
                 android:textSize="@dimen/common_measure_18dp" />
         </LinearLayout>
