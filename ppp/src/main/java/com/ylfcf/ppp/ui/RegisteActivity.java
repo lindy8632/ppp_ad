@@ -48,8 +48,8 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	//注册主页面
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
-	private Button navNormalPersonalBtn,navVipPersonalBtn,navCompanyBtn;
-	private View normalPersonalLayout,vipPersonalLayout,companyLayout;
+	private Button navNormalPersonalBtn,navCompanyBtn;
+	private View normalPersonalLayout,companyLayout;
 	private final long intervalTime = 1000L;
 	private LoadingDialog loadingDialog;
 	private LinearLayout mainLayout;
@@ -88,36 +88,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	};
 	
 	//VIP个人用户
-	private EditText phoneVIPET, pwdVIPET, authnumVIPSMSET;
-	private EditText managerVIPNum;//理财经理号
-	private TextView managerVIPName;//理财师的名字
-	private Button registeVIPBtn, getVIPAuthnumBtn;
-	private TextView loginVIPText;//立即登录
-	private TextView protocolVIPText;
-	private String authnumVIPSMSUser;// 用户输入的手机验证码
-	private String authnumVIPSMSWeb;// 系统生成的手机验证码
-	private CountDownAsyncTask countVIPDownAsynTask = null;
-	private String phoneVIPNum = null;
 	private String activityFlag = "";
-	private Handler handlerVIP = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-			switch (msg.what) {
-			case CountDownAsyncTask.PROGRESS_UPDATE:
-				TaskDate date = (TaskDate) msg.obj;
-				long time = date.getTime();
-				countVIPDownView(time);
-				break;
-			case CountDownAsyncTask.FINISH:
-				getVIPAuthnumBtn.setText("获取验证码");
-				getVIPAuthnumBtn.setEnabled(true);
-				break;
-			default:
-				break;
-			}
-		}
-	};
 
 	//企业用户
 	private EditText phoneCompanyET, authnumCompanySMSET,recommendCompanyNum;
@@ -170,12 +141,9 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 		//主注册页面
 		navNormalPersonalBtn = (Button) findViewById(R.id.registe_main_nav_normal_personal_btn);
 		navNormalPersonalBtn.setOnClickListener(this);
-		navVipPersonalBtn = (Button) findViewById(R.id.registe_main_nav_vip_personal_btn);
-		navVipPersonalBtn.setOnClickListener(this);
 		navCompanyBtn = (Button) findViewById(R.id.registe_main_nav_company_btn);
 		navCompanyBtn.setOnClickListener(this);
 		normalPersonalLayout = findViewById(R.id.registe_main_normal_personal_mainlayout);
-		vipPersonalLayout = findViewById(R.id.registe_main_vip_personal_mainlayout);
 		companyLayout = findViewById(R.id.registe_main_company_personal_mainlayout);
 
 		//普通个人用户
@@ -192,48 +160,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 		getNPAuthnumBtn.setOnClickListener(this);
 		protocolNPText = (TextView) findViewById(R.id.registe_main_normal_personal_protocol);
 		protocolNPText.setOnClickListener(this);
-		
-		//VIP个人用户
-		phoneVIPET = (EditText) findViewById(R.id.registe_main_vip_personal_phone);
-		pwdVIPET = (EditText) findViewById(R.id.registe_main_vip_personal_pwd);
-		authnumVIPSMSET = (EditText) findViewById(R.id.registe_main_vip_personal_sms_authnum);
-		managerVIPNum = (EditText) findViewById(R.id.registe_main_vip_personal_manager_num);
-		managerVIPName = (TextView) findViewById(R.id.registe_main_vip_personal_manager_name);
-		loginVIPText = (TextView) findViewById(R.id.registe_main_vip_personal_login_text);
-		loginVIPText.setOnClickListener(this);
-		registeVIPBtn = (Button) findViewById(R.id.registe_main_vip_personal_btn);
-		registeVIPBtn.setOnClickListener(this);
-		registeVIPBtn.setEnabled(false);
-		getVIPAuthnumBtn = (Button) findViewById(R.id.registe_main_vip_personal_authnum_btn);
-		getVIPAuthnumBtn.setOnClickListener(this);
-		protocolVIPText = (TextView) findViewById(R.id.registe_main_vip_personal_protocol);
-		protocolVIPText.setOnClickListener(this);
-		managerVIPNum.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				YLFLogger.d("onTextChanged");
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				YLFLogger.d("beforeTextChanged");
-			}
-			
-			@Override
-			public void afterTextChanged(Editable s) {
-				final String num = managerVIPNum.getText().toString();
-				if(Util.checkPhoneNumber(num)){
-					//2秒钟没输入表示用户已输完，开始请求后台
-					new Handler().postDelayed(new Runnable() {
-						@Override
-						public void run() {
-							getLCSName(num,"vip_personal");
-						}
-					}, 1000L);
-				}
-			}
-		});
 		
 		//企业用户
 		phoneCompanyET = (EditText) findViewById(R.id.registe_main_company_phone);
@@ -289,7 +215,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	protected void onDestroy() {
 		super.onDestroy();
 		handlerNP.removeCallbacksAndMessages(null);
-		handlerVIP.removeCallbacksAndMessages(null);
 		handlerCompany.removeCallbacksAndMessages(null);
 	}
 
@@ -298,17 +223,12 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.common_topbar_left_layout:
 		case R.id.registe_main_normal_personal_login_text:
-		case R.id.registe_main_vip_personal_login_text:
 		case R.id.registe_main_company_personal_login_text:
 			finish();
 			break;
 		case R.id.registe_main_nav_normal_personal_btn:
 			//普通个人用户导航
 			initNormalPersonalLayout();
-			break;
-		case R.id.registe_main_nav_vip_personal_btn:
-			//vip个人用户导航
-			initVipPersonalLayout();
 			break;
 		case R.id.registe_main_nav_company_btn:
 			//企业用户
@@ -317,23 +237,16 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 		case R.id.registe_main_normal_personal_btn:
 			checkNPUserData();
 			break;
-		case R.id.registe_main_vip_personal_btn:
-			checkVIPUserData();
-			break;
 		case R.id.registe_main_company_btn:
 			checkCompanyUserData();
 			break;
 		case R.id.registe_main_normal_personal_authnum_btn:
 			checkNPAuthNumData();
 			break;
-		case R.id.registe_main_vip_personal_authnum_btn:
-			checkVIPAuthNumData();
-			break;
 		case R.id.registe_main_company_authnum_btn:
 			checkCompanyAuthData();
 			break;
 		case R.id.registe_main_normal_personal_protocol:
-		case R.id.registe_main_vip_personal_protocol:
 		case R.id.registe_main_company_personal_protocol:
 			Intent intent = new Intent(RegisteActivity.this,
 					RegisteAgreementActivity.class);
@@ -349,29 +262,10 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void initNormalPersonalLayout(){
 		normalPersonalLayout.setVisibility(View.VISIBLE);
-		vipPersonalLayout.setVisibility(View.GONE);
 		companyLayout.setVisibility(View.GONE);
 		
 		navNormalPersonalBtn.setEnabled(false);
 		navNormalPersonalBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
-		navVipPersonalBtn.setEnabled(true);
-		navVipPersonalBtn.setTextColor(getResources().getColor(R.color.gray));
-		navCompanyBtn.setEnabled(true);
-		navCompanyBtn.setTextColor(getResources().getColor(R.color.gray));
-	}
-	
-	/**
-	 * VIP个人用户注册页面
-	 */
-	private void initVipPersonalLayout(){
-		normalPersonalLayout.setVisibility(View.GONE);
-		vipPersonalLayout.setVisibility(View.VISIBLE);
-		companyLayout.setVisibility(View.GONE);
-		
-		navNormalPersonalBtn.setEnabled(true);
-		navNormalPersonalBtn.setTextColor(getResources().getColor(R.color.gray));
-		navVipPersonalBtn.setEnabled(false);
-		navVipPersonalBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
 		navCompanyBtn.setEnabled(true);
 		navCompanyBtn.setTextColor(getResources().getColor(R.color.gray));
 	}
@@ -381,13 +275,10 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void initCompanyLayout(){
 		normalPersonalLayout.setVisibility(View.GONE);
-		vipPersonalLayout.setVisibility(View.GONE);
 		companyLayout.setVisibility(View.VISIBLE);
 		
 		navNormalPersonalBtn.setEnabled(true);
 		navNormalPersonalBtn.setTextColor(getResources().getColor(R.color.gray));
-		navVipPersonalBtn.setEnabled(true);
-		navVipPersonalBtn.setTextColor(getResources().getColor(R.color.gray));
 		navCompanyBtn.setEnabled(false);
 		navCompanyBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
 	}
@@ -416,34 +307,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 		}
 	}
 
-	/**
-	 * VIP个人用户注册
-	 */
-	private void checkVIPUserData(){
-		phoneVIPNum = phoneVIPET.getText().toString();
-		String pwd = pwdVIPET.getText().toString();
-		String managerCode = managerVIPNum.getText().toString();
-		authnumVIPSMSUser = authnumVIPSMSET.getText().toString();
-		if (Util.checkPhoneNumber(phoneVIPNum)) {
-			if (Util.checkPassword(pwd)) {
-				if (authnumVIPSMSUser.equals(authnumVIPSMSWeb)) {
-					// 请求注册接口
-					if(!managerCode.isEmpty()){
-						requestVIPRegiste(phoneVIPNum, pwd, "",managerCode);
-					}else{
-						Util.toastShort(RegisteActivity.this, "请输入理财经理号");	
-					}
-				} else {
-					Util.toastShort(RegisteActivity.this, "手机验证码输入错误");
-				}
-			} else {
-				Util.toastShort(RegisteActivity.this, "密码格式错误");
-			}
-		} else {
-			Util.toastShort(RegisteActivity.this, "手机号码格式错误");
-		}
-	}
-	
 	/**
 	 * 企业用户注册
 	 */
@@ -482,23 +345,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	}
 
 	/**
-	 * 获取手机验证码 VIP个人用户
-	 */
-	private void checkVIPAuthNumData(){
-		phoneVIPNum = phoneVIPET.getText().toString();
-		String pwd = pwdVIPET.getText().toString();
-		if (Util.checkPhoneNumber(phoneVIPNum)) {
-			if (Util.checkPassword(pwd)) {
-				isVIPPhoneRegisted(phoneVIPNum);
-			} else {
-				Util.toastShort(RegisteActivity.this, "密码长度不能小于6位");
-			}
-		} else {
-			Util.toastShort(RegisteActivity.this, "手机号码格式错误");
-		}
-	}
-	
-	/**
 	 * 企业用户
 	 */
 	private void checkCompanyAuthData(){
@@ -529,24 +375,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	}
 
 	/**
-	 * VIP个人用户获取短信验证码
-	 */
-	private void requestVIPGetSMSAuthNum() {
-		// 请求短信验证码接口
-		String Params[] = SettingsManager.getSMSRegisteParams();// 拼接短信验证码格式
-		authnumVIPSMSWeb = Params[0];
-		requestSMSAuthCode(phoneVIPNum, SMSType.SMS_REGISTER, Params[1],
-				Params[0], "get_authcode_vip");
-		YLFLogger.d("短信验证码：" + Params[0]);
-		getVIPAuthnumBtn.setEnabled(false);
-		long createTime = System.currentTimeMillis();
-		countVIPDownAsynTask = new CountDownAsyncTask(handlerVIP, "",
-				System.currentTimeMillis(), createTime + 1000 * 60,
-				intervalTime);
-		SettingsManager.FULL_TASK_EXECUTOR.execute(countVIPDownAsynTask);
-	}
-	
-	/**
 	 * 企业用户获取短信验证码
 	 */
 	private void requestCompanyGetSMSAuthNum() {
@@ -575,17 +403,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 		getNPAuthnumBtn.setText(sb.toString());
 	}
 	
-	/**
-	 * 短信验证码倒计时 VIP用户
-	 * @param time
-	 */
-	private void countVIPDownView(long time) {
-		time /= intervalTime;
-		StringBuffer sb = new StringBuffer();
-		sb.append(time).append("秒后重发");
-		getVIPAuthnumBtn.setText(sb.toString());
-	}
-
 	/**
 	 * 企业用户
 	 * @param time
@@ -663,50 +480,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	}
 
 	/**
-	 * VIP个人用户注册
-	 * 
-	 * @param phone
-	 * @param password
-	 */
-	private void requestVIPRegiste(final String phone, final String password,
-			String extension_code,String salesPhone) {
-		loadingDialog.show();
-		String open_id = "";
-
-		AsyncRegiste registeTask = new AsyncRegiste(RegisteActivity.this,
-				phone, password, open_id, SettingsManager.USER_FROM,
-				SettingsManager.getUserFromSub(getApplicationContext()), activityFlag, extension_code,"vip",salesPhone,
-				new OnRegisteInter() {
-					@Override
-					public void back(BaseInfo baseInfo) {
-						int resultCode = SettingsManager
-								.getResultCode(baseInfo);
-						if (resultCode == 0) {
-							UserInfo userInfo = baseInfo.getUserInfo();
-							// 发送注册成功的短信
-							if (userInfo != null) {
-								String Params[] = SettingsManager
-										.getSMSRegisteSuccessParams(userInfo
-												.getUser_name());
-								requestSMSAuthCode(phoneVIPNum,
-										SMSType.SMS_REGISTER_SUCCESS,
-										Params[1], "", "register_success");
-								requestVIPLogin(phone, password);
-							}
-						} else {
-							if (loadingDialog != null
-									&& loadingDialog.isShowing()) {
-								loadingDialog.dismiss();
-							}
-							Util.toastShort(RegisteActivity.this,
-									baseInfo.getMsg());
-						}
-					}
-				});
-		registeTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
-	}
-	
-	/**
 	 * 发送短信验证码
 	 */
 	private void requestSMSAuthCode(String phone, String template,
@@ -728,9 +501,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 								}else if("get_authcode_np".equals(flag)){
 									//普通用户获取验证码
 									registeNPBtn.setEnabled(true);
-								}else if("get_authcode_vip".equals(flag)){
-									//vip用户获取验证码
-									registeVIPBtn.setEnabled(true);
 								}else if("get_authcode_comp".equals(flag)){
 									//企业用户获取验证码
 									registeCompanyBtn.setEnabled(true);
@@ -874,35 +644,6 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	}
 
 	/**
-	 * 判断手机号码是否已经被注册  VIP个人用户
-	 * 
-	 * @param phone
-	 */
-	private void isVIPPhoneRegisted(String phone) {
-		AsyncCheckRegister checkRegisterTask = new AsyncCheckRegister(
-				RegisteActivity.this, phone, new OnCommonInter() {
-					@Override
-					public void back(BaseInfo baseInfo) {
-						if (baseInfo != null) {
-							int resultCode = SettingsManager
-									.getResultCode(baseInfo);
-							if (resultCode == 0) {
-								String msg = baseInfo.getMsg();
-								if ("1".equals(msg)) {
-									// 表示已经被注册
-									Util.toastLong(RegisteActivity.this,
-											"该手机号码已经被注册");
-								} else {
-									requestVIPGetSMSAuthNum();
-								}
-							}
-						}
-					}
-				});
-		checkRegisterTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
-	}
-	
-	/**
 	 * 获取理财师的名字
 	 * @param phone
 	 */
@@ -915,18 +656,12 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if(resultCode == 0){
 								//获取成功
-								if("vip_personal".equals(type)){
-									registeVIPBtn.setEnabled(true);
-									managerVIPName.setVisibility(View.VISIBLE);
-									managerVIPName.setText("理财经理姓名："+baseInfo.getMsg());
-									managerVIPNum.setEnabled(false);
-								}else if("vip_company".equals(type)){
+								if("vip_company".equals(type)){
 									registeCompanyBtn.setEnabled(true);
 									managerNameComp.setVisibility(View.VISIBLE);
 									managerNameComp.setText("理财经理姓名："+baseInfo.getMsg());
 									recommendCompanyNum.setEnabled(false);
 								}
-								
 							}else{
 								//获取失败
 								Util.toastLong(RegisteActivity.this, baseInfo.getMsg());

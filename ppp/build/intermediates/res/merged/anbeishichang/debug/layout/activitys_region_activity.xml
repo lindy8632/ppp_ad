@@ -2,17 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/child_background"
     android:orientation="vertical" >
     
     <include 
         layout="@layout/common_topbar"/>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activitys_region_activity_listview"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        android:scrollbars="none"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="#00000000"
+        ptr:ptrMode="both" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@color/child_background"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"

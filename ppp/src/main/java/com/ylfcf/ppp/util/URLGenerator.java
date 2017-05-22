@@ -15,14 +15,14 @@ public class URLGenerator {
 //	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
 	
 	//验证环境
-	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
-	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境
-	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+//	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 	
 	//测试环境
-//	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
-//	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
+	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
+	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//杨永豪开发环境
 //	private static final String API_DOMAIN_URL = "http://www.api.com";//API环境
@@ -259,6 +259,9 @@ public class URLGenerator {
 	private final String HD_ROBCASH_CHECK_ISRECEIVE_URL = "/hd/rob_cash/checkUserIsReceiveStatus";//是否已经领取或已领完绵羊奶粉
 	private final String HD_ROBCASH_ROB_URL = "/hd/rob_cash/rob";//抢现金
 	private final String HD_ROBCASH_CASH_URL = "/hd/rob_cash/getNowRob";//下周或者本周待抢金额
+
+	//活动专区列表接口
+	private final String ACTIVE_REGION_SELECTLIST_URL = "/active/active/selectListWithBanner";
 
 	private static URLGenerator mUrlGenerator;
 
@@ -2917,6 +2920,23 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(HD_ROBCASH_CHECK_ISRECEIVE_URL);
 		sb.append("&user_id=").append(userId).append("&active_title=").append(activeTitle);
+		return new String[]{BASE_URL,sb.toString()};
+	}
+
+	/**
+	 * 活动专区列表
+	 * @param page
+	 * @param pageSize
+	 * @param status
+	 * @param fromWhere
+	 * @param picShowStatus
+	 * @return
+	 */
+	public String[] getActiveRegionList(String page,String pageSize,String status,String fromWhere,String picShowStatus) throws Exception{
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(ACTIVE_REGION_SELECTLIST_URL);
+		sb.append("&page=").append(page).append("&page_size=").append(pageSize).append("&status=").append(URLEncoder.encode(status,"utf-8"))
+				.append("&banner_where=").append(fromWhere).append("&banner_pic_show_status=").append(URLEncoder.encode(picShowStatus,"utf-8"));
 		return new String[]{BASE_URL,sb.toString()};
 	}
 }

@@ -299,8 +299,8 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 		UpdatePopupwindow popwindow = new UpdatePopupwindow(mainActivity,
 				popView, width, height,info,mainActivity.downManager,new OnDownLoadListener() {
 					@Override
-					public void onDownLoad(long lastDownId) {
-						mainActivity.registerMessageReceiver();
+					public void onDownLoad(long las) {
+						mainActivity.startDownloadAPK();
 					}
 				});
 		popwindow.show(mainlayout);

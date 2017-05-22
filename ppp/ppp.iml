@@ -41,13 +41,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichangDebug/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichangDebug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichangDebug/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/anbeishichang/debug" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/anbeishichang/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/assets" type="java-test-resource" />
@@ -55,6 +48,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/anbeishichang/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/anbeishichang/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichang/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichang/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichang/assets" type="java-resource" />

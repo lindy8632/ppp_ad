@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +9,12 @@ import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -44,9 +40,11 @@ import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
 import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.widget.GridViewWithHeaderAndFooter;
 import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 项目的资质证书
@@ -505,8 +503,6 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 	
 	/**
 	 * 显示弹出框  非VIP用户不能购买元月盈
-	 * @param type
-	 * @param msg
 	 */
 	private void showCanotInvestVIPDialog(){
 		View contentView = LayoutInflater.from(this)

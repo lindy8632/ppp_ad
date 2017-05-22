@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +9,10 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.ExtensionNewInfo;
-import com.ylfcf.ppp.entity.ExtensionUserInfo;
 import com.ylfcf.ppp.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 推广收益列表
@@ -74,6 +73,8 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 					.findViewById(R.id.extension_listview_item_time);
 			viewHolder.hasInterest = (TextView) convertView
 					.findViewById(R.id.extension_listview_item_hasinterest);
+			viewHolder.investMoney = (TextView) convertView
+					.findViewById(R.id.extension_listview_item_investmoney);
 			viewHolder.nameTV = (TextView) convertView
 					.findViewById(R.id.extension_listview_item_name);
 			viewHolder.interestStartTime = (TextView) convertView
@@ -88,6 +89,7 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 		viewHolder.phone.setText(info.getInvest_user_mobile());// 用户名
 		viewHolder.time.setText("投资时间："+info.getInvest_time().split(" ")[0]);
 		viewHolder.hasInterest.setText(info.getPercentage()+"元");
+		viewHolder.investMoney.setText(info.getInvest_money()+"元");
 		viewHolder.nameTV.setText("姓名："+Util.hidRealName2(info.getInvest_user_name()));
 		viewHolder.interestStartTime.setText(info.getInterest_start_time().split(" ")[0]);
 		viewHolder.collectedTime.setText("预计到账时间："+info.getReturn_time().split(" ")[0]);
@@ -103,6 +105,7 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 		TextView phone;
 		TextView time;//投资时间
 		TextView hasInterest;//提成
+		TextView investMoney;//投资金额
 		TextView nameTV;
 		TextView interestStartTime;//起息时间
 		TextView collectedTime;//预计到账时间

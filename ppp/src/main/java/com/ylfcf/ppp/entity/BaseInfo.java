@@ -69,6 +69,15 @@ public class BaseInfo implements java.io.Serializable{
 	private InvestResultInfo mInvestResultInfo;
 	private LotteryCodeInfo mLotteryCodeInfo;
 	private RobcashMoneyInfo mRobcashMoneyInfo;
+	private ActivePageInfo mActivePageInfo;
+
+	public ActivePageInfo getmActivePageInfo() {
+		return mActivePageInfo;
+	}
+
+	public void setmActivePageInfo(ActivePageInfo mActivePageInfo) {
+		this.mActivePageInfo = mActivePageInfo;
+	}
 
 	public RobcashMoneyInfo getmRobcashMoneyInfo() {
 		return mRobcashMoneyInfo;

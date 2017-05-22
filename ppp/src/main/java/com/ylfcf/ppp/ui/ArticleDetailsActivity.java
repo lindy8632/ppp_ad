@@ -1,11 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
@@ -26,6 +19,12 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 公告、新闻、资讯详情页面
@@ -62,10 +61,8 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 				}else{
 					time.setText("发布时间："+articleInfoTemp.getAdd_time());
 				}
-				
 				content.setText(text);
 				break;
-
 			default:
 				break;
 			}

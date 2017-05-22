@@ -2,19 +2,15 @@ package com.ylfcf.ppp.view;
 
 import android.app.Activity;
 import android.app.DownloadManager;
-import android.app.DownloadManager.Request;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -23,8 +19,6 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.AppInfo;
 import com.ylfcf.ppp.ui.MainFragmentActivity.OnDownLoadListener;
-import com.ylfcf.ppp.util.MarketUtils;
-import com.ylfcf.ppp.util.SettingsManager;
 
 /**
  * 版本更新的window
@@ -128,57 +122,18 @@ public class UpdatePopupwindow extends PopupWindow implements OnClickListener {
 
 	private void requestDownloadApk() {
 		try {
-			MarketUtils.launchAppDetail(context, "com.ylfcf.ppp", "");//跳转应用商店
+//			MarketUtils.launchAppDetail(context, "com.ylfcf.ppp", "");//跳转应用商店
+			Intent intent= new Intent();
+			intent.setAction("android.intent.action.VIEW");
+//			Uri content_url = Uri.parse("http://wap.ylfcf.com/home/index/android.html");
+            Uri content_url = Uri.parse("http://a.app.qq.com/o/simple.jsp?pkgname=com.ylfcf.ppp");
+			intent.setData(content_url);
+			context.startActivity(intent);
 		} catch (Exception e) {
-			startDownloadAPK();
+
+			//先请求存储权限
+			ondownloadListener.onDownLoad(0);
+			dismiss();
 		}
-	}
-	
-	/**
-	 * 从官网下载apk
-	 */
-	private void startDownloadAPK(){
-		long myDwonloadID = SettingsManager.getLong(context, SettingsManager.DOWNLOAD_APK_NUM, 0);
-        Intent install = new Intent(Intent.ACTION_VIEW);
-		Uri downloadFileUri = downManager
-				.getUriForDownloadedFile(myDwonloadID);
-		if(downloadFileUri != null){
-			install.setDataAndType(downloadFileUri,
-					"application/vnd.android.package-archive");
-			install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			context.startActivity(install);
-			return;
-		}
-		
-		DownloadManager.Request request = new DownloadManager.Request(
-				Uri.parse(info.getNew_version_url()));
-		// 设置在什么网络情况下进行下载
-//		request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
-//		request.setAllowedNetworkTypes(Request.NETWORK_MOBILE);
-		// 设置通知栏标题
-		request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);
-		request.setTitle("元立方理财");
-		request.setDescription("正在下载...");
-		request.setAllowedOverRoaming(false);
-		MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        String mimeString = mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(info.getNew_version_url()));
-        request.setMimeType(mimeString);
-		// 设置文件存放目录
-		if(Build.VERSION.SDK_INT >= 23){
-			request.setDestinationInExternalPublicDir("/apk/", "ylfcf.apk");//6.0以后的系统上要自定义下载目录，否则不弹出升级提示框。
-		}else{
-			request.setDestinationInExternalFilesDir(context,
-					Environment.DIRECTORY_DOWNLOADS, "ylfcf");
-		}
-		
-//		int idx = info.getNew_version_url().lastIndexOf("/");  
-//        String apkName = info.getNew_version_url().substring(idx+1);  
-		long id = downManager.enqueue(request);// 下载的服务进程号
-		SettingsManager.setLong(context, SettingsManager.DOWNLOAD_APK_NUM, id);
-		if ("1".equals(info.getForce_update())) { 
-			ondownloadListener.onDownLoad(id);//显示下载的进度条
-		} else {
-		}
-		dismiss();
 	}
 }

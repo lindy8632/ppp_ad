@@ -1433,6 +1433,7 @@
     <string name="domain">www.ylfcf.com</string>
     <string name="error_view_ok_btn">"OK"</string>
     <string name="login_title">"登录"</string>
+    <string name="myinvitation_tips_string">1、佣金将在好友投资的标的起息后予以显示并按“预计到账时间”发放。\n2、“赚取”的佣金总额，包括了您从历史好友的投资中获得的佣金以及从当前好友的投资中获得的佣金。\n3、好友总数和好友信息指有效期内的好友总数和好友信息。</string>
     <string name="mynf_details">1.小分子结构，易吸收；\n2.富含短链脂肪，不堆积，不发胖；\n3.免疫球蛋白丰富，接近母乳，有效提高免疫力；\n4.富含EGF和活性多肽，抗衰老，减少黑色素沉积。\n我们保证，牧怡绵羊奶的绝对安全，全程可追溯的全产业链，无可替代！</string>
     <string name="port">5222</string>
     <string name="prize_region_rule1">【<b>使用说明</b>】\n  1、此券只适用于上海地区，仅<font color="red">限前200名</font>。\n  2、此券只限非会员本人在VITA连锁的所有门店使用。\n  3、请至少提前一天向门店预约，凭有效身份证入场。\n  4、
@@ -1601,9 +1602,9 @@
     <string name="umeng_socialize_text_ydnote_key">有道云笔记</string>
     <string name="umeng_socialize_text_yixin_key">易信</string>
     <string name="umeng_socialize_text_yixincircle_key">易信朋友圈</string>
-    <string name="user_login_account_hint">" 请输入手机号"</string>
+    <string name="user_login_account_hint">"请输入手机号"</string>
     <string name="user_login_forget_password">"忘记密码"</string>
-    <string name="user_login_password_hint">" 请输入密码"</string>
+    <string name="user_login_password_hint">"请输入密码"</string>
     <string name="user_login_password_lenth_hint">"密码为6~16位字母数字符合组合"</string>
     <string name="user_login_phone_illegal">"手机号码格式错误"</string>
     <string name="user_login_register_button_title">"完成"</string>

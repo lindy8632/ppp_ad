@@ -27,20 +27,7 @@
 		    android:textStyle="bold"
 		    android:enabled="false"/>   
 		    
-		<Button 
-		    android:id="@+id/registe_main_nav_vip_personal_btn"
-		    android:layout_width="match_parent"
-		    android:layout_height="match_parent"
-		    android:layout_weight="1"
-		    android:background="@drawable/login_nav_selector"
-		    android:gravity="center"
-		    android:text="VIP个人用户"
-		    android:textSize="@dimen/common_measure_20dp"
-		    android:textColor="@color/gray"
-		    android:textStyle="bold"
-		    android:enabled="true"/>
-		
-		<Button 
+		<Button
 		    android:id="@+id/registe_main_nav_company_btn"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"
@@ -64,12 +51,7 @@
             android:id="@+id/registe_main_normal_personal_mainlayout"
             layout="@layout/register_main_normal_personal_layout"/>
         
-        <include 
-            android:id="@+id/registe_main_vip_personal_mainlayout"
-            layout="@layout/register_main_vip_personal_layout"
-            android:visibility="gone"/>
-        
-        <include 
+        <include
             android:id="@+id/registe_main_company_personal_mainlayout"
             layout="@layout/register_main_company_personal_layout"
             android:visibility="gone"/>

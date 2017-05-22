@@ -1,7 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.Hashtable;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
@@ -17,7 +15,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
@@ -41,6 +38,8 @@ import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
 import com.ylfcf.ppp.widget.LoadingDialog;
 
+import java.util.Hashtable;
+
 /**
  * 邀请有奖
  * 用户已经实名过之后才可以邀请好友，未实名的话先让用户进行实名认证。
@@ -51,15 +50,13 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 
-	private LinearLayout mainLayout, verifyLayout,unVerifyLayout;
+	private LinearLayout mainLayout;
 
 	private ImageView qrCodeImage;// 二维码
 	private Button invitateBtn;
-	private Button verifyBtn;
-	private TextView extensionCodeTV;//邀请码
-	private LinearLayout friendsCountLayout;
-	private TextView friendsCount;
+	private Button bottomBtn;//底部按钮
 	private TextView knowMoreTV;//了解更多
+	private ImageView wayLogo1,wayLogo2,wayLogo3;
 
 	private int page = 0;
 	private int pageSize = 20;
@@ -68,14 +65,15 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	private String promotedURL = null;
 	private int QR_WIDTH = 0;
 	private int QR_HEIGHT = 0;
-
 	private UserInfo userInfo;
+	private boolean isVerify = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.invitate_activity);
-		boolean isVerify = getIntent().getBooleanExtra("is_verify", false);
+		isVerify = getIntent().getBooleanExtra("is_verify", false);
 		findViews(isVerify);
 		QR_WIDTH = getResources().getDimensionPixelSize(R.dimen.common_measure_170dp);
 		QR_HEIGHT = getResources().getDimensionPixelSize(R.dimen.common_measure_170dp);
@@ -85,7 +83,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				requestUserInfo(SettingsManager.getUserId(getApplicationContext()),true);
+				requestUserInfo(SettingsManager.getUserId(getApplicationContext()),isVerify);
 			}
 		}, 300L);
 	}
@@ -97,26 +95,37 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		topTitleTV.setText("壕友推荐");
 
 		mainLayout = (LinearLayout) findViewById(R.id.invitate_activity_main_layout);
-		verifyLayout = (LinearLayout) findViewById(R.id.invitate_activity_verify_layout);
-		unVerifyLayout = (LinearLayout) findViewById(R.id.invitate_activity_unverify_layout);
 		qrCodeImage = (ImageView) findViewById(R.id.invitate_activity_qrcode);
 		qrCodeImage.setOnClickListener(this);
 		invitateBtn = (Button) findViewById(R.id.invitate_activity_btn);
 		invitateBtn.setOnClickListener(this);
-		verifyBtn = (Button) findViewById(R.id.invitate_activity_verify_btn);
-		verifyBtn.setOnClickListener(this);
-		extensionCodeTV = (TextView) findViewById(R.id.invitate_activity_code);
-		friendsCountLayout = (LinearLayout) findViewById(R.id.invitate_activity_friends_count_layout);
-		friendsCountLayout.setOnClickListener(this);
-		friendsCount = (TextView) findViewById(R.id.invitate_activity_count_tv);
 		knowMoreTV = (TextView) findViewById(R.id.invitate_activity_know_more);
 		knowMoreTV.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG ); //下划线
 		knowMoreTV.getPaint().setAntiAlias(true);//抗锯齿
 		knowMoreTV.setOnClickListener(this);
+		bottomBtn = (Button) findViewById(R.id.invitate_activity_btn_bottom);
+		bottomBtn.setOnClickListener(this);
+		wayLogo1 = (ImageView) findViewById(R.id.invitate_activity_way_one_logo);
+		wayLogo2 = (ImageView) findViewById(R.id.invitate_activity_way_two_logo);
+		wayLogo3 = (ImageView) findViewById(R.id.invitate_activity_way_three_logo);
 		if(flag){
-			verifyLayout.setVisibility(View.VISIBLE);
+			//已实名
+			wayLogo1.setVisibility(View.GONE);
+			wayLogo2.setVisibility(View.GONE);
+			wayLogo3.setVisibility(View.GONE);
+			invitateBtn.setEnabled(true);
+			bottomBtn.setText("查看推荐奖励");
+			bottomBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
+			bottomBtn.setBackgroundResource(R.drawable.style_rect_fillet_blue);
 		}else{
-			unVerifyLayout.setVisibility(View.VISIBLE);
+			//未实名
+			wayLogo1.setVisibility(View.VISIBLE);
+			wayLogo2.setVisibility(View.VISIBLE);
+			wayLogo3.setVisibility(View.VISIBLE);
+			invitateBtn.setEnabled(false);
+			bottomBtn.setText("完成实名认证，激活另外两种推荐方式");
+			bottomBtn.setTextColor(getResources().getColor(R.color.white));
+			bottomBtn.setBackgroundResource(R.drawable.blue_fillet_btn_selector);
 		}
 	}
 
@@ -133,11 +142,20 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		case R.id.invitate_activity_btn:
 			showFriendsInvitaWindow();
 			break;
-		case R.id.invitate_activity_friends_count_layout:
-			Intent intent = new Intent(InvitateActivity.this,
+		case R.id.invitate_activity_btn_bottom:
+			if(isVerify){
+				//已实名
+				Intent intent = new Intent(InvitateActivity.this,
 					MyInvitationActivity.class);
-			intent.putExtra("ExtensionPageInfo", pageInfo);
-			startActivity(intent);
+				intent.putExtra("ExtensionPageInfo", pageInfo);
+				startActivity(intent);
+			}else{
+				Intent intentVerify = new Intent(InvitateActivity.this,UserVerifyActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putString("type", "邀请有奖");
+				intentVerify.putExtra("bundle", bundle);
+				startActivity(intentVerify);
+			}
 			break;
 		case R.id.invitate_activity_qrcode:
 			showBigEWM();
@@ -151,14 +169,6 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 			bannerInfo.setFrom_where("壕友推荐");
 			intentBanner.putExtra("BannerInfo", bannerInfo);
 			startActivity(intentBanner);
-			break;
-		case R.id.invitate_activity_verify_btn:
-			//立即实名认证
-			Intent intentVerify = new Intent(InvitateActivity.this,UserVerifyActivity.class);
-			Bundle bundle = new Bundle();
-			bundle.putString("type", "邀请有奖");
-			intentVerify.putExtra("bundle", bundle);
-			startActivity(intentVerify);
 			break;
 		default:
 			break;
@@ -189,6 +199,9 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	 * 全屏显示二维码
 	 */
 	private void showBigEWM(){
+		if(!isVerify){
+			return;
+		}
 		View contentView = LayoutInflater.from(InvitateActivity.this).inflate(R.layout.yqyj_ewm_dialog, null);
 		ImageView img = (ImageView) contentView.findViewById(R.id.yqyj_ewm_img);
 		img.setImageBitmap((Bitmap)qrCodeImage.getTag());
@@ -210,6 +223,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		try {
 			// 判断URL合法性
 			if (url == null || "".equals(url) || url.length() < 1) {
+				qrCodeImage.setImageResource(R.drawable.invitate_qr_default_logo);
 				return;
 			}
 			Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
@@ -258,7 +272,6 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 								.getResultCode(baseInfo);
 						if (resultCode == 1 || resultCode == -1) {
 							pageInfo = baseInfo.getExtensionNewPageInfo();
-							friendsCount.setText(pageInfo.getExtension_user_count() + "位");
 						}
 					}
 				});
@@ -268,9 +281,9 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	/**
 	 * 加载二维码
 	 * @param userId
-	 * @param flag true表示有易联账户并且已经绑定过卡
+	 * @param isVerify true表示实名过
 	 */
-	private void requestUserInfo(String userId,final boolean flag) {
+	private void requestUserInfo(String userId,final boolean isVerify) {
 		AsyncUserSelectOne task = new AsyncUserSelectOne(InvitateActivity.this,
 				userId, "", "", new OnGetUserInfoByPhone() {
 					@Override
@@ -279,21 +292,23 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 							loadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
-							int resultCode = SettingsManager
-									.getResultCode(baseInfo);
+							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if (resultCode == 0) {
 								UserInfo info = baseInfo.getUserInfo();
 									//有汇付账户，说明已经实名过
 									promotedURL = URLGenerator.PROMOTED_BASE_URL
 											+ "?extension_code="
 											+ info.getPhone();
-									initQRCode(promotedURL);
-									extensionCodeTV.setText(info.getPromoted_code());
+									if(isVerify){
+										initQRCode(promotedURL);
+									}else{
+										initQRCode(null);
+									}
 							}else{
-								initQRCode(URLGenerator.PROMOTED_BASE_URL);
+								initQRCode(null);
 							}
 						}else{
-							initQRCode(URLGenerator.PROMOTED_BASE_URL);
+							initQRCode(null);
 						}
 					}
 				});

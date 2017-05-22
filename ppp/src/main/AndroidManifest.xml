@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ylfcf.ppp"
-    android:versionCode="145"
-    android:versionName="1.4.5">
+    android:versionCode="146"
+    android:versionName="1.4.6">
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="23" />
+        android:targetSdkVersion="22" />
 
     <supports-screens
         android:anyDensity="true"

@@ -1,5 +1,6 @@
 package com.ylfcf.ppp.ui;
 
+import android.Manifest;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,7 +9,9 @@ import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +23,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -28,6 +32,8 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UmengRegistrar;
+import com.ylfcf.ppp.Permission.BasePermissionActivity;
+import com.ylfcf.ppp.Permission.PermissionCallBackM;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.MainFragmentAdapter;
 import com.ylfcf.ppp.async.AsyncAPIQuery;
@@ -40,12 +46,10 @@ import com.ylfcf.ppp.entity.YXBProductInfo;
 import com.ylfcf.ppp.entity.YXBProductLogInfo;
 import com.ylfcf.ppp.inter.Inter.OnApiQueryBack;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.receiver.DownLoadCompleteReceiver;
 import com.ylfcf.ppp.receiver.NetworkStatusReceiver;
 import com.ylfcf.ppp.receiver.NetworkStatusReceiver.NetworkStateListener;
 import com.ylfcf.ppp.util.Constants;
-import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
@@ -78,7 +82,7 @@ import cn.jpush.android.api.TagAliasCallback;
  * @author Administrator
  *
  */
-public class MainFragmentActivity extends BaseActivity implements OnClickListener, NetworkStateListener{
+public class MainFragmentActivity extends BasePermissionActivity implements OnClickListener, NetworkStateListener{
 	public static final String MESSAGE_RECEIVED_ACTION = "com.ylfcf.ppp.MESSAGE_RECEIVED_ACTION";
 	private static final int REQUEST_TGY01_START_WHAT = 5621;//四月份推广活动是否开始
 	private static final int REQUEST_LXJ5_START_WHAT = 5622;//5月份抢现金活动是否开始
@@ -86,6 +90,7 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 	private static final int MSG_SET_ALIAS = 3219;
 	
 	private static final int DOWNLOAD_SUCCESS = 2105;
+	private static final int RQ_STORAGE_PERM = 123;//存储权限请求码
 	
 	public static final String KEY_MESSAGE = "message";
 	public static final String KEY_EXTRAS = "extras";
@@ -273,6 +278,13 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 		}
 		requestProductPageInfo("", "发布","未满标","是","","");//请求产品列表
 		downloadChangeObserver();
+//		setJPushAlias();
+	}
+
+	/**
+	 * 活动弹窗
+	 */
+	private void showActiveWindow(){
 		if(SettingsManager.checkGuoqingJiaxiActivity()){
 			new Handler().postDelayed(new Runnable() {
 				@Override
@@ -315,11 +327,10 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 		}
 //		handler.sendEmptyMessage(REQUEST_TGY01_START_WHAT);
 		handler.sendEmptyMessageDelayed(REQUEST_LXJ5_START_WHAT,200L);
-//		setJPushAlias();
 	}
-	
+
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 //		if(requestCode == 0){
 //			Util.toastLong(this, "WriteSetting授权成功");
 //			new Handler().postDelayed(new Runnable() {
@@ -340,8 +351,25 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 		public void onChange(boolean selfChange) {
 			queryDownloadStatus();
 		}
-	}  
-	
+	}
+
+	/**
+	 * 动态请求存储权限
+	 */
+	private void requestStoragePermission(){
+		requestPermission(RQ_STORAGE_PERM, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                "本次操作需要系统存储权限，否则无法正常进行。", new PermissionCallBackM() {
+                    @Override
+                    public void onPermissionGrantedM(int requestCode, String... perms) {
+                        startDownloadAPK();
+                    }
+                    @Override
+                    public void onPermissionDeniedM(int requestCode, String... perms) {
+                        Util.toastLong(MainFragmentActivity.this,"用户拒绝了存储权限。");
+                    }
+                });
+	}
+
 	/**
 	 * 设置极光推送的别名
 	 */
@@ -589,32 +617,6 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 		}
 	}
 
-	/**
-	 * 判断用户是否已经绑卡
-	 * @param type "充值提现"
-	 */
-	private void checkIsBindCard(final String type){
-		RequestApis.requestIsBinding(MainFragmentActivity.this, SettingsManager.getUserId(getApplicationContext()), "宝付", new OnIsBindingListener() {
-			@Override
-			public void isBinding(boolean flag, Object object) {
-				Intent intent = new Intent();
-				if(flag){
-					//用户已经绑卡
-					if("邀请有奖".equals(type)){
-						intent.setClass(MainFragmentActivity.this, InvitateActivity.class);
-					}
-				}else{
-					//用户还没有绑卡
-					Bundle bundle = new Bundle();
-					bundle.putString("type", type);
-					intent.putExtra("bundle", bundle);
-					intent.setClass(MainFragmentActivity.this, BindCardActivity.class);
-				}
-				startActivity(intent);
-			}
-		});
-	}
-	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_BACK){
@@ -630,8 +632,6 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 				}
 				finish();
 				android.os.Process.killProcess(android.os.Process.myPid());//杀进程
-				
-//				moveTaskToBack(true);  //不杀掉进程，只是返回到桌面
 			}
 		}
 		return true;
@@ -653,6 +653,7 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 	 * @param 
 	 * @author waggoner.wang
 	 */
+	private AppInfo mAppInfo;
 	private void requestAPIQuery(int versionCode){
 		AsyncAPIQuery apiQueryTask = new AsyncAPIQuery(MainFragmentActivity.this, versionCode, new OnApiQueryBack() {
 			@Override
@@ -662,10 +663,13 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 					if("true".equals(flag)){
 						//需要升级
 						showUpdateDialog(info);
+                        mAppInfo = info;
 					}else{
 						//不需要升级
+						showActiveWindow();
 					}
 				}else{
+					showActiveWindow();
 				}
 			}
 		});
@@ -703,7 +707,8 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 				popView, width, height,info,downManager,new OnDownLoadListener() {
 					@Override
 					public void onDownLoad(long lastDownId) {
-						showDownloadDialog();
+//						showDownloadDialog();
+                        requestStoragePermission();
 					}
 				});
 		popwindow.show(mainLayout);
@@ -749,7 +754,7 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
         lp.width = display.getWidth()*6/7;
         dialog.getWindow().setAttributes(lp);
 	}
-	
+
 	/**
 	 * 产品列表
 	 */
@@ -936,5 +941,54 @@ public class MainFragmentActivity extends BaseActivity implements OnClickListene
 			onNetStatusChangeListener2.onNetStatusChange(false);
 		}
 	}
-	
+
+    /**
+     * 从官网下载apk
+     */
+    public void startDownloadAPK(){
+        long myDwonloadID = SettingsManager.getLong(MainFragmentActivity.this, SettingsManager.DOWNLOAD_APK_NUM, 0);
+        Intent install = new Intent(Intent.ACTION_VIEW);
+        Uri downloadFileUri = downManager
+                .getUriForDownloadedFile(myDwonloadID);
+        if(downloadFileUri != null){
+            install.setDataAndType(downloadFileUri,
+                    "application/vnd.android.package-archive");
+            install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(install);
+            return;
+        }
+
+        DownloadManager.Request request = new DownloadManager.Request(
+                Uri.parse(mAppInfo.getNew_version_url()));
+        // 设置在什么网络情况下进行下载
+//		request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
+//		request.setAllowedNetworkTypes(Request.NETWORK_MOBILE);
+        // 设置通知栏标题
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+        request.setTitle("元立方理财");
+        request.setDescription("正在下载...");
+        request.setAllowedOverRoaming(false);
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        String mimeString = mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(mAppInfo.getNew_version_url()));
+        request.setMimeType(mimeString);
+        // 设置文件存放目录
+        if(Build.VERSION.SDK_INT >= 23){
+            request.setDestinationInExternalPublicDir("/apk/", "ylfcf.apk");//6.0以后的系统上要自定义下载目录，否则不弹出升级提示框。
+        }else{
+            request.setDestinationInExternalFilesDir(MainFragmentActivity.this,
+                    Environment.DIRECTORY_DOWNLOADS, "ylfcf");
+        }
+
+//		int idx = info.getNew_version_url().lastIndexOf("/");
+//        String apkName = info.getNew_version_url().substring(idx+1);
+        long id = downManager.enqueue(request);// 下载的服务进程号
+        SettingsManager.setLong(MainFragmentActivity.this, SettingsManager.DOWNLOAD_APK_NUM, id);
+        if ("1".equals(mAppInfo.getForce_update())) {
+//            ondownloadListener.onDownLoad(id);//显示下载的进度条
+            showDownloadDialog();
+        } else {
+
+        }
+//        dismiss();
+    }
 }

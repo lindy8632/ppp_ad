@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -15,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -53,8 +47,12 @@ import com.ylfcf.ppp.ui.SRZXAppointActivity;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 项目分类
@@ -72,8 +70,7 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 	private TextView vipCounts;//vip产品未满标的个数
 	private TextView srzxCounts;//私人尊享未满标的个数
 	private TextView jqqdText;//敬请期待
-	private TextView dtdzText;//多投多赚	
-	private TextView tzfxTextYZY;//投资返现元政盈
+	private Button dtdzText,yzyInvestBtn;//多投多赚
 	private TextView tzfxTextYYY;//投资返现元月盈
 	private TextView gqjxVipText;//
 	private TextView xsmbText;//限时秒标提示文字
@@ -164,12 +161,12 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
         handler.sendEmptyMessage(REQUEST_XSMB_WHAT);
         handler.sendEmptyMessageDelayed(REQUEST_WDY_WHAT, 200);
         //私人尊享列表
-//        new Handler().postDelayed(new Runnable() {
-//			@Override
-//			public void run() {
-//				requestSRZXPageInfo("发布", "未满标");
-//			}
-//		}, 700L);
+        new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				requestSRZXPageInfo("发布", "未满标");
+			}
+		}, 700L);
         return rootView;
 	}
 	
@@ -185,15 +182,10 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 		vipCounts = (TextView)view.findViewById(R.id.licai_fragment_vip_counts);
 		srzxCounts = (TextView)view.findViewById(R.id.licai_fragment_srzx_counts);
 		jqqdText = (TextView) view.findViewById(R.id.licai_fragment_jqqd_text);
-		dtdzText = (TextView) view.findViewById(R.id.licai_fragment_dtdz_btn);
-		dtdzText.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //下划线
-		dtdzText.getPaint().setAntiAlias(true);//抗锯齿
+		dtdzText = (Button) view.findViewById(R.id.licai_fragment_dtdz_btn);
 		dtdzText.setOnClickListener(this);
-		
-		tzfxTextYZY = (TextView) view.findViewById(R.id.licai_fragment_tzfx_btn_yzy);
-		tzfxTextYZY.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //下划线
-		tzfxTextYZY.getPaint().setAntiAlias(true);//抗锯齿
-		tzfxTextYZY.setOnClickListener(this);
+		yzyInvestBtn = (Button) view.findViewById(R.id.licai_fragment_yzy_invest_btn);
+		yzyInvestBtn.setOnClickListener(this);
 		tzfxTextYYY = (TextView) view.findViewById(R.id.licai_fragment_tzfx_btn_yyy);
 		tzfxTextYYY.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //下划线
 		tzfxTextYYY.getPaint().setAntiAlias(true);//抗锯齿
@@ -246,7 +238,6 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 			gqjxVipText.setVisibility(View.GONE);
 		}
 		if(SettingsManager.checkTwoYearsTZFXActivity()){
-			tzfxTextYZY.setVisibility(View.VISIBLE);
 			tzfxTextYYY.setVisibility(View.VISIBLE);
 		}
 		initRefreshLayout(view);
@@ -341,6 +332,7 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 			startActivity(intentBL);
 			break;
 		case R.id.licai_fragment_dqlc_layout:
+		case R.id.licai_fragment_yzy_invest_btn:
 			Intent intentZXDList = new Intent(getActivity(),BorrowListZXDActivity.class);
 			startActivity(intentZXDList);
 			break;
@@ -359,7 +351,6 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 			startActivity(intentBanner);
 			break;
 		case R.id.licai_fragment_tzfx_btn_yyy:
-		case R.id.licai_fragment_tzfx_btn_yzy:
 			//投资返现
 			Intent intentDetails = new Intent(mainActivity,BannerTopicActivity.class);
 			BannerInfo banner = new BannerInfo();
@@ -470,8 +461,6 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 	/**
 	 * 产品列表
 	 * 
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void requestProductPageInfo(final String borrowType, String borrowStatus,String moneyStatus,
 			String isShow, String isWap, String plan,String isVip) {
@@ -496,9 +485,6 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 	
 	/**
 	 * 私人尊享产品列表
-	 * 
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void requestSRZXPageInfo(String borrowStatus,String moneyStatus) {
 		AsyncAppointBorrowList productTask = new AsyncAppointBorrowList(
@@ -519,8 +505,6 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 	
 	/**
 	 * 秒标详情
-	 * @param reasonFlag 自动刷新数据 or 通过按钮点击
-	 * @param isFirst 是否首次请求
 	 */
 	private void requestXSMBDetails(String borrowStatus){
 		AsyncXSMBDetail xsmbTask = new AsyncXSMBDetail(mainActivity, borrowStatus,new OnCommonInter() {

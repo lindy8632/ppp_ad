@@ -1,22 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncArticle;
-import com.ylfcf.ppp.entity.ArticleInfo;
-import com.ylfcf.ppp.entity.BannerInfo;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.ui.ArticleDetailsActivity.ImageLoadThread;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +12,22 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncArticle;
+import com.ylfcf.ppp.entity.ArticleInfo;
+import com.ylfcf.ppp.entity.BannerInfo;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * bannerÏêÇé---¹«¸æ

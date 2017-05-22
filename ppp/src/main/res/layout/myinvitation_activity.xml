@@ -51,6 +51,36 @@
             android:textSize="@dimen/common_measure_20dp" />
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginBottom="@dimen/common_measure_20dp"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/myinvitation_activity_top_cat_tipsbtn"
+            android:layout_width="@dimen/common_measure_150dp"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:layout_toLeftOf="@+id/myinvitation_activity_top_btn"
+            android:background="@drawable/style_rect_fillet_filling_blue"
+            android:text="查看提示"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/myinvitation_activity_top_btn"
+            android:layout_width="@dimen/common_measure_150dp"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:background="@drawable/style_rect_fillet_filling_blue"
+            android:text="轻松赚佣金"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +89,8 @@
         android:layout_marginTop="@dimen/common_measure_20dp"
         android:background="@drawable/style_rect_fillet_filling_blue2"
         android:orientation="vertical"
-        android:padding="@dimen/common_measure_10dp" >
+        android:padding="@dimen/common_measure_10dp"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,17 +112,7 @@
                 android:textSize="@dimen/common_measure_18dp" />
         </LinearLayout>
         
-        <Button 
-            android:id="@+id/myinvitation_activity_top_btn"
-            android:layout_width="@dimen/common_measure_150dp"
-            android:layout_height="@dimen/common_measure_40dp"
-            android:layout_marginTop="@dimen/common_measure_10dp"
-            android:layout_marginBottom="@dimen/common_measure_10dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/style_rect_fillet_filling_blue"
-            android:text="轻松赚佣金"
-            android:textSize="@dimen/common_measure_20dp"
-            android:textColor="@color/white"/>
+
         
     </LinearLayout>
 

@@ -413,38 +413,54 @@
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:gravity="center_vertical"
                             android:layout_weight="1" >
 
                             <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/common_measure_10dp"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical"
                                 android:text="元政盈"
                                 android:textColor="@color/gray"
                                 android:textSize="@dimen/common_measure_20dp" />
 
                             <TextView
-                                android:id="@+id/licai_fragment_tzfx_btn_yzy"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_marginRight="@dimen/common_measure_10dp"
-                                android:gravity="center_vertical"
-                                android:text="投资返现"
-                                android:textColor="@color/orange_text"
-                                android:textSize="@dimen/common_measure_18dp"
-                                android:visibility="gone" />
+                                android:id="@+id/licai_fragment_dqlc_counts"
+                                android:layout_width="@dimen/common_measure_25dp"
+                                android:layout_height="@dimen/common_measure_25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="@dimen/common_measure_20dp"
+                                android:background="@drawable/style_circle_blue"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/common_measure_20dp" />
 
-                            <TextView
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <Button
                                 android:id="@+id/licai_fragment_dtdz_btn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_marginRight="@dimen/common_measure_30dp"
-                                android:gravity="center_vertical"
+                                android:layout_width="@dimen/common_measure_80dp"
+                                android:layout_height="@dimen/common_measure_30dp"
+                                android:layout_marginRight="@dimen/common_measure_10dp"
+                                android:background="@drawable/style_rect_fillet_blue1"
                                 android:text="多投多赚"
                                 android:textColor="@color/common_topbar_bg_color"
                                 android:textSize="@dimen/common_measure_18dp" />
+
+                            <Button
+                                android:id="@+id/licai_fragment_yzy_invest_btn"
+                                android:layout_width="@dimen/common_measure_80dp"
+                                android:layout_height="@dimen/common_measure_30dp"
+                                android:layout_marginRight="@dimen/common_measure_10dp"
+                                android:background="@drawable/style_rect_fillet_blue1"
+                                android:text="投资"
+                                android:textColor="@color/common_topbar_bg_color"
+                                android:textSize="@dimen/common_measure_18dp" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -466,17 +482,6 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/licai_fragment_dqlc_counts"
-                        android:layout_width="@dimen/common_measure_30dp"
-                        android:layout_height="@dimen/common_measure_30dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="@dimen/common_measure_20dp"
-                        android:background="@drawable/style_circle_blue"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/common_measure_20dp" />
                 </LinearLayout>
 
                 <!-- VIP专区 -->
@@ -493,7 +498,8 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="@dimen/common_measure_35dp"
@@ -626,16 +632,59 @@
                         android:layout_marginTop="@dimen/common_measure_11dp"
                         android:layout_weight="1"
                         android:orientation="vertical" >
-
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_marginRight="@dimen/common_measure_10dp"
+                        
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="私人尊享"
-                            android:textColor="@color/gray"
-                            android:textSize="@dimen/common_measure_20dp" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/common_measure_10dp"
+                                android:text="私人尊享"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/common_measure_20dp" />
+
+                            <TextView
+                                android:id="@+id/licai_fragment_srzx_counts"
+                                android:layout_width="@dimen/common_measure_25dp"
+                                android:layout_height="@dimen/common_measure_25dp"
+                                android:layout_marginRight="@dimen/common_measure_20dp"
+                                android:background="@drawable/style_circle_orange"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/common_measure_18dp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <Button
+                                android:id="@+id/licai_fragment_srzx_appoint_btn"
+                                android:layout_width="@dimen/common_measure_80dp"
+                                android:layout_height="@dimen/common_measure_30dp"
+                                android:layout_marginRight="@dimen/common_measure_10dp"
+                                android:background="@drawable/style_rect_fillet_orange"
+                                android:text="预约"
+                                android:textColor="@color/orange_text"
+                                android:textSize="@dimen/common_measure_18dp" />
+
+                            <Button
+                                android:id="@+id/licai_fragment_srzx_invest_btn"
+                                android:layout_width="@dimen/common_measure_80dp"
+                                android:layout_height="@dimen/common_measure_30dp"
+                                android:layout_marginRight="@dimen/common_measure_10dp"
+                                android:background="@drawable/style_rect_fillet_blue1"
+                                android:text="投资"
+                                android:textColor="@color/common_topbar_bg_color"
+                                android:textSize="@dimen/common_measure_18dp" />
+
+                        </LinearLayout>
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -648,50 +697,6 @@
                             android:textColor="@color/gray"
                             android:textSize="@dimen/common_measure_18dp" />
                     </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical" >
-
-                        <!-- 私人尊享 -->
-
-                        <TextView
-                            android:id="@+id/licai_fragment_srzx_counts"
-                            android:layout_width="@dimen/common_measure_30dp"
-                            android:layout_height="@dimen/common_measure_30dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="@dimen/common_measure_20dp"
-                            android:background="@drawable/style_circle_orange"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/common_measure_18dp"
-                            android:visibility="gone" />
-
-                        <Button
-                            android:id="@+id/licai_fragment_srzx_invest_btn"
-                            android:layout_width="@dimen/common_measure_80dp"
-                            android:layout_height="@dimen/common_measure_30dp"
-                            android:layout_marginRight="@dimen/common_measure_10dp"
-                            android:layout_marginTop="@dimen/common_measure_5dp"
-                            android:background="@drawable/style_rect_fillet_blue1"
-                            android:text="投资"
-                            android:textColor="@color/common_topbar_bg_color"
-                            android:textSize="@dimen/common_measure_18dp" />
-
-                        <Button
-                            android:id="@+id/licai_fragment_srzx_appoint_btn"
-                            android:layout_width="@dimen/common_measure_80dp"
-                            android:layout_height="@dimen/common_measure_30dp"
-                            android:layout_marginRight="@dimen/common_measure_10dp"
-                            android:layout_marginTop="@dimen/common_measure_5dp"
-                            android:layout_toRightOf="@+id/licai_fragment_srzx_invest_btn"
-                            android:background="@drawable/style_rect_fillet_orange"
-                            android:text="预约"
-                            android:textColor="@color/orange_text"
-                            android:textSize="@dimen/common_measure_18dp" />
-                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

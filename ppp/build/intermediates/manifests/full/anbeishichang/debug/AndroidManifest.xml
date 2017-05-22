@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ylfcf.ppp"
-    android:versionCode="144"
-    android:versionName="1.4.4" >
+    android:versionCode="146"
+    android:versionName="1.4.6" >
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="23" />
+        android:targetSdkVersion="22" />
 
     <supports-screens
         android:anyDensity="true"

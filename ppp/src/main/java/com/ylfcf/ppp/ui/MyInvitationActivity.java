@@ -1,15 +1,16 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -27,11 +28,13 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.ExtensionNewInfo;
 import com.ylfcf.ppp.entity.ExtensionNewPageInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.util.Constants.TopicType;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.util.Constants.TopicType;
 import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 我的邀请
@@ -49,6 +52,7 @@ public class MyInvitationActivity extends BaseActivity implements
 	private TextView friendCountTV;
 	private TextView moneyTV;
 	private Button qsztcBtn;//轻松赚提成
+	private Button catTipsBtn;//查看提示
 	private PullToRefreshListView mListView;
 	private ExtensionNewPageInfo mExtensionPageInfo;
 	private ExtensionAdapter adapter;
@@ -104,6 +108,8 @@ public class MyInvitationActivity extends BaseActivity implements
 
 		qsztcBtn = (Button) findViewById(R.id.myinvitation_activity_top_btn);
 		qsztcBtn.setOnClickListener(this);
+		catTipsBtn = (Button) findViewById(R.id.myinvitation_activity_top_cat_tipsbtn);
+		catTipsBtn.setOnClickListener(this);
 		friendCountTV = (TextView) findViewById(R.id.myinvitation_activity_friends_tv);
 		moneyTV = (TextView) findViewById(R.id.myinvitation_activity_money_tv);
 		mListView = (PullToRefreshListView) findViewById(R.id.myinvitation_listview);
@@ -189,6 +195,10 @@ public class MyInvitationActivity extends BaseActivity implements
 			intentBanner.putExtra("BannerInfo", bannerInfo);
 			startActivityForResult(intentBanner, 100);
 			break;
+		case R.id.myinvitation_activity_top_cat_tipsbtn:
+			//查看提示
+			showTipsDialog();
+			break;
 		default:
 			break;
 		}
@@ -205,7 +215,32 @@ public class MyInvitationActivity extends BaseActivity implements
 			break;
 		}
 	}
-	
+
+	/**
+	 * 退出登录的Dialog
+	 */
+	private void showTipsDialog(){
+		View contentView = LayoutInflater.from(MyInvitationActivity.this).inflate(R.layout.myinvitation_tips_dialog_layout, null);
+		final Button okBtn = (Button) contentView.findViewById(R.id.myinvitation_tips_dialog_sure_btn);
+		AlertDialog.Builder builder=new AlertDialog.Builder(MyInvitationActivity.this, R.style.Dialog_Transparent);  //先得到构造器
+		builder.setView(contentView);
+		builder.setCancelable(true);
+		final AlertDialog dialog = builder.create();
+		okBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		//参数都设置完成了，创建并显示出来
+		dialog.show();
+		WindowManager windowManager = getWindowManager();
+		Display display = windowManager.getDefaultDisplay();
+		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+		lp.width = display.getWidth()*4/5;
+		dialog.getWindow().setAttributes(lp);
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

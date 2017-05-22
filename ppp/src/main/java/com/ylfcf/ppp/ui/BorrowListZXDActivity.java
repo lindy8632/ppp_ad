@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,7 +10,6 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -28,16 +24,14 @@ import com.ylfcf.ppp.async.AsyncProductPageInfo;
 import com.ylfcf.ppp.common.FileUtil;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.entity.YXBProductInfo;
-import com.ylfcf.ppp.entity.YXBProductLogInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.parse.JsonParseProductPageInfo;
-import com.ylfcf.ppp.ui.MainFragmentActivity.OnFirstPageDQListener;
-import com.ylfcf.ppp.ui.MainFragmentActivity.OnNetStatusChangeListener;
-import com.ylfcf.ppp.ui.MainFragmentActivity.OnYXBDataListener;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 标的列表页面（定期理财）
@@ -85,6 +79,7 @@ public class BorrowListZXDActivity extends BaseActivity implements OnClickListen
 				pullListView.onRefreshComplete();
 				break;
 			case REQUEST_PRODUCT_LIST_FAILE:
+				isLoadMore = false;
 				pullListView.onRefreshComplete();
 				break;
 			default:
@@ -207,9 +202,6 @@ public class BorrowListZXDActivity extends BaseActivity implements OnClickListen
 	
 	/**
 	 * 产品列表
-	 * 
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void requestProductPageInfo(String borrowType, String borrowStatus,String moneyStatus,
 			String isShow, String isWap, String plan) {

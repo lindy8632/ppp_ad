@@ -663,7 +663,6 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		case R.id.my_account_recharge_btn:
 			//充值
 			if(SettingsManager.isPersonalUser(mainActivity)){
-				rechargeBtn.setEnabled(false);
 				checkIsVerify("充值");
 			}else if(SettingsManager.isCompanyUser(mainActivity)){
 				Intent intentRechargeComp = new Intent(mainActivity,RechargeCompActivity.class);
@@ -790,9 +789,15 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 	 * @param type “充值”,“提现”，“邀请有奖”
 	 */
 	private void checkIsVerify(final String type){
+		if(mainActivity.loadingDialog != null){
+			mainActivity.loadingDialog.show();
+		}
 		RequestApis.requestIsVerify(mainActivity, SettingsManager.getUserId(mainActivity), new OnIsVerifyListener() {
 			@Override
 			public void isVerify(boolean flag, Object object) {
+				if(mainActivity.loadingDialog != null && mainActivity.loadingDialog.isShowing()){
+					mainActivity.loadingDialog.dismiss();
+				}
 				if(SettingsManager.isCompanyUser(mainActivity)){
 					return;
 				}
