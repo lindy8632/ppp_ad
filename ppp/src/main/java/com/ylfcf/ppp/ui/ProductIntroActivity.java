@@ -1,16 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncXSBIscanbuy;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.BorrowType;
-import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.util.Constants.TopicType;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,17 +7,24 @@ import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncXSBIscanbuy;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.ProductInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.URLGenerator;
 
 /**
  * 产品介绍页面  元月盈介绍、新手标介绍等
@@ -39,7 +35,6 @@ public class ProductIntroActivity extends BaseActivity implements OnClickListene
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private WebView webview;
-	private LoadingDialog loadingDialog;
 	private String fromWhere;//yyy:元月盈   xsb:新手标
 	private String loadURL = "";
 	private ProductInfo productInfo;
@@ -57,7 +52,6 @@ public class ProductIntroActivity extends BaseActivity implements OnClickListene
 			productInfo = (ProductInfo) bundle.getSerializable("PRODUCT_INFO");
 			fromWhere = bundle.getString("from_where");
 		}
-		loadingDialog = new LoadingDialog(ProductIntroActivity.this, "正在加载...", R.anim.loading);
 		findView();
 	}
 	
@@ -89,7 +83,8 @@ public class ProductIntroActivity extends BaseActivity implements OnClickListene
 						&& !SettingsManager.getUser(ProductIntroActivity.this).isEmpty();
 				Intent intent = new Intent();
 				if(isLogin){
-					if("xsb".equals(fromWhere) && url.contains("/home/borrow/borrowDetail/id/")){
+					if("xsb".equals(fromWhere) && (url.contains("/home/borrow/borrowDetail/id/") ||
+						url.contains("/home/borrow/borrowInvest/id/"))){
 						//跳转到新手标的投资页面
 						checkXSB();
 					}else if("yyy".equals(fromWhere)){
@@ -116,10 +111,10 @@ public class ProductIntroActivity extends BaseActivity implements OnClickListene
 			public void onProgressChanged(WebView view, int newProgress) {	
 				if(newProgress == 100){
 					//网页加载完成
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				}else{
 					//网页加载中...
-					loadingDialog.show();
+					mLoadingDialog.show();
 				}
 			}
 		});

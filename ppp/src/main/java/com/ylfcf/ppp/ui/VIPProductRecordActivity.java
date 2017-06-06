@@ -1,11 +1,27 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.support.v7.app.AlertDialog;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.BorrowRecordsAdapter;
-import com.ylfcf.ppp.async.AsyncInvestRecord;
 import com.ylfcf.ppp.async.AsyncVIPRecordList;
 import com.ylfcf.ppp.async.AsyncXSBIscanbuy;
 import com.ylfcf.ppp.entity.BaseInfo;
@@ -19,29 +35,11 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.RefreshLayout;
 import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import android.support.v7.app.AlertDialog;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * VIP产品记录
@@ -78,7 +76,6 @@ public class VIPProductRecordActivity extends BaseActivity implements
 	private String status = "";// 投资中
 	private int pageNo = 0;
 	private int pageSize = 50;
-	private LoadingDialog loadingDialog;
 	private boolean isRefresh = true;// 下拉刷新
 	private boolean isLoad = false;// 上拉加载更多
 	private boolean isFirst = true;
@@ -132,8 +129,6 @@ public class VIPProductRecordActivity extends BaseActivity implements
 		}
 		
 		layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-		loadingDialog = new LoadingDialog(VIPProductRecordActivity.this,
-				"正在加载...", R.anim.loading);
 		findViews();
 	}
 
@@ -364,8 +359,6 @@ public class VIPProductRecordActivity extends BaseActivity implements
 	
 	/**
 	 * 显示弹出框  非VIP用户不能购买元月盈
-	 * @param type
-	 * @param msg
 	 */
 	private void showCanotInvestVIPDialog(){
 		View contentView = LayoutInflater.from(this)
@@ -476,13 +469,11 @@ public class VIPProductRecordActivity extends BaseActivity implements
 	 * @param investUserId
 	 * @param borrowId
 	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getInvestRecordList(String investUserId, String borrowId,
 			String status) {
-		if (isFirst && loadingDialog != null) {
-			loadingDialog.show();
+		if (isFirst && mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 
 		AsyncVIPRecordList asyncInvestRecord = new AsyncVIPRecordList(
@@ -491,8 +482,8 @@ public class VIPProductRecordActivity extends BaseActivity implements
 					@Override
 					public void back(BaseInfo baseInfo) {
 						isFirst = false;
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

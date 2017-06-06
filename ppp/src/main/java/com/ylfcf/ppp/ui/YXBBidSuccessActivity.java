@@ -1,7 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +8,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
 
 /**
  * 元信宝 --- 认购成功页面

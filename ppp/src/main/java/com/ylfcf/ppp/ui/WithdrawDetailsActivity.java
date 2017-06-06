@@ -1,15 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncWithdrawCancel;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.WithdrawOrderInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +7,14 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncWithdrawCancel;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.WithdrawOrderInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.Util;
 
 /**
  * 提现申请详情
@@ -37,8 +35,6 @@ public class WithdrawDetailsActivity extends BaseActivity implements
 	private TextView statusText;
 	private Button cancelBtn;
 
-	private LoadingDialog loadingDialog;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,8 +43,6 @@ public class WithdrawDetailsActivity extends BaseActivity implements
 		mWithdrawOrderInfo = (WithdrawOrderInfo) getIntent()
 				.getSerializableExtra("WithdrawOrderInfo");
 		findViews();
-		loadingDialog = new LoadingDialog(WithdrawDetailsActivity.this,
-				"正在加载...", R.anim.loading);
 	}
 
 	private void findViews() {
@@ -99,16 +93,16 @@ public class WithdrawDetailsActivity extends BaseActivity implements
 
 	private void requestWithdrawCancel(String id, String status, String userId,
 			String auditType) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncWithdrawCancel cancelTask = new AsyncWithdrawCancel(
 				WithdrawDetailsActivity.this, id, status, userId, auditType,
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

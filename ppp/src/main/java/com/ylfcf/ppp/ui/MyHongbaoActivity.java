@@ -42,8 +42,7 @@ public class MyHongbaoActivity extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.my_hongbao_layout);
-		loadingDialog = new LoadingDialog(MyHongbaoActivity.this, "ÕýÔÚ¼ÓÔØ...",
-				R.anim.loading);
+		loadingDialog = mLoadingDialog;
 		findViews();
 	}
 
@@ -75,13 +74,18 @@ public class MyHongbaoActivity extends BaseActivity implements OnClickListener {
 			Intent intentBanner = new Intent(MyHongbaoActivity.this,BannerTopicActivity.class);
 			BannerInfo bannerInfo = new BannerInfo();
 			bannerInfo.setArticle_id("80");
-			bannerInfo.setLink_url("http://wap.ylfcf.com/home/index/redbag.html#app");
+			bannerInfo.setLink_url("http://wap.ylfcf.com/home/index/redbag.html");
 			intentBanner.putExtra("BannerInfo", bannerInfo);
 			startActivity(intentBanner);
 			break;
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 	}
 
 	private MyHBNousedFragment nousedFragment;

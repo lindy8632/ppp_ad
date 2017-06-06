@@ -1,6 +1,25 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AlertDialog;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.WDYLendRecordAdapter;
@@ -18,31 +37,8 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.UserManager;
-import android.support.v7.app.AlertDialog;
-import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.BackgroundColorSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
+import java.util.List;
 
 /**
  * 稳定盈产品的出借记录
@@ -64,8 +60,6 @@ public class WDYLendRecordDetailActivity extends BaseActivity implements OnClick
 	private ListView mListView;
 	private WDYLendRecordAdapter lendAdapter;
 	private InvestRecordInfo investRecordInfo;
-	
-	private LoadingDialog loadingDialog;
 	
 	private Handler handler = new Handler(){
 		@Override
@@ -89,10 +83,15 @@ public class WDYLendRecordDetailActivity extends BaseActivity implements OnClick
 		investRecordInfo = (InvestRecordInfo) getIntent().getSerializableExtra("invest_record");
 		mLayoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 		findViews();
-		loadingDialog = new LoadingDialog(WDYLendRecordDetailActivity.this, "正在加载...", R.anim.loading);
 		handler.sendEmptyMessage(REQUEST_LENDRECORD_WHAT);
 	}
-	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		handler.removeCallbacksAndMessages(null);
+	}
+
 	private void findViews(){
 		topLeftBtn = (LinearLayout) findViewById(R.id.common_topbar_left_layout);
 		topLeftBtn.setOnClickListener(this);
@@ -137,7 +136,6 @@ public class WDYLendRecordDetailActivity extends BaseActivity implements OnClick
 		case R.id.common_topbar_left_layout:
 			finish();
 			break;
-
 		default:
 			break;
 		}
@@ -337,15 +335,15 @@ public class WDYLendRecordDetailActivity extends BaseActivity implements OnClick
 	 * 用户账户信息
 	 */
 	private void requestUserAccountInfo(String userId,final WDYChildRecordInfo childRecordInfo) {
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncYiLianRMBAccount yilianTask = new AsyncYiLianRMBAccount(
 				WDYLendRecordDetailActivity.this, userId, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null){
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

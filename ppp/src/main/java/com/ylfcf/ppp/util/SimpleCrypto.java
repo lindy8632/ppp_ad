@@ -9,7 +9,8 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import android.util.Base64;
+import Decoder.BASE64Decoder;
+import Decoder.BASE64Encoder;
 
 /**
  * ¼ÓÃÜÀà
@@ -19,8 +20,7 @@ import android.util.Base64;
 public class SimpleCrypto {
 	
     private final static String HEX = "0123456789ABCDEF";   
-    
-    private static void appendHex(StringBuffer sb, byte b) {   
+    private static void appendHex(StringBuffer sb, byte b) {
         sb.append(HEX.charAt((b>>4)&0x0f)).append(HEX.charAt(b&0x0f));   
     }
     
@@ -118,5 +118,62 @@ public class SimpleCrypto {
             appendHex(result, buf[i]);
         }
         return result.toString();
+    }
+
+
+    public static String encrypt(String data) throws Exception {
+        try {
+            String key = "yuanlifanglicai1";
+            String iv = "yuanlifanglicai1";
+
+            Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
+            int blockSize = cipher.getBlockSize();
+
+            byte[] dataBytes = data.getBytes();
+            int plaintextLength = dataBytes.length;
+            if (plaintextLength % blockSize != 0) {
+                plaintextLength = plaintextLength + (blockSize - (plaintextLength % blockSize));
+            }
+
+            byte[] plaintext = new byte[plaintextLength];
+            System.arraycopy(dataBytes, 0, plaintext, 0, dataBytes.length);
+
+            SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(), "AES");
+            IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
+
+            cipher.init(Cipher.ENCRYPT_MODE, keyspec, ivspec);
+            byte[] encrypted = cipher.doFinal(plaintext);
+
+            return new BASE64Encoder().encode(encrypted);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static String desEncrypt() throws Exception {
+        try
+        {
+            String data = "2fbwW9+8vPId2/foafZq6Q==";
+            String key = "yuanlifanglicai1";
+            String iv = "yuanlifanglicai1";
+
+            byte[] encrypted1 = new BASE64Decoder().decodeBuffer(data);
+
+            Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
+            SecretKeySpec keyspec = new SecretKeySpec(key.getBytes(), "AES");
+            IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes());
+
+            cipher.init(Cipher.DECRYPT_MODE, keyspec, ivspec);
+
+            byte[] original = cipher.doFinal(encrypted1);
+            String originalString = new String(original);
+            return originalString;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,7 +29,6 @@ import com.ylfcf.ppp.async.AsyncYiLianRMBAccount;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.entity.UserRMBAccountInfo;
-import com.ylfcf.ppp.entity.UserYUANAccountInfo;
 import com.ylfcf.ppp.inter.Inter.OnBorrowInvestInter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
@@ -42,7 +36,11 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.text.DecimalFormat;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 新手标的购买页面
@@ -77,8 +75,6 @@ public class BidXSBActivity extends BaseActivity implements OnClickListener{
 	private ProductInfo mProductInfo;
 	private int moneyInvest = 0;
 	private Button investBtn;
-	private LoadingDialog loadingDialog;
-
 	private LinearLayout mainLayout;
 
 	private int limitInvest = 0;// 投资期限
@@ -125,10 +121,6 @@ public class BidXSBActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_xsb_activity);
-
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BidXSBActivity.this, "正在加载...",
-				R.anim.loading);
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
 		if (mProductInfo != null) {
@@ -153,7 +145,6 @@ public class BidXSBActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 
@@ -573,8 +564,8 @@ public class BidXSBActivity extends BaseActivity implements OnClickListener{
 			String money, int bonusMoney, String investFrom,
 			String investFromSub, String experienceCode, String investFromHost,
 			String merPriv, String redBagLogId) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncBorrowInvest asyncBorrowInvest = new AsyncBorrowInvest(
 				BidXSBActivity.this, borrowId, investUserId, money, bonusMoney,
@@ -582,8 +573,8 @@ public class BidXSBActivity extends BaseActivity implements OnClickListener{
 				merPriv, redBagLogId, "",new OnBorrowInvestInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {

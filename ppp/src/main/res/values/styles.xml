@@ -2,12 +2,14 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.    -->
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
+
         -->
     </style>
 
@@ -55,8 +57,12 @@
         <!-- 去除4.0系统上黑色阴影背景 -->
         <item name="android:windowBackground">@color/transparent</item>
     </style>
-    
+    <!-- parent="@style/Theme.AppCompat.NoActionBar" -->
     <style name="AnimActivityTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/Activity_Animation</item>
+    </style>
+    <style name="AnimActivityTheme1" parent="@android:style/Theme.Translucent.NoTitleBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/Activity_Animation</item>
     </style>

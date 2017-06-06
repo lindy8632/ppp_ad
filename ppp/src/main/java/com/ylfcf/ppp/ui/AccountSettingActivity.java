@@ -1,13 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncUserSelectOne;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.UserInfo;
-import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +7,16 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncUserSelectOne;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.UserInfo;
+import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.Util;
 
 /**
  * ’Àªß…Ë÷√
@@ -28,6 +27,8 @@ import android.widget.TextView;
 public class AccountSettingActivity extends BaseActivity implements
 		OnClickListener {
 	private final int REQUEST_GET_USERINFO_SUCCESS = 2601;
+	private final int REQUEST_GET_USERINFO_WHAT = 2602;
+
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 
@@ -50,6 +51,10 @@ public class AccountSettingActivity extends BaseActivity implements
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			switch (msg.what) {
+			case REQUEST_GET_USERINFO_WHAT:
+				requestUserInfo(SettingsManager.getUserId(getApplicationContext()),
+						SettingsManager.getUser(getApplicationContext()));
+				break;
 			case REQUEST_GET_USERINFO_SUCCESS:
 				userInfo = (UserInfo) msg.obj;
 				if (userInfo != null) {
@@ -57,7 +62,6 @@ public class AccountSettingActivity extends BaseActivity implements
 					idnumberTV.setText(Util.hidIdNumber(userInfo.getId_number()));
 				}
 				break;
-
 			default:
 				break;
 			}
@@ -70,9 +74,8 @@ public class AccountSettingActivity extends BaseActivity implements
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.account_setting_activity);
 		isBinding = getIntent().getBooleanExtra("is_binding", false);
-		requestUserInfo(SettingsManager.getUserId(getApplicationContext()),
-				SettingsManager.getUser(getApplicationContext()));
 		findViews();
+		handler.sendEmptyMessage(REQUEST_GET_USERINFO_WHAT);
 	}
 
 	private void findViews() {

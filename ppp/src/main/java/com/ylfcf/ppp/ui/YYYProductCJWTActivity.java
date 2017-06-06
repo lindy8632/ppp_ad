@@ -1,12 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,9 +8,13 @@ import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.ProductInfo;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.URLGenerator;
 
 /**
  * 元月盈常见问题
@@ -29,7 +26,6 @@ public class YYYProductCJWTActivity extends BaseActivity implements OnClickListe
 	private TextView topTitleTV;
 	
 	private WebView webview;
-	private LoadingDialog loadingDialog;
 	private String fromWhere;
 	private ProductInfo mProductInfo;
 	
@@ -40,7 +36,6 @@ public class YYYProductCJWTActivity extends BaseActivity implements OnClickListe
 		setContentView(R.layout.yyy_cjwt_activity);
 		fromWhere = getIntent().getStringExtra("from_where");
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra("PRODUCT_INFO");
-		loadingDialog = new LoadingDialog(YYYProductCJWTActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
 
@@ -91,10 +86,10 @@ public class YYYProductCJWTActivity extends BaseActivity implements OnClickListe
 			public void onProgressChanged(WebView view, int newProgress) {	
 				if(newProgress == 100){
 					//网页加载完成
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				}else{
 					//网页加载中...
-					loadingDialog.show();
+					mLoadingDialog.show();
 				}
 			}
 		});

@@ -1,20 +1,15 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.UserInfo;
-import com.ylfcf.ppp.util.SettingsManager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.ToggleButton;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.UserInfo;
 
 /**
  * ≤Ÿ◊˜Ã·œ÷√‹¬Î

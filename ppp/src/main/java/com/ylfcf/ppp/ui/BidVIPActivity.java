@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncBorrowInvest;
 import com.ylfcf.ppp.async.AsyncVipBorrowInvest;
 import com.ylfcf.ppp.async.AsyncYiLianRMBAccount;
 import com.ylfcf.ppp.entity.BaseInfo;
@@ -42,7 +36,11 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.text.DecimalFormat;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * VIP的投资页面
@@ -79,8 +77,6 @@ public class BidVIPActivity extends BaseActivity implements OnClickListener {
 	private int upMoney = 0;//递增额度
 	private double lowestMoney = 0;//最低投资金额（起投金额）
 	private Button investBtn;
-	private LoadingDialog loadingDialog;
-
 	private LinearLayout mainLayout;
 
 	private Handler handler = new Handler() {
@@ -126,10 +122,6 @@ public class BidVIPActivity extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_vip_activity);
-
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BidVIPActivity.this, "正在加载...",
-				R.anim.loading);
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
 		try {
@@ -155,7 +147,6 @@ public class BidVIPActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 
@@ -633,15 +624,15 @@ public class BidVIPActivity extends BaseActivity implements OnClickListener {
 			String money, int bonusMoney, String investFrom,
 			String investFromSub, String experienceCode, String investFromHost,
 			String merPriv, String redBagLogId) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncVipBorrowInvest asyncBorrowInvest = new AsyncVipBorrowInvest(
 				BidVIPActivity.this, borrowId, investUserId, money, new OnBorrowInvestInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {

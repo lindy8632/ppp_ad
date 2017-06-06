@@ -45,16 +45,16 @@ public final class R {
         public static final int indicator_right_padding = 0x7f070388;
     }
     public static final class drawable {
-        public static final int default_ptr_flip = 0x7f02009c;
-        public static final int default_ptr_rotate = 0x7f02009d;
-        public static final int indicator_arrow = 0x7f0200d2;
-        public static final int indicator_bg_bottom = 0x7f0200d3;
-        public static final int indicator_bg_top = 0x7f0200d4;
+        public static final int default_ptr_flip = 0x7f02009d;
+        public static final int default_ptr_rotate = 0x7f02009e;
+        public static final int indicator_arrow = 0x7f0200d3;
+        public static final int indicator_bg_bottom = 0x7f0200d4;
+        public static final int indicator_bg_top = 0x7f0200d5;
     }
     public static final class id {
         public static final int both = 0x7f0c0035;
         public static final int disabled = 0x7f0c0036;
-        public static final int fl_inner = 0x7f0c0494;
+        public static final int fl_inner = 0x7f0c048a;
         public static final int flip = 0x7f0c003c;
         public static final int gridview = 0x7f0c0004;
         public static final int manualOnly = 0x7f0c0037;
@@ -62,10 +62,10 @@ public final class R {
         public static final int pullFromEnd = 0x7f0c0039;
         public static final int pullFromStart = 0x7f0c003a;
         public static final int pullUpFromBottom = 0x7f0c003b;
-        public static final int pull_to_refresh_image = 0x7f0c0495;
-        public static final int pull_to_refresh_progress = 0x7f0c0496;
-        public static final int pull_to_refresh_sub_text = 0x7f0c0498;
-        public static final int pull_to_refresh_text = 0x7f0c0497;
+        public static final int pull_to_refresh_image = 0x7f0c048b;
+        public static final int pull_to_refresh_progress = 0x7f0c048c;
+        public static final int pull_to_refresh_sub_text = 0x7f0c048e;
+        public static final int pull_to_refresh_text = 0x7f0c048d;
         public static final int rotate = 0x7f0c003d;
         public static final int scrollview = 0x7f0c0008;
         public static final int webview = 0x7f0c000f;

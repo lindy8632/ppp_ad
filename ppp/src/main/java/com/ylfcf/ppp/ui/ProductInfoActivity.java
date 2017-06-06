@@ -33,13 +33,14 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
+import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 /**
  * 项目信息
@@ -81,7 +82,6 @@ public class ProductInfoActivity extends BaseActivity implements
 	private Button investBtn;
 	private ProjectInfo projectInfo;
 	private ProductInfo productInfo;
-	private LoadingDialog loadingDialog;
 	private AlertDialog.Builder builder = null; // 先得到构造器
 	
 	private Handler handler = new Handler(){
@@ -116,7 +116,6 @@ public class ProductInfoActivity extends BaseActivity implements
 		setContentView(R.layout.borrow_info_activity);
 		builder = new AlertDialog.Builder(ProductInfoActivity.this,
 				R.style.Dialog_Transparent); // 先得到构造器
-		loadingDialog = new LoadingDialog(ProductInfoActivity.this, "正在加载...", R.anim.loading);
 		Bundle bundle = getIntent().getBundleExtra("BUNDLE");
 		if(bundle != null){
 			productInfo = (ProductInfo) bundle.getSerializable("PRODUCT_INFO");
@@ -213,10 +212,20 @@ public class ProductInfoActivity extends BaseActivity implements
 			vipPromptText.setVisibility(View.VISIBLE);
 			vipPromptText.setText("*提示：\n* 元立方金服拥有本产品的最终解释权。");
 		}
-		
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(productInfo.getAdd_time());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		if(productInfo != null){
 			if("未满标".equals(productInfo.getMoney_status())){
-				investBtn.setEnabled(true);
+				if(SettingsManager.checkYYYJIAXI(addDate)==0 && "元年鑫".equals(productInfo.getBorrow_type())&& Constants.UserType.USER_COMPANY.
+						equals(SettingsManager.getUserType(ProductInfoActivity.this))){
+					investBtn.setEnabled(false);
+				}else{
+					investBtn.setEnabled(true);
+				}
 				investBtn.setText("立即投资");
 			}else{
 				investBtn.setEnabled(false);
@@ -364,7 +373,7 @@ public class ProductInfoActivity extends BaseActivity implements
 				}else if(BorrowType.VIP.equals(productInfo.getBorrow_type())){
 					checkIsVip();
 				}else if(BorrowType.SUYING.equals(productInfo.getBorrow_type()) || BorrowType.BAOYING.equals(productInfo.getBorrow_type()) ||
-						BorrowType.WENYING.equals(productInfo.getBorrow_type())){
+						BorrowType.WENYING.equals(productInfo.getBorrow_type()) || BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
 					checkIsVerify("政信贷投资");
 				}else{
 					//私人尊享
@@ -476,13 +485,18 @@ public class ProductInfoActivity extends BaseActivity implements
 	 */
 	private void checkIsVerify(final String type){
 		investBtn.setEnabled(false);
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
+		}
 		RequestApis.requestIsVerify(ProductInfoActivity.this, SettingsManager.getUserId(getApplicationContext()), new OnIsVerifyListener() {
 			@Override
 			public void isVerify(boolean flag, Object object) {
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
+				}
 				Intent intent = new Intent();
 				if(flag){
 					//用户已经实名，在这个页面只判断是否实名即可。不判断有没有绑卡
-//					checkIsBindCard(type);
 					if("新手标投资".equals(type)){
 						intent.putExtra("PRODUCT_INFO", productInfo);
 						intent.setClass(ProductInfoActivity.this, BidXSBActivity.class);
@@ -496,8 +510,8 @@ public class ProductInfoActivity extends BaseActivity implements
 						intent.putExtra("PRODUCT_INFO", productInfo);
 						intent.setClass(ProductInfoActivity.this, BidSRZXActivity.class);
 					}
-					startActivity(intent);
 					investBtn.setEnabled(true);
+					startActivity(intent);
 					finish();
 				}else{
 					//用户没有实名
@@ -617,15 +631,15 @@ public class ProductInfoActivity extends BaseActivity implements
 	 * @param guaranteeId
 	 */
 	private void requestAssociatedCompany(String loanId,String recommendId,String guaranteeId){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncAsscociatedCompany task = new AsyncAsscociatedCompany(ProductInfoActivity.this, loanId, recommendId, guaranteeId, 
 				new OnCommonInter(){
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);

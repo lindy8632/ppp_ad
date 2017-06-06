@@ -1,15 +1,22 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AlertDialog;
+import android.util.TypedValue;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncProjectDetails;
@@ -25,26 +32,17 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AlertDialog;
-import android.util.TypedValue;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 限时秒标
@@ -79,7 +77,6 @@ public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickLis
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private ProductInfo xsmbDetails;
 	private ProjectInfo project;
-	private LoadingDialog loadingDialog = null;
 	private boolean isFirst = true;
 	private InvestRecordInfo recordInfo;
 	//请求请求原因
@@ -126,9 +123,7 @@ public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickLis
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrow_detail_xsmb_activity);
-		mApp.addActivity(this);
 		recordInfo = (InvestRecordInfo) getIntent().getSerializableExtra("InvestRecordInfo");
-		loadingDialog = new LoadingDialog(BorrowDetailXSMBActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
 	
@@ -150,9 +145,8 @@ public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickLis
 	@Override
 	protected void onStop() {
 		super.onStop();
-		handler.removeCallbacksAndMessages(null);
 	}
-	
+
 	private void findViews(){
 		topLeftBtn = (LinearLayout) findViewById(R.id.common_topbar_left_layout);
 		topLeftBtn.setOnClickListener(this);
@@ -601,7 +595,6 @@ public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickLis
 	/**
 	 * 秒标详情
 	 * @param reasonFlag 自动刷新数据 or 通过按钮点击
-	 * @param isFirst 是否首次请求
 	 */
 	private void requestXSMBDetails(String borrowStatus,final Enum reasonFlag){
 		AsyncXSMBDetail xsmbTask = new AsyncXSMBDetail(BorrowDetailXSMBActivity.this, borrowStatus,new OnCommonInter() {
@@ -692,15 +685,15 @@ public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickLis
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
 				BorrowDetailXSMBActivity.this, id, new OnProjectDetails() {
 					@Override
 					public void back(ProjectInfo projectInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (projectInfo != null) {
 							project = projectInfo;

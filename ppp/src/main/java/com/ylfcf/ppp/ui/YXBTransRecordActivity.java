@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.fragment.YXBInvestRecordFragment;
 import com.ylfcf.ppp.fragment.YXBRedeemRecordFragment;
-import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
 
 /**
@@ -27,7 +26,6 @@ public class YXBTransRecordActivity extends BaseActivity implements OnClickListe
 	private TextView topTitle;
 	private LinearLayout topLeftLayout;
 	
-	public LoadingDialog loadingDialog;
 	private PagerSlidingTabStrip mPagerSlidingTabStrip;
 	private ViewPager mViewPager;
 	
@@ -37,7 +35,6 @@ public class YXBTransRecordActivity extends BaseActivity implements OnClickListe
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.yxb_trans_record_activity);
 		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(YXBTransRecordActivity.this, "ÕýÔÚ¼ÓÔØ...", R.anim.loading);
 		findViews();
 	}
 	

@@ -2,6 +2,7 @@ package com.ylfcf.ppp.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.PaintDrawable;
 import android.view.Gravity;
@@ -16,12 +17,12 @@ import android.widget.Toast;
 
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
-import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.utils.Log;
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.ShareInfo;
 import com.ylfcf.ppp.util.YLFLogger;
 
 import java.util.Map;
@@ -39,21 +40,16 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	private Activity context;
 	private String url;
 	private WindowManager.LayoutParams lp = null;
-	private UMShareAPI mShareAPI;
-	private String fromWhere = "";//来源页面
 	private UMImage image ;//分享出去的图片
 	private String title;//分享出去的标题
 	private String text;//分享出去的内容
-
-	public InvitateFriendsPopupwindow(Context context) {
-		super(context);
-	}
+	private String fromWhere;
+	private Bitmap mBitmap;
 
 	public InvitateFriendsPopupwindow(Context context, View convertView,
 			int width, int height) {
 		super(convertView, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		this.context = (Activity) context;
-		mShareAPI = UMShareAPI.get(context);
 		findViews(convertView);
 	}
 
@@ -79,12 +75,13 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 		cancelBtn.setOnClickListener(this);
 	}
 
-	public void show(View parentView, String url,String fromWhere) {
+	public void show(View parentView, String url, String fromWhere, ShareInfo mShareInfo, Bitmap mBitmap) {
 		this.url = url;
 		this.fromWhere = fromWhere;
+		this.mBitmap = mBitmap;
 		this.setBackgroundDrawable(new PaintDrawable(R.color.transparent)); // 使得返回键有效
 		this.setAnimationStyle(R.style.bidPopwindowStyle);
-		this.setOutsideTouchable(false);
+		this.setOutsideTouchable(true);
 		this.setFocusable(true);
 		this.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
 		if("邀请有奖".equals(fromWhere)){
@@ -122,6 +119,15 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 					context.getResources(), R.drawable.qxj5_share_logo));
 			title = "每周一，抢现金，人人有份！";
 			text = "关注进入微信群，每周发红包，大家疯狂开抢！平台周一更有超大现金红包等你领取！";
+		}else{
+			title = mShareInfo.getTitle();
+			text = mShareInfo.getContent();
+			if(mBitmap == null){
+				image = new UMImage(context, BitmapFactory.decodeResource(
+						context.getResources(), R.drawable.share_logo_default));
+			}else{
+				image = new UMImage(context, mBitmap);
+			}
 		}
 	}
 
@@ -148,14 +154,6 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 		}
 	}
 	
-	/**
-	 * 第三方授权
-	 * @param platform
-	 */
-	private void authVerify(SHARE_MEDIA platform){
-		mShareAPI.doOauthVerify(context, platform, umAuthListener);
-	}
-
 	@Override
 	public void dismiss() {
 		super.dismiss();

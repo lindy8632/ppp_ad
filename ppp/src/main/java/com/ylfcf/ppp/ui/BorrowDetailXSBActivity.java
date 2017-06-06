@@ -1,14 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,10 +19,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncProductInfo;
 import com.ylfcf.ppp.async.AsyncProjectDetails;
 import com.ylfcf.ppp.async.AsyncXSBDetails;
 import com.ylfcf.ppp.async.AsyncXSBIscanbuy;
 import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
@@ -41,10 +34,18 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 新手标项目详情
+ * 新手标详情
  * @author Mr.liu
  *
  */
@@ -54,29 +55,31 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 	private static final int REQUEST_XSBDETAILS_WHAT = 5704;
 	private static final int REQUEST_XSBDETAILS_SUCCESS = 5705;
 	private static final int REQUEST_XSBDETAILS_FAILE = 5706;
+
+	private static final int REQUEST_PRODUCT_DETAILS_BYID_WHAT = 5707;//根据id获取产品详情
 	
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private TextView borrowName;
-	private TextView borrowRate;// 年化收益
-	private TextView borrowMoney;// 募集金额
-	private TextView timeLimit;// 期限
-	private Button bidBtn;// 立即投资
+	private TextView borrowRate;
+	private TextView borrowMoney;
+	private TextView timeLimit;
+	private Button bidBtn;
 	private TextView repayType1;
 	private TextView repayType2;
 	private TextView borrowBalanceTV;
-	private TextView profitTv;// 一万块钱可得收益。。
-	private TextView highestMoneyTv;//最高认购额度
+	private TextView profitTv;
+	private TextView highestMoneyTv;
 	private ProgressBar progressBar;
 	// private PagerSlidingTabStrip mPagerSlidingTabStrip;
 	private LinearLayout introLayout,infoLayout, safeLayout, zizhiLayout, recordLayout;
 
 	public ProductInfo productInfo;
-	private ProjectInfo project;// 项目信息
+	public InvestRecordInfo recordInfo;
+	private ProjectInfo project;
 	private OnProductInfoListener productInfoListener;
 	private OnProductSafetyListener productSafetyListener;
-	private LoadingDialog loadingDialog;
-	private AlertDialog.Builder builder = null; // 先得到构造器
+	private AlertDialog.Builder builder = null;
 	
 	private Handler handler = new Handler(){
 		@Override
@@ -94,12 +97,19 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 				productInfo = (ProductInfo) msg.obj;
 				if (productInfo != null) {
 					getProjectDetails(productInfo.getProject_id());
-					initDataFromProductList();
-				} 
+					if(recordInfo != null){
+						initDataFromRecord(productInfo);
+					}else{
+						initDataFromProductList();
+					}
+				}
 				break;
 			case REQUEST_XSBDETAILS_FAILE:
 				String errorMsg = (String) msg.obj;
 				Util.toastLong(BorrowDetailXSBActivity.this, errorMsg);
+				break;
+			case REQUEST_PRODUCT_DETAILS_BYID_WHAT:
+				getProductDetailsById(recordInfo.getBorrow_id(), "","");
 				break;
 			default:
 				break;
@@ -120,19 +130,21 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrow_details_xsb_activity);
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BorrowDetailXSBActivity.this, "正在加载...",
-				R.anim.loading);
+		recordInfo = (InvestRecordInfo) getIntent()
+				.getSerializableExtra("InvestRecordInfo");
 		builder = new AlertDialog.Builder(BorrowDetailXSBActivity.this,
-				R.style.Dialog_Transparent); // 先得到构造器
+				R.style.Dialog_Transparent);
 		findViews();
-		handler.sendEmptyMessage(REQUEST_XSBDETAILS_WHAT);
+		if(recordInfo != null){
+			handler.sendEmptyMessage(REQUEST_PRODUCT_DETAILS_BYID_WHAT);
+		}else{
+			handler.sendEmptyMessage(REQUEST_XSBDETAILS_WHAT);
+		}
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 	
@@ -169,7 +181,6 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 	}
 	
 	/**
-	 * 显示弹出框
 	 * @param type
 	 * @param msg
 	 */
@@ -219,9 +230,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 				dialog.dismiss();
 			}
 		});
-		// 参数都设置完成了，创建并显示出来
 		dialog.show();
-		// 设置dialog的宽度
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
@@ -247,7 +256,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		}
 		borrowName.setText(productInfo.getBorrow_name());
 
-		// 年化利率
+		//年化利率
 		String rate = productInfo.getInterest_rate();
 		String extraRate = productInfo.getAndroid_interest_rate();
 		float extraRateF = 0f;
@@ -255,7 +264,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			extraRateF = Float.parseFloat(extraRate);
 		} catch (Exception e) {
 		}
-		// 投资期限
+		//投资期限
 		String horizon = productInfo.getInvest_horizon().replace("天", "");
 		int horizonInt = 0;
 		try {
@@ -317,7 +326,6 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			rateF = Float.parseFloat(rate);
 		} catch (Exception e) {
 		}
-		
 		profitTv.setText(new DecimalFormat("#.00").format((rateF + extraRateF) * 100/365*horizonInt) + "");
 	}
 
@@ -343,7 +351,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		} catch (Exception e) {
 		}
 		// 投资期限
-		String horizon = info.getInvest_horizon().replace("天", "");
+		String horizon = info.getInvest_horizon().replace("??", "");
 		int horizonInt = Integer.parseInt(horizon);
 		double rateD = 0d;
 		try {
@@ -401,7 +409,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		profitTv.setText(new DecimalFormat("#.00").format((rateF + extraRateF) * 100/365*horizonInt) + "");
 	}
 	
-	int increaseInt = 0;//增量
+	int increaseInt = 0;
 	int progressTemp = 0;
 	private void progressbarIncrease(int progress){
 		progressBar.setProgress(progressTemp);
@@ -448,13 +456,10 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 					&& !SettingsManager.getUser(BorrowDetailXSBActivity.this)
 							.isEmpty();
 			bidBtn.setEnabled(false);
-			// isLogin = true;// 测试
 			Intent intent = new Intent();
-			// 1、检测是否已经登录
+			//  1、检测是否已经登录
 			if (isLogin) {
-				//判断是否实名和绑卡
 				isCanbuyXSB(SettingsManager.getUserId(getApplicationContext()), productInfo.getId());
-				// 已经登录，跳转到购买页面
 			} else {
 				// 未登录，跳转到登录页面
 				intent.setClass(BorrowDetailXSBActivity.this, LoginActivity.class);
@@ -473,7 +478,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			intentIntroXSB.putExtra("BUNDLE", bundle0);
 			startActivity(intentIntroXSB);
 			break;
-		// 项目介绍
+			// 项目介绍
 		case R.id.borrow_details_xsb_activity_info_layout:
 			// setViewPagerCurrentPosition(0);
 			Intent intentProductInfo = new Intent(BorrowDetailXSBActivity.this,ProductInfoActivity.class);
@@ -483,7 +488,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			intentProductInfo.putExtra("BUNDLE", bundle);
 			startActivity(intentProductInfo);
 			break;
-		// 安全保障
+			// 安全保障
 		case R.id.borrow_details_xsb_activity_safe_layout:
 			// setViewPagerCurrentPosition(1);
 			Intent intentSaft = new Intent(BorrowDetailXSBActivity.this,ProductSafetyActivity.class);
@@ -493,7 +498,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			intentSaft.putExtra("BUNDLE", bundle1);
 			startActivity(intentSaft);
 			break;
-		// 相关资料
+			// 相关资料
 		case R.id.borrow_details_xsb_activity_certificate_layout:
 			// setViewPagerCurrentPosition(2);
 			Intent intentProductData = new Intent(BorrowDetailXSBActivity.this,ProductDataActivity.class);
@@ -503,7 +508,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			intentProductData.putExtra("BUNDLE", bundle2);
 			startActivity(intentProductData);
 			break;
-		// 投资记录
+			// 投资记录
 		case R.id.borrow_details_xsb_activity_record_layout:
 			// setViewPagerCurrentPosition(3);
 			Intent intentProductRecord = new Intent(BorrowDetailXSBActivity.this,ProductRecordActivity.class);
@@ -563,7 +568,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		String imageNames[] = info.getImgs_name().split("\\|");
 		ArrayList<ProjectCailiaoInfo> cailiaoListTemp = new ArrayList<ProjectCailiaoInfo>();
 		ArrayList<ProjectCailiaoInfo> cailiaoList = new ArrayList<ProjectCailiaoInfo>();
-		String materials = info.getMaterials_nomark();//没打码的图片
+		String materials = info.getMaterials_nomark();//????????
 		Document doc = Jsoup.parse(materials);
 		Elements ele=doc.getElementsByTag("p");
 		for(Element e :ele){
@@ -598,15 +603,15 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
 				BorrowDetailXSBActivity.this, id, new OnProjectDetails() {
 					@Override
 					public void back(ProjectInfo projectInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (projectInfo != null) {
 							project = projectInfo;
@@ -668,14 +673,14 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 	 * @param borrowStatus
 	 */
 	private void requestXSBDetails(String borrowStatus){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncXSBDetails xsbDetails = new AsyncXSBDetails(BorrowDetailXSBActivity.this, borrowStatus, new OnCommonInter() {
 			@Override
 			public void back(BaseInfo baseInfo) {
-				if(loadingDialog != null){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null){
+					mLoadingDialog.dismiss();
 				}
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -697,5 +702,43 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			}
 		});
 		xsbDetails.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+	/**
+	 * 根据id获取产品详情
+	 *
+	 * @param borrowId
+	 * @param borrowStatus
+	 */
+	private void getProductDetailsById(String borrowId, String borrowStatus,String plan) {
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
+		}
+		AsyncProductInfo task = new AsyncProductInfo(BorrowDetailXSBActivity.this,
+				borrowId, borrowStatus, plan, new OnCommonInter() {
+			@Override
+			public void back(BaseInfo baseInfo) {
+				if(mLoadingDialog != null){
+					mLoadingDialog.dismiss();
+				}
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0){
+						Message msg = handler.obtainMessage(REQUEST_XSBDETAILS_SUCCESS);
+						msg.obj = baseInfo.getmProductInfo();
+						handler.sendMessage(msg);
+					}else{
+						Message msg = handler.obtainMessage(REQUEST_XSBDETAILS_FAILE);
+						msg.obj = baseInfo.getMsg();
+						handler.sendMessage(msg);
+					}
+				}else{
+					Message msg = handler.obtainMessage(REQUEST_XSBDETAILS_FAILE);
+					msg.obj = "您的网络不给力";
+					handler.sendMessage(msg);
+				}
+			}
+		});
+		task.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 }

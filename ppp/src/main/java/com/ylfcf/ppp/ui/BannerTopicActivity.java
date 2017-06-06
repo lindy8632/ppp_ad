@@ -1,16 +1,22 @@
 package com.ylfcf.ppp.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -21,13 +27,18 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.BannerInfo;
+import com.ylfcf.ppp.entity.ShareInfo;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.Constants.TopicType;
+import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.SimpleCrypto;
 import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+import com.ylfcf.ppp.util.YLFLogger;
+import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
+
+import java.net.URLEncoder;
 
 /**
  * 专题页
@@ -36,25 +47,61 @@ import com.ylfcf.ppp.widget.LoadingDialog;
  */
 public class BannerTopicActivity extends BaseActivity implements OnClickListener{
 	private static final String LOTTERY_URL = "http://wap.ylfcf.com/home/index/lottery.html";//	大转盘的活动页面
+	private static final int POPUPWINDOW_START_WHAT = 2712;
+	private static final int DOWNLOAD_PIC_WHAT = 2713;
+
+	private LinearLayout mainLayout;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private WebView webview;
 	private BannerInfo banner;
-	private LoadingDialog loadingDialog;
 	private String topicType = "";//专题的名字，根据后台来约定的。
 	private RelativeLayout topLayout;
+	public Bitmap sharePicBitmap = null;
+	private String userid;
+	private boolean isFirstLoad = true;
+
+	private Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			switch (msg.what) {
+				case POPUPWINDOW_START_WHAT:
+					ShareInfo info = (ShareInfo)msg.obj;
+					showFriendsSharedWindow(info.getTitle(),info.getContent(),info.getActiveURL(),info.getSharePicURL());
+					break;
+				case DOWNLOAD_PIC_WHAT:
+
+					break;
+				default:
+					break;
+			}
+		}
+	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.banner_topic_activity);
-		loadingDialog = new LoadingDialog(BannerTopicActivity.this,"正在加载..." , R.anim.loading);
 		banner = (BannerInfo) getIntent().getSerializableExtra("BannerInfo");
 		if(banner != null){
 			topicType = banner.getArticle_id();
 		}
 		findViews();
+		userid = SettingsManager.getUserId(BannerTopicActivity.this);
+		if(userid == null || "".equals(userid)){
+			loadURL();
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		userid = SettingsManager.getUserId(BannerTopicActivity.this);
+		if(userid != null && !"".equals(userid) && isFirstLoad){
+			loadURL();
+		}
 	}
 
 	private void findViews(){
@@ -62,6 +109,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		topLeftBtn.setOnClickListener(this);
 		topTitleTV = (TextView)findViewById(R.id.common_page_title);
 		topLayout = (RelativeLayout) findViewById(R.id.banner_topic_activity_toplayout);
+		mainLayout = (LinearLayout) findViewById(R.id.banner_topic_activity_mainlayout);
 		if(TopicType.CHONGZHISONG.equals(topicType)){
 			//充值送的活动
 			topTitleTV.setText("充值送");
@@ -89,7 +137,8 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		webview = (WebView) findViewById(R.id.banner_topic_activity_webview);
 		this.webview.getSettings().setSupportZoom(false);  
         this.webview.getSettings().setJavaScriptEnabled(true);  //支持js
-        this.webview.getSettings().setDomStorageEnabled(true); 
+        this.webview.getSettings().setDomStorageEnabled(true);
+		this.webview.addJavascriptInterface(new JavascriptAndroidInterface(this),"android");
 		webview.setWebViewClient(new WebViewClient(){
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -107,25 +156,104 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 				}
 				return true;
 			}
-			
 		});
 		webview.setWebChromeClient(new WebChromeClient(){
 			@Override
-			public void onProgressChanged(WebView view, int newProgress) {	
+			public void onProgressChanged(WebView view, int newProgress) {
 				if(newProgress == 100){
 					//网页加载完成
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				}else{
 					//网页加载中...
-					loadingDialog.show();
+					mLoadingDialog.show();
 				}
 			}
 		});
-		if(banner != null){
-			webview.loadUrl(banner.getLink_url());
+	}
+
+	class DownloadIMGThread extends Thread{
+		ShareInfo info;
+		DownloadIMGThread(ShareInfo mShareInfo){
+			this.info = mShareInfo;
+		}
+		@Override
+		public void run() {
+			super.run();
+			sharePicBitmap = ImageLoaderManager.newInstance().loadImageSync(info.getSharePicURL());
 		}
 	}
-	
+
+	private void loadURL(){
+		if(banner != null){
+			String userIdCrypto = "";
+			if(userid != null && !"".equals(userid)){
+				try{
+					userIdCrypto = URLEncoder.encode(SimpleCrypto.encrypt(userid),"utf-8");
+					webview.loadUrl(banner.getLink_url().replace("#app","?app_socket="+userIdCrypto+"#app"));
+					isFirstLoad = false;
+					YLFLogger.d("加密前：————————————"+userid);
+					YLFLogger.d("加密后：————————————"+SimpleCrypto.encrypt(userid));
+					YLFLogger.d("6月份活动链接：————————————————————————————"+
+							banner.getLink_url().replace("#app","?app_socket="+userIdCrypto+"#app"));
+				}catch (Exception e){
+				}
+			}else{
+				webview.loadUrl(banner.getLink_url());
+				YLFLogger.d("6月份活动链接：————————————————————————————"+
+						banner.getLink_url());
+			}
+		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		CookieSyncManager.createInstance(BannerTopicActivity.this);
+		CookieManager.getInstance().removeAllCookie();
+		handler.removeCallbacksAndMessages(null);
+	}
+
+	public class JavascriptAndroidInterface{
+		Context mContext;
+		public JavascriptAndroidInterface(Context context){
+			mContext = context;
+		}
+		@JavascriptInterface
+		public void share(final String title,final String content,
+						  final String activeURL,final String picURL){
+			ShareInfo shareInfo = new ShareInfo();
+			shareInfo.setSharePicURL(picURL);
+			shareInfo.setContent(content);
+			shareInfo.setTitle(title);
+			shareInfo.setActiveURL(activeURL);
+			new DownloadIMGThread(shareInfo).start();
+			Message msg = handler.obtainMessage(POPUPWINDOW_START_WHAT);
+			msg.obj = shareInfo;
+			handler.sendMessageDelayed(msg,300L);
+		}
+	}
+
+	/**
+	 * 弹出分享的提示框
+	 */
+	private void showFriendsSharedWindow(String title,String content,String activeURL,String picURL) {
+		if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+			mLoadingDialog.dismiss();
+		}
+		View popView = LayoutInflater.from(this).inflate(R.layout.invitate_friends_popupwindow, null);
+		int[] screen = SettingsManager.getScreenDispaly(BannerTopicActivity.this);
+		int width = screen[0];
+		int height = screen[1] / 5 * 2;
+		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(BannerTopicActivity.this,
+				popView, width, height);
+		ShareInfo info = new ShareInfo();
+		info.setTitle(title);
+		info.setContent(content);
+		info.setActiveURL(activeURL);
+		info.setSharePicURL(picURL);
+		popwindow.show(mainLayout, banner.getLink_url(),"",info,sharePicBitmap);
+	}
+
 	/**
 	 * 拦截URL
 	 * @param url
@@ -138,7 +266,6 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			//元月盈加息跳转  元月盈的详情页面
 			Intent intent = new Intent(BannerTopicActivity.this,BorrowDetailYYYActivity.class);
 			startActivity(intent);
-			finish();
 		}else if(url.contains("/home/borrow/borrowlist") || url.contains("/home/borrow/borrowList")){
 			//跳转到政信贷的列表页面
 			Intent intent = new Intent(BannerTopicActivity.this,BorrowListZXDActivity.class);
@@ -163,7 +290,8 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			//vip用户注册页面
 			Intent intent = new Intent(BannerTopicActivity.this,RegisterVIPActivity.class);
 			startActivity(intent);
-		}else if(url.contains("/home/promotion/hdInvite") || url.contains("/home/promotion/hdinvite")){
+		}else if(url.contains("/home/promotion/hdInvite") || url.contains("/home/promotion/hdinvite") ||
+				url.contains("/promotion/hdInvite")){
 			//跳转到邀请好友页面，首先判断有没有登录
 			shared();
 		}else if(url.contains("/home/index/promoter")){
@@ -178,7 +306,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		}else if(url.contains("/home/borrow")){
 			//主页面的投资列表页面
 			SettingsManager.setMainProductListFlag(getApplicationContext(), true);
-			finish();
+			mApp.finishAllActivityExceptMain();
 		}else if(url.contains("/home/seckill/seckilldetail")){
 			//跳转到秒标详情页面
 			Intent intentMBDetail = new Intent(BannerTopicActivity.this,BorrowDetailXSMBActivity.class);
@@ -194,6 +322,9 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			Intent intent = new Intent(BannerTopicActivity.this,BorrowDetailWDYActivity.class);
 			startActivity(intent);
 			finish();
+		}else if(url.contains("/home/index/hd")){
+			Intent intent = new Intent(BannerTopicActivity.this,ActivitysRegionActivity.class);
+			startActivity(intent);
 		}else{
 			//请更新至最新版本
 //			Util.toastLong(BannerTopicActivity.this, "请更新至最新版本");

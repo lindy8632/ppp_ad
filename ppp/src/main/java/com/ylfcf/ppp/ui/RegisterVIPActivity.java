@@ -1,5 +1,19 @@
 package com.ylfcf.ppp.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncAddPhoneInfo;
 import com.ylfcf.ppp.async.AsyncCheckRegister;
@@ -18,22 +32,6 @@ import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * VIP注册
@@ -57,7 +55,6 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 
 	private CountDownAsyncTask countDownAsynTask = null;
 	private final long intervalTime = 1000L;
-	private LoadingDialog loadingDialog;
 	private String phoneNum = null;
 
 	private Handler handler = new Handler() {
@@ -86,8 +83,6 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.registe_main);
-		loadingDialog = new LoadingDialog(RegisterVIPActivity.this, "正在加载...",
-				R.anim.loading);
 		findViews();
 	}
 
@@ -213,7 +208,6 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 	/**
 	 * 获取手机验证码
 	 * 
-	 * @param phoneNum
 	 */
 	private void checkAuthNumData() {
 
@@ -260,7 +254,8 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 	 */
 	private void requestRegiste(final String phone, final String password,
 			String extension_code,String salesPhone) {
-		loadingDialog.show();
+		if(mLoadingDialog != null)
+		mLoadingDialog.show();
 		String open_id = "";
 		String user_from_host = "";
 
@@ -285,9 +280,9 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 								requestLogin(phone, password);
 							}
 						} else {
-							if (loadingDialog != null
-									&& loadingDialog.isShowing()) {
-								loadingDialog.dismiss();
+							if (mLoadingDialog != null
+									&& mLoadingDialog.isShowing()) {
+								mLoadingDialog.dismiss();
 							}
 							Util.toastShort(RegisterVIPActivity.this,
 									baseInfo.getMsg());
@@ -303,15 +298,15 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 	 * @param pwd
 	 */
 	private void requestLogin(final String phone,final String pwd){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		
 		AsyncLogin loginTask = new AsyncLogin(RegisterVIPActivity.this, phone, pwd, new OnLoginInter() {
 			@Override
 			public void back(BaseInfo baseInfo) {
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				if(baseInfo == null){
 					return;
@@ -368,8 +363,8 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

@@ -1,18 +1,16 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.URLGenerator;
 
 /**
  * 注册服务协议
@@ -26,7 +24,6 @@ public class RegisteAgreementActivity extends BaseActivity implements
 	private TextView topTitleTV;
 	
 	private WebView webView;
-	private LoadingDialog loadingDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +31,6 @@ public class RegisteAgreementActivity extends BaseActivity implements
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.registe_agreement_activity);
 
-		loadingDialog = new LoadingDialog(RegisteAgreementActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
 
@@ -53,10 +49,10 @@ public class RegisteAgreementActivity extends BaseActivity implements
 			public void onProgressChanged(WebView view, int newProgress) {	
 				if(newProgress == 100){
 					//网页加载完成
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				}else{
 					//网页加载中...
-					loadingDialog.show();
+					mLoadingDialog.show();
 				}
 			}
 		});

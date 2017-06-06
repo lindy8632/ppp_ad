@@ -31,7 +31,6 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.Constants.TopicType;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,6 @@ public class MyInvitationActivity extends BaseActivity implements
 	private PullToRefreshListView mListView;
 	private ExtensionNewPageInfo mExtensionPageInfo;
 	private ExtensionAdapter adapter;
-	private LoadingDialog loadingDialog;
 	private int page = 0;
 	private int pageSize = 20;
 	private List<ExtensionNewInfo> extensionList = new ArrayList<ExtensionNewInfo>();
@@ -93,8 +91,6 @@ public class MyInvitationActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.myinvitation_activity);
-		loadingDialog = new LoadingDialog(MyInvitationActivity.this, "ÕýÔÚ¼ÓÔØ...",
-				R.anim.loading);
 		mExtensionPageInfo = (ExtensionNewPageInfo) getIntent()
 				.getSerializableExtra("ExtensionPageInfo");
 		findViews();
@@ -252,13 +248,16 @@ public class MyInvitationActivity extends BaseActivity implements
 	 * @param userId
 	 */
 	private void requestExtension(String userId) {
-		loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
+		}
 		AsyncExtensionNewPageInfo taks = new AsyncExtensionNewPageInfo(
 				MyInvitationActivity.this, userId, String.valueOf(page),
 				String.valueOf(pageSize), new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing())
+						mLoadingDialog.dismiss();
 						mListView.onRefreshComplete();
 						if(baseInfo == null){
 							return;

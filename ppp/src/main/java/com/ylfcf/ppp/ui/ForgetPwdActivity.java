@@ -1,7 +1,6 @@
 package com.ylfcf.ppp.ui;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,12 +9,10 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.R.id;
 import com.ylfcf.ppp.async.AsyncGetUserInfoByPhone;
 import com.ylfcf.ppp.async.AsyncSMSRegiste;
 import com.ylfcf.ppp.async.AsyncUpdateUserInfo;
@@ -31,7 +28,6 @@ import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 /**
  * 忘记密码
@@ -76,7 +72,6 @@ public class ForgetPwdActivity extends BaseActivity implements OnClickListener {
 
 	private CountDownAsyncTask countDownAsynTask = null;
 	private final long intervalTime = 1000L;
-	private LoadingDialog loadingDialog;
 	private String fromWhere = "";
 
 	private Handler handler = new Handler() {
@@ -126,8 +121,6 @@ public class ForgetPwdActivity extends BaseActivity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.forget_pwd_activity);
 		fromWhere = getIntent().getStringExtra("from_where");
-		loadingDialog = new LoadingDialog(ForgetPwdActivity.this, "正在加载...",
-				R.anim.loading);
 		findViews();
 	}
 
@@ -407,16 +400,16 @@ public class ForgetPwdActivity extends BaseActivity implements OnClickListener {
 	private void updateUserInfo(String id, String password, String phone,
 			String email, String openId, String dealEnabled, String dealPwd,
 			String tmpData) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncUpdateUserInfo asyncUpdateUserInfo = new AsyncUpdateUserInfo(
 				ForgetPwdActivity.this, id, password, phone, email, openId,
 				dealEnabled, dealPwd, tmpData,"", new OnUpdateUserInfoInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager
@@ -444,18 +437,18 @@ public class ForgetPwdActivity extends BaseActivity implements OnClickListener {
 
 	/**
 	 * 
-	 * @param userId
+	 * @param phone
 	 */
 	private void checkRegister(String phone) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncGetUserInfoByPhone asyncGetUserByPhone = new AsyncGetUserInfoByPhone(
 				ForgetPwdActivity.this, phone, new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						int resultCode = SettingsManager
 								.getResultCode(baseInfo);

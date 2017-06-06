@@ -11,9 +11,11 @@
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/ui/BaseActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/ui/BidSuccessActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/ui/BidZXDActivity.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/ui/BorrowDetailXSBActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/ui/LXJ5TempActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/ui/MyGiftsActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/util/URLGenerator.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ppp/src/main/res/layout/swipe_layout.xml" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>

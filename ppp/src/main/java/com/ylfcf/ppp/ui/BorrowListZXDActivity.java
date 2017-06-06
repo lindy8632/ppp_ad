@@ -28,7 +28,6 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.parse.JsonParseProductPageInfo;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,8 +54,7 @@ public class BorrowListZXDActivity extends BaseActivity implements OnClickListen
 	private List<ProductInfo> productList = new ArrayList<ProductInfo>();
 	private boolean isFirst = true;
 	private boolean isLoadMore = false;// 加载更多
-	private LoadingDialog loadingDialog;
-	
+
 	public Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -94,7 +92,6 @@ public class BorrowListZXDActivity extends BaseActivity implements OnClickListen
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrowlist_zxd_activity);
 		findViews();
-		loadingDialog = new LoadingDialog(this, "正在加载...", R.anim.loading);
 		handler.sendEmptyMessage(REQUEST_PRODUCT_LIST_WHAT);
 	}
 
@@ -206,7 +203,7 @@ public class BorrowListZXDActivity extends BaseActivity implements OnClickListen
 	private void requestProductPageInfo(String borrowType, String borrowStatus,String moneyStatus,
 			String isShow, String isWap, String plan) {
 		if (isFirst) {
-			loadingDialog.show();
+			mLoadingDialog.show();
 		}
 
 		// 先加载缓存里面的数据，然后再请求接口刷新
@@ -239,8 +236,8 @@ public class BorrowListZXDActivity extends BaseActivity implements OnClickListen
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {

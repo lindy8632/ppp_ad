@@ -1,24 +1,20 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.InvestRecordInfo;
-import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
-import android.webkit.WebSettings.LayoutAlgorithm;
-import android.webkit.WebSettings.ZoomDensity;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.InvestRecordInfo;
+import com.ylfcf.ppp.entity.ProductInfo;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.URLGenerator;
 /**
  * 用户合同页面 新手标、元政盈、元月盈 、私人尊享产品
  * @author Mr.liu
@@ -28,8 +24,6 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 	private InvestRecordInfo investInfo;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
-	
-	private LoadingDialog loadingDialog;
 	
 	private WebView webview;
 	private String contentURL;
@@ -41,7 +35,6 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.compact_activity);
-		loadingDialog = new LoadingDialog(CompactActivity.this,"正在加载..." , R.anim.loading);
 		investInfo = (InvestRecordInfo) getIntent().getSerializableExtra("invest_record") ;
 		fromWhere = getIntent().getStringExtra("from_where");
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra("mProductInfo");
@@ -69,10 +62,10 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 			public void onProgressChanged(WebView view, int newProgress) {	
 				if(newProgress == 100){
 					//网页加载完成
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				}else{
 					//网页加载中...
-					loadingDialog.show();
+					mLoadingDialog.show();
 				}
 			}
 		});

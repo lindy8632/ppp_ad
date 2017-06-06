@@ -1,5 +1,17 @@
 package com.ylfcf.ppp.ui;
 
+import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncUpdateUserInfo;
 import com.ylfcf.ppp.async.AsyncUserSelectOne;
@@ -9,21 +21,6 @@ import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.inter.Inter.OnUpdateUserInfoInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
-import android.os.Bundle;
-import android.os.Message;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * 修改提现密码
@@ -42,15 +39,13 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 	private TextView pwdPrompt;
 	private Button cmpBtn;
 	private UserInfo userInfo;
-	private LoadingDialog loadingDialog;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.withdrawpwd_modify_activity);
 		userInfo = (UserInfo) getIntent().getSerializableExtra("USERINFO");
-		loadingDialog = new LoadingDialog(WithdrawPwdModifyActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 		if(userInfo == null ){
 			requestUserInfo(SettingsManager.getUserId(getApplicationContext()), SettingsManager.getUser(getApplicationContext()));
@@ -127,15 +122,15 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 	}
 	
 	private void requestModifyPwd(String userId,String newPwd,String phone){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncUpdateUserInfo task = new AsyncUpdateUserInfo(WithdrawPwdModifyActivity.this, userId, "", phone, 
 				"", "", "", newPwd, "", "",new OnUpdateUserInfoInter(){
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -157,14 +152,14 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 	 * @param phone
 	 */
 	private void requestUserInfo(String userId,String phone){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncUserSelectOne userTask = new AsyncUserSelectOne(WithdrawPwdModifyActivity.this, userId, phone, "", new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);

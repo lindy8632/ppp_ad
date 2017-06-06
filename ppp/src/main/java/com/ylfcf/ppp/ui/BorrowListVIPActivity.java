@@ -1,13 +1,24 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.adapter.BidListAdapter;
 import com.ylfcf.ppp.adapter.BidListVIPAdapter;
 import com.ylfcf.ppp.async.AsyncProductPageInfo;
 import com.ylfcf.ppp.common.FileUtil;
@@ -17,23 +28,9 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.parse.JsonParseProductPageInfo;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * VIP产品列表页面
@@ -58,8 +55,7 @@ public class BorrowListVIPActivity extends BaseActivity implements
 	private List<ProductInfo> productList = new ArrayList<ProductInfo>();
 	private boolean isFirst = true;
 	private boolean isLoadMore = false;// 加载更多
-	private LoadingDialog loadingDialog;
-	
+
 	public Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -97,7 +93,6 @@ public class BorrowListVIPActivity extends BaseActivity implements
 		setContentView(R.layout.borrowlist_vip_activity);
 		findViews();
 		
-		loadingDialog = new LoadingDialog(this, "正在加载...", R.anim.loading);
 		handler.sendEmptyMessage(REQUEST_PRODUCT_LIST_WHAT);
 	}
 
@@ -216,13 +211,11 @@ public class BorrowListVIPActivity extends BaseActivity implements
 	/**
 	 * 产品列表
 	 * 
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void requestProductPageInfo(String borrowType, String borrowStatus,String moneyStatus,
 			String isShow, String isWap, String plan) {
 		if (isFirst) {
-			loadingDialog.show();
+			mLoadingDialog.show();
 		}
 
 		// 先加载缓存里面的数据，然后再请求接口刷新
@@ -255,8 +248,8 @@ public class BorrowListVIPActivity extends BaseActivity implements
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {

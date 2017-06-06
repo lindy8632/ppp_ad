@@ -1,19 +1,22 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncAppointBorrowDetails;
-import com.ylfcf.ppp.async.AsyncProductInfo;
 import com.ylfcf.ppp.async.AsyncProjectDetails;
 import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.BorrowType;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
@@ -27,20 +30,14 @@ import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 /**
  * 私人尊享产品详情页面
@@ -75,8 +72,7 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 	private ProjectInfo project;// 项目信息
 	private OnProductInfoListener productInfoListener;
 	private OnProductSafetyListener productSafetyListener;
-	private LoadingDialog loadingDialog;
-	
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -106,9 +102,6 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrow_details_srzx_activity);
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BorrowDetailSRZXActivity.this, "正在加载...",
-				R.anim.loading);
 		Intent intent = getIntent();
 		productInfo = (ProductInfo) intent.getSerializableExtra("PRODUCT_INFO");
 		recordInfo = (InvestRecordInfo) intent
@@ -126,7 +119,6 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 	
@@ -557,15 +549,15 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
 				BorrowDetailSRZXActivity.this, id, new OnProjectDetails() {
 					@Override
 					public void back(ProjectInfo projectInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (projectInfo != null) {
 							project = projectInfo;
@@ -587,11 +579,10 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 	 * 根据产品id获取产品详情
 	 * 
 	 * @param borrowId
-	 * @param borrowStatus
 	 */
 	private void getProductDetailsById(String borrowId) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncAppointBorrowDetails task = new AsyncAppointBorrowDetails(BorrowDetailSRZXActivity.this,
 				borrowId,new OnCommonInter() {
@@ -605,10 +596,10 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 								initDataFromRecord(info);
 								getProjectDetails(info.getProject_id());
 							}else{
-								loadingDialog.dismiss();
+								mLoadingDialog.dismiss();
 							}
 						}else{
-							loadingDialog.dismiss();
+							mLoadingDialog.dismiss();
 						}
 					}
 				});

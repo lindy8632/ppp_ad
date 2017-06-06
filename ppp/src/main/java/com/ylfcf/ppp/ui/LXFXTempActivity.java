@@ -1,21 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncGetLXZXJXQ;
-import com.ylfcf.ppp.async.AsyncJXQLogList;
-import com.ylfcf.ppp.async.AsyncJXQRule;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.JXQRuleInfo;
-import com.ylfcf.ppp.entity.XCFLDrawInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
-import com.ylfcf.ppp.util.RequestApis;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,13 +8,27 @@ import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncGetLXZXJXQ;
+import com.ylfcf.ppp.async.AsyncJXQLogList;
+import com.ylfcf.ppp.async.AsyncJXQRule;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.JXQRuleInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
+import com.ylfcf.ppp.util.RequestApis;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.Util;
+import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
 
 /**
  * 开门红--乐享返现（2017年春节后）
@@ -44,10 +42,8 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 	private LinearLayout mainLayout;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
-	
 	private Button leftBtn,middleBtn,rightBtn;
-	private LoadingDialog loadingDialog;
-	
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -77,7 +73,6 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.lxfx_temp_activity);
-		loadingDialog = new LoadingDialog(LXFXTempActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
 	
@@ -372,7 +367,7 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(LXFXTempActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,URLGenerator.LXFX_WAP_URL,"开门红乐享返现");
+		popwindow.show(mainLayout,URLGenerator.LXFX_WAP_URL,"开门红乐享返现",null,null);
 	}
 	
 	/**
@@ -394,15 +389,15 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 								msg.obj = info;
 								handler.sendMessage(msg);
 							}else{
-								if(loadingDialog != null){
-									loadingDialog.dismiss();
+								if(mLoadingDialog != null){
+									mLoadingDialog.dismiss();
 								}
 								middleBtn.setEnabled(true);
 								Util.toastLong(LXFXTempActivity.this, baseInfo.getMsg());
 							}
 						}else{
-							if(loadingDialog != null){
-								loadingDialog.dismiss();
+							if(mLoadingDialog != null){
+								mLoadingDialog.dismiss();
 							}
 							middleBtn.setEnabled(true);
 						}
@@ -427,8 +422,8 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 				endTime, remark, type, isBatch, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -458,15 +453,15 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 	 * @param btnClick 是否是通过点击领取按钮
 	 */
 	private void checkIsGetJXQ(String userId,String couponFrom,final boolean btnClick){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncJXQLogList jxqListTask = new AsyncJXQLogList(LXFXTempActivity.this, userId, couponFrom, 
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -536,8 +531,8 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 	 */
 	private void checkIsVerify(final String type){
 		middleBtn.setEnabled(false);
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		RequestApis.requestIsVerify(LXFXTempActivity.this, SettingsManager.getUserId(getApplicationContext()), new OnIsVerifyListener() {
 			@Override
@@ -548,7 +543,7 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 				}else{
 					//用户没有实名
 					middleBtn.setEnabled(true);
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 					showVerifyDialog(type);
 				}
 			}

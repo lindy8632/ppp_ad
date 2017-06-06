@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,12 +22,16 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.InvestRecordPageInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.ui.BorrowDetailXSBActivity;
 import com.ylfcf.ppp.ui.BorrowDetailZXDActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.util.SettingsManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * 用户投资记录 --- 政信贷
+ * 用户投资记录 --- 政信贷（元政盈）
  * @author Mr.liu
  *
  */
@@ -154,7 +155,13 @@ public class UserInvestZXDRecordFragment extends BaseFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				InvestRecordInfo info = investRecordList.get(position - 1);
-				Intent intent = new Intent(mainActivity,BorrowDetailZXDActivity.class);
+				Intent intent = null;
+				if("新手标".equals(info.getBorrow_type())){
+					//新手标
+					intent = new Intent(mainActivity,BorrowDetailXSBActivity.class);
+				}else{
+					intent = new Intent(mainActivity,BorrowDetailZXDActivity.class);
+				}
 				intent.putExtra("InvestRecordInfo", info);
 				startActivity(intent);
 			}
@@ -166,8 +173,6 @@ public class UserInvestZXDRecordFragment extends BaseFragment {
 	 * @param investUserId
 	 * @param borrowId
 	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getInvestRecordList(String investUserId,String borrowId,
 			String status){

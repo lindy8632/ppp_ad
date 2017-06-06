@@ -1,7 +1,5 @@
 package com.ylfcf.ppp.view;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -20,6 +18,8 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.BankInfo;
 import com.ylfcf.ppp.ui.BindCardActivity.OnSpinnerItemClickListener;
+
+import java.util.List;
 
 /**
  *充值银行列表的poppwindow
@@ -73,7 +73,7 @@ public class RechargeSpinnerPopwindow extends PopupWindow{
 	}
 
 	public void show(View parentView){
-		ColorDrawable cd = new ColorDrawable(0x000000);
+		ColorDrawable cd = new ColorDrawable(888888);
 		this.setBackgroundDrawable(cd);//使得返回键有效 并且去除popupwindow圆角的黑色背景
 		this.setAnimationStyle(R.style.rechargeMsgPopwindowStyle);
 		this.setOutsideTouchable(false);

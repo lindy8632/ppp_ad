@@ -1,5 +1,14 @@
 package com.ylfcf.ppp.ui;
 
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncChangeAddress;
 import com.ylfcf.ppp.async.AsyncUserSelectOne;
@@ -9,18 +18,6 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
-import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * 修改收货地址
@@ -34,14 +31,12 @@ public class ChangeAddressActivity extends BaseActivity implements OnClickListen
 	private EditText addressET;
 	private Button commitBtn;
 	AsyncChangeAddress changeAddressTask = null;
-	private LoadingDialog loadingDialog;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.change_address_activity);
-		loadingDialog = new LoadingDialog(ChangeAddressActivity.this, "正在提交...", R.anim.loading);
 		findViews();
 		requestUserInfo(SettingsManager.getUserId(getApplicationContext()), "");
 	}
@@ -94,12 +89,16 @@ public class ChangeAddressActivity extends BaseActivity implements OnClickListen
 	}
 	
 	private void requestChangeAddres(String userId,String address,String postCode){
-		loadingDialog.show();
-		changeAddressTask = new AsyncChangeAddress(ChangeAddressActivity.this, userId, address, 
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
+		}
+		changeAddressTask = new AsyncChangeAddress(ChangeAddressActivity.this, userId, address,
 				postCode, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
+						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if(resultCode == 0){
@@ -120,14 +119,14 @@ public class ChangeAddressActivity extends BaseActivity implements OnClickListen
 	 * @param phone
 	 */
 	private void requestUserInfo(String userId,String phone){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncUserSelectOne userTask = new AsyncUserSelectOne(ChangeAddressActivity.this, userId, phone, "", new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);

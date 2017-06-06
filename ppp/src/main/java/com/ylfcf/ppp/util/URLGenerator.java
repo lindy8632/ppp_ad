@@ -15,14 +15,14 @@ public class URLGenerator {
 //	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
 	
 	//验证环境
-//	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
-//	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
+	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境
+	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 	
 	//测试环境
-	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
-	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
-	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+//	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//杨永豪开发环境
 //	private static final String API_DOMAIN_URL = "http://www.api.com";//API环境
@@ -54,6 +54,7 @@ public class URLGenerator {
 	public static final String FLOAT_RATE_URL = WAP_DOMAIN_URL + "/home/index/floatrate#app";//浮动利率的专题
 	public static final String ZQDZP_WAP_URL = WAP_DOMAIN_URL + "/home/index/mdlottery.html";//中秋大转盘活动的wap页面
 	public static final String XCFL_WAP_URL = WAP_DOMAIN_URL + "/home/index/qhb.html";//2017年新春抢红包红包专题
+	public static final String JUNE_ACTIVE_WAP_URL = WAP_DOMAIN_URL + "/home/index/JuneActive#app";//2017年6月份活动
 	public static final String SIGN_WAP_URL = WAP_DOMAIN_URL + "/home/index/qd";//签到活动专题
 	public static final String YQHY_WAP_URL = WAP_DOMAIN_URL + "/home/index/fxjh";//四月份邀请好友返现活动
 	public static final String HYFL02_WAP_URL = WAP_DOMAIN_URL + "/home/index/fuli2";//会员福利计划2期

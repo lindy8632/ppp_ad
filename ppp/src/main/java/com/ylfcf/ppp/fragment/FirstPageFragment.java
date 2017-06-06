@@ -320,8 +320,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 					intent = new Intent(mainActivity, BannerTopicActivity.class);
 					intent.putExtra("BannerInfo", info);
 					if (info.getArticle_id() != null
-							&& !"".equals(info.getArticle_id())
-							&& !"0".equals(info.getArticle_id())) {
+							&& !"".equals(info.getArticle_id())) {
 						startActivity(intent);
 					}
 				}else if("窗口页面".equals(info.getType())){
@@ -433,12 +432,10 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 		String userId = SettingsManager.getUserId(mainActivity.getApplicationContext());
 		if(userId != null && !"".equals(userId)){
 			//已登录
+			hytjBtn.setEnabled(false);
 			checkIsVerify("邀请有奖");
 		}else{
 			//未登录
-//			Intent intent = new Intent(MainFragmentActivity.this,LoginActivity.class);
-//			intent.putExtra("FLAG", "from_mainfragment_activity_shared");
-//			startActivity(intent);
 			hytjOnClickListener.hytjOnClick();
 		}
 	}
@@ -448,15 +445,25 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 	 * @param type “充值”,“提现”,"邀请有奖"
 	 */
 	private void checkIsVerify(final String type){
+		if(mainActivity.loadingDialog != null){
+			mainActivity.loadingDialog.show();
+		}
 		RequestApis.requestIsVerify(mainActivity, SettingsManager.getUserId(mainActivity.getApplicationContext()), new Inter.OnIsVerifyListener() {
 			@Override
 			public void isVerify(boolean flag, Object object) {
+				if(mainActivity.loadingDialog != null && mainActivity.loadingDialog.isShowing()){
+					mainActivity.loadingDialog.dismiss();
+				}
+				if("邀请有奖".equals(type)){
+					hytjBtn.setEnabled(true);
+					Intent yqyjIntent = new Intent(mainActivity,InvitateActivity.class);
+					yqyjIntent.putExtra("is_verify", flag);
+					startActivity(yqyjIntent);
+					return;
+				}
 				if(flag){
 					//用户已经实名
 //					checkIsBindCard(type);
-					Intent intent = new Intent(mainActivity,InvitateActivity.class);
-					intent.putExtra("is_verify", true);
-					startActivity(intent);
 				}else{
 					//用户没有实名
 					Intent intent = new Intent(mainActivity,UserVerifyActivity.class);

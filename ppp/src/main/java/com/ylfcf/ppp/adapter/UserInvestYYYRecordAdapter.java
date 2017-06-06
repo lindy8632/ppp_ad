@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +12,9 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 元月盈用户投资记录
@@ -119,7 +119,7 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_edit_white);
 		}
 		
-		viewHolder.firstTime.setText("首投日：" + info.getFirst_borrow_time().split(" ")[0]);
+		viewHolder.firstTime.setText("首投日: " + info.getFirst_borrow_time().split(" ")[0]);
 		int times = 0;//投资次数，大于0表示复投
 		long nowTime = System.currentTimeMillis();
 		long interestStartTime = 0l;//起息时间
@@ -135,22 +135,22 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			//复投
 			if(nowTime > interestStartTime){
 				//表示已经起息
-				viewHolder.nearEndTime.setText("最近到期日："+info.getInterest_end_time().split(" ")[0]);
+				viewHolder.nearEndTime.setText("最近到期日: "+info.getInterest_end_time().split(" ")[0]);
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}else{
-				viewHolder.nearEndTime.setText("最近到期日： — —");
+				viewHolder.nearEndTime.setText("最近到期日:  — —");
 				viewHolder.catCompactBtn.setEnabled(false);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
 			}
 		}else{
 			//首投
 			if(info.getInterest_start_time() == null || "".equals(info.getInterest_start_time()) || "0000-00-00 00:00:00".equals(info.getInterest_start_time())){
-				viewHolder.nearEndTime.setText("最近到期日： — —");
+				viewHolder.nearEndTime.setText("最近到期日:  — —");
 				viewHolder.catCompactBtn.setEnabled(false);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
 			}else{
-				viewHolder.nearEndTime.setText("最近到期日："+info.getInterest_end_time().split(" ")[0]);
+				viewHolder.nearEndTime.setText("最近到期日: "+info.getInterest_end_time().split(" ")[0]);
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
@@ -165,14 +165,26 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			}
 		} catch (Exception e) {
 		}
-		
-		viewHolder.nowMoney.setText(info.getInvest_money() + "元");
 		double interestMoneyD = 0d;
+		double investMoneyD = 0d;
+		double moneyD = 0d;
 		try {
 			interestMoneyD = Double.parseDouble(info.getInvest_interest());
 		} catch (Exception e) {
 		}
-		viewHolder.interestMoney.setText(Util.double2PointDouble(interestMoneyD) + "元");
+		try{
+			investMoneyD = Double.parseDouble(info.getInvest_money());
+			moneyD = Double.parseDouble(info.getMoney());
+		}catch (Exception e){
+
+		}
+		if("已赎回".equals(info.getReturn_status())){
+			viewHolder.nowMoney.setText("0.00元");
+			viewHolder.interestMoney.setText(Util.double2PointDouble(investMoneyD - moneyD) + "元");
+		}else{
+			viewHolder.nowMoney.setText(info.getInvest_money() + "元");
+			viewHolder.interestMoney.setText(Util.double2PointDouble(interestMoneyD) + "元");
+		}
 		double interestAddD = 0d;
 		try {
 			interestAddD = Double.parseDouble(info.getInterest_add());
@@ -183,7 +195,7 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			viewHolder.remark.setText("备注: — —");
 		}else{
 			viewHolder.remark.setVisibility(View.VISIBLE);
-			viewHolder.remark.setText("备注：首投加息" + info.getInterest_add() + "%");
+			viewHolder.remark.setText("备注: 首投加息" + info.getInterest_add() + "%");
 		}
 		if("投资中".equals(info.getReturn_status())){
 			boolean isReturn = Util.isReturnYYY(info);

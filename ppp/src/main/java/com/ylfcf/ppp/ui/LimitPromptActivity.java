@@ -1,23 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.adapter.LimitMoneyAdapter;
-import com.ylfcf.ppp.async.AsyncQuickBankList;
-import com.ylfcf.ppp.entity.BankInfo;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.InvestRecordInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.util.SettingsManager;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,11 +7,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.adapter.LimitMoneyAdapter;
+import com.ylfcf.ppp.async.AsyncQuickBankList;
+import com.ylfcf.ppp.entity.BankInfo;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.util.SettingsManager;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * ÏÞ¶îËµÃ÷

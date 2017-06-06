@@ -1,11 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.viewpagerindicator.CirclePageIndicator;
-
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,9 +7,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.ImageView.ScaleType;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.viewpagerindicator.CirclePageIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ∆∑≈∆ΩÈ…‹

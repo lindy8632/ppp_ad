@@ -153,6 +153,7 @@
     <orderEntry type="library" exported="" name="animated-vector-drawable-23.4.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.4.0" level="project" />
     <orderEntry type="library" exported="" name="umeng_social_shareboard" level="project" />
+    <orderEntry type="library" exported="" name="sun.misc.BASE64Decoder" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-23.4.0" level="project" />
     <orderEntry type="library" exported="" name="line-android-sdk-3.1.19" level="project" />
     <orderEntry type="library" exported="" name="umeng_shareboard_widget" level="project" />

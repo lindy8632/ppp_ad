@@ -1,9 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +30,9 @@ import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.text.ParseException;
+import java.util.Date;
 
 /**
  * 限时秒标项目介绍页面
@@ -55,11 +53,9 @@ public class ProductIntroXSMBActivity extends BaseActivity implements
 	private TextView topTitleTV;
 	private WebView webview;
 	private Button bidBtn;// 立即秒杀
-	private LoadingDialog loadingDialog;
 	private String loadURL = "";
 	private ProductInfo mProductInfo;
 	private AlertDialog.Builder builder = null; // 先得到构造器
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private LayoutInflater layoutInflater;
 	private InvestRecordInfo recordInfo;
 	
@@ -102,12 +98,9 @@ public class ProductIntroXSMBActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.yyyintro_activity);
-		mApp.addActivity(this);
 		recordInfo = (InvestRecordInfo) getIntent().getSerializableExtra("InvestRecordInfo");
 		builder = new AlertDialog.Builder(ProductIntroXSMBActivity.this,
 				R.style.Dialog_Transparent); // 先得到构造器
-		loadingDialog = new LoadingDialog(ProductIntroXSMBActivity.this,
-				"正在加载...", R.anim.loading);
 		layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		findView();
 	}
@@ -149,10 +142,10 @@ public class ProductIntroXSMBActivity extends BaseActivity implements
 			public void onProgressChanged(WebView view, int newProgress) {
 				if (newProgress == 100) {
 					// 网页加载完成
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				} else {
 					// 网页加载中...
-					loadingDialog.show();
+					mLoadingDialog.show();
 				}
 			}
 		});
@@ -380,11 +373,6 @@ public class ProductIntroXSMBActivity extends BaseActivity implements
 
 	/**
 	 * 秒标详情
-	 * 
-	 * @param reasonFlag
-	 *            自动刷新数据 or 通过按钮点击
-	 * @param isFirst
-	 *            是否首次请求
 	 */
 	private void requestXSMBDetails(String borrowStatus,final Enum flag) {
 		AsyncXSMBDetail xsmbTask = new AsyncXSMBDetail(

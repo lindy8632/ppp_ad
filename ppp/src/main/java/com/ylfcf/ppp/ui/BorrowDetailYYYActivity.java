@@ -1,12 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,7 +27,16 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import static com.ylfcf.ppp.util.SettingsManager.checkYYYJIAXI;
 
 /**
  * 元月盈---项目详情
@@ -65,7 +67,6 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 
 	public ProductInfo productInfo;
 	private ProjectInfo project = new ProjectInfo();// 项目信息
-	private LoadingDialog loadingDialog;
 	private InvestRecordInfo recordInfo = null;
 	
 	private Handler handler = new Handler(){
@@ -88,9 +89,6 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrow_details_yyy_activity);
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BorrowDetailYYYActivity.this, "正在加载...",
-				R.anim.loading);
 		recordInfo = (InvestRecordInfo) getIntent().getSerializableExtra("InvestRecordInfo");
 		findViews();
 		if(recordInfo == null){
@@ -104,7 +102,6 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 	
@@ -139,11 +136,6 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 		extraInterestLayout = (LinearLayout) findViewById(R.id.borrow_details_yyy_extra_interest_layout);
 		extraInterestText = (TextView) findViewById(R.id.borrow_details_yyy_extra_interest_text);
 		jxBtn = (TextView) findViewById(R.id.borrow_details_yyy_activity_jxbtn);
-		boolean isJiaxi = SettingsManager.checkYYYExpectInterest();
-		if(!isJiaxi){
-			//加息还没结束
-			jxBtn.setVisibility(View.VISIBLE);
-		}
 		jxBtn.setOnClickListener(this);
 	}
 	
@@ -178,9 +170,15 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 			extraRateF = Float.parseFloat(extraRate);
 		} catch (Exception e) {
 		}
-		if(extraRateF > 0){
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(productInfo.getAdd_time());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		if(checkYYYJIAXI(addDate) == 0){
 			extraInterestLayout.setVisibility(View.VISIBLE);
-			extraInterestText.setText("+"+extraRateF);
 		}else{
 			extraInterestLayout.setVisibility(View.GONE);
 		}
@@ -512,26 +510,25 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 	/**
 	 * 根据产品id获取产品详情
 	 * 
-	 * @param borrowId
 	 * @param borrowStatus
-	 * @param type 0表示从投资记录过来，1表示从首页过来。
 	 */
 	private void getProductDetailsById(String id, String borrowStatus,String moneyStatus) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncYYYProductInfo task = new AsyncYYYProductInfo(BorrowDetailYYYActivity.this,
 				id, borrowStatus, moneyStatus, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null){
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
 								productInfo = baseInfo.getProductPageInfo().getProductList().get(0);
+								productInfo.setBorrow_type("元月盈");
 								initData(productInfo);
 								parseProductCailiaoNomarkImg(productInfo);
 								parseProductCailiaoMarkImg(productInfo);

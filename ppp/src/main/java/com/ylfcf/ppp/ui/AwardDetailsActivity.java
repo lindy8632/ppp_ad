@@ -1,15 +1,14 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
 
 /**
  * ½±ÀøÃ÷Ï¸
@@ -33,7 +32,6 @@ public class AwardDetailsActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.award_details_activity);
-
 		findViews();
 	}
 
@@ -88,7 +86,10 @@ public class AwardDetailsActivity extends BaseActivity implements
 		default:
 			break;
 		}
-
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
 }

@@ -1,23 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncHDSignIsdaysigned;
-import com.ylfcf.ppp.async.AsyncMarchAddResult;
-import com.ylfcf.ppp.async.AsyncSystemNowTime;
-import com.ylfcf.ppp.async.AsyncXCFLActiveTime;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.SignResultInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +11,23 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncHDSignIsdaysigned;
+import com.ylfcf.ppp.async.AsyncMarchAddResult;
+import com.ylfcf.ppp.async.AsyncXCFLActiveTime;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.SignResultInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.Util;
+import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
+import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  * 签到专题页面
  * @author Mr.liu
@@ -52,11 +51,8 @@ public class SignTopicTempActivity extends BaseActivity implements OnClickListen
 	private Button endBtn;//活动结束
 	private Button signBtn;//签到按钮
 	private Button shareBtn;//分享按钮
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-	private LoadingDialog mLoadingDialog;
-	
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -95,7 +91,13 @@ public class SignTopicTempActivity extends BaseActivity implements OnClickListen
 		mLoadingDialog = new LoadingDialog(SignTopicTempActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
-	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		handler.removeCallbacksAndMessages(null);
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -189,7 +191,7 @@ public class SignTopicTempActivity extends BaseActivity implements OnClickListen
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(SignTopicTempActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,URLGenerator.SIGN_WAP_URL,"三月份签到活动");
+		popwindow.show(mainLayout,URLGenerator.SIGN_WAP_URL,"三月份签到活动",null,null);
 	}
 	
 	/**

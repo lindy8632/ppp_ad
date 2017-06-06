@@ -121,7 +121,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="@dimen/common_measure_20dp"
                 android:background="@null"
-                android:hint=" 请输入推荐码（选填）"
+                android:hint=" 请输入推荐人手机号（选填）"
                 android:maxLength="11"
                 android:singleLine="true"
                 android:textColor="@color/black"

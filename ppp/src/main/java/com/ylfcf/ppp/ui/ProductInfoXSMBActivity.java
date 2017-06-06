@@ -1,12 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -47,7 +40,13 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 限时秒标 项目信息
@@ -93,7 +92,6 @@ public class ProductInfoXSMBActivity extends BaseActivity implements
 	private ProjectInfo projectInfo;
 	private ProductInfo productInfo;
 	private InvestRecordInfo recordInfo;
-	private LoadingDialog loadingDialog;
 	private AlertDialog.Builder builder = null; // 先得到构造器
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private enum ReasonFlag {
@@ -147,10 +145,8 @@ public class ProductInfoXSMBActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrow_info_activity);
-		mApp.addActivity(this);
 		builder = new AlertDialog.Builder(ProductInfoXSMBActivity.this,
 				R.style.Dialog_Transparent); // 先得到构造器
-		loadingDialog = new LoadingDialog(ProductInfoXSMBActivity.this, "正在加载...", R.anim.loading);
 		Bundle bundle = getIntent().getBundleExtra("BUNDLE");
 		if(bundle != null){
 			productInfo = (ProductInfo) bundle.getSerializable("PRODUCT_INFO");
@@ -563,8 +559,6 @@ public class ProductInfoXSMBActivity extends BaseActivity implements
 	
 	/**
 	 * 显示弹出框  非VIP用户不能购买元月盈
-	 * @param type
-	 * @param msg
 	 */
 	private void showCanotInvestVIPDialog(){
 		View contentView = LayoutInflater.from(this)
@@ -802,15 +796,15 @@ public class ProductInfoXSMBActivity extends BaseActivity implements
 	 * @param guaranteeId
 	 */
 	private void requestAssociatedCompany(String loanId,String recommendId,String guaranteeId){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncAsscociatedCompany task = new AsyncAsscociatedCompany(ProductInfoXSMBActivity.this, loanId, recommendId, guaranteeId, 
 				new OnCommonInter(){
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -870,11 +864,6 @@ public class ProductInfoXSMBActivity extends BaseActivity implements
 	
 	/**
 	 * 秒标详情
-	 * 
-	 * @param reasonFlag
-	 *            自动刷新数据 or 通过按钮点击
-	 * @param isFirst
-	 *            是否首次请求
 	 */
 	private void requestXSMBDetails(String borrowStatus,final Enum flag) {
 		AsyncXSMBDetail xsmbTask = new AsyncXSMBDetail(

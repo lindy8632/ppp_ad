@@ -1,12 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -36,6 +29,12 @@ import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
+import java.util.Date;
 
 /**
  * 限时秒标 安全保障
@@ -71,7 +70,6 @@ public class ProductSafetyXSMBActivity extends BaseActivity implements
 	private ProductInfo productInfo;
 	private InvestRecordInfo recordInfo;
 	private AlertDialog.Builder builder = null; // 先得到构造器
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	// 请求请求原因
 	private enum ReasonFlag {
@@ -116,7 +114,6 @@ public class ProductSafetyXSMBActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.product_safety_activity);
-		mApp.addActivity(this);
 		builder = new AlertDialog.Builder(ProductSafetyXSMBActivity.this,
 				R.style.Dialog_Transparent); // 先得到构造器
 		Bundle bundle = getIntent().getBundleExtra("BUNDLE");
@@ -516,10 +513,6 @@ public class ProductSafetyXSMBActivity extends BaseActivity implements
 	/**
 	 * 秒标详情
 	 * 
-	 * @param reasonFlag
-	 *            自动刷新数据 or 通过按钮点击
-	 * @param isFirst
-	 *            是否首次请求
 	 */
 	private void requestXSMBDetails(String borrowStatus, final Enum flag) {
 		AsyncXSMBDetail xsmbTask = new AsyncXSMBDetail(

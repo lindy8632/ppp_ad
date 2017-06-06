@@ -1,22 +1,21 @@
 package com.ylfcf.ppp.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncUserSelectOne;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * 企业用户的账户设置页面
@@ -26,6 +25,8 @@ import android.widget.TextView;
 public class AccountSettingCompActivity extends BaseActivity implements
 			OnClickListener{
 	private final int REQUEST_GET_USERINFO_SUCCESS = 2601;
+	private final int REQUEST_GET_USERINFO_WHAT = 2602;
+
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 
@@ -43,10 +44,12 @@ public class AccountSettingCompActivity extends BaseActivity implements
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			switch (msg.what) {
+			case REQUEST_GET_USERINFO_WHAT:
+				requestUserInfo(SettingsManager.getUserId(getApplicationContext()),"");
+				break;
 			case REQUEST_GET_USERINFO_SUCCESS:
 				userInfo = (UserInfo) msg.obj;
 				break;
-
 			default:
 				break;
 			}
@@ -58,8 +61,8 @@ public class AccountSettingCompActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.account_setting_comp_activity);
-		requestUserInfo(SettingsManager.getUserId(getApplicationContext()),"");
 		findViews();
+		handler.sendEmptyMessage(REQUEST_GET_USERINFO_WHAT);
 	}
 
 	private void findViews() {

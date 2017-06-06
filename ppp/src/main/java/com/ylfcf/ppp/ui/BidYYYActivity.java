@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,10 +32,17 @@ import com.ylfcf.ppp.entity.UserRMBAccountInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
+import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 投资页面---元月盈
@@ -70,12 +72,11 @@ public class BidYYYActivity extends BaseActivity implements OnClickListener{
 	private TextView yjsyText;// 预计收益
 	private TextView yyyCompact;//元月盈借款协议
 	private CheckBox compactCB;
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	private ProductInfo mProductInfo;
 	private int moneyInvest = 0;
 	private Button investBtn;
-	private LoadingDialog loadingDialog;
-
 	private LinearLayout mainLayout;
 
 	private int limitInvest = 0;// 投资期限
@@ -122,9 +123,6 @@ public class BidYYYActivity extends BaseActivity implements OnClickListener{
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_yyy_activity);
 
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BidYYYActivity.this, "正在加载...",
-				R.anim.loading);
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
 		if (mProductInfo != null) {
@@ -147,7 +145,6 @@ public class BidYYYActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 
@@ -576,24 +573,19 @@ public class BidYYYActivity extends BaseActivity implements OnClickListener{
 		} catch (Exception e) {
 		}
 		float income = 0f;
-		boolean isIncreaseEnd = SettingsManager.checkYYYExpectInterest();
-		if(isIncreaseEnd){
-			//加息活动已经结束
-			income = (rateF + extraRateF) * investMoney * days / 36500;
+		int flag = -1;
+		try{
+			Date addDate = sdf.parse(mProductInfo.getAdd_time());
+			flag = SettingsManager.checkYYYJIAXI(addDate);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
+		if(flag == 0 && Constants.UserType.USER_NORMAL_PERSONAL.equals(SettingsManager.getUserType(BidYYYActivity.this))){
+			//加息活动正在进行中 只有普通用户才能参加
+			income = 7.0f * investMoney * days / 36500;
 		}else{
-			//加息活动还没结束
-			if(investMoney < 10000){
-				income = (rateF + extraRateF) * investMoney * days / 36500;
-			}else if(investMoney >= 10000 && investMoney < 50000){
-				extraRateF = 0.3f;
-				income = (rateF + extraRateF) * investMoney * days / 36500;
-			}else if(investMoney >= 50000 && investMoney < 200000){
-				extraRateF = 0.5f;
-				income = (rateF + extraRateF) * investMoney * days / 36500;
-			}else if(investMoney >= 200000){
-				extraRateF = 1f;
-				income = (rateF + extraRateF) * investMoney * days / 36500;
-			}
+			income = (rateF + extraRateF) * investMoney * days / 36500;
 		}
 		
 		DecimalFormat df = new java.text.DecimalFormat("#.00");
@@ -608,30 +600,18 @@ public class BidYYYActivity extends BaseActivity implements OnClickListener{
 
 	/**
 	 * 请求立即投资接口
-	 * 
-	 * @param borrowId
-	 * @param investUserId
-	 * @param money
-	 * @param bonusMoney
-	 *            元金币
-	 * @param investFrom
-	 * @param investFromSub
-	 * @param experienceCode
-	 *            体验金编号
-	 * @param investFromHost
-	 * @param merPriv
 	 */
 	private void requestInvest(String borrowId, String investUserId,
 			String money,String investFrom) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncYYYInvest asyncBorrowInvest = new AsyncYYYInvest(
 				BidYYYActivity.this, borrowId, investUserId, money,investFrom, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {

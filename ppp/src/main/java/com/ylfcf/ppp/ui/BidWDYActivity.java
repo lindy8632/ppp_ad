@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.SimpleDateFormat;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,7 +35,10 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 /**
  * 零存整取产品投资页面
  * @author Mr.liu
@@ -71,16 +69,13 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 	private ProductInfo mProductInfo;
 	private int moneyInvest = 0;//投资金额
 	private Button investBtn;
-	private LoadingDialog loadingDialog;
 
 	private LinearLayout mainLayout;
 	private View line1;// 分割线
 	private CheckBox cb;
 	private TextView compactText;//借款协议
 	private String borrowType = "";
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
-	//SettingsManager.getUserFromSub(getApplicationContext())
+
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -123,12 +118,8 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_wdy_activity);
 		
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BidWDYActivity.this, "正在加载...",
-				R.anim.loading);
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
-		
 		findViews();
 		initInvestBalance(mProductInfo);
 	}
@@ -143,7 +134,6 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 	
@@ -617,16 +607,16 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 	private void requestInvest(String borrowId, String investUserId,
 			String money, String coinMoney, String investFrom,
 			String redBagLogId,String couponLogId) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncWDYInvest asyncBorrowInvest = new AsyncWDYInvest(
 				BidWDYActivity.this, borrowId, investUserId, money, 
 				investFrom,coinMoney,redBagLogId, couponLogId,new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {

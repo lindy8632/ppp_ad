@@ -1,14 +1,5 @@
 package com.ylfcf.ppp.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.handmark.pulltorefresh.library.internal.Utils;
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.InvestRecordInfo;
-import com.ylfcf.ppp.ui.CompactActivity;
-import com.ylfcf.ppp.util.Util;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -20,6 +11,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.InvestRecordInfo;
+import com.ylfcf.ppp.ui.CompactActivity;
+import com.ylfcf.ppp.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 用户投资记录
@@ -137,7 +136,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 		} catch (Exception e) {
 		}
 		
-		viewHolder.status.setText("投资状态：" + info.getStatus());
+		viewHolder.status.setText("投资状态:" + info.getStatus());
 		viewHolder.catCompactBtn.setTag(info);
 		if("yzy".equals(fromWhere)){
 			if("新手标".equals(info.getBorrow_type())){
@@ -146,16 +145,16 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.borrowLogo.setVisibility(View.GONE);
 			}
 			if(info.getAdd_time() == null || "".equals(info.getAdd_time()) || "0000-00-00 00:00:00".equals(info.getAdd_time())){
-				viewHolder.startTime.setText("投标日期： — —");
+				viewHolder.startTime.setText("投标日期:  — —");
 			}else{
-				viewHolder.startTime.setText("投标日期：" + info.getAdd_time().split(" ")[0]);
+				viewHolder.startTime.setText("投标日期: " + info.getAdd_time().split(" ")[0]);
 			}
 			if(info.getEnd_time() == null || "".equals(info.getEnd_time()) || "0000-00-00 00:00:00".equals(info.getEnd_time())){
-				viewHolder.endTime.setText("到期时间： — —");
+				viewHolder.endTime.setText("到期时间:  — —");
 				viewHolder.catCompactBtn.setEnabled(false);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
 			}else{
-				viewHolder.endTime.setText("到期时间：" + info.getEnd_time().split(" ")[0]);
+				viewHolder.endTime.setText("到期时间: " + info.getEnd_time().split(" ")[0]);
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
@@ -195,16 +194,16 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			}
 		}else if("vip".equals(fromWhere)){
 			if(info.getInvest_start_time() == null || "".equals(info.getInvest_start_time()) || "0000-00-00 00:00:00".equals(info.getInvest_start_time())){
-				viewHolder.startTime.setText("投标日期： — —");
+				viewHolder.startTime.setText("投标日期:  — —");
 			}else{
-				viewHolder.startTime.setText("投标日期：" + info.getInvest_start_time().split(" ")[0]);
+				viewHolder.startTime.setText("投标日期: " + info.getInvest_start_time().split(" ")[0]);
 			}
 			if(info.getInvest_end_time() == null || "".equals(info.getInvest_end_time()) || "0000-00-00 00:00:00".equals(info.getInvest_end_time())){
-				viewHolder.endTime.setText("到期时间： — —");
+				viewHolder.endTime.setText("到期时间:  — —");
 				viewHolder.catCompactBtn.setEnabled(false);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
 			}else{
-				viewHolder.endTime.setText("到期时间：" + info.getInvest_end_time().split(" ")[0]);
+				viewHolder.endTime.setText("到期时间: " + info.getInvest_end_time().split(" ")[0]);
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
@@ -230,16 +229,16 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			}
 		}else if("srzx".equals(fromWhere)){
 			if(info.getInvest_time() == null || "".equals(info.getInvest_time()) || "0000-00-00 00:00:00".equals(info.getInvest_time())){
-				viewHolder.startTime.setText("投标日期： — —");
+				viewHolder.startTime.setText("投标日期:  — —");
 			}else{
-				viewHolder.startTime.setText("投标日期：" + info.getInvest_time().split(" ")[0]);
+				viewHolder.startTime.setText("投标日期: " + info.getInvest_time().split(" ")[0]);
 			}
 			if(info.getInterest_end_time() == null || "".equals(info.getInterest_end_time()) || "0000-00-00 00:00:00".equals(info.getInterest_end_time())){
-				viewHolder.endTime.setText("到期时间： — —");
+				viewHolder.endTime.setText("到期时间:  — —");
 				viewHolder.catCompactBtn.setEnabled(false);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
 			}else{
-				viewHolder.endTime.setText("到期时间：" + info.getInterest_end_time().split(" ")[0]);
+				viewHolder.endTime.setText("到期时间: " + info.getInterest_end_time().split(" ")[0]);
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
@@ -248,7 +247,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			viewHolder.remarkLayout.setVisibility(View.GONE);
 			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);
 			viewHolder.interestMoney.setText(info.getInterest() + "元");
-			viewHolder.status.setText("投资状态：" + info.getInvest_status());
+			viewHolder.status.setText("投资状态: " + info.getInvest_status());
 			//加息
 			double addRateD = 0d;
 			try {
@@ -262,16 +261,16 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			}
 		}else if("xsmb".equals(fromWhere)){
 			if(info.getInvest_time() == null || "".equals(info.getInvest_time()) || "0000-00-00 00:00:00".equals(info.getInvest_time())){
-				viewHolder.startTime.setText("投标日期： — —");
+				viewHolder.startTime.setText("投标日期:  — —");
 			}else{
-				viewHolder.startTime.setText("投标日期：" + info.getInvest_time().split(" ")[0]);
+				viewHolder.startTime.setText("投标日期: " + info.getInvest_time().split(" ")[0]);
 			}
 			if(info.getInterest_end_time() == null || "".equals(info.getInterest_end_time()) || "0000-00-00 00:00:00".equals(info.getInterest_end_time())){
-				viewHolder.endTime.setText("到期时间： — —");
+				viewHolder.endTime.setText("到期时间:  — —");
 				viewHolder.catCompactBtn.setEnabled(false);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
 			}else{
-				viewHolder.endTime.setText("到期时间：" + info.getInterest_end_time().split(" ")[0]);
+				viewHolder.endTime.setText("到期时间: " + info.getInterest_end_time().split(" ")[0]);
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
@@ -279,7 +278,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			viewHolder.addLayout.setVisibility(View.GONE);
 			viewHolder.remarkLayout.setVisibility(View.VISIBLE);
 			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);
-			viewHolder.status.setText("投资状态：" + info.getInvest_status());
+			viewHolder.status.setText("投资状态: " + info.getInvest_status());
 			int interestDays = 0;
 			try {
 				interestDays = Integer.parseInt(info.getInterest_days());

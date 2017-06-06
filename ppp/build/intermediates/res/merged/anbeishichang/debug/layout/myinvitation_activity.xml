@@ -81,46 +81,10 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/common_measure_20dp"
-        android:layout_marginRight="@dimen/common_measure_20dp"
-        android:layout_marginTop="@dimen/common_measure_20dp"
-        android:background="@drawable/style_rect_fillet_filling_blue2"
-        android:orientation="vertical"
-        android:padding="@dimen/common_measure_10dp"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/common_measure_5dp"
-                android:src="@drawable/prompt_logo2" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/common_measure_5dp"
-                android:text="“佣金”将在好友投资的标的起息后予以显示并按“预计到账时间”发放。"
-                android:textColor="@color/common_topbar_bg_color"
-                android:textSize="@dimen/common_measure_18dp" />
-        </LinearLayout>
-        
-
-        
-    </LinearLayout>
-
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/myinvitation_listview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:paddingBottom="@dimen/common_measure_30dp"
         android:layout_weight="1"
         android:cacheColorHint="#00000000"
         android:divider="@null"

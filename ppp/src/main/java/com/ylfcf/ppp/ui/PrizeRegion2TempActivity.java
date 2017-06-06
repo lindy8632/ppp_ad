@@ -1,15 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
@@ -50,7 +40,16 @@ import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 /**
  * 会员福利计划2期
  * @author Mr.liu
@@ -83,8 +82,7 @@ public class PrizeRegion2TempActivity extends BaseActivity implements OnClickLis
 	private View bottomView;//
 	private Button catMoreBtn,shareBtn;
 	private LayoutInflater mLayoutInflater;
-	private LoadingDialog mLoadingDialog;
-	
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -127,7 +125,6 @@ public class PrizeRegion2TempActivity extends BaseActivity implements OnClickLis
 		setContentView(R.layout.prize_region2_temp_activity);
 		systemTime = sdf.format(new Date());
 		mLayoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-		mLoadingDialog = new LoadingDialog(PrizeRegion2TempActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
 	
@@ -203,7 +200,13 @@ public class PrizeRegion2TempActivity extends BaseActivity implements OnClickLis
 			break;
 		}
 	}
-	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		handler.removeCallbacksAndMessages(null);
+	}
+
 	/**
 	 * 活动已结束，初始化布局
 	 */
@@ -296,7 +299,7 @@ public class PrizeRegion2TempActivity extends BaseActivity implements OnClickLis
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(PrizeRegion2TempActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,URLGenerator.HYFL02_WAP_URL,"会员福利二期");
+		popwindow.show(mainLayout,URLGenerator.HYFL02_WAP_URL,"会员福利二期",null,null);
 	}
 	
 	/**
@@ -560,7 +563,6 @@ public class PrizeRegion2TempActivity extends BaseActivity implements OnClickLis
 	/**
 	 * 判断今天是否已经领取过奖品。
 	 * @param position
-	 * @param giftId
 	 * @param userId
 	 */
 	private void requestIsGetGiftToday(final int position,final GiftInfo giftInfo,String userId){

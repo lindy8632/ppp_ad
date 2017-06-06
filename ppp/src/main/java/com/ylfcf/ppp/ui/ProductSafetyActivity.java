@@ -1,9 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -16,9 +12,9 @@ import android.text.Html.ImageGetter;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,9 +30,14 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
+import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Date;
 
 /**
  * 安全保障
@@ -62,7 +63,7 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 	private ProjectInfo projectInfo;
 	private ProductInfo productInfo;
 	private AlertDialog.Builder builder = null; // 先得到构造器
-	
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -109,9 +110,20 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 		
 		investBtn = (Button) findViewById(R.id.product_safety_activity_bidBtn);
 		investBtn.setOnClickListener(this);
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(productInfo.getAdd_time());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		if(productInfo != null){
 			if("未满标".equals(productInfo.getMoney_status())){
-				investBtn.setEnabled(true);
+				if(SettingsManager.checkYYYJIAXI(addDate)==0 && "元年鑫".equals(productInfo.getBorrow_type())&& Constants.UserType.USER_COMPANY.
+						equals(SettingsManager.getUserType(ProductSafetyActivity.this))){
+					investBtn.setEnabled(false);
+				}else{
+					investBtn.setEnabled(true);
+				}
 				investBtn.setText("立即投资");
 			}else{
 				investBtn.setEnabled(false);
@@ -130,7 +142,6 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 			beforeLayout.setVisibility(View.VISIBLE);
 			afterLayout.setVisibility(View.GONE);
 		}
-		
 		initData();
 	}
 	
@@ -252,7 +263,7 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 				}else if("vip".equals(productInfo.getBorrow_type())){
 					checkIsVip();
 				}else if(BorrowType.SUYING.equals(productInfo.getBorrow_type()) || BorrowType.BAOYING.equals(productInfo.getBorrow_type())
-							|| BorrowType.WENYING.equals(productInfo.getBorrow_type())){
+							|| BorrowType.WENYING.equals(productInfo.getBorrow_type()) || BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
 					checkIsVerify("政信贷投资");
 				}else{
 					//私人尊享
@@ -377,8 +388,6 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 	
 	/**
 	 * 显示弹出框  非VIP用户不能购买元月盈
-	 * @param type
-	 * @param msg
 	 */
 	private void showCanotInvestVIPDialog(){
 		View contentView = LayoutInflater.from(this)
@@ -434,9 +443,15 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 	 */
 	private void checkIsVerify(final String type){
 		investBtn.setEnabled(false);
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
+		}
 		RequestApis.requestIsVerify(ProductSafetyActivity.this, SettingsManager.getUserId(getApplicationContext()), new OnIsVerifyListener() {
 			@Override
 			public void isVerify(boolean flag, Object object) {
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
+				}
 				Intent intent = new Intent();
 				if(flag){
 					//用户已经实名，在这个页面只判断是否实名即可。不判断有没有绑卡
@@ -454,8 +469,8 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 						intent.putExtra("PRODUCT_INFO", productInfo);
 						intent.setClass(ProductSafetyActivity.this, BidSRZXActivity.class);
 					}
-					startActivity(intent);
 					investBtn.setEnabled(true);
+					startActivity(intent);
 					finish();
 				}else{
 					//用户没有实名

@@ -1,16 +1,12 @@
 package com.ylfcf.ppp.adapter;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
@@ -19,6 +15,9 @@ import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.widget.RoundProgressBar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 私人尊享产品列表的adapter
@@ -85,7 +84,7 @@ public class BorrowListSRZXAdapter extends ArrayAdapter<ProductInfo> {
 			viewHolder.roundProgressBar = (RoundProgressBar)convertView.findViewById(R.id.bid_item_roundbar);
 			viewHolder.angleImg = (ImageView)convertView.findViewById(R.id.bid_item_angle);
 			viewHolder.progressTV = (TextView)convertView.findViewById(R.id.bid_item_progresstv);
-			viewHolder.extraInterestLayout = (LinearLayout) convertView.findViewById(R.id.bid_item_extra_interest_layout);
+			viewHolder.extraInterestLayout = (RelativeLayout) convertView.findViewById(R.id.bid_item_extra_interest_layout);
 			viewHolder.extraInterestText = (TextView) convertView.findViewById(R.id.bid_item_extra_interest_text);
 			viewHolder.nhsyText = (TextView) convertView.findViewById(R.id.bid_item_nhsy_text);
 			convertView.setTag(viewHolder);
@@ -176,7 +175,7 @@ public class BorrowListSRZXAdapter extends ArrayAdapter<ProductInfo> {
 		TextView progressTV;//进度条的信息
 		TextView nhsyText;//年化收益四个字在VIP产品中改成了“业绩比较基准”
 		RoundProgressBar roundProgressBar;
-		LinearLayout extraInterestLayout;// 加息的布局
+		RelativeLayout extraInterestLayout;// 加息的布局
 		TextView extraInterestText;//加息的text
 	}
 }

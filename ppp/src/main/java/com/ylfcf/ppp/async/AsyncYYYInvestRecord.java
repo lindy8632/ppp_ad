@@ -8,6 +8,7 @@ import com.ylfcf.ppp.parse.JsonParseInvestRecordList;
 import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
 import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.YLFLogger;
 
 /**
  * 元月盈的投资记录
@@ -47,11 +48,12 @@ public class AsyncYYYInvestRecord extends AsyncTaskBase{
 		String result = null;
 		try {
 			url = URLGenerator.getInstance()
-					.getYYYInvestRecordURL(borrowId, investStatus, investUserId, returnStatus, type, String.valueOf(pageNo), String.valueOf(pageSize));
+					.getYYYInvestRecordURL(borrowId, investStatus, investUserId,
+							returnStatus, type, String.valueOf(pageNo), String.valueOf(pageSize));
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}
-
+			YLFLogger.d("元月盈标的投资记录URL:--------------------"+url+"\n元月盈标的投资记录结果："+result);
 			if (result == null) {
 				result = BackType.FAILE;
 			} else {

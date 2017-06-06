@@ -18,7 +18,6 @@ import com.ylfcf.ppp.entity.ArticleInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -33,6 +32,8 @@ import java.util.Date;
  */
 public class ArticleDetailsActivity extends BaseActivity implements OnClickListener{
 	private static final int REFRESH_VIEW = 5800;
+	private static final int REQUEST_ARTICLE_WHAT = 5801;
+
 	private ArticleInfo mArticleInfo;
 	private String titleStr;
 	
@@ -40,8 +41,7 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 	private TextView topTitleTV;
 	
 	private TextView title,time,content;
-	private LoadingDialog loadingDialog;
-	
+
 	private  ArticleInfo articleInfoTemp;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
@@ -50,9 +50,12 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			switch (msg.what) {
+			case REQUEST_ARTICLE_WHAT:
+				requestArticle(mArticleInfo.getId());
+				break;
 			case REFRESH_VIEW:
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				CharSequence text = (CharSequence) msg.obj;
 				title.setText(articleInfoTemp.getTitle());
@@ -77,10 +80,9 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 		Bundle bundle = getIntent().getBundleExtra("bundle");
 		titleStr = bundle.getString("title");
 		mArticleInfo = (ArticleInfo) bundle.getSerializable("ARTICLE_INFO");
-		loadingDialog = new LoadingDialog(ArticleDetailsActivity.this, "ÕýÔÚ¼ÓÔØ...", R.anim.loading);
 		findViews();
 		if(mArticleInfo != null){
-			requestArticle(mArticleInfo.getId());
+			handler.sendEmptyMessage(REQUEST_ARTICLE_WHAT);
 		}
 	}
 
@@ -156,8 +158,8 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 	}
 	
 	private void requestArticle(String id){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncArticle articleTask = new AsyncArticle(ArticleDetailsActivity.this, id,new OnCommonInter() {
 			@Override
@@ -180,7 +182,6 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 		case R.id.common_topbar_left_layout:
 			finish();
 			break;
-
 		default:
 			break;
 		}

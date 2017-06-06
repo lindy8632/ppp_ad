@@ -21,22 +21,18 @@ import com.ylfcf.ppp.async.AsyncCheckDealPwd;
 import com.ylfcf.ppp.async.AsyncCompApplyCash;
 import com.ylfcf.ppp.async.AsyncCompUserSelectOne;
 import com.ylfcf.ppp.async.AsyncSMSRegiste;
-import com.ylfcf.ppp.async.AsyncUserBankCard;
 import com.ylfcf.ppp.async.AsyncYiLianRMBAccount;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.SMSType;
 import com.ylfcf.ppp.entity.TaskDate;
-import com.ylfcf.ppp.entity.UserCardInfo;
 import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.entity.UserRMBAccountInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.inter.Inter.OnUserBankCardInter;
 import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.DealPwdErrorPopwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 /**
  * 企业用户申请提现
@@ -63,7 +59,6 @@ public class WithdrawCompActivity extends BaseActivity implements
 	private TextView withdrawCancel;// 提现申请撤销
 	private TextView withdrawPwdGetback;// 找回提现密码
 	private TextView smsPromptTV;// 短信验证码发送结果提示文字
-	private LoadingDialog loadingDialog;
 	private TextView promptText;
 
 	private String authnumSMSUser = "";// 用户输入的手机验证码
@@ -103,8 +98,6 @@ public class WithdrawCompActivity extends BaseActivity implements
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.withdraw_comp_activity);
 
-		loadingDialog = new LoadingDialog(WithdrawCompActivity.this, "正在加载...",
-				R.anim.loading);
 		findViews();
 		requestCompUserInfo(SettingsManager.getUserId(getApplicationContext()), "", "", "");
 	}
@@ -294,7 +287,8 @@ public class WithdrawCompActivity extends BaseActivity implements
 		AsyncCompApplyCash cashTask = new AsyncCompApplyCash(WithdrawCompActivity.this, userId, cashAccount, new OnCommonInter(){
 			@Override
 			public void back(BaseInfo baseInfo) {
-				loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing())
+					mLoadingDialog.dismiss();
 				if (baseInfo != null) {
 					int resultCode = SettingsManager
 							.getResultCode(baseInfo);
@@ -351,8 +345,8 @@ public class WithdrawCompActivity extends BaseActivity implements
 	 * @param dealPwd
 	 */
 	private void checkDealPwd(String userId, String dealPwd) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncCheckDealPwd dealPwdTask = new AsyncCheckDealPwd(
 				WithdrawCompActivity.this, userId, dealPwd, new OnCommonInter() {
@@ -365,12 +359,14 @@ public class WithdrawCompActivity extends BaseActivity implements
 								// 校验成功
 								handler.sendEmptyMessage(REQUEST_WITHDRAW_WHAT);
 							} else if (resultCode == -1) {
-								loadingDialog.dismiss();
+								if(mLoadingDialog != null && mLoadingDialog.isShowing())
+									mLoadingDialog.dismiss();
 								Util.toastShort(WithdrawCompActivity.this,
 										baseInfo.getMsg());
 							} else if (resultCode == -2) {
 								// 校验失败
-								loadingDialog.dismiss();
+								if(mLoadingDialog != null && mLoadingDialog.isShowing())
+									mLoadingDialog.dismiss();
 								showDealPwdErrorPopwindow(baseInfo.getMsg());
 							}
 						}

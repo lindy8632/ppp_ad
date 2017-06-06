@@ -57,10 +57,11 @@
 
     <string name="recharge_propmt">*充值最低1元起，每天低于1000元的充值不得超过2笔。\n*不收取手续费。\n*工商银行、招商银行和华夏银行的最低充值金额须大于2元，低于2元将导致充值失败。</string>
 
-    <string name="yuanmoney_rule1">1.元金币最高使用额度为投资本金的1%，可当本金使用。</string>
-    <string name="yuanmoney_rule2">2.元政盈所有产品均可使用元金币。</string>
-    <string name="yuanmoney_rule3">3.元金币如无特殊说明，不参加平台其他活动。</string>
-    <string name="yuanmoney_rule4">4.元金币有效期自领取日起一年有效。</string>
+    <string name="yuanmoney_rule1">1.元政盈系列产品(即定期理财产品)均可使用元金币；</string>
+    <string name="yuanmoney_rule2">2.元金币使用步骤：</string>
+    <string name="yuanmoney_rule3">(1)用户进入所投项目的页面，输入投资本金，系统将自动显示用户可用的元金币数量，默认最高可使用数量；\n(2)选择您想使用的元金币，及使用元金币的数量；\n(3)成功使用元金币投资后，
+    实际投资本金等于原投资本金减去元金币抵扣的金额；\n(4)元金币抵扣的金额根据不同标的、不同比例而定。</string>
+    <string name="yuanmoney_rule4">3.元金币应在载明的有效期内使用，过期作废。</string>
 
     <string name="withdraw_rule1">1.身份认证、银行卡均设置成功后，才能进行提现操作。</string>
     <string name="withdraw_rule2">2.预计到账时间为T+1个工作日，实际到账时间请以各个银行到账时间为准。</string>

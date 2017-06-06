@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,11 +32,15 @@ import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
+import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.RefreshLayout;
 import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 投资记录 -- 产品详情里面的投资记录 ---- 政信贷
@@ -59,7 +60,6 @@ public class ProductRecordActivity extends BaseActivity implements
 	private static final int REQUEST_INVEST_RECORD_SUCCESS = 1022;
 	private static final int REQUEST_INVEST_RECORD_NODATA = 1023; // 无数据
 
-	private BorrowDetailZXDActivity borrowDetailActivity;
 	private ListView recordListView;
 	private LayoutInflater layoutInflater;
 	private View headerView;
@@ -77,7 +77,6 @@ public class ProductRecordActivity extends BaseActivity implements
 	private String status = "";// 投资中
 	private int pageNo = 0;
 	private int pageSize = 50;
-	private LoadingDialog loadingDialog;
 	private boolean isRefresh = true;// 下拉刷新
 	private boolean isLoad = false;// 上拉加载更多
 	private boolean isFirst = true;
@@ -131,8 +130,6 @@ public class ProductRecordActivity extends BaseActivity implements
 		}
 		
 		layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-		loadingDialog = new LoadingDialog(ProductRecordActivity.this,
-				"正在加载...", R.anim.loading);
 		findViews();
 	}
 
@@ -166,9 +163,20 @@ public class ProductRecordActivity extends BaseActivity implements
 		recordListView = (ListView) findViewById(R.id.product_record_activity_listview);
 		recordListView.addHeaderView(headerView);
 		recordListView.addFooterView(footerView);
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(productInfo.getAdd_time());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		if(productInfo != null){
 			if("未满标".equals(productInfo.getMoney_status())){
-				investBtn.setEnabled(true);
+				if(SettingsManager.checkYYYJIAXI(addDate)==0 && "元年鑫".equals(productInfo.getBorrow_type())&&Constants.UserType.USER_COMPANY.
+						equals(SettingsManager.getUserType(ProductRecordActivity.this))){
+					investBtn.setEnabled(false);
+				}else{
+					investBtn.setEnabled(true);
+				}
 				investBtn.setText("立即投资");
 				nodataBtn.setVisibility(View.VISIBLE);
 			}else{
@@ -350,12 +358,22 @@ public class ProductRecordActivity extends BaseActivity implements
 	 */
 	private void checkIsVerify(final String type){
 		investBtn.setEnabled(false);
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
+		}
 		RequestApis.requestIsVerify(ProductRecordActivity.this, SettingsManager.getUserId(getApplicationContext()), new OnIsVerifyListener() {
 			@Override
 			public void isVerify(boolean flag, Object object) {
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
+				}
 				if(flag){
-					//用户已经实名
-					checkIsBindCard(type);
+					//用户已经实名 不判断有没有绑卡
+					investBtn.setEnabled(true);
+					Intent intent = new Intent();
+					intent.putExtra("PRODUCT_INFO", productInfo);
+					intent.setClass(ProductRecordActivity.this, BidZXDActivity.class);
+					startActivity(intent);
 				}else{
 					//用户没有实名
 					showMsgDialog(ProductRecordActivity.this, "实名认证", "请先实名认证！");
@@ -405,13 +423,11 @@ public class ProductRecordActivity extends BaseActivity implements
 	 * @param investUserId
 	 * @param borrowId
 	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getInvestRecordList(String investUserId, String borrowId,
 			String status, String isAddCoin) {
-		if (isFirst && loadingDialog != null) {
-			loadingDialog.show();
+		if (isFirst && mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 
 		AsyncInvestRecord asyncInvestRecord = new AsyncInvestRecord(
@@ -420,15 +436,14 @@ public class ProductRecordActivity extends BaseActivity implements
 					@Override
 					public void back(BaseInfo baseInfo) {
 						isFirst = false;
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
-								Message msg = handler
-										.obtainMessage(REQUEST_INVEST_RECORD_SUCCESS);
+								Message msg = handler.obtainMessage(REQUEST_INVEST_RECORD_SUCCESS);
 								msg.obj = baseInfo.getmInvestRecordPageInfo();
 								handler.sendMessage(msg);
 							} else {

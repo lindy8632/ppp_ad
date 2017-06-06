@@ -1,21 +1,13 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
 
-import cn.jpush.android.api.JPushInterface;
-
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
-import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.util.ImageLoaderManager;
 
-import android.app.Activity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -71,6 +63,21 @@ public class YLFApplication extends android.app.Application {
 			}
 		}
 		return mainActivity;
+	}
+
+	/**
+	 * 判断活动专区是否已存在
+	 * @return
+	 */
+	public boolean getActivitysRegionActivity(){
+		boolean flag = false;
+		for (Activity activity : activityList) {
+			if (activity instanceof ActivitysRegionActivity) {
+				flag = true;
+				break;
+			}
+		}
+		return flag;
 	}
 
 	/**

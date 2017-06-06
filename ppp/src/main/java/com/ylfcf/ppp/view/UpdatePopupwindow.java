@@ -125,8 +125,8 @@ public class UpdatePopupwindow extends PopupWindow implements OnClickListener {
 //			MarketUtils.launchAppDetail(context, "com.ylfcf.ppp", "");//跳转应用商店
 			Intent intent= new Intent();
 			intent.setAction("android.intent.action.VIEW");
-//			Uri content_url = Uri.parse("http://wap.ylfcf.com/home/index/android.html");
-            Uri content_url = Uri.parse("http://a.app.qq.com/o/simple.jsp?pkgname=com.ylfcf.ppp");
+			Uri content_url = Uri.parse("http://wap.ylfcf.com/home/index/android.html");
+//            Uri content_url = Uri.parse("http://a.app.qq.com/o/simple.jsp?pkgname=com.ylfcf.ppp");
 			intent.setData(content_url);
 			context.startActivity(intent);
 		} catch (Exception e) {

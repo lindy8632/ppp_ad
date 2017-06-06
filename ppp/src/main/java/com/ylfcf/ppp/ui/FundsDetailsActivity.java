@@ -18,6 +18,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsYXBInvestorListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.widget.LoadingDialog;
+
 /**
  * 资金明细
  * @author Administrator
@@ -30,14 +31,14 @@ public class FundsDetailsActivity extends BaseActivity implements OnClickListene
 	
 	private Button yxbBtn,dqlcBtn;
 	public LoadingDialog loadingDialog;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.funds_details_activity);
+		loadingDialog = mLoadingDialog;
 		fragmentManager = getSupportFragmentManager();
-		loadingDialog = new LoadingDialog(FundsDetailsActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
 

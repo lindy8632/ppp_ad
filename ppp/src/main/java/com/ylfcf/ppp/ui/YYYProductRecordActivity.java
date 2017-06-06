@@ -1,28 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.adapter.BorrowRecordsAdapter;
-import com.ylfcf.ppp.async.AsyncInvestRecord;
-import com.ylfcf.ppp.async.AsyncWDYInvestDetail;
-import com.ylfcf.ppp.async.AsyncWDYInvestRecord;
-import com.ylfcf.ppp.async.AsyncXSBIscanbuy;
-import com.ylfcf.ppp.async.AsyncYYYInvestRecord;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.InvestRecordInfo;
-import com.ylfcf.ppp.entity.InvestRecordPageInfo;
-import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
-import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
-import com.ylfcf.ppp.util.RequestApis;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
-import com.ylfcf.ppp.widget.RefreshLayout;
-import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,15 +10,33 @@ import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.adapter.BorrowRecordsAdapter;
+import com.ylfcf.ppp.async.AsyncWDYInvestRecord;
+import com.ylfcf.ppp.async.AsyncYYYInvestRecord;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.InvestRecordInfo;
+import com.ylfcf.ppp.entity.InvestRecordPageInfo;
+import com.ylfcf.ppp.entity.ProductInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
+import com.ylfcf.ppp.util.RequestApis;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.widget.RefreshLayout;
+import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 投资记录 -- 产品详情里面的投资记录 ---- 元月盈
@@ -77,7 +72,6 @@ public class YYYProductRecordActivity extends BaseActivity implements
 	private String status = "";// 投资中
 	private int pageNo = 0;
 	private int pageSize = 50;
-	private LoadingDialog loadingDialog;
 	private boolean isRefresh = true;// 下拉刷新
 	private boolean isLoad = false;// 上拉加载更多
 	private boolean isFirst = true;
@@ -90,7 +84,7 @@ public class YYYProductRecordActivity extends BaseActivity implements
 			switch (msg.what) {
 			case REQUEST_YYY_INVEST_RECORD_WHAT:
 				if (productInfo != null) {
-					getYYYInvestRecordList(productInfo.getId(), "", "", "", "用户投资");
+					getYYYInvestRecordList(productInfo.getId(), "", "", "", "");
 				}
 				break;
 			case REQUEST_WDY_INVEST_RECORD_WHAT:
@@ -136,8 +130,6 @@ public class YYYProductRecordActivity extends BaseActivity implements
 		}
 		
 		layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-		loadingDialog = new LoadingDialog(YYYProductRecordActivity.this,
-				"正在加载...", R.anim.loading);
 		findViews();
 	}
 
@@ -369,16 +361,11 @@ public class YYYProductRecordActivity extends BaseActivity implements
 	/**
 	 * 获取投资记录列表
 	 * 
-	 * @param investUserId
-	 * @param borrowId
-	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getYYYInvestRecordList(String borrowId, String investStatus,
 			String investUserId, String returnStatus,String type) {
-		if (isFirst && loadingDialog != null) {
-			loadingDialog.show();
+		if (isFirst && mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncYYYInvestRecord asyncInvestRecord = new AsyncYYYInvestRecord(
 				YYYProductRecordActivity.this, borrowId, investStatus, investUserId,
@@ -386,8 +373,8 @@ public class YYYProductRecordActivity extends BaseActivity implements
 					@Override
 					public void back(BaseInfo baseInfo) {
 						isFirst = false;
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager
@@ -413,21 +400,18 @@ public class YYYProductRecordActivity extends BaseActivity implements
 	/**
 	 * 稳定盈的投资记录
 	 * @param borrowId
-	 * @param userId
-	 * @param type
-	 * @param status
 	 */
 	private void getWDYInvestRecordList(String borrowId){
-		if (isFirst && loadingDialog != null) {
-			loadingDialog.show();
+		if (isFirst && mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncWDYInvestRecord task = new AsyncWDYInvestRecord(YYYProductRecordActivity.this, borrowId, "","","",pageNo, pageSize, 
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
 						isFirst = false;
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);

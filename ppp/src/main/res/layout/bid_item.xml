@@ -96,12 +96,20 @@
                         android:textColor="@color/orange_text"
                         android:textSize="@dimen/common_measure_16dp" />
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:id="@+id/bid_item_extra_interest_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal" 
                         android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/bid_item_tips_img"
+                            android:layout_width="@dimen/common_measure_83dp"
+                            android:layout_height="@dimen/common_measure_15dp"
+                            android:src="@drawable/borrow_vip_jx_tips"
+                            android:scaleType="fitCenter"
+                            android:visibility="gone"/>
 
                         <!-- 加息 -->
                         <TextView
@@ -118,12 +126,14 @@
                             android:layout_height="match_parent"
                             android:layout_marginRight="@dimen/common_measure_5dp"
                             android:layout_marginTop="@dimen/common_measure_3dp"
+                            android:layout_toRightOf="@+id/bid_item_extra_interest_text"
                             android:gravity="top"
                             android:singleLine="true"
                             android:text="%"
                             android:textColor="@color/orange_text"
-                            android:textSize="@dimen/common_measure_12dp" />
-                    </LinearLayout>
+                            android:textSize="@dimen/common_measure_12dp"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <TextView

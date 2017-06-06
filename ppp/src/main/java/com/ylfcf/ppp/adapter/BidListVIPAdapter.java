@@ -1,9 +1,5 @@
 package com.ylfcf.ppp.adapter;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +7,22 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.BorrowType;
 import com.ylfcf.ppp.entity.MoneyStatus;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.widget.RoundProgressBar;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * VIP产品列表
@@ -35,6 +36,7 @@ public class BidListVIPAdapter extends ArrayAdapter<ProductInfo> {
 
 	private List<ProductInfo> bidItems;
 	private Context context;
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public BidListVIPAdapter(Context context) {
 		super(context, RESOURCE_ID);
@@ -100,27 +102,28 @@ public class BidListVIPAdapter extends ArrayAdapter<ProductInfo> {
 					.findViewById(R.id.bid_vip_item_angle);
 			viewHolder.progressTV = (TextView) convertView
 					.findViewById(R.id.bid_vip_item_progresstv);
-			viewHolder.extraInterestLayout = (LinearLayout) convertView
+			viewHolder.extraInterestLayout = (RelativeLayout) convertView
 					.findViewById(R.id.bid_vip_item_extra_interest_layout);
 			viewHolder.extraInterestText = (TextView) convertView
 					.findViewById(R.id.bid_vip_item_extra_interest_text);
 			viewHolder.nhsyText = (TextView) convertView
 					.findViewById(R.id.bid_vip_item_nhsy_text);
+			viewHolder.jiaTipsImg = (ImageView)convertView
+					.findViewById(R.id.bid_vip_item_tips_img);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder.projectName.setText(info.getBorrow_name());
-
+		String investLimit = "";
 		// 投资期限
 		if (info.getInvest_horizon() == null
 				|| "".equals(info.getInvest_horizon())) {
-			viewHolder.timeLimit.setText(info.getInterest_period());
+			investLimit = info.getInterest_period();
 		} else {
-			String investHorString = info.getInvest_horizon().replace("天", "");
-			viewHolder.timeLimit.setText(investHorString);
+			investLimit = info.getInvest_horizon().replace("天", "");
 		}
-
+		viewHolder.timeLimit.setText(investLimit);
 		viewHolder.roundProgressBar.setTextIsDisplayable(false);// 不显示中间的字
 		double totalMoneyL = 0d;
 		int totalMoneyI = 0;
@@ -168,14 +171,27 @@ public class BidListVIPAdapter extends ArrayAdapter<ProductInfo> {
 			extraInterestD = Double.parseDouble(extraInterest);
 		} catch (Exception e) {
 		}
-		if (extraInterestD > 0) {
-			viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
-//			viewHolder.extraInterestText.setText("+"
-//					+ info.getAndroid_interest_rate());
-			viewHolder.extraInterestText.setText("0.2%加息+0.1%红包");
-		} else {
-			viewHolder.extraInterestLayout.setVisibility(View.GONE);
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(info.getAdd_time());
+		}catch (Exception e){
+
 		}
+		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && "365".equals(investLimit)){
+			viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
+			viewHolder.extraInterestText.setVisibility(View.GONE);
+			viewHolder.jiaTipsImg.setVisibility(View.VISIBLE);
+		}else{
+			if (extraInterestD > 0) {
+				viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
+				viewHolder.jiaTipsImg.setVisibility(View.GONE);
+				viewHolder.extraInterestText.setText("+"
+						+ info.getAndroid_interest_rate());
+			} else {
+				viewHolder.extraInterestLayout.setVisibility(View.GONE);
+			}
+		}
+
 		if (position == 0) {
 			convertView.setPadding(0, context.getResources()
 					.getDimensionPixelSize(R.dimen.common_measure_10dp), 0, 0);
@@ -197,6 +213,7 @@ public class BidListVIPAdapter extends ArrayAdapter<ProductInfo> {
 	 */
 	class ViewHolder {
 		ImageView angleImg;
+		ImageView jiaTipsImg;
 		TextView projectName;
 		TextView interestRateMin;// 年化收益最小利率
 		TextView middleText;// 两个利率之间的符号
@@ -206,7 +223,7 @@ public class BidListVIPAdapter extends ArrayAdapter<ProductInfo> {
 		TextView progressTV;// 进度条的信息
 		TextView nhsyText;// 年化收益四个字在VIP产品中改成了“业绩比较基准”
 		RoundProgressBar roundProgressBar;
-		LinearLayout extraInterestLayout;// 加息的布局
+		RelativeLayout extraInterestLayout;// 加息的布局
 		TextView extraInterestText;// 加息的text
 	}
 }

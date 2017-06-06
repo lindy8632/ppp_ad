@@ -1,12 +1,23 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncProductInfo;
@@ -26,26 +37,15 @@ import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * VIP产品 --- 项目详情
@@ -74,15 +74,15 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 	// private PagerSlidingTabStrip mPagerSlidingTabStrip;
 	private ViewPager mViewPager;
 	private LinearLayout introLayout, safeLayout, zizhiLayout,cjwtLayout, recordLayout;
-	private LinearLayout extraInterestLayout;
+	private RelativeLayout extraInterestLayout;
 	private TextView extraInterestText;
+	private ImageView jiaxiTipsImg;
 
 	public ProductInfo productInfo;
 	public InvestRecordInfo recordInfo;
 	private ProjectInfo project;// 项目信息
 	private OnProductInfoListener productInfoListener;
 	private OnProductSafetyListener productSafetyListener;
-	private LoadingDialog loadingDialog;
 	private AlertDialog.Builder builder = null; // 先得到构造器
 	
 	private Handler handler = new Handler(){
@@ -114,9 +114,6 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrow_details_vip_activity);
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BorrowDetailVIPActivity.this, "正在加载...",
-				R.anim.loading);
 		Intent intent = getIntent();
 		productInfo = (ProductInfo) intent.getSerializableExtra("PRODUCT_INFO");
 		recordInfo = (InvestRecordInfo) intent
@@ -136,7 +133,6 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 	
@@ -170,9 +166,10 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 		recordLayout.setOnClickListener(this);
 		cjwtLayout = (LinearLayout) findViewById(R.id.borrow_details_vip_activity_cjwt_layout);
 		cjwtLayout.setOnClickListener(this);
-		extraInterestLayout = (LinearLayout) findViewById(R.id.borrow_details_vip_extra_interest_layout);
+		extraInterestLayout = (RelativeLayout) findViewById(R.id.borrow_details_vip_extra_interest_layout);
 		extraInterestText = (TextView) findViewById(R.id.borrow_details_vip_extra_interest_text);
 		unitLimitText = (TextView) findViewById(R.id.borrow_details_vip_activity_unit);
+		jiaxiTipsImg = (ImageView) findViewById(R.id.borrow_details_vip_activity_tips_img);
 	}
 	
 	@Override
@@ -200,13 +197,6 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 			extraRateF = Float.parseFloat(extraRate);
 		} catch (Exception e) {
 		}
-		if(extraRateF > 0){
-			extraInterestLayout.setVisibility(View.VISIBLE);
-//			extraInterestText.setText("+"+extraRateF);
-			extraInterestText.setText("0.2%加息+0.1%红包");
-		}else{
-			extraInterestLayout.setVisibility(View.GONE);
-		}
 		// 投资期限
 		String horizon = productInfo.getInvest_horizon().replace("天", "");
 		double horizonInt = 0;
@@ -216,6 +206,26 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 			horizonInt = 0;
 		}
 		timeLimit.setText(horizon);
+
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(productInfo.getAdd_time());
+		}catch (Exception e){
+		}
+		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && "365".equals(horizon)){
+			extraInterestLayout.setVisibility(View.VISIBLE);
+			extraInterestText.setVisibility(View.GONE);
+			jiaxiTipsImg.setVisibility(View.VISIBLE);
+		}else{
+			if(extraRateF > 0){
+				extraInterestLayout.setVisibility(View.VISIBLE);
+				jiaxiTipsImg.setVisibility(View.GONE);
+				extraInterestText.setText("+"+extraRateF);
+			}else{
+				extraInterestLayout.setVisibility(View.GONE);
+			}
+		}
+
 //		if("vip".equals(productInfo.getBorrow_type())){
 //			timeLimit.setText((int) Math.rint(horizonInt / 30) + "");
 //			unitLimitText.setText("月");
@@ -308,22 +318,36 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 			extraRateF = Float.parseFloat(extraRate);
 		} catch (Exception e) {
 		}
-		if(extraRateF > 0){
-			extraInterestLayout.setVisibility(View.VISIBLE);
-//			extraInterestText.setText("+"+extraRateF);
-			extraInterestText.setText("0.2%加息+0.1%红包");
-		}else{
-			extraInterestLayout.setVisibility(View.GONE);
-		}
+
 		// 投资期限
 		String horizon = info.getInvest_horizon().replace("天", "");
 		int horizonInt = Integer.parseInt(horizon);
-		
+
 		borrowRate.setText(rate);
 		timeLimit.setText(horizon);
 		repayType1.setText(info.getRepay_way());
 		repayType2.setText(info.getRepay_way());
 		increaseMoney.setText(info.getUp_money()+"元");
+
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(productInfo.getAdd_time());
+		}catch (Exception e){
+
+		}
+		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && "365".equals(horizon)){
+			extraInterestLayout.setVisibility(View.VISIBLE);
+			extraInterestText.setVisibility(View.GONE);
+			jiaxiTipsImg.setVisibility(View.VISIBLE);
+		}else{
+			if(extraRateF > 0){
+				extraInterestLayout.setVisibility(View.VISIBLE);
+				jiaxiTipsImg.setVisibility(View.GONE);
+				extraInterestText.setText("+"+extraRateF);
+			}else{
+				extraInterestLayout.setVisibility(View.GONE);
+			}
+		}
 
 		double totalMoneyL = 0d;
 		double investedMoneyD = 0d;//已投资的钱
@@ -498,8 +522,6 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 	
 	/**
 	 * 显示弹出框  非VIP用户不能购买元月盈
-	 * @param type
-	 * @param msg
 	 */
 	private void showCanotInvestVIPDialog(){
 		View contentView = LayoutInflater.from(this)
@@ -696,15 +718,15 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
 				BorrowDetailVIPActivity.this, id, new OnProjectDetails() {
 					@Override
 					public void back(ProjectInfo projectInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (projectInfo != null) {
 							project = projectInfo;
@@ -729,8 +751,8 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 	 * @param borrowStatus
 	 */
 	private void getProductDetailsById(String borrowId, String borrowStatus,String plan) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncProductInfo task = new AsyncProductInfo(BorrowDetailVIPActivity.this,
 				borrowId, borrowStatus, plan, new OnCommonInter() {
@@ -744,10 +766,10 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 								initDataFromRecord(info);
 								getProjectDetails(info.getProject_id());
 							}else{
-								loadingDialog.dismiss();
+								mLoadingDialog.dismiss();
 							}
 						}else{
-							loadingDialog.dismiss();
+							mLoadingDialog.dismiss();
 						}
 					}
 				});

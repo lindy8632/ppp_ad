@@ -54,7 +54,7 @@
                         <!-- 年化收益 -->
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="horizontal" >
@@ -77,12 +77,20 @@
 
                             <!-- 加息 -->
 
-                            <LinearLayout
+                            <RelativeLayout
                                 android:id="@+id/borrow_details_vip_extra_interest_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:orientation="horizontal"
                                 android:visibility="gone" >
+
+                                <ImageView
+                                    android:id="@+id/borrow_details_vip_activity_tips_img"
+                                    android:layout_width="@dimen/common_measure_83dp"
+                                    android:layout_height="@dimen/common_measure_15dp"
+                                    android:src="@drawable/borrow_vip_jx_tips"
+                                    android:scaleType="fitCenter"
+                                    android:visibility="gone"/>
 
                                 <TextView
                                     android:id="@+id/borrow_details_vip_extra_interest_text"
@@ -102,7 +110,7 @@
                                     android:textColor="@color/orange_text"
                                     android:textSize="@dimen/common_measure_12dp" 
                                     android:visibility="gone"/>
-                            </LinearLayout>
+                            </RelativeLayout>
                         </LinearLayout>
 
                         <TextView

@@ -1,12 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,16 +7,23 @@ import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 元信宝项目介绍、产品要素、常见问题

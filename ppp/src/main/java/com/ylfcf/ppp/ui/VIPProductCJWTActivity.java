@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.widget.LoadingDialog;
 /**
  * VIP产品常见问题
  * @author Mr.liu
@@ -21,14 +20,12 @@ public class VIPProductCJWTActivity extends BaseActivity implements OnClickListe
 	private WebView wv;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
-	private LoadingDialog loadingDialog = null;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.vip_product_cjwt_activity);
-		loadingDialog = new LoadingDialog(VIPProductCJWTActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
 
@@ -47,10 +44,10 @@ public class VIPProductCJWTActivity extends BaseActivity implements OnClickListe
 			public void onProgressChanged(WebView view, int newProgress) {	
 				if(newProgress == 100){
 					//网页加载完成
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				}else{
 					//网页加载中...
-					loadingDialog.show();
+					mLoadingDialog.show();
 				}
 			}
 		});

@@ -28,7 +28,6 @@ import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 /**
  * 5月份每周一抢现金活动
@@ -48,8 +47,6 @@ public class LXJ5TempActivity extends BaseActivity implements View.OnClickListen
     private TextView dqjeText;//待抢金额
     private Button catDetailsBtn,getBtn;//查看礼品详情，领取绵羊奶粉
     private Button shareBtn;//分享
-
-    private LoadingDialog mLoadingDialog;
 
     private Handler handler = new Handler(){
         @Override
@@ -80,9 +77,7 @@ public class LXJ5TempActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.lxj5_temp_activity);
-        mApp.addActivity(this);
         findViews();
-        mLoadingDialog = new LoadingDialog(LXJ5TempActivity.this,"正在加载...",R.anim.loading);
     }
 
     private void findViews(){
@@ -150,6 +145,12 @@ public class LXJ5TempActivity extends BaseActivity implements View.OnClickListen
                 showFriendsSharedWindow();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
     }
 
     /**
@@ -372,7 +373,7 @@ public class LXJ5TempActivity extends BaseActivity implements View.OnClickListen
         int height = screen[1] / 5 * 2;
         InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(LXJ5TempActivity.this,
                 popView, width, height);
-        popwindow.show(mainLayout, URLGenerator.LXJ5_WAP_URL,"每周一抢现金");
+        popwindow.show(mainLayout, URLGenerator.LXJ5_WAP_URL,"每周一抢现金",null,null);
     }
 
     /**

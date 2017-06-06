@@ -2,13 +2,11 @@ package com.ylfcf.ppp.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.Display;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -21,15 +19,12 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncAPIQuery;
 import com.ylfcf.ppp.async.AsyncBanner;
 import com.ylfcf.ppp.common.FileUtil;
 import com.ylfcf.ppp.db.DBGesturePwdManager;
-import com.ylfcf.ppp.entity.AppInfo;
 import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.GesturePwdEntity;
-import com.ylfcf.ppp.inter.Inter.OnApiQueryBack;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.parse.JsonParseBanner;
 import com.ylfcf.ppp.util.ImageLoaderManager;
@@ -78,7 +73,6 @@ public class SplashActivity extends BaseActivity {
 		imageLoader = ImageLoaderManager.newInstance();
 		options = ImageLoaderManager.configurationOption(
 				R.drawable.splash_default, R.drawable.splash_default);
-		mApp.addActivity(this);
 		findViews();
 		handler.sendEmptyMessageDelayed(REQUEST_BANNER, 1500L);
 	}
@@ -153,8 +147,6 @@ public class SplashActivity extends BaseActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
-		handler.removeMessages(GOTO_MAINACTIVITY);
 		ImageLoaderManager.clearMemoryCache();
 		handler.removeCallbacksAndMessages(null);
 	}

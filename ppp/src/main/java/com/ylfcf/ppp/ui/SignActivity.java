@@ -1,34 +1,29 @@
 package com.ylfcf.ppp.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.adapter.SignAdapter;
+import com.ylfcf.ppp.entity.SignInfo;
+import com.ylfcf.ppp.entity.SignResultInfo;
+import com.ylfcf.ppp.util.Util;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.adapter.SignAdapter;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.SignInfo;
-import com.ylfcf.ppp.entity.SignResultInfo;
-import com.ylfcf.ppp.util.Util;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * Ç©µ½Ò³Ãæ

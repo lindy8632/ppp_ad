@@ -19,7 +19,6 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.CommonPopwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 /**
  * 用户实名认证页面
@@ -39,7 +38,6 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 	
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
-	private LoadingDialog loadingDialog;
 	private LinearLayout mainLayout;
 	
 	private String type = "";//充值、提现；表示是从充值流程还是提现流程跳转过来的。
@@ -52,7 +50,6 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 		if(bundle != null){
 			type = bundle.getString("bundle");
 		}
-		loadingDialog = new LoadingDialog(this, "实名信息认证中...", R.anim.loading);
 		findViews();
 		
 	}
@@ -129,19 +126,18 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 	/**
 	 * 用户实名认证
 	 * @param userId
-	 * @param bankCard
 	 * @param realName
 	 * @param idNumber
 	 */
 	private void requestUserVerify(String userId,String idNumber,String realName){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncBFVerify task = new AsyncBFVerify(UserVerifyActivity.this, userId, idNumber, realName, new OnCommonInter() {
 			@Override
 			public void back(BaseInfo baseInfo) {
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);

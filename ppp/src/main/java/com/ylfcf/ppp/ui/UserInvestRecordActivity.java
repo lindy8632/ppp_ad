@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnScrollChangeListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -24,15 +20,10 @@ import com.ylfcf.ppp.async.AsyncInvestSRZXUserRecord;
 import com.ylfcf.ppp.async.AsyncUserSelectOne;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
-import com.ylfcf.ppp.entity.TYJInfo;
-import com.ylfcf.ppp.entity.TYJPageInfo;
 import com.ylfcf.ppp.entity.UserInfo;
-import com.ylfcf.ppp.fragment.MyTYJNousedFragment;
-import com.ylfcf.ppp.fragment.MyTYJOverdueFragment;
-import com.ylfcf.ppp.fragment.MyTYJUsedFragment;
-import com.ylfcf.ppp.fragment.UserInvestWDYRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestSRZXRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestVIPRecordFragment;
+import com.ylfcf.ppp.fragment.UserInvestWDYRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestXSMBRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestYXBRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestYYYRecordFragment;
@@ -42,10 +33,12 @@ import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.inter.Inter.OnIsYXBInvestorListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 用户投标记录页面 包括元月盈、元政盈、元信宝、VIP产品以及预约产品、零存整取产品
@@ -70,8 +63,8 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 	private PagerSlidingTabStrip mPagerSlidingTabStrip;
 	private ViewPager mViewPager;
 	private View jianbianView;//viewpager右侧的阴影
-	public LoadingDialog loadingDialog;
 	private String fromWhere;
+	public LoadingDialog loadingDialog;
 	
 	private List<String> titlesList = new ArrayList<String>();
 
@@ -135,9 +128,8 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.userinvest_record_activity);
+		loadingDialog = mLoadingDialog;
 		fromWhere = getIntent().getStringExtra("from_where");
-		loadingDialog = new LoadingDialog(UserInvestRecordActivity.this, "正在加载...",
-				R.anim.loading);
 		initTitleList();
 		findViews();
 	}
@@ -389,9 +381,6 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 	 * 获取私人尊享投资记录列表
 	 * @param investUserId
 	 * @param borrowId
-	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getSRZXInvestRecordList(String investUserId,String borrowId){
 		AsyncInvestSRZXUserRecord asyncInvestRecord = new AsyncInvestSRZXUserRecord(this, investUserId, 

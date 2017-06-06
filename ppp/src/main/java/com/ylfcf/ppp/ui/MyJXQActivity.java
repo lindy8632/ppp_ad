@@ -42,7 +42,7 @@ public class MyJXQActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.my_jxq_layout);
-		loadingDialog = new LoadingDialog(MyJXQActivity.this, "е§дкМгди...",R.anim.loading);
+		loadingDialog = mLoadingDialog;
 		findViews();
 	}
 

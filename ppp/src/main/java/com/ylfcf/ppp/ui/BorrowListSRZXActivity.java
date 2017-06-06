@@ -1,25 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.adapter.BidListAdapter;
-import com.ylfcf.ppp.adapter.BorrowListSRZXAdapter;
-import com.ylfcf.ppp.async.AsyncAppointBorrowList;
-import com.ylfcf.ppp.async.AsyncProductPageInfo;
-import com.ylfcf.ppp.common.FileUtil;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.parse.JsonParseProductPageInfo;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.UMengStatistics;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,11 +9,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.adapter.BorrowListSRZXAdapter;
+import com.ylfcf.ppp.async.AsyncAppointBorrowList;
+import com.ylfcf.ppp.common.FileUtil;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.ProductInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.parse.JsonParseProductPageInfo;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 私人尊享产品列表页面
@@ -59,8 +56,7 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 	private List<ProductInfo> productList = new ArrayList<ProductInfo>();
 	private boolean isFirst = true;
 	private boolean isLoadMore = false;// 加载更多
-	private LoadingDialog loadingDialog;
-	
+
 	public Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -98,7 +94,6 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 		setContentView(R.layout.borrowlist_srzx_activity);
 		findViews();
 		
-		loadingDialog = new LoadingDialog(this, "正在加载...", R.anim.loading);
 		handler.sendEmptyMessage(REQUEST_PRODUCT_LIST_WHAT);
 	}
 	
@@ -214,12 +209,10 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 	/**
 	 * 私人尊享产品列表
 	 * 
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void requestProductPageInfo(String borrowStatus,String moneyStatus) {
 		if (isFirst) {
-			loadingDialog.show();
+			mLoadingDialog.show();
 		}
 
 		// 如果是第一次请求此接口，先加载缓存里面的数据，然后再请求接口刷新
@@ -249,8 +242,8 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 				isFirst,new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						isFirst = false;
 						if (baseInfo != null) {

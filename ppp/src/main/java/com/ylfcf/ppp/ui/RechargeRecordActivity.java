@@ -1,23 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.adapter.RechargeRecordAdapter;
-import com.ylfcf.ppp.adapter.RechargeRecordAdapter.OnRechargeRecordItemClickListener;
-import com.ylfcf.ppp.async.AsyncRechargeRecord;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.entity.RechargeRecordInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,11 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.adapter.RechargeRecordAdapter;
+import com.ylfcf.ppp.adapter.RechargeRecordAdapter.OnRechargeRecordItemClickListener;
+import com.ylfcf.ppp.async.AsyncRechargeRecord;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.RechargeRecordInfo;
+import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.util.SettingsManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 充值记录
@@ -52,7 +47,6 @@ public class RechargeRecordActivity extends BaseActivity implements OnClickListe
 	private TextView nodataTV;
 	private RechargeRecordAdapter rechargeAdapter;
 	private View topLayout;
-	private LoadingDialog loadingDialog;
 	private List<RechargeRecordInfo> rechargeRecordList = new ArrayList<RechargeRecordInfo>();
 	private boolean isLoadMore = false;// 加载更多
 	
@@ -91,11 +85,16 @@ public class RechargeRecordActivity extends BaseActivity implements OnClickListe
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.recharge_record_activity);
 		mLayoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-		loadingDialog = new LoadingDialog(RechargeRecordActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 		handler.sendEmptyMessage(REQUEST_RECHARGE_RECORD_WHAT);
 	}
-	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		handler.removeCallbacksAndMessages(null);
+	}
+
 	private void findViews(){
 		topLeftBtn = (LinearLayout) findViewById(R.id.common_topbar_left_layout);
 		topLeftBtn.setOnClickListener(this);
@@ -171,15 +170,15 @@ public class RechargeRecordActivity extends BaseActivity implements OnClickListe
 	 * @param userId
 	 */
 	private void getRechargeRecordList(String userId){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncRechargeRecord rechargeRecordTask = new AsyncRechargeRecord(RechargeRecordActivity.this, String.valueOf(page), 
 				String.valueOf(pageSize), userId, new OnCommonInter(){
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);

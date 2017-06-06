@@ -55,7 +55,6 @@ import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.HBListPopupwindow;
 import com.ylfcf.ppp.view.JXQListPopupwindow;
 import com.ylfcf.ppp.view.TYJListPopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -128,7 +127,6 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 	private int hbMoney = 0;//红包金额
 	private double jxqMoney = 0d;//加息券
 	private Button investBtn;
-	private LoadingDialog loadingDialog;
 	private UserYUANAccountInfo mUserYUANAccountInfo = null;// 元金币账户
 
 	private LinearLayout mainLayout;
@@ -181,7 +179,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 				investMoneyDescend();
 				break;
 			case REQUEST_JXQ_LIST_WHAT:
-				
+				requestJXQList(SettingsManager.getUserId(getApplicationContext()), "未使用");
 				break;
 			case REQUEST_JXQ_LIST_SUCCESS:
 				Date endDate = null;
@@ -219,9 +217,6 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.bid_zxd_activity);
 
 		usePromptList.add("元金币");
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BidZXDActivity.this, "正在加载...",
-				R.anim.loading);
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
 		
@@ -279,13 +274,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 						.getUserId(getApplicationContext()));
 			}
 		}, 1000L);
-		
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				requestJXQList(SettingsManager.getUserId(getApplicationContext()), "未使用");
-			}
-		}, 1100L);
+
+		handler.sendEmptyMessageDelayed(REQUEST_JXQ_LIST_WHAT,1100L);
 	}
 
 	private void updateUsePrompt(List<String> usePromptList){
@@ -313,7 +303,6 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 
@@ -329,7 +318,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		borrowBalanceTV = (TextView) findViewById(R.id.bid_zxd_activity_borrow_balance);
 		nhsyText = (TextView) findViewById(R.id.bid_zxd_activity_nhsy);
 		nhsyText.setText(mProductInfo.getInterest_rate()+"%");
-		if(SettingsManager.checkFloatRate(mProductInfo)){
+		if(SettingsManager.checkFloatRate(mProductInfo) && !"元年鑫".equals(mProductInfo.getBorrow_type())){
 			dtdzBtn = (TextView) findViewById(R.id.bid_zxd_activity_dtdz_btn);
 			dtdzBtn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG ); //下划线
 			dtdzBtn.getPaint().setAntiAlias(true);//抗锯齿
@@ -1078,8 +1067,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			String money, int bonusMoney, String investFrom,
 			String investFromSub, String experienceCode, String investFromHost,
 			String merPriv, String redBagLogId,String couponLogId) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncBorrowInvest asyncBorrowInvest = new AsyncBorrowInvest(
 				BidZXDActivity.this, borrowId, investUserId, money, bonusMoney,
@@ -1087,8 +1076,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 				merPriv, redBagLogId, couponLogId,new OnBorrowInvestInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {
@@ -1259,15 +1248,15 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 	 * @param useStatus
 	 */
 	private void requestJXQList(String userId, String useStatus) {
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncJXQPageInfo redbagTask = new AsyncJXQPageInfo(BidZXDActivity.this, userId,useStatus,
 				String.valueOf(1),String.valueOf(100), new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

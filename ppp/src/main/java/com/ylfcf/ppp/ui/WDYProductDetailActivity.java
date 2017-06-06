@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +7,10 @@ import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +24,9 @@ import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Œ»∂®”ØΩÈ…‹“≥√Ê -- –Ω”Øº∆ªÆ
@@ -114,7 +114,12 @@ public class WDYProductDetailActivity extends BaseActivity implements OnClickLis
 			}
 		}
 	}
-	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

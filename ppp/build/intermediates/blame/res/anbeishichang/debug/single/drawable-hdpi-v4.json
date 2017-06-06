@@ -208,6 +208,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\qxj_del_btn_logo.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\juneactive_first_bg.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\juneactive_first_bg.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
@@ -258,6 +262,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\my_account_logo_srzx.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\my_account_logo_srzx.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\brand_intro_bg2.jpg",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\brand_intro_bg2.jpg"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\first_page_fragment_zxd_logo1.png",
@@ -406,6 +414,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\total_invest_logo.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\total_invest_logo.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\yyy_details_jiaxi_logo.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\yyy_details_jiaxi_logo.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\loading8.png",
@@ -750,6 +762,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\gesture_node_wrong.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\gesture_node_wrong.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\share_logo_default.jpg",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\share_logo_default.jpg"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\checkbox_selected.png",
@@ -1452,6 +1468,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\qxj5_end_btn.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\borrow_vip_jx_tips.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\borrow_vip_jx_tips.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\yxb_promt_logo1.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\yxb_promt_logo1.png"
     },
@@ -1466,10 +1486,6 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\more_logo2.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\more_logo2.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\brand_intro_bg2.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\brand_intro_bg2.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\umeng_socialize_oauth_check_off.png",

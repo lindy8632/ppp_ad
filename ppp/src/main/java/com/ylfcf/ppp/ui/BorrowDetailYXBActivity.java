@@ -1,8 +1,20 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AlertDialog;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncYXBProduct;
@@ -13,23 +25,10 @@ import com.ylfcf.ppp.entity.YXBProductLogInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AlertDialog;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 元信宝投资详情页面
@@ -58,7 +57,6 @@ public class BorrowDetailYXBActivity extends BaseActivity implements
 	private TextView maxInvestMoneyText;// 最高认购额度
 	private YXBProductInfo yxbProductInfo;
 	private YXBProductLogInfo yxbProductLogInfo;
-	private LoadingDialog loadingDialog = null;
 	private AlertDialog.Builder builder = null; // 先得到构造器
 	private Handler handler = new Handler() {
 		@Override
@@ -91,8 +89,6 @@ public class BorrowDetailYXBActivity extends BaseActivity implements
 		setContentView(R.layout.borrow_details_yxb_activity);
 		builder = new AlertDialog.Builder(BorrowDetailYXBActivity.this); // 先得到构造器
 		findViews();
-		loadingDialog = new LoadingDialog(BorrowDetailYXBActivity.this,
-				"正在加载...", R.anim.loading);
 		handler.sendEmptyMessage(REQUEST_PRODUCT_WHAT);
 	}
 
@@ -271,8 +267,8 @@ public class BorrowDetailYXBActivity extends BaseActivity implements
 	 * @param status
 	 */
 	private void requestYXBProduct(String id, String status) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncYXBProduct productTask = new AsyncYXBProduct(
 				BorrowDetailYXBActivity.this, id, status, new OnCommonInter() {
@@ -285,10 +281,10 @@ public class BorrowDetailYXBActivity extends BaseActivity implements
 								yxbProductInfo = baseInfo.getYxbProductInfo();
 								handler.sendEmptyMessage(REQUEST_PRODUCT_SUCCESS);
 							} else {
-								loadingDialog.dismiss();
+								mLoadingDialog.dismiss();
 							}
 						} else {
-							loadingDialog.dismiss();
+							mLoadingDialog.dismiss();
 						}
 					}
 				});
@@ -307,8 +303,8 @@ public class BorrowDetailYXBActivity extends BaseActivity implements
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

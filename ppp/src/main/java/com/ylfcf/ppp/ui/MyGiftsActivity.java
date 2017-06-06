@@ -29,7 +29,6 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.LotteryDetailPopwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.RefreshLayout;
 import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
 
@@ -65,8 +64,6 @@ public class MyGiftsActivity extends BaseActivity implements OnClickListener{
 	
 	private int pageNo = 0;
 	private int pageSize = 20;
-	
-	private LoadingDialog loadingDialog = null;
 	private List<PrizeInfo> prizeTotalList = new ArrayList<PrizeInfo>();
 	
 	private boolean isLoadMore = false;
@@ -120,7 +117,6 @@ public class MyGiftsActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.my_gifts_layout);
-		loadingDialog = new LoadingDialog(MyGiftsActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 		handler.sendEmptyMessage(REQUEST_PRIZELIST_WHAT);
 	}
@@ -291,15 +287,15 @@ public class MyGiftsActivity extends BaseActivity implements OnClickListener{
 	 * @param source
 	 */
 	private void requestPrizeList(String userId,String source){
-		if(loadingDialog != null && isFrist){  
-			loadingDialog.show();
+		if(mLoadingDialog != null && isFrist){
+			mLoadingDialog.show();
 		}
 		AsyncPrizeList prizeListTask = new AsyncPrizeList(MyGiftsActivity.this, userId, String.valueOf(pageNo), String.valueOf(pageSize), source,"",
 				new OnCommonInter(){
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null){
+							mLoadingDialog.dismiss();
 						}
 						isFrist = false;
 						if(baseInfo != null){
@@ -385,8 +381,8 @@ public class MyGiftsActivity extends BaseActivity implements OnClickListener{
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -404,7 +400,6 @@ public class MyGiftsActivity extends BaseActivity implements OnClickListener{
 	/**
 	 * 有券码的礼品是否已经领取过
 	 * @param position
-	 * @param id 券的id
 	 */
 	private void requestGiftCode(final int position,String giftid){
 		AsyncGiftCode giftCodeTask = new AsyncGiftCode(MyGiftsActivity.this, "", giftid,

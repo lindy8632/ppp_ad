@@ -1,15 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.entity.ProjectInfo;
-import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
-import com.ylfcf.ppp.util.RequestApis;
-import com.ylfcf.ppp.util.SettingsManager;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,16 +7,25 @@ import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.ProductInfo;
+import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
+import com.ylfcf.ppp.util.RequestApis;
+import com.ylfcf.ppp.util.SettingsManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 元月盈的产品详情页面
@@ -93,6 +92,15 @@ public class YYYProductDetailActivity extends BaseActivity implements OnClickLis
 		cpxqListview.addHeaderView(headerView);
 		cpxqListview.addFooterView(footerView);
 		cpxqListview.setAdapter(new ProductElementAdapter(YYYProductDetailActivity.this));
+		if(mProductInfo != null){
+			if("未满标".equals(mProductInfo.getMoney_status())){
+				bidBtn.setEnabled(true);
+				bidBtn.setText("立即投资");
+			}else{
+				bidBtn.setEnabled(false);
+				bidBtn.setText("投资结束");
+			}
+		}
 	}
 	
 	@Override

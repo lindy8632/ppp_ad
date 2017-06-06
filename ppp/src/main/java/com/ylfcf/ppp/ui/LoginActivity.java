@@ -26,7 +26,6 @@ import com.ylfcf.ppp.util.Constants.UserType;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 /**
  * 登录
  * @author Mr.liu
@@ -59,8 +58,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
     private String pwdCompany = "";
     
     private String fromFlag = null;
-    private LoadingDialog loadingDialog;
-    
+
     private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -155,7 +153,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.login_activity);
 		fromFlag = getIntent().getStringExtra("FLAG");
-		loadingDialog = new LoadingDialog(LoginActivity.this, "正在登录...", R.anim.loading);
 		findViews();
 	}
 	
@@ -385,15 +382,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	 * @param pwd
 	 */
 	private void requestLogin(String phone,String pwd){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		
 		AsyncLogin loginTask = new AsyncLogin(LoginActivity.this, phone, pwd, new OnLoginInter() {
 			@Override
 			public void back(BaseInfo baseInfo) {
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				int resultCode = SettingsManager.getResultCode(baseInfo);
 				if(resultCode == 0){
@@ -437,14 +434,14 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	 * @param password
 	 */
 	private void requestCompLogin(String username,String password){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncCompLogin loginTask = new AsyncCompLogin(LoginActivity.this, username, password, 
 				new OnCommonInter(){
 					@Override
 					public void back(final BaseInfo baseInfo) {
-						loadingDialog.dismiss();
+						mLoadingDialog.dismiss();
 						if(baseInfo == null){
 							Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
 							msg.obj = "您的网络不给力";

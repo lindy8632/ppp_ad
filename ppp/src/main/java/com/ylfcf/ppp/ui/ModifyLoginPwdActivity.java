@@ -1,18 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.async.AsyncUpdateUserInfo;
-import com.ylfcf.ppp.async.AsyncUserSelectOne;
-import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.UserInfo;
-import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
-import com.ylfcf.ppp.inter.Inter.OnUpdateUserInfoInter;
-import com.ylfcf.ppp.util.Constants.UserType;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
-import android.media.audiofx.BassBoost.Settings;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -22,9 +9,18 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncUpdateUserInfo;
+import com.ylfcf.ppp.async.AsyncUserSelectOne;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.UserInfo;
+import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
+import com.ylfcf.ppp.inter.Inter.OnUpdateUserInfoInter;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.Util;
 
 /**
  * 修改登录密码
@@ -43,15 +39,12 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 	private TextView pwdPrompt;
 	private Button cmpBtn;
 	private UserInfo userInfo;
-	private LoadingDialog loadingDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.modify_pwd_activity);
-		loadingDialog = new LoadingDialog(ModifyLoginPwdActivity.this,
-				"正在加载...", R.anim.loading);
 		userInfo = (UserInfo) getIntent().getSerializableExtra("USERINFO");
 
 		findViews();
@@ -148,8 +141,8 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 	}
 
 	private void requestModifyPwd(String userId, String newPwd, String phone,final String initPwd) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncUpdateUserInfo task = new AsyncUpdateUserInfo(
 				ModifyLoginPwdActivity.this, userId, newPwd, phone, "", "", "",
@@ -196,8 +189,8 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 				new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncCheckDealPwd;
@@ -34,9 +33,7 @@ import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
-import com.ylfcf.ppp.view.CommonPopwindow;
 import com.ylfcf.ppp.view.DealPwdErrorPopwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 /**
  * 账户提现
@@ -61,7 +58,6 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 	private TextView withdrawCancel;//提现申请撤销
 	private TextView withdrawPwdGetback;//找回提现密码
 	private TextView smsPromptTV;//短信验证码发送结果提示文字
-	private LoadingDialog loadingDialog;
 	private TextView promptText;
 	
 	private String authnumSMSUser = "";//用户输入的手机验证码
@@ -98,7 +94,6 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.withdraw_activity);
 		
-		loadingDialog = new LoadingDialog(WithdrawActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 		requestUserVerify(SettingsManager.getUserId(getApplicationContext()), "宝付");
 	}
@@ -276,7 +271,8 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						loadingDialog.dismiss();
+						if(mLoadingDialog != null)
+						mLoadingDialog.dismiss();
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if(resultCode == 0){
@@ -300,11 +296,13 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 	 * @param type
 	 */
 	private void requestUserVerify(String userId,String type){
-		loadingDialog.show();
+		if(mLoadingDialog != null)
+		mLoadingDialog.show();
 		AsyncUserBankCard bankcardTask = new AsyncUserBankCard(WithdrawActivity.this, userId, type, new OnUserBankCardInter(){
 			@Override
 			public void back(BaseInfo info) {
-				loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing())
+					mLoadingDialog.dismiss();
 				if(info != null){
 					int resultCode = SettingsManager.getResultCode(info);
 					if(resultCode == 0){
@@ -324,8 +322,8 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 	 * @param dealPwd
 	 */
 	private  void checkDealPwd(String userId,String dealPwd){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncCheckDealPwd dealPwdTask = new AsyncCheckDealPwd(WithdrawActivity.this, userId, dealPwd, new OnCommonInter() {
 			@Override
@@ -336,11 +334,13 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 						//校验成功
 						handler.sendEmptyMessage(REQUEST_WITHDRAW_WHAT);
 					}else if(resultCode == -1){
-						loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing())
+							mLoadingDialog.dismiss();
 						Util.toastShort(WithdrawActivity.this, baseInfo.getMsg());
 					}else if(resultCode == -2){
 						//校验失败
-						loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing())
+							mLoadingDialog.dismiss();
 						showDealPwdErrorPopwindow(baseInfo.getMsg());
 					}
 				}

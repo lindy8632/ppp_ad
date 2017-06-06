@@ -1,12 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.fragment.CommQuesFragment;
-import com.ylfcf.ppp.fragment.InformationFragment;
-import com.ylfcf.ppp.fragment.NewsFragment;
-import com.ylfcf.ppp.fragment.NoticeFragment;
-import com.ylfcf.ppp.ui.ArticleListActivity.MyPagerAdapter;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,12 +7,15 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.fragment.CommQuesFragment;
 
 /**
  * 常见问题

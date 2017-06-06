@@ -7,7 +7,7 @@ import android.util.Log;
  *
  */
 public class YLFLogger {
-	private static final boolean DEBUG = true;
+	private static final boolean DEBUG = false;
 
 	/**
 	 * 运行时日志，打包之后不会显示

@@ -13,7 +13,7 @@
     
     <ImageView 
         android:id="@+id/lxfx_popwindow_delete_btn"
-        android:layout_width="@dimen/common_measure_50dp"
+        android:layout_width="@dimen/common_measure_100dp"
         android:layout_height="@dimen/common_measure_100dp"
         android:layout_marginTop="@dimen/common_measure_300dp"
         android:layout_marginRight="@dimen/common_measure_40dp"

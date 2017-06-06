@@ -1,13 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,8 +9,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
@@ -36,10 +30,19 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
+import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 政信贷-0-项目详情
@@ -69,16 +72,16 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	// private PagerSlidingTabStrip mPagerSlidingTabStrip;
 	private ViewPager mViewPager;
 	private LinearLayout introLayout, safeLayout, zizhiLayout, recordLayout;
-	private LinearLayout extraInterestLayout;
+	private RelativeLayout extraInterestLayout;
 	private TextView extraInterestText;
+	private ImageView jiaxiTipsImg;
 
 	public ProductInfo productInfo;
 	public InvestRecordInfo recordInfo;
 	private ProjectInfo project;// 项目信息
 	private OnProductInfoListener productInfoListener;
 	private OnProductSafetyListener productSafetyListener;
-	private LoadingDialog loadingDialog;
-	
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -88,7 +91,6 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 				int progress_ = (Integer) msg.obj;
 				progressbarIncrease(progress_);
 				break;
-
 			default:
 				break;
 			}
@@ -108,9 +110,6 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 		super.onCreate(savedInstanceState);
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrow_details_zxd_activity);
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BorrowDetailZXDActivity.this, "正在加载...",
-				R.anim.loading);
 		Intent intent = getIntent();
 		productInfo = (ProductInfo) intent.getSerializableExtra("PRODUCT_INFO");
 		recordInfo = (InvestRecordInfo) intent
@@ -128,7 +127,6 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 	
@@ -162,25 +160,46 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 		zizhiLayout.setOnClickListener(this);
 		recordLayout = (LinearLayout) findViewById(R.id.borrow_details_activity_record_layout);
 		recordLayout.setOnClickListener(this);
-		extraInterestLayout = (LinearLayout) findViewById(R.id.borrow_details_zxd_extra_interest_layout);
+		extraInterestLayout = (RelativeLayout) findViewById(R.id.borrow_details_zxd_extra_interest_layout);
 		extraInterestText = (TextView) findViewById(R.id.borrow_details_zxd_extra_interest_text);
+		jiaxiTipsImg = (ImageView) findViewById(R.id.borrow_details_zxd_activity_tips_img);
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
+		initBidBtnStatus(productInfo);
 	}
 
-	int biteIntFromProduct = 0;
-	private void initDataFromProductList() {
-		initInvestBalance(productInfo);
-		if("未满标".equals(productInfo.getMoney_status())){
-			bidBtn.setEnabled(true);
+	private void initBidBtnStatus(ProductInfo info){
+		if(info == null){
+			return;
+		}
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(info.getAdd_time());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		if("未满标".equals(info.getMoney_status())){
+			if(SettingsManager.checkYYYJIAXI(addDate) == 0 && "元年鑫".equals(info.getBorrow_type())&& Constants.UserType.USER_COMPANY.
+					equals(SettingsManager.getUserType(BorrowDetailZXDActivity.this))){
+				//VIP和企业用户
+				bidBtn.setEnabled(false);
+			}else{
+				bidBtn.setEnabled(true);
+			}
 			bidBtn.setText("立即投资");
 		}else{
 			bidBtn.setEnabled(false);
 			bidBtn.setText("投资已结束");
 		}
+	}
+
+	int biteIntFromProduct = 0;
+	private void initDataFromProductList() {
+		initInvestBalance(productInfo);
+		initBidBtnStatus(productInfo);
 		borrowName.setText(productInfo.getBorrow_name());
 
 		// 年化利率
@@ -191,12 +210,28 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 			extraRateF = Float.parseFloat(extraRate);
 		} catch (Exception e) {
 		}
-		if(extraRateF > 0){
-			extraInterestLayout.setVisibility(View.VISIBLE);
-			extraInterestText.setText("+"+extraRateF);
-		}else{
-			extraInterestLayout.setVisibility(View.GONE);
+
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(productInfo.getAdd_time());
+		}catch (Exception e){
+
 		}
+		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
+			extraInterestLayout.setVisibility(View.VISIBLE);
+			extraInterestText.setVisibility(View.GONE);
+			jiaxiTipsImg.setVisibility(View.VISIBLE);
+		}else{
+			if (extraRateF > 0) {
+				extraInterestLayout.setVisibility(View.VISIBLE);
+				jiaxiTipsImg.setVisibility(View.GONE);
+				extraInterestText.setText("+"
+						+ productInfo.getAndroid_interest_rate());
+			} else {
+				extraInterestLayout.setVisibility(View.GONE);
+			}
+		}
+
 		// 投资期限
 		String horizon = "";
 		if(productInfo.getInvest_horizon() == null || "".equals(productInfo.getInvest_horizon())){
@@ -220,7 +255,7 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 		} catch (Exception e) {
 		}
 		if(SettingsManager.checkFloatRate(productInfo) && (BorrowType.SUYING.equals(productInfo.getBorrow_type()) || BorrowType.BAOYING.equals(productInfo.getBorrow_type())
-				|| BorrowType.WENYING.equals(productInfo.getBorrow_type()))){
+				|| BorrowType.WENYING.equals(productInfo.getBorrow_type()) || BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type()))){
 			if(productInfo.getInterest_period().contains("365")){
 				borrowRateMin.setVisibility(View.GONE);
 				borrowRateMiddle.setVisibility(View.GONE);
@@ -282,16 +317,9 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	int biteIntFromRecord = 0;
 	private void initDataFromRecord(ProductInfo info) {
 		initInvestBalance(info);
+		initBidBtnStatus(info);
 		productInfo = info;
-		if("未满标".equals(info.getMoney_status())){
-			bidBtn.setEnabled(true);
-			bidBtn.setText("立即投资");
-		}else{
-			bidBtn.setEnabled(false);
-			bidBtn.setText("投资已结束");
-		}
 		borrowName.setText(info.getBorrow_name());
-
 		// 年化利率
 		String rate = info.getInterest_rate();
 		String extraRate = productInfo.getAndroid_interest_rate();
@@ -300,11 +328,26 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 			extraRateF = Float.parseFloat(extraRate);
 		} catch (Exception e) {
 		}
-		if(extraRateF > 0){
+
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(productInfo.getAdd_time());
+		}catch (Exception e){
+
+		}
+		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
 			extraInterestLayout.setVisibility(View.VISIBLE);
-			extraInterestText.setText("+"+extraRateF);
+			extraInterestText.setVisibility(View.GONE);
+			jiaxiTipsImg.setVisibility(View.VISIBLE);
 		}else{
-			extraInterestLayout.setVisibility(View.GONE);
+			if (extraRateF > 0) {
+				extraInterestLayout.setVisibility(View.VISIBLE);
+				jiaxiTipsImg.setVisibility(View.GONE);
+				extraInterestText.setText("+"
+						+ productInfo.getAndroid_interest_rate());
+			} else {
+				extraInterestLayout.setVisibility(View.GONE);
+			}
 		}
 		// 投资期限
 		String horizon = "";
@@ -473,7 +516,7 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 			Bundle bundle2 = new Bundle();
 			bundle2.putSerializable("PROJECT_INFO", project);
 			bundle2.putSerializable("PRODUCT_INFO", productInfo);
-			bundle2.putString("from_where", "vip");
+			bundle2.putString("from_where", "dqlc");
 			intentProductData.putExtra("BUNDLE", bundle2);
 			startActivity(intentProductData);
 			break;
@@ -631,15 +674,15 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
 				BorrowDetailZXDActivity.this, id, new OnProjectDetails() {
 					@Override
 					public void back(ProjectInfo projectInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (projectInfo != null) {
 							project = projectInfo;
@@ -664,8 +707,8 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	 * @param borrowStatus
 	 */
 	private void getProductDetailsById(String borrowId, String borrowStatus,String plan) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncProductInfo task = new AsyncProductInfo(BorrowDetailZXDActivity.this,
 				borrowId, borrowStatus, plan, new OnCommonInter() {
@@ -679,10 +722,10 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 								initDataFromRecord(info);
 								getProjectDetails(info.getProject_id());
 							}else{
-								loadingDialog.dismiss();
+								mLoadingDialog.dismiss();
 							}
 						}else{
-							loadingDialog.dismiss();
+							mLoadingDialog.dismiss();
 						}
 					}
 				});

@@ -1,29 +1,27 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.db.DBGesturePwdManager;
-import com.ylfcf.ppp.entity.GesturePwdEntity;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.db.DBGesturePwdManager;
+import com.ylfcf.ppp.entity.GesturePwdEntity;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.Util;
 
 /**
  * 手势密码设置页面

@@ -31,13 +31,13 @@ public class ArticleListActivity extends BaseActivity implements OnClickListener
 	private PagerSlidingTabStrip mPagerSlidingTabStrip;
 	private ViewPager mViewPager;
 	public LoadingDialog loadingDialog;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.article_list_activity);
-		loadingDialog = new LoadingDialog(ArticleListActivity.this, "ÕýÔÚ¼ÓÔØ...", R.anim.loading);
+		loadingDialog = mLoadingDialog;
 		findViews();
 	}
 
@@ -65,7 +65,15 @@ public class ArticleListActivity extends BaseActivity implements OnClickListener
 			break;
 		}
 	}
-	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if(loadingDialog != null){
+			loadingDialog.dismiss();
+		}
+	}
+
 	private NoticeFragment noticeFragment;
 	private NewsFragment newsFragment;
 	private InformationFragment informationFragment;

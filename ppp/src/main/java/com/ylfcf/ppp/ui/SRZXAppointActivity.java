@@ -32,7 +32,6 @@ import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.SRZXAppointDatePickerPopwindow;
 import com.ylfcf.ppp.widget.AuthImageView;
-import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.MyScrollView;
 
 import java.text.SimpleDateFormat;
@@ -88,8 +87,7 @@ public class SRZXAppointActivity extends BaseActivity implements OnClickListener
 	private MyScrollView scrollView;
 	
 	private AppointRecordAdapter recordAdapter;
-	private LoadingDialog loadingDialog = null;
-	
+
 	//预约接口请求的参数
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
@@ -121,7 +119,6 @@ public class SRZXAppointActivity extends BaseActivity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.srzx_appoint_activity);
-		loadingDialog = new LoadingDialog(SRZXAppointActivity.this,"正在加载..." , R.anim.loading);
 		findViews();
 		handler.sendEmptyMessage(REQUEST_APPOINTRECORD_WHAT);
 	}
@@ -697,15 +694,15 @@ public class SRZXAppointActivity extends BaseActivity implements OnClickListener
 	 * @param purchaseTime 计划购买时间 格式yyyy-MM-dd HH:mm:ss
 	 */
 	private void requestAppointAdd(String userId,String money,String interestPeriod,String purchaseTime){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncAppointAdd appointAddTask = new AsyncAppointAdd(SRZXAppointActivity.this, userId, money, interestPeriod, purchaseTime, 
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -740,15 +737,15 @@ public class SRZXAppointActivity extends BaseActivity implements OnClickListener
 	 * @param pageSize
 	 */
 	private void requestAppointRecord(int page,int pageSize){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncAppointRecord recordTask = new AsyncAppointRecord(SRZXAppointActivity.this, String.valueOf(page), String.valueOf(pageSize), 
 				new OnCommonInter(){
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);

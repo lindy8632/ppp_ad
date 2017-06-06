@@ -1,12 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,7 +28,13 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
 
 /**
  * 稳定盈详情页面
@@ -68,8 +67,7 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 	private ProjectInfo project;// 项目信息
 	private OnProductInfoListener productInfoListener;
 	private OnProductSafetyListener productSafetyListener;
-	private LoadingDialog loadingDialog;
-	
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -99,11 +97,7 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.borrow_detail_wdy_activity);
-		
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BorrowDetailWDYActivity.this, "正在加载...",
-				R.anim.loading);
-		Intent intent = getIntent();	
+		Intent intent = getIntent();
 		recordInfo = (InvestRecordInfo) intent
 				.getSerializableExtra("InvestRecordInfo");
 		findViews();
@@ -125,7 +119,6 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 	
@@ -524,15 +517,15 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
 				BorrowDetailWDYActivity.this, id, new OnProjectDetails() {
 					@Override
 					public void back(ProjectInfo projectInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (projectInfo != null) {
 							project = projectInfo;
@@ -556,15 +549,15 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 	 * @param isShow
 	 */
 	private void getWDYBorrowDetails(String borrowStatus,String isShow){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncWDYBorrowDetail wdyTask = new AsyncWDYBorrowDetail(BorrowDetailWDYActivity.this, borrowStatus, isShow, 
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -588,11 +581,10 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 	 * 根据产品id获取产品详情
 	 * 
 	 * @param borrowId
-	 * @param borrowStatus
 	 */
 	private void getWDYDetailById(String borrowId) {
-		if (loadingDialog != null && !loadingDialog.isShowing()) {
-			loadingDialog.show();
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+			mLoadingDialog.show();
 		}
 		AsyncWDYSelectone task = new AsyncWDYSelectone(BorrowDetailWDYActivity.this,
 				borrowId, new OnCommonInter() {
@@ -606,10 +598,10 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 								initDataFromRecord(info);
 								getProjectDetails(info.getProject_id());
 							}else{
-								loadingDialog.dismiss();
+								mLoadingDialog.dismiss();
 							}
 						}else{
-							loadingDialog.dismiss();
+							mLoadingDialog.dismiss();
 						}
 					}
 				});

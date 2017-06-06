@@ -3,6 +3,24 @@
  */
 package com.ylfcf.ppp.util;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.InvestRecordInfo;
+import com.ylfcf.ppp.entity.ProductInfo;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -13,26 +31,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.InvestRecordInfo;
-import com.ylfcf.ppp.entity.ProductInfo;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo.State;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 /**
  * @author Waggoner.wang
@@ -337,7 +335,6 @@ public class Util {
 	
 	/**
 	 * 将数据库中moneyStatus转化成
-	 * @param moneyStatus
 	 * @return
 	 * @throws ParseException 
 	 */
@@ -561,7 +558,6 @@ public class Util {
            MessageDigest md = MessageDigest.getInstance("MD5");
            md.update(plainText.getBytes());
            byte b[] = md.digest();
-
            int i;
 
            StringBuffer buf = new StringBuffer("");
@@ -647,7 +643,7 @@ public class Util {
 	
 	/**
 	 * 获取gridview的item宽度，
-	 * @param context
+	 * @param activity
 	 */
 	public static int getGridViewItemWidth(Context activity) {
 		// 屏幕分辨率

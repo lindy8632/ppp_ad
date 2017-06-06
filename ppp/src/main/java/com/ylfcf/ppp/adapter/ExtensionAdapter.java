@@ -81,18 +81,20 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 					.findViewById(R.id.extension_listview_item_interest_starttime);
 			viewHolder.collectedTime = (TextView) convertView
 					.findViewById(R.id.extension_listview_item_collected_time);
+			viewHolder.borrowNameTV = (TextView) convertView
+					.findViewById(R.id.extension_listview_item_borrowname);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-
+		viewHolder.borrowNameTV.setText(info.getBorrow_name());
 		viewHolder.phone.setText(info.getInvest_user_mobile());// 用户名
-		viewHolder.time.setText("投资时间："+info.getInvest_time().split(" ")[0]);
+		viewHolder.time.setText("投资时间: "+info.getInvest_time().split(" ")[0]);
 		viewHolder.hasInterest.setText(info.getPercentage()+"元");
 		viewHolder.investMoney.setText(info.getInvest_money()+"元");
-		viewHolder.nameTV.setText("姓名："+Util.hidRealName2(info.getInvest_user_name()));
+		viewHolder.nameTV.setText("姓名: "+Util.hidRealName2(info.getInvest_user_name()));
 		viewHolder.interestStartTime.setText(info.getInterest_start_time().split(" ")[0]);
-		viewHolder.collectedTime.setText("预计到账时间："+info.getReturn_time().split(" ")[0]);
+		viewHolder.collectedTime.setText("预计到账时间: "+info.getReturn_time().split(" ")[0]);
 		return convertView;
 	}
 
@@ -109,7 +111,7 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 		TextView nameTV;
 		TextView interestStartTime;//起息时间
 		TextView collectedTime;//预计到账时间
-	
+		TextView borrowNameTV;//标的名字
 	}
 
 }

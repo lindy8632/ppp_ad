@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -37,7 +32,11 @@ import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.CommonPopwindow;
 import com.ylfcf.ppp.view.RechargeSpinnerPopwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 绑定银行卡
@@ -72,7 +71,6 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 	private Button bindcardBtn;
 	private TextView catLimit;//查看支付额度
 	private ImageView promptBtn;//支付通道变更的提示按钮
-	private LoadingDialog loadingDialog;
 	private LayoutInflater layoutInflater;
 
 	private UserInfo mUserInfo;
@@ -123,8 +121,6 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 			type = bundle.getString("type");
 		}
 		layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-		loadingDialog = new LoadingDialog(BindCardActivity.this, "正在加载...",
-				R.anim.loading);
 		handler.sendEmptyMessage(REQUEST_USERINFO_WHAT);
 		handler.sendEmptyMessageDelayed(REQUEST_QUICK_BANKLIST, 500L);
 		findViews();
@@ -425,16 +421,16 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void requestBFBindcard(String idNum,String realName,String bankCard,String bankName,
 			String bankCode,String bankPhone,String smsCode,String orderSN){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncBFBindCard bindcardTask = new AsyncBFBindCard(BindCardActivity.this, SettingsManager.getUserId(getApplicationContext()), 
 				idNum, realName, bankCard,
 				bankName, bankCode, bankPhone, smsCode, orderSN,new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -459,15 +455,15 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 	 * @param userId 
 	 */
 	private void requestUserInfo(String userId){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncUserSelectOne userTask = new AsyncUserSelectOne(BindCardActivity.this, userId, "", "", 
 				new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);

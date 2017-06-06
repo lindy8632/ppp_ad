@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -39,7 +34,11 @@ import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.RechargeErrorPopwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 宝付充值页面
@@ -70,7 +69,6 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 	private TextView topTitleTV;
 
 	private UserCardInfo bankCardInfo;
-	private LoadingDialog loadingDialog;
 	private LinearLayout mainLayout;
 
 	private CountDownAsyncTask countDownAsynTask = null;
@@ -124,7 +122,6 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.recharge_msg_activity);
 		initBankLogoMap();//初始化银行logo
 		findViews();
-		loadingDialog = new LoadingDialog(RechargeActivity.this, "正在加载...",R.anim.loading);
 		handler.sendEmptyMessage(REQUEST_BANKLIST_WHAT);
 	}
 
@@ -371,8 +368,8 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 	 * @param smsCode 短信验证码
 	 */
 	private void requestBFRecharge(final String amount,String smsCode,String orderId){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncBFRecharge rechargeTask = new AsyncBFRecharge(RechargeActivity.this, 
 				SettingsManager.getUserId(getApplicationContext()), amount, smsCode,orderId, new OnCommonInter() {
@@ -381,8 +378,8 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 						verifyMoneyET.setFocusable(true);
 						verifyMoneyET.setFocusableInTouchMode(true);
 						verifyMoneyET.setEnabled(true);
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -438,15 +435,15 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 	 * 获取银行卡信息
 	 */
 	private void requestBankCardInfo(){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncUserBankCard rechargeTask = new AsyncUserBankCard(RechargeActivity.this,
 				SettingsManager.getUserId(getApplicationContext()), "宝付", new OnUserBankCardInter() {
 					@Override
 					public void back(BaseInfo info) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(info != null){
 							int resultCode = SettingsManager.getResultCode(info);

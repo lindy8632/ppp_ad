@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,6 +34,9 @@ import com.ylfcf.ppp.ui.CompactActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 用户投资记录 --- 元月盈
@@ -186,15 +186,14 @@ public class UserInvestYYYRecordFragment extends BaseFragment{
 								handler.sendEmptyMessage(REQUEST_INVEST_RECORD_WHAT);
 							}
 						}, 1000L);
-
 					}
-
 				});
 		pullToRefreshListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				InvestRecordInfo info = investRecordList.get(position - 1);
+				info.setBorrow_type("元月盈");
 				Intent intent = new Intent(mainActivity,BorrowDetailYYYActivity.class);
 				intent.putExtra("InvestRecordInfo", info);
 				startActivity(intent);
@@ -354,10 +353,6 @@ public class UserInvestYYYRecordFragment extends BaseFragment{
 	/**
 	 * 获取投资记录列表
 	 * @param investUserId
-	 * @param borrowId
-	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getInvestRecordList(String investUserId){
 		isFirst = false;

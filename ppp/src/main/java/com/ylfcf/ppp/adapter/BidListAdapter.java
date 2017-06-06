@@ -1,29 +1,29 @@
 package com.ylfcf.ppp.adapter;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.BorrowType;
 import com.ylfcf.ppp.entity.MoneyStatus;
 import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.ui.BorrowDetailZXDActivity;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.widget.RoundProgressBar;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 投资项目列表页面的适配器
@@ -37,6 +37,7 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
     
     private List<ProductInfo> bidItems;
     private Context context;
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     
 	public BidListAdapter(Context context) {
 		super(context, RESOURCE_ID);
@@ -91,9 +92,10 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
 			viewHolder.roundProgressBar = (RoundProgressBar)convertView.findViewById(R.id.bid_item_roundbar);
 			viewHolder.angleImg = (ImageView)convertView.findViewById(R.id.bid_item_angle);
 			viewHolder.progressTV = (TextView)convertView.findViewById(R.id.bid_item_progresstv);
-			viewHolder.extraInterestLayout = (LinearLayout) convertView.findViewById(R.id.bid_item_extra_interest_layout);
+			viewHolder.extraInterestLayout = (RelativeLayout) convertView.findViewById(R.id.bid_item_extra_interest_layout);
 			viewHolder.extraInterestText = (TextView) convertView.findViewById(R.id.bid_item_extra_interest_text);
 			viewHolder.nhsyText = (TextView) convertView.findViewById(R.id.bid_item_nhsy_text);
+			viewHolder.jxtipsImg = (ImageView) convertView.findViewById(R.id.bid_item_tips_img);
 			convertView.setTag(viewHolder);
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -145,7 +147,7 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         	viewHolder.roundProgressBar.setProgress(10000);
         }
         if(BorrowType.SUYING.equals(info.getBorrow_type()) || BorrowType.WENYING.equals(info.getBorrow_type())
-        		|| BorrowType.BAOYING.equals(info.getBorrow_type())){
+        		|| BorrowType.BAOYING.equals(info.getBorrow_type()) || BorrowType.YUANNIANXIN.equals(info.getBorrow_type())){
         	if(info.getInterest_period().contains("92")){
             	//元季融
             	viewHolder.angleImg.setImageResource(R.drawable.yjr_list_logo);
@@ -180,12 +182,27 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         	extraInterestD = Double.parseDouble(extraInterest);
 		} catch (Exception e) {
 		}
-        if(extraInterestD > 0){
-        	viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
-        	viewHolder.extraInterestText.setText("+"+info.getAndroid_interest_rate());
-        }else{
-        	viewHolder.extraInterestLayout.setVisibility(View.GONE);
-        }
+
+		Date addDate = null;
+		try{
+			addDate = sdf.parse(info.getAdd_time());
+		}catch (Exception e){
+
+		}
+		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && BorrowType.YUANNIANXIN.equals(info.getBorrow_type())){
+			viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
+			viewHolder.extraInterestText.setVisibility(View.GONE);
+			viewHolder.jxtipsImg.setVisibility(View.VISIBLE);
+		}else{
+			if (extraInterestD > 0) {
+				viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
+				viewHolder.jxtipsImg.setVisibility(View.GONE);
+				viewHolder.extraInterestText.setText("+"
+						+ info.getAndroid_interest_rate());
+			} else {
+				viewHolder.extraInterestLayout.setVisibility(View.GONE);
+			}
+		}
         if(position == 0){
             convertView.setPadding(0, context.getResources().getDimensionPixelSize(R.dimen.common_measure_10dp), 0, 0);
         }else{
@@ -199,7 +216,11 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         	viewHolder.interestRateMin.setVisibility(View.GONE);
         	viewHolder.middleText.setVisibility(View.GONE);
         	viewHolder.interestRateMax.setText(info.getInterest_rate());
-        }else if(BorrowType.SUYING.equals(info.getBorrow_type()) || BorrowType.BAOYING.equals(info.getBorrow_type()) || 
+        }else if("元年鑫".equals(info.getBorrow_type())){
+			viewHolder.interestRateMin.setVisibility(View.GONE);
+			viewHolder.middleText.setVisibility(View.GONE);
+			viewHolder.interestRateMax.setText(info.getInterest_rate());
+		}else if(BorrowType.SUYING.equals(info.getBorrow_type()) || BorrowType.BAOYING.equals(info.getBorrow_type()) ||
         		BorrowType.WENYING.equals(info.getBorrow_type())){
         	float minRateF = 0f;
         	float maxRateF = 0f;
@@ -238,8 +259,9 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
 		TextView progressTV;//进度条的信息
 		TextView nhsyText;//年化收益四个字在VIP产品中改成了“业绩比较基准”
 		RoundProgressBar roundProgressBar;
-		LinearLayout extraInterestLayout;// 加息的布局
+		RelativeLayout extraInterestLayout;// 加息的布局
 		TextView extraInterestText;//加息的text
+		private ImageView jxtipsImg;//加息logo
 	}
 	
 }

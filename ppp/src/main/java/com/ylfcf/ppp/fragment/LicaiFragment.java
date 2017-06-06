@@ -152,12 +152,7 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
             parent.removeView(rootView);
         } 
         requestProductPageInfo("", "发布","未满标","是","","","2");
-        new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				requestProductPageInfo("vip","发布","未满标","是","","","");
-			}
-		}, 500L);
+		requestProductPageInfo("vip","发布","未满标","是","","","");
         handler.sendEmptyMessage(REQUEST_XSMB_WHAT);
         handler.sendEmptyMessageDelayed(REQUEST_WDY_WHAT, 200);
         //私人尊享列表
@@ -254,19 +249,9 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
             	requestProductPageInfo("", "发布","未满标","是","","","2");
-                new Handler().postDelayed(new Runnable() {
-        			@Override
-        			public void run() {
-        				requestProductPageInfo("vip","发布","未满标","是","","","");
-        			}
-        		}, 500L);
+        		requestProductPageInfo("vip","发布","未满标","是","","","");
+				requestSRZXPageInfo("发布", "未满标");
                 handler.sendEmptyMessage(REQUEST_XSMB_WHAT);
-//                frame.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                    	mainRefreshLayout.refreshComplete();
-//                    }
-//                }, 1800);
             }
 
             @Override

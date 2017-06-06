@@ -1,11 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,7 +34,12 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.widget.GridViewWithHeaderAndFooter;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 限时秒标资质证书
@@ -71,7 +70,6 @@ public class ProductDataXSMBActivity extends BaseActivity implements OnClickList
 	private InvestRecordInfo recordInfo;
 	private LayoutInflater layoutInflater = null;
 	private View bottomView;
-	private LoadingDialog loadingDialog = null;
 	private ArrayList<ProjectCailiaoInfo> noMarksCailiaoList = new ArrayList<ProjectCailiaoInfo>();
 	private ArrayList<ProjectCailiaoInfo> marksCailiaoList = new ArrayList<ProjectCailiaoInfo>();
 	
@@ -134,10 +132,8 @@ public class ProductDataXSMBActivity extends BaseActivity implements OnClickList
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.product_data_activity);
-		mApp.addActivity(this);
 		builder = new AlertDialog.Builder(ProductDataXSMBActivity.this,
 				R.style.Dialog_Transparent); // 先得到构造器
-		loadingDialog = new LoadingDialog(ProductDataXSMBActivity.this, "正在加载...", R.anim.loading);
 		Bundle bundle = getIntent().getBundleExtra("BUNDLE");
 		layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 		if(bundle != null){
@@ -580,8 +576,8 @@ public class ProductDataXSMBActivity extends BaseActivity implements OnClickList
 					public void back(BaseInfo baseInfo) {
 						isRequestAssc = true;
 						dataGridView.setVisibility(View.VISIBLE);
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -643,11 +639,6 @@ public class ProductDataXSMBActivity extends BaseActivity implements OnClickList
 	
 	/**
 	 * 秒标详情
-	 * 
-	 * @param reasonFlag
-	 *            自动刷新数据 or 通过按钮点击
-	 * @param isFirst
-	 *            是否首次请求
 	 */
 	private void requestXSMBDetails(String borrowStatus,final Enum flag) {
 		AsyncXSMBDetail xsmbTask = new AsyncXSMBDetail(

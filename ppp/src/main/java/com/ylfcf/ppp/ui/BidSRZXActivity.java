@@ -1,12 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,7 +27,6 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncAppointBorrowInvest;
 import com.ylfcf.ppp.async.AsyncCurrentUserRedbagList;
-import com.ylfcf.ppp.async.AsyncVipBorrowInvest;
 import com.ylfcf.ppp.async.AsyncYiLianRMBAccount;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
@@ -50,7 +42,13 @@ import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.HBListPopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 私人尊享的投资页面
@@ -87,7 +85,6 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	private int moneyInvest = 0;
 	private int hbMoney = 0;
 	private Button investBtn;
-	private LoadingDialog loadingDialog;
 	private List<RedBagInfo> hbList = new ArrayList<RedBagInfo>();// 用户未使用的红包列表
 
 	private LinearLayout mainLayout;
@@ -135,9 +132,6 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_srzx_activity);
 
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BidSRZXActivity.this, "正在加载...",
-				R.anim.loading);
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
 		if(mProductInfo != null){
@@ -158,7 +152,6 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		handler.removeCallbacksAndMessages(null);
 	}
 
@@ -657,26 +650,21 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	 * @param borrowId
 	 * @param investUserId
 	 * @param money
-	 * @param bonusMoney
 	 *            元金币
 	 * @param investFrom
-	 * @param investFromSub
-	 * @param experienceCode
 	 *            体验金编号
-	 * @param investFromHost
-	 * @param merPriv
 	 */
 	private void requestInvest(String borrowId, String investUserId,
 			String money, String investFrom,String redbagId) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncAppointBorrowInvest asyncBorrowInvest = new AsyncAppointBorrowInvest(
 				BidSRZXActivity.this, borrowId, investUserId, money,investFrom,redbagId, new OnBorrowInvestInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {
@@ -707,15 +695,15 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	 * @param borrowType
 	 */
 	private void requestHBPageInfoByBorrowType(String userId, String borrowType) {
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncCurrentUserRedbagList currentUserRedbagListTask = new AsyncCurrentUserRedbagList(
 				BidSRZXActivity.this, userId, borrowType, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

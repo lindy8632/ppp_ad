@@ -1,14 +1,11 @@
 package com.ylfcf.ppp.util;
 
-import java.io.File;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -17,6 +14,8 @@ import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.ylfcf.ppp.common.FileUtil;
+
+import java.io.File;
 /**
  * Õº∆¨º”‘ÿ¿‡
  * @author Mr.liu

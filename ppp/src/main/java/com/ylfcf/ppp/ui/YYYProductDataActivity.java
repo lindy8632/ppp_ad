@@ -1,7 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,8 +21,6 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.ProductDataAdapter;
-import com.ylfcf.ppp.async.AsyncCurrentUserInvest;
-import com.ylfcf.ppp.async.AsyncVIPCurrentUserInvest;
 import com.ylfcf.ppp.async.AsyncYYYCurrentUserInvest;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
@@ -37,7 +33,8 @@ import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.widget.GridViewWithHeaderAndFooter;
-import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.util.ArrayList;
 
 /**
  * 元月盈的担保材料
@@ -60,7 +57,6 @@ public class YYYProductDataActivity extends BaseActivity implements OnClickListe
 	private ProductInfo productInfo;
 	private LayoutInflater layoutInflater = null;
 	private View bottomView;
-	private LoadingDialog loadingDialog = null;
 	private ArrayList<ProjectCailiaoInfo> noMarksCailiaoList = new ArrayList<ProjectCailiaoInfo>();
 	private ArrayList<ProjectCailiaoInfo> marksCailiaoList = new ArrayList<ProjectCailiaoInfo>();
 	
@@ -93,7 +89,6 @@ public class YYYProductDataActivity extends BaseActivity implements OnClickListe
 		
 		builder = new AlertDialog.Builder(YYYProductDataActivity.this,
 				R.style.Dialog_Transparent); // 先得到构造器
-		loadingDialog = new LoadingDialog(YYYProductDataActivity.this, "正在加载...", R.anim.loading);
 		Bundle bundle = getIntent().getBundleExtra("BUNDLE");
 		layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 		if(bundle != null){
@@ -353,15 +348,15 @@ public class YYYProductDataActivity extends BaseActivity implements OnClickListe
 	 * @param borrowId
 	 */
 	private void requestYYYCurrentUserInvest(String investUserId,String borrowId){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncYYYCurrentUserInvest task = new AsyncYYYCurrentUserInvest(YYYProductDataActivity.this, investUserId, borrowId, 
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if(baseInfo != null){
 							int resultCode = SettingsManager.getResultCode(baseInfo);

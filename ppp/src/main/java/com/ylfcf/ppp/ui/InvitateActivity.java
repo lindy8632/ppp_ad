@@ -36,7 +36,6 @@ import com.ylfcf.ppp.util.Constants.TopicType;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.util.Hashtable;
 
@@ -61,7 +60,6 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	private int page = 0;
 	private int pageSize = 20;
 	private ExtensionNewPageInfo pageInfo;
-	private LoadingDialog loadingDialog;
 	private String promotedURL = null;
 	private int QR_WIDTH = 0;
 	private int QR_HEIGHT = 0;
@@ -77,8 +75,6 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		findViews(isVerify);
 		QR_WIDTH = getResources().getDimensionPixelSize(R.dimen.common_measure_170dp);
 		QR_HEIGHT = getResources().getDimensionPixelSize(R.dimen.common_measure_170dp);
-		loadingDialog = new LoadingDialog(InvitateActivity.this, "正在加载...",
-				R.anim.loading);
 		requestExtension(SettingsManager.getUserId(getApplicationContext()));
 		new Handler().postDelayed(new Runnable() {
 			@Override
@@ -174,8 +170,8 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 			break;
 		}
 	}
-	
-	@Override
+
+    @Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		UMShareAPI.get(this).onActivityResult( requestCode, resultCode, data);
@@ -192,7 +188,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(InvitateActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,promotedURL,"邀请有奖");
+		popwindow.show(mainLayout,promotedURL,"邀请有奖",null,null);
 	}
 
 	/**
@@ -261,13 +257,17 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	 * @param userId
 	 */
 	private void requestExtension(String userId) {
-		loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
+		}
 		AsyncExtensionNewPageInfo taks = new AsyncExtensionNewPageInfo(
 				InvitateActivity.this, userId, String.valueOf(page),
 				String.valueOf(pageSize), new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
+						}
 						int resultCode = SettingsManager
 								.getResultCode(baseInfo);
 						if (resultCode == 1 || resultCode == -1) {
@@ -288,8 +288,8 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 				userId, "", "", new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if(loadingDialog != null && loadingDialog.isShowing()){
-							loadingDialog.dismiss();
+						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager.getResultCode(baseInfo);
@@ -298,7 +298,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 									//有汇付账户，说明已经实名过
 									promotedURL = URLGenerator.PROMOTED_BASE_URL
 											+ "?extension_code="
-											+ info.getPhone();
+											+ info.getPromoted_code();
 									if(isVerify){
 										initQRCode(promotedURL);
 									}else{

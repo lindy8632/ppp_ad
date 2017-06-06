@@ -1,9 +1,22 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AlertDialog;
+import android.util.TypedValue;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncXSMBDetail;
@@ -18,25 +31,11 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AlertDialog;
-import android.util.TypedValue;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 限时秒标
@@ -63,7 +62,6 @@ public class BidXSMBActivity extends BaseActivity implements OnClickListener{
 	private CheckBox cb;
 	private TextView compactTV;//借款协议
 	
-	private LoadingDialog loadingDialog;
 	private ProductInfo mProductInfo;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
@@ -95,9 +93,6 @@ public class BidXSMBActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_xsmb_activity);
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(BidXSMBActivity.this, "正在加载...",
-				R.anim.loading);
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
 		findViews();
@@ -353,13 +348,11 @@ public class BidXSMBActivity extends BaseActivity implements OnClickListener{
 	
 	/**
 	 * 秒标详情
-	 * @param reasonFlag 自动刷新数据 or 通过按钮点击
-	 * @param isFirst 是否首次请求
 	 */
 	private void requestXSMBDetails(String borrowStatus){
 		bidBtn.setEnabled(false);
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncXSMBDetail xsmbTask = new AsyncXSMBDetail(BidXSMBActivity.this, borrowStatus,new OnCommonInter() {
 			@Override
@@ -372,10 +365,10 @@ public class BidXSMBActivity extends BaseActivity implements OnClickListener{
 						checkInvest(info);
 					}else{
 						Util.toastLong(BidXSMBActivity.this, baseInfo.getMsg());
-						loadingDialog.dismiss();
+						mLoadingDialog.dismiss();
 					}
 				}else{
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				}
 			}
 		});
@@ -393,8 +386,8 @@ public class BidXSMBActivity extends BaseActivity implements OnClickListener{
 		AsyncXSMBInvest xsmbTask = new AsyncXSMBInvest(BidXSMBActivity.this,borrowId,money,userId,investFrom,new OnCommonInter(){
 			@Override
 			public void back(BaseInfo baseInfo) {
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);

@@ -20,7 +20,6 @@ import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -36,6 +35,7 @@ import java.util.Date;
  */
 public class BannerDetailsActivity extends BaseActivity implements OnClickListener{
 	private static final int REFRESH_VIEW = 5810;
+	private static final int REQUEST_ARTICLE_WHAT = 5811;
 	
 	private BannerInfo mBannerInfo;
 	private LinearLayout topLeftBtn;
@@ -45,7 +45,6 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 	private TextView nodataText;
 	private LinearLayout contentLayout;//公告的主布局
 	
-	private LoadingDialog loadingDialog;
 	private  ArticleInfo articleInfoTemp;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
@@ -54,9 +53,12 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			switch (msg.what) {
+			case REQUEST_ARTICLE_WHAT:
+				requestArticle(mBannerInfo.getArticle_id());
+				break;
 			case REFRESH_VIEW:
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				CharSequence text = (CharSequence) msg.obj;
 				title.setText(articleInfoTemp.getTitle());
@@ -82,10 +84,9 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 		setContentView(R.layout.banner_details_activity);
 		
 		mBannerInfo = (BannerInfo) getIntent().getSerializableExtra("BannerInfo");
-		loadingDialog = new LoadingDialog(BannerDetailsActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 		if(mBannerInfo != null){
-			requestArticle(mBannerInfo.getArticle_id());
+			handler.sendEmptyMessage(REQUEST_ARTICLE_WHAT);
 		}
 	}
 
@@ -102,7 +103,13 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 		nodataText = (TextView) findViewById(R.id.banner_details_activity_nodata);
 		contentLayout = (LinearLayout) findViewById(R.id.banner_details_activity_content_layout);
 	}
-	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		handler.removeCallbacksAndMessages(null);
+	}
+
 	private String releaseTime = "";//经过处理过的发布时间
 	private void initData(ArticleInfo info){
 		if(info == null){
@@ -202,14 +209,14 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 	 * @param id
 	 */
 	private void requestArticle(String id){
-		if(loadingDialog != null){
-			loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncArticle articleTask = new AsyncArticle(BannerDetailsActivity.this, id,new OnCommonInter() {
 			@Override
 			public void back(BaseInfo baseInfo) {
-				if(loadingDialog != null && loadingDialog.isShowing()){
-					loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);

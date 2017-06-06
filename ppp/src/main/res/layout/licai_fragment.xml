@@ -476,7 +476,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:singleLine="true"
-                                android:text="32天~362天，多种期限，多种类型"
+                                android:text="32天~365天，多种期限，多种类型"
                                 android:textColor="@color/gray"
                                 android:textSize="@dimen/common_measure_18dp" />
                         </LinearLayout>
@@ -523,14 +523,25 @@
                             android:orientation="horizontal" >
 
                             <TextView
-                                android:layout_width="fill_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="fill_parent"
                                 android:layout_marginRight="@dimen/common_measure_10dp"
-                                android:layout_weight="1"
                                 android:gravity="center_vertical"
                                 android:text="VIP专区"
                                 android:textColor="@color/gray"
                                 android:textSize="@dimen/common_measure_20dp" />
+
+                            <TextView
+                                android:id="@+id/licai_fragment_vip_counts"
+                                android:layout_width="@dimen/common_measure_25dp"
+                                android:layout_height="@dimen/common_measure_25dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/style_circle_purple"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/common_measure_18dp"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/licai_fragment_vip_gqjx_btn"
@@ -575,18 +586,6 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="@dimen/common_measure_20dp"
                         android:gravity="center_vertical" >
-
-                        <TextView
-                            android:id="@+id/licai_fragment_vip_counts"
-                            android:layout_width="@dimen/common_measure_30dp"
-                            android:layout_height="@dimen/common_measure_30dp"
-                            android:layout_gravity="center_vertical"
-                            android:background="@drawable/style_circle_purple"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/common_measure_20dp"
-                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/licai_fragment_jqqd_text"

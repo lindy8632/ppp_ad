@@ -1,9 +1,24 @@
 package com.ylfcf.ppp.ui;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncYXBInvest;
@@ -17,28 +32,11 @@ import com.ylfcf.ppp.entity.YXBUserAccountInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Display;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 元信宝---我要投资
@@ -68,7 +66,6 @@ public class BidYXBActivity extends BaseActivity implements OnClickListener {
 	private YXBUserAccountInfo yxbUserAccountInfo;
 	private UserRMBAccountInfo userRMBAccountInfo;
 	private YXBProductLogInfo yxbProductLogInfo;
-	private LoadingDialog loadingDialog = null;
 
 	private float sunInvestMoney = 0;// 用户总共投的金额
 
@@ -77,8 +74,6 @@ public class BidYXBActivity extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_yxb_activity);
-		loadingDialog = new LoadingDialog(BidYXBActivity.this, "正在加载...",
-				R.anim.loading);
 		findViews();
 		requestYXBProductLog("", sdf.format(new Date()));
 		requestUserAccountInfo(SettingsManager
@@ -387,15 +382,15 @@ public class BidYXBActivity extends BaseActivity implements OnClickListener {
 	 * @param dateTime
 	 */
 	private void requestYXBProductLog(String id, String dateTime) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 		AsyncYXBProductLog productLogTask = new AsyncYXBProductLog(
 				BidYXBActivity.this, id, dateTime, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

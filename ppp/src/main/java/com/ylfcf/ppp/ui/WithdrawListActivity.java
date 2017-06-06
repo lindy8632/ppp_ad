@@ -1,9 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,9 +23,12 @@ import com.ylfcf.ppp.entity.WithdrawOrderInfo;
 import com.ylfcf.ppp.entity.WithdrawOrderPageInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.RefreshLayout;
 import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 提现申请列表
@@ -59,7 +58,6 @@ public class WithdrawListActivity extends BaseActivity implements
 
 	private boolean isRefresh = true;// 下拉刷新
 	private boolean isLoad = false;// 上拉加载更多
-	private LoadingDialog loadingDialog;
 	private boolean isFirst = true;// 是否是首次加载数据
 
 	private Handler handler = new Handler() {
@@ -102,11 +100,9 @@ public class WithdrawListActivity extends BaseActivity implements
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.withdraw_list_activity);
 		layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-		loadingDialog = new LoadingDialog(WithdrawListActivity.this, "正在加载...",
-				R.anim.loading);
 		findViews();
 		if (isFirst) {
-			loadingDialog.show();
+			mLoadingDialog.show();
 		}
 		handler.sendEmptyMessage(REQUEST_WITHDRAW_RECORD_WHAT);
 	}
@@ -217,8 +213,8 @@ public class WithdrawListActivity extends BaseActivity implements
 					@Override
 					public void back(BaseInfo baseInfo) {
 						isFirst = false;
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 
 						if (baseInfo != null) {

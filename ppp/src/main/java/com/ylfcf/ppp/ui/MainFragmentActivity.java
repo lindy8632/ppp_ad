@@ -54,6 +54,7 @@ import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.GuoqingJiaxiPopwindow;
+import com.ylfcf.ppp.view.JuneActivePopupwindow;
 import com.ylfcf.ppp.view.LXFXPopupwindow2017;
 import com.ylfcf.ppp.view.LXJ5Popupwindow;
 import com.ylfcf.ppp.view.SignPopupwindow;
@@ -86,6 +87,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	public static final String MESSAGE_RECEIVED_ACTION = "com.ylfcf.ppp.MESSAGE_RECEIVED_ACTION";
 	private static final int REQUEST_TGY01_START_WHAT = 5621;//四月份推广活动是否开始
 	private static final int REQUEST_LXJ5_START_WHAT = 5622;//5月份抢现金活动是否开始
+	private static final int REQUEST_JUNEACTIVE_START_WHAT = 5623;//6月份活动是否开始
 	
 	private static final int MSG_SET_ALIAS = 3219;
 	
@@ -102,7 +104,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	public FragmentManager fragmentManager = null;
 	
 	private NavigationBarView mNavigationBarView;
-	public LoadingDialog loadingDialog;
 	public PushAgent mPushAgent = null;
 	
 	public RelativeLayout mainLayout;
@@ -112,6 +113,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
 	public static boolean isForeground = false;
 	private boolean isFirst = true;
+	public LoadingDialog loadingDialog;
 	
 	boolean hasTask = false;
 	boolean isExit = false;
@@ -145,6 +147,9 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 				break;
 			case REQUEST_LXJ5_START_WHAT:
 				requestActiveTime("MONDAY_ROB_CASH");
+				break;
+			case REQUEST_JUNEACTIVE_START_WHAT:
+				requestActiveTime("LYHD2017");
 				break;
 			default:
 				break;
@@ -228,10 +233,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
 		JPushInterface.init(this);     		// 初始化 JPush
 //		JPushInterface.setAliasAndTags(MainFragmentActivity.this, "test", null);
-		
-		mApp.addActivity(this);
-		loadingDialog = new LoadingDialog(MainFragmentActivity.this, "正在加载...", R.anim.loading);
-		
+		this.loadingDialog = mLoadingDialog;
 		downManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
@@ -326,7 +328,8 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 			}, 2200L);
 		}
 //		handler.sendEmptyMessage(REQUEST_TGY01_START_WHAT);
-		handler.sendEmptyMessageDelayed(REQUEST_LXJ5_START_WHAT,200L);
+//		handler.sendEmptyMessageDelayed(REQUEST_LXJ5_START_WHAT,200L);
+		handler.sendEmptyMessageDelayed(REQUEST_JUNEACTIVE_START_WHAT,300L);
 	}
 
 	@Override
@@ -539,6 +542,20 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 				popView, width, height);
 		popwindow.show(mainLayout);
 	}
+
+	/**
+	 * 6月份活动
+	 */
+	private void showJoneActiveWindow(){
+		View popView = LayoutInflater.from(this).inflate(
+				R.layout.lxfx_popwindow, null);
+		int[] screen = SettingsManager.getScreenDispaly(this);
+		int width = screen[0];
+		int height = screen[1];
+		JuneActivePopupwindow popwindow = new JuneActivePopupwindow(this,
+				popView, width, height);
+		popwindow.show(mainLayout);
+	}
 	
 	@Override
 	protected void onResume() {	
@@ -640,7 +657,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mApp.removeActivity(this);
 		unregisterReceiver(mMessageReceiver);
 		unregisterReceiver(mNetworkStatusReceiver);
 		unregisterReceiver(downloadReceiver);
@@ -800,6 +816,8 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 									showYQHYWindow();
 								}else if("MONDAY_ROB_CASH".equals(activeTitle)){
 									showLXJWindow();
+								}else if("LYHD2017".equals(activeTitle)){
+									showJoneActiveWindow();
 								}
 							}else if(resultCode == -3){
 								//活动结束

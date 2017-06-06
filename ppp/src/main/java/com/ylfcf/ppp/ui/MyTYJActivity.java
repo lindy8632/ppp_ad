@@ -1,7 +1,16 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncTYJPageInfo;
@@ -14,20 +23,10 @@ import com.ylfcf.ppp.fragment.MyTYJUsedFragment;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
-import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 我的体验金
@@ -41,7 +40,6 @@ public class MyTYJActivity extends BaseActivity implements OnClickListener {
 
 	private PagerSlidingTabStrip mPagerSlidingTabStrip;
 	private ViewPager mViewPager;
-	public LoadingDialog loadingDialog;
 
 	private List<TYJInfo> nousedList = new ArrayList<TYJInfo>();// 未使用
 	private List<TYJInfo> usedList = new ArrayList<TYJInfo>();// 已使用
@@ -54,8 +52,6 @@ public class MyTYJActivity extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.mytyj_activity);
-		loadingDialog = new LoadingDialog(MyTYJActivity.this, "正在加载...",
-				R.anim.loading);
 		findViews();
 	}
 
@@ -146,8 +142,8 @@ public class MyTYJActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void requestTYJPageInfo(String status, String userId,
 			String putStatus, String activeTitle) {
-		if (loadingDialog != null) {
-			loadingDialog.show();
+		if (mLoadingDialog != null) {
+			mLoadingDialog.show();
 		}
 
 		AsyncTYJPageInfo asyncTask = new AsyncTYJPageInfo(MyTYJActivity.this,
@@ -155,8 +151,8 @@ public class MyTYJActivity extends BaseActivity implements OnClickListener {
 				userId, putStatus, activeTitle, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						if (loadingDialog != null && loadingDialog.isShowing()) {
-							loadingDialog.dismiss();
+						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
 							int resultCode = SettingsManager

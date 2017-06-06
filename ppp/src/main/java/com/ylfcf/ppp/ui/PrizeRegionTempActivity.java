@@ -37,7 +37,6 @@ import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -69,8 +68,6 @@ public class PrizeRegionTempActivity extends BaseActivity implements OnClickList
 	private ImageView img1,img2,img3;
 	private RelativeLayout ruleLayout1,ruleLayout2,ruleLayout3,ruleLayout4;
 	private RelativeLayout ruleDelBtn1,ruleDelBtn2,ruleDelBtn3,ruleDelBtn4;
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	private Handler handler = new Handler(){
 		@Override

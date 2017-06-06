@@ -1,27 +1,26 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.BannerInfo;
-import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
-import com.ylfcf.ppp.util.RequestApis;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.util.Constants.TopicType;
-import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.BannerInfo;
+import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
+import com.ylfcf.ppp.util.Constants.TopicType;
+import com.ylfcf.ppp.util.RequestApis;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
 
 /**
  * 邀请好友返现专题
@@ -33,14 +32,12 @@ public class YQHYTempActivity extends BaseActivity implements OnClickListener{
 	private TextView topTitleTV;
 	private Button btn1,btn2,btn3;
 	private LinearLayout mainLayout;
-	private LoadingDialog mLoadingDialog;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.yqhy_temp_activity);
-		mLoadingDialog = new LoadingDialog(YQHYTempActivity.this, "正在加载...", R.anim.loading);
 		findViews();
 	}
 
@@ -159,7 +156,7 @@ public class YQHYTempActivity extends BaseActivity implements OnClickListener{
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(YQHYTempActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,URLGenerator.YQHY_WAP_URL,"四月份推广活动");
+		popwindow.show(mainLayout,URLGenerator.YQHY_WAP_URL,"四月份推广活动",null,null);
 	}
 	
 	/**

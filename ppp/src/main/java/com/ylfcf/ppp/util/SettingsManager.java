@@ -32,46 +32,47 @@ import java.util.concurrent.Executors;
 
 public class SettingsManager extends DefaultPreferences {  
 	//宝付支付通道上线时间
-	public static final String bfPublishDate = "2016-06-29 15:00:00";
-	//元月盈加息活动的截止时间
-	public static final String yyyIncreaseRateEndDate = "2016-08-31 23:59:59";
+	private static final String bfPublishDate = "2016-06-29 15:00:00";
 	//中秋大转盘活动截止时间
-	public static final String dzpPrizeEndDate = "2016-09-21 23:59:59";
+	private static final String dzpPrizeEndDate = "2016-09-21 23:59:59";
 	//定期理财浮动利率上线时间
-	public static final String floatRateStartDate = "2016-09-14 23:59:59";
+	private static final String floatRateStartDate = "2016-09-14 23:59:59";
 	
 	//国庆加息活动开始和结束时间
-	public static final String guoqingJiaxiStartDate = "2016-09-28 00:00:00";
-	public static final String guoqingJiaxiEndDate = "2016-10-10 23:59:59";
+	private static final String guoqingJiaxiStartDate = "2016-09-28 00:00:00";
+	private static final String guoqingJiaxiEndDate = "2016-10-10 23:59:59";
 	
 	//两周年感恩回馈活动开始和结束时间
-	public static final String twoyearsTZFXStartDate = "2016-12-01 00:00:00";
-	public static final String twoyearsTZFXEndDate = "2016-12-22 23:59:59";
+	private static final String twoyearsTZFXStartDate = "2016-12-01 00:00:00";
+	private static final String twoyearsTZFXEndDate = "2016-12-22 23:59:59";
 	
 	//限时秒标活动的开始和结束时间
-	public static final String xsmbStartDate = "2016-12-23 00:00:00";
-	public static final String xsmbEndDate = "2016-12-31 23:59:59";
+	private static final String xsmbStartDate = "2016-12-23 00:00:00";
+	private static final String xsmbEndDate = "2016-12-31 23:59:59";
 	
 	//会员福利计划活动开始和结束时间
 	public static final String fljhStartDate = "2016-12-23 00:00:00";
 	public static final String fljhEndDate = "2017-02-05 23:59:59";
 	
 	//新春红包活动的开始和结束时间
-	public static final String xchbStartDate = "2017-01-05 00:00:00";
-	public static final String xchbEndDate = "2017-02-05 23:59:59";
+	private static final String xchbStartDate = "2017-01-05 00:00:00";
+	private static final String xchbEndDate = "2017-02-05 23:59:59";
 	
 	//开年红 乐享返现
-	public static final String lxfxStartDate = "2017-02-06 00:00:00";
-	public static final String lxfxEndDate = "2017-02-23 23:59:59";
+	private static final String lxfxStartDate = "2017-02-06 00:00:00";
+	private static final String lxfxEndDate = "2017-02-23 23:59:59";
 	
 	//签到活动开始结束时间
-	public static final String signStartDate = "2017-03-01 00:00:00";
-	public static final String signEndDate = "2017-03-27 00:00:00";
+	private static final String signStartDate = "2017-03-01 00:00:00";
+	private static final String signEndDate = "2017-03-27 00:00:00";
 	
 	//邀请好友活动开始结束时间
-	public static final String yqhyStartDate = "2017-04-01 00:00:00";
-	public static final String yqhyEndDate = "2017-05-31 00:00:00";
-	
+	private static final String yqhyStartDate = "2017-04-01 00:00:00";
+	private static final String yqhyEndDate = "2017-05-31 00:00:00";
+
+	private static final String yyyJIAXIStartTime = "2017-06-01 11:00:00";
+	private static final String yyyJIAXIEndTime = "2017-07-01 00:00:00";
+
 	public static final String USER_FROM = "安卓APP";//用户来源，是来源于元立方网站还是微信还是app等等。此处为写死
 	public static final String APP_FIRST	= "appfirst";//判断应用是否是首次打开。
 	public static final String USER_PASSWORD	= "password";
@@ -232,25 +233,6 @@ public class SettingsManager extends DefaultPreferences {
 	}
 
 	/**
-	 * 判断元月盈的加息活动是否结束
-	 * @return
-	 */
-	public static boolean checkYYYExpectInterest(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date nowTime = new Date();
-		Date yyyRateEndDate = null;
-		try {
-			yyyRateEndDate = sdf.parse(yyyIncreaseRateEndDate);
-			if(yyyRateEndDate.compareTo(nowTime) == -1){
-				//表示加息活动已经结束
-				return true;
-			}
-		} catch (Exception e) {
-		}
-		return false;
-	}
-	
-	/**
 	 * 判断大转盘活动是否结束
 	 * @return
 	 */
@@ -356,7 +338,35 @@ public class SettingsManager extends DefaultPreferences {
 		}
 		return -1;
 	}
-	
+
+	/**
+	 * 2017年元月盈加息活动
+	 * @return
+	 */
+	public static int checkYYYJIAXI(Date addTime){
+		if(addTime == null)
+			return -1;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date yyyJIAXIStartDate = null;
+		Date yyyJIAXIEndDate = null;
+		try {
+			yyyJIAXIStartDate = sdf.parse(yyyJIAXIStartTime);
+			yyyJIAXIEndDate = sdf.parse(yyyJIAXIEndTime);
+			if(yyyJIAXIStartDate.compareTo(addTime) == -1 && yyyJIAXIEndDate.compareTo(addTime) == 1){
+				//表示加息正在进行中
+				return 0;
+			}else if(yyyJIAXIEndDate.compareTo(addTime) == -1 ){
+				//活动结束
+				return -1;
+			}else if(yyyJIAXIStartDate.compareTo(addTime) == 1){
+				//尚未开始
+				return 1;
+			}
+		} catch (Exception e) {
+		}
+		return -1;
+	}
+
 	/**
 	 * 新春红包
 	 * @return
