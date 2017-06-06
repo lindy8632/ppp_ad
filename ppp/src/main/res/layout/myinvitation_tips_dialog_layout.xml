@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/style_rect_fillet_filling_white_dialog"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:gravity="center"
+        android:text="提示"
+        android:textColor="@color/black"
+        android:textSize="@dimen/common_measure_24dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_measure_20dp"
+        android:lineSpacingMultiplier="1.1"
+        android:text="@string/myinvitation_tips_string"
+        android:textSize="@dimen/common_measure_18dp"
+        android:textColor="@color/gray"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color" />
+
+    <Button
+            android:id="@+id/myinvitation_tips_dialog_sure_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_50dp"
+            android:background="@null"
+            android:gravity="center"
+            android:text="知道了"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_24dp" />
+
+</LinearLayout>
