@@ -912,6 +912,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\borrow_details_vip_activity.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\xrefreshview_footer.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ylfcfwidgetlibrary\\build\\intermediates\\bundles\\default\\res\\layout\\xrefreshview_footer.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\my_account.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\my_account.xml"
     },
@@ -1066,6 +1070,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\change_address_activity.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\change_address_activity.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\xrefreshview_header.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ylfcfwidgetlibrary\\build\\intermediates\\bundles\\default\\res\\layout\\xrefreshview_header.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\bank_verify_rec_activity.xml",

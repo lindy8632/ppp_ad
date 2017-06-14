@@ -644,6 +644,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_fulling_deepblue.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\xrefresh_ok.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ylfcfwidgetlibrary\\build\\intermediates\\bundles\\default\\res\\drawable\\xrefresh_ok.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_circle_baoying.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_circle_baoying.xml"
     },
@@ -780,6 +784,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_window_shadow_pad.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\loading.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ylfcfwidgetlibrary\\build\\intermediates\\bundles\\default\\res\\drawable\\loading.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_share_transparent_corner.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_share_transparent_corner.xml"
     },
@@ -812,8 +820,16 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\login_nav_selector.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\xrefreshview_arrow.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ylfcfwidgetlibrary\\build\\intermediates\\bundles\\default\\res\\drawable\\xrefreshview_arrow.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_gray.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_gray.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\loading_jh.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ylfcfwidgetlibrary\\build\\intermediates\\bundles\\default\\res\\drawable\\loading_jh.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_switch_thumb_material.xml",

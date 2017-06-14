@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.example.ylfcf.view.CustomerFooter;
+import com.example.ylfcf.widget.XRefreshView;
+import com.example.ylfcf.widget.XRefreshView.SimpleXRefreshListener;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.LimitMoneyAdapter;
 import com.ylfcf.ppp.async.AsyncQuickBankList;
@@ -36,17 +36,22 @@ import java.util.Map;
 public class LimitPromptActivity extends BaseActivity implements
 		OnClickListener {
 	private static final int REQUEST_QUICK_BANK_WHAT = 7120;
+	private static final int REQUEST_QUICK_BANK_SUC = 7121;
+	private static final int REQUEST_QUICK_BANK_FAILE = 7122;
 
-	private PullToRefreshListView listview;
+	private XRefreshView mXRefreshView;
+	private ListView mListView;
+//	private PullToRefreshListView listview;
 	private LimitMoneyAdapter adapter;
-	private List<BankInfo> bankList = null;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private View bottomView;
 	private boolean isRefresh = false;//是否下拉刷新数据。
+	private boolean isLoadMore = false;//上否是上拉加载更多
 
 	private int page = 0;
 	private int pageSize = 50;
+	private List<BankInfo> bankInfoListTemp = new ArrayList<BankInfo>();
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -55,7 +60,24 @@ public class LimitPromptActivity extends BaseActivity implements
 			case REQUEST_QUICK_BANK_WHAT:
 				requestBankList("启用", "宝付支付");
 				break;
-
+			case REQUEST_QUICK_BANK_SUC:
+				List<BankInfo> banklist = (List<BankInfo>)msg.obj;
+				if(isRefresh){
+					bankInfoListTemp.clear();
+				}
+				bankInfoListTemp.addAll(banklist);
+				saveBankList(bankInfoListTemp);
+				updateAdapter(bankInfoListTemp);
+				isRefresh = false;
+				isLoadMore = false;
+				break;
+			case REQUEST_QUICK_BANK_FAILE:
+				if(isLoadMore){
+					mXRefreshView.setLoadComplete(true);
+				}
+				isRefresh = false;
+				isLoadMore = false;
+				break;
 			default:
 				break;
 			}
@@ -72,6 +94,12 @@ public class LimitPromptActivity extends BaseActivity implements
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+//		mXRefreshView.startRefresh();
+	}
+
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		handler.removeCallbacksAndMessages(null);
@@ -83,33 +111,67 @@ public class LimitPromptActivity extends BaseActivity implements
 		topTitleTV = (TextView) findViewById(R.id.common_page_title);
 		topTitleTV.setText("限额说明");
 
+		mXRefreshView = (XRefreshView) findViewById(R.id.limit_prompt_activity_xrefreshview);
 		bottomView = LayoutInflater.from(LimitPromptActivity.this).inflate(
 				R.layout.limit_bottom_layout, null);
-		listview = (PullToRefreshListView) findViewById(R.id.limit_prompt_activity_listview);
-		listview.getRefreshableView().addFooterView(bottomView);
+		mListView = (ListView) findViewById(R.id.limit_prompt_activity_listview);
+		mListView.addFooterView(bottomView);
+//		listview = (PullToRefreshListView) findViewById(R.id.limit_prompt_activity_listview);
+//		listview.getRefreshableView().addFooterView(bottomView);
 		adapter = new LimitMoneyAdapter(LimitPromptActivity.this);
-		listview.setAdapter(adapter);
-
+//		listview.setAdapter(adapter);
+		mListView.setAdapter(adapter);
+		initXRefrshView();
 		initListeners();
 	}
 
+	private void initXRefrshView(){
+		mXRefreshView.setPullLoadEnable(true);
+		mXRefreshView.setPinnedTime(1000);
+		mXRefreshView.setAutoLoadMore(false);
+//		xRefreshView.setCustomHeaderView(new CustomHeader(this));
+//		xRefreshView.setCustomHeaderView(new XRefreshViewHeader(this));
+		mXRefreshView.setMoveForHorizontal(true);
+		mXRefreshView.setCustomFooterView(new CustomerFooter(this));
+//		xRefreshView.setPinnedContent(true);
+		//设置当非RecyclerView上拉加载完成以后的回弹时间
+		mXRefreshView.setScrollBackDuration(300);
+	}
+
 	private void initListeners() {
-		listview.setOnRefreshListener(new OnRefreshListener2<ListView>() {
-					@Override
-					public void onPullDownToRefresh(
-							PullToRefreshBase<ListView> refreshView) {
-						// 下拉刷新
-						isRefresh = true;
-						handler.sendEmptyMessage(REQUEST_QUICK_BANK_WHAT);
-					}
+		mXRefreshView.setXRefreshViewListener(new SimpleXRefreshListener() {
+			@Override
+			public void onRefresh(boolean isPullDown) {
+				isRefresh = true;
+				isLoadMore = false;
+				page = 0;
+				handler.sendEmptyMessage(REQUEST_QUICK_BANK_WHAT);
+			}
 
-					@Override
-					public void onPullUpToRefresh(
-							PullToRefreshBase<ListView> refreshView) {
-						// 上拉加载更多
-					}
-
-				});
+			@Override
+			public void onLoadMore(boolean isSilence) {
+				isRefresh = false;
+				isLoadMore = true;
+				page ++;
+				handler.sendEmptyMessage(REQUEST_QUICK_BANK_WHAT);
+			}
+		});
+//		listview.setOnRefreshListener(new OnRefreshListener2<ListView>() {
+//					@Override
+//					public void onPullDownToRefresh(
+//							PullToRefreshBase<ListView> refreshView) {
+//						// 下拉刷新
+//						isRefresh = true;
+//						handler.sendEmptyMessage(REQUEST_QUICK_BANK_WHAT);
+//					}
+//
+//					@Override
+//					public void onPullUpToRefresh(
+//							PullToRefreshBase<ListView> refreshView) {
+//						// 上拉加载更多
+//					}
+//
+//				});
 	}
 
 	private void updateAdapter(List<BankInfo> bankList) {
@@ -120,7 +182,7 @@ public class LimitPromptActivity extends BaseActivity implements
 	}
 
 	private void updateAdapter(Map<String, BankInfo> bankMap) {
-		bankList = new ArrayList<BankInfo>();
+		List<BankInfo> bankList = new ArrayList<BankInfo>();
 		Iterator<Map.Entry<String, BankInfo>> entries = bankMap.entrySet()
 				.iterator();
 		while (entries.hasNext()) {
@@ -134,6 +196,7 @@ public class LimitPromptActivity extends BaseActivity implements
 		if (bankList == null || bankList.size() <= 0) {
 			return;
 		}
+		SettingsManager.bankMap.clear();
 		for (int i = 0; i < bankList.size(); i++) {
 			BankInfo bankInfo = bankList.get(i);
 			SettingsManager.bankMap.put(bankInfo.getBank_code(), bankInfo);
@@ -159,7 +222,7 @@ public class LimitPromptActivity extends BaseActivity implements
 	 * @param payWayname
 	 */
 	private void requestBankList(String status, String payWayname) {
-		if (SettingsManager.bankMap != null && !SettingsManager.bankMap.isEmpty() && !isRefresh) {
+		if (SettingsManager.bankMap != null && !SettingsManager.bankMap.isEmpty() && !isRefresh && !isLoadMore) {
 			updateAdapter(SettingsManager.bankMap);
 			return;
 		}
@@ -169,16 +232,29 @@ public class LimitPromptActivity extends BaseActivity implements
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
-						listview.onRefreshComplete();
-						isRefresh = false;
+						new Handler().postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								mXRefreshView.stopRefresh();
+							}
+						},1000L);
 						if (baseInfo != null) {
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
 								List<BankInfo> bankList = baseInfo.getBankPageInfo().getBankList();
-								saveBankList(bankList);
-								updateAdapter(bankList);
+								Message msg = handler.obtainMessage(REQUEST_QUICK_BANK_SUC);
+								msg.obj = bankList;
+								handler.sendMessage(msg);
+							}else{
+								Message msg = handler.obtainMessage(REQUEST_QUICK_BANK_FAILE);
+								msg.obj = baseInfo.getMsg();
+								handler.sendMessage(msg);
 							}
+						}else{
+							Message msg = handler.obtainMessage(REQUEST_QUICK_BANK_FAILE);
+							msg.obj = "";
+							handler.sendMessage(msg);
 						}
 					}
 				});

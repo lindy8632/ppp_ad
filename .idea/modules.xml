@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/ppp/ppp.iml" filepath="$PROJECT_DIR$/ppp/ppp.iml" />
       <module fileurl="file://$PROJECT_DIR$/ppp_ad.iml" filepath="$PROJECT_DIR$/ppp_ad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ylfcfwidgetlibrary/ylfcfwidgetlibrary.iml" filepath="$PROJECT_DIR$/ylfcfwidgetlibrary/ylfcfwidgetlibrary.iml" />
     </modules>
   </component>
 </project>

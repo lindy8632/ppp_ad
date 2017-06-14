@@ -198,8 +198,7 @@ public class URLGenerator {
 	//
 	private final String YJB_INTEREST = "/borrow/invest_repayment/getCoinsAndInterest";//元金币收益以及本金
 	private final String QUICK_PAY_BANK = "/pay_way/quick_pay_bank/selectList";//快捷支付银行列表
-	
-	
+
 	//企业用户
 	private final String COMP_APPLY_REGISTE_URL = "/co_user/co_user/comOrder";//企业用户申请注册
 	private final String COMP_LOGIN_URL = "/co_user/co_user/comLogin";//企业用户登录接口

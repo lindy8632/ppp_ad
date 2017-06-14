@@ -7,25 +7,39 @@
     
     <include 
         layout="@layout/common_topbar"/>
-    
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/limit_prompt_activity_listview"
+
+    <com.example.ylfcf.widget.XRefreshView
+        android:id="@+id/limit_prompt_activity_xrefreshview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-	    android:paddingLeft="@dimen/common_measure_8dp"
-	    android:paddingRight="@dimen/common_measure_8dp"
-        android:fadingEdge="none"
-        android:fastScrollEnabled="false"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
-        android:smoothScrollbar="true"
-        android:scrollbars="none"
-        android:divider="@null"
-        android:listSelector="@android:color/transparent"
-        android:cacheColorHint="#00000000"
-        ptr:ptrMode="pullFromStart" >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/limit_prompt_activity_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.example.ylfcf.widget.XRefreshView>
+
+    
+    <!--<com.handmark.pulltorefresh.library.PullToRefreshListView-->
+        <!--xmlns:ptr="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/limit_prompt_activity_listview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+	    <!--android:paddingLeft="@dimen/common_measure_8dp"-->
+	    <!--android:paddingRight="@dimen/common_measure_8dp"-->
+        <!--android:fadingEdge="none"-->
+        <!--android:fastScrollEnabled="false"-->
+        <!--android:footerDividersEnabled="false"-->
+        <!--android:headerDividersEnabled="false"-->
+        <!--android:smoothScrollbar="true"-->
+        <!--android:scrollbars="none"-->
+        <!--android:divider="@null"-->
+        <!--android:listSelector="@android:color/transparent"-->
+        <!--android:cacheColorHint="#00000000"-->
+        <!--ptr:ptrMode="pullFromStart" >-->
+    <!--</com.handmark.pulltorefresh.library.PullToRefreshListView>-->
     
 </LinearLayout>

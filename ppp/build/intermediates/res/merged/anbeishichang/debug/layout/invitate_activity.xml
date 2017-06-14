@@ -64,7 +64,7 @@
                                 android:layout_marginLeft="@dimen/common_measure_5dp"
                                 android:textSize="@dimen/common_measure_17dp"
                                 android:textColor="@color/gray1"
-                                android:text="重要！好友注册元立方账户时，须在“推荐码”一栏正确填写您的注册手机号，您才可能获得佣金哟~"/>
+                                android:text="重要！好友注册元立方账户时，须在“推荐码”一栏正确填写您的注册手机号，您才可能获得奖励哟~"/>
 
                         </LinearLayout>
 
@@ -189,7 +189,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="，手把手教您轻松赚佣金！"
+                    android:text="，手把手教您轻松赚奖励！"
                     android:textColor="@color/gray1"
                     android:textSize="@dimen/common_measure_18dp" />
 

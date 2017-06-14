@@ -75,6 +75,7 @@
                 android:hint="请输入登录密码"
                 android:maxLength="16"
                 android:singleLine="true"
+                android:password="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/edittext_hint_color"
                 android:textSize="@dimen/common_measure_20dp" />

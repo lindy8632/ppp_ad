@@ -75,7 +75,7 @@
             android:layout_height="@dimen/common_measure_40dp"
             android:layout_marginLeft="@dimen/common_measure_10dp"
             android:background="@drawable/style_rect_fillet_filling_blue"
-            android:text="轻松赚佣金"
+            android:text="轻松赚奖励"
             android:textSize="@dimen/common_measure_20dp"
             android:textColor="@color/white"/>
 

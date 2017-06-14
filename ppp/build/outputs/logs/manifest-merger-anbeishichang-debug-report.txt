@@ -21,10 +21,18 @@ uses-sdk
 ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:8:5-10:41
 MERGED from [ppp_ad:imageLoaderLibrary:unspecified] D:\GitRepository\ppp_ad\imageLoaderLibrary\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
 MERGED from [ppp_ad:library:unspecified] D:\GitRepository\ppp_ad\library\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [ppp_ad:ylfcfwidgetlibrary:unspecified] D:\GitRepository\ppp_ad\ylfcfwidgetlibrary\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:25.0.1] C:\Users\Administrator\.android\build-cache\20ec0065ed4694f550a5ec8952284b86cfa1824b\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.1.1] C:\Users\Administrator\.android\build-cache\2a745ea31c390f1d4ff6f7504b6a3f6009dc22cc\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\Administrator\.android\build-cache\f22820f1351e560326c3da57bf5496356a5b5345\output\AndroidManifest.xml:5:5-44
 MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\Administrator\.android\build-cache\b80aaf51280bd011e968e65301122714b24a8717\output\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.4.0] C:\Users\Administrator\.android\build-cache\ce9f996c14e3f6aed9c3669be8129df083c60d39\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Administrator\.android\build-cache\e9b8bb9837da37deacd259e3e73a6d425d961a45\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Administrator\.android\build-cache\bd9fdab2a42f8266f295be07ea9f08eb9d2a2e1a\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Administrator\.android\build-cache\8aff0c3355ee831143efac8bc677269c356da594\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\.android\build-cache\a3bb2a3ad5dd37a75f6f2da7b420f1b0dc2cea57\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
@@ -184,12 +192,21 @@ ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:65:5-71
 application
 ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:67:5-684:19
 MERGED from [ppp_ad:library:unspecified] D:\GitRepository\ppp_ad\library\build\intermediates\bundles\default\AndroidManifest.xml:11:5-20
+MERGED from [ppp_ad:ylfcfwidgetlibrary:unspecified] D:\GitRepository\ppp_ad\ylfcfwidgetlibrary\build\intermediates\bundles\default\AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:cardview-v7:25.1.1] C:\Users\Administrator\.android\build-cache\2a745ea31c390f1d4ff6f7504b6a3f6009dc22cc\output\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\Administrator\.android\build-cache\f22820f1351e560326c3da57bf5496356a5b5345\output\AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\Administrator\.android\build-cache\b80aaf51280bd011e968e65301122714b24a8717\output\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.4.0] C:\Users\Administrator\.android\build-cache\ce9f996c14e3f6aed9c3669be8129df083c60d39\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Administrator\.android\build-cache\e9b8bb9837da37deacd259e3e73a6d425d961a45\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Administrator\.android\build-cache\bd9fdab2a42f8266f295be07ea9f08eb9d2a2e1a\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Administrator\.android\build-cache\8aff0c3355ee831143efac8bc677269c356da594\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\.android\build-cache\a3bb2a3ad5dd37a75f6f2da7b420f1b0dc2cea57\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:72:9-41
+	android:supportsRtl
+		ADDED from [ppp_ad:ylfcfwidgetlibrary:unspecified] D:\GitRepository\ppp_ad\ylfcfwidgetlibrary\build\intermediates\bundles\default\AndroidManifest.xml:14:9-35
 	android:allowBackup
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:70:9-35
 	android:icon

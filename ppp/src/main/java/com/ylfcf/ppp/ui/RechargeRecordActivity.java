@@ -59,6 +59,7 @@ public class RechargeRecordActivity extends BaseActivity implements OnClickListe
 				getRechargeRecordList(SettingsManager.getUserId(getApplicationContext()));
 				break;
 			case REQUEST_RECHARGE_RECORD_SUCCESS:
+				mListView.onRefreshComplete();
 				List<RechargeRecordInfo> list = (List<RechargeRecordInfo>) msg.obj;
 				if (!isLoadMore) {
 					rechargeRecordList.clear();
@@ -66,12 +67,13 @@ public class RechargeRecordActivity extends BaseActivity implements OnClickListe
 				rechargeRecordList.addAll(list);
 				updateAdapter(rechargeRecordList);
 				isLoadMore = false;
-				mListView.onRefreshComplete();
 				break;
 			case REQUEST_RECHARGE_RECORD_NODATA:
 				mListView.onRefreshComplete();
-				nodataTV.setVisibility(View.VISIBLE);
-				mListView.setVisibility(View.GONE);
+				if(!isLoadMore){
+					nodataTV.setVisibility(View.VISIBLE);
+					mListView.setVisibility(View.GONE);
+				}
 				break;
 			default:
 				break;
