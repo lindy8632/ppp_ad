@@ -3,7 +3,6 @@
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
     <file url="file://$PROJECT_DIR$/ppp/build.gradle" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/proguard-project.txt" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/Permission/EasyPermission.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/async/AsyncBorrowInvest.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/async/AsyncMarchAddResult.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/async/AsyncPrizeList.java" charset="GBK" />
@@ -20,6 +19,6 @@
     <file url="file://$PROJECT_DIR$/ylfcfwidgetlibrary/src/main/java/com/example/ylfcf/inter/OnBottomLoadMoreTime.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ylfcfwidgetlibrary/src/main/java/com/example/ylfcf/inter/OnTopRefreshTime.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ylfcfwidgetlibrary/src/main/java/com/example/ylfcf/view/XRefreshContentView.java" charset="GBK" />
-    <file url="PROJECT" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
   </component>
 </project>
