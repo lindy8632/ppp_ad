@@ -680,16 +680,16 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\register_main_normal_personal_layout.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\myfriends_activity_toplayout.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\myfriends_activity_toplayout.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\borrow_details_yyy_activity.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\borrow_details_yyy_activity.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\myhb_overdue_fragment.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\myhb_overdue_fragment.xml"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\myfriends_activity_toplayout.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\myfriends_activity_toplayout.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\transfer_coupon_item.xml",
