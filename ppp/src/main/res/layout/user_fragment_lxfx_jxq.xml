@@ -54,8 +54,8 @@
 	        
 	        <CheckBox 
 	            android:id="@+id/user_fragment_lxfx_dialog_cb"
-	            android:layout_width="@dimen/common_measure_20dp"
-	            android:layout_height="@dimen/common_measure_20dp"
+	            android:layout_width="@dimen/common_measure_35dp"
+	            android:layout_height="@dimen/common_measure_35dp"
 	            android:layout_marginLeft="@dimen/common_measure_20dp"
 	            android:button="@drawable/checkbox_selector"
 	            android:checked="false"/>

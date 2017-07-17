@@ -29,11 +29,11 @@ import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.fragment.ProductInfoFragment.OnProductInfoListener;
 import com.ylfcf.ppp.fragment.ProductSafetyFragment.OnProductSafetyListener;
+import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
-import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
@@ -207,12 +207,8 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 		}
 		timeLimit.setText(horizon);
 
-		Date addDate = null;
-		try{
-			addDate = sdf.parse(productInfo.getAdd_time());
-		}catch (Exception e){
-		}
-		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && "365".equals(horizon)){
+		if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
+				SettingsManager.yyyJIAXIEndTime) == 0 && "365".equals(horizon)){
 			extraInterestLayout.setVisibility(View.VISIBLE);
 			extraInterestText.setVisibility(View.GONE);
 			jiaxiTipsImg.setVisibility(View.VISIBLE);
@@ -335,7 +331,8 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 		}catch (Exception e){
 
 		}
-		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && "365".equals(horizon)){
+		if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
+				SettingsManager.yyyJIAXIEndTime) == 0 && "365".equals(horizon)){
 			extraInterestLayout.setVisibility(View.VISIBLE);
 			extraInterestText.setVisibility(View.GONE);
 			jiaxiTipsImg.setVisibility(View.VISIBLE);
@@ -643,6 +640,8 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 	 * @param info
 	 */
 	private void parseProjectCailiaoMarkImg(ProjectInfo info){
+		if(info == null)
+			return;
 		String imageNames[] = info.getImgs_name().split("\\|");
 		ArrayList<ProjectCailiaoInfo> cailiaoListTemp = new ArrayList<ProjectCailiaoInfo>();
 		ArrayList<ProjectCailiaoInfo> cailiaoList = new ArrayList<ProjectCailiaoInfo>();
@@ -680,6 +679,8 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 	 * @param info
 	 */
 	private void parseProjectCailiaoNomarkImg(ProjectInfo info){
+		if(info == null)
+			return;
 		String imageNames[] = info.getImgs_name().split("\\|");
 		ArrayList<ProjectCailiaoInfo> cailiaoListTemp = new ArrayList<ProjectCailiaoInfo>();
 		ArrayList<ProjectCailiaoInfo> cailiaoList = new ArrayList<ProjectCailiaoInfo>();
@@ -722,14 +723,14 @@ public class BorrowDetailVIPActivity extends BaseActivity implements
 			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
-				BorrowDetailVIPActivity.this, id, new OnProjectDetails() {
+				BorrowDetailVIPActivity.this, id, new Inter.OnCommonInter() {
 					@Override
-					public void back(ProjectInfo projectInfo) {
+					public void back(BaseInfo baseInfo) {
 						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
 							mLoadingDialog.dismiss();
 						}
-						if (projectInfo != null) {
-							project = projectInfo;
+						if (baseInfo != null) {
+							project = baseInfo.getmProjectInfo();
 							parseProjectCailiaoMarkImg(project);
 							parseProjectCailiaoNomarkImg(project);
 							if (productInfoListener != null) {

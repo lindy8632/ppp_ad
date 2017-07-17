@@ -84,7 +84,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:singleLine="true"
-                                android:text="年化收益最高达"
+                                android:text="预期年化收益率"
                                 android:textColor="@color/gray"
                                 android:textSize="@dimen/common_measure_18dp" />
 

@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.adapter;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +13,10 @@ import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.WDYChildRecordInfo;
 import com.ylfcf.ppp.util.Util;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * 稳定赢
  * @author Mr.liu
@@ -111,6 +110,10 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 					.findViewById(R.id.invest_record_lczq_item_catcompact);
 			viewHolder.catBidRecords = (Button) convertView.
 					findViewById(R.id.invest_record_lczq_item_catrecord);
+			viewHolder.nhllTitleTV = (TextView) convertView
+					.findViewById(R.id.invest_lczq_records_item_nhlltitle);
+			viewHolder.nhllTV = (TextView) convertView
+					.findViewById(R.id.invest_lczq_records_item_nhll);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -122,6 +125,7 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 		viewHolder.catBidRecords.setTag(R.id.tag_first,info);
 		viewHolder.catBidRecords.setTag(R.id.tag_second,curPosition);
 		if("投资中".equals(info.getStatus())){
+			viewHolder.nhllTitleTV.setText("本期预期年化收益率");
 			viewHolder.investType.setText("在投");
 			viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_yellow);
 			viewHolder.interestMoneyTitle.setText("预期收益");
@@ -152,6 +156,7 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 				viewHolder.interestMoney.setText("0元");
 			}
 		}else if("已还款".equals(info.getStatus())){
+			viewHolder.nhllTitleTV.setText("本期预期年化收益率");
 			viewHolder.investType.setText(info.getStatus());
 			viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
 			viewHolder.nextAddTime.setText("还款日期："+info.getInterest_end_time().split(" ")[0]);
@@ -166,7 +171,21 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 				viewHolder.interestMoney.setText(info.getWdy_pro_interest()+"元");
 			}
 		}
-		
+
+		double baseRateD = 0d;
+		double addRateD = 0d;
+		try{
+			baseRateD = Double.parseDouble(info.getInterest_rate());
+			addRateD = Double.parseDouble(info.getCoupon_interest_add());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		if("1".equals(info.getPeriod())){
+			//首期
+			viewHolder.nhllTV.setText(Util.double2PointDouble(baseRateD+addRateD)+"%");
+		}else{
+			viewHolder.nhllTV.setText(Util.double2PointDouble(baseRateD)+"%");
+		}
 		try {
 			viewHolder.firstTime.setText("首投日：" + info.getAdd_time().split(" ")[0]);
 		} catch (Exception e) {
@@ -183,8 +202,11 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 			viewHolder.firstMoney.setText(info.getMoney()+"元");
 			viewHolder.totalBidMoney.setText(info.getTotal_money()+"元");
 		}
-		
-		viewHolder.remark.setText("备注：一 一");
+		if(addRateD > 0){
+			viewHolder.remark.setText("首期共加息"+Util.double2PointDouble(addRateD)+"%");
+		}else{
+			viewHolder.remark.setText("一 一");
+		}
 		if (position == 0) {
 			convertView.setPadding(0, context.getResources()
 					.getDimensionPixelSize(R.dimen.common_measure_15dp), 0, 0);
@@ -251,6 +273,8 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 		TextView remark;
 		Button catCompactBtn;// 查看合同
 		Button catBidRecords;//查看出借记录
+		TextView nhllTitleTV;
+		TextView nhllTV;
 	}
 	
 	/**

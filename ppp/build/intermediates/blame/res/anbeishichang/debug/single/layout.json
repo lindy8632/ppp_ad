@@ -184,6 +184,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\recharge_record_activity_listview_top.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\common_banner_popwindow_layout.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\common_banner_popwindow_layout.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\borrow_detail_prompt_layout.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\borrow_detail_prompt_layout.xml"
     },
@@ -336,6 +340,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\wdy_investrecord_top_layout.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\jxq_transfer_edit_dialog_layout.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\jxq_transfer_edit_dialog_layout.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\yxb_bid_suc_activity.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\yxb_bid_suc_activity.xml"
     },
@@ -462,6 +470,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\userinvest_vip_record_fragment.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\userinvest_vip_record_fragment.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\jxq_transfer_suc_dialog_layout.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\jxq_transfer_suc_dialog_layout.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\umeng_bak_at_list_item.xml",
@@ -676,6 +688,14 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\myhb_overdue_fragment.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\myfriends_activity_toplayout.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\myfriends_activity_toplayout.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\transfer_coupon_item.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\transfer_coupon_item.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\experience_listview_item.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\experience_listview_item.xml"
     },
@@ -720,6 +740,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\borrow_detail_xsmb_activity.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\myfriends_listview_item.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\myfriends_listview_item.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\wdy_invest_record_prompt.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\wdy_invest_record_prompt.xml"
     },
@@ -762,6 +786,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\umeng_bak_platform_item_simple.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\umeng_bak_platform_item_simple.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\myfriends_activity.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\myfriends_activity.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\banner_topic_activity.xml",
@@ -922,6 +950,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\yxb_product_element_layout.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\yxb_product_element_layout.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\jxq_transfer_prompt_dialog_layout.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\jxq_transfer_prompt_dialog_layout.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\yyy_cjwt_activity.xml",
@@ -1112,6 +1144,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\bid_success_activity.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\yyy_investrecord_top_layout.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\yyy_investrecord_top_layout.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\bid_yyy_activity.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\bid_yyy_activity.xml"
     },
@@ -1210,6 +1246,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\recharge_spinner_item.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\recharge_spinner_item.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\choose_jxq_activity.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\choose_jxq_activity.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\recharge_comp_activity.xml",

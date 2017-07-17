@@ -36,12 +36,13 @@ public class MyJXQActivity extends BaseActivity implements OnClickListener{
 	private PagerSlidingTabStrip mPagerSlidingTabStrip;
 	private ViewPager mViewPager;
 	public LoadingDialog loadingDialog;
-
+	private int curPosition = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.my_jxq_layout);
+		curPosition = getIntent().getIntExtra("cur_position",0);
 		loadingDialog = mLoadingDialog;
 		findViews();
 	}
@@ -60,7 +61,8 @@ public class MyJXQActivity extends BaseActivity implements OnClickListener{
 		mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.my_jxq_tab);
 		mViewPager = (ViewPager) findViewById(R.id.my_jxq_viewpager);
 		mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-		mViewPager.setOffscreenPageLimit(0);
+		mViewPager.setOffscreenPageLimit(2);
+		mViewPager.setCurrentItem(curPosition);
 		mPagerSlidingTabStrip.setViewPager(mViewPager);
 	}
 
@@ -115,7 +117,12 @@ public class MyJXQActivity extends BaseActivity implements OnClickListener{
 			switch (position) {
 			case 0:
 				if (nousedFragment == null) {
-					nousedFragment = new MyJXQNousedFragment();
+					nousedFragment = new MyJXQNousedFragment(new OnJXQNousedTransferSucListener(){
+						@Override
+						public void onSuccess() {
+							mViewPager.setCurrentItem(1);
+						}
+					});
 				}
 				return nousedFragment;
 			case 1:
@@ -134,4 +141,10 @@ public class MyJXQActivity extends BaseActivity implements OnClickListener{
 		}
 	}
 
+	/**
+	 * 转让加息券成功后的回调
+	 */
+	public interface OnJXQNousedTransferSucListener{
+		void onSuccess();
+	}
 }

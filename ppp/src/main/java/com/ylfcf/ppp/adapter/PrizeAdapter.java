@@ -109,6 +109,7 @@ public class PrizeAdapter extends ArrayAdapter<PrizeInfo> {
 			viewHolder.ticket.setVisibility(View.GONE);
 			viewHolder.moneyText.setVisibility(View.GONE);
 			viewHolder.catDetails.setVisibility(View.GONE);
+			viewHolder.endTime.setVisibility(View.VISIBLE);
 			if(info.getPrize().contains("转盘机会")){
 				viewHolder.title.setText(info.getOperating_remark()+info.getGet_nums()+"次");
 				viewHolder.endTime.setText("获取时间："+info.getSend_time());
@@ -125,6 +126,7 @@ public class PrizeAdapter extends ArrayAdapter<PrizeInfo> {
 			viewHolder.moneyText.setVisibility(View.GONE);
 			viewHolder.unitText.setVisibility(View.GONE);
 			viewHolder.catDetails.setVisibility(View.GONE);
+			viewHolder.endTime.setVisibility(View.VISIBLE);
 			viewHolder.title.setText(info.getPrize());
 			viewHolder.endTime.setText("获取时间："+info.getAdd_time());
 		}else if(info.getOperating_remark().contains("周年感恩回馈") && info.getOperating_remark().contains("返现")){
@@ -250,7 +252,19 @@ public class PrizeAdapter extends ArrayAdapter<PrizeInfo> {
 			viewHolder.endTime.setText("领取时间："+info.getAdd_time());
 			viewHolder.remark.setVisibility(View.VISIBLE);
 			viewHolder.remark.setText("备注："+info.getOperating_remark());
+		}else if("QYHD2017".equals(info.getActive_title())){
+			//2017年7月份活动
+			viewHolder.title.setText(info.getName());
+			if(info.getPrize().contains("抽奖机会") || info.getPrize().contains("蜂蜜")){
+				viewHolder.endTime.setVisibility(View.GONE);
+				viewHolder.remark.setText("备注："+info.getOperating_remark()+"\n						"+info.getRemark());
+			}else if(info.getPrize().contains("加息券")){
+				viewHolder.remark.setText("备注："+info.getOperating_remark());
+				viewHolder.endTime.setVisibility(View.VISIBLE);
+				viewHolder.endTime.setText("领取时间：" + info.getSend_time());
+			}
 		}else{
+			viewHolder.endTime.setVisibility(View.VISIBLE);
 			viewHolder.catDetails.setVisibility(View.GONE);
 			viewHolder.ticket.setVisibility(View.VISIBLE);
 			viewHolder.moneyText.setVisibility(View.VISIBLE);

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_220dp"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:background="@drawable/transfer_coupon_item_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_54dp"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:layout_marginRight="@dimen/common_measure_30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_30dp"
+                android:layout_height="@dimen/common_measure_26dp"
+                android:src="@drawable/jxq_bg"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_10dp"
+                android:text="加息："
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/transfer_coupon_item_interestadd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text=""
+                android:textSize="@dimen/common_measure_26dp"
+                android:textColor="@color/orange_text"/>
+
+            <CheckBox
+                android:id="@+id/transfer_coupon_item_cb"
+                android:layout_width="@dimen/common_measure_35dp"
+                android:layout_height="@dimen/common_measure_35dp"
+                android:button="@drawable/checkbox_selector"
+                android:checked="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:background="@drawable/xuxian_hor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:layout_marginRight="@dimen/common_measure_30dp"
+            android:layout_marginTop="@dimen/common_measure_8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="适用范围："
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/transfer_coupon_item_uselimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/gray"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:layout_marginRight="@dimen/common_measure_30dp"
+            android:layout_marginTop="@dimen/common_measure_5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="有效期："
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/transfer_coupon_item_timelimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/gray"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:layout_marginRight="@dimen/common_measure_30dp"
+            android:layout_marginTop="@dimen/common_measure_5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用要求："
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/transfer_coupon_item_moneylimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/gray"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:layout_marginRight="@dimen/common_measure_30dp"
+            android:layout_marginTop="@dimen/common_measure_5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注："
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/transfer_coupon_item_remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/gray"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

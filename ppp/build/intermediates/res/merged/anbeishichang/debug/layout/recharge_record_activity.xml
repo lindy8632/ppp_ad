@@ -12,7 +12,20 @@
         android:layout_height="match_parent"
         android:layout_weight="1" >
 
-        <com.handmark.pulltorefresh.library.PullToRefreshListView
+        <com.example.ylfcf.widget.XRefreshView
+            android:id="@+id/recharge_record_activity_xrefreshview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ListView
+                android:id="@+id/recharge_record_activity_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.example.ylfcf.widget.XRefreshView>
+
+        <!--<com.handmark.pulltorefresh.library.PullToRefreshListView
             xmlns:ptr="http://schemas.android.com/apk/res-auto"
             android:id="@+id/recharge_record_activity_listview"
             android:layout_width="match_parent"
@@ -28,7 +41,7 @@
             android:headerDividersEnabled="false"
             android:scrollbars="none"
             android:smoothScrollbar="true"
-            ptr:ptrMode="both" ></com.handmark.pulltorefresh.library.PullToRefreshListView>
+            ptr:ptrMode="both" ></com.handmark.pulltorefresh.library.PullToRefreshListView>-->
         
         <TextView 
             android:id="@+id/recharge_record_activity_nodata"

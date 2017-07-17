@@ -151,16 +151,36 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/common_measure_26dp" />
 
-                    <Button
-                        android:id="@+id/invitate_activity_btn_bottom"
-                        android:layout_width="fill_parent"
-                        android:layout_height="@dimen/common_measure_63dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/common_measure_20dp"
                         android:layout_marginRight="@dimen/common_measure_20dp"
                         android:layout_marginTop="@dimen/common_measure_10dp"
-                        android:background="@drawable/blue_fillet_btn_selector"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/common_measure_26dp" />
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/invitate_activity_btn_bottom"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/common_measure_63dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_fillet_btn_selector"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common_measure_26dp" />
+
+                        <Button
+                            android:id="@+id/invitate_activity_btn_bottom_catfriends"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/common_measure_63dp"
+                            android:layout_marginLeft="@dimen/common_measure_10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/style_rect_fillet_blue"
+                            android:text="查看好友详情"
+                            android:textColor="@color/common_topbar_bg_color"
+                            android:textSize="@dimen/common_measure_26dp"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

@@ -74,14 +74,15 @@ public class Util {
 	};
 
 	/**
-	 * 稳定盈预期收益
+	 * 薪盈计划预期收益
 	 * @param rate 年化收益
 	 * @param money 投资金额
 	 * @param month 月数
 	 * @return
 	 */
-	public static String getWDYInterest(String rate,int money,String month){
+	public static String getWDYInterest(String rate,String couponRateStr,int money,String month){
 		double rateD = 0d;
+		double couponRateD = 0d;
 		int monthI = 0;
 		double interestD = 0d;
 		double interestTemp = 0d;
@@ -90,8 +91,17 @@ public class Util {
 			monthI = Integer.parseInt(month);
 		} catch (Exception e) {
 		}
+		try{
+			couponRateD = Double.parseDouble(couponRateStr);
+		}catch (Exception e){
+
+		}
 		for(int i=1;i<=monthI;i++){
-			interestTemp = money * rateD / 100 * i /12;
+			if(i == monthI){
+				interestTemp = money * (rateD + couponRateD)/ 100 * i /12;
+			}else{
+				interestTemp = money * rateD / 100 * i /12;
+			}
 			interestD += interestTemp;
 		}
 		return Util.double2PointDoubleOne(interestD);

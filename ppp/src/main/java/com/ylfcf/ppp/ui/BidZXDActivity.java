@@ -190,8 +190,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					if("未使用".equals(info.getUse_status()) && info.getBorrow_type().contains(borrowType)){
 						try {
 							endDate = sdf.parse(info.getEffective_end_time());
-							if(endDate.compareTo(sdf.parse(baseInfo1.getTime())) == 1){
-								//表示加息券还未过期
+							if(endDate.compareTo(sdf.parse(baseInfo1.getTime())) == 1 && "0".equals(info.getTransfer())){
+								//表示加息券还未过期 ,并且使不可转让的加息券
 								jxqList.add(info);
 							}
 						} catch (Exception e) {
@@ -283,14 +283,17 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		if(usePromptList != null && usePromptList.size() > 1){
 			for(int i=0;i<usePromptList.size();i++){
 				String prompt = usePromptList.get(i);
-				sb.append(prompt);
+				if(i == usePromptList.size() - 1){
+					sb.append(prompt);
+				}else{
+					sb.append(prompt).append("、");
+				}
 			}
 			usePrompt.setVisibility(View.VISIBLE);
 			usePrompt.setText(sb.toString()+"只能使用其中一种");
 		}else{
 			usePrompt.setVisibility(View.GONE);
 		}
-		
 	}
 	
 	@Override
@@ -1383,7 +1386,11 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 						jxqEditText.setText("");
 						Util.toastLong(BidZXDActivity.this, "您的投资金额不满足加息券要求");
 					}else{
-						jxqEditText.setText(info.getMoney()+"%的加息券，需投资"+info.getMin_invest_money()+"元及以上可用");
+						if(limitMoney >= 10000){
+							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+limitMoney/10000+"万元及以上可用");
+						}else{
+							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+info.getMin_invest_money()+"元及以上可用");
+						}
 						jxqEditText.setTag(info.getId());
 						jxqArrowLayout.setTag(info.getMoney());
 						updateInterest();

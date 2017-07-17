@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,8 +11,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.MyJXQListAdapter;
 import com.ylfcf.ppp.adapter.MyJXQListAdapter.OnJXQItemClickListener;
@@ -28,6 +23,11 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.BorrowListZXDActivity;
 import com.ylfcf.ppp.ui.MyJXQActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 加息券 已使用
@@ -104,8 +104,16 @@ public class MyJXQUsedFragment extends BaseFragment{
 		if (parent != null) {
 			parent.removeView(rootView);
 		}
-		handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
+//		handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
 		return rootView;
+	}
+
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		super.setUserVisibleHint(isVisibleToUser);
+		if(isVisibleToUser){
+			handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
+		}
 	}
 
 	private void findViews(View view) {
@@ -116,7 +124,7 @@ public class MyJXQUsedFragment extends BaseFragment{
 		mMyJXQListAdapter = new MyJXQListAdapter(mainActivity,
 				new OnJXQItemClickListener() {
 					@Override
-					public void onClick(int position) {
+					public void onClick(JiaxiquanInfo jxqInfo,int position) {
 						Intent intent = new Intent(mainActivity,BorrowListZXDActivity.class);
 						startActivity(intent);
 					}

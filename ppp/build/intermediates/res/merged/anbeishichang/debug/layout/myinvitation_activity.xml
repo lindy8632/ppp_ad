@@ -10,45 +10,130 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
         android:layout_marginTop="@dimen/common_measure_25dp"
-        android:gravity="center_horizontal" >
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_totalmoney_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="共"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_measure_20dp" />
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/myinvitation_activity_friends_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/orange_text"
-            android:textSize="@dimen/common_measure_20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="累计已赚取："/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="位好友，帮我赚取"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_measure_20dp" />
+            <TextView
+                android:id="@+id/myinvitation_activity_totalmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
 
-        <TextView
-            android:id="@+id/myinvitation_activity_money_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/orange_text"
-            android:textSize="@dimen/common_measure_20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_onemoney_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="元"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_measure_20dp" />
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="直接好友的奖励："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_onemoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_twomoney_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="间接好友的奖励："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_twomoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_othermoney_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="来自历史好友的奖励："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_othermoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <RelativeLayout
@@ -81,20 +166,36 @@
 
     </RelativeLayout>
 
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/myinvitation_listview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:cacheColorHint="#00000000"
-        android:divider="@null"
-        android:dividerHeight="@dimen/common_measure_10dp"
-        android:fadingEdge="none"
-        android:fastScrollEnabled="false"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
-        android:listSelector="#00000000"
-        android:scrollbars="none" 
-        android:smoothScrollbar="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/myinvitation_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:dividerHeight="@dimen/common_measure_10dp"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="false"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:listSelector="#00000000"
+            android:scrollbars="none"
+            android:smoothScrollbar="true"/>
+
+        <TextView
+            android:id="@+id/myinvitation_activity_nodata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="暂无数据"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
 </LinearLayout>

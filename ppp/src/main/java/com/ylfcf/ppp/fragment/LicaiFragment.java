@@ -43,7 +43,7 @@ import com.ylfcf.ppp.ui.BorrowListSRZXActivity;
 import com.ylfcf.ppp.ui.BorrowListVIPActivity;
 import com.ylfcf.ppp.ui.BorrowListZXDActivity;
 import com.ylfcf.ppp.ui.MainFragmentActivity;
-import com.ylfcf.ppp.ui.SRZXAppointActivity;
+import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
@@ -360,7 +360,11 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 			break;
 		case R.id.licai_fragment_srzx_appoint_btn:
 			//私人尊享预约按钮
-			Intent intentSRZXAppoint = new Intent(getActivity(),SRZXAppointActivity.class);
+			Intent intentSRZXAppoint = new Intent(getActivity(),BannerTopicActivity.class);
+			BannerInfo info = new BannerInfo();
+			info.setArticle_id(Constants.TopicType.SRZX_APPOINT);
+			info.setLink_url(URLGenerator.SRZX_TOPIC_URL);
+			intentSRZXAppoint.putExtra("BannerInfo",info);
 			startActivity(intentSRZXAppoint);
 			break;
 		default:
@@ -407,12 +411,14 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 		}
 	}
 	
-	private void initXSMBView(ProductInfo info){
-		if(info == null){
+	private void initXSMBView(BaseInfo baseInfo){
+		if(baseInfo == null || baseInfo.getmProductInfo() == null){
 			return;
 		}
+		ProductInfo info = baseInfo.getmProductInfo();
 		//限时秒标活动
-		if (SettingsManager.checkXSMBActivity(new Date()) == 0) {
+		if (SettingsManager.checkActiveStatusBySysTime(baseInfo.getTime(),SettingsManager.xsmbStartDate,
+				SettingsManager.xsmbEndDate) == 0) {
 			xsmbLayout.setVisibility(View.VISIBLE);
 		}
 		if("已满标".equals(info.getMoney_status())){
@@ -501,8 +507,7 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);
 					if(resultCode == 0){
-						ProductInfo xsmbDetails = baseInfo.getmProductInfo();
-						initXSMBView(xsmbDetails);
+						initXSMBView(baseInfo);
 					}
 				}
 			}

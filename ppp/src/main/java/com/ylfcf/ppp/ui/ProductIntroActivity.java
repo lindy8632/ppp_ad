@@ -61,7 +61,7 @@ public class ProductIntroActivity extends BaseActivity implements OnClickListene
 		topTitleTV = (TextView)findViewById(R.id.common_page_title);
 		if("xsb".equals(fromWhere)){
 			topTitleTV.setText("新手标介绍");
-			loadURL = URLGenerator.XSB_XMJS_URL;
+			loadURL = URLGenerator.XSB_XMJS_URL.replace("borrowid", productInfo.getId());
 		}else if("yyy".equals(fromWhere)){
 			topTitleTV.setText("元月盈介绍");
 			loadURL = URLGenerator.YYY_XMJS_URL;

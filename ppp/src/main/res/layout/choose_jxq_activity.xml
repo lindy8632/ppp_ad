@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background">
+
+    <include
+        android:id="@+id/choosejxq_activity_titlelayout"
+        layout="@layout/common_topbar"/>
+
+    <TextView
+        android:id="@+id/choose_jxq_activity_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/choosejxq_activity_titlelayout"
+        android:gravity="center"
+        android:text="当前无可转赠的加息券！"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/common_measure_20dp"
+        android:visibility="gone"/>
+
+    <com.example.ylfcf.widget.XRefreshView
+        android:id="@+id/choosejxq_activity_xrefreshview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/choosejxq_activity_titlelayout"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginBottom="@dimen/common_measure_80dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <ListView
+            android:id="@+id/choosejxq_activity_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#00000000" />
+
+    </com.example.ylfcf.widget.XRefreshView>
+
+    <LinearLayout
+        android:id="@+id/choose_jxq_activity_bottomlayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent_background_20"
+        android:paddingLeft="@dimen/common_measure_20dp"
+        android:paddingRight="@dimen/common_measure_20dp"
+        android:weightSum="3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/choosejxq_activity_allchoose_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_60dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_fillet_btn_selector"
+            android:text="全选"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_24dp"/>
+
+        <Button
+            android:id="@+id/choosejxq_activity_cancelchoose_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_60dp"
+            android:layout_marginLeft="@dimen/common_measure_5dp"
+            android:layout_marginRight="@dimen/common_measure_5dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_fillet_btn_selector"
+            android:text="取消全选"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_24dp"/>
+
+        <Button
+            android:id="@+id/choosejxq_activity_ensure_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_60dp"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_fillet_btn_selector"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_24dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/choose_jxq_activity_page_layout"
+        android:layout_width="@dimen/common_measure_52dp"
+        android:layout_height="@dimen/common_measure_52dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/common_measure_5dp"
+        android:layout_marginTop="@dimen/common_measure_72dp"
+        android:background="@drawable/choose_jxq_activity_page"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/choose_jxq_activity_page_position"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="bottom|center_horizontal"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+        <TextView
+            android:id="@+id/choose_jxq_activity_page_total"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center_horizontal"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

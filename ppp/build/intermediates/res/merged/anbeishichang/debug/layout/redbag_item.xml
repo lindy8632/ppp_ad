@@ -93,7 +93,7 @@
             android:layout_marginLeft="@dimen/common_measure_20dp"
             android:layout_marginRight="@dimen/common_measure_20dp"
             android:layout_marginTop="@dimen/common_measure_6dp"
-            android:textColor="@color/black"
+            android:textColor="@color/gray"
             android:textSize="@dimen/common_measure_18dp"/>
         
     </LinearLayout>

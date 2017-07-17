@@ -8,6 +8,8 @@ import com.ylfcf.ppp.parse.JsonParseInvest;
 import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
 import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.YLFLogger;
+
 /**
  * 稳定盈投标接口
  * @author Mr.liu
@@ -47,10 +49,11 @@ public class AsyncWDYInvest extends AsyncTaskBase{
 		String result = null;
 		try {
 			url = URLGenerator.getInstance().getWDYBorrowInvestURL(borrowId, money, investUserId, investFrom, coinMoney, couponLogId, redBagLogId);
+			YLFLogger.d("薪盈计划投资url:"+url[0]+url[1]);
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}
-
+			YLFLogger.d("薪盈计划投资result:"+result);
 			if (result == null) {
 				result = BackType.FAILE;
 			} else {

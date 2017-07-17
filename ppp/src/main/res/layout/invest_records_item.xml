@@ -30,6 +30,7 @@
                     android:id="@+id/invest_records_item_borrowlogo"
                     android:layout_width="@dimen/common_measure_30dp"
                     android:layout_height="@dimen/common_measure_30dp"
+                    android:layout_marginRight="@dimen/common_measure_5dp"
                     android:src="@drawable/licai_xsb_logo"
                     android:visibility="gone" />
 
@@ -37,7 +38,6 @@
                     android:id="@+id/invest_records_item_borrowname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_measure_5dp"
                     android:singleLine="true"
                     android:textColor="@color/black"
                     android:textSize="@dimen/common_measure_22dp" />
@@ -90,9 +90,10 @@
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/common_measure_10dp"
+                android:layout_marginRight="@dimen/common_measure_10dp"
                 android:orientation="vertical" >
 
                 <TextView
@@ -101,7 +102,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="年化利率"
+                    android:text="预期年化收益率"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/common_measure_18dp" />
 
@@ -139,7 +140,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="0.00%"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/common_measure_18dp" />
             </LinearLayout>
 
@@ -165,7 +166,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="0元"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/common_measure_18dp" />
             </LinearLayout>
 

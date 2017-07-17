@@ -133,7 +133,7 @@ public class BorrowListSRZXAdapter extends ArrayAdapter<ProductInfo> {
         	viewHolder.roundProgressBar.setProgress(10000);
         }
         viewHolder.angleImg.setImageResource(R.drawable.licai_srzx_logo);
-    	viewHolder.nhsyText.setText("年化收益");
+    	viewHolder.nhsyText.setText("预期年化收益率");
         
         double extraInterestD = 0d;
         String extraInterest = info.getAndroid_interest_rate();

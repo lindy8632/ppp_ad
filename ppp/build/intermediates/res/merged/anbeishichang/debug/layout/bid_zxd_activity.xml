@@ -254,7 +254,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="年化利率"
+                                android:text="预期年化收益率"
                                 android:textColor="@color/gray2"
                                 android:textSize="@dimen/common_measure_16dp" />
 
@@ -628,8 +628,8 @@
                 
                 <CheckBox 
                     android:id="@+id/bid_zxd_activity_cb"
-			    	android:layout_width="@dimen/common_measure_20dp"
-			    	android:layout_height="@dimen/common_measure_20dp"
+			    	android:layout_width="@dimen/common_measure_35dp"
+			    	android:layout_height="@dimen/common_measure_35dp"
 			    	android:layout_marginRight="@dimen/common_measure_10dp"
 			    	android:button="@drawable/checkbox_selector"
 			    	android:checked="true"/>       

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ylfcf.ppp"
-    android:versionCode="150"
-    android:versionName="1.5.0" >
+    android:versionCode="153"
+    android:versionName="1.5.3" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -373,6 +373,14 @@
             android:theme="@style/AnimActivityTheme" />
         <activity
             android:name="com.ylfcf.ppp.ui.LXJ5TempActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.MyFriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ChooseJXQActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
         <activity

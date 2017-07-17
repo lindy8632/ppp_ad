@@ -946,12 +946,20 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 						}
 						if("personal".equals(type)){
 							registeNPBtn.setEnabled(true);
-							recommendNPName.setVisibility(View.VISIBLE);
-							recommendNPName.setText("推荐人："+Util.hidRealName2(user.getReal_name()));
+							if(user.getReal_name() == null || "".equals(user.getReal_name())){
+								recommendNPName.setVisibility(View.GONE);
+							}else{
+								recommendNPName.setVisibility(View.VISIBLE);
+								recommendNPName.setText("推荐人："+Util.hidRealName2(user.getReal_name()));
+							}
 						}else if("company".equals(type)){
 							registeCompanyBtn.setEnabled(true);
-							managerNameComp.setVisibility(View.VISIBLE);
-							managerNameComp.setText("推荐人："+Util.hidRealName2(user.getReal_name()));
+							if(user.getReal_name() == null || "".equals(user.getReal_name())){
+								managerNameComp.setVisibility(View.GONE);
+							}else{
+								managerNameComp.setVisibility(View.VISIBLE);
+								managerNameComp.setText("推荐人："+Util.hidRealName2(user.getReal_name()));
+							}
 						}
 					}else if(resultCode == -1){
 						//获取失败

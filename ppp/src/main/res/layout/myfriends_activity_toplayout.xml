@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_5dp"
+        android:layout_marginBottom="@dimen/common_measure_4dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_60dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_24dp"
+                android:layout_height="@dimen/common_measure_24dp"
+                android:layout_marginLeft="@dimen/common_measure_10dp"
+                android:layout_marginRight="@dimen/common_measure_10dp"
+                android:src="@drawable/icon_zan"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="当前好友共计："
+                android:textSize="@dimen/common_measure_20dp"/>
+
+            <TextView
+                android:id="@+id/myfriends_activity_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:text="0"
+                android:textSize="@dimen/common_measure_28dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:text="人"
+                android:textSize="@dimen/common_measure_20dp"/>
+
+            <ImageView
+                android:id="@+id/myfriends_activity_prompt_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="@dimen/common_measure_10dp"
+                android:src="@drawable/prompt_logo_blue"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myfriends_activity_toplayout_bottomlayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_80dp"
+            android:orientation="vertical">
+
+            <!-- layout_height必须大于shape 的height才可以显示出来 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@drawable/xuxian_hor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/myfriends_activity_zjhy_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/common_measure_3dp"
+                        android:text="0人"
+                        android:textSize="@dimen/common_measure_20dp"
+                        android:textColor="@color/gray"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_3dp"
+                        android:text="直接好友"
+                        android:textSize="@dimen/common_measure_20dp"
+                        android:textColor="@color/gray"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/common_measure_1dp"
+                    android:layout_height="@dimen/common_measure_50dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/xuxian_ver"
+                    android:layerType="software" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/myfriends_activity_jjhy_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/common_measure_3dp"
+                        android:text="0人"
+                        android:textSize="@dimen/common_measure_20dp"
+                        android:textColor="@color/gray"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_3dp"
+                        android:text="间接好友"
+                        android:textSize="@dimen/common_measure_20dp"
+                        android:textColor="@color/gray"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1215,7 +1215,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 								//
 							}else{
 								//没有领取过,福利计划2期
-								showGetJXQDialog("HYFL_02");
+								if(SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"hyfl02")){
+									showGetJXQDialog("HYFL_02");
+								}
 							}
 						}else{
 						}
@@ -1343,13 +1345,13 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 					if("JXQ".equals(type)){
 						SettingsManager.setLXFXJXQFlag(mainActivity,keyLXFX, false);
 					}else if("HYFL_02".equals(type)){
-						SettingsManager.setLXFXJXQFlag(mainActivity,keyHYFL, false);
+						SettingsManager.setHYFLFlag(mainActivity,keyHYFL, false);
 					}
 				}else{
 					if("JXQ".equals(type)){
 						SettingsManager.setLXFXJXQFlag(mainActivity,keyLXFX, true);
 					}else if("HYFL_02".equals(type)){
-						SettingsManager.setLXFXJXQFlag(mainActivity,keyHYFL, true);
+						SettingsManager.setHYFLFlag(mainActivity,keyHYFL, true);
 					}
 				}
 				if("JXQ".equals(type)){
@@ -1369,13 +1371,13 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 					if("JXQ".equals(type)){
 						SettingsManager.setLXFXJXQFlag(mainActivity,keyLXFX, false);
 					}else if("HYFL_02".equals(type)){
-						SettingsManager.setLXFXJXQFlag(mainActivity,keyHYFL, false);
+						SettingsManager.setHYFLFlag(mainActivity,keyHYFL, false);
 					}
 				}else{
 					if("JXQ".equals(type)){
 						SettingsManager.setLXFXJXQFlag(mainActivity,keyLXFX, true);
 					}else if("HYFL_02".equals(type)){
-						SettingsManager.setLXFXJXQFlag(mainActivity,keyHYFL, true);
+						SettingsManager.setHYFLFlag(mainActivity,keyHYFL, true);
 					}
 				}
 				dialog.dismiss();
@@ -1388,13 +1390,13 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 					if("JXQ".equals(type)){
 						SettingsManager.setLXFXJXQFlag(mainActivity,keyLXFX, false);
 					}else if("HYFL_02".equals(type)){
-						SettingsManager.setLXFXJXQFlag(mainActivity,keyHYFL, false);
+						SettingsManager.setHYFLFlag(mainActivity,keyHYFL, false);
 					}
 				}else{
 					if("JXQ".equals(type)){
 						SettingsManager.setLXFXJXQFlag(mainActivity,keyLXFX, true);
 					}else if("HYFL_02".equals(type)){
-						SettingsManager.setLXFXJXQFlag(mainActivity,keyHYFL, true);
+						SettingsManager.setHYFLFlag(mainActivity,keyHYFL, true);
 					}
 				}
 				dialog.dismiss();

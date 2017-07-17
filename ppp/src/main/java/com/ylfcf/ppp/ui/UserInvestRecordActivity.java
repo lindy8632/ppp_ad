@@ -146,7 +146,6 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 		mPagerSlidingTabStrip.setOnPageChangeListener(new OnPageChangeListener() {
 			@Override
 			public void onPageSelected(int arg0) {
-				YLFLogger.d("onPageSelected*****"+arg0);
 				if(titlesList.size() > 3){
 					if(arg0 == titlesList.size() - 1){
 						jianbianView.setVisibility(View.GONE);

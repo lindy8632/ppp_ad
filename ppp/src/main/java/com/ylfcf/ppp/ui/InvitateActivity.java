@@ -6,6 +6,9 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,8 +57,10 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	private ImageView qrCodeImage;// 二维码
 	private Button invitateBtn;
 	private Button bottomBtn;//底部按钮
+	private Button catFriendsBtn;//查看好友详情
 	private TextView knowMoreTV;//了解更多
 	private ImageView wayLogo1,wayLogo2,wayLogo3;
+    private TextView way1Content;
 
 	private int page = 0;
 	private int pageSize = 20;
@@ -101,7 +106,15 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		knowMoreTV.setOnClickListener(this);
 		bottomBtn = (Button) findViewById(R.id.invitate_activity_btn_bottom);
 		bottomBtn.setOnClickListener(this);
-		wayLogo1 = (ImageView) findViewById(R.id.invitate_activity_way_one_logo);
+		catFriendsBtn = (Button) findViewById(R.id.invitate_activity_btn_bottom_catfriends);
+		catFriendsBtn.setOnClickListener(this);
+        way1Content = (TextView) findViewById(R.id.invitate_activity_way_one_content);
+        SpannableStringBuilder builder = new SpannableStringBuilder(way1Content.getText().toString());
+        ForegroundColorSpan blueSpan = new ForegroundColorSpan(getResources().getColor(R.color.common_topbar_bg_color));
+        builder.setSpan(blueSpan, 29, 34, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        way1Content.setText(builder);
+
+        wayLogo1 = (ImageView) findViewById(R.id.invitate_activity_way_one_logo);
 		wayLogo2 = (ImageView) findViewById(R.id.invitate_activity_way_two_logo);
 		wayLogo3 = (ImageView) findViewById(R.id.invitate_activity_way_three_logo);
 		if(flag){
@@ -109,6 +122,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 			wayLogo1.setVisibility(View.GONE);
 			wayLogo2.setVisibility(View.GONE);
 			wayLogo3.setVisibility(View.GONE);
+			catFriendsBtn.setVisibility(View.VISIBLE);
 			invitateBtn.setEnabled(true);
 			bottomBtn.setText("查看推荐奖励");
 			bottomBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
@@ -118,6 +132,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 			wayLogo1.setVisibility(View.VISIBLE);
 			wayLogo2.setVisibility(View.VISIBLE);
 			wayLogo3.setVisibility(View.VISIBLE);
+			catFriendsBtn.setVisibility(View.GONE);
 			invitateBtn.setEnabled(false);
 			bottomBtn.setText("完成实名认证，激活另外两种推荐方式");
 			bottomBtn.setTextColor(getResources().getColor(R.color.white));
@@ -165,6 +180,10 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 			bannerInfo.setFrom_where("壕友推荐");
 			intentBanner.putExtra("BannerInfo", bannerInfo);
 			startActivity(intentBanner);
+			break;
+		case R.id.invitate_activity_btn_bottom_catfriends:
+			Intent intentFriends = new Intent(InvitateActivity.this,MyFriendsActivity.class);
+			startActivity(intentFriends);
 			break;
 		default:
 			break;

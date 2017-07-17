@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.AppInfo;
 import com.ylfcf.ppp.ui.MainFragmentActivity.OnDownLoadListener;
+import com.ylfcf.ppp.ui.MainFragmentActivity.OnUpdateWindowDismiss;
 
 /**
  * 版本更新的window
@@ -41,12 +42,14 @@ public class UpdatePopupwindow extends PopupWindow implements OnClickListener {
 
 	DownloadManager downManager;
 	OnDownLoadListener ondownloadListener;
+	OnUpdateWindowDismiss onUpdateWindowDismiss;
 	public UpdatePopupwindow(Context context) {
 		super(context);
 	}
 
 	public UpdatePopupwindow(Context context, View convertView, int width,
-			int height, AppInfo info, DownloadManager downloadManager,OnDownLoadListener onDownLoadListener) {
+							 int height, AppInfo info, DownloadManager downloadManager, OnDownLoadListener onDownLoadListener,
+							 OnUpdateWindowDismiss onUpdateWindowDismiss) {
 		super(convertView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		this.context = (Activity) context;
 		this.downManager = downloadManager;
@@ -54,6 +57,7 @@ public class UpdatePopupwindow extends PopupWindow implements OnClickListener {
 		this.height = height;
 		this.info = info;
 		this.ondownloadListener = onDownLoadListener;
+		this.onUpdateWindowDismiss = onUpdateWindowDismiss;
 		findViews(convertView);
 	}
 
@@ -110,6 +114,7 @@ public class UpdatePopupwindow extends PopupWindow implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.update_window_cancel_btn:
+			onUpdateWindowDismiss.onDismiss();
 			this.dismiss();
 			break;
 		case R.id.update_window_sure_btn:
@@ -126,11 +131,9 @@ public class UpdatePopupwindow extends PopupWindow implements OnClickListener {
 			Intent intent= new Intent();
 			intent.setAction("android.intent.action.VIEW");
 			Uri content_url = Uri.parse("http://wap.ylfcf.com/home/index/android.html");
-//            Uri content_url = Uri.parse("http://a.app.qq.com/o/simple.jsp?pkgname=com.ylfcf.ppp");
 			intent.setData(content_url);
 			context.startActivity(intent);
 		} catch (Exception e) {
-
 			//先请求存储权限
 			ondownloadListener.onDownLoad(0);
 			dismiss();

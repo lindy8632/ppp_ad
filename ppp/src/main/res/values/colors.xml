@@ -46,6 +46,7 @@
 	<color name="gnb">#1d84bd</color>
 	
 	<color name="transparent_background">#30000000</color>
+    <color name="transparent_background_20">#20000000</color>
 	
 	<color name="wish_deliver_edit_hint_color">#BBBBBB</color>
 	

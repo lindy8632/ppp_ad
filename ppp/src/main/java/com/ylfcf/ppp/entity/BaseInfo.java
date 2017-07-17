@@ -21,7 +21,8 @@ public class BaseInfo implements java.io.Serializable{
 	 * 网络请求的结果描述
 	 */
 	private String msg;
-	
+
+	private ProjectInfo mProjectInfo;
 	private UserInfo userInfo;
 	private UserCardInfo userCardInfo;
 	private ProductPageInfo productPageInfo;
@@ -70,6 +71,32 @@ public class BaseInfo implements java.io.Serializable{
 	private LotteryCodeInfo mLotteryCodeInfo;
 	private RobcashMoneyInfo mRobcashMoneyInfo;
 	private ActivePageInfo mActivePageInfo;
+	private PopBannerInfo mPopBannerInfo;
+	private FriendsPageInfo mFriendsPageInfo;
+
+	public FriendsPageInfo getmFriendsPageInfo() {
+		return mFriendsPageInfo;
+	}
+
+	public void setmFriendsPageInfo(FriendsPageInfo mFriendsPageInfo) {
+		this.mFriendsPageInfo = mFriendsPageInfo;
+	}
+
+	public ProjectInfo getmProjectInfo() {
+		return mProjectInfo;
+	}
+
+	public void setmProjectInfo(ProjectInfo mProjectInfo) {
+		this.mProjectInfo = mProjectInfo;
+	}
+
+	public PopBannerInfo getmPopBannerInfo() {
+		return mPopBannerInfo;
+	}
+
+	public void setmPopBannerInfo(PopBannerInfo mPopBannerInfo) {
+		this.mPopBannerInfo = mPopBannerInfo;
+	}
 
 	public ActivePageInfo getmActivePageInfo() {
 		return mActivePageInfo;

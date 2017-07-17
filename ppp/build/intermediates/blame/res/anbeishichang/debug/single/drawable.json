@@ -720,6 +720,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\wechat_fav.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_blue_15dp.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_blue_15dp.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_light_bar_bg.9.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_light_bar_bg.9.png"
     },

@@ -94,6 +94,9 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 					.findViewById(R.id.invest_record_yyy_item_applyorcancel);
 			viewHolder.interestMoney = (TextView) convertView.findViewById(R.id.invest_record_yyy_item_interestmoney);//投资收益
 			viewHolder.remark = (TextView) convertView.findViewById(R.id.invest_records_yyy_item_remark);
+			viewHolder.nhllTV = (TextView) convertView.findViewById(R.id.invest_records_yyy_item_nhll);
+			viewHolder.nhllTitleTV = (TextView) convertView.findViewById(R.id.invest_records_yyy_item_nhll_title);
+
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -106,6 +109,7 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 		viewHolder.applyOrCancelBtn.setTag(R.id.tag_first,info);
 		viewHolder.applyOrCancelBtn.setTag(R.id.tag_second,curPosition);
 		if("投资中".equals(info.getReturn_status())){
+			viewHolder.nhllTitleTV.setText("本期预期年化收益率");
 			viewHolder.investType.setText(info.getInvest_status());
 			viewHolder.investType.setTextColor(context.getResources().getColor(R.color.white));
 			if("首投".equals(info.getInvest_status())){
@@ -114,11 +118,25 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_orange);
 			}
 		}else{
+			viewHolder.nhllTitleTV.setText("本期实际年化收益率");
 			viewHolder.investType.setText(info.getReturn_status());
 			viewHolder.investType.setTextColor(context.getResources().getColor(R.color.gray));
 			viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_edit_white);
 		}
-		
+
+		double baseRateD = 0d;//基础利率
+		double addRateD = 0d;//加息利率
+		try{
+			baseRateD = Double.parseDouble(info.getInterest_rate());
+			addRateD = Double.parseDouble(info.getInterest_add());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		if("0".equals(info.getInvest_times())){
+			viewHolder.nhllTV.setText(Util.double2PointDouble(baseRateD+addRateD)+"%");
+		}else{
+			viewHolder.nhllTV.setText(Util.double2PointDouble(baseRateD)+"%");
+		}
 		viewHolder.firstTime.setText("首投日: " + info.getFirst_borrow_time().split(" ")[0]);
 		int times = 0;//投资次数，大于0表示复投
 		long nowTime = System.currentTimeMillis();
@@ -191,11 +209,9 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 		} catch (Exception e) {
 		}
 		if(info == null || info.getInterest_add().isEmpty() || interestAddD == 0){
-			viewHolder.remark.setVisibility(View.GONE);
-			viewHolder.remark.setText("备注: — —");
+			viewHolder.remark.setText("— —");
 		}else{
-			viewHolder.remark.setVisibility(View.VISIBLE);
-			viewHolder.remark.setText("备注: 首投加息" + info.getInterest_add() + "%");
+			viewHolder.remark.setText("首投共加息" + info.getInterest_add() + "%");
 		}
 		if("投资中".equals(info.getReturn_status())){
 			boolean isReturn = Util.isReturnYYY(info);
@@ -275,6 +291,8 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 		TextView remark;
 		Button catCompactBtn;// 查看合同
 		Button applyOrCancelBtn;//预约或者取消赎回
+		TextView nhllTV;//年化利率
+		TextView nhllTitleTV;//年化利率
 	}
 	
 	/**

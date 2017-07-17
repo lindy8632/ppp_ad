@@ -17,7 +17,7 @@ public class InvestRecordInfo implements java.io.Serializable{
 	private String interest_rate;//年化收益
 	private String borrow_user_id;//借款方用户id
 	private String invest_user_id;//投资方用户id
-	private String 	start_time;
+	private String start_time;
 	private String end_time;
 	private String money;//本金（首投本金）
 	private String invest_money;//在投金额（元月盈新增字段）
@@ -73,11 +73,21 @@ public class InvestRecordInfo implements java.io.Serializable{
 	private String interest_free_period;//每年允许的延期天数
 	private String interest_period_month;//投资期限（单位月）
 	private String is_generated_records;//稳定的查看出借记录按钮是否可以点击 1时可以点击，0时不可点击
+	private String period;//1为首投
 	private List<WDYChildRecordInfo> wdyChildRecordList;//稳定盈投资记录
 	
 	public List<WDYChildRecordInfo> getWdyChildRecordList() {
 		return wdyChildRecordList;
 	}
+
+	public String getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+
 	public void setWdyChildRecordList(List<WDYChildRecordInfo> wdyChildRecordList) {
 		this.wdyChildRecordList = wdyChildRecordList;
 	}

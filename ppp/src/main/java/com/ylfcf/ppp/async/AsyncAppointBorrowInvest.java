@@ -22,19 +22,21 @@ public class AsyncAppointBorrowInvest extends AsyncTaskBase{
 	private String money;
 	private String investFrom;
 	private String redbagId;
+	private String couponId;
 	
 	private OnBorrowInvestInter onInvestInter;
 	
 	private BaseInfo baseInfo;
 	
 	public AsyncAppointBorrowInvest(Context context, String borrowId,String investUserId,String money,String investFrom,String redbagId,
-			OnBorrowInvestInter onInvestInter) {
+			String couponId,OnBorrowInvestInter onInvestInter) {
 		this.context = context;
 		this.borrowId = borrowId;
 		this.investUserId = investUserId;
 		this.money = money;
 		this.investFrom = investFrom;
 		this.redbagId = redbagId;
+		this.couponId = couponId;
 		this.onInvestInter = onInvestInter;
 	}
 
@@ -43,7 +45,7 @@ public class AsyncAppointBorrowInvest extends AsyncTaskBase{
 		String url[] = null;
 		String result = null;
 		try {
-			url = URLGenerator.getInstance().getAppointBorrowInvest(borrowId, investUserId, money, investFrom,redbagId);
+			url = URLGenerator.getInstance().getAppointBorrowInvest(borrowId, investUserId, money, investFrom,redbagId,couponId);
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}

@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -132,6 +133,8 @@ public class UserInvestYYYRecordFragment extends BaseFragment{
 				.findViewById(R.id.userinvest_yyy_record_fragment_pull_refresh_list);
 		nodataText = (TextView) view
 				.findViewById(R.id.userinvest_yyy_record_fragment_nodata);
+		LinearLayout topLayout = (LinearLayout)LayoutInflater.from(mainActivity).inflate(R.layout.yyy_investrecord_top_layout, null);
+		pullToRefreshListView.getRefreshableView().addHeaderView(topLayout);
 		investRecordsAdapter = new UserInvestYYYRecordAdapter(mainActivity,new OnYYYItemClickListener() {
 			@Override       
 			public void onCatCompact(int position, View v, InvestRecordInfo info) {
@@ -192,7 +195,10 @@ public class UserInvestYYYRecordFragment extends BaseFragment{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				InvestRecordInfo info = investRecordList.get(position - 1);
+				InvestRecordInfo info = (InvestRecordInfo) parent.getItemAtPosition(position);
+				if(info == null){
+					return;
+				}
 				info.setBorrow_type("ÔªÔÂÓ¯");
 				Intent intent = new Intent(mainActivity,BorrowDetailYYYActivity.class);
 				intent.putExtra("InvestRecordInfo", info);

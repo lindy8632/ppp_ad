@@ -121,10 +121,10 @@ public class SimpleCrypto {
     }
 
 
-    public static String encrypt(String data) throws Exception {
+    public static String encryptAES(String data,String encryptKey) throws Exception {
         try {
-            String key = "yuanlifanglicai1";
-            String iv = "yuanlifanglicai1";
+            String key = encryptKey;
+            String iv = encryptKey;
 
             Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
             int blockSize = cipher.getBlockSize();

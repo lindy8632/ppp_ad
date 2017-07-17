@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/child_background">
+
+    <include
+        layout="@layout/common_topbar"/>
+
+    <com.example.ylfcf.widget.XRefreshView
+        android:id="@+id/myfriends_activity_xrefreshview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+            <ListView
+                android:id="@+id/myfriends_activity_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#00000000"
+                android:dividerHeight="@dimen/common_measure_6dp"/>
+
+    </com.example.ylfcf.widget.XRefreshView>
+</LinearLayout>

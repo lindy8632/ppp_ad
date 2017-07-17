@@ -38,10 +38,11 @@ import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.MainFragmentAdapter;
 import com.ylfcf.ppp.async.AsyncAPIQuery;
 import com.ylfcf.ppp.async.AsyncAddPhoneInfo;
+import com.ylfcf.ppp.async.AsyncPopBanner;
 import com.ylfcf.ppp.async.AsyncProductPageInfo;
-import com.ylfcf.ppp.async.AsyncXCFLActiveTime;
 import com.ylfcf.ppp.entity.AppInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.PopBannerInfo;
 import com.ylfcf.ppp.entity.YXBProductInfo;
 import com.ylfcf.ppp.entity.YXBProductLogInfo;
 import com.ylfcf.ppp.inter.Inter.OnApiQueryBack;
@@ -53,21 +54,16 @@ import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
-import com.ylfcf.ppp.view.GuoqingJiaxiPopwindow;
+import com.ylfcf.ppp.view.CommonBannerPopwindow;
 import com.ylfcf.ppp.view.JuneActivePopupwindow;
-import com.ylfcf.ppp.view.LXFXPopupwindow2017;
 import com.ylfcf.ppp.view.LXJ5Popupwindow;
-import com.ylfcf.ppp.view.SignPopupwindow;
-import com.ylfcf.ppp.view.TwoyearsTZFXPopwindow;
 import com.ylfcf.ppp.view.UpdatePopupwindow;
-import com.ylfcf.ppp.view.XSMBPopwindow;
 import com.ylfcf.ppp.view.YQHYPopupwindow;
 import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.NavigationBarView;
 import com.ylfcf.ppp.widget.NoScrollViewPager;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -85,14 +81,13 @@ import cn.jpush.android.api.TagAliasCallback;
  */
 public class MainFragmentActivity extends BasePermissionActivity implements OnClickListener, NetworkStateListener{
 	public static final String MESSAGE_RECEIVED_ACTION = "com.ylfcf.ppp.MESSAGE_RECEIVED_ACTION";
-	private static final int REQUEST_TGY01_START_WHAT = 5621;//四月份推广活动是否开始
-	private static final int REQUEST_LXJ5_START_WHAT = 5622;//5月份抢现金活动是否开始
-	private static final int REQUEST_JUNEACTIVE_START_WHAT = 5623;//6月份活动是否开始
-	
+
 	private static final int MSG_SET_ALIAS = 3219;
 	
 	private static final int DOWNLOAD_SUCCESS = 2105;
 	private static final int RQ_STORAGE_PERM = 123;//存储权限请求码
+
+	private static final int REQUEST_BANNERPOP_WHAT = 2106;
 	
 	public static final String KEY_MESSAGE = "message";
 	public static final String KEY_EXTRAS = "extras";
@@ -142,14 +137,8 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
                           null,
                           mAliasCallback);
 				break;
-			case REQUEST_TGY01_START_WHAT:
-				requestActiveTime("TGY_01");
-				break;
-			case REQUEST_LXJ5_START_WHAT:
-				requestActiveTime("MONDAY_ROB_CASH");
-				break;
-			case REQUEST_JUNEACTIVE_START_WHAT:
-				requestActiveTime("LYHD2017");
+			case REQUEST_BANNERPOP_WHAT:
+				requestPopBanner();
 				break;
 			default:
 				break;
@@ -259,12 +248,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		YLFLogger.d("本机的像素密度：-----"+scale);
 		findViews();
 		YLFLogger.d("设备号：————————"+UmengRegistrar.getRegistrationId(getApplicationContext()));
-//		if(!Settings.System.canWrite(this)){
-//	          Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,
-//	                    Uri.parse("package:" + getPackageName()));
-//	          startActivityForResult(intent, 0);
-//	     } 
-		
+
 		//检查版本更新
 		new Handler().postDelayed(new Runnable() {
 			@Override
@@ -281,68 +265,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		requestProductPageInfo("", "发布","未满标","是","","");//请求产品列表
 		downloadChangeObserver();
 //		setJPushAlias();
-	}
-
-	/**
-	 * 活动弹窗
-	 */
-	private void showActiveWindow(){
-		if(SettingsManager.checkGuoqingJiaxiActivity()){
-			new Handler().postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					showGuoqingJiaxiWindow();
-				}
-			}, 3000L);
-		}
-		if(SettingsManager.checkTwoYearsTZFXActivity()){
-			new Handler().postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					showTwoyearsTZFXWindow();
-				}
-			}, 2800L);
-		}
-		if(SettingsManager.checkXSMBActivity(new Date()) == 0){
-			new Handler().postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					showXSMBWindow();
-				}
-			}, 2100L);
-		}
-		if(SettingsManager.checkLXFXActivity() == 0){
-			new Handler().postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					showLXFXWindow();
-				}
-			}, 2200L);
-		}
-		if(SettingsManager.checkSignActivity(new Date()) == 0){
-			new Handler().postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					showSignWindow();
-				}
-			}, 2200L);
-		}
-//		handler.sendEmptyMessage(REQUEST_TGY01_START_WHAT);
-//		handler.sendEmptyMessageDelayed(REQUEST_LXJ5_START_WHAT,200L);
-		handler.sendEmptyMessageDelayed(REQUEST_JUNEACTIVE_START_WHAT,300L);
-	}
-
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-//		if(requestCode == 0){
-//			Util.toastLong(this, "WriteSetting授权成功");
-//			new Handler().postDelayed(new Runnable() {
-//				@Override
-//				public void run() {
-//					requestAPIQuery(Util.getClientVersion(MainFragmentActivity.this));
-//				}
-//			}, 2000L);
-//		}
 	}
 
 	class DownloadChangeObserver extends ContentObserver {
@@ -446,72 +368,16 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	}
 	
 	/**
-	 * 国庆加息的弹窗
+	 * 首页弹窗
 	 */
-	private void showGuoqingJiaxiWindow(){
+	private void showCommonBannerPopwindow(PopBannerInfo popInfo){
 		View popView = LayoutInflater.from(this).inflate(
-				R.layout.guoqing_jiaxi_popwindow, null);
-		int[] screen = SettingsManager.getScreenDispaly(this);
-		int width = screen[0] * 5 / 6;
-		int height = screen[1] * 1 / 4 + 20;
-		GuoqingJiaxiPopwindow popwindow = new GuoqingJiaxiPopwindow(this,
-				popView, width, height);
-		popwindow.show(mainLayout);
-	}
-	
-	/**
-	 * 两周年感恩回馈活动
-	 */
-	private void showTwoyearsTZFXWindow(){
-		View popView = LayoutInflater.from(this).inflate(
-				R.layout.twoyears_tzfx_popwindow, null);
+				R.layout.common_banner_popwindow_layout, null);
 		int[] screen = SettingsManager.getScreenDispaly(this);
 		int width = screen[0];
 		int height = screen[1];
-		TwoyearsTZFXPopwindow popwindow = new TwoyearsTZFXPopwindow(this,
-				popView, width, height);
-		popwindow.show(mainLayout);
-	}
-	
-	/**
-	 * 限时秒标活动
-	 */
-	private void showXSMBWindow(){
-		View popView = LayoutInflater.from(this).inflate(
-				R.layout.xsmb_popwindow, null);
-		int[] screen = SettingsManager.getScreenDispaly(this);
-		int width = screen[0];
-		int height = screen[1];
-		XSMBPopwindow popwindow = new XSMBPopwindow(this,
-				popView, width, height);
-		popwindow.show(mainLayout);
-	}
-	
-	/**
-	 * 开年红 乐享返现
-	 */
-	private void showLXFXWindow(){
-		View popView = LayoutInflater.from(this).inflate(
-				R.layout.lxfx_popwindow, null);
-		int[] screen = SettingsManager.getScreenDispaly(this);
-		int width = screen[0];
-		int height = screen[1];
-		LXFXPopupwindow2017 popwindow = new LXFXPopupwindow2017(this,
-				popView, width, height);
-		popwindow.show(mainLayout);
-	}
-	
-	/**
-	 * 3月份签到
-	 */
-	private void showSignWindow(){
-		View popView = LayoutInflater.from(this).inflate(
-				R.layout.lxfx_popwindow, null);
-		int[] screen = SettingsManager.getScreenDispaly(this);
-		int width = screen[0];
-		int height = screen[1];
-		SignPopupwindow popwindow = new SignPopupwindow(this,
-				popView, width, height);
+		CommonBannerPopwindow popwindow = new CommonBannerPopwindow(this,
+				popView, width, height,popInfo);
 		popwindow.show(mainLayout);
 	}
 	
@@ -682,10 +548,10 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
                         mAppInfo = info;
 					}else{
 						//不需要升级
-						showActiveWindow();
+						handler.sendEmptyMessage(REQUEST_BANNERPOP_WHAT);
 					}
 				}else{
-					showActiveWindow();
+					handler.sendEmptyMessage(REQUEST_BANNERPOP_WHAT);
 				}
 			}
 		});
@@ -723,10 +589,15 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 				popView, width, height,info,downManager,new OnDownLoadListener() {
 					@Override
 					public void onDownLoad(long lastDownId) {
-//						showDownloadDialog();
                         requestStoragePermission();
 					}
-				});
+				},new OnUpdateWindowDismiss(){
+			@Override
+			public void onDismiss() {
+				//手动关闭更新弹窗
+				handler.sendEmptyMessage(REQUEST_BANNERPOP_WHAT);
+			}
+		});
 		popwindow.show(mainLayout);
 	}
 	
@@ -800,38 +671,23 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	}
 	
 	/**
-	 * 判断签到活动是否开始
-	 * @param activeTitle
+	 * 首页弹窗
 	 */
-	private void requestActiveTime(final String activeTitle){
-		AsyncXCFLActiveTime task = new AsyncXCFLActiveTime(MainFragmentActivity.this, activeTitle, 
-				new OnCommonInter() {
-					@Override
-					public void back(BaseInfo baseInfo) {
-						if(baseInfo != null){
-							int resultCode = SettingsManager.getResultCode(baseInfo);
-							if(resultCode == 0){
-								//活动正在开始
-								if("TGY_01".equals(activeTitle)){
-									showYQHYWindow();
-								}else if("MONDAY_ROB_CASH".equals(activeTitle)){
-									showLXJWindow();
-								}else if("LYHD2017".equals(activeTitle)){
-									showJoneActiveWindow();
-								}
-							}else if(resultCode == -3){
-								//活动结束
-							}else if(resultCode == -2){
-								//活动还未开始
-							}else{
-								if(SettingsManager.checkYQHYActivity(new Date()) == 0){
-									showYQHYWindow();
-								}
-							}
-						}
+	private void requestPopBanner(){
+		AsyncPopBanner popTask = new AsyncPopBanner(MainFragmentActivity.this, new OnCommonInter() {
+			@Override
+			public void back(BaseInfo baseInfo) {
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0){
+						PopBannerInfo info = baseInfo.getmPopBannerInfo();
+						showCommonBannerPopwindow(info);
 					}
-				});
-		task.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+				}else{
+				}
+			}
+		});
+		popTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 	
 	OnRequestBorrowListListener onRequestBorrowListListener1;//首页回调
@@ -924,6 +780,13 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	
 	public interface OnDownLoadListener{
 		void onDownLoad(long lastDownId);
+	}
+
+	/**
+	 * 升级弹窗手动取消
+	 */
+	public interface OnUpdateWindowDismiss{
+		void onDismiss();
 	}
 
 	public interface OnNetStatusChangeListener{

@@ -40,7 +40,6 @@ import com.ylfcf.ppp.util.SettingsManager;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Date;
 
 /**
  * 项目信息
@@ -212,15 +211,10 @@ public class ProductInfoActivity extends BaseActivity implements
 			vipPromptText.setVisibility(View.VISIBLE);
 			vipPromptText.setText("*提示：\n* 元立方金服拥有本产品的最终解释权。");
 		}
-		Date addDate = null;
-		try{
-			addDate = sdf.parse(productInfo.getAdd_time());
-		}catch (Exception e){
-			e.printStackTrace();
-		}
 		if(productInfo != null){
 			if("未满标".equals(productInfo.getMoney_status())){
-				if(SettingsManager.checkYYYJIAXI(addDate)==0 && "元年鑫".equals(productInfo.getBorrow_type())&& Constants.UserType.USER_COMPANY.
+				if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
+						SettingsManager.yyyJIAXIEndTime) == 0 && "元年鑫".equals(productInfo.getBorrow_type())&& Constants.UserType.USER_COMPANY.
 						equals(SettingsManager.getUserType(ProductInfoActivity.this))){
 					investBtn.setEnabled(false);
 				}else{

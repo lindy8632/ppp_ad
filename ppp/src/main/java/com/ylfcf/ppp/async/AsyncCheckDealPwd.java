@@ -72,5 +72,4 @@ public class AsyncCheckDealPwd extends AsyncTaskBase {
 			onCheckDealInter.back(baseInfo);
 		}
 	}
-
 }

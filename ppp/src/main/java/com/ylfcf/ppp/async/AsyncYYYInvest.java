@@ -8,6 +8,7 @@ import com.ylfcf.ppp.parse.JsonParseCommon;
 import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
 import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.YLFLogger;
 
 /**
  * 元月盈投资
@@ -21,17 +22,19 @@ public class AsyncYYYInvest extends AsyncTaskBase{
 	private String investUserId;
 	private String money;
 	private String investFrom;//投资来源
+	private String couponId;
 	private OnCommonInter onCommonInter;
 	
 	private BaseInfo baseInfo;
 	
 	public AsyncYYYInvest(Context context, String borrowId,String investUserId,String money,String investFrom,
-			OnCommonInter onCommonInter) {
+			String couponId,OnCommonInter onCommonInter) {
 		this.context = context;
 		this.borrowId = borrowId;
 		this.investUserId = investUserId;
 		this.money = money;
 		this.investFrom = investFrom;
+		this.couponId = couponId;
 		this.onCommonInter = onCommonInter;
 	}
 
@@ -40,11 +43,11 @@ public class AsyncYYYInvest extends AsyncTaskBase{
 		String url[] = null;
 		String result = null;
 		try {
-			url = URLGenerator.getInstance().getYYYBorrowInvestURL(borrowId, money, investUserId,investFrom);
+			url = URLGenerator.getInstance().getYYYBorrowInvestURL(borrowId, money, investUserId,investFrom,couponId);
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}
-
+			YLFLogger.d("url:"+url[0]+"/n参数"+url[1]);
 			if (result == null) {
 				result = BackType.FAILE;
 			} else {

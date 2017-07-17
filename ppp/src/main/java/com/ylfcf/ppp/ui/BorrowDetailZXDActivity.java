@@ -26,10 +26,10 @@ import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.fragment.ProductInfoFragment.OnProductInfoListener;
 import com.ylfcf.ppp.fragment.ProductSafetyFragment.OnProductSafetyListener;
+import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
-import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
@@ -75,6 +75,7 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	private RelativeLayout extraInterestLayout;
 	private TextView extraInterestText;
 	private ImageView jiaxiTipsImg;
+	private ImageView timeLimitTpisImg;
 
 	public ProductInfo productInfo;
 	public InvestRecordInfo recordInfo;
@@ -163,6 +164,24 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 		extraInterestLayout = (RelativeLayout) findViewById(R.id.borrow_details_zxd_extra_interest_layout);
 		extraInterestText = (TextView) findViewById(R.id.borrow_details_zxd_extra_interest_text);
 		jiaxiTipsImg = (ImageView) findViewById(R.id.borrow_details_zxd_activity_tips_img);
+		timeLimitTpisImg = (ImageView) findViewById(R.id.borrow_details_zxd_timelimit_tips_img);
+	}
+
+	private void initTimeLimitTipsImg(BaseInfo baseInfo){
+		if(baseInfo == null)
+			return;
+		String interestPeriodStr = "";
+		if(productInfo != null){
+			interestPeriodStr = productInfo.getInterest_period();
+		}else if(recordInfo != null){
+			interestPeriodStr = recordInfo.getInterest_period();
+		}
+		if(interestPeriodStr.contains("92") && SettingsManager.checkActiveStatusBySysTime(baseInfo.getTime(),
+				SettingsManager.activeJuly2017_StartTime,SettingsManager.activeJuly2017_EndTime) == 0){
+			timeLimitTpisImg.setVisibility(View.VISIBLE);
+		}else{
+			timeLimitTpisImg.setVisibility(View.GONE);
+		}
 	}
 	
 	@Override
@@ -182,7 +201,12 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 			e.printStackTrace();
 		}
 		if("未满标".equals(info.getMoney_status())){
-			if(SettingsManager.checkYYYJIAXI(addDate) == 0 && "元年鑫".equals(info.getBorrow_type())&& Constants.UserType.USER_COMPANY.
+			if(productInfo == null){
+				productInfo = new ProductInfo();
+				productInfo.setAdd_time(recordInfo.getAdd_time());
+			}
+			if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
+					SettingsManager.yyyJIAXIEndTime) == 0 && "元年鑫".equals(info.getBorrow_type())&& Constants.UserType.USER_COMPANY.
 					equals(SettingsManager.getUserType(BorrowDetailZXDActivity.this))){
 				//VIP和企业用户
 				bidBtn.setEnabled(false);
@@ -217,7 +241,8 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 		}catch (Exception e){
 
 		}
-		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
+		if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
+				SettingsManager.yyyJIAXIEndTime) == 0 && BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
 			extraInterestLayout.setVisibility(View.VISIBLE);
 			extraInterestText.setVisibility(View.GONE);
 			jiaxiTipsImg.setVisibility(View.VISIBLE);
@@ -335,7 +360,8 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 		}catch (Exception e){
 
 		}
-		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
+		if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
+				SettingsManager.yyyJIAXIEndTime) == 0 && BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
 			extraInterestLayout.setVisibility(View.VISIBLE);
 			extraInterestText.setVisibility(View.GONE);
 			jiaxiTipsImg.setVisibility(View.VISIBLE);
@@ -678,14 +704,15 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
-				BorrowDetailZXDActivity.this, id, new OnProjectDetails() {
+				BorrowDetailZXDActivity.this, id, new Inter.OnCommonInter() {
 					@Override
-					public void back(ProjectInfo projectInfo) {
+					public void back(BaseInfo baseInfo) {
 						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
 							mLoadingDialog.dismiss();
 						}
-						if (projectInfo != null) {
-							project = projectInfo;
+						if (baseInfo != null) {
+							initTimeLimitTipsImg(baseInfo);
+							project = baseInfo.getmProjectInfo();
 							parseProjectCailiaoMarkImg(project);
 							parseProjectCailiaoNomarkImg(project);
 							if (productInfoListener != null) {

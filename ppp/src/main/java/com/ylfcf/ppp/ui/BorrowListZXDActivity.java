@@ -69,9 +69,8 @@ public class BorrowListZXDActivity extends BaseActivity implements OnClickListen
 					if (!isLoadMore) {
 						productList.clear();
 					}
-					productList.addAll(baseInfo.getProductPageInfo()
-							.getProductList());
-					mBidListAdapter.setItems(productList);
+					productList.addAll(baseInfo.getProductPageInfo().getProductList());
+					mBidListAdapter.setItems(productList,baseInfo.getTime());
 				}
 				isLoadMore = false;
 				pullListView.onRefreshComplete();

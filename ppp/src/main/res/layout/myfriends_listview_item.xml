@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cccccc">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/common_measure_1dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/xuxian_hor"
+            android:showDividers="middle">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:divider="@drawable/xuxian_ver"
+                android:showDividers="middle"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/gray"
+                    android:text="电话"/>
+
+                <TextView
+                    android:id="@+id/myfriends_activity_phonetv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/gray"
+                    android:text="姓名"/>
+
+                <TextView
+                    android:id="@+id/myfriends_activity_nametv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/xuxian_ver"
+                android:showDividers="middle">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/gray"
+                    android:text="注册时间"/>
+
+                <TextView
+                    android:id="@+id/myfriends_listview_item_registertime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/gray"
+                    android:text="状态"/>
+
+                <TextView
+                    android:id="@+id/myfriends_activity_statustv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/myfriends_activity_item_btntablerow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <!--赠送加息券-->
+                <Button
+                    android:id="@+id/myfriends_listview_item_btn"
+                    android:layout_width="@dimen/common_measure_120dp"
+                    android:layout_height="@dimen/common_measure_30dp"
+                    android:layout_marginTop="@dimen/common_measure_10dp"
+                    android:layout_marginBottom="@dimen/common_measure_10dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/blue_fillet_btn_selector"
+                    android:gravity="center"
+                    android:text="赠送加息券"
+                    android:textColor="@color/white"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

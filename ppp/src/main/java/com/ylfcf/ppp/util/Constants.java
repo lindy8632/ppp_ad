@@ -76,6 +76,7 @@ public class Constants {
 		public static final String DOUBLE_ELEVEN_2016 = "160";//双十一活动
 		public static final String TWOYEARS_FANXIAN = "170";//两周年返现活动。
 		public static final String SECKILL = "180";//限时秒标活动
+		public static final String SRZX_APPOINT = "190";//私人尊享预约专题
 	}
 	
 	/**

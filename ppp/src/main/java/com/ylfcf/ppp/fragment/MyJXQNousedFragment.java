@@ -1,17 +1,18 @@
 package com.ylfcf.ppp.fragment;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,18 +23,29 @@ import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.MyJXQListAdapter;
 import com.ylfcf.ppp.adapter.MyJXQListAdapter.OnJXQItemClickListener;
 import com.ylfcf.ppp.async.AsyncJXQPageInfo;
+import com.ylfcf.ppp.async.AsyncJXQTransfer;
+import com.ylfcf.ppp.async.AsyncJXQTransferGetSubUser;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.JiaxiquanInfo;
+import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.BorrowListZXDActivity;
 import com.ylfcf.ppp.ui.MyJXQActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.Util;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 /**
  * 加息券未使用
  * @author Mr.liu
  *
  */
 public class MyJXQNousedFragment extends BaseFragment{
+	private MyJXQActivity.OnJXQNousedTransferSucListener mOnJXQNousedTransferSucListener;
 	public final int REQUEST_JXQ_LIST_WHAT = 1800;
 	private final int REQUEST_JXQ_LIST_SUCCESS = 1801;
 	private final int REQUEST_JXQ_LIST_FAILE = 1802;
@@ -81,6 +93,7 @@ public class MyJXQNousedFragment extends BaseFragment{
 						} catch (Exception e) {
 						}
 					}
+
 					if(jxqList.size() <= 0){
 						pullToRefreshListView.setVisibility(View.GONE);
 						nodataText.setVisibility(View.VISIBLE);
@@ -106,6 +119,10 @@ public class MyJXQNousedFragment extends BaseFragment{
 		}
 	};
 
+	public MyJXQNousedFragment(MyJXQActivity.OnJXQNousedTransferSucListener mOnJXQNousedTransferSucListener){
+		this.mOnJXQNousedTransferSucListener = mOnJXQNousedTransferSucListener;
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -120,8 +137,16 @@ public class MyJXQNousedFragment extends BaseFragment{
 		if (parent != null) {
 			parent.removeView(rootView);
 		}
-		handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
+//		handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
 		return rootView;
+	}
+
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		super.setUserVisibleHint(isVisibleToUser);
+		if(isVisibleToUser){
+			handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
+		}
 	}
 
 	@Override
@@ -138,9 +163,14 @@ public class MyJXQNousedFragment extends BaseFragment{
 		mMyJXQListAdapter = new MyJXQListAdapter(mainActivity,
 				new OnJXQItemClickListener() {
 					@Override
-					public void onClick(int position) {
-						Intent intent = new Intent(mainActivity,BorrowListZXDActivity.class);
-						startActivity(intent);
+					public void onClick(JiaxiquanInfo jxqInfo,int position) {
+						if("0".equals(jxqInfo.getTransfer())){
+							Intent intent = new Intent(mainActivity,BorrowListZXDActivity.class);
+							startActivity(intent);
+						}else if("1".equals(jxqInfo.getTransfer())){
+							//转让加息券
+							showJXQTransferEditDialog(jxqInfo);
+						}
 					}
 				});
 		pullToRefreshListView.setAdapter(mMyJXQListAdapter);
@@ -173,8 +203,195 @@ public class MyJXQNousedFragment extends BaseFragment{
 						}, 1000L);
 
 					}
-
 				});
+	}
+
+	/**
+	 * 加息券转让
+	 */
+	private void showJXQTransferEditDialog(final JiaxiquanInfo jxqInfo){
+		View contentView = LayoutInflater.from(mainActivity).inflate(R.layout.jxq_transfer_edit_dialog_layout, null);
+		final Button okBtn = (Button) contentView.findViewById(R.id.jxq_transfer_edit_dialog_okbtn);
+		ImageView delBtn = (ImageView) contentView.findViewById(R.id.jxq_transfer_edit_dialog_delbtn);
+		final EditText phoneET = (EditText) contentView.findViewById(R.id.jxq_transfer_edit_dialog_phone);
+		final TextView promptTV = (TextView) contentView.findViewById(R.id.jxq_transfer_edit_dialog_prompt);
+		AlertDialog.Builder builder = new AlertDialog.Builder(mainActivity, R.style.Dialog_Transparent);  //先得到构造器
+		builder.setView(contentView);
+		builder.setCancelable(false);
+		final AlertDialog dialog = builder.create();
+		okBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				checkReceiverData(phoneET,promptTV,dialog,jxqInfo);
+			}
+		});
+		delBtn.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		//参数都设置完成了，创建并显示出来
+		dialog.show();
+		okBtn.requestFocus();
+		okBtn.requestFocusFromTouch();
+		WindowManager windowManager = mainActivity.getWindowManager();
+		Display display = windowManager.getDefaultDisplay();
+		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+		lp.width = display.getWidth()*6/7;
+		dialog.getWindow().setAttributes(lp);
+	}
+
+	/**
+	 * 是否将加息券转让给xxx
+	 */
+	private void showJXQTransferPromptDialog(final UserInfo userInfo,final JiaxiquanInfo jxqInfo){
+		View contentView = LayoutInflater.from(mainActivity).inflate(R.layout.jxq_transfer_prompt_dialog_layout, null);
+		final Button okBtn = (Button) contentView.findViewById(R.id.jxq_transfer_prompt_dialog_okbtn);
+		ImageView delBtn = (ImageView) contentView.findViewById(R.id.jxq_transfer_prompt_dialog_delbtn);
+		final TextView contentTV = (TextView) contentView.findViewById(R.id.jxq_transfer_prompt_dialog_content);
+		if(userInfo.getReal_name() != null && !"".equals(userInfo.getReal_name())){
+			contentTV.setText("确定把加息券转让给"+Util.hidRealName2(userInfo.getReal_name())+"，手机号："+Util.hidPhoneNum(userInfo.getPhone())+"?");
+		}else{
+			contentTV.setText("确定把加息券转让给"+"手机号："+Util.hidPhoneNum(userInfo.getPhone())+"?");
+		}
+		AlertDialog.Builder builder = new AlertDialog.Builder(mainActivity, R.style.Dialog_Transparent);  //先得到构造器
+		builder.setView(contentView);
+		builder.setCancelable(false);
+		final AlertDialog dialog = builder.create();
+		okBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				requestTransferAddinterest(userInfo,jxqInfo);
+			}
+		});
+		delBtn.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		//参数都设置完成了，创建并显示出来
+		dialog.show();
+		WindowManager windowManager = mainActivity.getWindowManager();
+		Display display = windowManager.getDefaultDisplay();
+		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+		lp.width = display.getWidth()*6/7;
+		dialog.getWindow().setAttributes(lp);
+	}
+
+	/**
+	 * 加息券转让成功
+	 */
+	private void showJXQTransferSucDialog(UserInfo userInfo,JiaxiquanInfo jxqInfo){
+		View contentView = LayoutInflater.from(mainActivity).inflate(R.layout.jxq_transfer_suc_dialog_layout, null);
+		final Button okBtn = (Button) contentView.findViewById(R.id.jxq_transfer_suc_dialog_okbtn);
+		ImageView delBtn = (ImageView) contentView.findViewById(R.id.jxq_transfer_suc_dialog_delbtn);
+		TextView receiverName = (TextView) contentView.findViewById(R.id.jxq_transfer_suc_dialog_receivername);
+		TextView receiverPhone = (TextView) contentView.findViewById(R.id.jxq_transfer_suc_dialog_receiverphone);
+		if(userInfo.getReal_name() != null && !"".equals(userInfo.getReal_name())){
+			receiverName.setVisibility(View.VISIBLE);
+			receiverName.setText("接收人姓名: "+Util.hidRealName2(userInfo.getReal_name()));
+		}else{
+			receiverName.setVisibility(View.GONE);
+		}
+		receiverPhone.setText("接收人手机号: "+Util.hidPhoneNum(userInfo.getPhone()));
+		AlertDialog.Builder builder = new AlertDialog.Builder(mainActivity, R.style.Dialog_Transparent);  //先得到构造器
+		builder.setView(contentView);
+		builder.setCancelable(false);
+		final AlertDialog dialog = builder.create();
+		okBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				mOnJXQNousedTransferSucListener.onSuccess();
+			}
+		});
+		delBtn.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				mOnJXQNousedTransferSucListener.onSuccess();
+			}
+		});
+		//参数都设置完成了，创建并显示出来
+		dialog.show();
+		WindowManager windowManager = mainActivity.getWindowManager();
+		Display display = windowManager.getDefaultDisplay();
+		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+		lp.width = display.getWidth()*6/7;
+		dialog.getWindow().setAttributes(lp);
+	}
+
+	private void checkReceiverData(EditText phoneET,TextView promptTV,AlertDialog dialog,JiaxiquanInfo jxqInfo){
+		if(phoneET == null || promptTV == null)
+			return;
+		String phone = phoneET.getEditableText().toString();
+		if(Util.checkPhoneNumber(phone)){
+			promptTV.setVisibility(View.GONE);
+			requestSubUser(phone,SettingsManager.getUserId(mainActivity),promptTV,dialog,jxqInfo);
+		}else{
+			promptTV.setVisibility(View.VISIBLE);
+			promptTV.setText("请输入正确的手机号");
+		}
+	}
+
+	/**
+	 * 转让加息券
+	 * @param userInfo
+	 * @param jxqInfo
+	 */
+	private void requestTransferAddinterest(final UserInfo userInfo,final JiaxiquanInfo jxqInfo){
+		AsyncJXQTransfer transferTask = new AsyncJXQTransfer(mainActivity, userInfo.getId(), jxqInfo.getId(), new OnCommonInter() {
+			@Override
+			public void back(BaseInfo baseInfo) {
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0){
+						showJXQTransferSucDialog(userInfo,jxqInfo);
+					}else{
+						Util.toastLong(mainActivity,"此加息券已被转赠");
+					}
+				}else{
+					Util.toastLong(mainActivity,"转让失败，请求数据异常");
+				}
+			}
+		});
+		transferTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+	/**
+	 * 获取理财师的直接好友
+	 * @param phone
+	 * @param userId
+	 */
+	private void requestSubUser(final String phone,String userId,final TextView promptTV,final AlertDialog dialog,final JiaxiquanInfo jxqInfo){
+		AsyncJXQTransferGetSubUser subUserTask = new AsyncJXQTransferGetSubUser(mainActivity, phone, userId, new OnCommonInter() {
+			@Override
+			public void back(BaseInfo baseInfo) {
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0){
+						//是其直接好友
+						UserInfo userInfo = baseInfo.getUserInfo();
+						userInfo.setPhone(phone);
+						dialog.dismiss();
+						promptTV.setVisibility(View.GONE);
+						showJXQTransferPromptDialog(userInfo,jxqInfo);
+					}else if(resultCode == -1){
+						//不是其直接好友
+						promptTV.setVisibility(View.VISIBLE);
+						promptTV.setText("此手机号不是您的直接好友，不能转让");
+					}else{
+						Util.toastLong(mainActivity,baseInfo.getMsg());
+					}
+				}else{
+					Util.toastLong(mainActivity,"请求数据异常");
+				}
+			}
+		});
+		subUserTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 
 	private void requestJXQList(String userId, String useStatus) {
@@ -194,8 +411,7 @@ public class MyJXQNousedFragment extends BaseFragment{
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
-								Message msg = handler
-										.obtainMessage(REQUEST_JXQ_LIST_SUCCESS);
+								Message msg = handler.obtainMessage(REQUEST_JXQ_LIST_SUCCESS);
 								msg.obj = baseInfo;
 								handler.sendMessage(msg);
 							} else {

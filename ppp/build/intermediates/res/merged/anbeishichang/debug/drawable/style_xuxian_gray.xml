@@ -7,5 +7,5 @@
         android:color="@color/edittext_line_color"
         android:dashWidth="@dimen/common_measure_3dp"
         android:dashGap="@dimen/common_measure_3dp"/>
-    <size android:height="1dp" />  
+    <size android:height="@dimen/common_measure_2dp" />
 </shape>

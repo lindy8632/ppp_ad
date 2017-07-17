@@ -2,8 +2,8 @@ package com.ylfcf.ppp.async;
 
 import android.content.Context;
 
-import com.ylfcf.ppp.entity.ProjectInfo;
-import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.parse.JsonParseProjectDetails;
 import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
@@ -16,14 +16,14 @@ public class AsyncProjectDetails extends AsyncTaskBase{
 	private Context context;
 	
 	private String id;
-	private OnProjectDetails onProjectDetails;
-	
-	private ProjectInfo projectInfo;
-	
-	public AsyncProjectDetails(Context context, String id,OnProjectDetails onProjectDetails) {
+	private Inter.OnCommonInter mOnCommonInter;
+
+	private BaseInfo baseInfo;
+
+	public AsyncProjectDetails(Context context, String id,Inter.OnCommonInter mOnCommonInter) {
 		this.context = context;
 		this.id= id;
-		this.onProjectDetails = onProjectDetails;
+		this.mOnCommonInter = mOnCommonInter;
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class AsyncProjectDetails extends AsyncTaskBase{
 			if (result == null) {
 				result = BackType.FAILE;
 			} else {
-				projectInfo = JsonParseProjectDetails.parseData(result);
+				baseInfo = JsonParseProjectDetails.parseData(result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,13 +56,13 @@ public class AsyncProjectDetails extends AsyncTaskBase{
 		}
 		if (BackType.ERROR.equals(result)) {
 			// 访问错误
-			onProjectDetails.back(null);
+			mOnCommonInter.back(null);
 		} else if (BackType.FAILE.equals(result)) {
 			// 获取失败
-			onProjectDetails.back(null);
+			mOnCommonInter.back(null);
 		} else {
 			// 获取成功
-			onProjectDetails.back(projectInfo);
+			mOnCommonInter.back(baseInfo);
 		}
 	}
 

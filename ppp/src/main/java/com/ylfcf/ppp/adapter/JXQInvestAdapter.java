@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.adapter.RedBagInvestAdapter.ViewHolder;
 import com.ylfcf.ppp.entity.JiaxiquanInfo;
-import com.ylfcf.ppp.entity.RedBagInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 /**
  * 投资页面 加息券的列表
  * @author Mr.liu
@@ -80,7 +78,11 @@ public class JXQInvestAdapter extends ArrayAdapter<JiaxiquanInfo>{
 		if(needInvestMoneyD <= 0){
 			viewHolder.text.setText(info.getMoney()+"%的加息券");
 		}else{
-			viewHolder.text.setText(info.getMoney()+"%的加息券，"+"需投资"+info.getMin_invest_money()+"元及以上可用");
+			if(needInvestMoneyD >= 10000){
+				viewHolder.text.setText(info.getMoney()+"%的加息券，"+"需投资"+needInvestMoneyD/10000+"万元及以上可用");
+			}else{
+				viewHolder.text.setText(info.getMoney()+"%的加息券，"+"需投资"+info.getMin_invest_money()+"元及以上可用");
+			}
 		}
 		return convertView;
 	}

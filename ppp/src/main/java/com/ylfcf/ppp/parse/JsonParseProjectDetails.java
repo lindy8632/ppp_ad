@@ -1,12 +1,12 @@
 package com.ylfcf.ppp.parse;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.util.MainJson;
 import com.ylfcf.ppp.util.SettingsManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * ÏîÄ¿ÏêÇé
@@ -17,8 +17,8 @@ public class JsonParseProjectDetails {
 	private BaseInfo baseInfo;
 	private ProjectInfo projectInfo;
 	
-	public ProjectInfo getProjectInfo() {
-		return projectInfo;
+	public BaseInfo getBaseInfo() {
+		return baseInfo;
 	}
 	
 	/**
@@ -32,6 +32,7 @@ public class JsonParseProjectDetails {
 		if(object != null){
 			projectInfo = (ProjectInfo) MainJson.fromJson(ProjectInfo.class, object);
 		}
+		baseInfo.setmProjectInfo(projectInfo);
 	}
 	
 	/**
@@ -64,10 +65,10 @@ public class JsonParseProjectDetails {
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 */
-	public static ProjectInfo parseData(String result) throws Exception {
+	public static BaseInfo parseData(String result) throws Exception {
 		JsonParseProjectDetails jsonParse = new JsonParseProjectDetails();
 		jsonParse.parseMain(result);
-		return jsonParse.getProjectInfo();
+		return jsonParse.getBaseInfo();
 	}
 
 }

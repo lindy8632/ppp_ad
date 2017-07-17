@@ -30,7 +30,8 @@ import java.util.concurrent.Executors;
  * @author Waggoner.wang
  */
 
-public class SettingsManager extends DefaultPreferences {  
+public class SettingsManager extends DefaultPreferences {
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	//宝付支付通道上线时间
 	private static final String bfPublishDate = "2016-06-29 15:00:00";
 	//中秋大转盘活动截止时间
@@ -47,8 +48,8 @@ public class SettingsManager extends DefaultPreferences {
 	private static final String twoyearsTZFXEndDate = "2016-12-22 23:59:59";
 	
 	//限时秒标活动的开始和结束时间
-	private static final String xsmbStartDate = "2016-12-23 00:00:00";
-	private static final String xsmbEndDate = "2016-12-31 23:59:59";
+	public static final String xsmbStartDate = "2016-12-23 00:00:00";
+	public static final String xsmbEndDate = "2016-12-31 23:59:59";
 	
 	//会员福利计划活动开始和结束时间
 	public static final String fljhStartDate = "2016-12-23 00:00:00";
@@ -70,8 +71,12 @@ public class SettingsManager extends DefaultPreferences {
 	private static final String yqhyStartDate = "2017-04-01 00:00:00";
 	private static final String yqhyEndDate = "2017-05-31 00:00:00";
 
-	private static final String yyyJIAXIStartTime = "2017-06-01 11:00:00";
-	private static final String yyyJIAXIEndTime = "2017-07-01 00:00:00";
+	public static final String yyyJIAXIStartTime = "2017-06-01 11:00:00";
+	public static final String yyyJIAXIEndTime = "2017-07-01 00:00:00";
+
+	//2017年7月份活动开始结束时间
+	public static final String activeJuly2017_StartTime = "2017-07-03 00:00:00";
+	public static final String activeJuly2017_EndTime = "2017-07-31 00:00:00";
 
 	public static final String USER_FROM = "安卓APP";//用户来源，是来源于元立方网站还是微信还是app等等。此处为写死
 	public static final String APP_FIRST	= "appfirst";//判断应用是否是首次打开。
@@ -187,7 +192,6 @@ public class SettingsManager extends DefaultPreferences {
 	 * @return
 	 */
 	public static boolean checkIsNewUser(String regTime){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date regTimeD = null;
 		Date bfPublishTimeD = null;
 		try {
@@ -209,7 +213,6 @@ public class SettingsManager extends DefaultPreferences {
 	 * @return
 	 */
 	public static boolean checkRobCashIsStart(BaseInfo baseInfo){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		int week = 0;
 		int day = 0;
 		try{
@@ -233,30 +236,10 @@ public class SettingsManager extends DefaultPreferences {
 	}
 
 	/**
-	 * 判断大转盘活动是否结束
-	 * @return
-	 */
-	public static boolean checkDZPPrize(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date nowTime = new Date();
-		Date dzpEndDate = null;
-		try {
-			dzpEndDate = sdf.parse(dzpPrizeEndDate);
-			if(dzpEndDate.compareTo(nowTime) == -1){
-				//表示加息活动已经结束
-				return true;
-			}
-		} catch (Exception e) {
-		}
-		return false;
-	}
-	
-	/**
 	 * 判断定期理财产品浮动利率改造是否上线
 	 * @return
 	 */
 	public static boolean checkFloatRate(ProductInfo info){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date borrowStartTime = null;
 		Date dqlcFloatRateStartDate = null;
 		try {
@@ -276,7 +259,6 @@ public class SettingsManager extends DefaultPreferences {
 	 * @return
 	 */
 	public static boolean checkGuoqingJiaxiActivity(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date nowTime = new Date();
 		Date guoqingJiaxiStartTime = null;
 		Date guoqingJiaxiEndTime = null;
@@ -297,7 +279,6 @@ public class SettingsManager extends DefaultPreferences {
 	 * @return
 	 */
 	public static boolean checkTwoYearsTZFXActivity(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date nowTime = new Date();
 		Date xsmbStartTime = null;
 		Date xsmbEndTime = null;
@@ -314,51 +295,34 @@ public class SettingsManager extends DefaultPreferences {
 	}
 	
 	/**
-	 * 限时秒标活动
+	 * 根据系统时间判断某个活动是否开始
+	 * @param sysTime 格式yyyy-MM-dd HH:mm:ss
+	 * @param startTime 格式yyyy-MM-dd HH:mm:ss
+	 * @param endTime 格式yyyy-MM-dd HH:mm:ss
 	 * @return
 	 */
-	public static int checkXSMBActivity(Date nowTime){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date xsmbStartTime = null;
-		Date xsmbEndTime = null;
-		try {
-			xsmbStartTime = sdf.parse(xsmbStartDate);
-			xsmbEndTime = sdf.parse(xsmbEndDate);
-			if(xsmbStartTime.compareTo(nowTime) == -1 && xsmbEndTime.compareTo(nowTime) == 1){
-				//表示投资返现活动正在进行中
-				return 0;
-			}else if(xsmbEndTime.compareTo(nowTime) == -1 ){
-				//活动结束
-				return -1;
-			}else if(xsmbStartTime.compareTo(nowTime) == 1){
-				//尚未开始
-				return 1;
-			}
-		} catch (Exception e) {
+	public static int checkActiveStatusBySysTime(String sysTime,String startTime,String endTime){
+		Date sysDate = null;
+		try{
+			sysDate = sdf.parse(sysTime);
+		}catch (Exception e){
+			e.printStackTrace();
 		}
-		return -1;
-	}
 
-	/**
-	 * 2017年元月盈加息活动
-	 * @return
-	 */
-	public static int checkYYYJIAXI(Date addTime){
-		if(addTime == null)
+		if(sysTime == null)
 			return -1;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date yyyJIAXIStartDate = null;
-		Date yyyJIAXIEndDate = null;
+		Date startDate = null;
+		Date endDate = null;
 		try {
-			yyyJIAXIStartDate = sdf.parse(yyyJIAXIStartTime);
-			yyyJIAXIEndDate = sdf.parse(yyyJIAXIEndTime);
-			if(yyyJIAXIStartDate.compareTo(addTime) == -1 && yyyJIAXIEndDate.compareTo(addTime) == 1){
-				//表示加息正在进行中
+			startDate = sdf.parse(startTime);
+			endDate = sdf.parse(endTime);
+			if(startDate.compareTo(sysDate) == -1 && endDate.compareTo(sysDate) == 1){
+				//表示活动正在进行中
 				return 0;
-			}else if(yyyJIAXIEndDate.compareTo(addTime) == -1 ){
+			}else if(endDate.compareTo(sysDate) == -1 ){
 				//活动结束
 				return -1;
-			}else if(yyyJIAXIStartDate.compareTo(addTime) == 1){
+			}else if(startDate.compareTo(sysDate) == 1){
 				//尚未开始
 				return 1;
 			}
@@ -372,7 +336,6 @@ public class SettingsManager extends DefaultPreferences {
 	 * @return
 	 */
 	public static int checkXCHBActivity(Date nowTime){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date xchbStartTime = null;
 		Date xchbEndTime = null;
 		try {
@@ -398,7 +361,6 @@ public class SettingsManager extends DefaultPreferences {
 	 * @return
 	 */
 	public static int checkLXFXActivity(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date nowTime = new Date();
 		Date lxfxStartTime = null;
 		Date lxfxEndTime = null;
@@ -425,7 +387,6 @@ public class SettingsManager extends DefaultPreferences {
 	 * @return
 	 */
 	public static int checkSignActivity(Date nowTime){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date signStartTime = null;
 		Date signEndTime = null;
 		try {
@@ -451,7 +412,6 @@ public class SettingsManager extends DefaultPreferences {
 	 * @return
 	 */
 	public static int checkYQHYActivity(Date nowTime){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date yqhyStartTime = null;
 		Date yqhyEndTime = null;
 		try {

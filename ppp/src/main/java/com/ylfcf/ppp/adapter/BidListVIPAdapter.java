@@ -21,7 +21,6 @@ import com.ylfcf.ppp.widget.RoundProgressBar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -171,13 +170,8 @@ public class BidListVIPAdapter extends ArrayAdapter<ProductInfo> {
 			extraInterestD = Double.parseDouble(extraInterest);
 		} catch (Exception e) {
 		}
-		Date addDate = null;
-		try{
-			addDate = sdf.parse(info.getAdd_time());
-		}catch (Exception e){
-
-		}
-		if(SettingsManager.checkYYYJIAXI(addDate) == 0 && "365".equals(investLimit)){
+		if(SettingsManager.checkActiveStatusBySysTime(info.getAdd_time(),
+				SettingsManager.yyyJIAXIStartTime,SettingsManager.yyyJIAXIEndTime) == 0 && "365".equals(investLimit)){
 			viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
 			viewHolder.extraInterestText.setVisibility(View.GONE);
 			viewHolder.jiaTipsImg.setVisibility(View.VISIBLE);

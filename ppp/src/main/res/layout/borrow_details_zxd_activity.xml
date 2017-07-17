@@ -36,6 +36,17 @@
                     android:textColor="@color/gray4"
                     android:textSize="@dimen/common_measure_22dp" />
 
+                <ImageView
+                    android:id="@+id/borrow_details_zxd_timelimit_tips_img"
+                    android:layout_width="@dimen/common_measure_92dp"
+                    android:layout_height="@dimen/common_measure_26dp"
+                    android:layout_marginLeft="@dimen/common_measure_40dp"
+                    android:layout_marginBottom="-20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/yjr_activity_mark_logo"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"/>
+
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/common_measure_80dp"
@@ -138,7 +149,7 @@
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="年化收益"
+                            android:text="预期年化收益率"
                             android:textColor="@color/gray1"
                             android:textSize="@dimen/common_measure_16dp" />
                     </LinearLayout>
@@ -347,14 +358,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="保障性质："
+                        android:text="历史兑付情况："
                         android:textColor="@color/gray"
                         android:textSize="@dimen/common_measure_18dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100%本息保障"
+                        android:text="零逾期"
                         android:textColor="@color/gray1"
                         android:textSize="@dimen/common_measure_18dp" />
                 </LinearLayout>

@@ -39,7 +39,6 @@ import com.ylfcf.ppp.widget.RefreshLayout;
 import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -163,15 +162,10 @@ public class ProductRecordActivity extends BaseActivity implements
 		recordListView = (ListView) findViewById(R.id.product_record_activity_listview);
 		recordListView.addHeaderView(headerView);
 		recordListView.addFooterView(footerView);
-		Date addDate = null;
-		try{
-			addDate = sdf.parse(productInfo.getAdd_time());
-		}catch (Exception e){
-			e.printStackTrace();
-		}
 		if(productInfo != null){
 			if("未满标".equals(productInfo.getMoney_status())){
-				if(SettingsManager.checkYYYJIAXI(addDate)==0 && "元年鑫".equals(productInfo.getBorrow_type())&&Constants.UserType.USER_COMPANY.
+				if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
+						SettingsManager.yyyJIAXIEndTime) == 0 && "元年鑫".equals(productInfo.getBorrow_type())&&Constants.UserType.USER_COMPANY.
 						equals(SettingsManager.getUserType(ProductRecordActivity.this))){
 					investBtn.setEnabled(false);
 				}else{

@@ -1,11 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,9 +8,9 @@ import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -27,7 +21,6 @@ import android.widget.TextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.tencent.mm.sdk.modelmsg.ShowMessageFromWX;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.UserInvestWDYRecordAdapter;
 import com.ylfcf.ppp.adapter.UserInvestWDYRecordAdapter.OnWDYItemClickListener;
@@ -38,15 +31,17 @@ import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.InvestRecordPageInfo;
 import com.ylfcf.ppp.entity.WDYChildRecordInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.ui.BorrowDetailVIPActivity;
 import com.ylfcf.ppp.ui.BorrowDetailWDYActivity;
-import com.ylfcf.ppp.ui.BorrowDetailZXDActivity;
 import com.ylfcf.ppp.ui.CompactActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
-import com.ylfcf.ppp.ui.VIPProductCJWTActivity;
 import com.ylfcf.ppp.ui.WDYLendRecordDetailActivity;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.YLFLogger;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 稳定赢（薪盈计划）投资记录页面
@@ -265,7 +260,6 @@ public class UserInvestWDYRecordFragment extends BaseFragment{
 		Display display = windowManager.getDefaultDisplay();
 		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
 		lp.width = display.getWidth() * 6 / 7;
-		lp.height = display.getHeight()/2;
 		dialog.getWindow().setAttributes(lp);
 	}
 	
@@ -273,9 +267,6 @@ public class UserInvestWDYRecordFragment extends BaseFragment{
 	 * 获取投资记录列表
 	 * @param investUserId
 	 * @param borrowId
-	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getInvestRecordList(String investUserId,String borrowId){
 		if(mainActivity.loadingDialog != null && isFirst){
@@ -309,7 +300,6 @@ public class UserInvestWDYRecordFragment extends BaseFragment{
 	
 	/**
 	 * 获取子记录()
-	 * @param recordId
 	 */
 	private void getChildRecordById(final int position){
 		InvestRecordInfo recordInfo = investRecordList.get(position);

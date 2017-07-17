@@ -87,8 +87,8 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 		if("邀请有奖".equals(fromWhere)){
 			image = new UMImage(context, BitmapFactory.decodeResource(
 					context.getResources(), R.drawable.share_logo));
-			title = "元立方金服";
-			text = "全国首家PPP模式互联网金融平台";
+			title = "注册即刻财富增值，7月理财100%中奖、还可免费购物。";
+			text = "注册送30元金币，可抵扣30元投资现金，首投加息0.2%，7月投资更有免费购物、100%中奖活动！";
 		}else if("新春福利2017".equals(fromWhere)){
 			image = new UMImage(context, BitmapFactory.decodeResource(
 					context.getResources(), R.drawable.xcfl_share_logo));

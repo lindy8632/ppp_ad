@@ -172,7 +172,8 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 		}
 		if(productInfo != null){
 			if("未满标".equals(productInfo.getMoney_status())){
-				if(SettingsManager.checkYYYJIAXI(addDate)==0 && "元年鑫".equals(productInfo.getBorrow_type())&& Constants.UserType.USER_COMPANY.
+				if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
+						SettingsManager.yyyJIAXIEndTime) == 0 && "元年鑫".equals(productInfo.getBorrow_type())&& Constants.UserType.USER_COMPANY.
 						equals(SettingsManager.getUserType(ProductDataActivity.this))){
 					investBtn.setEnabled(false);
 				}else{

@@ -30,8 +30,8 @@ import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.fragment.ProductInfoFragment.OnProductInfoListener;
 import com.ylfcf.ppp.fragment.ProductSafetyFragment.OnProductSafetyListener;
+import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 
@@ -351,7 +351,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		} catch (Exception e) {
 		}
 		// 投资期限
-		String horizon = info.getInvest_horizon().replace("??", "");
+		String horizon = info.getInvest_horizon().replace("天", "");
 		int horizonInt = Integer.parseInt(horizon);
 		double rateD = 0d;
 		try {
@@ -473,6 +473,10 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		case R.id.borrow_details_xsb_activity_intro_layout:
 			Intent intentIntroXSB = new Intent(BorrowDetailXSBActivity.this,ProductIntroActivity.class);
 			Bundle bundle0 = new Bundle();
+			if(productInfo == null && recordInfo != null){
+				productInfo = new ProductInfo();
+				productInfo.setId(recordInfo.getBorrow_id());
+			}
 			bundle0.putSerializable("PRODUCT_INFO", productInfo);
 			bundle0.putString("from_where", "xsb");
 			intentIntroXSB.putExtra("BUNDLE", bundle0);
@@ -528,6 +532,8 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 	 * @param info
 	 */
 	private void parseProjectCailiaoMarkImg(ProjectInfo info){
+		if(info == null)
+			return;
 		String imageNames[] = info.getImgs_name().split("\\|");
 		ArrayList<ProjectCailiaoInfo> cailiaoListTemp = new ArrayList<ProjectCailiaoInfo>();
 		ArrayList<ProjectCailiaoInfo> cailiaoList = new ArrayList<ProjectCailiaoInfo>();
@@ -565,10 +571,12 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 	 * @param info
 	 */
 	private void parseProjectCailiaoNomarkImg(ProjectInfo info){
+		if(info == null)
+			return;
 		String imageNames[] = info.getImgs_name().split("\\|");
 		ArrayList<ProjectCailiaoInfo> cailiaoListTemp = new ArrayList<ProjectCailiaoInfo>();
 		ArrayList<ProjectCailiaoInfo> cailiaoList = new ArrayList<ProjectCailiaoInfo>();
-		String materials = info.getMaterials_nomark();//????????
+		String materials = info.getMaterials_nomark();//
 		Document doc = Jsoup.parse(materials);
 		Elements ele=doc.getElementsByTag("p");
 		for(Element e :ele){
@@ -607,14 +615,14 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
-				BorrowDetailXSBActivity.this, id, new OnProjectDetails() {
+				BorrowDetailXSBActivity.this, id, new Inter.OnCommonInter() {
 					@Override
-					public void back(ProjectInfo projectInfo) {
+					public void back(BaseInfo baseInfo) {
 						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
 							mLoadingDialog.dismiss();
 						}
-						if (projectInfo != null) {
-							project = projectInfo;
+						if (baseInfo != null) {
+							project = baseInfo.getmProjectInfo();
 							parseProjectCailiaoMarkImg(project);
 							parseProjectCailiaoNomarkImg(project);
 							if (productInfoListener != null) {

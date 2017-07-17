@@ -34,9 +34,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
-import java.util.Date;
-
-import static com.ylfcf.ppp.util.SettingsManager.checkYYYJIAXI;
 
 /**
  * 元月盈---项目详情
@@ -160,24 +157,14 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 		// 年化利率
 		String rate = info.getInterest_rate();
 		String extraRate = productInfo.getAndroid_interest_rate();
-		float extraRateF = 0f;
 		double rateF = 0f;
 		try {
 			rateF = Double.parseDouble(rate);
 		} catch (Exception e) {
 		}
-		try {
-			extraRateF = Float.parseFloat(extraRate);
-		} catch (Exception e) {
-		}
-		Date addDate = null;
-		try{
-			addDate = sdf.parse(productInfo.getAdd_time());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
 
-		if(checkYYYJIAXI(addDate) == 0){
+		if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),
+				SettingsManager.yyyJIAXIStartTime,SettingsManager.yyyJIAXIEndTime) == 0){
 			extraInterestLayout.setVisibility(View.VISIBLE);
 		}else{
 			extraInterestLayout.setVisibility(View.GONE);

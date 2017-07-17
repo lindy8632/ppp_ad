@@ -1,52 +1,60 @@
 package com.ylfcf.ppp.util;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 /**
  * URL类
  * @author Administrator
- * 
+ *
  */
 public class URLGenerator {
 	//正式环境
-//	private static final String API_DOMAIN_URL = "http://www.ylfcf.com";//API环境
-//	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
-	
+	private static final String API_DOMAIN_URL = "http://www.ylfcf.com";//API环境
+	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
+	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
+
 	//验证环境
-	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
-	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境
-	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
-	
+//	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+
 	//测试环境
 //	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
 //	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+
+	//徐卫兵开发环境
+//	private static final String API_DOMAIN_URL = "http://www.m_ylf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://www.ylf_chat.com";//WAP环境
 //	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//杨永豪开发环境
 //	private static final String API_DOMAIN_URL = "http://www.api.com";//API环境
 //	private static final String WAP_DOMAIN_URL = "http://www.ylf_chat.com";//WAP环境
 //	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
-	
+
+//	private static final String API_DOMAIN_URL = "http://www.web";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://www.ylf_chat.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+
 	//https
 //	private static final String API_DOMAIN_URL = "https://test1.ylfcf.com";
 //	private static final String WAP_DOMAIN_URL = "https://wap.test.ylfcf.com";//WAP环境
 //	private static final String API2_DOMAIN_URL = "https://api.dev.ylfcf.com";//
-	
+
 	//开发环境局域网
 //	private static final String API_DOMAIN_URL = "http://web.dev.com";
 //	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
 //	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
-	
+
 	//开发环境本地
 //	private static final String API_DOMAIN_URL = "http://www.m_ylf.com";//API环境
 //	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
 //	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
-	
+
 	private static final String BASE_URL = API_DOMAIN_URL + "/API/to_api.php";
 	private final String ADD_PHONEINFO_URL = API2_DOMAIN_URL + "/user/phone_info/add";//将手机的系统版本、手机型号等信息存入后台
-	
+
 	public static final String REGISTE_AGREEMENT_URL = WAP_DOMAIN_URL + "/home/index/protocol#app";
 
 	public static final String TWOYEARS_TZFX_URL = WAP_DOMAIN_URL + "/home/index/zlq.html";
@@ -72,16 +80,19 @@ public class URLGenerator {
 	public static final String XSMB_COMPACT = API_DOMAIN_URL + "/home/seckill/protocolData/id/recordid/info/userid";//限时秒标有数据的合同
 	public static final String WDY_BLANK_COMPACT = API_DOMAIN_URL + "/wdy/wdyContract/id/borrowid";//稳定盈合同空模板
 	public static final String WDY_COMPACT = API_DOMAIN_URL + "/wdy/wdyContractData/id/recordid/info/userid";//稳定盈有数据的合同
-	
+
 	public static final String VIP_CJWT_URL = WAP_DOMAIN_URL + "/home/vip/vipquestion.html#app";// vip常见问题
 	public static final String YYY_CJWT_URL = WAP_DOMAIN_URL + "/home/yyy/yyyquestion#app";// 元月盈的常见问题
 	public static final String XYJH_CJWT_URL = WAP_DOMAIN_URL + "/home/wdy/wdyQuestion/id/borrowid#app";// 稳定盈（薪盈计划）的常见问题
 	public static final String YYY_XMJS_URL = WAP_DOMAIN_URL + "/home/yyy/yyyproject#app";// 元月盈的项目介绍
-	public static final String XSB_XMJS_URL = WAP_DOMAIN_URL + "/home/index/novice.html#app";//新手标介绍
+	public static final String XSB_XMJS_URL = WAP_DOMAIN_URL + "/home/index/novice/id/borrowid#app";//新手标介绍
 	public static final String PROMOTER_URL = WAP_DOMAIN_URL + "/home/index/promoter.html#app";//推广员的专题
 	public static final String XSMB_XMJS_URL = WAP_DOMAIN_URL + "/home/seckill/seckillProduct#app";//限时秒标项目介绍
 	public static final String XYJH_XMJS_URL = WAP_DOMAIN_URL + "/home/wdy/wdyProject/id/borrowid#app";//薪盈计划(稳定盈)项目介绍,borrowid为当前标的id
 	public static final String RECHARGE_PROOF_URL = WAP_DOMAIN_URL + "/home/App/rechargeDetail/id/rechargeId#app";//充值凭证
+
+	//专题 页面
+	public static final String SRZX_TOPIC_URL = WAP_DOMAIN_URL + "/home/Pvip/orderPro.html#app";//私人尊享专题页
 
 	private final String mOSType = "2";// Android:2 , IOS:10
 	private final String API_ROUTER_URL = API_DOMAIN_URL + "/api_router.php";// 版本更新接口
@@ -182,7 +193,7 @@ public class URLGenerator {
 	private final String DZP_LOTTERY_RECORDS = "/hd/zqj_turntable/getLotteryList";//获取该活动的中奖记录
 	private final String DZP_DRAW_PRIZE = "/hd/zqj_turntable/dzpDrawPrize";//抽取奖励
 	private final String DZP_IS_SHARE = "/hd/wechat_prize/isShare";
-	
+
 	//私人尊享接口
 	private final String APPOINT_BORROW_LIST = "/appoint/borrow/selectList";//私人尊享产品列表
 	private final String APPOINT_BORROW_DETAILS = "/appoint/borrow/selectOne";//私人尊享产品详情
@@ -191,7 +202,7 @@ public class URLGenerator {
 	private final String APPOINT_BORROW_INVEST_USER_RECORD = "/appoint/borrow_invest/selectListForPPP";//私人尊享用户投资记录
 	private final String APPOINT_RECORD = "/appoint/appoint/appointList";//私人尊享产品预约记录
 	private final String APPOINT_BORROW_APPOINT = "/appoint/appoint/add";//私人尊享产品预约接口
-	
+
 	//加息券
 	private final String JXQ_LIST_URL = "/addInterest/add_interest_log/optimizedSelectList";//我的加息券列表
 	private final String JXQ_SELECTONE_URL = "/addInterest/add_interest_use_rule/selectOne";
@@ -204,25 +215,25 @@ public class URLGenerator {
 	private final String COMP_LOGIN_URL = "/co_user/co_user/comLogin";//企业用户登录接口
 	private final String COMP_APPLY_CASH_URL = "/co_user/co_cash/toNewCash";//企业用户申请提现
 	private final String COMP_USERINFO_URL = "/co_user/co_user/selectOne";//获取企业用户信息
-	
+
 	//限时秒标
 	private final String XSMB_BORROW_DETAIL = "/mb/borrow/getShowData";//秒标详情
 	private final String XSMB_BORROW_SELECTONE = "/mb/borrow/selectOne";//根据id获取秒标详情
 	private final String XSMB_CURRENT_USER_INVEST = "/mb/borrow_invest/currentUserInvest";//当前用户是否投资过该秒标
 	private final String XSMB_INVEST_URL = "/mb/borrow_invest/invest";//限时秒标投标接口
 	private final String XSMB_INVEST_RECORD_URL = "/mb/borrow_invest/getSeckillInfo";//限时秒标投资记录
-	
+
 	//会员福利计划
 	private final String FLJH_SELECTPRICE_BYNAME_URL = "/hd/prize/selectPriceByName";//根据用户id和奖品名称判断用户是否领取过
 	private final String FLJH_PRIZECODE_SELECTONE_URL = "/hd/prize_code/selectOne";//获取单条奖品信息
-	private final String FLJH_YYYINVEST_BYTIMESPAN = "/yyy/borrow_invest/getUserYyyInvestInfoByTimeSpan";//判断用户在活动期间是否投资过元月盈	
+	private final String FLJH_YYYINVEST_BYTIMESPAN = "/yyy/borrow_invest/getUserYyyInvestInfoByTimeSpan";//判断用户在活动期间是否投资过元月盈
 	private final String FLJH_RECEIVE_PRIZE_URL = "/hd/prize/receivePrize";//领取奖品
-	
+
 	//新春领红包
 	private final String XCFL_LOTTERY_TIMES_URL = "/hd/spring_festival/getLotteryTimes";//迎新春压岁钱抽奖次数
 	private final String XCFL_LOTTERY_DRAW_PRIZE_URL = "/hd/spring_festival/springFestivalDrawPrize";//迎新春领取接口
 	private final String XCFL_CHECK_ACTIVE_START_URL = "/hd/spring_festival/checkActiveTime";//查看活动是否开始
-	
+
 	//稳定盈
 	private final String WDY_BORROW_DETAIL_URL = "/wdy/borrow/getShowData";//稳定赢最新的那个产品的详情
 	private final String WDY_BORROW_DETAIL_SELECTONE_URL = "/wdy/borrow/selectOne";//稳定盈产品详情根据id
@@ -232,20 +243,20 @@ public class URLGenerator {
 	private final String WDY_CURRENT_USER_INVEST = "/wdy/borrow_invest/currentUserInvest";//当前用户是否投资过稳定盈
 	private final String WDY_BORROWINVESTLOG_SELECTLIST_URL = "/wdy/borrow_invest_log/selectList";//根据投资记录id获取此条记录对应的所以子投资情况。
 	private final String WDY_REINVEST_URL = "/wdy/borrow_invest_log/reInvest";//薪资计划产品复投
-	
+
 	//乐享返现 开年红
 	private final String LXFX_GET_JXQ_URL = "/addInterest/add_interest/add";//领取加息券
 	private final String LXFX_GET_JXQID_URL = "/addInterest/add_interest_use_rule/selectOne";//根据规则获取规则id
-	private final String LXFX_ISGET_JXQ_URL = "/addInterest/add_interest_log/selectList";//是否领取过加息券	
-	
+	private final String LXFX_ISGET_JXQ_URL = "/addInterest/add_interest_log/selectList";//是否领取过加息券
+
 	private final String SYSTEM_NOW_TIME_URL = "/mb/borrow/getNowTime";//系统当前时间
-	
+
 	private final String RECHARGE_RECORD_LIST_URL = "/user/recharge/selectRechargeList";//充值记录列表
-	
+
 	//三月份签到活动
 	private final String HD_SIGN_ISDAYSIGNED_URL = "/hd/sign/isDaySigned";//某天是否已经签到
 	private final String HD_SIGN_SIGN_URL = "/hd/sign/marchAdd";//签到接口
-	
+
 	//会员福利计划2期
 	private final String HD_PRIZE_LIST_URL = "/hd/gift/selectList";//礼品列表
 	private final String HD_GIFTCODE_SELECTONE_URL = "/hd/gift_code/selectOne";//根据礼品id查询该用户是否已经领取过奖品
@@ -263,6 +274,18 @@ public class URLGenerator {
 	//活动专区列表接口
 	private final String ACTIVE_REGION_SELECTLIST_URL = "/active/active/selectListWithBanner";
 
+	//加息券转让
+	private final String JXQ_TRANSFER_GETSUBUSER_URL = "/user/user/getSubUser";//获取理财师的直接好友
+	private final String JXQ_TRANSFER_TRANS_URL = "/addInterest/add_interest_log/changeAddInterestUser";//转让加息券
+
+	//首页活动弹窗
+	private final String POPBANNER_URL = "/active/banner/selectPopOne";//首页弹窗图片
+
+	//转让加息券
+	private final String MYFRIENDS_LIST_URL = "/promoter/promoterLog/myFriends";
+	private final String TRANS_COUPONS_URL = "/addInterest/add_interest_log/oneUserGetMoreAddInterestUser";//转让多张加息券
+	private final String TRANSFERED_COUPONS_LIST_URL = "/addInterest/add_interest_log/selectAlreadyClassifiedList";//可转让的加息券列表
+
 	private static URLGenerator mUrlGenerator;
 
 	private URLGenerator() {
@@ -277,7 +300,7 @@ public class URLGenerator {
 
 	/**
 	 * 版本更新
-	 * 
+	 *
 	 * @param versionCode
 	 * @return
 	 */
@@ -290,7 +313,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取产品列表的URL
-	 * 
+	 *
 	 * @param pageNo
 	 * @param pageSize
 	 * @param borrowType
@@ -308,30 +331,27 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getProduceListUrl(String pageNo, String pageSize,
-			String borrowType, String borrowStatus,String moneyStatus, String isShow,
-			String isWap, String plan, String enableShow, String isNewHand,
-			String isVip) {
+									  String borrowType, String borrowStatus,String moneyStatus, String isShow,
+									  String isWap, String plan, String enableShow, String isNewHand,
+									  String isVip) {
 		StringBuffer sb = new StringBuffer();
 		try {
 			sb.append("_URL_=").append(PRODUCT_LIST_URL).append("&page=")
 					.append(pageNo).append("&page_size=").append(pageSize);
 			if (borrowType != null && !"".equals(borrowType)) {
-				sb.append("&borrow_type=").append(
-						URLEncoder.encode(borrowType, "utf-8"));
+				sb.append("&borrow_type=").append(borrowType);
 			}
 			if (borrowStatus != null && !"".equals(borrowStatus)) {
-				sb.append("&borrow_status=").append(
-						URLEncoder.encode(borrowStatus, "utf-8"));
+				sb.append("&borrow_status=").append(borrowStatus);
 			}
 			if (moneyStatus != null && !"".equals(moneyStatus)) {
-				sb.append("&money_status=").append(URLEncoder.encode(moneyStatus, "utf-8"));
+				sb.append("&money_status=").append(moneyStatus);
 			}
 			if (isShow != null && !"".equals(isShow)) {
-				sb.append("&is_show=").append(
-						URLEncoder.encode(isShow, "utf-8"));
+				sb.append("&is_show=").append(isShow);
 			}
 			if (isWap != null && !"".equals(isWap)) {
-				sb.append("&is_wap=").append(URLEncoder.encode(isWap, "utf-8"));
+				sb.append("&is_wap=").append(isWap);
 			}
 			if (plan != null && !"".equals(plan)) {
 				sb.append("&plan=").append(plan);
@@ -345,7 +365,7 @@ public class URLGenerator {
 			if (isVip != null && !"".equals(isVip)) {
 				sb.append("&is_vip=").append(isVip);
 			}
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[] { BASE_URL, sb.toString() };
@@ -353,7 +373,7 @@ public class URLGenerator {
 
 	/**
 	 * 根据id获取某支标的信息
-	 * 
+	 *
 	 * @param id
 	 * @param borrowStatus
 	 * @param plan
@@ -367,15 +387,14 @@ public class URLGenerator {
 		sb.append("_URL_=").append(PRODUCT_SELECTONE_URL).append("&id=")
 				.append(id);
 		if (borrowStatus != null && !"".equals(borrowStatus)) {
-			sb.append("&borrow_status=").append(
-					URLEncoder.encode(borrowStatus, "utf-8"));
+			sb.append("&borrow_status=").append(borrowStatus);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 注册URL
-	 * 
+	 *
 	 * @param phone
 	 * @param password
 	 * @param open_id
@@ -390,9 +409,9 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getUserRegisteURL(String phone, String password,
-			String open_id, String user_from, String user_from_sub,
-			String user_form_host, String extension_code, String type,
-			String sales_phone) throws Exception {
+									  String open_id, String user_from, String user_from_sub,
+									  String user_form_host, String extension_code, String type,
+									  String sales_phone) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(USER_REGISTE_URL).append("&phone=")
 				.append(phone).append("&password=")
@@ -401,22 +420,19 @@ public class URLGenerator {
 			sb.append("&open_id=").append(open_id);
 		}
 		if (user_from!=null && !user_from.isEmpty()) {
-			sb.append("&user_from=").append(
-					URLEncoder.encode(user_from, "utf-8"));
+			sb.append("&user_from=").append(user_from);
 		}
 		if (user_from_sub != null && !user_from_sub.isEmpty()) {
-			sb.append("&user_from_sub=").append(
-					URLEncoder.encode(user_from_sub, "utf-8"));
+			sb.append("&user_from_sub=").append(user_from_sub);
 		}
 		if (user_form_host != null && !user_form_host.isEmpty()) {
-			sb.append("&user_form_host=").append(
-					URLEncoder.encode(user_form_host, "utf-8"));
+			sb.append("&user_form_host=").append(user_form_host);
 		}
 		if (extension_code != null && !extension_code.isEmpty()) {
 			sb.append("&extension_code=").append(extension_code);
 		}
 		if (type != null && !type.isEmpty()) {
-			sb.append("&type=").append(URLEncoder.encode(type, "utf-8"));
+			sb.append("&type=").append(type);
 		}
 		if (sales_phone != null && !sales_phone.isEmpty()) {
 			sb.append("&sales_phone=").append(sales_phone);
@@ -439,29 +455,8 @@ public class URLGenerator {
 	}
 
 	/**
-	 * 发送短信验证码
-	 * 
-	 * @param phone
-	 * @param template
-	 *            register_code表示是注册页面的短信验证码模板,forgot_pwd表示是找回密码时的短信验证码模板
-	 * @param params
-	 * @param verfiy
-	 *            此参数对于短信验证码暂时无效
-	 * @return
-	 */
-	public String[] getSMSAuthNumURL(String phone, String template,
-			String params, String verfiy) {
-		StringBuffer sb = new StringBuffer();
-		sb.append("_URL_=").append(SEND_SMS_AUTH).append("&phone=")
-				.append(phone).append("&template=").append(template)
-				.append("&params=").append(params).append("&verfiy=")
-				.append(verfiy);
-		return new String[] { BASE_URL, sb.toString() };
-	}
-
-	/**
 	 * 根据ID获取汇付人民币账户
-	 * 
+	 *
 	 * @param userId
 	 *            num
 	 * @return
@@ -475,7 +470,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取易联人民币账户
-	 * 
+	 *
 	 * @param userId
 	 * @return
 	 */
@@ -488,7 +483,7 @@ public class URLGenerator {
 
 	/**
 	 * 根据ID获取元金币账户
-	 * 
+	 *
 	 * @param userId
 	 *            num
 	 * @return
@@ -502,7 +497,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取账户情况
-	 * 
+	 *
 	 * @return
 	 */
 	public String[] getAccountInfoURL(String userId) {
@@ -514,7 +509,7 @@ public class URLGenerator {
 
 	/**
 	 * 立即投资
-	 * 
+	 *
 	 * @param borrowId
 	 *            num 产品id
 	 * @param investUserId
@@ -538,29 +533,28 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getBorrowInvestURL(String borrowId, String investUserId,
-			String money, int bonusMoney, String investFrom,
-			String investFromSub, String experienceCode, String investFromHost,
-			String merPriv, String redBagLogId,String couponLogId) throws Exception {
+									   String money, int bonusMoney, String investFrom,
+									   String investFromSub, String experienceCode, String investFromHost,
+									   String merPriv, String redBagLogId,String couponLogId) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(INVESTMENT).append("&borrow_id=")
 				.append(borrowId).append("&invest_user_id=")
 				.append(investUserId).append("&money=").append(money)
 				.append("&bonus_money=").append(bonusMoney);
 		if (investFrom != null && !"".equals(investFrom)) {
-			sb.append("&invest_from=").append(URLEncoder.encode(investFrom, "utf-8"));
+			sb.append("&invest_from=").append(investFrom);
 		}
 		if (experienceCode != null && !"".equals(experienceCode)) {
 			sb.append("&experience_code=").append(experienceCode);
 		}
 		if (investFromHost != null && !"".equals(investFromHost)) {
-			sb.append("&invest_from_host=").append(URLEncoder.encode(investFromHost, "utf-8"));
+			sb.append("&invest_from_host=").append(investFromHost);
 		}
 		if (merPriv != null && !"".equals(merPriv)) {
 			sb.append("&mer_priv=").append(merPriv);
 		}
 		if (investFromSub != null && !"".equals(investFromSub)) {
-			sb.append("&invest_from_sub=").append(
-					URLEncoder.encode(investFromSub, "UTF-8"));
+			sb.append("&invest_from_sub=").append(investFromSub);
 		}
 		if (redBagLogId != null && !"".equals(redBagLogId)
 				&& !"null".equals(redBagLogId) && !"NULL".equals(redBagLogId)) {
@@ -575,7 +569,7 @@ public class URLGenerator {
 
 	/**
 	 * 判断当前用户是否投资过该标的
-	 * 
+	 *
 	 * @param investUserId
 	 * @param borrowId
 	 * @return
@@ -590,7 +584,7 @@ public class URLGenerator {
 
 	/**
 	 * 投资记录
-	 * 
+	 *
 	 * @param investUserId
 	 *            用户在元立方的id 非必须
 	 * @param borrowId
@@ -604,7 +598,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getBorrowInvestSelectListAndTotalURL(String investUserId,
-			String borrowId, String status, int page, int pageSize) {
+														 String borrowId, String status, int page, int pageSize) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(BORROW_INVEST_SELECTLIST_ANDTOTAL)
 				.append("&page=").append(page).append("&page_size=")
@@ -617,8 +611,7 @@ public class URLGenerator {
 		}
 		if (!"".equals(status) && status != null) {
 			try {
-				sb.append("&status=")
-						.append(URLEncoder.encode(status, "utf-8"));
+				sb.append("&status=").append(status);
 			} catch (Exception e) {
 			}
 		}
@@ -627,7 +620,7 @@ public class URLGenerator {
 
 	/**
 	 * 投资记录
-	 * 
+	 *
 	 * @param investUserId
 	 *            投资用户的id
 	 * @param borrowId
@@ -641,15 +634,15 @@ public class URLGenerator {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getBorrowInvestSelectListURL(String investUserId,
-			String borrowId, String status, String isAddCoin, int page,
-			int pageSize) throws UnsupportedEncodingException {
+												 String borrowId, String status, String isAddCoin, int page,
+												 int pageSize) throws UnsupportedEncodingException {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(BORROW_INVEST_SELECTLIST);
 		if (investUserId != null && !"".equals(investUserId)) {
 			sb.append("&invest_user_id=").append(investUserId);
 		}
 		if (status != null && !"".equals(status)) {
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		if (isAddCoin != null && !"".equals(isAddCoin)) {
 			sb.append("&is_add_coin=").append(isAddCoin);
@@ -662,7 +655,7 @@ public class URLGenerator {
 
 	/**
 	 * 更新用户信息接口，包括邮箱，密码，手机号等等
-	 * 
+	 *
 	 * @param id
 	 * @param password
 	 * @param phone
@@ -676,8 +669,8 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getUpdateUserInfoURL(String id, String password,
-			String phone, String email, String openId, String dealEnabled,
-			String dealPwd, String tmpData,String initPwd) {
+										 String phone, String email, String openId, String dealEnabled,
+										 String dealPwd, String tmpData,String initPwd) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(UPDATE_USER_INFO).append("&id=").append(id);
 		if (password != null && !"".equals(password)) {
@@ -710,8 +703,29 @@ public class URLGenerator {
 	}
 
 	/**
+	 * 发送短信验证码
+	 *
+	 * @param phone
+	 * @param template
+	 *            register_code表示是注册页面的短信验证码模板,forgot_pwd表示是找回密码时的短信验证码模板
+	 * @param params
+	 * @param verfiy
+	 *            此参数对于短信验证码暂时无效
+	 * @return
+	 */
+	public String[] getSMSAuthNumURL(String phone, String template,
+									 String params, String verfiy) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(SEND_SMS_AUTH).append("&phone=")
+				.append(phone).append("&template=").append(template)
+				.append("&params=").append(params).append("&verfiy=")
+				.append(verfiy);
+		return new String[] { BASE_URL, sb.toString() };
+	}
+
+	/**
 	 * 检验用户该号码是否注册(此接口返回用户信息太少，建议不用) 注册的时候判断此号码是否已经被注册
-	 * 
+	 *
 	 * @param phone
 	 *            一般为手机号
 	 * @return
@@ -725,7 +739,7 @@ public class URLGenerator {
 
 	/**
 	 * 根据手机号码获取用户信息 ，找回密码的时候用到此接口
-	 * 
+	 *
 	 * @param phone
 	 * @return
 	 */
@@ -738,7 +752,7 @@ public class URLGenerator {
 
 	/**
 	 * 根据Id获取单条项目的详情
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -750,14 +764,14 @@ public class URLGenerator {
 
 	/**
 	 * 关联公司的信息
-	 * 
+	 *
 	 * @param loanId
 	 * @param recommendId
 	 * @param guaranteeId
 	 * @return
 	 */
 	public String[] getAssociatedCompanyURL(String loanId, String recommendId,
-			String guaranteeId) {
+											String guaranteeId) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(ASSOCIATED_COMPANY_URL).append("&loan_id=")
 				.append(loanId).append("&recommend_id=").append(recommendId)
@@ -767,7 +781,7 @@ public class URLGenerator {
 
 	/**
 	 * 充值
-	 * 
+	 *
 	 * @param userId
 	 *            用户id
 	 * @param account
@@ -781,16 +795,16 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getRechargeURL(String userId, String account,
-			String bankCard, String phone, String realName, String idNumber) {
+								   String bankCard, String phone, String realName, String idNumber) {
 		StringBuffer sb = new StringBuffer();
 		try {
 			sb.append("_URL_=").append(RECHARGE).append("&user_id=")
 					.append(userId).append("&account=").append(account)
 					.append("&bank_card=").append(bankCard)
 					.append("&bank_phone=").append(phone).append("&real_name=")
-					.append(URLEncoder.encode(realName, "utf-8"))
+					.append(realName)
 					.append("&id_number=").append(idNumber);
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[] { BASE_URL, sb.toString() };
@@ -798,7 +812,7 @@ public class URLGenerator {
 
 	/**
 	 * 提现
-	 * 
+	 *
 	 * @param userId
 	 *            用户ID
 	 * @param cashAccount
@@ -814,7 +828,7 @@ public class URLGenerator {
 
 	/**
 	 * 取消提现
-	 * 
+	 *
 	 * @param id
 	 *            提现ID
 	 * @param status
@@ -827,19 +841,19 @@ public class URLGenerator {
 	 * @throws Exception
 	 */
 	public String[] getWithdrawCancelURL(String id, String status,
-			String auditor, String auditType) throws Exception {
+										 String auditor, String auditType) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(WITHDRAW_CANCEL_URL).append("&id=")
 				.append(id).append("&status=")
-				.append(URLEncoder.encode(status, "utf-8")).append("&auditor=")
+				.append(status).append("&auditor=")
 				.append(auditor).append("&audit_type=")
-				.append(URLEncoder.encode(auditType, "utf-8"));
+				.append(auditType);
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 生成充值订单
-	 * 
+	 *
 	 * @param userId
 	 * @param orderId
 	 *            充值接口返回的订单号
@@ -848,7 +862,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getRechargeOrderURL(String userId, String orderId,
-			String smsCode) {
+										String smsCode) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(RECHARGE_ORDER).append("&user_id=")
 				.append(userId).append("&order=").append(orderId)
@@ -858,7 +872,7 @@ public class URLGenerator {
 
 	/**
 	 * 根据用户id查询 是否已认证
-	 * 
+	 *
 	 * @param userId
 	 * @param type
 	 *            枚举类型：宝付、易联
@@ -869,8 +883,8 @@ public class URLGenerator {
 		try {
 			sb.append("_URL_=").append(USER_ISVERIFY).append("&user_id=")
 					.append(userId).append("&type=")
-					.append(URLEncoder.encode(type, "utf-8"));
-		} catch (UnsupportedEncodingException e) {
+					.append(type);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[] { BASE_URL, sb.toString() };
@@ -878,7 +892,7 @@ public class URLGenerator {
 
 	/**
 	 * 用户认证
-	 * 
+	 *
 	 * @param userId
 	 * @param bankCard
 	 *            银行卡号
@@ -890,18 +904,18 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getUserVerifyURL(String userId, String bankCard,
-			String realName, String idNumber, String bankPhone) {
+									 String realName, String idNumber, String bankPhone) {
 		StringBuffer sb = new StringBuffer();
 		try {
 			sb.append("_URL_=").append(USER_VERIFY).append("&user_id=")
 					.append(userId).append("&bank_card=").append(bankCard)
 					.append("&real_name=")
-					.append(URLEncoder.encode(realName, "utf-8"))
+					.append(realName)
 					.append("&id_number=").append(idNumber);
 			if (bankPhone != null && !"".equals(bankPhone)) {
 				sb.append("&bank_phone=").append(bankPhone);
 			}
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[] { BASE_URL, sb.toString() };
@@ -909,7 +923,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取一个用户的个人信息
-	 * 
+	 *
 	 * @param id
 	 * @param phone
 	 * @param opneId
@@ -933,7 +947,7 @@ public class URLGenerator {
 
 	/**
 	 * 易联重新发送短信验证码
-	 * 
+	 *
 	 * @param userId
 	 * @param order
 	 * @return
@@ -947,7 +961,7 @@ public class URLGenerator {
 
 	/**
 	 * 验证交易密码是否输入正确
-	 * 
+	 *
 	 * @param userId
 	 * @param dealPwd
 	 *            交易密码 不加密
@@ -963,7 +977,7 @@ public class URLGenerator {
 
 	/**
 	 * 提现列表
-	 * 
+	 *
 	 * @param userId
 	 * @param page
 	 * @param pageSize
@@ -976,14 +990,14 @@ public class URLGenerator {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getWithdrawListURL(String userId, String page,
-			String pageSize, String status, String startTime, String endTime)
+									   String pageSize, String status, String startTime, String endTime)
 			throws UnsupportedEncodingException {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(WITHDRAW_LIST_URL).append("&user_id=")
 				.append(userId).append("&page=").append(page)
 				.append("&page_size=").append(pageSize);
 		if (status != null && !"".equals(status)) {
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		if (startTime != null && !"".equals(startTime)) {
 			sb.append("&start_time=").append(startTime);
@@ -996,7 +1010,7 @@ public class URLGenerator {
 
 	/**
 	 * 汇付账户资金列表
-	 * 
+	 *
 	 * @param userId
 	 * @param type
 	 * @param page
@@ -1006,7 +1020,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getHuifuFundsDetaislListURL(String userId, String type,
-			String page, String pageSize, String startTime, String endTime) {
+												String page, String pageSize, String startTime, String endTime) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(HUIFU_FUNDS_DETAILS_LIST)
 				.append("&user_id=").append(userId).append("&page=")
@@ -1025,7 +1039,7 @@ public class URLGenerator {
 
 	/**
 	 * 易联账户资金列表
-	 * 
+	 *
 	 * @param userId
 	 * @param type
 	 *            资金操作类型 如Repayment
@@ -1036,7 +1050,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getYilianFundsDetaislListURL(String userId, String type,
-			String page, String pageSize, String startTime, String endTime) {
+												 String page, String pageSize, String startTime, String endTime) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YILIAN_FUNDS_DETAILS_LIST)
 				.append("&user_id=").append(userId).append("&page=")
@@ -1055,7 +1069,7 @@ public class URLGenerator {
 
 	/**
 	 * 资金明细列表
-	 * 
+	 *
 	 * @param userId
 	 * @param type
 	 *            资金操作类型 Repayment
@@ -1066,7 +1080,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getFundsDetailsListURL(String userId, String type,
-			String page, String pageSize, String startTime, String endTime) {
+										   String page, String pageSize, String startTime, String endTime) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(FUNDS_DETAILS_LIST).append("&user_id=")
 				.append(userId).append("&page=").append(page)
@@ -1085,7 +1099,7 @@ public class URLGenerator {
 
 	/**
 	 * 易联统计
-	 * 
+	 *
 	 * @param userId
 	 * @return
 	 */
@@ -1098,7 +1112,7 @@ public class URLGenerator {
 
 	/**
 	 * 汇付统计
-	 * 
+	 *
 	 * @param userId
 	 * @return
 	 */
@@ -1111,7 +1125,7 @@ public class URLGenerator {
 
 	/**
 	 * 修改地址邮编
-	 * 
+	 *
 	 * @param userId
 	 * @param address
 	 * @param postCode
@@ -1124,32 +1138,30 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(CHANGE_ADDRESS_AND_ZIPCODE).append("&id=")
 				.append(userId).append("&address=")
-				.append(URLEncoder.encode(address, "utf-8"))
-				.append("&post_code=").append(postCode);
+				.append(address).append("&post_code=").append(postCode);
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 获取体验金
-	 * 
+	 *
 	 * @param userId
 	 *            邮编
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getTYJURL(String page, String pageSize, String status,
-			String userId, String putStatus, String activeTitle)
+							  String userId, String putStatus, String activeTitle)
 			throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(MYTYJ_URL).append("&page=").append(page)
 				.append("&page_size=").append(pageSize).append("&user_id=")
 				.append(userId);
 		if (status != null && !"".equals(status)) {
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		if (putStatus != null && !"".equals(putStatus)) {
-			sb.append("&put_status=").append(
-					URLEncoder.encode(putStatus, "utf-8"));
+			sb.append("&put_status=").append(putStatus);
 		}
 		if (activeTitle != null && !"".equals(activeTitle)) {
 			sb.append("&active_title=").append(activeTitle);
@@ -1159,12 +1171,12 @@ public class URLGenerator {
 
 	/**
 	 * 推广收益
-	 * 
+	 *
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getExtensionIncomeURL(String userId, String pageNo,
-			String pageSize) throws UnsupportedEncodingException {
+										  String pageSize) throws UnsupportedEncodingException {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(EXTENSION_INCOME_URL)
 				.append("&extension_user_id=").append(userId).append("&page=")
@@ -1172,15 +1184,15 @@ public class URLGenerator {
 				.append("&is_wap=").append("1");
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 推广收益 新的接口
-	 * 
+	 *
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getNewExtensionIncomeURL(String userId, String pageNo,
-			String pageSize) throws UnsupportedEncodingException {
+											 String pageSize) throws UnsupportedEncodingException {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(EXTENSION_NEWINCOME_URL)
 				.append("&extension_user_id=").append(userId).append("&page=")
@@ -1190,7 +1202,7 @@ public class URLGenerator {
 
 	/**
 	 * 奖品列表 --- 再根据active_title这个字段去查询活动信息，看活动什么时候结束，可以判断出哪些已经过期，然后再根据已激活未激活进行分类
-	 * 
+	 *
 	 * @param page
 	 * @param pageSize
 	 * @param userId
@@ -1198,7 +1210,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getPrizeListURL(String page, String pageSize,
-			String userId, String source,String activeTitle) {
+									String userId, String source,String activeTitle) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(PRIZE_LIST_URL).append("&page=")
 				.append(page).append("&page_size=").append(pageSize);
@@ -1216,7 +1228,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取奖品活动信息
-	 * 
+	 *
 	 * @param activeTitle
 	 * @param id
 	 * @return
@@ -1233,7 +1245,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取公告
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -1245,7 +1257,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取公告、新闻、咨询列表
-	 * 
+	 *
 	 * @param status
 	 *            正常、关闭、删除
 	 * @param type
@@ -1256,22 +1268,22 @@ public class URLGenerator {
 	 * @throws Exception
 	 */
 	public String[] getArticleListURL(String status, String type, String page,
-			String pageSize) throws Exception {
+									  String pageSize) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(ACTICLE_LIST_URL).append("&page=")
 				.append(page).append("&page_size=").append(pageSize);
 		if (status != null && !"".equals(status)) {
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		if (type != null && !"".equals(type)) {
-			sb.append("&type=").append(URLEncoder.encode(type, "utf-8"));
+			sb.append("&type=").append(type);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 获取banner
-	 * 
+	 *
 	 * @param page
 	 * @param pageSize
 	 * @param status
@@ -1280,20 +1292,20 @@ public class URLGenerator {
 	 * @throws Exception
 	 */
 	public String[] getBannerURL(String page, String pageSize, String status,
-			String type) throws Exception {
+								 String type) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(BANNERLIST_URL).append("&page=")
 				.append(page).append("&page_size=").append(pageSize)
-				.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+				.append("&status=").append(status);
 		if (!type.isEmpty()) {
-			sb.append("&type=").append(URLEncoder.encode(type, "utf-8"));
+			sb.append("&type=").append(type);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 根据用户的id和status获取体验金列表
-	 * 
+	 *
 	 * @param status
 	 *            未使用，已使用等
 	 * @param user_id
@@ -1304,14 +1316,13 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getArticleTYJListByStatus(String status, String user_id,
-			String put_status, String active_title) throws Exception {
+											  String put_status, String active_title) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(ARTICLE_TYJLIST_BYSTATUS).append("&status=")
-				.append(URLEncoder.encode(status, "utf-8")).append("&user_id=")
+				.append(status).append("&user_id=")
 				.append(user_id);
 		if (put_status != null && !"".equals(put_status)) {
-			sb.append("&put_status=").append(
-					URLEncoder.encode(put_status, "utf-8"));
+			sb.append("&put_status=").append(put_status);
 		}
 		if (active_title != null && !"".equals(active_title)) {
 			sb.append("&active_title=").append(active_title);
@@ -1321,7 +1332,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取元信宝产品URL
-	 * 
+	 *
 	 * @param id
 	 * @param status
 	 *            已发布
@@ -1334,14 +1345,14 @@ public class URLGenerator {
 			sb.append("&id=").append(id);
 		}
 		if (status != null && !"".equals(status)) {
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 获取元信宝每日统计URL
-	 * 
+	 *
 	 * @param id
 	 * @param dateTime
 	 *            yyyy-MM-dd 00:00:00(凌晨0点整)
@@ -1361,14 +1372,14 @@ public class URLGenerator {
 
 	/**
 	 * 元信宝 ---- 认购
-	 * 
+	 *
 	 * @param productId
 	 * @param userId
 	 * @param orderMoney
 	 * @return
 	 */
 	public String[] getYXBInvestURL(String productId, String userId,
-			String orderMoney) {
+									String orderMoney) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YXB_INVEST);
 		sb.append("&product_id=").append(productId).append("&user_id=")
@@ -1378,7 +1389,7 @@ public class URLGenerator {
 
 	/**
 	 * 元信宝用户中心
-	 * 
+	 *
 	 * @param userId
 	 * @return
 	 */
@@ -1391,7 +1402,7 @@ public class URLGenerator {
 
 	/**
 	 * 元信宝赎回记录
-	 * 
+	 *
 	 * @param id
 	 *            记录的id，并非产品的id
 	 * @param userId
@@ -1400,7 +1411,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getYXBRedeemRecordsURL(String id, String userId,
-			String page, String pageSize) {
+										   String page, String pageSize) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YXB_REDEEM_RECORD);
 		sb.append("&page=").append(page).append("&page_size=").append(pageSize);
@@ -1415,7 +1426,7 @@ public class URLGenerator {
 
 	/**
 	 * 元信宝 认购记录
-	 * 
+	 *
 	 * @param id
 	 * @param userId
 	 * @param interestStatus
@@ -1426,7 +1437,7 @@ public class URLGenerator {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getYXBInvestRecordsURL(String id, String userId,
-			String interestStatus, String page, String pageSize)
+										   String interestStatus, String page, String pageSize)
 			throws UnsupportedEncodingException {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YXB_INVEST_RECORD);
@@ -1436,22 +1447,21 @@ public class URLGenerator {
 			sb.append("&id=").append(id);
 		}
 		if (interestStatus != null && !"".equals(interestStatus)) {
-			sb.append("&interest_status=").append(
-					URLEncoder.encode(interestStatus, "utf-8"));
+			sb.append("&interest_status=").append(interestStatus);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 元信宝资金明细接口
-	 * 
+	 *
 	 * @param userId
 	 * @param page
 	 * @param pageSize
 	 * @return
 	 */
 	public String[] getYXBNewAccountLog(String userId, String page,
-			String pageSize) {
+										String pageSize) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YXB_ACCOUNT_LIST);
 		sb.append("&user_id=").append(userId).append("&page_size=")
@@ -1461,14 +1471,14 @@ public class URLGenerator {
 
 	/**
 	 * 元信宝赎回接口
-	 * 
+	 *
 	 * @param productId
 	 * @param userId
 	 * @param applyMoney
 	 * @return
 	 */
 	public String[] getYXBRedeemURL(String productId, String userId,
-			String applyMoney) {
+									String applyMoney) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YXB_REDEEM_URL);
 		sb.append("&product_id=").append(productId).append("&user_id=")
@@ -1478,14 +1488,14 @@ public class URLGenerator {
 
 	/**
 	 * 赎回验证接口
-	 * 
+	 *
 	 * @param productId
 	 * @param userId
 	 * @param applyMoney
 	 * @return
 	 */
 	public String[] getYXBCheckRedeemURL(String productId, String userId,
-			String applyMoney) {
+										 String applyMoney) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YXB_CHECK_REDEEM_URL);
 		sb.append("&product_id=").append(productId).append("&user_id=")
@@ -1495,7 +1505,7 @@ public class URLGenerator {
 
 	/**
 	 * 我的红包列表
-	 * 
+	 *
 	 * @param userId
 	 * @param flag
 	 *            1:未使用 2：已使用 3：已过期
@@ -1510,7 +1520,7 @@ public class URLGenerator {
 
 	/**
 	 * 将手机信息存入后台
-	 * 
+	 *
 	 * @param userId
 	 * @param phone
 	 * @param phoneModel
@@ -1526,8 +1536,8 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getAddPhoneInfoURL(String userId, String phone,
-			String phoneModel, String sdkVersion, String systemVersion,
-			String phoneType, String location, String contact) {
+									   String phoneModel, String sdkVersion, String systemVersion,
+									   String phoneType, String location, String contact) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("user_id=").append(userId).append("&phone=").append(phone)
 				.append("&phone_model=").append(phoneModel)
@@ -1540,7 +1550,7 @@ public class URLGenerator {
 
 	/**
 	 * 当前用户可以使用的红包列表
-	 * 
+	 *
 	 * @param userId
 	 * @param borrowType
 	 *            稳赢 速盈 保盈
@@ -1551,8 +1561,8 @@ public class URLGenerator {
 		sb.append("_URL_=").append(REDBAG_CURRENTUSER_LIST);
 		try {
 			sb.append("&user_id=").append(userId).append("&borrow_type=")
-					.append(URLEncoder.encode(borrowType, "utf-8"));
-		} catch (UnsupportedEncodingException e) {
+					.append(borrowType);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[] { BASE_URL, sb.toString() };
@@ -1560,7 +1570,7 @@ public class URLGenerator {
 
 	/**
 	 * 获取宝付绑卡的URL
-	 * 
+	 *
 	 * @param userId
 	 *            用户id
 	 * @param idNum
@@ -1582,24 +1592,22 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getBFBindCardURL(String userId, String idNum,
-			String realName, String bankCard, String bankName, String bankCode,
-			String bankPhone, String smsCode, String order_sn) {
+									 String realName, String bankCard, String bankName, String bankCode,
+									 String bankPhone, String smsCode, String order_sn) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(BF_BINDCARD_URL);
 		try {
 			sb.append("&user_id=").append(userId).append("&id_num=")
-					.append(idNum).append("&real_name=")
-					.append(URLEncoder.encode(realName, "utf-8"))
+					.append(idNum).append("&real_name=").append(realName)
 					.append("&bank_card=").append(bankCard)
 					.append("&bank_code=").append(bankCode)
 					.append("&bank_phone=").append(bankPhone)
 					.append("&sms_code=").append(smsCode).append("&order_sn=")
 					.append(order_sn);
 			if (bankName != null && !"".equals(bankName)) {
-				sb.append("&bank_name=").append(
-						URLEncoder.encode(bankName, "utf-8"));
+				sb.append("&bank_name=").append(bankName);
 			}
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[] { BASE_URL, sb.toString() };
@@ -1607,7 +1615,7 @@ public class URLGenerator {
 
 	/**
 	 * 宝付支付接口
-	 * 
+	 *
 	 * @param userId
 	 *            用户id
 	 * @param amount
@@ -1617,7 +1625,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getBFRechargeURL(String userId, String amount,
-			String smsCode, String orderId) {
+									 String smsCode, String orderId) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(BF_RECHARGE_URL);
 		sb.append("&user_id=").append(userId).append("&amount=").append(amount)
@@ -1628,14 +1636,14 @@ public class URLGenerator {
 
 	/**
 	 * 宝付发送绑卡的验证码
-	 * 
+	 *
 	 * @param userId
 	 * @param bankCard
 	 * @param bankPhone
 	 * @return
 	 */
 	public String[] getBFSendBindcardURL(String userId, String bankCard,
-			String bankPhone) {
+										 String bankPhone) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(BF_SENDBINDCARD_MSG_URL);
 		sb.append("&user_id=").append(userId).append("&bank_card=")
@@ -1645,7 +1653,7 @@ public class URLGenerator {
 
 	/**
 	 * 宝付发送充值的验证码
-	 * 
+	 *
 	 * @param userId
 	 * @param amount
 	 * @return
@@ -1659,7 +1667,7 @@ public class URLGenerator {
 
 	/**
 	 * 宝付实名认证的URL
-	 * 
+	 *
 	 * @param userId
 	 *            用户ID
 	 * @param idNum
@@ -1675,13 +1683,13 @@ public class URLGenerator {
 		sb.append("_URL_=").append(BF_VERIFY_URL);
 		sb.append("&user_id=").append(userId).append("&id_card=").append(idNum)
 				.append("&id_holder=")
-				.append(URLEncoder.encode(realName, "utf-8"));
+				.append(realName);
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 新手标详情
-	 * 
+	 *
 	 * @param borrowStatus
 	 *            发布
 	 * @return
@@ -1690,9 +1698,8 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(XSB_DETAILS_URL);
 		try {
-			sb.append("&borrow_status=").append(
-					URLEncoder.encode(borrowStatus, "utf-8"));
-		} catch (UnsupportedEncodingException e) {
+			sb.append("&borrow_status=").append(borrowStatus);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[] { BASE_URL, sb.toString() };
@@ -1700,7 +1707,7 @@ public class URLGenerator {
 
 	/**
 	 * 判断能否购买新手标
-	 * 
+	 *
 	 * @param userId
 	 * @param borrowId
 	 * @return
@@ -1715,7 +1722,7 @@ public class URLGenerator {
 
 	/**
 	 * 元月盈产品列表URL
-	 * 
+	 *
 	 * @param borrowStatus
 	 *            发布；审核中...等等
 	 * @param moneyStatus
@@ -1726,24 +1733,22 @@ public class URLGenerator {
 	 * @throws Exception
 	 */
 	public String[] getYYYBorrowListURL(String borrowStatus,
-			String moneyStatus, String page, String pageSize) throws Exception {
+										String moneyStatus, String page, String pageSize) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_BORROW_LIST);
 		sb.append("&page=").append(page).append("&page_size=").append(pageSize);
 		if (borrowStatus != null && !"".equals(borrowStatus)) {
-			sb.append("&borrow_status=").append(
-					URLEncoder.encode(borrowStatus, "utf-8"));
+			sb.append("&borrow_status=").append(borrowStatus);
 		}
 		if (moneyStatus != null && !"".equals(moneyStatus)) {
-			sb.append("&money_status=").append(
-					URLEncoder.encode(moneyStatus, "utf-8"));
+			sb.append("&money_status=").append(moneyStatus);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 获取正在售的元月盈产品详情
-	 * 
+	 *
 	 * @param borrowStatus
 	 *            发布...等等
 	 *            未满标/已满标 等等
@@ -1755,15 +1760,14 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_BORROW_SELECTONE);
 		if (borrowStatus != null && !"".equals(borrowStatus)) {
-			sb.append("&borrow_status=").append(
-					URLEncoder.encode(borrowStatus, "utf-8"));
+			sb.append("&borrow_status=").append(borrowStatus);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 根据borrowid获取元月盈某支标的详情
-	 * 
+	 *
 	 * @param id
 	 *            标的id
 	 * @param borrowStatus
@@ -1774,24 +1778,22 @@ public class URLGenerator {
 	 * @throws Exception
 	 */
 	public String[] getYYYBorrowDetailsByIdURL(String id, String borrowStatus,
-			String moneyStatus) throws Exception {
+											   String moneyStatus) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_BORROW_SELECTONE_BYID);
 		sb.append("&id=").append(id);
 		if (borrowStatus != null && !"".equals(borrowStatus)) {
-			sb.append("&borrow_status=").append(
-					URLEncoder.encode(borrowStatus, "utf-8"));
+			sb.append("&borrow_status=").append(borrowStatus);
 		}
 		if (moneyStatus != null && !"".equals(moneyStatus)) {
-			sb.append("&money_status=").append(
-					URLEncoder.encode(moneyStatus, "utf-8"));
+			sb.append("&money_status=").append(moneyStatus);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 元月盈标的投资记录
-	 * 
+	 *
 	 * @param borrowId
 	 *            元月盈产品id
 	 * @param investStatus
@@ -1808,8 +1810,8 @@ public class URLGenerator {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getYYYInvestRecordURL(String borrowId, String investStatus,
-			String investUserId, String returnStatus, String type, String page,
-			String pageSize) throws UnsupportedEncodingException {
+										  String investUserId, String returnStatus, String type, String page,
+										  String pageSize) throws UnsupportedEncodingException {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_INVEST_RECORD);
 		sb.append("&page=").append(page).append("&page_size=").append(pageSize);
@@ -1817,32 +1819,30 @@ public class URLGenerator {
 			sb.append("&borrow_id=").append(borrowId);
 		}
 		if (investStatus != null && !"".equals(investStatus)) {
-			sb.append("&invest_status=").append(
-					URLEncoder.encode(investStatus, "utf-8"));
+			sb.append("&invest_status=").append(investStatus);
 		}
 		if (investUserId != null && !"".equals(investUserId)) {
 			sb.append("&invest_user_id=").append(investUserId);
 		}
 		if (returnStatus != null && !"".equals(returnStatus)) {
-			sb.append("&return_status=").append(
-					URLEncoder.encode(returnStatus, "utf-8"));
+			sb.append("&return_status=").append(returnStatus);
 		}
 		if (type != null && !"".equals(type)) {
-			sb.append("&type=").append(URLEncoder.encode(type, "utf-8"));
+			sb.append("&type=").append(type);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 元月盈用户投资记录
-	 * 
+	 *
 	 * @param userId
 	 * @param page
 	 * @param pageSize
 	 * @return
 	 */
 	public String[] getYYYUserInvestRecordURL(String userId, String page,
-			String pageSize) {
+											  String pageSize) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_USER_INVEST_RECORD);
 		sb.append("&invest_user_id=").append(userId).append("&page=")
@@ -1852,7 +1852,7 @@ public class URLGenerator {
 
 	/**
 	 * 元月盈申请和取消赎回的API
-	 * 
+	 *
 	 * @param investId
 	 *            元月盈投资记录id
 	 * @param userId
@@ -1861,7 +1861,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getYYYApplyOrCancelReturnURL(String investId,
-			String userId, String type) {
+												 String userId, String type) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_APPLYORCANCEL_RETURN);
 		sb.append("&invest_id=").append(investId).append("&invest_user_id=")
@@ -1871,7 +1871,7 @@ public class URLGenerator {
 
 	/**
 	 * 元月盈投标URL
-	 * 
+	 *
 	 * @param borrowId
 	 * @param money
 	 * @param userId
@@ -1879,27 +1879,29 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getYYYBorrowInvestURL(String borrowId, String money,
-			String userId,String investFrom) throws Exception{
+										  String userId,String investFrom,String couponId) throws Exception{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_BORROW_INVEST);
 		sb.append("&borrow_id=").append(borrowId).append("&money=")
 				.append(money).append("&invest_user_id=").append(userId);
 		if(investFrom != null && !"".equals(investFrom)){
-			sb.append("&invest_from=")
-			.append(URLEncoder.encode(investFrom, "utf-8"));
+			sb.append("&invest_from=").append(investFrom);
+		}
+		if(couponId != null && !"".equals(couponId) && !"null".equals(couponId) && !"NULL".equals(couponId)){
+			sb.append("&add_interest_log_id=").append(couponId);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * 判断当前用户是否投资过vip该标的
-	 * 
+	 *
 	 * @param investUserId
 	 * @param borrowId
 	 * @return
 	 */
 	public String[] getYYYCurrentUserInvestURL(String investUserId,
-			String borrowId) {
+											   String borrowId) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_CURRENTUSER_INVEST_URL)
 				.append("&invest_user_id=").append(investUserId)
@@ -1909,7 +1911,7 @@ public class URLGenerator {
 
 	/**
 	 * 根据手机号码获取理财师的名字
-	 * 
+	 *
 	 * @param phone
 	 * @return
 	 */
@@ -1922,7 +1924,7 @@ public class URLGenerator {
 
 	/**
 	 * VIP投资记录列表
-	 * 
+	 *
 	 * @param borrowId
 	 * @param status
 	 * @param investUserId
@@ -1932,33 +1934,33 @@ public class URLGenerator {
 	 * @throws Exception
 	 */
 	public String[] getVIPRecordListURL(String borrowId, String status,
-			String investUserId, String page, String pageSize) throws Exception {
+										String investUserId, String page, String pageSize) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(VIP_RECORDLIST_URL);
 		if (!borrowId.isEmpty()) {
 			sb.append("&borrow_id=").append(borrowId);
 		}
 		if (!status.isEmpty()) {
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		if (!investUserId.isEmpty()) {
 			sb.append("&invest_user_id=").append(investUserId);
 		}
-		sb.append("&type=").append(URLEncoder.encode("用户投资", "utf-8"));
+		sb.append("&type=").append("用户投资");
 		sb.append("&page=").append(page).append("&page_size=").append(pageSize);
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
 	/**
 	 * VIP产品投资接口
-	 * 
+	 *
 	 * @param borrowId
 	 * @param money
 	 * @param investUserId
 	 * @return
 	 */
 	public String[] getVIPInvestURL(String borrowId, String money,
-			String investUserId) {
+									String investUserId) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(VIP_INVEST_URL);
 		sb.append("&borrow_id=").append(borrowId).append("&money=")
@@ -1968,20 +1970,20 @@ public class URLGenerator {
 
 	/**
 	 * 判断当前用户是否投资过vip该标的
-	 * 
+	 *
 	 * @param investUserId
 	 * @param borrowId
 	 * @return
 	 */
 	public String[] getVIPCurrentUserInvestURL(String investUserId,
-			String borrowId) {
+											   String borrowId) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(VIP_CURRENTUSER_INVEST_URL)
 				.append("&invest_user_id=").append(investUserId)
 				.append("&borrow_id=").append(borrowId);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 获取大转盘抽奖次数
 	 * @param userId
@@ -1992,7 +1994,7 @@ public class URLGenerator {
 		sb.append("_URL_=").append(DZP_LOTTERY_TIMES).append("&user_id=").append(userId);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 获取用户的中奖记录
 	 * @param userId
@@ -2003,10 +2005,10 @@ public class URLGenerator {
 	public String[] getDZPUserRecordsURL(String userId,String page,String pageSize){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(DZP_USER_RECORDS).append("&user_id=").append(userId)
-			.append("&page=").append(page).append("&page_size=").append(pageSize);
+				.append("&page=").append(page).append("&page_size=").append(pageSize);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 获取该活动的中奖记录
 	 * @param activeTitle
@@ -2017,7 +2019,7 @@ public class URLGenerator {
 		sb.append("_URL_=").append(DZP_LOTTERY_RECORDS).append("&active_title=").append(activeTitle);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 获取抽奖结果
 	 * @param userId
@@ -2028,7 +2030,7 @@ public class URLGenerator {
 		sb.append("_URL_=").append(DZP_DRAW_PRIZE).append("&user_id=").append(userId);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 大转盘分享成功后请求此接口，对抽奖次数进行+1
 	 * @param userId
@@ -2039,26 +2041,26 @@ public class URLGenerator {
 		sb.append("_URL_=").append(DZP_IS_SHARE).append("&user_id=").append(userId);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
-	 * 私人尊享产品列表 
+	 * 私人尊享产品列表
 	 * @param borrowStatus
 	 * @param page
 	 * @param pageSize
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public String[] getAppointBorrowList(String borrowStatus,String moneyStatus,String page,String pageSize) throws Exception{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(APPOINT_BORROW_LIST).append("&borrow_status=")
-			.append(URLEncoder.encode(borrowStatus, "utf-8"))
-			.append("&page=").append(page).append("&page_size=").append(pageSize);
+				.append(borrowStatus)
+				.append("&page=").append(page).append("&page_size=").append(pageSize);
 		if(moneyStatus != null && !"".equals(moneyStatus)){
-			sb.append("&money_status=").append(URLEncoder.encode(moneyStatus, "utf-8"));
+			sb.append("&money_status=").append(moneyStatus);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 私人尊享产品详情
 	 * @param borrowId
@@ -2067,10 +2069,10 @@ public class URLGenerator {
 	public String[] getAppointBorrowDetails(String borrowId){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(APPOINT_BORROW_DETAILS).append("&id=")
-			.append(borrowId);
+				.append(borrowId);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 私人尊享投标接口
 	 * @param borrowId
@@ -2081,19 +2083,22 @@ public class URLGenerator {
 	 * @return
 	 * @throws Exception
 	 */
-	public String[] getAppointBorrowInvest(String borrowId,String userId,String money,String investFrom,String redbagId) throws Exception{
+	public String[] getAppointBorrowInvest(String borrowId,String userId,String money,String investFrom,String redbagId,String couponId) throws Exception{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(APPOINT_BORROW_INVEST).append("&borrow_id=")
-			.append(borrowId).append("&user_id=").append(userId).append("&money=").append(money);
+				.append(borrowId).append("&user_id=").append(userId).append("&money=").append(money);
 		if(investFrom != null && !"".equals(investFrom)){
-			sb.append("&invest_from=").append(URLEncoder.encode(investFrom, "utf-8"));
+			sb.append("&invest_from=").append(investFrom);
 		}
-		if(redbagId != null && !"".equals(redbagId)){
+		if(redbagId != null && !"".equals(redbagId) && !"null".equals(redbagId) && !"NULL".equals(redbagId)){
 			sb.append("&red_bag_log_id=").append(redbagId);
+		}
+		if(couponId != null && !"".equals(couponId) && !"null".equals(couponId) && !"NULL".equals(couponId)){
+			sb.append("&add_interest_log_id=").append(couponId);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 私人尊享投资记录(适合某个标的投资记录)
 	 * @param userId 非必传
@@ -2105,7 +2110,7 @@ public class URLGenerator {
 	public String[] getAppointBorrowInvestRecord(String userId,String borrowId,String page,String pageSize){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(APPOINT_BORROW_INVEST_RECORD).append("&page=")
-			.append(page).append("&page_size=").append(pageSize);
+				.append(page).append("&page_size=").append(pageSize);
 		if(userId != null && !"".equals(userId)){
 			sb.append("&user_id=").append(userId);
 		}
@@ -2114,7 +2119,7 @@ public class URLGenerator {
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 私人尊享用户投资记录
 	 * @param userId
@@ -2125,13 +2130,13 @@ public class URLGenerator {
 	public String[] getAppointBorrowInvestUserRecord(String userId,String page,String pageSize){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(APPOINT_BORROW_INVEST_USER_RECORD).append("&page=")
-			.append(page).append("&page_size=").append(pageSize);
+				.append(page).append("&page_size=").append(pageSize);
 		if(userId != null && !"".equals(userId)){
 			sb.append("&user_id=").append(userId);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 预约记录
 	 * @param page
@@ -2141,10 +2146,10 @@ public class URLGenerator {
 	public String[] getAppointRecordURL(String page,String pageSize){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(APPOINT_RECORD).append("&borrow_period=").append("0").append("&page=")
-			.append(page).append("&page_size=").append(pageSize);
+				.append(page).append("&page_size=").append(pageSize);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 私人尊享产品预约接口
 	 * @param userId
@@ -2156,13 +2161,13 @@ public class URLGenerator {
 	public String[] getAppointBorrowAppointURL(String userId,String money,String period,String purchaseTime){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(APPOINT_BORROW_APPOINT).append("&user_id=")
-			.append(userId).append("&money=").append(money).append("&interest_period=").append(period);
+				.append(userId).append("&money=").append(money).append("&interest_period=").append(period);
 		if(purchaseTime != null && !"".equals(purchaseTime)){
 			sb.append("&purchase_time=").append(purchaseTime);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 我的加息券列表
 	 * @param userId
@@ -2170,16 +2175,16 @@ public class URLGenerator {
 	 * @param page
 	 * @param pageSize
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public String[] getJXQListURL(String userId,String userStatus,String page,String pageSize) throws Exception{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(JXQ_LIST_URL).append("&user_id=")
-			.append(userId).append("&use_status=").append(URLEncoder.encode(userStatus, "utf-8")).append("&page=").append(page)
-			.append("&page_size=").append(pageSize);
+				.append(userId).append("&use_status=").append(userStatus).append("&page=").append(page)
+				.append("&page_size=").append(pageSize);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 获取某个加息券的详情
 	 * @param id
@@ -2189,10 +2194,10 @@ public class URLGenerator {
 	public String[] getJXQDetailsURL(String id,String money){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(JXQ_SELECTONE_URL).append("&id=")
-			.append(id).append("&money=").append(money);
+				.append(id).append("&money=").append(money);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 获取元金币收益
 	 * @param userId
@@ -2203,13 +2208,13 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		try {
 			sb.append("_URL_=").append(YJB_INTEREST).append("&invest_user_id=")
-				.append(userId).append("&repay_status=").append(URLEncoder.encode(repayStatus, "utf-8"));
-		} catch (UnsupportedEncodingException e) {
+					.append(userId).append("&repay_status=").append(repayStatus);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 快捷支付银行列表
 	 * @param status 启用，禁用
@@ -2221,17 +2226,17 @@ public class URLGenerator {
 	public String[] getQuickPaybankList(String status,String payWayName,String page,String pageSize){
 		StringBuffer sb = new StringBuffer();
 		try {
-			sb.append("_URL_=").append(QUICK_PAY_BANK).append("&status=").append(URLEncoder.encode(status, "utf-8"))
-				.append("&pay_way_name=").append(URLEncoder.encode(payWayName,"utf-8")).append("&page=").append(page).append("&page_size=").append(pageSize);
-		} catch (UnsupportedEncodingException e) {
+			sb.append("_URL_=").append(QUICK_PAY_BANK).append("&status=").append(status)
+					.append("&pay_way_name=").append(payWayName).append("&page=").append(page).append("&page_size=").append(pageSize);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 企业用户申请注册
-	 * @param phone 
+	 * @param phone
 	 * @param userFrom 用户来源
 	 * @param extensionCode 推广码
 	 * @return
@@ -2240,13 +2245,13 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		try {
 			sb.append("_URL_=").append(COMP_APPLY_REGISTE_URL).append("&phone=").append(phone).append("&user_from=").
-			append(URLEncoder.encode(userFrom, "utf-8")).append("&extension_code=").append(extensionCode);
-		} catch (UnsupportedEncodingException e) {
+					append(userFrom).append("&extension_code=").append(extensionCode);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 企业用户登录
 	 * @param username 企业用户的用户名， 不是手机号
@@ -2260,7 +2265,7 @@ public class URLGenerator {
 				.append(Util.md5Encryption(password));
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 企业用户申请提现
 	 * @param userId
@@ -2274,7 +2279,7 @@ public class URLGenerator {
 				.append(cashAccount);
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 获取企业用户信息
 	 * @param userId
@@ -2300,7 +2305,7 @@ public class URLGenerator {
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 限时秒标详情
 	 * @return
@@ -2308,13 +2313,13 @@ public class URLGenerator {
 	public String[] getXSMBDetailURL(String borrowStatus){
 		StringBuffer sb = new StringBuffer();
 		try {
-			sb.append("_URL_=").append(XSMB_BORROW_DETAIL).append("&borrow_status=").append(URLEncoder.encode(borrowStatus, "utf-8"));
-		} catch (UnsupportedEncodingException e) {
+			sb.append("_URL_=").append(XSMB_BORROW_DETAIL).append("&borrow_status=").append(borrowStatus);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 根据id获取秒标详情
 	 * @param borrowId
@@ -2324,13 +2329,13 @@ public class URLGenerator {
 	public String[] getXSMBSelectOneURL(String borrowId,String borrowStatus){
 		StringBuffer sb = new StringBuffer();
 		try {
-			sb.append("_URL_=").append(XSMB_BORROW_SELECTONE).append("&id=").append(borrowId).append("&borrow_status=").append(URLEncoder.encode(borrowStatus, "utf-8"));
-		} catch (UnsupportedEncodingException e) {
+			sb.append("_URL_=").append(XSMB_BORROW_SELECTONE).append("&id=").append(borrowId).append("&borrow_status=").append(borrowStatus);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 当前用户是否购买过该秒标
 	 * @param userId
@@ -2340,10 +2345,10 @@ public class URLGenerator {
 	public String[] getXSMBCurrentUserInvestURL(String userId,String borrowId){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(XSMB_CURRENT_USER_INVEST).append("&borrow_id=").append(borrowId).
-		append("&user_id=").append(userId);
+				append("&user_id=").append(userId);
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 限时秒标投标接口
 	 * @param borrowId
@@ -2355,17 +2360,17 @@ public class URLGenerator {
 	public String[] getXSMBInvestURL(String borrowId,String money,String userId,String investFrom){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(XSMB_INVEST_URL).append("&borrow_id=").append(borrowId).append("&money=").append(money)
-		.append("&invest_user_id=").append(userId);
+				.append("&invest_user_id=").append(userId);
 		if(!investFrom.isEmpty()){
 			try {
-				sb.append("&invest_from=").append(URLEncoder.encode(investFrom, "utf-8"));
-			} catch (UnsupportedEncodingException e) {
+				sb.append("&invest_from=").append(investFrom);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 获取秒标的投资记录
 	 * @param userId
@@ -2377,17 +2382,13 @@ public class URLGenerator {
 	public String[] getXSMBInvestRecordURL(String userId,String investStatus,String page,String pageSize){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(XSMB_INVEST_RECORD_URL).append("&user_id=").append(userId).append("&page=").append(page)
-		.append("&page_size=").append(pageSize);
+				.append("&page_size=").append(pageSize);
 		if(!investStatus.isEmpty()){
-			try {
-				sb.append("&invest_status=").append(URLEncoder.encode(investStatus, "utf-8"));
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
+			sb.append("&invest_status=").append(investStatus);
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 根据用户id和奖品名称判断用户是否领取过
 	 * @param userId
@@ -2398,15 +2399,11 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(FLJH_SELECTPRICE_BYNAME_URL).append("&user_id=").append(userId);
 		if(!prizeName.isEmpty()){
-			try {
-				sb.append("&prize=").append(URLEncoder.encode(prizeName, "utf-8"));
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
+			sb.append("&prize=").append(prizeName);
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 查询单条奖品信息
 	 * @param id 奖品编号
@@ -2419,7 +2416,7 @@ public class URLGenerator {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getFLJHPrizeCodeSelectOne(String id,String prizeCode,String prizeName,
-			String status,String openid,String userId) throws UnsupportedEncodingException{
+											  String status,String openid,String userId) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(FLJH_PRIZECODE_SELECTONE_URL);
 		if(!id.isEmpty()){
@@ -2429,20 +2426,20 @@ public class URLGenerator {
 			sb.append("&prize_code=").append(prizeCode);
 		}
 		if(!prizeName.isEmpty()){
-			sb.append("&prize_name=").append(URLEncoder.encode(prizeName, "utf-8"));
+			sb.append("&prize_name=").append(prizeName);
 		}
 		if(!status.isEmpty()){
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		if(!openid.isEmpty()){
-			sb.append("&open_id=").append(URLEncoder.encode(openid, "utf-8"));
+			sb.append("&open_id=").append(openid);
 		}
 		if(!userId.isEmpty()){
-			sb.append("&user_id=").append(URLEncoder.encode(userId, "utf-8"));
+			sb.append("&user_id=").append(userId);
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 判断活动期间用户是否投资过元月盈
 	 * @param userId
@@ -2461,7 +2458,7 @@ public class URLGenerator {
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 领取奖品
 	 * @param userId
@@ -2472,29 +2469,29 @@ public class URLGenerator {
 	 * @param status 奖品状态
 	 * @param source
 	 * @return
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getFLJHReceivePrizeURL(String userId,String prize,String giftId,String activeTitle,
-			String operatingRemark,String remark,String status,String source) throws UnsupportedEncodingException{
+										   String operatingRemark,String remark,String status,String source) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(FLJH_RECEIVE_PRIZE_URL).append("&user_id=").append(userId).
-			append("&prize=").append(URLEncoder.encode(prize, "utf-8")).append("&active_title=").append(activeTitle).
-			append("&gift_id=").append(giftId);
+				append("&prize=").append(prize).append("&active_title=").append(activeTitle).
+				append("&gift_id=").append(giftId);
 		if(!operatingRemark.isEmpty()){
-			sb.append("&operating_remark=").append(URLEncoder.encode(operatingRemark, "utf-8"));
+			sb.append("&operating_remark=").append(operatingRemark);
 		}
 		if(!remark.isEmpty()){
-			sb.append("&remark=").append(URLEncoder.encode(remark, "utf-8"));
+			sb.append("&remark=").append(remark);
 		}
 		if(!status.isEmpty()){
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		if(!source.isEmpty()){
-			sb.append("&source=").append(URLEncoder.encode(source, "utf-8"));
+			sb.append("&source=").append(source);
 		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 获取新春福利 领取压岁钱的次数
 	 * @param userId
@@ -2504,10 +2501,10 @@ public class URLGenerator {
 	public String[] getXCFLLotteryTimes(String userId,String activeTitle){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(XCFL_LOTTERY_TIMES_URL).append("&user_id=").
-			append(userId).append("&active_title=").append(activeTitle);
+				append(userId).append("&active_title=").append(activeTitle);
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 新春福利 领奖
 	 * @param userId
@@ -2518,7 +2515,7 @@ public class URLGenerator {
 		sb.append("_URL_=").append(XCFL_LOTTERY_DRAW_PRIZE_URL).append("&user_id=").append(userId);
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 判断活动是否开始
 	 * @param activeTitle
@@ -2529,21 +2526,21 @@ public class URLGenerator {
 		sb.append("_URL_=").append(XCFL_CHECK_ACTIVE_START_URL).append("&active_title=").append(activeTitle);
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 获取最新一期的稳定赢产品详情
 	 * @param borrowStatus
 	 * @param isShow
 	 * @return
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getWDYBorrowDetailsURL(String borrowStatus,String isShow) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
-		sb.append("_URL_=").append(WDY_BORROW_DETAIL_URL).append("&borrow_status=").append(URLEncoder.encode(borrowStatus, "utf-8")).
-			append("&is_show=").append(URLEncoder.encode(isShow, "utf-8"));
+		sb.append("_URL_=").append(WDY_BORROW_DETAIL_URL).append("&borrow_status=").append(borrowStatus).
+				append("&is_show=").append(isShow);
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 稳定盈投资接口
 	 * @param borrowId
@@ -2557,14 +2554,22 @@ public class URLGenerator {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getWDYBorrowInvestURL(String borrowId,String money,String userId,
-			String investFrom,String coinMoney,String couponId,String redbagId) throws UnsupportedEncodingException{
+										  String investFrom,String coinMoney,String couponId,String redbagId) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(WDY_INVEST_URL).append("&borrow_id=").append(borrowId).append("&money=").append(money).
-			append("&invest_user_id=").append(userId).append("&invest_from=").append(URLEncoder.encode(investFrom, "utf-8")).
-			append("&coin=").append(coinMoney).append("&add_coupon_id=").append(couponId).append("&red_bag_id=").append(redbagId);
+				append("&invest_user_id=").append(userId).append("&invest_from=").append(investFrom);
+		if(coinMoney != null && !"".equals(coinMoney)){
+			sb.append("&coin=").append(coinMoney);
+		}
+		if(couponId != null && !"".equals(couponId)){
+			sb.append("&add_coupon_id=").append(couponId);
+		}
+		if(redbagId != null && !"".equals(redbagId)){
+			sb.append("&red_bag_id=").append(redbagId);
+		}
 		return new String[]{BASE_URL, sb.toString()};
 	}
-	
+
 	/**
 	 * 稳定盈标的投资记录
 	 * @param borrowId
@@ -2574,7 +2579,7 @@ public class URLGenerator {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getWDYBorrowInvestDetailURL(String borrowId,String page,
-			String pageSize) throws UnsupportedEncodingException{
+												String pageSize) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(WDY_INVEST_DETAIL_URL);
 		sb.append("&page=").append(page).append("&page_size=").append(pageSize);
@@ -2583,7 +2588,7 @@ public class URLGenerator {
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 获取稳定盈投资记录
 	 * @param borrowId
@@ -2595,7 +2600,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getWDYBorrowInvestRecordURL(String borrowId,String userId,String type,
-			String status,String page,String pageSize){
+												String status,String page,String pageSize){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(WDY_INVEST_RECORD_URL);
 		sb.append("&page=").append(page).append("&page_size=").append(pageSize);
@@ -2613,10 +2618,10 @@ public class URLGenerator {
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
-	
+
 	/**
 	 * 乐享返现 开年红 领取加息券
-	 * @param userId 
+	 * @param userId
 	 * @param ticket 加息券规则id
 	 * @param startTime 加息券有效期开始时间 yyyy-MM-dd HH:mm:ss
 	 * @param endTime 加息券有效期结束时间  yyyy-MM-dd HH:mm:ss
@@ -2624,31 +2629,31 @@ public class URLGenerator {
 	 * @param type 发送方式
 	 * @param isBatch 是批量还是指定用户发送
 	 * @return
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getLxfxJXQURL(String userId,String ticket,String startTime,String endTime,String remark,String type,String isBatch) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(LXFX_GET_JXQ_URL).append("&user_id=").append(userId).append("&ticket=").append(ticket).
-			append("&start_time=").append(startTime).append("&end_time=").append(endTime).append("&remark=").append(URLEncoder.encode(remark, "utf-8")).
-			append("&type=").append(URLEncoder.encode(type, "utf-8")).append("&is_batch=").append(URLEncoder.encode(isBatch, "utf-8"));
+				append("&start_time=").append(startTime).append("&end_time=").append(endTime).append("&remark=").append(remark).
+				append("&type=").append(type).append("&is_batch=").append(isBatch);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 根据规则获取相应的加息券的规则id
 	 * @param money 加息券的金额
 	 * @param needInvestMoney
 	 * @param borrowType 标的类型，多类型用,分隔
 	 * @return
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	public String[] getJXQIDURL(String money,String needInvestMoney,String borrowType) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(LXFX_GET_JXQID_URL).append("&money=").append(money).append("&need_invest_money=").append(needInvestMoney).
-		append("&borrow_type=").append(URLEncoder.encode(borrowType, "utf-8"));
+				append("&borrow_type=").append(borrowType);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 乐享返现是否领取了加息券
 	 * @param userId
@@ -2659,10 +2664,10 @@ public class URLGenerator {
 	public String[] getIsGetJXQURL(String userId,String couponFrom) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(LXFX_ISGET_JXQ_URL).append("&user_id=").append(userId).
-			append("&coupon_from=").append(URLEncoder.encode(couponFrom, "utf-8"));
+				append("&coupon_from=").append(couponFrom);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 当前用户是否投资过稳定盈
 	 * @param borrowId
@@ -2672,10 +2677,10 @@ public class URLGenerator {
 	public String[] getWDYCurrentUserInvestURL(String borrowId,String userId){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(WDY_CURRENT_USER_INVEST).append("&borrow_id=").append(borrowId).
-			append("&user_id=").append(userId);
+				append("&user_id=").append(userId);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 根据投资记录的id获取此记录对应的所有投资状况。
 	 * @param investRecordId
@@ -2686,7 +2691,7 @@ public class URLGenerator {
 		sb.append("_URL_=").append(WDY_BORROWINVESTLOG_SELECTLIST_URL).append("&invest_id=").append(investRecordId);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 根据id获取稳定盈的详情
 	 * @param borrowId
@@ -2697,7 +2702,7 @@ public class URLGenerator {
 		sb.append("_URL_=").append(WDY_BORROW_DETAIL_SELECTONE_URL).append("&id=").append(borrowId);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 稳定盈复投
 	 * @param wdyLogid
@@ -2708,10 +2713,10 @@ public class URLGenerator {
 	public String[] getWDYReinvestURL(String wdyLogid,String userId,String money){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(WDY_REINVEST_URL).append("&wdy_log_id=").append(wdyLogid).append("&user_id=").append(userId)
-		.append("&money=").append(money);
+				.append("&money=").append(money);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 充值记录列表
 	 * @param page
@@ -2722,10 +2727,10 @@ public class URLGenerator {
 	public String[] getRechargeRecordListURL(String page,String pageSize,String userId){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(RECHARGE_RECORD_LIST_URL).append("&page=").append(page).append("&page_size=").append(pageSize)
-		.append("&user_id=").append(userId);
+				.append("&user_id=").append(userId);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 系统当前时间
 	 * @param type
@@ -2736,7 +2741,7 @@ public class URLGenerator {
 		sb.append("_URL_=").append(SYSTEM_NOW_TIME_URL).append("&type=").append(type);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 判断某天是否已经签到
 	 * @param userId
@@ -2746,10 +2751,10 @@ public class URLGenerator {
 	public String[] getHDSignIsDaySigned(String userId,String day){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(HD_SIGN_ISDAYSIGNED_URL).append("&user_id=").
-			append(userId).append("&day=").append(day);
+				append(userId).append("&day=").append(day);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 3月份签到活动的签到接口
 	 * @param userId
@@ -2758,10 +2763,10 @@ public class URLGenerator {
 	public String[] getHDSignURL(String userId){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(HD_SIGN_SIGN_URL).append("&user_id=").
-			append(userId);
+				append(userId);
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 礼品列表
 	 * @param type
@@ -2772,22 +2777,22 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		try {
 			sb.append("_URL_=").append(HD_PRIZE_LIST_URL).append("&type=").
-				append(URLEncoder.encode(type, "utf-8")).append("&is_show=").append(URLEncoder.encode(isShow, "utf-8")).append("&is_app=").
-				append(URLEncoder.encode("是", "utf-8")).append("&page=").
-				append(page).append("&page_size=").append(pageSize);
-		} catch (UnsupportedEncodingException e) {
+					append(type).append("&is_show=").append(isShow).append("&is_app=").
+					append("是").append("&page=").
+					append(page).append("&page_size=").append(pageSize);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
 	 * 根据礼品id查询该用户是否已经领取过该礼品
 	 * @param id 券id
 	 * @param giftId
 	 * @param userId
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public String[] getHDGiftById(String id,String giftId,String userId,String status) throws Exception{
 		StringBuffer sb = new StringBuffer();
@@ -2802,13 +2807,13 @@ public class URLGenerator {
 			sb.append("&user_id=").append(userId);
 		}
 		if(!status.isEmpty()){
-			sb.append("&status=").append(URLEncoder.encode(status, "utf-8"));
+			sb.append("&status=").append(status);
 		}
 		return new String[]{BASE_URL,sb.toString()};
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param userId
 	 * @param activeTitle
 	 * @param page
@@ -2819,7 +2824,7 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(HDPRIZE_LIST_URL);
 		sb.append("&user_id=").append(userId).append("&active_title=").append(activeTitle).append("&page=")
-			.append(page).append("&page_size=").append(pageSize);
+				.append(page).append("&page_size=").append(pageSize);
 		return new String[]{BASE_URL,sb.toString()};
 	}
 
@@ -2828,8 +2833,8 @@ public class URLGenerator {
 	 * @param id
 	 * @param name
 	 * @param type
-     * @return
-     */
+	 * @return
+	 */
 	public String[] getHDLotterySelectoneURL(String id,String name,String type) throws Exception{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(HD_LOTTERY_SELECTONE_URL);
@@ -2837,10 +2842,10 @@ public class URLGenerator {
 			sb.append("&id=").append(id);
 		}
 		if(!name.isEmpty()){
-			sb.append("&name=").append(URLEncoder.encode(name,"utf-8"));
+			sb.append("&name=").append(name);
 		}
 		if(!type.isEmpty()){
-			sb.append("&type=").append(URLEncoder.encode(type,"utf-8"));
+			sb.append("&type=").append(type);
 		}
 		return new String[]{BASE_URL,sb.toString()};
 	}
@@ -2849,8 +2854,8 @@ public class URLGenerator {
 	 * 获取礼品的券码
 	 * @param lotteryId
 	 * @param userId
-     * @return
-     */
+	 * @return
+	 */
 	public String[] getHDLotteryCodeURL(String lotteryId,String userId){
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(HD_LOTTERYCODE_SELECTONE_URL);
@@ -2935,8 +2940,92 @@ public class URLGenerator {
 	public String[] getActiveRegionList(String page,String pageSize,String status,String fromWhere,String picShowStatus) throws Exception{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(ACTIVE_REGION_SELECTLIST_URL);
-		sb.append("&page=").append(page).append("&page_size=").append(pageSize).append("&status=").append(URLEncoder.encode(status,"utf-8"))
-				.append("&banner_where=").append(fromWhere).append("&banner_pic_show_status=").append(URLEncoder.encode(picShowStatus,"utf-8"));
+		sb.append("&page=").append(page).append("&page_size=").append(pageSize).append("&status=").append(status)
+				.append("&banner_where=").append(fromWhere).append("&banner_pic_show_status=").append(picShowStatus);
 		return new String[]{BASE_URL,sb.toString()};
+	}
+
+	/**
+	 * 获取理财师的直接好友
+	 * @param phone
+	 * @param userId
+	 * @return
+	 */
+	public String[] getSubUserURL(String phone,String userId){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(JXQ_TRANSFER_GETSUBUSER_URL);
+		sb.append("&phone=").append(phone).append("&user_id=").append(userId);
+		return new String[]{BASE_URL,sb.toString()};
+	}
+
+	/**
+	 * 转让加息券
+	 * @param userId 受让人的id
+	 * @param addInterestId 加息券的id
+	 * @return
+	 */
+	public String[] getTransferURL(String userId,String addInterestId){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(JXQ_TRANSFER_TRANS_URL);
+		sb.append("&user_id=").append(userId).append("&add_interest_id=").append(addInterestId);
+		return new String[]{BASE_URL,sb.toString()};
+	}
+
+	/**
+	 * 首页弹窗banner
+	 * @return
+	 */
+	public String[] getPopBannerURL(){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(POPBANNER_URL);
+		sb.append("&banner_where=").append("app_pop");
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 获取好友列表
+	 * @param userId
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public String[] getMyFriendsListURL(String userId,String page,String pageSize){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(MYFRIENDS_LIST_URL);
+		sb.append("&user_id=").append(userId).append("&page=").
+				append(page).append("&page_size=").append(pageSize);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 获取加息券列表
+	 * @param userId
+	 * @param useStatus 未使用
+	 * @param page
+	 * @param pageSize
+	 * @param transfer 1表示未转让 2表示已转让 0表示不可转让
+	 * @return
+	 */
+	public String[] getTransferedCouponListURL(String userId,String useStatus,
+											   String page,String pageSize,String transfer){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(TRANSFERED_COUPONS_LIST_URL);
+		sb.append("&user_id=").append(userId).append("&page=").
+				append(page).append("&page_size=").append(pageSize).append("&use_status=").append(useStatus).
+				append("&transfer=").append(transfer);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 转让多张加息券
+	 * @param userId 接收加息券的人的id
+	 * @param couponIds 多张加息券的id，用逗号分隔
+	 * @return
+	 */
+	public String[] getTransferCouponURL(String userId,String couponIds){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(TRANS_COUPONS_URL);
+		sb.append("&user_id=").append(userId).append("&add_interest_id=").append(couponIds);
+		return new String[]{BASE_URL, sb.toString()};
 	}
 }

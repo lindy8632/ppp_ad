@@ -169,13 +169,14 @@ public class PrizeRegionTempActivity extends BaseActivity implements OnClickList
 		}else{
 			img1.setBackgroundResource(R.drawable.prize_region_first_image_end);
 		}
-		
-		if(SettingsManager.checkXSMBActivity(new Date()) == 0){
+
+		int xsmbFlag = SettingsManager.checkActiveStatusBySysTime(sdf.format(new Date()),SettingsManager.xsmbStartDate,SettingsManager.xsmbEndDate);
+		if(xsmbFlag == 0){
 			//限时秒标活动进行中
 			img2.setBackgroundResource(R.drawable.prize_region_second_image_start);
-		}else if(SettingsManager.checkXSMBActivity(new Date()) == -1){
+		}else if(xsmbFlag == -1){
 			img2.setBackgroundResource(R.drawable.prize_region_second_image_end);
-		}else if(SettingsManager.checkXSMBActivity(new Date()) == 1){
+		}else if(xsmbFlag == 1){
 			img2.setBackgroundResource(R.drawable.prize_region_second_image_qidai);
 		}
 		
@@ -329,7 +330,8 @@ public class PrizeRegionTempActivity extends BaseActivity implements OnClickList
 			break;
 		case R.id.prize_region_temp_activity_bottom_second_image:
 			//限时秒标
-			if(SettingsManager.checkXSMBActivity(new Date()) == 0){
+			if(SettingsManager.checkActiveStatusBySysTime(sdf.format(new Date()),
+					SettingsManager.xsmbStartDate,SettingsManager.xsmbEndDate) == 0){
 				Intent intent = new Intent(PrizeRegionTempActivity.this,BorrowDetailXSMBActivity.class);
 				startActivity(intent);
 			}

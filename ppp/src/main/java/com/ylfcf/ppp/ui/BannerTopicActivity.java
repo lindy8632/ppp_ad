@@ -96,12 +96,43 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 	}
 
 	@Override
+	protected void onStart() {
+		super.onStart();
+		YLFLogger.d("activity"+"BannerTopicActivity-------onStart()");
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		YLFLogger.d("activity"+"BannerTopicActivity-------onPause()");
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		YLFLogger.d("activity"+"BannerTopicActivity-------onStop()");
+	}
+
+	@Override
 	protected void onResume() {
 		super.onResume();
+		YLFLogger.d("activity"+"BannerTopicActivity-------OnResume()");
 		userid = SettingsManager.getUserId(BannerTopicActivity.this);
 		if(userid != null && !"".equals(userid) && isFirstLoad){
 			loadURL();
 		}
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		YLFLogger.d("activity"+"BannerTopicActivity-------onRestart()");
+	}
+
+	@Override
+	protected void onUserLeaveHint() {
+		super.onUserLeaveHint();
+		YLFLogger.d("activity"+"BannerTopicActivity-------onUserLeaveHint()");
 	}
 
 	private void findViews(){
@@ -168,6 +199,30 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 					mLoadingDialog.show();
 				}
 			}
+
+			@Override
+			public void onHideCustomView() {
+				super.onHideCustomView();
+				YLFLogger.d("activity"+"BannerTopicActivity-------onHideCustomView()");
+			}
+
+			@Override
+			public void onShowCustomView(View view, CustomViewCallback callback) {
+				super.onShowCustomView(view, callback);
+				YLFLogger.d("activity"+"BannerTopicActivity-------onShowCustomView()");
+			}
+
+			@Override
+			public void onCloseWindow(WebView window) {
+				super.onCloseWindow(window);
+				YLFLogger.d("activity"+"BannerTopicActivity-------onCloseWindow()");
+			}
+
+			@Override
+			public void onRequestFocus(WebView view) {
+				super.onRequestFocus(view);
+				YLFLogger.d("activity"+"BannerTopicActivity-------onRequestFocus()");
+			}
 		});
 	}
 
@@ -187,12 +242,17 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		if(banner != null){
 			String userIdCrypto = "";
 			if(userid != null && !"".equals(userid)){
+				//已登录
 				try{
-					userIdCrypto = URLEncoder.encode(SimpleCrypto.encrypt(userid),"utf-8");
-					webview.loadUrl(banner.getLink_url().replace("#app","?app_socket="+userIdCrypto+"#app"));
+					userIdCrypto = URLEncoder.encode(SimpleCrypto.encryptAES(userid,"yuanlifanglicai1"),"utf-8");
+					if(banner.getLink_url().endsWith("#app")){
+						webview.loadUrl(banner.getLink_url().replace("#app","?app_socket="+userIdCrypto+"#app"));
+					}else{
+						webview.loadUrl(banner.getLink_url() + "?app_socket=" + userIdCrypto+"#app");
+					}
 					isFirstLoad = false;
 					YLFLogger.d("加密前：————————————"+userid);
-					YLFLogger.d("加密后：————————————"+SimpleCrypto.encrypt(userid));
+					YLFLogger.d("加密后：————————————"+SimpleCrypto.encryptAES(userid,"yuanlifanglicai1"));
 					YLFLogger.d("6月份活动链接：————————————————————————————"+
 							banner.getLink_url().replace("#app","?app_socket="+userIdCrypto+"#app"));
 				}catch (Exception e){
@@ -262,6 +322,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		if(url == null){
 			return;
 		}
+		YLFLogger.d("拦截掉的url:"+url);
 		if(url.contains("/home/yyy/yyyDetail")){
 			//元月盈加息跳转  元月盈的详情页面
 			Intent intent = new Intent(BannerTopicActivity.this,BorrowDetailYYYActivity.class);
@@ -325,6 +386,25 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		}else if(url.contains("/home/index/hd")){
 			Intent intent = new Intent(BannerTopicActivity.this,ActivitysRegionActivity.class);
 			startActivity(intent);
+		}else if(url.contains("/home/member/interestCoupon")){
+			//我的加息券
+			Intent intent = new Intent(BannerTopicActivity.this,MyJXQActivity.class);
+			startActivity(intent);
+		}else if(url.contains("/home/member/mygift")){
+			//我的礼品
+			Intent intent = new Intent(BannerTopicActivity.this,MyGiftsActivity.class);
+			startActivity(intent);
+		}else if(url.contains("/home/member/redbag")){
+			//我的红包
+			Intent intent = new Intent(BannerTopicActivity.this,MyHongbaoActivity.class);
+			startActivity(intent);
+		}else if(url.contains("/home/member/redEnvelope")){
+			//我的元金币
+			Intent intent = new Intent(BannerTopicActivity.this,MyYuanMoneyActivity.class);
+			startActivity(intent);
+		}else if(url.contains("/home/index/active_july_2017") || url.contains("/home/Pvip/orderPro")){
+			//2017年7月份活动在完成抽奖后进行刷新,\私人尊享刷新
+			webview.reload();
 		}else{
 			//请更新至最新版本
 //			Util.toastLong(BannerTopicActivity.this, "请更新至最新版本");

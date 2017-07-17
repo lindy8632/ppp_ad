@@ -23,10 +23,10 @@ import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.fragment.ProductInfoFragment.OnProductInfoListener;
 import com.ylfcf.ppp.fragment.ProductSafetyFragment.OnProductSafetyListener;
+import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
-import com.ylfcf.ppp.inter.Inter.OnProjectDetails;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
@@ -474,6 +474,8 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 	 * @param info
 	 */
 	private void parseProjectCailiaoMarkImg(ProjectInfo info){
+		if(info == null)
+			return;
 		String imageNames[] = info.getImgs_name().split("\\|");
 		ArrayList<ProjectCailiaoInfo> cailiaoListTemp = new ArrayList<ProjectCailiaoInfo>();
 		ArrayList<ProjectCailiaoInfo> cailiaoList = new ArrayList<ProjectCailiaoInfo>();
@@ -511,6 +513,8 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 	 * @param info
 	 */
 	private void parseProjectCailiaoNomarkImg(ProjectInfo info){
+		if(info == null)
+			return;
 		String imageNames[] = info.getImgs_name().split("\\|");
 		ArrayList<ProjectCailiaoInfo> cailiaoListTemp = new ArrayList<ProjectCailiaoInfo>();
 		ArrayList<ProjectCailiaoInfo> cailiaoList = new ArrayList<ProjectCailiaoInfo>();
@@ -553,14 +557,14 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
-				BorrowDetailSRZXActivity.this, id, new OnProjectDetails() {
+				BorrowDetailSRZXActivity.this, id, new Inter.OnCommonInter() {
 					@Override
-					public void back(ProjectInfo projectInfo) {
+					public void back(BaseInfo baseInfo) {
 						if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
 							mLoadingDialog.dismiss();
 						}
-						if (projectInfo != null) {
-							project = projectInfo;
+						if (baseInfo != null) {
+							project = baseInfo.getmProjectInfo();
 							parseProjectCailiaoMarkImg(project);
 							parseProjectCailiaoNomarkImg(project);
 							if (productInfoListener != null) {

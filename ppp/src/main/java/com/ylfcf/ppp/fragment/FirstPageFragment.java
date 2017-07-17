@@ -319,8 +319,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 				} else if ("专题页".equals(info.getType())) {
 					intent = new Intent(mainActivity, BannerTopicActivity.class);
 					intent.putExtra("BannerInfo", info);
-					if (info.getArticle_id() != null
-							&& !"".equals(info.getArticle_id())) {
+					if (info.getArticle_id() != null && !"".equals(info.getArticle_id())) {
 						startActivity(intent);
 					}
 				}else if("窗口页面".equals(info.getType())){

@@ -22,12 +22,15 @@ import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.BorrowListSRZXAdapter;
 import com.ylfcf.ppp.async.AsyncAppointBorrowList;
 import com.ylfcf.ppp.common.FileUtil;
+import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.parse.JsonParseProductPageInfo;
+import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.URLGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,8 +134,12 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 					}
 					BorrowListSRZXActivity.this.startActivity(intent);
 				}else{
-					Intent intent = new Intent(BorrowListSRZXActivity.this,SRZXAppointActivity.class);
-					BorrowListSRZXActivity.this.startActivity(intent);
+					Intent intentSRZXAppoint = new Intent(BorrowListSRZXActivity.this,BannerTopicActivity.class);
+					BannerInfo info = new BannerInfo();
+					info.setArticle_id(Constants.TopicType.SRZX_APPOINT);
+					info.setLink_url(URLGenerator.SRZX_TOPIC_URL);
+					intentSRZXAppoint.putExtra("BannerInfo",info);
+					startActivity(intentSRZXAppoint);
 				}
 			}
 		});

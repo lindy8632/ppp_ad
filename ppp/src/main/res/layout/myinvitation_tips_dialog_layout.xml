@@ -6,6 +6,7 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/myinvitation_tips_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_measure_20dp"
@@ -15,6 +16,7 @@
         android:textSize="@dimen/common_measure_24dp" />
 
     <TextView
+        android:id="@+id/myinvitation_tips_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_measure_20dp"

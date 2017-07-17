@@ -33,15 +33,13 @@ import java.util.Map;
  * @author Administrator
  * 
  */
-public class LimitPromptActivity extends BaseActivity implements
-		OnClickListener {
+public class LimitPromptActivity extends BaseActivity implements OnClickListener {
 	private static final int REQUEST_QUICK_BANK_WHAT = 7120;
 	private static final int REQUEST_QUICK_BANK_SUC = 7121;
 	private static final int REQUEST_QUICK_BANK_FAILE = 7122;
 
 	private XRefreshView mXRefreshView;
 	private ListView mListView;
-//	private PullToRefreshListView listview;
 	private LimitMoneyAdapter adapter;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
@@ -116,10 +114,7 @@ public class LimitPromptActivity extends BaseActivity implements
 				R.layout.limit_bottom_layout, null);
 		mListView = (ListView) findViewById(R.id.limit_prompt_activity_listview);
 		mListView.addFooterView(bottomView);
-//		listview = (PullToRefreshListView) findViewById(R.id.limit_prompt_activity_listview);
-//		listview.getRefreshableView().addFooterView(bottomView);
 		adapter = new LimitMoneyAdapter(LimitPromptActivity.this);
-//		listview.setAdapter(adapter);
 		mListView.setAdapter(adapter);
 		initXRefrshView();
 		initListeners();
@@ -144,6 +139,7 @@ public class LimitPromptActivity extends BaseActivity implements
 			public void onRefresh(boolean isPullDown) {
 				isRefresh = true;
 				isLoadMore = false;
+				mXRefreshView.setLoadComplete(false);
 				page = 0;
 				handler.sendEmptyMessage(REQUEST_QUICK_BANK_WHAT);
 			}
@@ -156,22 +152,6 @@ public class LimitPromptActivity extends BaseActivity implements
 				handler.sendEmptyMessage(REQUEST_QUICK_BANK_WHAT);
 			}
 		});
-//		listview.setOnRefreshListener(new OnRefreshListener2<ListView>() {
-//					@Override
-//					public void onPullDownToRefresh(
-//							PullToRefreshBase<ListView> refreshView) {
-//						// 下拉刷新
-//						isRefresh = true;
-//						handler.sendEmptyMessage(REQUEST_QUICK_BANK_WHAT);
-//					}
-//
-//					@Override
-//					public void onPullUpToRefresh(
-//							PullToRefreshBase<ListView> refreshView) {
-//						// 上拉加载更多
-//					}
-//
-//				});
 	}
 
 	private void updateAdapter(List<BankInfo> bankList) {

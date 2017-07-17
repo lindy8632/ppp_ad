@@ -98,7 +98,7 @@
                                 android:layout_height="fill_parent"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="年化收益"
+                                android:text="预期年化收益率"
                                 android:textColor="@color/gray1"
                                 android:textSize="@dimen/common_measure_16dp" />
                         </LinearLayout>
@@ -249,14 +249,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="保障性质："
+                            android:text="历史兑付情况："
                             android:textColor="@color/gray"
                             android:textSize="@dimen/common_measure_18dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="100%本息保障"
+                            android:text="零逾期"
                             android:textColor="@color/gray1"
                             android:textSize="@dimen/common_measure_18dp" />
                     </LinearLayout>

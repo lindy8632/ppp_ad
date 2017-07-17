@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_measure_250dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_measure_10dp"
         android:background="@drawable/style_rect_filling_click_selector"
         android:orientation="vertical" >
@@ -100,8 +100,7 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="@dimen/common_measure_75dp"
             android:orientation="horizontal" >
 
             <LinearLayout
@@ -119,7 +118,7 @@
                     android:gravity="center_horizontal|bottom"
                     android:text="首投本金"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/common_measure_20dp" />
+                    android:textSize="@dimen/common_measure_18dp" />
 
                 <TextView
                     android:id="@+id/invest_record_lczq_item_firstmoney"
@@ -127,8 +126,8 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_measure_20dp" />
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -145,7 +144,7 @@
                     android:gravity="center_horizontal|bottom"
                     android:text="累计出借"
                     android:textColor="@color/gray1"
-                    android:textSize="@dimen/common_measure_20dp" />
+                    android:textSize="@dimen/common_measure_18dp" />
 
                 <TextView
                     android:id="@+id/invest_record_lczq_item_totalbidmoney"
@@ -153,8 +152,8 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_measure_20dp" />
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -171,7 +170,7 @@
                     android:gravity="center_horizontal|bottom"
                     android:text="累计延期"
                     android:textColor="@color/gray1"
-                    android:textSize="@dimen/common_measure_20dp" />
+                    android:textSize="@dimen/common_measure_18dp" />
 
                 <TextView
                     android:id="@+id/invest_record_lczq_item_yanqi_days"
@@ -179,8 +178,8 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_measure_20dp" />
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -198,7 +197,7 @@
                     android:gravity="center_horizontal|bottom"
                     android:text="预期收益"
                     android:textColor="@color/gray1"
-                    android:textSize="@dimen/common_measure_20dp" />
+                    android:textSize="@dimen/common_measure_18dp" />
 
                 <TextView
                     android:id="@+id/invest_record_lczq_item_interestmoney"
@@ -207,22 +206,78 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/common_topbar_bg_color"
-                    android:textSize="@dimen/common_measure_20dp" />
+                    android:textSize="@dimen/common_measure_18dp" />
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/invest_records_lczq_item_remark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/common_measure_20dp"
-            android:layout_marginLeft="@dimen/common_measure_20dp"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/common_measure_20dp" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_75dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/invest_lczq_records_item_nhlltitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|bottom"
+                    android:text="本期预期年化收益率"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <TextView
+                    android:id="@+id/invest_lczq_records_item_nhll"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|bottom"
+                    android:text="备注"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
+
+                <TextView
+                    android:id="@+id/invest_records_lczq_item_remark"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/common_measure_50dp" 
+            android:layout_height="@dimen/common_measure_50dp"
+            android:layout_marginTop="@dimen/common_measure_10dp"
             android:layout_marginLeft="@dimen/common_measure_20dp"
             android:layout_marginRight="@dimen/common_measure_20dp"
             android:orientation="horizontal">

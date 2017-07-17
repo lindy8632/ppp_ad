@@ -297,12 +297,16 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 		int width = screen[0] * 4 / 5;
 		int height = screen[1] * 3 / 5 + 20;
 		UpdatePopupwindow popwindow = new UpdatePopupwindow(mainActivity,
-				popView, width, height,info,mainActivity.downManager,new OnDownLoadListener() {
-					@Override
-					public void onDownLoad(long las) {
-						mainActivity.startDownloadAPK();
-					}
-				});
+				popView, width, height, info, mainActivity.downManager, new OnDownLoadListener() {
+			@Override
+			public void onDownLoad(long las) {
+				mainActivity.startDownloadAPK();
+			}
+		}, new MainFragmentActivity.OnUpdateWindowDismiss() {
+			@Override
+			public void onDismiss() {
+			}
+		});
 		popwindow.show(mainlayout);
 	}
 	
