@@ -26,6 +26,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import org.jsoup.Jsoup;
@@ -42,6 +43,7 @@ import java.util.ArrayList;
  */
 public class BorrowDetailYYYActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "BorrowDetailYYYActivity";
 	private static final int REFRESH_PROGRESSBAR = 1902;
 	
 	private LinearLayout topLeftBtn;
@@ -139,6 +141,15 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	int biteIntFromRecord = 0;

@@ -92,7 +92,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:singleLine="true"
-                                android:text="12%"
+                                android:text="10%"
                                 android:textColor="@color/orange_text"
                                 android:textSize="@dimen/common_measure_18dp" />
                         </LinearLayout>

@@ -126,7 +126,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/common_measure_18dp" />
+                    android:textSize="@dimen/common_measure_16dp" />
 
             </LinearLayout>
 
@@ -153,7 +153,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/common_measure_18dp" />
+                    android:textSize="@dimen/common_measure_16dp" />
 
                
             </LinearLayout>
@@ -181,7 +181,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/common_measure_18dp" />
+                    android:textSize="@dimen/common_measure_16dp" />
 
                
             </LinearLayout>
@@ -223,7 +223,7 @@
                     android:gravity="center"
                     android:text="10%"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/common_measure_18dp" />
+                    android:textSize="@dimen/common_measure_16dp" />
 
             </LinearLayout>
 
@@ -251,7 +251,7 @@
                     android:gravity="center"
                     android:text="----"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/common_measure_18dp" />
+                    android:textSize="@dimen/common_measure_16dp" />
 
             </LinearLayout>
 

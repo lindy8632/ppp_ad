@@ -31,6 +31,7 @@ import com.ylfcf.ppp.entity.YXBProductLogInfo;
 import com.ylfcf.ppp.entity.YXBUserAccountInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import java.math.RoundingMode;
@@ -45,6 +46,7 @@ import java.util.Date;
  * 
  */
 public class BidYXBActivity extends BaseActivity implements OnClickListener {
+	private static final String className = "BidYXBActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private TextView borrowName;
@@ -192,6 +194,20 @@ public class BidYXBActivity extends BaseActivity implements OnClickListener {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	/**

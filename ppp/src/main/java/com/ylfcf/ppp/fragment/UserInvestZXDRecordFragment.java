@@ -18,14 +18,17 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.UserInvestRecordAdapter;
 import com.ylfcf.ppp.async.AsyncInvestTotalRecord;
+import com.ylfcf.ppp.async.AsyncRedbagInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.InvestRecordPageInfo;
+import com.ylfcf.ppp.entity.RedBagInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.BorrowDetailXSBActivity;
 import com.ylfcf.ppp.ui.BorrowDetailZXDActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +39,12 @@ import java.util.List;
  *
  */
 public class UserInvestZXDRecordFragment extends BaseFragment {
+	private static final String className = "UserInvestZXDRecordFragment";
 	private static final int REQUEST_INVEST_RECORD_WHAT = 1021;
 	private static final int REQUEST_INVEST_RECORD_SUCCESS = 1022;
 	private static final int REQUEST_INVEST_RECORD_NODATA = 1023;	//无数据
+
+	private static final int REQUEST_HBINFO_WHAT = 1024;
 
 	private UserInvestRecordActivity mainActivity;
 	private View rootView;
@@ -73,6 +79,7 @@ public class UserInvestZXDRecordFragment extends BaseFragment {
 					}
 					investRecordList.addAll(pageInfo.getInvestRecordList());
 					investRecordsAdapter.setItems(investRecordList);
+					requestHBInfo();
 				}
 				isLoadMore = false;
 				pullToRefreshListView.onRefreshComplete();
@@ -83,6 +90,11 @@ public class UserInvestZXDRecordFragment extends BaseFragment {
 					nodataText.setVisibility(View.VISIBLE);
 				}
 				pullToRefreshListView.onRefreshComplete();
+				break;
+			case REQUEST_HBINFO_WHAT:
+				int position = msg.arg1;
+				InvestRecordInfo info = (InvestRecordInfo)msg.obj;
+				requestRedbagInfoById(info.getBorrow_id(),info.getId(),position);
 				break;
 			default:
 				break;
@@ -116,6 +128,28 @@ public class UserInvestZXDRecordFragment extends BaseFragment {
 		investRecordsAdapter = new UserInvestRecordAdapter(mainActivity,"yzy");
 		pullToRefreshListView.setAdapter(investRecordsAdapter);
 		initListeners();
+	}
+
+	private void requestHBInfo(){
+		requestCountI = 0;
+		for(int i=0;i<investRecordList.size();i++){
+			Message msg = handler.obtainMessage(REQUEST_HBINFO_WHAT);
+			msg.arg1 = i;
+			msg.obj = investRecordList.get(i);
+			handler.sendMessage(msg);
+		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
 	}
 
 	@Override
@@ -202,5 +236,31 @@ public class UserInvestZXDRecordFragment extends BaseFragment {
 					}
 		});
 		asyncInvestRecord.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+	/**
+	 * 获取红包信息
+	 * @param borrowId
+	 * @param borrowInvestId
+	 */
+	int requestCountI = 0;
+	private void requestRedbagInfoById(String borrowId,String borrowInvestId,final int position){
+		AsyncRedbagInfo redbagInfoTask = new AsyncRedbagInfo(mainActivity, borrowId, borrowInvestId, new OnCommonInter() {
+			@Override
+			public void back(BaseInfo baseInfo) {
+				requestCountI++;
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0){
+						RedBagInfo redbag = baseInfo.getmRedBagInfo();
+						investRecordList.get(position).setRed_bag_money(redbag.getMoney());
+					}
+				}
+				if(requestCountI == investRecordList.size()){
+					investRecordsAdapter.setItems(investRecordList);
+				}
+			}
+		});
+		redbagInfoTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 }

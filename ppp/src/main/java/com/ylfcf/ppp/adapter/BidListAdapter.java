@@ -111,17 +111,18 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         	String investHorString = info.getInvest_horizon().replace("天", "");
             viewHolder.timeLimit.setText(investHorString);
         }
-        
-        
+
         viewHolder.roundProgressBar.setTextIsDisplayable(false);//不显示中间的字
         double totalMoneyL = 0d;
-        int totalMoneyI = 0;
         try {
         	totalMoneyL = Double.parseDouble(info.getTotal_money());
-        	totalMoneyI = (int)totalMoneyL;
 		} catch (Exception e) {
 		}
-        viewHolder.totalMoney.setText(totalMoneyI/10000+"");
+		if(totalMoneyL%10000 == 0){
+			viewHolder.totalMoney.setText((int)(totalMoneyL/10000)+"");
+		}else{
+			viewHolder.totalMoney.setText(totalMoneyL/10000+"");
+		}
         String bite = info.getBite();
         float biteFloat = 0f;
         int biteInt = 0;

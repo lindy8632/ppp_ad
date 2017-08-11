@@ -20,6 +20,7 @@ import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.inter.Inter.OnUpdateUserInfoInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 /**
@@ -29,6 +30,7 @@ import com.ylfcf.ppp.util.Util;
  *
  */
 public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "WithdrawPwdModifyActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	
@@ -96,7 +98,21 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 			break;
 		}
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	/**
 	 * 交易密码根据user表来判断
 	 */

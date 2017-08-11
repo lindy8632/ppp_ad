@@ -373,7 +373,7 @@ public class LXJ5TempActivity extends BaseActivity implements View.OnClickListen
         int height = screen[1] / 5 * 2;
         InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(LXJ5TempActivity.this,
                 popView, width, height);
-        popwindow.show(mainLayout, URLGenerator.LXJ5_WAP_URL,"每周一抢现金",null,null);
+        popwindow.show(mainLayout, URLGenerator.LXJ5_WAP_URL,"每周一抢现金",null);
     }
 
     /**

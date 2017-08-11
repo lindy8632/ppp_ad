@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,8 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.RedBagAdapter;
 import com.ylfcf.ppp.async.AsyncRedbgList;
@@ -23,6 +20,10 @@ import com.ylfcf.ppp.entity.RedBagInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.MyHongbaoActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 我的红包 ---  已过期
@@ -30,6 +31,7 @@ import com.ylfcf.ppp.util.SettingsManager;
  *
  */
 public class MyHBOverdueFragment extends BaseFragment{
+	private static final String className = "MyHBOverdueFragment";
 	public final int REQUEST_HB_LIST_WHAT = 1800;
 	private final int REQUEST_HB_LIST_SUCCESS = 1801;
 	private final int REQUEST_HB_LIST_FAILE = 1802;
@@ -46,6 +48,7 @@ public class MyHBOverdueFragment extends BaseFragment{
 	private int pageSize = 10;
 	private boolean isFirst = true;
 	private boolean isLoadMore = false;//加载更多
+	private boolean isRefresh = false;//下拉刷新
 	
 	private Handler handler = new Handler(){
 		@Override
@@ -64,14 +67,16 @@ public class MyHBOverdueFragment extends BaseFragment{
 						redbagList.clear();
 					}
 					redbagList.addAll(baseInfo.getmRedBagPageInfo().getRedbagList());
-					redBagAdapter.setItems(redbagList);
+					redBagAdapter.setItems(redbagList,baseInfo.getTime());
 				}
 				isLoadMore = false;
 				pullToRefreshListView.onRefreshComplete();
 				break;
 			case REQUEST_HB_LIST_FAILE:
-				pullToRefreshListView.setVisibility(View.GONE);
-				nodataText.setVisibility(View.VISIBLE);
+				if(!isLoadMore){
+					pullToRefreshListView.setVisibility(View.GONE);
+					nodataText.setVisibility(View.VISIBLE);
+				}
 				pullToRefreshListView.onRefreshComplete();
 				break;
 			default:
@@ -96,7 +101,19 @@ public class MyHBOverdueFragment extends BaseFragment{
         handler.sendEmptyMessage(REQUEST_HB_LIST_WHAT);
         return rootView;
 	}
-	
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+	}
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -118,6 +135,7 @@ public class MyHBOverdueFragment extends BaseFragment{
 					public void onPullDownToRefresh(
 							PullToRefreshBase<ListView> refreshView) {
 						// 下拉刷新
+						isLoadMore = false;
 						pageNo = 0;
 						handler.sendEmptyMessage(REQUEST_HB_LIST_WHAT);
 					}
@@ -130,17 +148,17 @@ public class MyHBOverdueFragment extends BaseFragment{
 						new Handler().postDelayed(new Runnable() {
 							@Override
 							public void run() {
+								isLoadMore = true;
 								handler.sendEmptyMessage(REQUEST_HB_LIST_WHAT);
 							}
 						}, 1000L);
-
 					}
-
 				});
 	}
 	
 	private void requestHBList(String userId,String flag){
-		AsyncRedbgList redbagTask = new AsyncRedbgList(mainActivity, userId, flag, 
+		AsyncRedbgList redbagTask = new AsyncRedbgList(mainActivity, userId, flag,
+				String.valueOf(pageNo),String.valueOf(pageSize),
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {

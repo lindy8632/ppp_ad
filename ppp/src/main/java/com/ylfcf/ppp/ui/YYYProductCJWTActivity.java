@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
 
 /**
@@ -22,6 +23,7 @@ import com.ylfcf.ppp.util.URLGenerator;
  *
  */
 public class YYYProductCJWTActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "YYYProductCJWTActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	
@@ -109,5 +111,19 @@ public class YYYProductCJWTActivity extends BaseActivity implements OnClickListe
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 }

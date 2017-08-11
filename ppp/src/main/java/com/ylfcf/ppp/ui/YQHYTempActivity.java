@@ -156,7 +156,7 @@ public class YQHYTempActivity extends BaseActivity implements OnClickListener{
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(YQHYTempActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,URLGenerator.YQHY_WAP_URL,"四月份推广活动",null,null);
+		popwindow.show(mainLayout,URLGenerator.YQHY_WAP_URL,"四月份推广活动",null);
 	}
 	
 	/**

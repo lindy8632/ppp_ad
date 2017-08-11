@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,13 +22,17 @@ import com.ylfcf.ppp.entity.FundsDetailsInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.FundsDetailsActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 资金明细  ----  元信宝
  * @author Administrator
  */
 public class FundDetailsYXBFragment extends BaseFragment{
-	
+	private static final String className = "FundDetailsYXBFragment";
 	private static final int REQUEST_YXBFUNDSDETAILS_WHAT = 3501;
 	private static final int REQUEST_YXBFUNDSDETAILS_SUCCESS = 3502;
 	private static final int REQUEST_YXBFUNDSDETAILS_NODATA = 3503;
@@ -144,7 +145,19 @@ public class FundDetailsYXBFragment extends BaseFragment{
 		});
 		initAdapter();
 	}
-	
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+	}
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

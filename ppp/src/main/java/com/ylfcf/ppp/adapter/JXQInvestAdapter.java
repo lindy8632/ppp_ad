@@ -78,10 +78,10 @@ public class JXQInvestAdapter extends ArrayAdapter<JiaxiquanInfo>{
 		if(needInvestMoneyD <= 0){
 			viewHolder.text.setText(info.getMoney()+"%的加息券");
 		}else{
-			if(needInvestMoneyD >= 10000){
-				viewHolder.text.setText(info.getMoney()+"%的加息券，"+"需投资"+needInvestMoneyD/10000+"万元及以上可用");
+			if(needInvestMoneyD >= 10000 && needInvestMoneyD%10000 == 0){
+				viewHolder.text.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(needInvestMoneyD/10000)+"万元及以上可用");
 			}else{
-				viewHolder.text.setText(info.getMoney()+"%的加息券，"+"需投资"+info.getMin_invest_money()+"元及以上可用");
+				viewHolder.text.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(needInvestMoneyD)+"元及以上可用");
 			}
 		}
 		return convertView;

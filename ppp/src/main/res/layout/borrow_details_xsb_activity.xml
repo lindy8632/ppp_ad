@@ -262,11 +262,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/common_measure_5dp"
-                        android:text="投资一万元，预期收益"
+                        android:text="投资3000元，预期收益"
                         android:textColor="@color/gray1"
                         android:textSize="@dimen/common_measure_16dp" />
 
-                    <!-- 一万块钱的收益 -->
+                    <!-- 3000块钱的收益 -->
 
                     <TextView
                         android:id="@+id/borrow_details_xsb_activity_profit"

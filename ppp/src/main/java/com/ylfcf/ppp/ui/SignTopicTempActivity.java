@@ -20,6 +20,7 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.SignResultInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
@@ -34,6 +35,7 @@ import java.util.Date;
  *
  */
 public class SignTopicTempActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "SignTopicTempActivity";
 	private static final int REQUEST_SYSTEM_TIME_WHAT = 2671;
 	private static final int REQUEST_SYSTEM_TIME_SUCCESS = 2672;
 	private static final int REQUEST_ISSIGNED_WHAT = 2673;
@@ -101,7 +103,16 @@ public class SignTopicTempActivity extends BaseActivity implements OnClickListen
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		handler.sendEmptyMessage(REQUEST_SIGN_ACTIVE_WHAT);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private void findViews(){
@@ -191,7 +202,7 @@ public class SignTopicTempActivity extends BaseActivity implements OnClickListen
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(SignTopicTempActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,URLGenerator.SIGN_WAP_URL,"三月份签到活动",null,null);
+		popwindow.show(mainLayout,URLGenerator.SIGN_WAP_URL,"三月份签到活动",null);
 	}
 	
 	/**

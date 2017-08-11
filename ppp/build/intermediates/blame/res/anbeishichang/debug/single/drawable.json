@@ -44,12 +44,20 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_twitter.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\weibosdk_common_shadow_top.9.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\weibosdk_common_shadow_top.9.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_filling_blue_left_3dp.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_filling_blue_left_3dp.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_douban_on.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_douban_on.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_orange_5dp.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_orange_5dp.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_cab_background_internal_bg.xml",
@@ -132,6 +140,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_location_on.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_fav.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_fav.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_white.9.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_white.9.png"
     },
@@ -150,6 +162,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_login.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_button_login.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qq.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qq.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\indicator_bg_top.xml",
@@ -348,6 +364,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\style_rect_fillet_gray_15dp.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_gray_15dp.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\edittext_bg_style.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\edittext_bg_style.xml"
     },
@@ -398,6 +418,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\descend_btn_seletor.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\descend_btn_seletor.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\retry_btn_press.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\retry_btn_press.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_item_background_holo_light.xml",
@@ -516,8 +540,16 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\style_rect_fillet_white.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\retry_btn_default.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\retry_btn_default.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_title_right_bt_normal.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_title_right_bt_normal.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\retry_btn_selector.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\retry_btn_selector.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_cab_background_top_material.xml",
@@ -574,6 +606,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_qzone.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable\\umeng_socialize_qzone.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable\\umeng_socialize_button_white_blue.xml",

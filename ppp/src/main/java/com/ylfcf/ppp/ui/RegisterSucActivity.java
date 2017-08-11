@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 注册成功页面
@@ -18,6 +19,7 @@ import com.ylfcf.ppp.R;
  *
  */
 public class RegisterSucActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "RegisterSucActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	
@@ -84,5 +86,19 @@ public class RegisterSucActivity extends BaseActivity implements OnClickListener
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 }

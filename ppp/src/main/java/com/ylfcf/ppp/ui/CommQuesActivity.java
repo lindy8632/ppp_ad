@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.fragment.CommQuesFragment;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 常见问题
@@ -24,6 +25,7 @@ import com.ylfcf.ppp.fragment.CommQuesFragment;
  * 
  */
 public class CommQuesActivity extends BaseActivity implements OnClickListener {
+	private static final String className = "CommQuesActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private ViewPager mViewPager;
@@ -64,7 +66,21 @@ public class CommQuesActivity extends BaseActivity implements OnClickListener {
 		rechargeTab.setOnClickListener(this);
 		initListeners();
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@SuppressWarnings("deprecation")
 	private void initListeners(){
 		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {

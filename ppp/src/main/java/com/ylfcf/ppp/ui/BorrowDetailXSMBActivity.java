@@ -31,6 +31,7 @@ import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import org.jsoup.Jsoup;
@@ -50,6 +51,7 @@ import java.util.Date;
  *
  */
 public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BorrowDetailXSMBActivity";
 	private static final int REQUEST_XSMB_REFRESH_WHAT = 8291;//请求接口刷新数据
 	private static final int REQUEST_XSMB_BTNCLICK_WHAT = 8292;//点击“立即秒杀”按钮
 	private static final int REFRESH_REMAIN_TIME = 8293;//刷新下个秒标的剩余时间
@@ -130,6 +132,8 @@ public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickLis
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		if(recordInfo == null){
 			handler.sendEmptyMessage(REQUEST_XSMB_REFRESH_WHAT);
 		}else{
@@ -140,6 +144,8 @@ public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickLis
 	@Override
 	protected void onPause() {
 		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 	
 	@Override

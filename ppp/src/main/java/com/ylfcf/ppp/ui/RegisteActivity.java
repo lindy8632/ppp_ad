@@ -34,6 +34,7 @@ import com.ylfcf.ppp.inter.Inter.OnRegisteInter;
 import com.ylfcf.ppp.util.Constants.UserType;
 import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.RegisteSucCompWindow;
@@ -45,6 +46,7 @@ import com.ylfcf.ppp.view.RegisteSucCompWindow;
  *
  */
 public class RegisteActivity extends BaseActivity implements OnClickListener {
+	private static final String className = "RegisteActivity";
 	//注册主页面
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
@@ -309,6 +311,20 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 			//普通个人用户
 			initNormalPersonalLayout();
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

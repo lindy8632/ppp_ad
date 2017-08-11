@@ -2,7 +2,6 @@ package com.ylfcf.ppp.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,16 +24,18 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.umeng.socialize.UMShareAPI;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.entity.ShareInfo;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.Constants.TopicType;
-import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.SimpleCrypto;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
 
@@ -46,6 +47,7 @@ import java.net.URLEncoder;
  *
  */
 public class BannerTopicActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BannerTopicActivity";
 	private static final String LOTTERY_URL = "http://wap.ylfcf.com/home/index/lottery.html";//	大转盘的活动页面
 	private static final int POPUPWINDOW_START_WHAT = 2712;
 	private static final int DOWNLOAD_PIC_WHAT = 2713;
@@ -57,7 +59,6 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 	private BannerInfo banner;
 	private String topicType = "";//专题的名字，根据后台来约定的。
 	private RelativeLayout topLayout;
-	public Bitmap sharePicBitmap = null;
 	private String userid;
 	private boolean isFirstLoad = true;
 
@@ -104,6 +105,8 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 	@Override
 	protected void onPause() {
 		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 		YLFLogger.d("activity"+"BannerTopicActivity-------onPause()");
 	}
 
@@ -116,6 +119,8 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		YLFLogger.d("activity"+"BannerTopicActivity-------OnResume()");
 		userid = SettingsManager.getUserId(BannerTopicActivity.this);
 		if(userid != null && !"".equals(userid) && isFirstLoad){
@@ -226,18 +231,6 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		});
 	}
 
-	class DownloadIMGThread extends Thread{
-		ShareInfo info;
-		DownloadIMGThread(ShareInfo mShareInfo){
-			this.info = mShareInfo;
-		}
-		@Override
-		public void run() {
-			super.run();
-			sharePicBitmap = ImageLoaderManager.newInstance().loadImageSync(info.getSharePicURL());
-		}
-	}
-
 	private void loadURL(){
 		if(banner != null){
 			String userIdCrypto = "";
@@ -248,7 +241,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 					if(banner.getLink_url().endsWith("#app")){
 						webview.loadUrl(banner.getLink_url().replace("#app","?app_socket="+userIdCrypto+"#app"));
 					}else{
-						webview.loadUrl(banner.getLink_url() + "?app_socket=" + userIdCrypto+"#app");
+						webview.loadUrl(banner.getLink_url() + "?app_socket=" + userIdCrypto);
 					}
 					isFirstLoad = false;
 					YLFLogger.d("加密前：————————————"+userid);
@@ -271,6 +264,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		CookieSyncManager.createInstance(BannerTopicActivity.this);
 		CookieManager.getInstance().removeAllCookie();
 		handler.removeCallbacksAndMessages(null);
+		UMShareAPI.get(this).release();//友盟分享内存泄露处理
 	}
 
 	public class JavascriptAndroidInterface{
@@ -286,11 +280,16 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			shareInfo.setContent(content);
 			shareInfo.setTitle(title);
 			shareInfo.setActiveURL(activeURL);
-			new DownloadIMGThread(shareInfo).start();
 			Message msg = handler.obtainMessage(POPUPWINDOW_START_WHAT);
 			msg.obj = shareInfo;
 			handler.sendMessageDelayed(msg,300L);
 		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
 	}
 
 	/**
@@ -311,7 +310,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		info.setContent(content);
 		info.setActiveURL(activeURL);
 		info.setSharePicURL(picURL);
-		popwindow.show(mainLayout, banner.getLink_url(),"",info,sharePicBitmap);
+		popwindow.show(mainLayout, banner.getLink_url(),"",info);
 	}
 
 	/**
@@ -405,9 +404,16 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		}else if(url.contains("/home/index/active_july_2017") || url.contains("/home/Pvip/orderPro")){
 			//2017年7月份活动在完成抽奖后进行刷新,\私人尊享刷新
 			webview.reload();
+		}else if(url.contains("/home/promotion/hdReward")){
+			//好友奖励页面
+			Intent intent = new Intent(BannerTopicActivity.this,MyInvitationActivity.class);
+			startActivity(intent);
+		}else if(url.contains("/home/Ygzx/yjyOrderPro")){
+			//员工专属产品预约成功后刷新页面
+			webview.reload();
 		}else{
 			//请更新至最新版本
-//			Util.toastLong(BannerTopicActivity.this, "请更新至最新版本");
+			Util.toastLong(BannerTopicActivity.this, url.toString());
 		}
 	}
 	

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 用户认证打电话 --- 易联支付平台
@@ -18,6 +19,7 @@ import com.ylfcf.ppp.util.SettingsManager;
  *
  */
 public class BankVerifyRecActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BankVerifyRecActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	
@@ -56,5 +58,19 @@ public class BankVerifyRecActivity extends BaseActivity implements OnClickListen
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 }

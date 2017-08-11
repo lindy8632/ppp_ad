@@ -36,6 +36,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import java.util.List;
@@ -46,6 +47,7 @@ import java.util.List;
  *
  */
 public class WDYLendRecordDetailActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "WDYLendRecordDetailActivity";
 	private static final int REQUEST_LENDRECORD_WHAT = 8219;
 	
 	private LinearLayout topLeftBtn;
@@ -84,6 +86,20 @@ public class WDYLendRecordDetailActivity extends BaseActivity implements OnClick
 		mLayoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 		findViews();
 		handler.sendEmptyMessage(REQUEST_LENDRECORD_WHAT);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

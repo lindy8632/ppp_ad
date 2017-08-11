@@ -32,6 +32,7 @@ import com.ylfcf.ppp.entity.JiaxiquanInfo;
 import com.ylfcf.ppp.entity.JiaxiquanPageInfo;
 import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 
@@ -44,6 +45,7 @@ import java.util.List;
  */
 
 public class ChooseJXQActivity extends BaseActivity implements View.OnClickListener{
+    private static final String className = "ChooseJXQActivity";
     private static final int REQUEST_TRANSFERED_COUPON_LIST_WHAT = 8412;
     private static final int REQUEST_TRANSFERED_COUPON_LIST_SUC = 8413;
     private static final int REQUEST_TRANSFERED_COUPON_LIST_NODATA = 8414;
@@ -132,10 +134,19 @@ public class ChooseJXQActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
+        UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+        UMengStatistics.statisticsResume(this);//友盟统计时长
         isRefresh = true;
         isLoadMore = false;
         page = 0;
         handler.sendEmptyMessage(REQUEST_TRANSFERED_COUPON_LIST_WHAT);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+        UMengStatistics.statisticsPause(this);//友盟统计时长
     }
 
     private void findViews(){

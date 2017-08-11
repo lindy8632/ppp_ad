@@ -26,6 +26,7 @@ import com.ylfcf.ppp.inter.Inter.OnUpdateUserInfoInter;
 import com.ylfcf.ppp.util.Constants.UserType;
 import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 
@@ -37,6 +38,7 @@ import com.ylfcf.ppp.util.YLFLogger;
  */
 @SuppressLint("ResourceAsColor")
 public class ForgetPwdActivity extends BaseActivity implements OnClickListener {
+	private static final String className = "ForgetPwdActivity";
 	private static final int REQUEST_UPDATE_USERINFO_WHAT = 1301;
 	private static final int REQUEST_UPDATE_USERINFO_SUCCESS = 1302;
 	private static final int REQUEST_UPDATE_USERINFO_FAILE = 1303;
@@ -177,6 +179,20 @@ public class ForgetPwdActivity extends BaseActivity implements OnClickListener {
 		}else if(UserType.USER_COMPANY.equals(fromWhere)){
 			initCompanyLayout();
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private void updateStepLayoutBg(int position) {

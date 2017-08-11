@@ -20,6 +20,7 @@ public class InvestRecordInfo implements java.io.Serializable{
 	private String start_time;
 	private String end_time;
 	private String money;//本金（首投本金）
+	private String fact_money;//投资时支付的金额（即除去元金币等）
 	private String invest_money;//在投金额（元月盈新增字段）
 	private String invest_status;//投资状态：首投复投（元月盈新增字段）
 	private String invest_times;//复投次数（元月盈新增字段）
@@ -74,8 +75,32 @@ public class InvestRecordInfo implements java.io.Serializable{
 	private String interest_period_month;//投资期限（单位月）
 	private String is_generated_records;//稳定的查看出借记录按钮是否可以点击 1时可以点击，0时不可点击
 	private String period;//1为首投
+	private String red_bag_money;//使用红包金额
+	private String red_bag_interest;//红包收益
 	private List<WDYChildRecordInfo> wdyChildRecordList;//稳定盈投资记录
-	
+
+	public String getRed_bag_money() {
+		return red_bag_money;
+	}
+
+	public void setRed_bag_money(String red_bag_money) {
+		this.red_bag_money = red_bag_money;
+	}
+
+	public String getRed_bag_interest() {
+		return red_bag_interest;
+	}
+
+	public void setRed_bag_interest(String red_bag_interest) {
+		this.red_bag_interest = red_bag_interest;
+	}
+
+	public String getFact_money() {
+		return fact_money;
+	}
+	public void setFact_money(String fact_money) {
+		this.fact_money = fact_money;
+	}
 	public List<WDYChildRecordInfo> getWdyChildRecordList() {
 		return wdyChildRecordList;
 	}

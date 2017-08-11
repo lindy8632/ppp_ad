@@ -29,6 +29,7 @@ import com.ylfcf.ppp.entity.FriendInfo;
 import com.ylfcf.ppp.entity.FriendsPageInfo;
 import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ import java.util.List;
  */
 
 public class MyFriendsActivity extends BaseActivity implements View.OnClickListener{
+    private static final String className = "MyFriendsActivity";
     private final int REQUEST_FRIENDS_LIST_WHAT = 6721;
     private final int REQUEST_FRIENDS_LIST_SUC = 6722;
     private final int REQUEST_FRIENDS_LIST_FAILT = 6723;
@@ -127,6 +129,20 @@ public class MyFriendsActivity extends BaseActivity implements View.OnClickListe
         initXRefrshView();
         initListeners();
         initAdapter();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+        UMengStatistics.statisticsResume(this);//友盟统计时长
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+        UMengStatistics.statisticsPause(this);//友盟统计时长
     }
 
     private void initXRefrshView(){

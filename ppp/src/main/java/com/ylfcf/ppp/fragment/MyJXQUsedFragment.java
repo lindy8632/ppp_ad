@@ -23,6 +23,7 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.BorrowListZXDActivity;
 import com.ylfcf.ppp.ui.MyJXQActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ import java.util.List;
  *
  */
 public class MyJXQUsedFragment extends BaseFragment{
+	private static final String className = "MyJXQUsedFragment";
 	public final int REQUEST_JXQ_LIST_WHAT = 1900;
 	private final int REQUEST_JXQ_LIST_SUCCESS = 1901;
 	private final int REQUEST_JXQ_LIST_FAILE = 1902;
@@ -131,6 +133,18 @@ public class MyJXQUsedFragment extends BaseFragment{
 				});
 		pullToRefreshListView.setAdapter(mMyJXQListAdapter);
 		initListeners();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
 	}
 
 	@Override

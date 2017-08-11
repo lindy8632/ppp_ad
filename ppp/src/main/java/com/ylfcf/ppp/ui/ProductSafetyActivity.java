@@ -27,12 +27,12 @@ import com.ylfcf.ppp.entity.BorrowType;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
 import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -45,6 +45,7 @@ import java.util.Date;
  *
  */
 public class ProductSafetyActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "ProductSafetyActivity";
 	private static final int REFRESH_VIEW = 5710;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
@@ -145,7 +146,21 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 		}
 		initData();
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -270,6 +285,8 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 					//私人尊享
 					if(productInfo.getBorrow_name().contains("私人尊享")){
 						checkIsVerify("私人尊享");
+					}else if(productInfo.getBorrow_name().contains("元聚盈")){
+						checkIsVerify("元聚盈");
 					}
 				}
 			} else {
@@ -456,7 +473,6 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 				Intent intent = new Intent();
 				if(flag){
 					//用户已经实名，在这个页面只判断是否实名即可。不判断有没有绑卡
-//					checkIsBindCard(type);
 					if("新手标投资".equals(type)){
 						intent.putExtra("PRODUCT_INFO", productInfo);
 						intent.setClass(ProductSafetyActivity.this, BidXSBActivity.class);
@@ -469,6 +485,9 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 					}else if("私人尊享".equals(type)){
 						intent.putExtra("PRODUCT_INFO", productInfo);
 						intent.setClass(ProductSafetyActivity.this, BidSRZXActivity.class);
+					}else if("元聚盈".equals(type)){
+						intent.putExtra("PRODUCT_INFO", productInfo);
+						intent.setClass(ProductSafetyActivity.this, BidYJYActivity.class);
 					}
 					investBtn.setEnabled(true);
 					startActivity(intent);
@@ -480,39 +499,6 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 			}
 			@Override
 			public void isSetWithdrawPwd(boolean flag, Object object) {
-			}
-		});
-	}
-	
-	/**
-	 * 判断用户是否已经绑卡
-	 * @param type "充值提现"
-	 */
-	private void checkIsBindCard(final String type){
-		RequestApis.requestIsBinding(ProductSafetyActivity.this, SettingsManager.getUserId(getApplicationContext()), "宝付", new OnIsBindingListener() {
-			@Override
-			public void isBinding(boolean flag, Object object) {
-				Intent intent = new Intent();
-				if(flag){
-					//用户已经绑卡
-					if("新手标投资".equals(type)){
-						intent.putExtra("PRODUCT_INFO", productInfo);
-						intent.setClass(ProductSafetyActivity.this, BidXSBActivity.class);
-					}else if("政信贷投资".equals(type)){
-						intent.putExtra("PRODUCT_INFO", productInfo);
-						intent.setClass(ProductSafetyActivity.this, BidZXDActivity.class);
-					}else if("VIP投资".equals(type)){
-						intent.putExtra("PRODUCT_INFO", productInfo);
-						intent.setClass(ProductSafetyActivity.this, BidVIPActivity.class);
-					}
-					startActivity(intent);
-					investBtn.setEnabled(true);
-					finish();
-				}else{
-					//用户还没有绑卡
-					showMsgDialog(ProductSafetyActivity.this, "绑卡", "因我司变更支付渠道，请您重新绑卡！");
-				}
-				
 			}
 		});
 	}

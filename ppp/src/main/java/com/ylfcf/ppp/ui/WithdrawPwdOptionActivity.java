@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.UserInfo;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 操作提现密码
@@ -19,6 +20,7 @@ import com.ylfcf.ppp.entity.UserInfo;
  */
 public class WithdrawPwdOptionActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "WithdrawPwdOptionActivity";
 	private LinearLayout modifyPwdLayout;
 	private LinearLayout getbackPwdLayout;
 
@@ -68,5 +70,19 @@ public class WithdrawPwdOptionActivity extends BaseActivity implements
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 }

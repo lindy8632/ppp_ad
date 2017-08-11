@@ -18,6 +18,7 @@ import com.ylfcf.ppp.entity.ArticleInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -31,6 +32,7 @@ import java.util.Date;
  *
  */
 public class ArticleDetailsActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "ArticleDetailsActivity";
 	private static final int REFRESH_VIEW = 5800;
 	private static final int REQUEST_ARTICLE_WHAT = 5801;
 
@@ -84,6 +86,20 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 		if(mArticleInfo != null){
 			handler.sendEmptyMessage(REQUEST_ARTICLE_WHAT);
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计
 	}
 
 	@Override

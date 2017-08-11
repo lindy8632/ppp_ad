@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
 
 /**
@@ -19,6 +20,7 @@ import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
  *
  */
 public class UserInvestYXBRecordFragment extends BaseFragment{
+	private static final String className = "UserInvestYXBRecordFragment";
 	private UserInvestRecordActivity mainActivity;
 	private View rootView;
 
@@ -48,6 +50,18 @@ public class UserInvestYXBRecordFragment extends BaseFragment{
 		yxbViewPager.setAdapter(new MyPagerAdapter(getChildFragmentManager()));
 		yxbViewPager.setOffscreenPageLimit(1);
 		yxbPagerSlidingTabStrip.setViewPager(yxbViewPager);
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
 	}
 
 	@Override

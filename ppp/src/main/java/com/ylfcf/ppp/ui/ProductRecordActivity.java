@@ -35,6 +35,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.RefreshLayout;
 import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
 
@@ -49,6 +50,7 @@ import java.util.List;
  */
 public class ProductRecordActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "ProductRecordActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 
@@ -225,6 +227,20 @@ public class ProductRecordActivity extends BaseActivity implements
 	private void updateLoadStatus(boolean isRef, boolean isload) {
 		this.isRefresh = isRef;
 		this.isLoad = isload;
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

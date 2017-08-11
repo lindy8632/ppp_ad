@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 奖励明细
@@ -18,6 +19,7 @@ import com.ylfcf.ppp.R;
  */
 public class AwardDetailsActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "AwardDetailsActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 
@@ -86,6 +88,20 @@ public class AwardDetailsActivity extends BaseActivity implements
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

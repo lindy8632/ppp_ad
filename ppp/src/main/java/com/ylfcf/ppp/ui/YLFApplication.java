@@ -2,9 +2,10 @@ package com.ylfcf.ppp.ui;
 
 import android.app.Activity;
 
-import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 import com.ylfcf.ppp.util.ImageLoaderManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +24,15 @@ public class YLFApplication extends android.app.Application {
 		super.onCreate();
 		theApplication = this;
 		activityList = new ArrayList<Activity>();
+		UMengStatistics.statisticsInit();//禁止默认的页面统计方式
+		UMShareAPI.get(this);
 		// 微信 appid appsecret
 		PlatformConfig.setWeixin("wx9b6d21b05d725f48",
 				"a6c9bdc0cf7eda498049a9f1b9fbb380");
 		// 新浪微博 appkey appsecret
 		PlatformConfig.setSinaWeibo("2704475990",
-				"b9fba6681da2f894a6f9a2705b38dd28");
-		Config.REDIRECT_URL="http://sns.whalecloud.com/sina2/callback";
+				"b9fba6681da2f894a6f9a2705b38dd28",
+				"http://sns.whalecloud.com/sina2/callback");
 		// QQ和Qzone appid appkey
 		PlatformConfig.setQQZone("1105044430", "gAWcQhAJpPebuG7y");
 		ImageLoaderManager.configurationImageLoader(this);

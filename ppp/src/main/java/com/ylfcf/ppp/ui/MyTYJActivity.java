@@ -22,6 +22,7 @@ import com.ylfcf.ppp.fragment.MyTYJOverdueFragment;
 import com.ylfcf.ppp.fragment.MyTYJUsedFragment;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
 
@@ -79,6 +80,18 @@ public class MyTYJActivity extends BaseActivity implements OnClickListener {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private MyTYJNousedFragment nousedFragment;

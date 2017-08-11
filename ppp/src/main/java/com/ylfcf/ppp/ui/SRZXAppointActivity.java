@@ -29,6 +29,7 @@ import com.ylfcf.ppp.entity.SRZXAppointRecordInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.Constants.UserType;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.SRZXAppointDatePickerPopwindow;
 import com.ylfcf.ppp.widget.AuthImageView;
@@ -43,6 +44,7 @@ import java.util.List;
  *
  */
 public class SRZXAppointActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "SRZXAppointActivity";
 	private static final int REQUEST_APPOINTRECORD_WHAT = 1921;
 	private static final int REQUEST_APPOINTRECORD_SUCCESS = 1922;
 	
@@ -130,7 +132,21 @@ public class SRZXAppointActivity extends BaseActivity implements OnClickListener
 			initAppointLayout();
 		}
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

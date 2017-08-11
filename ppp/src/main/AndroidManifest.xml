@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ylfcf.ppp"
-    android:versionCode="153"
-    android:versionName="1.5.3">
+    android:versionCode="155"
+    android:versionName="1.5.5">
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -70,6 +70,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:supportsRtl="true"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
@@ -382,6 +383,21 @@
         <activity android:name=".ui.ChooseJXQActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
+        <activity android:name=".ui.BorrowListYJYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity android:name=".ui.BorrowDetailYJYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity android:name=".ui.BidYJYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity android:name=".ui.ProductInfoYJYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity android:name=".ui.AccountCenterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
 
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
@@ -393,19 +409,26 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <activity
-            android:name="com.tencent.tauth.AuthActivity"
+            android:name="com.umeng.qq.tencent.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true">
+            android:noHistory="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent1105044430" /> <!-- tencent后面是qq的appid -->
+                <data android:scheme="tencent1105044430" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+
         <activity
             android:name=".sina.WBShareActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -416,20 +439,34 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
+        <!--<activity
             android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize"></activity>-->
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="false"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:launchMode="singleTask"
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
 
         <!--<service
             android:name="com.sina.weibo.sdk.net.DownloadService"
             android:exported="false"/>-->
 
-        <activity
-            android:name="com.tencent.connect.common.AssistActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ui.ProductDataDetailsActivity"
             android:screenOrientation="portrait"

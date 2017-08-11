@@ -21,6 +21,7 @@ import com.ylfcf.ppp.entity.BankInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,6 +35,7 @@ import java.util.Map;
  * 
  */
 public class LimitPromptActivity extends BaseActivity implements OnClickListener {
+	private static final String className = "LimitPromptActivity";
 	private static final int REQUEST_QUICK_BANK_WHAT = 7120;
 	private static final int REQUEST_QUICK_BANK_SUC = 7121;
 	private static final int REQUEST_QUICK_BANK_FAILE = 7122;
@@ -94,7 +96,15 @@ public class LimitPromptActivity extends BaseActivity implements OnClickListener
 	@Override
 	protected void onResume() {
 		super.onResume();
-//		mXRefreshView.startRefresh();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

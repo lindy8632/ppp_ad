@@ -20,6 +20,7 @@ import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.inter.Inter.OnUpdateUserInfoInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 /**
@@ -30,6 +31,7 @@ import com.ylfcf.ppp.util.Util;
  */
 public class ModifyLoginPwdActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "ModifyLoginPwdActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private TextView userName;
@@ -82,6 +84,20 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 		builder.setSpan(blueSpan, 6, 10, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 		builder.setSpan(graySpan, 10, 17, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		pwdPrompt.setText(builder);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

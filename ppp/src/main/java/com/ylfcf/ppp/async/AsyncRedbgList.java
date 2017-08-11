@@ -17,14 +17,19 @@ public class AsyncRedbgList extends AsyncTaskBase{
 	
 	private String userId;
 	private String flag;
+	private String page;
+	private String pageSize;
 	
 	private OnCommonInter onRedbagListInter;
 	private BaseInfo baseInfo;
 	
-	public AsyncRedbgList(Context context, String userId,String flag,OnCommonInter onRedbagListInter) {
+	public AsyncRedbgList(Context context, String userId,String flag,
+						  String page,String pageSize,OnCommonInter onRedbagListInter) {
 		this.context = context;
 		this.userId = userId;
 		this.flag = flag;
+		this.page = page;
+		this.pageSize = pageSize;
 		this.onRedbagListInter = onRedbagListInter;
 	}
 
@@ -33,7 +38,7 @@ public class AsyncRedbgList extends AsyncTaskBase{
 		String url[] = null;
 		String result = null;
 		try {
-			url = URLGenerator.getInstance().getMyRedBagListURL(userId, flag);
+			url = URLGenerator.getInstance().getMyRedBagListURL(userId, flag,page,pageSize);
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}
@@ -67,6 +72,4 @@ public class AsyncRedbgList extends AsyncTaskBase{
 			onRedbagListInter.back(baseInfo);
 		}
 	}
-
-
 }

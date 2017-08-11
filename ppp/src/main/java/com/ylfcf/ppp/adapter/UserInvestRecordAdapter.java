@@ -98,6 +98,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			viewHolder.catCompactBtn = (Button) convertView.findViewById(R.id.invest_record_item_catcompact);
 			viewHolder.remarkLayout = (LinearLayout) convertView.findViewById(R.id.invest_records_item_remark_layout);
 			viewHolder.remark = (TextView) convertView.findViewById(R.id.invest_record_item_interest_remark);
+			viewHolder.interestTextTitle = (TextView) convertView.findViewById(R.id.invest_record_item_interest_money_title);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -132,15 +133,10 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 		viewHolder.rate.setText(Util.double2PointDouble(interestRateD + interestRateFloat)+ "%");//年化收益
 		double investMoneyD = 0d;
 		try {
-			investMoneyD = Double.parseDouble(info.getMoney());
-			if(investMoneyD < 10000){
-				viewHolder.investMoney.setText(Util.double2PointDouble(investMoneyD) + "元");
-			}else{
-				viewHolder.investMoney.setText(Util.double2PointDouble(investMoneyD/10000) + "万元");
-			}
+			investMoneyD = Double.parseDouble(info.getFact_money());
+			viewHolder.investMoney.setText((int)investMoneyD + "元");
 		} catch (Exception e) {
 		}
-		
 		viewHolder.status.setText("投资状态:" + info.getStatus());
 		viewHolder.catCompactBtn.setTag(info);
 		if("yzy".equals(fromWhere)){
@@ -184,8 +180,13 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				interestPeroidI = Integer.parseInt(info.getInterest_period());
 			} catch (Exception e) {
 			}
+			double totalInvestMoneyD = 0d;
+			try {
+				totalInvestMoneyD = Double.parseDouble(info.getMoney());
+			} catch (Exception e) {
+			}
 			double totalRate = interestRateD + interestRateFloat + androidInterestRateD + couponRateD + interestD;//基础利率+浮动利率+加息利率+加息券
-			double totalInterestD = investMoneyD * totalRate * interestPeroidI / 36500;
+			double totalInterestD = totalInvestMoneyD * totalRate * interestPeroidI / 36500;
 			if(sumInterestD == 0){
 				//还没有跑满标脚本，自己计算
 				viewHolder.interestMoney.setText(Util.double2PointDouble(totalInterestD) + "元");//投资收益
@@ -222,6 +223,11 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			}else{
 				viewHolder.addRate.setText(Util.double2PointDouble(androidInterestRateD + couponRateD)+"%");
 			}
+			try {
+				investMoneyD = Double.parseDouble(info.getMoney());
+				viewHolder.investMoney.setText((int)investMoneyD + "元");
+			} catch (Exception e) {
+			}
 		}else if("srzx".equals(fromWhere)){
 			if(info.getInvest_time() == null || "".equals(info.getInvest_time()) || "0000-00-00 00:00:00".equals(info.getInvest_time())){
 				viewHolder.startTime.setText("投标日期:  — —");
@@ -241,7 +247,15 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			viewHolder.addLayout.setVisibility(View.VISIBLE);
 			viewHolder.remarkLayout.setVisibility(View.GONE);
 			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);
-			viewHolder.interestMoney.setText(info.getInterest() + "元");
+			double interestSRZX = 0d;
+			double hbInterestSRZX = 0d;
+			try{
+				interestSRZX = Double.parseDouble(info.getInterest());
+				hbInterestSRZX = Double.parseDouble(info.getRed_bag_interest());
+			}catch (Exception e){
+
+			}
+			viewHolder.interestMoney.setText(Util.double2PointDouble(interestSRZX+hbInterestSRZX) + "元");
 			viewHolder.status.setText("投资状态: " + info.getInvest_status());
 			//加息
 			viewHolder.rate.setText(Util.double2PointDouble(interestRateD)+ "%");//年化收益
@@ -249,6 +263,49 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.addRate.setText("— —");
 			}else{
 				viewHolder.addRate.setText(Util.double2PointDouble(androidInterestRateD + interestRateFloat + couponRateD)+"%");
+			}
+			try {
+				investMoneyD = Double.parseDouble(info.getMoney());
+				viewHolder.investMoney.setText((int)investMoneyD + "元");
+			} catch (Exception e) {
+			}
+		}else if("yjy".equals(fromWhere)){
+			//元聚盈
+			if(info.getInvest_time() == null || "".equals(info.getInvest_time()) || "0000-00-00 00:00:00".equals(info.getInvest_time())){
+				viewHolder.startTime.setText("投标日期:  — —");
+			}else{
+				viewHolder.startTime.setText("投标日期: " + info.getInvest_time().split(" ")[0]);
+			}
+			if(info.getInterest_end_time() == null || "".equals(info.getInterest_end_time()) || "0000-00-00 00:00:00".equals(info.getInterest_end_time())){
+				viewHolder.endTime.setText("到期时间:  — —");
+				viewHolder.catCompactBtn.setEnabled(false);
+				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
+			}else{
+				viewHolder.endTime.setText("到期时间: " + info.getInterest_end_time().split(" ")[0]);
+				viewHolder.catCompactBtn.setEnabled(true);
+				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
+			}
+			viewHolder.nhsyText.setText("预期年化收益率");
+			viewHolder.addLayout.setVisibility(View.GONE);
+			viewHolder.remarkLayout.setVisibility(View.VISIBLE);
+			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);
+			viewHolder.interestTextTitle.setText("投资总收益");
+			double interestSRZX = 0d;
+			double hbInterestSRZX = 0d;
+			try{
+				interestSRZX = Double.parseDouble(info.getInterest());
+				hbInterestSRZX = Double.parseDouble(info.getRed_bag_interest());
+			}catch (Exception e){
+
+			}
+			viewHolder.interestMoney.setText(Util.double2PointDouble(interestSRZX+hbInterestSRZX) + "元");
+			viewHolder.status.setText("投资状态: " + info.getInvest_status());
+			//加息
+			viewHolder.rate.setText(Util.double2PointDouble(interestRateD)+ "%");//年化收益
+			try {
+				investMoneyD = Double.parseDouble(info.getMoney());
+				viewHolder.investMoney.setText((int)investMoneyD + "元");
+			} catch (Exception e) {
 			}
 		}else if("xsmb".equals(fromWhere)){
 			if(info.getInvest_time() == null || "".equals(info.getInvest_time()) || "0000-00-00 00:00:00".equals(info.getInvest_time())){
@@ -283,6 +340,11 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				}else{
 					viewHolder.rate.setText(Util.double2PointDoubleOne(interestRateD + interestRateFloat)+"%");
 				}
+			} catch (Exception e) {
+			}
+			try {
+				investMoneyD = Double.parseDouble(info.getMoney());
+				viewHolder.investMoney.setText((int)investMoneyD + "元");
 			} catch (Exception e) {
 			}
 		}
@@ -321,6 +383,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 		TextView interestMoney;// 收益
 		TextView status;
 		TextView nhsyText;//年化收益四个字在VIP产品中要改成“业绩比较基准”
+		TextView interestTextTitle;
 		LinearLayout addLayout;//加息奖励的布局
 		LinearLayout remarkLayout;//备注
 		TextView remark;//备注

@@ -30,6 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UmengRegistrar;
 import com.ylfcf.ppp.Permission.BasePermissionActivity;
@@ -52,13 +53,11 @@ import com.ylfcf.ppp.receiver.NetworkStatusReceiver;
 import com.ylfcf.ppp.receiver.NetworkStatusReceiver.NetworkStateListener;
 import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.CommonBannerPopwindow;
-import com.ylfcf.ppp.view.JuneActivePopupwindow;
-import com.ylfcf.ppp.view.LXJ5Popupwindow;
 import com.ylfcf.ppp.view.UpdatePopupwindow;
-import com.ylfcf.ppp.view.YQHYPopupwindow;
 import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.NavigationBarView;
 import com.ylfcf.ppp.widget.NoScrollViewPager;
@@ -218,6 +217,12 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main_fragment_activity);
+		/** 设置是否对日志信息进行加密, 默认false(不加密). */
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+			MobclickAgent.enableEncrypt(true);//6.0.0版本及以后
+		}else{
+//			AnalyticsConfig.enableEncrypt(true);//6.0.0版本以前
+		}
 		//极光推送
 		JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
 		JPushInterface.init(this);     		// 初始化 JPush
@@ -356,7 +361,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 				if(downloadPsText != null){
 					downloadPsText.setText(Util.double2PointDouble(bytesDL/(1024.0*1024))+"M/"+Util.double2PointDouble(fileSize/(1024.0*1024)) + "M");
 				}
-				// dowanloadmanager.remove(lastDownloadId);
 				break;
 			case DownloadManager.STATUS_FAILED:
 				// 清除已下载的内容，重新下载
@@ -381,51 +385,10 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		popwindow.show(mainLayout);
 	}
 	
-	/**
-	 * 邀请好友返现活动
-	 */
-	private void showYQHYWindow(){
-		View popView = LayoutInflater.from(this).inflate(
-				R.layout.lxfx_popwindow, null);
-		int[] screen = SettingsManager.getScreenDispaly(this);
-		int width = screen[0];
-		int height = screen[1];
-		YQHYPopupwindow popwindow = new YQHYPopupwindow(this,
-				popView, width, height);
-		popwindow.show(mainLayout);
-	}
-
-	/**
-	 * 五月份每周一领现金活动
-	 */
-	private void showLXJWindow(){
-		View popView = LayoutInflater.from(this).inflate(
-				R.layout.lxfx_popwindow, null);
-		int[] screen = SettingsManager.getScreenDispaly(this);
-		int width = screen[0];
-		int height = screen[1];
-		LXJ5Popupwindow popwindow = new LXJ5Popupwindow(this,
-				popView, width, height);
-		popwindow.show(mainLayout);
-	}
-
-	/**
-	 * 6月份活动
-	 */
-	private void showJoneActiveWindow(){
-		View popView = LayoutInflater.from(this).inflate(
-				R.layout.lxfx_popwindow, null);
-		int[] screen = SettingsManager.getScreenDispaly(this);
-		int width = screen[0];
-		int height = screen[1];
-		JuneActivePopupwindow popwindow = new JuneActivePopupwindow(this,
-				popView, width, height);
-		popwindow.show(mainLayout);
-	}
-	
 	@Override
 	protected void onResume() {	
 		super.onResume();
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		isForeground = true;
 		isExit = false;
 		YLFLogger.d("MainFragmentActivity-OnResume()");
@@ -450,6 +413,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	@Override
 	protected void onPause() {
 		super.onPause();
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 		isForeground = false;
 	}
 
@@ -514,6 +478,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 					tExit.cancel();
 				}
 				finish();
+				UMengStatistics.onKillProcess(this);//保存友盟统计数据
 				android.os.Process.killProcess(android.os.Process.myPid());//杀进程
 			}
 		}

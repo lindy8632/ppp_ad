@@ -102,14 +102,22 @@
             cube_ptr:ptr_pull_to_fresh="false"
             cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
             cube_ptr:ptr_resistance="1.7" >
-
+            <!-- 账户中心 -->
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical" >
 
-                <include 
-                    layout="@layout/my_account" />
+                <!--个人用户-->
+                <!--<include
+                    android:id="@+id/user_fragment_personal_layout"
+                    layout="@layout/my_account_personal_layout"
+                    android:visibility="gone"/>-->
+
+                <!--企业用户 注意PtrClassicFrameLayout的checkCanDoRefresh()方法-->
+                <include
+                    android:id="@+id/user_fragment_company_layout"
+                    layout="@layout/my_account_comp_layout" />
                 
             </RelativeLayout>
         </com.ylfcf.ppp.ptr.PtrClassicFrameLayout>

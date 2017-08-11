@@ -29,6 +29,7 @@ import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
 
 import java.text.ParseException;
@@ -42,6 +43,7 @@ import java.util.Date;
  */
 public class ProductIntroXSMBActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "ProductIntroXSMBActivity";
 	private static final int REQUEST_XSMB_REFRESH_WHAT = 8291;// 请求接口刷新数据
 	private static final int REQUEST_CURRENT_USERINVEST = 8294;//请求当前用户是否投资过该秒标
 	private static final int REQUEST_XSMB_BTNCLICK_WHAT = 8292;//点击“立即秒杀”按钮
@@ -108,11 +110,20 @@ public class ProductIntroXSMBActivity extends BaseActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		if(recordInfo == null){
 			handler.sendEmptyMessage(REQUEST_XSMB_REFRESH_WHAT);
 		}else{
 			handler.sendEmptyMessage(REQUEST_XSMB_SELECTONE);
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private void findView() {

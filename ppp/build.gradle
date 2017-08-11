@@ -11,8 +11,8 @@ android {
         applicationId "com.ylfcf.ppp"
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 153
-        versionName "1.5.3"
+        versionCode 155
+        versionName "1.5.5"
     }
 
     compileOptions {
@@ -128,4 +128,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile files('libs/sun.misc.BASE64Decoder.jar')
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile files('libs/json_simple-1.1.jar')
 }

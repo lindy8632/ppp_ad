@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/common_measure_149dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_149dp"
+        android:layout_marginBottom="@dimen/common_measure_5dp"
+        android:background="@drawable/product_item_selector"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_41dp"
+            android:layout_gravity="top"
+            android:layout_marginLeft="@dimen/common_measure_20dp"
+            android:layout_marginRight="@dimen/common_measure_20dp" >
+
+            <!-- 左上角的图标 -->
+
+            <ImageView
+                android:id="@+id/bid_yjy_item_angle"
+                android:layout_width="@dimen/common_measure_24dp"
+                android:layout_height="@dimen/common_measure_28dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/bid_yjy_item_project_name"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/common_measure_10dp"
+                android:layout_toRightOf="@+id/bid_yjy_item_angle"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_20dp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/bid_yjy_item_timelimit_tips_img"
+            android:layout_width="@dimen/common_measure_92dp"
+            android:layout_height="@dimen/common_measure_26dp"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:layout_marginBottom="-10dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/yjr_activity_mark_logo"
+            android:scaleType="fitCenter"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_103dp"
+            android:layout_marginLeft="@dimen/common_measure_15dp"
+            android:layout_marginRight="@dimen/common_measure_20dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:minWidth="@dimen/common_measure_150dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <!-- 年化收益 -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/bid_yjy_item_invest_rate_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/orange_text"
+                        android:textSize="@dimen/common_measure_28dp" />
+
+                    <TextView
+                        android:id="@+id/bid_yjy_item_text0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_5dp"
+                        android:text="%~"
+                        android:textColor="@color/orange_text"
+                        android:textSize="@dimen/common_measure_16dp" />
+
+                    <TextView
+                        android:id="@+id/bid_yjy_item_invest_rate_max"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/orange_text"
+                        android:textSize="@dimen/common_measure_28dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_5dp"
+                        android:text="%"
+                        android:textColor="@color/orange_text"
+                        android:textSize="@dimen/common_measure_16dp" />
+
+                    <RelativeLayout
+                        android:id="@+id/bid_yjy_item_extra_interest_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/bid_yjy_item_tips_img"
+                            android:layout_width="@dimen/common_measure_83dp"
+                            android:layout_height="@dimen/common_measure_15dp"
+                            android:src="@drawable/borrow_vip_jx_tips"
+                            android:scaleType="fitCenter"
+                            android:visibility="gone"/>
+
+                        <!-- 加息 -->
+                        <TextView
+                            android:id="@+id/bid_yjy_item_extra_interest_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="top"
+                            android:singleLine="true"
+                            android:textColor="@color/orange_text"
+                            android:textSize="@dimen/common_measure_16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/common_measure_5dp"
+                            android:layout_marginTop="@dimen/common_measure_3dp"
+                            android:layout_toRightOf="@+id/bid_yjy_item_extra_interest_text"
+                            android:gravity="top"
+                            android:singleLine="true"
+                            android:text="%"
+                            android:textColor="@color/orange_text"
+                            android:textSize="@dimen/common_measure_12dp"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/bid_yjy_item_nhsy_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="预期年化收益率"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_16dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/common_measure_1dp"
+                android:layout_height="@dimen/common_measure_40dp"
+                android:layout_marginTop="@dimen/common_measure_15dp"
+                android:background="@color/edittext_line_color" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <!-- 期限 -->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/bid_yjy_item_invest_time_limit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_2dp"
+                        android:text="0"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_24dp" />
+
+                    <TextView
+                        android:id="@+id/bid_yjy_item_unit_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_5dp"
+                        android:text="天"
+                        android:textColor="@color/gray1"
+                        android:textSize="@dimen/common_measure_14dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="投资期限"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_16dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/common_measure_1dp"
+                android:layout_height="@dimen/common_measure_40dp"
+                android:layout_marginTop="@dimen/common_measure_15dp"
+                android:background="@color/edittext_line_color" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <!-- 募集金额 -->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/bid_yjy_item_invest_total_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_2dp"
+                        android:text="0"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_5dp"
+                        android:text="万"
+                        android:textColor="@color/gray1"
+                        android:textSize="@dimen/common_measure_14dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="募集金额"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_16dp" />
+            </LinearLayout>
+
+            <!-- 进度条 -->
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="@dimen/common_measure_10dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/bid_yjy_item_bidbtn"
+                    android:layout_width="@dimen/common_measure_120dp"
+                    android:layout_height="@dimen/common_measure_30dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="我要投标"
+                    android:background="@drawable/style_rect_fillet_filling_blue"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
+                
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

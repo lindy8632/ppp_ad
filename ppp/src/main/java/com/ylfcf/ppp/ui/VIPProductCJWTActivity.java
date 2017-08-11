@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
 /**
  * VIP产品常见问题
@@ -17,6 +18,7 @@ import com.ylfcf.ppp.util.URLGenerator;
  *
  */
 public class VIPProductCJWTActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "VIPProductCJWTActivity";
 	private WebView wv;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
@@ -64,5 +66,19 @@ public class VIPProductCJWTActivity extends BaseActivity implements OnClickListe
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 }

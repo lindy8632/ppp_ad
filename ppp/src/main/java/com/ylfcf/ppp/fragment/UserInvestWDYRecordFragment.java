@@ -36,6 +36,7 @@ import com.ylfcf.ppp.ui.CompactActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.ui.WDYLendRecordDetailActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.YLFLogger;
 
 import java.text.ParseException;
@@ -49,6 +50,7 @@ import java.util.List;
  *
  */
 public class UserInvestWDYRecordFragment extends BaseFragment{
+	private static final String className = "UserInvestWDYRecordFragment";
 	private static final int REQUEST_INVEST_RECORD_WHAT = 1021;
 	private static final int REQUEST_INVEST_RECORD_SUCCESS = 1022;
 	private static final int REQUEST_INVEST_RECORD_NODATA = 1023;	//无数据
@@ -181,7 +183,19 @@ public class UserInvestWDYRecordFragment extends BaseFragment{
 			handler.sendMessage(msg);
 		}
 	}
-	
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+	}
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

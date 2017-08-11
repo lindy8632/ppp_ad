@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import java.util.List;
  *
  */
 public class BrandIntroActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BrandIntroActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private ViewPager viewpager;
@@ -67,7 +69,21 @@ public class BrandIntroActivity extends BaseActivity implements OnClickListener{
 			break;
 		}
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	PagerAdapter mPagerAdapter = new PagerAdapter(){
 
         @Override

@@ -27,6 +27,7 @@ import com.ylfcf.ppp.entity.PrizeInfo;
 import com.ylfcf.ppp.entity.PrizePageInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.LotteryDetailPopwindow;
 import com.ylfcf.ppp.widget.RefreshLayout;
@@ -41,6 +42,7 @@ import java.util.List;
  *
  */
 public class MyGiftsActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "MyGiftsActivity";
 	private static final int REQUEST_PRIZELIST_WHAT = 8211;
 	private static final int REQUEST_PRIZELIST_SUCCESS = 8212;
 	private static final int REQUEST_PRIZELIST_NODATA = 8213;
@@ -119,6 +121,20 @@ public class MyGiftsActivity extends BaseActivity implements OnClickListener{
 		setContentView(R.layout.my_gifts_layout);
 		findViews();
 		handler.sendEmptyMessage(REQUEST_PRIZELIST_WHAT);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private void findViews(){

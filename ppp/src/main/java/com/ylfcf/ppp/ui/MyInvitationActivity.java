@@ -79,20 +79,21 @@ public class MyInvitationActivity extends BaseActivity implements
 				requestExtension(SettingsManager.getUserId(getApplicationContext()));
 				break;
 			case REQUEST_EXTENSION_SUCCESS_WHAT:
-				ExtensionNewPageInfo pageInfo = (ExtensionNewPageInfo) msg.obj;
-				if(pageInfo != null){
+				mExtensionPageInfo = (ExtensionNewPageInfo) msg.obj;
+				if(mExtensionPageInfo != null){
 					if(isLoadMore){
-						extensionList.addAll(pageInfo.getExtensionList());
+						extensionList.addAll(mExtensionPageInfo.getExtensionList());
 					}else{
 						extensionList.clear();
-						extensionList.addAll(pageInfo.getExtensionList());
+						extensionList.addAll(mExtensionPageInfo.getExtensionList());
 					}
+					initData();
 					updateAdapter(extensionList);
 				}
 				break;
-				case REQUEST_LCS_WHAT:
-					requestLcsName(SettingsManager.getUser(getApplicationContext()));
-					break;
+			case REQUEST_LCS_WHAT:
+				requestLcsName(SettingsManager.getUser(getApplicationContext()));
+				break;
 			default:
 				break;
 			}
@@ -132,6 +133,7 @@ public class MyInvitationActivity extends BaseActivity implements
 		mListView = (PullToRefreshListView) findViewById(R.id.myinvitation_listview);
 		mListView.setMode(Mode.BOTH);
 		initListeners();
+		initAdapter();
 	}
 
 	private void initListeners() {
@@ -211,17 +213,14 @@ public class MyInvitationActivity extends BaseActivity implements
 		nodataTV.setVisibility(View.GONE);
 		extensionList.addAll(mExtensionPageInfo.getExtensionList());
 		try {
-			initAdapter(mExtensionPageInfo.getExtensionList());
+			updateAdapter(mExtensionPageInfo.getExtensionList());
 		} catch (Exception e) {
 		}
 	}
 	
-	private void initAdapter(List<ExtensionNewInfo> list) {
+	private void initAdapter() {
 		adapter = new ExtensionAdapter(MyInvitationActivity.this);
 		mListView.setAdapter(adapter);
-		if (list != null) {
-			updateAdapter(list);
-		}
 	}
 
 	private void updateAdapter(List<ExtensionNewInfo> list) {
@@ -375,7 +374,11 @@ public class MyInvitationActivity extends BaseActivity implements
 				}else{
 					isLcs = false;
 				}
-				initData();
+				if(mExtensionPageInfo != null){
+					initData();
+				}else{
+					handler.sendEmptyMessage(REQUEST_EXTENSION_WHAT);
+				}
 			}
 		});
 		lcsTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);

@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncInvestSRZXUserRecord;
+import com.ylfcf.ppp.async.AsyncInvestYJYRecord;
 import com.ylfcf.ppp.async.AsyncUserSelectOne;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
@@ -25,6 +26,7 @@ import com.ylfcf.ppp.fragment.UserInvestSRZXRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestVIPRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestWDYRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestXSMBRecordFragment;
+import com.ylfcf.ppp.fragment.UserInvestYJYRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestYXBRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestYYYRecordFragment;
 import com.ylfcf.ppp.fragment.UserInvestZXDRecordFragment;
@@ -33,6 +35,7 @@ import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.inter.Inter.OnIsYXBInvestorListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
@@ -54,6 +57,10 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 	private static final int REQUEST_ISINVESTED_SRZX_WAHT = 1224;//是否投资过私人尊享产品
 	private static final int REQUEST_ISINVESTED_SRZX_SUCCESS = 1225;
 	private static final int REQUEST_ISINVESTED_SRZX_NODATA = 1227;
+
+	private static final int REQUEST_ISINVESTED_YJY_WAHT = 1228;//是否投资过员工专属产品
+	private static final int REQUEST_ISINVESTED_YJY_SUCCESS = 1229;
+	private static final int REQUEST_ISINVESTED_YJY_NODATA = 1230;
 	
 	private static final int INIT_ADAPTER = 1226;//	初始化适配器
 	
@@ -83,8 +90,11 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 			case REQUEST_USERINFO_SUCCESS:
 				UserInfo mUserInfo = (UserInfo) msg.obj;
 				if(mUserInfo.getType().contains("vip")){
-					titlesList.add(3, "VIP");
-				}else{
+					if(titlesList.contains("元聚盈")){
+						titlesList.add(4, "VIP");
+					}else{
+						titlesList.add(3, "VIP");
+					}
 				}
 				break;
 			case REQUEST_ISINVESTED_YXB_WHAT:
@@ -94,25 +104,42 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 				getSRZXInvestRecordList(SettingsManager.getUserId(getApplicationContext()), "");
 				break;
 			case REQUEST_ISINVESTED_SRZX_SUCCESS:
-				if(titlesList.contains("VIP") && titlesList.contains("元信宝")){
+				if(titlesList.contains("元聚盈") && titlesList.contains("VIP") && titlesList.contains("元信宝")){
+					titlesList.add(6, "私人尊享");
+					titlesList.add(7, "秒标");
+				}else if((titlesList.contains("元聚盈") && titlesList.contains("VIP")) ||
+						(titlesList.contains("元聚盈") && titlesList.contains("元信宝")) ||
+						(titlesList.contains("VIP") && titlesList.contains("元信宝"))){
 					titlesList.add(5, "私人尊享");
 					titlesList.add(6, "秒标");
-				}else if(titlesList.contains("VIP") || titlesList.contains("元信宝")){
+				}else if(titlesList.contains("元聚盈") || titlesList.contains("VIP") || titlesList.contains("元信宝")){
 					titlesList.add(4, "私人尊享");
 					titlesList.add(5, "秒标");
-				}else if(!titlesList.contains("VIP") && !titlesList.contains("元信宝")){
+				}else if(!titlesList.contains("元聚盈") && !titlesList.contains("VIP") && !titlesList.contains("元信宝")){
 					titlesList.add(3, "私人尊享");
 					titlesList.add(4, "秒标");
 				}
 				break;
 			case REQUEST_ISINVESTED_SRZX_NODATA:
-				if(titlesList.contains("VIP") && titlesList.contains("元信宝")){
+				if(titlesList.contains("元聚盈") && titlesList.contains("VIP") && titlesList.contains("元信宝")){
+					titlesList.add(6, "秒标");
+				}else if((titlesList.contains("元聚盈") && titlesList.contains("VIP")) ||
+						(titlesList.contains("元聚盈") && titlesList.contains("元信宝")) ||
+						(titlesList.contains("VIP") && titlesList.contains("元信宝"))){
 					titlesList.add(5, "秒标");
-				}else if(titlesList.contains("VIP") || titlesList.contains("元信宝")){
+				}else if(titlesList.contains("元聚盈") || titlesList.contains("VIP") || titlesList.contains("元信宝")){
 					titlesList.add(4, "秒标");
-				}else if(!titlesList.contains("VIP") && !titlesList.contains("元信宝")){
+				}else if(!titlesList.contains("元聚盈") && !titlesList.contains("VIP") && !titlesList.contains("元信宝")){
 					titlesList.add(3, "秒标");
 				}
+				break;
+			case REQUEST_ISINVESTED_YJY_WAHT:
+				getYJYInvestRecordList(SettingsManager.getUserId(getApplicationContext()), "");
+				break;
+			case REQUEST_ISINVESTED_YJY_SUCCESS:
+				titlesList.add(3, "元聚盈");
+				break;
+			case REQUEST_ISINVESTED_YJY_NODATA:
 				break;
 			case INIT_ADAPTER:
 				initAdapter();
@@ -168,7 +195,7 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 				YLFLogger.d("onPageScrollStateChanged*****" + arg0);
 			}
 		});
-		handler.sendEmptyMessage(REQUEST_USERINFO_WHAT);
+		handler.sendEmptyMessage(REQUEST_ISINVESTED_YJY_WAHT);
 	}
 	
 	private void initAdapter(){
@@ -194,6 +221,8 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 				curPosition = i;
 			}else if("秒标".equals(titlesList.get(i)) && "秒标".equals(fromWhere)){
 				curPosition = i;
+			}else if("元聚盈".equals(titlesList.get(i)) && "元聚盈".equals(fromWhere)){
+				curPosition = i;
 			}
 		}
 		mViewPager.setCurrentItem(curPosition);
@@ -217,6 +246,18 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		handler.removeCallbacksAndMessages(null);
@@ -225,6 +266,7 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 	private UserInvestZXDRecordFragment zxdRecordFragment;//政信贷（元政盈）
 	private UserInvestYYYRecordFragment yyyRecordFragment;//元月盈
 	private UserInvestWDYRecordFragment lczqRecordFragment;//零存整取产品
+	private UserInvestYJYRecordFragment yjyRecordFragment;//元聚盈产品（员工专属产品）
 	private UserInvestVIPRecordFragment vipRecordFragment;//vip产品
 	private UserInvestYXBRecordFragment yxbRecordFragment;//元信宝
 	private UserInvestSRZXRecordFragment srzxRecordFragment;//私人尊享产品
@@ -270,7 +312,12 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 				}
 				return lczqRecordFragment;
 			case 3:
-				if("VIP".equals(titlesList.get(3))){
+				if("元聚盈".equals(titlesList.get(3))){
+					if (yjyRecordFragment == null) {
+						yjyRecordFragment = new UserInvestYJYRecordFragment();
+					}
+					return yjyRecordFragment;
+				}else if("VIP".equals(titlesList.get(3))){
 					if (vipRecordFragment == null) {
 						vipRecordFragment = new UserInvestVIPRecordFragment();
 					}
@@ -292,7 +339,12 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 					return xsmbRecordFragment;
 				}
 			case 4:
-				if("元信宝".equals(titlesList.get(4))){
+				if("VIP".equals(titlesList.get(4))){
+					if (vipRecordFragment == null) {
+						vipRecordFragment = new UserInvestVIPRecordFragment();
+					}
+					return vipRecordFragment;
+				}else if("元信宝".equals(titlesList.get(4))){
 					if (yxbRecordFragment == null) {
 						yxbRecordFragment = new UserInvestYXBRecordFragment();
 					}
@@ -309,18 +361,35 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 					return xsmbRecordFragment;
 				}
 			case 5:
-				if("私人尊享".equals(titlesList.get(5))){
-					if(srzxRecordFragment == null) {
+				if("元信宝".equals(titlesList.get(5))){
+					if (yxbRecordFragment == null) {
+						yxbRecordFragment = new UserInvestYXBRecordFragment();
+					}
+					return yxbRecordFragment;
+				}else if("私人尊享".equals(titlesList.get(5))){
+					if (srzxRecordFragment == null) {
 						srzxRecordFragment = new UserInvestSRZXRecordFragment();
 					}
 					return srzxRecordFragment;
-				} else if("秒标".equals(titlesList.get(5))){
+				}else if("秒标".equals(titlesList.get(5))){
 					if (xsmbRecordFragment == null) {
 						xsmbRecordFragment = new UserInvestXSMBRecordFragment();
 					}
 					return xsmbRecordFragment;
 				}
 			case 6:
+				if("私人尊享".equals(titlesList.get(6))){
+					if(srzxRecordFragment == null) {
+						srzxRecordFragment = new UserInvestSRZXRecordFragment();
+					}
+					return srzxRecordFragment;
+				} else if("秒标".equals(titlesList.get(6))){
+					if (xsmbRecordFragment == null) {
+						xsmbRecordFragment = new UserInvestXSMBRecordFragment();
+					}
+					return xsmbRecordFragment;
+				}
+			case 7:
 				if (xsmbRecordFragment == null) {
 					xsmbRecordFragment = new UserInvestXSMBRecordFragment();
 				}
@@ -337,9 +406,11 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 			public void isYXBInvestor(boolean flag) {
 				if(flag){
 					//投资过元信宝
-					if(titlesList.contains("VIP")){
+					if(titlesList.contains("元聚盈") && titlesList.contains("VIP")){
+						titlesList.add(5, "元信宝");
+					}else if(titlesList.contains("元聚盈") || titlesList.contains("VIP")){
 						titlesList.add(4, "元信宝");
-					}else{
+					}else if(!titlesList.contains("元聚盈") && !titlesList.contains("VIP")){
 						titlesList.add(3, "元信宝");
 					}
 				}else{
@@ -404,6 +475,44 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 						}
 						handler.sendEmptyMessage(INIT_ADAPTER);
 					}
+		});
+		asyncInvestRecord.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+	/**
+	 * 获取员工专属产品投资记录列表
+	 * @param investUserId
+	 * @param borrowId
+	 */
+	private void getYJYInvestRecordList(String investUserId,String borrowId){
+		if(loadingDialog != null){
+			loadingDialog.show();
+		}
+		AsyncInvestYJYRecord asyncInvestRecord = new AsyncInvestYJYRecord(this, investUserId,borrowId,
+				0, 5, new OnCommonInter(){
+			@Override
+			public void back(BaseInfo baseInfo) {
+				if(loadingDialog != null && loadingDialog.isShowing()){
+					loadingDialog.dismiss();
+				}
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0 && baseInfo.getmInvestRecordPageInfo() != null){
+						List<InvestRecordInfo> recordList = baseInfo.getmInvestRecordPageInfo().getInvestRecordList();
+						if(recordList != null && recordList.size() > 0){
+							//投资过私人尊享
+							handler.sendEmptyMessage(REQUEST_ISINVESTED_YJY_SUCCESS);
+						}else{
+							handler.sendEmptyMessage(REQUEST_ISINVESTED_YJY_NODATA);
+						}
+					}else{
+						handler.sendEmptyMessage(REQUEST_ISINVESTED_YJY_NODATA);
+					}
+				}else{
+					handler.sendEmptyMessage(REQUEST_ISINVESTED_YJY_NODATA);
+				}
+				handler.sendEmptyMessage(REQUEST_USERINFO_WHAT);
+			}
 		});
 		asyncInvestRecord.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}

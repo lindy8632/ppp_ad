@@ -14,6 +14,7 @@ import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
 /**
  * 用户合同页面 新手标、元政盈、元月盈 、私人尊享产品
@@ -21,6 +22,7 @@ import com.ylfcf.ppp.util.URLGenerator;
  *
  */
 public class CompactActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "CompactActivity";
 	private InvestRecordInfo investInfo;
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
@@ -41,12 +43,28 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 		findViews();
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	private void findViews(){
 		topLeftBtn = (LinearLayout)findViewById(R.id.common_topbar_left_layout);
 		topLeftBtn.setOnClickListener(this);
 		topTitleTV = (TextView)findViewById(R.id.common_page_title);
 		if("vip".equals(fromWhere)){
 			topTitleTV.setText("产品协议");
+		}else if("yjy".equals(fromWhere)){
+			topTitleTV.setText("项目协议合同");
 		}else{
 			topTitleTV.setText("借款协议");
 		}
@@ -95,6 +113,10 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 				if(mProductInfo != null){
 					contentURL = URLGenerator.WDY_BLANK_COMPACT.replace("borrowid", mProductInfo.getId());
 				}
+			}else if("yjy".equals(fromWhere)){
+				if(mProductInfo != null){
+					contentURL = URLGenerator.YJY_BLANK_COMPACT.replace("borrowid", mProductInfo.getId());
+				}
 			}
 		}else{
 			if("vip".equals(fromWhere)){
@@ -115,10 +137,12 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 			}else if("wdy".equals(fromWhere)){
 				contentURL = URLGenerator.WDY_COMPACT.replace("recordid", investInfo.getId())
 						.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+			}else if("yjy".equals(fromWhere)){
+				contentURL = URLGenerator.YJY_COMPACT.replace("recordid", investInfo.getBorrow_id())
+						.replace("userid", SettingsManager.getUserId(CompactActivity.this));
 			}
 		}
 		webview.loadUrl(contentURL);
-		
 	}
 	
 	@Override

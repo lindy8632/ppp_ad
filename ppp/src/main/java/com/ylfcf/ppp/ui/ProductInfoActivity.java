@@ -36,6 +36,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
 import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -49,6 +50,7 @@ import java.net.URL;
  */
 public class ProductInfoActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "ProductInfoActivity";
 	private static final int REFRESH_VIEW = 5700;
 	
 	private static final int REQUEST_ASSC_WHAT = 7321;
@@ -121,6 +123,20 @@ public class ProductInfoActivity extends BaseActivity implements
 			projectInfo = (ProjectInfo) bundle.getSerializable("PROJECT_INFO");
 		}
 		findViews();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

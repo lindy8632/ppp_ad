@@ -173,32 +173,29 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
 		}
-		double firstMoneyD = 0d;
-		try {
-			firstMoneyD = Double.parseDouble(info.getMoney());
-			if(firstMoneyD < 10000){
-				viewHolder.firstMoney.setText(Util.double2PointDouble(firstMoneyD) + "元");
-			}else{
-				viewHolder.firstMoney.setText(Util.double2PointDouble(firstMoneyD/10000) + "万元");
-			}
-		} catch (Exception e) {
-		}
+		viewHolder.firstMoney.setText(info.getMoney() + "元");
 		double interestMoneyD = 0d;
-		double investMoneyD = 0d;
+		double returnTotalMoneyD = 0d;
 		double moneyD = 0d;
+		double hbMoneyD = 0d;
 		try {
 			interestMoneyD = Double.parseDouble(info.getInvest_interest());
 		} catch (Exception e) {
 		}
 		try{
-			investMoneyD = Double.parseDouble(info.getInvest_money());
+			returnTotalMoneyD = Double.parseDouble(info.getReturn_total_money());
 			moneyD = Double.parseDouble(info.getMoney());
 		}catch (Exception e){
 
 		}
+		try{
+			hbMoneyD = Double.parseDouble(info.getRed_bag_money());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		if("已赎回".equals(info.getReturn_status())){
 			viewHolder.nowMoney.setText("0.00元");
-			viewHolder.interestMoney.setText(Util.double2PointDouble(investMoneyD - moneyD) + "元");
+			viewHolder.interestMoney.setText(Util.double2PointDouble(returnTotalMoneyD - moneyD - hbMoneyD) + "元");
 		}else{
 			viewHolder.nowMoney.setText(info.getInvest_money() + "元");
 			viewHolder.interestMoney.setText(Util.double2PointDouble(interestMoneyD) + "元");

@@ -33,6 +33,7 @@ import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.GridViewWithHeaderAndFooter;
 
 import java.text.ParseException;
@@ -47,6 +48,7 @@ import java.util.List;
  *
  */
 public class ProductDataXSMBActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "ProductDataXSMBActivity";
 	private static final int REQUEST_ASSC_WHAT = 7421;
 	private static final int REQUEST_ASSC_SUCCESS = 7422;
 	private static final int REQUEST_ASSC_NODATA = 7423;
@@ -148,14 +150,18 @@ public class ProductDataXSMBActivity extends BaseActivity implements OnClickList
 	@Override
 	protected void onResume() {
 		super.onResume();
-//		if(recordInfo == null){
-//			handler.sendEmptyMessage(REQUEST_XSMB_REFRESH_WHAT);
-//		}else{
-//			handler.sendEmptyMessage(REQUEST_XSMB_SELECTONE);
-//		}
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		handler.sendEmptyMessage(REQUEST_CURRENT_USERINVEST);
 	}
-	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	private void findViews(){
 		topLeftBtn = (LinearLayout)findViewById(R.id.common_topbar_left_layout);
 		topLeftBtn.setOnClickListener(this);

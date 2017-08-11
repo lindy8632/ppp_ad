@@ -367,7 +367,7 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(LXFXTempActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,URLGenerator.LXFX_WAP_URL,"开门红乐享返现",null,null);
+		popwindow.show(mainLayout,URLGenerator.LXFX_WAP_URL,"开门红乐享返现",null);
 	}
 	
 	/**

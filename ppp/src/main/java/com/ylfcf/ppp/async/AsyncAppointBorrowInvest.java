@@ -79,5 +79,4 @@ public class AsyncAppointBorrowInvest extends AsyncTaskBase{
 			onInvestInter.back(baseInfo);
 		}
 	}
-
 }

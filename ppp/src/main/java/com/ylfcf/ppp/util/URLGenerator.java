@@ -9,9 +9,9 @@ import java.io.UnsupportedEncodingException;
  */
 public class URLGenerator {
 	//正式环境
-	private static final String API_DOMAIN_URL = "http://www.ylfcf.com";//API环境
-	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
-	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
+//	private static final String API_DOMAIN_URL = "http://www.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
 
 	//验证环境
 //	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
@@ -19,8 +19,13 @@ public class URLGenerator {
 //	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//测试环境
-//	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
-//	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
+	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
+	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
+	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+
+	//朱礼涛开发环境
+//	private static final String API_DOMAIN_URL = "http://www.ylf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://www.ylf_chat.com";//WAP环境
 //	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//徐卫兵开发环境
@@ -58,6 +63,8 @@ public class URLGenerator {
 	public static final String REGISTE_AGREEMENT_URL = WAP_DOMAIN_URL + "/home/index/protocol#app";
 
 	public static final String TWOYEARS_TZFX_URL = WAP_DOMAIN_URL + "/home/index/zlq.html";
+	public static final String REDBAG_RULE_URL = WAP_DOMAIN_URL + "/home/index/redbag.html";//红包使用规则
+	public static final String YUANMONEY_RULE_URL = WAP_DOMAIN_URL + "/home/Index/yuanGoldCoin.html#app";//元金币使用规则
 	public static final String JXQ_RULE_URL = WAP_DOMAIN_URL + "/home/index/increaseInterest";//加息券使用规则
 	public static final String FLOAT_RATE_URL = WAP_DOMAIN_URL + "/home/index/floatrate#app";//浮动利率的专题
 	public static final String ZQDZP_WAP_URL = WAP_DOMAIN_URL + "/home/index/mdlottery.html";//中秋大转盘活动的wap页面
@@ -80,6 +87,8 @@ public class URLGenerator {
 	public static final String XSMB_COMPACT = API_DOMAIN_URL + "/home/seckill/protocolData/id/recordid/info/userid";//限时秒标有数据的合同
 	public static final String WDY_BLANK_COMPACT = API_DOMAIN_URL + "/wdy/wdyContract/id/borrowid";//稳定盈合同空模板
 	public static final String WDY_COMPACT = API_DOMAIN_URL + "/wdy/wdyContractData/id/recordid/info/userid";//稳定盈有数据的合同
+	public static final String YJY_BLANK_COMPACT = API_DOMAIN_URL + "/ygzx/ygzxProtocol/id/borrowid";//稳定盈合同空模板
+	public static final String YJY_COMPACT = API_DOMAIN_URL + "/ygzx/ygzxProtocol/id/recordid/info/userid";//稳定盈有数据的合同
 
 	public static final String VIP_CJWT_URL = WAP_DOMAIN_URL + "/home/vip/vipquestion.html#app";// vip常见问题
 	public static final String YYY_CJWT_URL = WAP_DOMAIN_URL + "/home/yyy/yyyquestion#app";// 元月盈的常见问题
@@ -92,7 +101,8 @@ public class URLGenerator {
 	public static final String RECHARGE_PROOF_URL = WAP_DOMAIN_URL + "/home/App/rechargeDetail/id/rechargeId#app";//充值凭证
 
 	//专题 页面
-	public static final String SRZX_TOPIC_URL = WAP_DOMAIN_URL + "/home/Pvip/orderPro.html#app";//私人尊享专题页
+	public static final String SRZX_TOPIC_URL = WAP_DOMAIN_URL + "/home/Pvip/orderPro.html#app";//私人尊享预约专题页
+	public static final String YJY_TOPIC_URL = WAP_DOMAIN_URL + "/home/Ygzx/yjyOrderPro.html#app";//元聚盈预约专题页
 
 	private final String mOSType = "2";// Android:2 , IOS:10
 	private final String API_ROUTER_URL = API_DOMAIN_URL + "/api_router.php";// 版本更新接口
@@ -159,6 +169,7 @@ public class URLGenerator {
 	// 红包
 	private final String REDBAG_LIST_URL = "/active/red_bag_log/getRedBagList";// 我的红包列表
 	private final String REDBAG_CURRENTUSER_LIST = "/active/red_bag_log/getCurrentUserRedBagList";// 当前用户可以使用的红包列表
+	private final String REDBAG_SELECTONE_URL = "/active/red_bag_log/selectOne";//查询某个红包
 
 	// 宝付支付接口
 	private final String BF_BINDCARD_URL = "/user/bank/bindCard";// 宝付绑卡接口
@@ -285,6 +296,13 @@ public class URLGenerator {
 	private final String MYFRIENDS_LIST_URL = "/promoter/promoterLog/myFriends";
 	private final String TRANS_COUPONS_URL = "/addInterest/add_interest_log/oneUserGetMoreAddInterestUser";//转让多张加息券
 	private final String TRANSFERED_COUPONS_LIST_URL = "/addInterest/add_interest_log/selectAlreadyClassifiedList";//可转让的加息券列表
+
+	//员工专属产品（元聚盈）
+	private final String YGZX_BORROWLIST_URL = "/ygzx/borrow/selectList";//员工专属产品列表
+	private final String YGZX_BORROW_DETAILS_URL = "/ygzx/borrow/selectOne";//根据id获得某个标详情
+	private final String YGZX_BORROWINVEST_RECORD_URL = "/ygzx/borrow_invest/selectList";//投资记录
+	private final String YGZX_BORROWINVEST_URL = "/ygzx/borrow_invest/invest";//员工专属产品投标
+	private final String YGZX_BORROWINVEST_LIST_URL = "/ygzx/borrow_invest/getUserInvestList";//根据userid和borrowid获取用户投资的某支标的详情
 
 	private static URLGenerator mUrlGenerator;
 
@@ -941,7 +959,6 @@ public class URLGenerator {
 		if (opneId != null && !"".equals(opneId)) {
 			sb.append("&open_id=").append(opneId);
 		}
-
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
@@ -1511,10 +1528,11 @@ public class URLGenerator {
 	 *            1:未使用 2：已使用 3：已过期
 	 * @return
 	 */
-	public String[] getMyRedBagListURL(String userId, String flag) {
+	public String[] getMyRedBagListURL(String userId, String flag,String page,String pageSize) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(REDBAG_LIST_URL);
-		sb.append("&user_id=").append(userId).append("&flag=").append(flag);
+		sb.append("&user_id=").append(userId).append("&flag=").append(flag)
+				.append("&page=").append(page).append("&page_size=").append(pageSize);
 		return new String[] { BASE_URL, sb.toString() };
 	}
 
@@ -1879,7 +1897,7 @@ public class URLGenerator {
 	 * @return
 	 */
 	public String[] getYYYBorrowInvestURL(String borrowId, String money,
-										  String userId,String investFrom,String couponId) throws Exception{
+										  String userId,String investFrom,String couponId,String redbagId) throws Exception{
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YYY_BORROW_INVEST);
 		sb.append("&borrow_id=").append(borrowId).append("&money=")
@@ -1889,6 +1907,9 @@ public class URLGenerator {
 		}
 		if(couponId != null && !"".equals(couponId) && !"null".equals(couponId) && !"NULL".equals(couponId)){
 			sb.append("&add_interest_log_id=").append(couponId);
+		}
+		if(redbagId != null && !"".equals(redbagId) && !"null".equals(redbagId) && !"NULL".equals(redbagId)){
+			sb.append("&red_bag_log_id=").append(redbagId);
 		}
 		return new String[] { BASE_URL, sb.toString() };
 	}
@@ -3026,6 +3047,100 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(TRANS_COUPONS_URL);
 		sb.append("&user_id=").append(userId).append("&add_interest_id=").append(couponIds);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 员工专享产品（元聚盈）
+	 * @param borrowStatus
+	 * @param moneyStatus
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public String[] getYGZXBorrowListURL(String borrowStatus,String moneyStatus,String page,String pageSize){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(YGZX_BORROWLIST_URL);
+		sb.append("&borrow_status=").append(borrowStatus);
+		if(moneyStatus != null && !"".equals(moneyStatus)){
+			sb.append("&money_status=").append(moneyStatus);
+		}
+		sb.append("&page=")
+			.append(page).append("&page_size=").append(pageSize);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 员工专享产品详情
+	 * @param borrowId
+	 * @return
+	 */
+	public String[] getYGZXBorrowDetailsURL(String borrowId) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(YGZX_BORROW_DETAILS_URL);
+		sb.append("&id=").append(borrowId);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 员工专享投资记录
+	 * @param userId
+	 * @param borrowId
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public String[] getYGZXBorrowInvestRecordURL(String userId,String borrowId, String page,String pageSize){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(YGZX_BORROWINVEST_RECORD_URL);
+		sb.append("&page=").append(page).append("&page_size=").append(pageSize);
+		if(userId != null && !"".equals(userId)){
+			sb.append("&user_id=").append(userId);
+		}
+		if(borrowId != null && !"".equals(borrowId)){
+			sb.append("&borrow_id=").append(borrowId);
+		}
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 员工专属产品投资
+	 * @param userId
+	 * @param borrowId
+	 * @param money
+	 * @param from
+	 * @return
+	 */
+	public String[] getYGZXBorrowInvestURL(String userId,String borrowId,String money,String from){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(YGZX_BORROWINVEST_URL);
+		sb.append("&user_id=").append(userId).append("&borrow_id=").append(borrowId).append("&money=").append(money).append("&invest_from=").append(from);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 获取一个红包信息
+	 * @param borrowId
+	 * @param investId 投资Id
+	 * @return
+	 */
+	public String[] getRedbagSelectoneURL(String borrowId,String investId){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(REDBAG_SELECTONE_URL);
+		sb.append("&borrow_id=").append(borrowId).append("&borrow_invest_id=").append(investId);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 获取员工专享某个标的详情
+	 * @param userId
+	 * @param borrowId
+	 * @return
+	 */
+	public String[] getYGZXBorrowById(String userId,String borrowId){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(YGZX_BORROWINVEST_LIST_URL);
+		sb.append("&borrow_id=").append(borrowId).append("&user_id=").append(userId);
 		return new String[]{BASE_URL, sb.toString()};
 	}
 }

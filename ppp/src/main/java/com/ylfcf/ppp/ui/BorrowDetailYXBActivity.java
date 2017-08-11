@@ -24,6 +24,7 @@ import com.ylfcf.ppp.entity.YXBProductInfo;
 import com.ylfcf.ppp.entity.YXBProductLogInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import java.text.DecimalFormat;
@@ -37,6 +38,7 @@ import java.util.Date;
  */
 public class BorrowDetailYXBActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "BorrowDetailYXBActivity";
 	private static final int REQUEST_PRODUCT_WHAT = 2301;// 产品信息
 	private static final int REQUEST_PRODUCT_SUCCESS = 2302;
 	private static final int REQUEST_PRODUCTLOG_WHAT = 2303;// 产品每日统计
@@ -156,9 +158,18 @@ public class BorrowDetailYXBActivity extends BaseActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		if (handler != null) {
 			handler.sendEmptyMessage(REQUEST_PRODUCT_WHAT);
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

@@ -299,7 +299,7 @@ public class PrizeRegion2TempActivity extends BaseActivity implements OnClickLis
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(PrizeRegion2TempActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,URLGenerator.HYFL02_WAP_URL,"会员福利二期",null,null);
+		popwindow.show(mainLayout,URLGenerator.HYFL02_WAP_URL,"会员福利二期",null);
 	}
 	
 	/**

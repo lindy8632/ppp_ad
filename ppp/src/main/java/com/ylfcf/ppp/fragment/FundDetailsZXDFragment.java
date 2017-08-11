@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,7 +17,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.FundsDetailsAdapter;
-import com.ylfcf.ppp.async.AsyncAccountTotalInfo;
 import com.ylfcf.ppp.async.AsyncFundsDetailsList;
 import com.ylfcf.ppp.entity.AccountTotalInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
@@ -30,7 +26,11 @@ import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.FundsDetailsActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.LoadingDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 资金明细 --- 政信贷
@@ -40,6 +40,7 @@ import com.ylfcf.ppp.widget.LoadingDialog;
  */
 public class FundDetailsZXDFragment extends BaseFragment implements
 		OnClickListener {
+	private static final String className = "FundDetailsZXDFragment";
 	private static final int REQUEST_FUNDS_DETAILS_WHAT = 4191;
 	private static final int REQUEST_FUNDS_DETAILS_SUCCESS = 4192;
 	private static final int REQUEST_FUNDS_DETAILS_FAILE = 4193;
@@ -135,6 +136,18 @@ public class FundDetailsZXDFragment extends BaseFragment implements
 //		handler.sendEmptyMessage(REQUEST_ACCOUNT_WHAT);
 		handler.sendEmptyMessage(REQUEST_FUNDS_DETAILS_WHAT);
 		return rootView;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
 	}
 
 	@Override

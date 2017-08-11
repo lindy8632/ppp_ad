@@ -27,6 +27,7 @@ import com.ylfcf.ppp.async.AsyncInvestSRZXRecord;
 import com.ylfcf.ppp.async.AsyncInvestWDYRecord;
 import com.ylfcf.ppp.async.AsyncVIPCurrentUserInvest;
 import com.ylfcf.ppp.async.AsyncXSBIscanbuy;
+import com.ylfcf.ppp.async.AsyncYGZXBorrowDetail;
 import com.ylfcf.ppp.entity.AssociatedCompanyParentInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.BorrowType;
@@ -34,13 +35,13 @@ import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
 import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.GridViewWithHeaderAndFooter;
 
 import java.util.ArrayList;
@@ -53,6 +54,7 @@ import java.util.List;
  *
  */
 public class ProductDataActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "ProductDataActivity";
 	private static final int REQUEST_ASSC_WHAT = 7421;
 	private static final int REQUEST_ASSC_SUCCESS = 7422;
 	private static final int REQUEST_ASSC_NODATA = 7423;
@@ -63,6 +65,7 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 	private static final int REQUEST_VIPCURRENT_USER_INVEST_WHAT = 7427;
 	private static final int REQUEST_SRZXCURRENT_USER_INVEST_WHAT = 7428;
 	private static final int REQUEST_WDYCURRENT_USER_INVEST_WHAT = 7429;
+	private static final int REQUEST_YJYCURRENT_USER_INVEST_WHAT = 7430;
 	
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
@@ -119,6 +122,9 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 			case REQUEST_WDYCURRENT_USER_INVEST_WHAT:
 				requestWDYCurrentUserInvest(SettingsManager.getUserId(getApplicationContext()),productInfo.getId());
 				break;
+			case REQUEST_YJYCURRENT_USER_INVEST_WHAT:
+				requestYJYCurrentUserInvest(SettingsManager.getUserId(getApplicationContext()),productInfo.getId());
+				break;
 			default:
 				break;
 			}
@@ -149,11 +155,27 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 			handler.sendEmptyMessage(REQUEST_SRZXCURRENT_USER_INVEST_WHAT);
 		}else if("wdy".equals(fromWhere)){
 			handler.sendEmptyMessage(REQUEST_WDYCURRENT_USER_INVEST_WHAT);
+		}else if("yjy".equals(fromWhere)){
+			handler.sendEmptyMessage(REQUEST_YJYCURRENT_USER_INVEST_WHAT);
 		}else{
 			handler.sendEmptyMessage(REQUEST_CURRENT_USER_INVEST_WHAT);
 		}
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	private void findViews(){
 		topLeftBtn = (LinearLayout)findViewById(R.id.common_topbar_left_layout);
 		topLeftBtn.setOnClickListener(this);
@@ -391,6 +413,8 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 					//私人尊享
 					if(productInfo.getBorrow_name().contains("私人尊享")){
 						checkIsVerify("私人尊享");
+					}else if(productInfo.getBorrow_name().contains("元聚盈")){
+						checkIsVerify("元聚盈");
 					}
 				}
 			} else {
@@ -597,6 +621,9 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 					}else if("稳定盈投资".equals(type)){
 						intent.putExtra("PRODUCT_INFO", productInfo);
 						intent.setClass(ProductDataActivity.this, BidWDYActivity.class);
+					}else if("元聚盈".equals(type)){
+						intent.putExtra("PRODUCT_INFO", productInfo);
+						intent.setClass(ProductDataActivity.this, BidYJYActivity.class);
 					}
 					investBtn.setEnabled(true);
 					startActivity(intent);
@@ -612,41 +639,6 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 		});
 	}
 	
-	/**
-	 * 判断用户是否已经绑卡
-	 * @param type "充值提现"
-	 */
-	private void checkIsBindCard(final String type){
-		RequestApis.requestIsBinding(ProductDataActivity.this, SettingsManager.getUserId(getApplicationContext()), "宝付", new OnIsBindingListener() {
-			@Override
-			public void isBinding(boolean flag, Object object) {
-				Intent intent = new Intent();
-				if(flag){
-					//用户已经绑卡
-					if("新手标投资".equals(type)){
-						intent.putExtra("PRODUCT_INFO", productInfo);
-						intent.setClass(ProductDataActivity.this, BidXSBActivity.class);
-					}else if("VIP投资".equals(type)){
-						intent.putExtra("PRODUCT_INFO", productInfo);
-						intent.setClass(ProductDataActivity.this, BidVIPActivity.class);
-					}else if("政信贷投资".equals(type)){
-						intent.putExtra("PRODUCT_INFO", productInfo);
-						intent.setClass(ProductDataActivity.this, BidZXDActivity.class);
-					}else if("私人尊享".equals(type)){
-						intent.putExtra("PRODUCT_INFO", productInfo);
-						intent.setClass(ProductDataActivity.this, BidSRZXActivity.class);
-					}
-					startActivity(intent);
-					investBtn.setEnabled(true);
-					finish();
-				}else{
-					//用户还没有绑卡
-					showMsgDialog(ProductDataActivity.this, "绑卡", "因我司变更支付渠道，请您重新绑卡！");
-				}
-			}
-		});
-	}
-
 	/**
 	 * 关联公司的信息
 	 * @param loanId
@@ -803,6 +795,32 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 						handler.sendEmptyMessage(REQUEST_ASSC_WHAT);
 					}
 		});
+		recordTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+	/**
+	 * 判断某个用户有没有买过私人尊享的标
+	 * @param userId
+	 * @param borrowId
+	 */
+	private void requestYJYCurrentUserInvest(String userId,String borrowId){
+		AsyncYGZXBorrowDetail recordTask = new AsyncYGZXBorrowDetail(ProductDataActivity.this, userId, borrowId,
+				new OnCommonInter() {
+					@Override
+					public void back(BaseInfo baseInfo) {
+						if(baseInfo != null){
+							int resultCode = SettingsManager.getResultCode(baseInfo);
+							if(resultCode == 0){
+								isInvested = true;
+							}else{
+								isInvested = false;
+							}
+						}else{
+							isInvested = false;
+						}
+						handler.sendEmptyMessage(REQUEST_ASSC_WHAT);
+					}
+				});
 		recordTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 	

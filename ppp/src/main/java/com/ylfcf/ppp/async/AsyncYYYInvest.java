@@ -23,18 +23,20 @@ public class AsyncYYYInvest extends AsyncTaskBase{
 	private String money;
 	private String investFrom;//投资来源
 	private String couponId;
+	private String redbagId;
 	private OnCommonInter onCommonInter;
 	
 	private BaseInfo baseInfo;
 	
 	public AsyncYYYInvest(Context context, String borrowId,String investUserId,String money,String investFrom,
-			String couponId,OnCommonInter onCommonInter) {
+			String couponId,String redbagId,OnCommonInter onCommonInter) {
 		this.context = context;
 		this.borrowId = borrowId;
 		this.investUserId = investUserId;
 		this.money = money;
 		this.investFrom = investFrom;
 		this.couponId = couponId;
+		this.redbagId = redbagId;
 		this.onCommonInter = onCommonInter;
 	}
 
@@ -43,7 +45,7 @@ public class AsyncYYYInvest extends AsyncTaskBase{
 		String url[] = null;
 		String result = null;
 		try {
-			url = URLGenerator.getInstance().getYYYBorrowInvestURL(borrowId, money, investUserId,investFrom,couponId);
+			url = URLGenerator.getInstance().getYYYBorrowInvestURL(borrowId, money, investUserId,investFrom,couponId,redbagId);
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}

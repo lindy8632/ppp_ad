@@ -18,12 +18,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncAddPhoneInfo;
 import com.ylfcf.ppp.async.AsyncCompLogin;
+import com.ylfcf.ppp.async.AsyncGetLCSName;
 import com.ylfcf.ppp.async.AsyncHuiFuRMBAccount;
 import com.ylfcf.ppp.async.AsyncJXQLogList;
 import com.ylfcf.ppp.async.AsyncLogin;
@@ -34,11 +34,13 @@ import com.ylfcf.ppp.async.AsyncXCFLActiveTime;
 import com.ylfcf.ppp.async.AsyncYJBInterest;
 import com.ylfcf.ppp.async.AsyncYiLianRMBAccount;
 import com.ylfcf.ppp.db.DBGesturePwdManager;
+import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.GesturePwdEntity;
 import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.entity.UserRMBAccountInfo;
 import com.ylfcf.ppp.entity.UserYUANAccountInfo;
+import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
@@ -52,7 +54,9 @@ import com.ylfcf.ppp.ptr.PtrHandler;
 import com.ylfcf.ppp.ui.AccountSettingActivity;
 import com.ylfcf.ppp.ui.AccountSettingCompActivity;
 import com.ylfcf.ppp.ui.AwardDetailsActivity;
+import com.ylfcf.ppp.ui.BannerTopicActivity;
 import com.ylfcf.ppp.ui.BindCardActivity;
+import com.ylfcf.ppp.ui.BorrowListYJYActivity;
 import com.ylfcf.ppp.ui.ForgetPwdActivity;
 import com.ylfcf.ppp.ui.FundsDetailsActivity;
 import com.ylfcf.ppp.ui.GestureEditActivity;
@@ -70,14 +74,18 @@ import com.ylfcf.ppp.ui.UserVerifyActivity;
 import com.ylfcf.ppp.ui.WithdrawActivity;
 import com.ylfcf.ppp.ui.WithdrawCompActivity;
 import com.ylfcf.ppp.ui.WithdrawPwdGetbackActivity;
+import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.Constants.UserType;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 
 import java.text.DecimalFormat;
+
+import static com.ylfcf.ppp.R.id.my_account_personal_zscp_invest_btn;
 
 /**
  * 我的
@@ -97,6 +105,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 	
 	private static final int REQUEST_GET_USERINFO_WHAT = 1003;
 	private static final int REQUEST_GET_USERINFO_SUCCESS = 1004;
+
+	private static final int REQUEST_ISLCS_WHAT = 1007;//改用户是否是理财师
+	private static final int REQUEST_ISLCS_SUC = 1008;
 	
     private View rootView;
 	private View topLayout;
@@ -155,7 +166,11 @@ public class UserFragment extends BaseFragment implements OnClickListener{
     private LinearLayout yqyjLayout;//邀请有奖
     private LinearLayout zhszLayout;//账户设置
     private View line1,line2,line3,line4,line6;
-    private ScrollView mScrollView;
+    private View compMainLayout;
+
+	//元聚盈模块
+	private LinearLayout yjyLayout;//元聚盈模块
+	private Button yjyInvestBtn,yjyAppointBtn;//元聚盈投资以及预约按钮
     
     private PtrClassicFrameLayout mainRefreshLayout = null;//下拉刷新的布局
     
@@ -165,6 +180,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
     
     private boolean isSetWithdrawPwd = false;//用户是否已经设置交易密码
     private boolean isShowCompLoginPWDDialog = false;//是否已经弹出过修改企业用户初始登录密码的dialog
+	private boolean isLcs = false;
     
     private Handler handler = new Handler(){
 		@Override
@@ -309,6 +325,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				}
 				requestYilianAccount(userId,false);
 				break;
+			case REQUEST_ISLCS_WHAT:
+				requestLcsName(SettingsManager.getUser(mainActivity.getApplicationContext()));
+				break;
 			default:
 				break;
 			}
@@ -418,7 +437,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		yqyjLayout.setOnClickListener(this);
 		zhszLayout = (LinearLayout)view.findViewById(R.id.my_account_zhsz_layout);
 		zhszLayout.setOnClickListener(this);
-		mScrollView = (ScrollView)view.findViewById(R.id.my_account_scrolview);
+		compMainLayout = view.findViewById(R.id.user_fragment_company_layout);
 		line1 = view.findViewById(R.id.my_account_line1);
 		line2 = view.findViewById(R.id.my_account_line2);
 		line3 = view.findViewById(R.id.my_account_line3);
@@ -429,6 +448,13 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		usernameTVComp = (TextView) view.findViewById(R.id.company_account_username);
 		companyNameTV = (TextView) view.findViewById(R.id.company_account_companyname);
 		zhyeTotalTVComp = (TextView) view.findViewById(R.id.company_account_zhye_total_tv);
+
+		//元聚盈
+		yjyLayout = (LinearLayout) view.findViewById(R.id.my_account_personal_zscp_layout);
+		yjyInvestBtn = (Button) view.findViewById(my_account_personal_zscp_invest_btn);
+		yjyInvestBtn.setOnClickListener(this);
+		yjyAppointBtn = (Button) view.findViewById(R.id.my_account_personal_zscp_yy_btn);
+		yjyAppointBtn.setOnClickListener(this);
 		
 //		initMainLayout();
 	}
@@ -457,6 +483,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				line2.setVisibility(View.GONE);
 				line4.setVisibility(View.GONE);
 			}
+			handler.sendEmptyMessage(REQUEST_ISLCS_WHAT);
 			new Handler().postDelayed(new Runnable() {
 				@Override
 				public void run() {
@@ -503,7 +530,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-            	return PtrDefaultHandler.checkContentCanBePulledDown(frame, mScrollView, header);
+            	return PtrDefaultHandler.checkContentCanBePulledDown(frame, compMainLayout, header);
             }
         });
 		mainRefreshLayout.setResistance(1.7f);
@@ -708,6 +735,20 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			//企业登录导航
 			initCompanyLayout();
 			break;
+		case R.id.my_account_personal_zscp_invest_btn:
+			//元聚盈投资按钮
+			Intent yjyInvestIntent = new Intent(mainActivity,BorrowListYJYActivity.class);
+			startActivity(yjyInvestIntent);
+			break;
+		case R.id.my_account_personal_zscp_yy_btn:
+			//元聚盈预约
+			Intent intentYJYAppoint = new Intent(getActivity(),BannerTopicActivity.class);
+			BannerInfo info = new BannerInfo();
+			info.setArticle_id(Constants.TopicType.YJY_APPOINT);
+			info.setLink_url(URLGenerator.YJY_TOPIC_URL);
+			intentYJYAppoint.putExtra("BannerInfo",info);
+			startActivity(intentYJYAppoint);
+			break;
 		default:
 			break;
 		}
@@ -782,8 +823,36 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		} catch (Exception e) {
 		}
 	}
-	
-	
+
+	/**
+	 * 获取理财师的名字
+	 * @param phone
+	 */
+	private void requestLcsName(String phone){
+		AsyncGetLCSName lcsTask = new AsyncGetLCSName(mainActivity, phone, new Inter.OnCommonInter() {
+			@Override
+			public void back(BaseInfo baseInfo) {
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0){
+						//是理财师
+						isLcs = true;
+						yjyLayout.setVisibility(View.VISIBLE);
+					}else{
+						//非理财师
+						isLcs = false;
+						yjyLayout.setVisibility(View.GONE);
+					}
+				}else{
+					isLcs = false;
+					yjyLayout.setVisibility(View.GONE);
+				}
+			}
+		});
+		lcsTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+
 	/**
 	 * 验证用户是否已经认证
 	 * @param type “充值”,“提现”，“邀请有奖”

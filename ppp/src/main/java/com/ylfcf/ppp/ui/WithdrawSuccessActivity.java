@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 /**
@@ -20,6 +21,7 @@ import com.ylfcf.ppp.util.Util;
  */
 public class WithdrawSuccessActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "WithdrawSuccessActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private TextView withdrawMoneyText;
@@ -68,5 +70,19 @@ public class WithdrawSuccessActivity extends BaseActivity implements
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 }

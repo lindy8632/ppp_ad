@@ -1,5 +1,10 @@
 package com.ylfcf.ppp.common;
 
+import android.content.Context;
+import android.text.TextUtils;
+
+import com.ylfcf.ppp.util.YLFLogger;
+
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,11 +16,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
-import com.ylfcf.ppp.util.YLFLogger;
-
-import android.content.Context;
-import android.text.TextUtils;
 
 /**
  * 本地文件存储的工具类
@@ -43,6 +43,7 @@ public class FileUtil {
 	public static final String YLFCF_ZXD_BAOYING_CACHE = "zxd_baoying_cache";//政信贷保盈列表
 	public static final String YLFCF_ZXD_WENYING_CACHE = "zxd_wenying_cache";//政信贷稳赢列表
 	public static final String YLFCF_YJH_CACHE = "yjh_cache";//元计划列表
+	public static final String YLFCF_YGZX_CACHE = "ygzx_total_cache";//员工专属产品（元聚盈）列表
 
 	/**
 	 * 获取文件目录，首先检查SD卡是否存在，存在则获取应用默认的文件目录，或者获取内部存储自定义目录
@@ -116,8 +117,6 @@ public class FileUtil {
 	 * 
 	 * @param filename
 	 *            文件名称
-	 * @param content
-	 *            内容
 	 */
 	public static void saveObject(Context context, String filename, Object ob) throws IOException {
 		YLFLogger.d("saveFile " + filename);

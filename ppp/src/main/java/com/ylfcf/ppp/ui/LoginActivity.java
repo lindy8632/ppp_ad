@@ -25,6 +25,7 @@ import com.ylfcf.ppp.inter.Inter.OnLoginInter;
 import com.ylfcf.ppp.util.Constants.UserType;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 /**
  * 登录
@@ -32,6 +33,7 @@ import com.ylfcf.ppp.util.Util;
  *
  */
 public class LoginActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "LoginActivity";
 	private static final int REQUEST_PERSONAL_LOGIN_SUCCESS_WHAT = 1001;
 	private static final int REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT = 1002;
 	private static final int REQUEST_COMPANY_LOGIN_SUCCESS_WHAT = 1003;
@@ -190,7 +192,21 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		forgetPwdCompanyTV = (TextView)findViewById(R.id.login_company_forget_pwd_tv);
 		forgetPwdCompanyTV.setOnClickListener(this);
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -450,17 +466,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 						}
 						int resultCode = SettingsManager.getResultCode(baseInfo);
 						if(resultCode == 0){
-//							UserInfo user = baseInfo.getUserInfo();
-//							if(user != null){
-//								GesturePwdEntity entity = DBGesturePwdManager.getInstance(LoginActivity.this.getApplicationContext()).getGesturePwdEntity(user.getId());
-//								if(entity != null && !entity.getPwd().isEmpty()){
-//									
-//								}else{
-//									Intent intent = new Intent(LoginActivity.this,GestureEditActivity.class);
-//									startActivity(intent);
-//								}
-//							}
-							
 							new Handler().postDelayed(new Runnable() {
 								@Override
 								public void run() {

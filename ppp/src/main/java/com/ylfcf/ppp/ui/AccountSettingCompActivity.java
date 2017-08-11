@@ -16,6 +16,7 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 企业用户的账户设置页面
@@ -24,6 +25,7 @@ import com.ylfcf.ppp.util.SettingsManager;
  */
 public class AccountSettingCompActivity extends BaseActivity implements
 			OnClickListener{
+	private static final String className = "AccountSettingCompActivity";
 	private final int REQUEST_GET_USERINFO_SUCCESS = 2601;
 	private final int REQUEST_GET_USERINFO_WHAT = 2602;
 
@@ -117,11 +119,25 @@ public class AccountSettingCompActivity extends BaseActivity implements
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计
+	}
+
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		handler.removeCallbacksAndMessages(null);
 	}
-	
+
 	/**
 	 * 请求用户信息，根据hf_user_id字段判断用户是否有汇付账户
 	 * 

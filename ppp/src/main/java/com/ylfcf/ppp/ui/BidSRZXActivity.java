@@ -42,6 +42,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.ui.BidZXDActivity.OnHBWindowItemClickListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.HBListPopupwindow;
 import com.ylfcf.ppp.view.JXQListPopupwindow;
@@ -59,6 +60,7 @@ import java.util.concurrent.TimeUnit;
  * @author Mr.liu
  */
 public class BidSRZXActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BidSRZXActivity";
 	private static final int REQUEST_INVEST_WHAT = 1201;
 	private static final int REQUEST_INVEST_SUCCESS = 1202;
 	private static final int REQUEST_INVEST_EXCEPTION = 1203;
@@ -95,7 +97,8 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 
 	private ProductInfo mProductInfo;
 	private int moneyInvest = 0;
-	private int hbMoney = 0;
+	private double hbMoneyD = 0;
+    private double jxqMoneyD = 0;
 	private Button investBtn;
 	private List<RedBagInfo> hbList = new ArrayList<RedBagInfo>();// 用户未使用的红包列表
 	private List<JiaxiquanInfo> jxqList = new ArrayList<JiaxiquanInfo>();//可使用的加息券列表
@@ -172,7 +175,6 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_srzx_activity);
 
-		usePromptList.add("元金币");
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
 		if(mProductInfo != null){
@@ -187,10 +189,19 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		requestUserAccountInfo(SettingsManager
 				.getUserId(getApplicationContext()));
 	}
-	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -252,6 +263,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		mainLayout = (LinearLayout) findViewById(R.id.bid_srzx_activity_mainlayout);
 		
 		hbLayout = (LinearLayout) findViewById(R.id.bid_srzx_activity_hb_layout);
+		hbLayout.setOnClickListener(this);
 		hbET = (EditText) findViewById(R.id.bid_srzx_activity_hb_et);
 		hbArrowLayout = (RelativeLayout) findViewById(R.id.bid_srzx_activity_hb_arrow_layout);
 		hbArrowLayout.setOnClickListener(this);
@@ -269,7 +281,11 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		if(usePromptList != null && usePromptList.size() > 1){
 			for(int i=0;i<usePromptList.size();i++){
 				String prompt = usePromptList.get(i);
-				sb.append(prompt);
+				if(i == usePromptList.size() - 1){
+					sb.append(prompt);
+				}else{
+					sb.append(prompt).append("、");
+				}
 			}
 			usePrompt.setVisibility(View.VISIBLE);
 			usePrompt.setText(sb.toString()+"只能使用其中一种");
@@ -314,7 +330,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 				.valueOf(borrowBalance));
 		computeIncome(mProductInfo.getInterest_rate(),
 				mProductInfo.getAndroid_interest_rate(), (String)jxqArrowLayout.getTag(),borrowBalance,
-				mProductInfo.getInvest_period());
+				(String)hbArrowLayout.getTag(),mProductInfo.getInvest_period());
 	}
 
 	private OnTouchListener mOnTouchListener = new OnTouchListener() {
@@ -340,7 +356,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 				investMoney = Integer.parseInt(investMoneyStr);
 				computeIncome(mProductInfo.getInterest_rate(),
 						mProductInfo.getAndroid_interest_rate(),(String)jxqArrowLayout.getTag(), investMoney,
-						mProductInfo.getInvest_period());
+						(String)hbArrowLayout.getTag(),mProductInfo.getInvest_period());
 			} catch (Exception e) {
 				yjsyText.setText("0.00");
 			}
@@ -434,6 +450,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 					hbET.setText("");
 					hbET.setTag("");
 					hbArrowLayout.setTag("0");
+					updateInterest();
 				} else {
 					RedBagInfo info = hbList.get(position - 1);
 					String moneyStr = investMoneyET.getText().toString();
@@ -451,9 +468,19 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 						hbET.setText("");
 						Util.toastLong(BidSRZXActivity.this, "投资金额尚未达到"+info.getMoney()+"元红包的单笔投资金额要求");
 					}else{
-						hbET.setText(info.getMoney()+"元红包，"+"需投资"+info.getNeed_invest_money()+"元及以上可用");
+						//其他加息道具置零
+						jxqEditText.setText(null);
+						jxqEditText.setTag("");
+						jxqArrowLayout.setTag("0");
+
+						if(limitMoney >= 10000 && limitMoney % 10000 == 0){
+							hbET.setText(info.getMoney()+"元红包，"+"需投资"+limitMoney/10000+"万元及以上可用");
+						}else{
+							hbET.setText(info.getMoney()+"元红包，"+"需投资"+limitMoney+"元及以上可用");
+						}
 						hbET.setTag(info.getId());
 						hbArrowLayout.setTag(info.getMoney());
+						updateInterest();
 					}
 				}
 			}
@@ -500,10 +527,15 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 						jxqEditText.setText("");
 						Util.toastLong(BidSRZXActivity.this, "您的投资金额不满足加息券要求");
 					}else{
-						if(limitMoney >= 10000){
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+limitMoney/10000+"万元及以上可用");
+						//其他加息道具置零
+						hbET.setText("");
+						hbET.setTag("");
+						hbArrowLayout.setTag("0");
+
+						if(limitMoney >= 10000 && limitMoney%10000 == 0){
+							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney/10000)+"万元及以上可用");
 						}else{
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+info.getMin_invest_money()+"元及以上可用");
+							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney)+"元及以上可用");
 						}
 						jxqEditText.setTag(info.getId());
 						jxqArrowLayout.setTag(info.getMoney());
@@ -526,7 +558,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		}
 		computeIncome(mProductInfo.getInterest_rate(),
 				mProductInfo.getAndroid_interest_rate(),(String)jxqArrowLayout.getTag(), investMoneyInt,
-				mProductInfo.getInvest_period());
+				(String)hbArrowLayout.getTag(),mProductInfo.getInvest_period());
 	}
 
 	/**
@@ -588,24 +620,19 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	//投资前的判断
 	private void borrowInvest() {
 		String moneyStr = investMoneyET.getText().toString();
-		double needRechargeMoeny = 0d;// 需要支付的金额
-		double userBanlanceDouble = 0d;//用户账户余额
 		double borrowBalanceDouble = 0d;//标的剩余可投金额
 		try {
 			moneyInvest = Integer.parseInt(moneyStr);
 		} catch (Exception e) {
 		}
 		try {
-			hbMoney = Integer.parseInt(hbArrowLayout.getTag().toString());
+			hbMoneyD = Double.parseDouble(hbArrowLayout.getTag().toString());
 		} catch (Exception e) {
 		}
-		needRechargeMoeny = moneyInvest;
-		// 判断投资金额是否大于账户余额
-		String userBanlance = userBalanceTV.getText().toString();
-		try {
-			userBanlanceDouble = Double.parseDouble(userBanlance);
-		} catch (Exception e) {
-		}
+        try {
+            jxqMoneyD = Double.parseDouble(jxqArrowLayout.getTag().toString());
+        } catch (Exception e) {
+        }
 		String borrowBalance = String.valueOf(borrowBalanceTemp);
 		try {
 			borrowBalanceDouble = Double.parseDouble(borrowBalance);
@@ -630,6 +657,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	private void showInvestDialog() {
 		View contentView = LayoutInflater.from(this).inflate(
 				R.layout.invest_prompt_layout, null);
+        LinearLayout yjbjxqLayout = (LinearLayout) contentView.findViewById(R.id.invest_prompt_yjbjxq_layout_detail);//元金币和加息券使用的布局
 		Button sureBtn = (Button) contentView
 				.findViewById(R.id.invest_prompt_layout_surebtn);
 		Button cancelBtn = (Button) contentView
@@ -640,13 +668,23 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		RelativeLayout hbLayout = (RelativeLayout) contentView.findViewById(R.id.invest_prompt_hb_layout_detail);//红包布局
 		TextView hbMoneyTV = (TextView) contentView
 				.findViewById(R.id.invest_prompt_layout_hb_count);
+        TextView yjbjxqText = (TextView) contentView
+                .findViewById(R.id.invest_prompt_layout_yjbjxq_count);//元金币加息券 已使用多少
 		detailLayout.setVisibility(View.GONE);
-		if(hbMoney > 0){
+		if(hbMoneyD > 0){
 			hbLayout.setVisibility(View.VISIBLE);
-			hbMoneyTV.setText(hbMoney + "元红包");
+			hbMoneyTV.setText((int)hbMoneyD+"元红包");
 		}else{
 			hbLayout.setVisibility(View.GONE);
 		}
+        //使用加息券
+        if(jxqMoneyD > 0){
+            yjbjxqLayout.setVisibility(View.VISIBLE);
+            yjbjxqText.setText(jxqMoneyD+"%的加息券");
+        }else{
+            yjbjxqLayout.setVisibility(View.GONE);
+        }
+        hbMoneyTV.setText((int)hbMoneyD+"元红包");
 		totalMoney.setText(moneyInvest + "");
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this,
@@ -697,7 +735,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		}
 		computeIncome(mProductInfo.getInterest_rate(),
 				mProductInfo.getAndroid_interest_rate(), String.valueOf(jxqArrowLayout.getTag()),investMoneyInt,
-				mProductInfo.getInvest_period());
+				(String)hbArrowLayout.getTag(),mProductInfo.getInvest_period());
 	}
 
 	/**
@@ -720,7 +758,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		investMoneyET.setText(borrowBalance + "");
 		computeIncome(mProductInfo.getInterest_rate(),
 				mProductInfo.getAndroid_interest_rate(),(String)jxqArrowLayout.getTag(), borrowBalance,
-				mProductInfo.getInvest_period());
+				(String)hbArrowLayout.getTag(),mProductInfo.getInvest_period());
 	}
 
 	private void resetInvestMoneyET() {
@@ -756,11 +794,13 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	 * 根据年化率和投资金额计算收益
 	 */
 	private String computeIncome(String rateStr, String extraRateStr,String floatRate,
-			int investMoney, String daysStr) {
+			int investMoney,String hbMoney, String daysStr) {
 		float rateF = 0f;
 		float extraRateF = 0f;
 		float floatRateF = 0f;
 		int days = 0;
+		double hbMoneyD = 0;
+
 		try {
 			rateF = Float.parseFloat(rateStr);
 			days = Integer.parseInt(daysStr);
@@ -775,15 +815,20 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-		float income = 0f;
-		income = (rateF + extraRateF + floatRateF) * investMoney * days / 36500;
+		try{
+			hbMoneyD = Double.parseDouble(hbMoney);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		double income = 0d;
+		income = (rateF + extraRateF + floatRateF) * investMoney * days / 36500
+				+ rateF * hbMoneyD * days / 36500;
 		DecimalFormat df = new java.text.DecimalFormat("#.00");
 		if (income < 1) {
 			yjsyText.setText("0" + df.format(income));
 		} else {
 			yjsyText.setText(df.format(income));
 		}
-
 		return df.format(income);
 	}
 

@@ -1,16 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
-import com.ylfcf.ppp.util.ImageLoaderManager;
-import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.viewpagerindicator.CirclePageIndicator;
-
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -22,12 +11,25 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.ProjectCailiaoInfo;
+import com.ylfcf.ppp.util.ImageLoaderManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.viewpagerindicator.CirclePageIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 产品资料图片-----大图片列表
  * @author Administrator
  *
  */
 public class ProductDataDetailsActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "ProductDataDetailsActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private ViewPager viewpager;
@@ -81,6 +83,20 @@ public class ProductDataDetailsActivity extends BaseActivity implements OnClickL
 		viewpager.setAdapter(mPagerAdapter);
 		indicator.setViewPager(viewpager);
 		viewpager.setCurrentItem(position, false);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

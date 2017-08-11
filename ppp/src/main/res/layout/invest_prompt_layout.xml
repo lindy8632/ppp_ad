@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginBottom="@dimen/common_measure_20dp"
         android:gravity="center_horizontal"
         android:text="会员投资提示"
         android:textSize="@dimen/common_measure_24dp"
@@ -31,7 +32,7 @@
             <TextView 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="您已领取"
+                android:text="您已使用"
                 android:textSize="@dimen/common_measure_20dp"
                 android:textColor="@color/gray"/>
             
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/common_measure_20dp"
                 android:textColor="@color/common_topbar_bg_color"/>
-            
+
         </LinearLayout>
         
         <TextView 
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/invest_prompt_layout_hb_top"
             android:gravity="center_horizontal"
-            android:text="(标的到期时将随本息一起返还)"
+            android:text="(到期时红包及红包收益随本息一起发放)"
             android:textSize="@dimen/common_measure_20dp"
             android:textColor="@color/gray"/>
         
@@ -60,7 +61,6 @@
         android:id="@+id/invest_prompt_yjbjxq_layout_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_measure_20dp"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
         android:visibility="gone">
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/common_measure_20dp"
             android:textColor="@color/common_topbar_bg_color"/>
-        
+
     </LinearLayout >
     
     <!-- 投资金额的布局 -->

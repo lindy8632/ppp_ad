@@ -29,6 +29,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import org.jsoup.Jsoup;
@@ -46,8 +47,8 @@ import java.util.ArrayList;
  */
 public class BorrowDetailSRZXActivity extends BaseActivity implements
 		OnClickListener {
-
-private static final int REFRESH_PROGRESSBAR = 1902;
+	private static final String className = "BorrowDetailSRZXActivity";
+	private static final int REFRESH_PROGRESSBAR = 1902;
 	
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
@@ -114,6 +115,20 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 			// 先根据Borrowid获取projectid
 			getProductDetailsById(recordInfo.getBorrow_id());
 		}
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override
@@ -596,9 +611,9 @@ private static final int REFRESH_PROGRESSBAR = 1902;
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
-								ProductInfo info = baseInfo.getmProductInfo();
-								initDataFromRecord(info);
-								getProjectDetails(info.getProject_id());
+								productInfo = baseInfo.getmProductInfo();
+								initDataFromRecord(productInfo);
+								getProjectDetails(productInfo.getProject_id());
 							}else{
 								mLoadingDialog.dismiss();
 							}

@@ -29,6 +29,7 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.CommonPopwindow;
 import com.ylfcf.ppp.view.RechargeSpinnerPopwindow;
@@ -48,6 +49,7 @@ import java.util.Map;
  *
  */
 public class BindCardActivity extends BaseActivity implements OnClickListener {
+	private static final String className = "BindCardActivity";
 	private static final int REQUEST_USERINFO_WHAT = 1201;
 	private static final int REQUEST_USERINFO_SUCCESS = 1202;
 	private static final int REQUEST_USERINFO_FAILE = 1203;
@@ -155,8 +157,17 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 	}
-	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -359,6 +370,9 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 		}else if("私人尊享".equals(type)){
 			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
 			intent.setClass(BindCardActivity.this, BidSRZXActivity.class);
+		}else if("元聚盈".equals(type)){
+			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
+			intent.setClass(BindCardActivity.this, BidYJYActivity.class);
 		}else{
 			intent.setClass(BindCardActivity.this, MainFragmentActivity.class);
 		}

@@ -235,7 +235,7 @@
                             android:layout_marginTop="@dimen/common_measure_10dp"
                             android:gravity="center_horizontal"
                             android:orientation="horizontal" >
-                            
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -258,10 +258,17 @@
                                 android:textColor="@color/gray2"
                                 android:textSize="@dimen/common_measure_16dp" />
 
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal" >
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/common_measure_10dp"
                                 android:text="预期收益"
                                 android:textColor="@color/gray2"
                                 android:textSize="@dimen/common_measure_16dp" />
@@ -282,6 +289,7 @@
                                 android:text="元"
                                 android:textColor="@color/gray2"
                                 android:textSize="@dimen/common_measure_16dp" />
+
                         </LinearLayout>
                     </LinearLayout>
 

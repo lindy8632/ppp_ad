@@ -17,6 +17,7 @@ import com.ylfcf.ppp.fragment.FundDetailsZXDFragment;
 import com.ylfcf.ppp.inter.Inter.OnIsYXBInvestorListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.LoadingDialog;
 
 /**
@@ -83,7 +84,19 @@ public class FundsDetailsActivity extends BaseActivity implements OnClickListene
 			break;
 		}
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

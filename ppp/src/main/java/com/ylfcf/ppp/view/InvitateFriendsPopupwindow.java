@@ -2,8 +2,6 @@ package com.ylfcf.ppp.view;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.PaintDrawable;
 import android.view.Gravity;
 import android.view.View;
@@ -20,10 +18,10 @@ import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
 import com.umeng.socialize.utils.Log;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.ShareInfo;
-import com.ylfcf.ppp.util.YLFLogger;
 
 import java.util.Map;
 
@@ -44,7 +42,6 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	private String title;//分享出去的标题
 	private String text;//分享出去的内容
 	private String fromWhere;
-	private Bitmap mBitmap;
 
 	public InvitateFriendsPopupwindow(Context context, View convertView,
 			int width, int height) {
@@ -75,58 +72,49 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 		cancelBtn.setOnClickListener(this);
 	}
 
-	public void show(View parentView, String url, String fromWhere, ShareInfo mShareInfo, Bitmap mBitmap) {
+	public void show(View parentView, String url, String fromWhere, ShareInfo mShareInfo) {
 		this.url = url;
 		this.fromWhere = fromWhere;
-		this.mBitmap = mBitmap;
 		this.setBackgroundDrawable(new PaintDrawable(R.color.transparent)); // 使得返回键有效
 		this.setAnimationStyle(R.style.bidPopwindowStyle);
 		this.setOutsideTouchable(true);
 		this.setFocusable(true);
 		this.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
 		if("邀请有奖".equals(fromWhere)){
-			image = new UMImage(context, BitmapFactory.decodeResource(
-					context.getResources(), R.drawable.share_logo));
-			title = "注册即刻财富增值，7月理财100%中奖、还可免费购物。";
-			text = "注册送30元金币，可抵扣30元投资现金，首投加息0.2%，7月投资更有免费购物、100%中奖活动！";
+			title = "我来喊你注册啦，来拿百元现金和加息券，有钱一起赚";
+			text = "注册立得加息券，更有百元现金等你拿，好友喊你来元立方赚钱啦~";
+			image = new UMImage(context, R.drawable.share_logo);
 		}else if("新春福利2017".equals(fromWhere)){
-			image = new UMImage(context, BitmapFactory.decodeResource(
-					context.getResources(), R.drawable.xcfl_share_logo));
 			title = "小元喊你来领压岁钱";
 			text = "元月来元立方领压岁钱啦，千万现金注册即领！";
+			image = new UMImage(context, R.drawable.xcfl_share_logo);
 		}else if("开门红乐享返现".equals(fromWhere)){
-			image = new UMImage(context, BitmapFactory.decodeResource(
-					context.getResources(), R.drawable.lxfx_share_logo));
 			title = "开年红，乐享返现！更有加息券等你来领！";
 			text = "一唱雄鸡天下白，元立方金服与您一起喜迎新春，特推出投资返现活动，另有无门槛加息券等您来领！";
+			image = new UMImage(context, R.drawable.lxfx_share_logo);
 		}else if("三月份签到活动".equals(fromWhere)){
-			image = new UMImage(context, BitmapFactory.decodeResource(
-					context.getResources(), R.drawable.sign_share_logo));
 			title = "天天签到，天天领取加息券！";
 			text = "3月1日起，每日签到小元都会送您一张加息券，为您理财添彩头。";
+			image = new UMImage(context, R.drawable.sign_share_logo);
 		}else if("会员福利二期".equals(fromWhere)){
-			image = new UMImage(context, BitmapFactory.decodeResource(
-					context.getResources(), R.drawable.hyfl2_share_logo));
 			title = "会员福利，免费礼品天天领!";
 			text = "3月15日起，每天登录元立方金服，20种礼品任您选，只求您登录不要您出钱。";
+			image = new UMImage(context, R.drawable.hyfl2_share_logo);
 		}else if("四月份推广活动".equals(fromWhere)){
-			image = new UMImage(context, BitmapFactory.decodeResource(
-					context.getResources(), R.drawable.yqhy_share_logo));
 			title = "邀请好友理财，奖励高达1.3%";
 			text = "邀好友来元立方理财，可获好友年化投资额高达1.3%的奖励！";
+			image = new UMImage(context, R.drawable.yqhy_share_logo);
 		}else if("每周一抢现金".equals(fromWhere)){
-			image = new UMImage(context, BitmapFactory.decodeResource(
-					context.getResources(), R.drawable.qxj5_share_logo));
 			title = "每周一，抢现金，人人有份！";
 			text = "关注进入微信群，每周发红包，大家疯狂开抢！平台周一更有超大现金红包等你领取！";
+			image = new UMImage(context, R.drawable.qxj5_share_logo);
 		}else{
 			title = mShareInfo.getTitle();
 			text = mShareInfo.getContent();
-			if(mBitmap == null){
-				image = new UMImage(context, BitmapFactory.decodeResource(
-						context.getResources(), R.drawable.share_logo_default));
+			if(mShareInfo == null){
+				image = new UMImage(context, R.drawable.share_logo_default);
 			}else{
-				image = new UMImage(context, mBitmap);
+				image = new UMImage(context,mShareInfo.getSharePicURL());
 			}
 		}
 	}
@@ -166,9 +154,13 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	 * @param plateName
 	 */
 	private void shareWechat(SHARE_MEDIA plateName) {
+		UMWeb web = new UMWeb(url);//分享链接
+		web.setTitle(title);//标题
+		web.setThumb(image);  //缩略图
+		web.setDescription(text);//描述
+
 		ShareAction shareAction = new ShareAction(context);
-		shareAction.withTitle(title).withText(text)
-				.withTargetUrl(url).withMedia(image);
+		shareAction.withMedia(web);
 		shareAction.setPlatform(plateName).setCallback(umShareListener).share();
 	}
 
@@ -177,10 +169,13 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	 * @param plateName
 	 */
 	private void shareQQ(SHARE_MEDIA plateName) {
+		UMWeb web = new UMWeb(url);//分享链接
+		web.setTitle(title);//标题
+		web.setThumb(image);  //缩略图
+		web.setDescription(text);//描述
+
 		ShareAction shareAction = new ShareAction(context);
-		shareAction.withText(text)
-				 .withMedia(image)
-				.withTitle(title).withTargetUrl(url);
+		shareAction.withMedia(web);
 		shareAction.setPlatform(plateName).setCallback(umShareListener).share();
 	}
 
@@ -189,17 +184,24 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	 * @param plateName
 	 */
 	private void shareSina(SHARE_MEDIA plateName) {
+		UMWeb web = new UMWeb(url);//分享链接
+		web.setTitle(title);//标题
+		web.setThumb(image);  //缩略图
+		web.setDescription(text);//描述
+
 		ShareAction shareAction = new ShareAction(context);
-		shareAction.withText(text);
-		shareAction.withTitle(title);
-		shareAction.withTargetUrl(url);
-		shareAction.withMedia(image);
+		shareAction.withMedia(web);
 		shareAction.setPlatform(plateName).setCallback(umShareListener).share();
 	}
 
 	// 分享回调
 	private UMShareListener umShareListener = new UMShareListener() {
-        @Override
+		@Override
+		public void onStart(SHARE_MEDIA share_media) {
+			//分享开始的回调，可以用来处理等待框，或相关的文字提示
+		}
+
+		@Override
         public void onResult(SHARE_MEDIA platform) {
             Log.d("plat","platform"+platform);
             if(platform.name().equals("WEIXIN_FAVORITE")){
@@ -207,13 +209,11 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
             }else{
                 Toast.makeText(context, " 分享成功啦", Toast.LENGTH_SHORT).show();
             }
-            YLFLogger.d("中秋大转盘", "分享成功。");
         }
 
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
             Toast.makeText(context, " 分享失败啦", Toast.LENGTH_SHORT).show();
-            YLFLogger.d("中秋大转盘", "分享失败。");
             if(t!=null){
                 Log.d("throw","throw:"+t.getMessage());
             }
@@ -222,12 +222,16 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
         @Override
         public void onCancel(SHARE_MEDIA platform) {
             Toast.makeText(context, " 分享取消了", Toast.LENGTH_SHORT).show();
-            YLFLogger.d("中秋大转盘", "分享取消。");
         }
     };
 
 	// 授权回调
 	private UMAuthListener umAuthListener = new UMAuthListener() {
+		@Override
+		public void onStart(SHARE_MEDIA share_media) {
+			//授权开始的回调，可以用来处理等待框，或相关的文字提示
+		}
+
 		@Override
 		public void onComplete(SHARE_MEDIA platform, int action,
 				Map<String, String> data) {

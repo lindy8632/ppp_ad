@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 政信贷--- 投资成功页面
@@ -19,6 +20,7 @@ import com.ylfcf.ppp.util.SettingsManager;
  *
  */
 public class BidSuccessActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BidSuccessActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private TextView catRecords;
@@ -79,5 +81,19 @@ public class BidSuccessActivity extends BaseActivity implements OnClickListener{
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 }

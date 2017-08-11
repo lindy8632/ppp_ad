@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.ArticleAdapter;
 import com.ylfcf.ppp.async.AsyncArticleList;
@@ -28,12 +25,17 @@ import com.ylfcf.ppp.ui.ArticleDetailsActivity;
 import com.ylfcf.ppp.ui.ArticleListActivity;
 import com.ylfcf.ppp.util.Constants.ArticleType;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 行业新闻
  * @author Administrator
  */
 public class NewsFragment extends BaseFragment {
+	private static final String className = "NewsFragment";
 	private static final int REQUEST_ARTICLELIST_WHAT = 5701;
 	private static final int REQUEST_ARTICLELIST_SUCCESS = 5702;
 	private static final int REQUEST_ARTICLELIST_NODATA = 5703;
@@ -159,6 +161,18 @@ public class NewsFragment extends BaseFragment {
 			}
 
 		});
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
 	}
 
 	@Override

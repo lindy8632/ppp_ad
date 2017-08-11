@@ -1,10 +1,5 @@
 package com.ylfcf.ppp.adapter;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +9,10 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.FundsDetailsInfo;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 资金明细列表adapter
@@ -113,9 +112,11 @@ public class FundsDetailsAdapter extends ArrayAdapter<FundsDetailsInfo>{
 			viewHolder.changedMoney.setText(df.format(moneyD)+"元");
 		}
 		if("现金券本金".equals(info.getRemark())){
-			viewHolder.typeText.setText("红包本金");//用户名
+			viewHolder.typeText.setText("红包本金");
+		}else if("现金券收益".equals(info.getRemark())){
+			viewHolder.typeText.setText("红包收益");
 		}else{
-			viewHolder.typeText.setText(info.getRemark());//用户名
+			viewHolder.typeText.setText(info.getRemark());
 		}
 		viewHolder.time.setText("时间："+info.getAdd_time());
 		return convertView;

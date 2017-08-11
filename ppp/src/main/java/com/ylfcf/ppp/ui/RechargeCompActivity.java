@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 企业充值
@@ -16,6 +17,7 @@ import com.ylfcf.ppp.R;
  *
  */
 public class RechargeCompActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "RechargeCompActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private Button okBtn;
@@ -51,4 +53,19 @@ public class RechargeCompActivity extends BaseActivity implements OnClickListene
 			break;
 		}
 	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
 }
+

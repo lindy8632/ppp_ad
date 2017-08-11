@@ -30,6 +30,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import java.text.DecimalFormat;
@@ -43,6 +44,7 @@ import java.util.Date;
  *
  */
 public class BidXSMBActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BidXSMBActivity";
 	private static final int REQUEST_USER_ACCOUNT_WHAT = 8291;//个人账户
 	private static final int REQUEST_XSMB_WHAT = 8292;//请求限时秒标详情
 	private static final int REQUEST_XSMB_INVEST_WHAT = 8293;//限时秒标投资接口
@@ -101,9 +103,18 @@ public class BidXSMBActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		handler.sendEmptyMessage(REQUEST_USER_ACCOUNT_WHAT);
 	}
-	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

@@ -8,6 +8,6 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "com.ylfcf.ppp";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "anbeishichang";
-  public static final int VERSION_CODE = 153;
-  public static final String VERSION_NAME = "1.5.3";
+  public static final int VERSION_CODE = 155;
+  public static final String VERSION_NAME = "1.5.5";
 }

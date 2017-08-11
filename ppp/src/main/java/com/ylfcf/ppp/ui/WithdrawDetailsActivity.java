@@ -14,6 +14,7 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.WithdrawOrderInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 /**
@@ -24,6 +25,7 @@ import com.ylfcf.ppp.util.Util;
  */
 public class WithdrawDetailsActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "WithdrawDetailsActivity";
 	private WithdrawOrderInfo mWithdrawOrderInfo;
 
 	private LinearLayout topLeftBtn;
@@ -63,6 +65,20 @@ public class WithdrawDetailsActivity extends BaseActivity implements
 			cancelBtn.setVisibility(View.GONE);
 		}
 		initData();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private void initData() {

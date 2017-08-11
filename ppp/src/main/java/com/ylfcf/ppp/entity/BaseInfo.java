@@ -73,6 +73,15 @@ public class BaseInfo implements java.io.Serializable{
 	private ActivePageInfo mActivePageInfo;
 	private PopBannerInfo mPopBannerInfo;
 	private FriendsPageInfo mFriendsPageInfo;
+	private RedBagInfo mRedBagInfo;
+
+	public RedBagInfo getmRedBagInfo() {
+		return mRedBagInfo;
+	}
+
+	public void setmRedBagInfo(RedBagInfo mRedBagInfo) {
+		this.mRedBagInfo = mRedBagInfo;
+	}
 
 	public FriendsPageInfo getmFriendsPageInfo() {
 		return mFriendsPageInfo;

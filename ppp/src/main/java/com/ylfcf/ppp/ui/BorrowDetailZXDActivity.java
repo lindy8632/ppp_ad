@@ -33,6 +33,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import org.jsoup.Jsoup;
@@ -52,6 +53,7 @@ import java.util.Date;
  */
 public class BorrowDetailZXDActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "BorrowDetailZXDActivity";
 	private static final int REFRESH_PROGRESSBAR = 1902;
 	
 	private LinearLayout topLeftBtn;
@@ -187,7 +189,15 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
-		initBidBtnStatus(productInfo);
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private void initBidBtnStatus(ProductInfo info){
@@ -745,9 +755,9 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
-								ProductInfo info = baseInfo.getmProductInfo();
-								initDataFromRecord(info);
-								getProjectDetails(info.getProject_id());
+								productInfo = baseInfo.getmProductInfo();
+								initDataFromRecord(productInfo);
+								getProjectDetails(productInfo.getProject_id());
 							}else{
 								mLoadingDialog.dismiss();
 							}

@@ -1,7 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.List;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,14 +11,11 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.TYJListAdapter;
 import com.ylfcf.ppp.adapter.TYJListAdapter.OnTYJListItemClickListener;
-import com.ylfcf.ppp.async.AsyncTYJPageInfo;
-import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.TYJInfo;
-import com.ylfcf.ppp.entity.TYJPageInfo;
-import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.MyTYJActivity;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.List;
 
 /**
  * 我的体验金---已使用
@@ -28,6 +23,7 @@ import com.ylfcf.ppp.util.Util;
  *
  */
 public class MyTYJUsedFragment extends BaseFragment{
+	private static final String className = "MyTYJUsedFragment";
 	private MyTYJActivity mytyjActivity;
 	private View rootView;
 	
@@ -62,7 +58,19 @@ public class MyTYJUsedFragment extends BaseFragment{
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	}
-	
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+	}
+
 	private void findViews(View view){
 		usedListView = (ListView) view.findViewById(R.id.mytyj_used_fragment_listview);
 		nodataText = (TextView)view.findViewById(R.id.mytyj_used_fragment_nodata);

@@ -20,6 +20,7 @@ import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,6 +35,8 @@ import java.util.Date;
  *
  */
 public class BannerDetailsActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BannerDetailsActivity";
+
 	private static final int REFRESH_VIEW = 5810;
 	private static final int REQUEST_ARTICLE_WHAT = 5811;
 	
@@ -102,6 +105,20 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 		content.setMovementMethod(LinkMovementMethod.getInstance());//让textview里面的超链接点击响应
 		nodataText = (TextView) findViewById(R.id.banner_details_activity_nodata);
 		contentLayout = (LinearLayout) findViewById(R.id.banner_details_activity_content_layout);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +25,10 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.BorrowDetailSRZXActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 用户投资记录 --- 私人尊享产品
@@ -35,6 +36,7 @@ import com.ylfcf.ppp.util.SettingsManager;
  *
  */
 public class UserInvestSRZXRecordFragment extends BaseFragment{
+	private static final String className = "UserInvestSRZXRecordFragment";
 	private static final int REQUEST_INVEST_RECORD_WHAT = 1021;
 	private static final int REQUEST_INVEST_RECORD_SUCCESS = 1022;
 	private static final int REQUEST_INVEST_RECORD_NODATA = 1023;	//无数据
@@ -115,6 +117,18 @@ public class UserInvestSRZXRecordFragment extends BaseFragment{
 	}
 
 	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+	}
+
+	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		handler.removeCallbacksAndMessages(null);
@@ -162,9 +176,6 @@ public class UserInvestSRZXRecordFragment extends BaseFragment{
 	 * 获取投资记录列表
 	 * @param investUserId
 	 * @param borrowId
-	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getInvestRecordList(String investUserId,String borrowId){
 		if(mainActivity.loadingDialog != null){

@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 元信宝服务协议
@@ -17,6 +18,7 @@ import com.ylfcf.ppp.R;
  */
 public class YXBAgreementActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "YXBAgreementActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 
@@ -45,4 +47,18 @@ public class YXBAgreementActivity extends BaseActivity implements
 			break;
 		}
 	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 }

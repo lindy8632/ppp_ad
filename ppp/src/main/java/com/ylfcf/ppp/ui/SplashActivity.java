@@ -29,6 +29,7 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.parse.JsonParseBanner;
 import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.YLFLogger;
 
 /**
@@ -38,6 +39,7 @@ import com.ylfcf.ppp.util.YLFLogger;
  * 
  */
 public class SplashActivity extends BaseActivity {
+	private static final String className = "SplashActivity";
 	private static final int GOTO_MAINACTIVITY = 10;
 	private static final int REQUEST_BANNER = 20;
 	private ImageView splashImage;
@@ -75,6 +77,20 @@ public class SplashActivity extends BaseActivity {
 				R.drawable.splash_default, R.drawable.splash_default);
 		findViews();
 		handler.sendEmptyMessageDelayed(REQUEST_BANNER, 1500L);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private void findViews() {

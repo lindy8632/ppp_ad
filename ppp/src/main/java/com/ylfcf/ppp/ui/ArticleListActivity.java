@@ -16,6 +16,7 @@ import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.fragment.InformationFragment;
 import com.ylfcf.ppp.fragment.NewsFragment;
 import com.ylfcf.ppp.fragment.NoticeFragment;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
 
@@ -64,6 +65,18 @@ public class ArticleListActivity extends BaseActivity implements OnClickListener
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

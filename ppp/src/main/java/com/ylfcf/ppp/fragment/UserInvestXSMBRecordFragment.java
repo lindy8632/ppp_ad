@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,26 +8,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.UserInvestRecordAdapter;
-import com.ylfcf.ppp.async.AsyncVIPRecordList;
 import com.ylfcf.ppp.async.AsyncXSMBInvestRecord;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.InvestRecordInfo;
 import com.ylfcf.ppp.entity.InvestRecordPageInfo;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.ui.BorrowDetailVIPActivity;
 import com.ylfcf.ppp.ui.BorrowDetailXSMBActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 限时秒标投资记录
@@ -38,6 +37,7 @@ import com.ylfcf.ppp.util.SettingsManager;
  *
  */
 public class UserInvestXSMBRecordFragment extends BaseFragment{
+	private static final String className = "UserInvestXSMBRecordFragment";
 	private static final int REQUEST_INVEST_RECORD_WHAT = 1021;
 	private static final int REQUEST_INVEST_RECORD_SUCCESS = 1022;
 	private static final int REQUEST_INVEST_RECORD_NODATA = 1023;	//无数据
@@ -78,7 +78,10 @@ public class UserInvestXSMBRecordFragment extends BaseFragment{
 					investRecordList.addAll(pageInfo.getInvestRecordList());
 					recordAdapter.setItems(investRecordList);
 				}
-				isLoadMore = false;
+				if(investRecordList.size() <= 0 && !isLoadMore){
+					pullToRefreshListView.setVisibility(View.GONE);
+					nodataText.setVisibility(View.VISIBLE);
+				}
 				pullToRefreshListView.onRefreshComplete();
 				break;
 			case REQUEST_INVEST_RECORD_NODATA:
@@ -123,6 +126,18 @@ public class UserInvestXSMBRecordFragment extends BaseFragment{
 	}
 
 	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+	}
+
+	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		handler.removeCallbacksAndMessages(null);
@@ -133,7 +148,8 @@ public class UserInvestXSMBRecordFragment extends BaseFragment{
 					@Override
 					public void onPullDownToRefresh(
 							PullToRefreshBase<ListView> refreshView) {
-						// 下拉刷新
+						// 下拉刷新\
+						isLoadMore = false;
 						pageNo = 0;
 						handler.sendEmptyMessage(REQUEST_INVEST_RECORD_WHAT);
 					}
@@ -168,11 +184,6 @@ public class UserInvestXSMBRecordFragment extends BaseFragment{
 
 	/**
 	 * 获取投资记录列表
-	 * @param investUserId
-	 * @param borrowId
-	 * @param status
-	 * @param pageNo
-	 * @param pageSize
 	 */
 	private void getInvestRecordList(String userId,String investStatus){
 		if (isFirst) {

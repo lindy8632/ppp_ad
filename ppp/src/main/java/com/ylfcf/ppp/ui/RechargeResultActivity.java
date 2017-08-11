@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.RechargeTempInfo;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import java.text.SimpleDateFormat;
@@ -25,6 +26,7 @@ import java.util.Date;
  */
 public class RechargeResultActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "RechargeResultActivity";
 	private TextView timeTV;
 	private TextView moneyTV;
 	private LinearLayout moneyLayout;
@@ -80,6 +82,20 @@ public class RechargeResultActivity extends BaseActivity implements
 			moneyLayout.setVisibility(View.GONE);
 			promptTV.setText("操作成功,绑卡认证正在处理");
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

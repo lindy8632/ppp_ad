@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 /**
  * 支付通道变更说明
@@ -16,6 +17,7 @@ import com.ylfcf.ppp.R;
  *
  */
 public class RechargeChannelActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "RechargeChannelActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	
@@ -38,6 +40,20 @@ public class RechargeChannelActivity extends BaseActivity implements OnClickList
 		
 		okBtn = (Button) findViewById(R.id.recharge_channel_activity_btn);
 		okBtn.setOnClickListener(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

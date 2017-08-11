@@ -19,6 +19,7 @@ import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.fragment.MyJXQNousedFragment;
 import com.ylfcf.ppp.fragment.MyJXQOvertimeFragment;
 import com.ylfcf.ppp.fragment.MyJXQUsedFragment;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
@@ -83,6 +84,18 @@ public class MyJXQActivity extends BaseActivity implements OnClickListener{
 		default:
 			break;
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private MyJXQNousedFragment nousedFragment;

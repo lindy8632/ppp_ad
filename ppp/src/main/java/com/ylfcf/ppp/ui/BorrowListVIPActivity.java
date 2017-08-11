@@ -181,13 +181,15 @@ public class BorrowListVIPActivity extends BaseActivity implements
 	@Override
 	public void onResume() {
 		super.onResume();
-		UMengStatistics.statisticsOnPageStart(className);
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 	}
 	
 	@Override
 	public void onPause() {
 		super.onPause();
-		UMengStatistics.statisticsOnPageStart(className);
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 	
 	@Override

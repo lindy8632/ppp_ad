@@ -38,6 +38,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.ui.BidZXDActivity.OnHBWindowItemClickListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.JXQListPopupwindow;
@@ -54,6 +55,7 @@ import java.util.concurrent.TimeUnit;
  *
  */
 public class BidWDYActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BidWDYActivity";
 	private static final int REQUEST_INVEST_WHAT = 1201;
 	private static final int REQUEST_INVEST_SUCCESS = 1202;
 	private static final int REQUEST_INVEST_EXCEPTION = 1203;
@@ -168,10 +170,19 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		requestUserAccountInfo(SettingsManager
 				.getUserId(getApplicationContext()));
 	}
-	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -437,9 +448,9 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 						Util.toastLong(BidWDYActivity.this, "您的投资金额不满足加息券要求");
 					}else{
 						if(limitMoney >= 10000){
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+limitMoney/10000+"万元及以上可用");
+							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney/10000)+"万元及以上可用");
 						}else{
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+info.getMin_invest_money()+"元及以上可用");
+							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney)+"元及以上可用");
 						}
 						jxqEditText.setTag(info.getId());
 						jxqArrowLayout.setTag(info.getMoney());

@@ -23,6 +23,7 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.RechargeRecordInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ import java.util.List;
  *
  */
 public class RechargeRecordActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "RechargeRecordActivity";
 	private static final int REQUEST_RECHARGE_RECORD_WHAT = 2311;
 	private static final int REQUEST_RECHARGE_RECORD_SUCCESS = 2312;
 	private static final int REQUEST_RECHARGE_RECORD_NODATA = 2313;//暂无数据
@@ -94,6 +96,20 @@ public class RechargeRecordActivity extends BaseActivity implements OnClickListe
 		mLayoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 		findViews();
 		handler.sendEmptyMessage(REQUEST_RECHARGE_RECORD_WHAT);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

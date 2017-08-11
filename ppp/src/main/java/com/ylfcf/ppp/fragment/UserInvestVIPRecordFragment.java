@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +26,10 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.ui.BorrowDetailVIPActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 用户投资记录 -- VIP产品
@@ -36,6 +37,7 @@ import com.ylfcf.ppp.util.SettingsManager;
  *
  */
 public class UserInvestVIPRecordFragment extends BaseFragment{
+	private static final String className = "UserInvestVIPRecordFragment";
 	private static final int REQUEST_INVEST_RECORD_WHAT = 1021;
 	private static final int REQUEST_INVEST_RECORD_SUCCESS = 1022;
 	private static final int REQUEST_INVEST_RECORD_NODATA = 1023;	//无数据
@@ -118,6 +120,18 @@ public class UserInvestVIPRecordFragment extends BaseFragment{
 		recordAdapter = new UserInvestRecordAdapter(mainActivity,"vip");
 		pullToRefreshListView.setAdapter(recordAdapter);
 		initListeners();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
 	}
 
 	@Override

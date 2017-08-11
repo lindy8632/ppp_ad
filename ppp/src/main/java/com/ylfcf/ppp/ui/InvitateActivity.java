@@ -37,6 +37,7 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.util.Constants.TopicType;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
 
@@ -49,6 +50,7 @@ import java.util.Hashtable;
  * 
  */
 public class InvitateActivity extends BaseActivity implements OnClickListener {
+	private static final String className = "InvitateActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 
@@ -190,7 +192,27 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		}
 	}
 
-    @Override
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		UMShareAPI.get(this).release();//友盟分享内存泄露的处理
+	}
+
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		UMShareAPI.get(this).onActivityResult( requestCode, resultCode, data);
@@ -207,7 +229,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		int height = screen[1] / 5 * 2;
 		InvitateFriendsPopupwindow popwindow = new InvitateFriendsPopupwindow(InvitateActivity.this,
 				popView, width, height);
-		popwindow.show(mainLayout,promotedURL,"邀请有奖",null,null);
+		popwindow.show(mainLayout,promotedURL,"邀请有奖",null);
 	}
 
 	/**

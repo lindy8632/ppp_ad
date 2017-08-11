@@ -20,7 +20,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.viewflow.CircleFlowIndicator;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.viewflow.ViewFlow;
 
 /**
@@ -30,7 +30,7 @@ import com.ylfcf.ppp.viewflow.ViewFlow;
  * 
  */
 public class IntroductionActivity extends BaseActivity {
-
+	private static final String className = "IntroductionActivity";
 	private ViewFlow viewFlow;
 	// private CircleFlowIndicator circleIndicator;
 
@@ -52,6 +52,20 @@ public class IntroductionActivity extends BaseActivity {
 		// findViewById(R.id.intro_activity_viewflow_indic);
 		// viewFlow.setFlowIndicator(circleIndicator);
 		viewFlow.setAdapter(new ImageAdapter(this), 0);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	class ImageAdapter extends BaseAdapter {

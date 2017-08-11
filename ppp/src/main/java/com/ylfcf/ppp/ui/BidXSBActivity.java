@@ -35,6 +35,7 @@ import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import java.text.DecimalFormat;
@@ -49,6 +50,7 @@ import java.util.concurrent.TimeUnit;
  *
  */
 public class BidXSBActivity extends BaseActivity implements OnClickListener{
+	private static final String className = "BidXSBActivity";
 	private static final int REQUEST_INVEST_WHAT = 1201;
 	private static final int REQUEST_INVEST_SUCCESS = 1202;
 	private static final int REQUEST_INVEST_EXCEPTION = 1203;
@@ -139,9 +141,18 @@ public class BidXSBActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		requestUserAccountInfo(SettingsManager.getUserId(getApplicationContext()));
 	}
-	
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -398,7 +409,7 @@ public class BidXSBActivity extends BaseActivity implements OnClickListener{
 		} else if (needRechargeMoeny > borrowBalanceDouble) {
 			Util.toastLong(BidXSBActivity.this, "标的可投余额不足");
 		} else if (!compactCB.isChecked()) {
-			Util.toastLong(BidXSBActivity.this, "请先阅读并同意借款协议");
+			Util.toastLong(BidXSBActivity.this, "请先阅读并同意项目协议合同");
 		} else {
 			showInvestDialog();
 		}

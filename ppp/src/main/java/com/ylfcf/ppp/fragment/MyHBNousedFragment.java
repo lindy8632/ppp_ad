@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,10 +20,13 @@ import com.ylfcf.ppp.async.AsyncRedbgList;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.RedBagInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.ui.BorrowListZXDActivity;
 import com.ylfcf.ppp.ui.MainFragmentActivity;
 import com.ylfcf.ppp.ui.MyHongbaoActivity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 我的红包 --- 未使用
@@ -35,6 +35,7 @@ import com.ylfcf.ppp.util.SettingsManager;
  * 
  */
 public class MyHBNousedFragment extends BaseFragment {
+	private static final String className = "MyHBNousedFragment";
 	public final int REQUEST_HB_LIST_WHAT = 1800;
 	private final int REQUEST_HB_LIST_SUCCESS = 1801;
 	private final int REQUEST_HB_LIST_FAILE = 1802;
@@ -71,14 +72,16 @@ public class MyHBNousedFragment extends BaseFragment {
 					}
 					redbagList.addAll(baseInfo.getmRedBagPageInfo()
 							.getRedbagList());
-					redBagAdapter.setItems(redbagList);
+					redBagAdapter.setItems(redbagList,baseInfo.getTime());
 				}
 				isLoadMore = false;
 				pullToRefreshListView.onRefreshComplete();
 				break;
 			case REQUEST_HB_LIST_FAILE:
-				pullToRefreshListView.setVisibility(View.GONE);
-				nodataText.setVisibility(View.VISIBLE);
+				if(!isLoadMore){
+					pullToRefreshListView.setVisibility(View.GONE);
+					nodataText.setVisibility(View.VISIBLE);
+				}
 				pullToRefreshListView.onRefreshComplete();
 				break;
 			default:
@@ -126,6 +129,18 @@ public class MyHBNousedFragment extends BaseFragment {
 	}
 
 	@Override
+	public void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+	}
+
+	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		handler.removeCallbacksAndMessages(null);
@@ -138,6 +153,7 @@ public class MyHBNousedFragment extends BaseFragment {
 					public void onPullDownToRefresh(
 							PullToRefreshBase<ListView> refreshView) {
 						// 下拉刷新
+						isLoadMore = false;
 						pageNo = 0;
 						handler.sendEmptyMessage(REQUEST_HB_LIST_WHAT);
 					}
@@ -150,6 +166,7 @@ public class MyHBNousedFragment extends BaseFragment {
 						new Handler().postDelayed(new Runnable() {
 							@Override
 							public void run() {
+								isLoadMore = true;
 								handler.sendEmptyMessage(REQUEST_HB_LIST_WHAT);
 							}
 						}, 1000L);
@@ -165,7 +182,7 @@ public class MyHBNousedFragment extends BaseFragment {
 		}
 		isFirst = false;
 		AsyncRedbgList redbagTask = new AsyncRedbgList(mainActivity, userId,
-				flag, new OnCommonInter() {
+				flag,String.valueOf(pageNo),String.valueOf(pageSize), new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if (mainActivity.loadingDialog.isShowing()) {

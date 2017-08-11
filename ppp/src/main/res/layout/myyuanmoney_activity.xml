@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/common_measure_20dp"
                     android:layout_weight="1"
-                    android:text="元金币待收余额"
+                    android:text="元金币转账户待收金额"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/common_measure_20dp" />
 
@@ -164,50 +164,15 @@
                 android:textSize="@dimen/common_measure_26dp" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/myyuanmoney_activity_userule_tv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/common_measure_20dp"
                 android:layout_marginRight="@dimen/common_measure_20dp"
-                android:layout_marginTop="@dimen/common_measure_30dp"
-                android:text="元金币使用规则："
-                android:textColor="@color/common_topbar_bg_color"
-                android:textSize="@dimen/common_measure_20dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/common_measure_20dp"
-                android:layout_marginRight="@dimen/common_measure_20dp"
-                android:text="@string/yuanmoney_rule1"
-                android:textColor="@color/gray1"
-                android:textSize="@dimen/common_measure_18dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/common_measure_20dp"
-                android:layout_marginRight="@dimen/common_measure_20dp"
-                android:text="@string/yuanmoney_rule2"
-                android:textColor="@color/gray1"
-                android:textSize="@dimen/common_measure_18dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/common_measure_25dp"
-                android:layout_marginRight="@dimen/common_measure_20dp"
-                android:text="@string/yuanmoney_rule3"
-                android:textColor="@color/gray1"
-                android:textSize="@dimen/common_measure_18dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/common_measure_20dp"
-                android:layout_marginRight="@dimen/common_measure_20dp"
-                android:text="@string/yuanmoney_rule4"
-                android:textColor="@color/gray1"
-                android:textSize="@dimen/common_measure_18dp" />
+                android:layout_marginTop="@dimen/common_measure_20dp"
+                android:layout_gravity="right"
+                android:text="元金币使用规则"
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/common_topbar_bg_color"/>
 
         </LinearLayout>
 

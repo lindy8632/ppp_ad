@@ -29,6 +29,7 @@ import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.entity.ProjectInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -44,6 +45,7 @@ import java.util.Date;
  */
 public class ProductSafetyXSMBActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "ProductSafetyXSMBActivity";
 	private static final int REFRESH_VIEW = 5710;
 	private static final int REQUEST_XSMB_REFRESH_WHAT = 8291;// 请求接口刷新数据
 	private static final int REQUEST_XSMB_BTNCLICK_WHAT = 8292;// 点击“立即秒杀”按钮
@@ -128,11 +130,20 @@ public class ProductSafetyXSMBActivity extends BaseActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		if(recordInfo == null){
 			handler.sendEmptyMessage(REQUEST_XSMB_REFRESH_WHAT);
 		}else{
 			handler.sendEmptyMessage(REQUEST_XSMB_SELECTONE);
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	private void findViews() {

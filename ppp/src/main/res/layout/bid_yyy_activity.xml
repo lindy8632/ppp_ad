@@ -275,6 +275,68 @@
                 android:layout_height="@dimen/common_measure_1dp"
                 android:background="@color/edittext_line_color" />
 
+            <View
+                android:id="@+id/bid_yyy_activity_line1"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:background="@color/edittext_line_color" />
+
+            <!-- 红包 -->
+
+            <LinearLayout
+                android:id="@+id/bid_yyy_activity_hb_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_80dp"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/common_measure_30dp" >
+
+                <ImageView
+                    android:layout_width="@dimen/common_measure_30dp"
+                    android:layout_height="@dimen/common_measure_30dp"
+                    android:src="@drawable/red_bag" />
+
+                <EditText
+                    android:id="@+id/bid_yyy_activity_hb_et"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_measure_20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="请选择红包"
+                    android:inputType="number"
+                    android:textColor="@color/gray2"
+                    android:textColorHint="@color/edittext_hint_color"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:tag="" />
+
+                <RelativeLayout
+                    android:id="@+id/bid_yyy_activity_hb_arrow_layout"
+                    android:layout_width="@dimen/common_measure_100dp"
+                    android:layout_height="fill_parent" >
+
+                    <ImageView
+                        android:layout_width="@dimen/common_measure_18dp"
+                        android:layout_height="@dimen/common_measure_20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/common_measure_30dp"
+                        android:src="@drawable/arrow_logo" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/bid_yyy_activity_line2"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color" />
+
             <!-- 加息券 -->
 
             <LinearLayout
@@ -366,6 +428,7 @@
                     android:id="@+id/bid_yyy_activity_cb"
 			    	android:layout_width="@dimen/common_measure_35dp"
 			    	android:layout_height="@dimen/common_measure_35dp"
+                    android:layout_marginRight="@dimen/common_measure_10dp"
 			    	android:button="@drawable/checkbox_selector"
 			    	android:checked="true"/>
                 
@@ -380,7 +443,7 @@
                     android:id="@+id/bid_yyy_activity_compact_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="《借款协议》"
+                    android:text="《项目协议合同》"
                     android:textColor="@color/common_topbar_bg_color"
                     android:textSize="@dimen/common_measure_18dp"/>
                 

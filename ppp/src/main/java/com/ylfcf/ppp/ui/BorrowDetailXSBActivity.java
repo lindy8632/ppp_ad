@@ -33,6 +33,7 @@ import com.ylfcf.ppp.fragment.ProductSafetyFragment.OnProductSafetyListener;
 import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 
 import org.jsoup.Jsoup;
@@ -51,6 +52,7 @@ import java.util.List;
  */
 public class BorrowDetailXSBActivity extends BaseActivity implements
 			OnClickListener{
+	private static final String className = "BorrowDetailXSBActivity";
 	private static final int REFRESH_PROGRESSBAR = 1902;
 	private static final int REQUEST_XSBDETAILS_WHAT = 5704;
 	private static final int REQUEST_XSBDETAILS_SUCCESS = 5705;
@@ -242,6 +244,15 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	int biteIntFromProduct = 0;
@@ -326,7 +337,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			rateF = Float.parseFloat(rate);
 		} catch (Exception e) {
 		}
-		profitTv.setText(new DecimalFormat("#.00").format((rateF + extraRateF) * 100/365*horizonInt) + "");
+		profitTv.setText(new DecimalFormat("#.00").format((rateF + extraRateF) * 30/365*horizonInt) + "");
 	}
 
 	int biteIntFromRecord = 0;
@@ -406,7 +417,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			rateF = Float.parseFloat(rate);
 		} catch (Exception e) {
 		}
-		profitTv.setText(new DecimalFormat("#.00").format((rateF + extraRateF) * 100/365*horizonInt) + "");
+		profitTv.setText(new DecimalFormat("#.00").format((rateF + extraRateF) * 30/365*horizonInt) + "");
 	}
 	
 	int increaseInt = 0;

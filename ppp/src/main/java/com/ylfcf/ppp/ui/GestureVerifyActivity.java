@@ -1,31 +1,25 @@
 package com.ylfcf.ppp.ui;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.db.DBGesturePwdManager;
 import com.ylfcf.ppp.entity.GesturePwdEntity;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.widget.GestureContentView;
 import com.ylfcf.ppp.widget.GestureDrawline.GestureCallBack;
-
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.media.audiofx.BassBoost.Settings;
-import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.text.Html;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * 
@@ -33,6 +27,7 @@ import android.widget.Toast;
  *
  */
 public class GestureVerifyActivity extends Activity implements android.view.View.OnClickListener{
+	private static final String className = "GestureVerifyActivity";
 	/** 手机号码*/
 	public static final String PARAM_PHONE_NUMBER = "PARAM_PHONE_NUMBER";
 	/** 意图 */
@@ -111,7 +106,21 @@ public class GestureVerifyActivity extends Activity implements android.view.View
 	private void setUpListeners() {
 		mTextForget.setOnClickListener(this);
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

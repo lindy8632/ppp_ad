@@ -1,14 +1,5 @@
 package com.ylfcf.ppp.ui;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.db.DBGesturePwdManager;
-import com.ylfcf.ppp.entity.GesturePwdEntity;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.YLFLogger;
-import com.ylfcf.ppp.widget.GestureContentView;
-import com.ylfcf.ppp.widget.GestureDrawline.GestureCallBack;
-import com.ylfcf.ppp.widget.LockIndicator;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
@@ -22,12 +13,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.db.DBGesturePwdManager;
+import com.ylfcf.ppp.entity.GesturePwdEntity;
+import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.YLFLogger;
+import com.ylfcf.ppp.widget.GestureContentView;
+import com.ylfcf.ppp.widget.GestureDrawline.GestureCallBack;
+import com.ylfcf.ppp.widget.LockIndicator;
+
 /**
  * 
  * 手势密码设置界面
  *
  */
 public class GestureEditActivity extends Activity implements OnClickListener{
+
+	private static final String className = "GestureEditActivity";
 	/** 手机号码*/
 	public static final String PARAM_PHONE_NUMBER = "PARAM_PHONE_NUMBER";
 	/** 意图 */
@@ -129,6 +132,20 @@ public class GestureEditActivity extends Activity implements OnClickListener{
 	private void updateCodeList(String inputCode) {
 		// 更新选择的图案
 		mLockIndicator.setPath(inputCode);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

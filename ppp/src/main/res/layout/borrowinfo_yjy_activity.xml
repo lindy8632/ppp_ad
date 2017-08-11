@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_topbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+                <!-- 产品结构更改后的布局 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/borrowinfo_yjy_activity_sygz_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/common_measure_30dp"
+                        android:layout_marginBottom="@dimen/common_measure_10dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:layout_marginTop="@dimen/common_measure_20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/common_measure_24dp"
+                            android:layout_height="@dimen/common_measure_24dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/dqlc_details_sygz_logo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/common_measure_10dp"
+                            android:text="收益规则"
+                            android:textColor="@color/common_topbar_bg_color"
+                            android:textSize="@dimen/common_measure_20dp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/borrowinfo_yjy_activity_sygz_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_measure_200dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:layout_marginTop="@dimen/common_measure_20dp"
+                        android:scaleType="fitCenter"
+                        android:background="@drawable/borrowinfo_yjy_yjgz_logo"/>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/common_measure_30dp"
+                        android:layout_marginBottom="@dimen/common_measure_10dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:layout_marginTop="@dimen/common_measure_20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="@dimen/common_measure_24dp"
+                            android:layout_height="@dimen/common_measure_24dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/project_intro_activity_logo1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/common_measure_10dp"
+                            android:text="项目介绍"
+                            android:textColor="@color/common_topbar_bg_color"
+                            android:textSize="@dimen/common_measure_20dp" />
+                    </LinearLayout>
+
+                    <!-- 项目介绍 -->
+
+                    <TextView
+                        android:id="@+id/borrowinfo_yjy_activity_xmjs"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/common_measure_20dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:lineSpacingMultiplier="1.2"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_18dp" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/common_measure_30dp"
+                        android:layout_marginBottom="@dimen/common_measure_10dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="@dimen/common_measure_24dp"
+                            android:layout_height="@dimen/common_measure_24dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/project_intro_activity_logo2" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/common_measure_10dp"
+                            android:text="项目要素表"
+                            android:textColor="@color/common_topbar_bg_color"
+                            android:textSize="@dimen/common_measure_20dp" />
+                    </LinearLayout>
+
+                    <!-- 项目要素表 -->
+
+                    <include layout="@layout/zxd_xmysb_layout" />
+
+                    <TextView
+                        android:id="@+id/borrowinfo_yjy_activity_vipprompt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/common_measure_20dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:text="*提示：\n1. 本产品不参与平台其他优惠活动。\n2.元立方金服拥有本产品的最终解释权。"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/common_measure_16dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+            <Button
+                android:id="@+id/borrowinfo_yjy_activity_bidBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_63dp"
+                android:layout_marginBottom="@dimen/common_measure_30dp"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_40dp"
+                android:background="@drawable/blue_fillet_btn_selector"
+                android:text="@string/borrow_detail_bidBtn"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_measure_26dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

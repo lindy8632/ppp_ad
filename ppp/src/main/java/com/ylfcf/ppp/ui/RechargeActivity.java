@@ -32,13 +32,9 @@ import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.inter.Inter.OnUserBankCardInter;
 import com.ylfcf.ppp.util.CountDownAsyncTask;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.RechargeErrorPopwindow;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -52,6 +48,7 @@ import java.util.Map;
  * 
  */
 public class RechargeActivity extends BaseActivity implements OnClickListener {
+	private static final String className = "RechargeActivity";
 	private static final int REQUEST_SMS_SUCCESS = 1920;
 	private static final int REQUEST_BANKLIST_WHAT = 1921;//获取银行列表
 	private static final int REQUEST_BANKCARD_WHAT = 1922;//获取银行卡信息
@@ -195,7 +192,21 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 			}
 		});
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

@@ -23,6 +23,7 @@ import com.ylfcf.ppp.entity.WithdrawOrderInfo;
 import com.ylfcf.ppp.entity.WithdrawOrderPageInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.RefreshLayout;
 import com.ylfcf.ppp.widget.RefreshLayout.OnLoadListener;
 
@@ -38,6 +39,7 @@ import java.util.List;
  */
 public class WithdrawListActivity extends BaseActivity implements
 		OnClickListener {
+	private static final String className = "WithdrawListActivity";
 	private static final int REQUEST_WITHDRAW_RECORD_WHAT = 2801;
 	private static final int REQUEST_WITHDRAW_RECORD_SUCCESS = 2802;
 	private static final int REQUEST_WITHDRAW_RECORD_FAILE = 2803;
@@ -176,10 +178,19 @@ public class WithdrawListActivity extends BaseActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
+		UMengStatistics.statisticsResume(this);//友盟统计时长
 		page = 0;
 		updateLoadStatus(true, false);
 		// 更新数据
 		handler.sendEmptyMessage(REQUEST_WITHDRAW_RECORD_WHAT);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
+		UMengStatistics.statisticsPause(this);//友盟统计时长
 	}
 
 	@Override

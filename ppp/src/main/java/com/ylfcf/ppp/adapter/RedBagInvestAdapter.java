@@ -1,8 +1,5 @@
 package com.ylfcf.ppp.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +9,9 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.RedBagInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 当前用户可使用的红包列表
@@ -79,7 +79,11 @@ public class RedBagInvestAdapter extends ArrayAdapter<RedBagInfo>{
 		if(needInvestMoneyInt <= 0){
 			viewHolder.text.setText(info.getMoney()+"元红包");
 		}else{
-			viewHolder.text.setText(info.getMoney()+"元红包，"+"需投资"+info.getNeed_invest_money()+"元及以上可用");
+			if(needInvestMoneyInt<10000 || needInvestMoneyInt%10000 != 0){
+				viewHolder.text.setText(info.getMoney()+"元红包，"+"需投资"+info.getNeed_invest_money()+"元及以上可用");
+			}else{
+				viewHolder.text.setText(info.getMoney()+"元红包，"+"需投资"+needInvestMoneyInt/10000+"万元及以上可用");
+			}
 		}
 		return convertView;
 	}

@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentActivity;
 
 import com.umeng.message.PushAgent;
 import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.text.SimpleDateFormat;
@@ -35,13 +34,11 @@ public class BaseActivity extends FragmentActivity{
 	@Override
 	protected void onResume() {
 		super.onResume();
-		UMengStatistics.statisticsResume(this);//友盟统计
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		UMengStatistics.statisticsPause(this);//友盟统计
 	}
 
 	@Override

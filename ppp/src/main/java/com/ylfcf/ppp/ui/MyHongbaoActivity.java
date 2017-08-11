@@ -19,6 +19,8 @@ import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.fragment.MyHBNousedFragment;
 import com.ylfcf.ppp.fragment.MyHBOverdueFragment;
 import com.ylfcf.ppp.fragment.MyHBUsedFragment;
+import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.PagerSlidingTabStrip;
 
@@ -65,6 +67,18 @@ public class MyHongbaoActivity extends BaseActivity implements OnClickListener {
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		UMengStatistics.statisticsResume(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
+	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.common_topbar_left_layout:
@@ -74,7 +88,7 @@ public class MyHongbaoActivity extends BaseActivity implements OnClickListener {
 			Intent intentBanner = new Intent(MyHongbaoActivity.this,BannerTopicActivity.class);
 			BannerInfo bannerInfo = new BannerInfo();
 			bannerInfo.setArticle_id("80");
-			bannerInfo.setLink_url("http://wap.ylfcf.com/home/index/redbag.html");
+			bannerInfo.setLink_url(URLGenerator.REDBAG_RULE_URL);
 			intentBanner.putExtra("BannerInfo", bannerInfo);
 			startActivity(intentBanner);
 			break;
