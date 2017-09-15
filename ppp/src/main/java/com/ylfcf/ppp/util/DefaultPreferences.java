@@ -42,7 +42,9 @@ public abstract class DefaultPreferences {
 
 	protected static SharedPreferences getSharedPreferences(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+//		return context.getSharedPreferences("",Context.MODE_MULTI_PROCESS);//多进程之间数据实时同步
 	}
+
 
 	public static int getInt(Context context,String key, int def) {
 		return getSharedPreferences(context).getInt(key, def);

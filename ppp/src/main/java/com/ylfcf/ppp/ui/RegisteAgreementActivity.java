@@ -49,10 +49,10 @@ public class RegisteAgreementActivity extends BaseActivity implements
         webView.setWebChromeClient(new WebChromeClient(){
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {	
-				if(newProgress == 100){
+				if(newProgress == 100 && mLoadingDialog.isShowing()){
 					//网页加载完成
 					mLoadingDialog.dismiss();
-				}else{
+				}else if(newProgress != 100 && !mLoadingDialog.isShowing() && !isFinishing()){
 					//网页加载中...
 					mLoadingDialog.show();
 				}

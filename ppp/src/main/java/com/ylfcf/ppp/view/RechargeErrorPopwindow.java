@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Message;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
@@ -112,7 +109,7 @@ public class RechargeErrorPopwindow extends PopupWindow implements
 	 * @param phone
 	 */
 	private void requestUserInfo(final String userId,String phone){
-		AsyncUserSelectOne userTask = new AsyncUserSelectOne(context, userId, phone, "", new OnGetUserInfoByPhone() {
+		AsyncUserSelectOne userTask = new AsyncUserSelectOne(context, userId, phone, "","", new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
 				if(baseInfo != null){

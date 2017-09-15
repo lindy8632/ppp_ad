@@ -710,7 +710,8 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()
+				&& !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
@@ -744,7 +745,8 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 	 * @param borrowStatus
 	 */
 	private void getProductDetailsById(String borrowId, String borrowStatus,String plan) {
-		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()
+				&& !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncProductInfo task = new AsyncProductInfo(BorrowDetailZXDActivity.this,

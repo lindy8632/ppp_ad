@@ -270,7 +270,7 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 	 */
 	private void requestRegiste(final String phone, final String password,
 			String extension_code,String salesPhone) {
-		if(mLoadingDialog != null)
+		if(mLoadingDialog != null && !isFinishing())
 		mLoadingDialog.show();
 		String open_id = "";
 		String user_from_host = "";
@@ -314,7 +314,7 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 	 * @param pwd
 	 */
 	private void requestLogin(final String phone,final String pwd){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		

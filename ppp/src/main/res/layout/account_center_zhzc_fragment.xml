@@ -1,6 +1,359 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    
+    <RelativeLayout
+        android:id="@+id/account_center_zhzc_fragment_circlelayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_280dp">
+
+        <com.example.ylfcf.widget.YLFCircle
+            android:id="@+id/account_center_zhzc_fragment_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/account_center_zhzc_fragment_total_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/red"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="0.00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_16dp"
+                android:text="账户资产总额(元)"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_50dp"
+        android:layout_marginRight="@dimen/common_measure_50dp">
+
+        <!-- 账户余额 -->
+        <RelativeLayout
+            android:id="@+id/account_center_zhzc_fragment_zhye_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/account_center_zhzc_fragment_zhye_circle"
+                android:layout_width="@dimen/common_measure_12dp"
+                android:layout_height="@dimen/common_measure_12dp"
+                android:layout_marginTop="@dimen/common_measure_6dp"
+                android:background="@drawable/style_circle_green_account_center"/>
+
+            <TextView
+                android:id="@+id/account_center_zhzc_fragment_zhye_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/account_center_zhzc_fragment_zhye_circle"
+                android:layout_marginLeft="@dimen/common_measure_5dp"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"
+                android:text="账户余额（元）"/>
+
+            <TextView
+                android:id="@+id/account_center_zhzc_fragment_zhye_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_15dp"
+                android:layout_below="@+id/account_center_zhzc_fragment_zhye_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_18dp"
+                android:text="0.00"/>
+
+            <ImageView
+                android:id="@+id/account_center_zhzc_fragment_wenhao_zhye"
+                android:layout_width="@dimen/common_measure_15dp"
+                android:layout_height="@dimen/common_measure_15dp"
+                android:layout_marginBottom="@dimen/common_measure_5dp"
+                android:background="@drawable/wenhao_img"
+                android:layout_toRightOf="@+id/account_center_zhzc_fragment_zhye_title"/>
+
+        </RelativeLayout>
+
+        <!-- 待收余额 -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <View
+                android:id="@+id/account_center_zhzc_fragment_dsye_circle"
+                android:layout_width="@dimen/common_measure_12dp"
+                android:layout_height="@dimen/common_measure_12dp"
+                android:layout_marginTop="@dimen/common_measure_6dp"
+                android:background="@drawable/style_circle_orange_account_center"/>
+
+            <TextView
+                android:id="@+id/account_center_zhzc_fragment_dsye_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/account_center_zhzc_fragment_dsye_circle"
+                android:layout_marginLeft="@dimen/common_measure_5dp"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"
+                android:text="待收余额（元）"/>
+
+            <TextView
+                android:id="@+id/account_center_zhzc_fragment_dsye_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_15dp"
+                android:layout_below="@+id/account_center_zhzc_fragment_dsye_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_18dp"
+                android:text="0.00"/>
+
+            <ImageView
+                android:id="@+id/account_center_zhzc_fragment_wenhao_dsye"
+                android:layout_width="@dimen/common_measure_15dp"
+                android:layout_height="@dimen/common_measure_15dp"
+                android:layout_marginBottom="@dimen/common_measure_5dp"
+                android:background="@drawable/wenhao_img"
+                android:layout_toRightOf="@+id/account_center_zhzc_fragment_dsye_title"/>
+
+        </RelativeLayout>
+
+        <!-- 冻结金额 -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_20dp"
+            android:layout_below="@+id/account_center_zhzc_fragment_zhye_layout">
+
+            <View
+                android:id="@+id/account_center_zhzc_fragment_djje_circle"
+                android:layout_width="@dimen/common_measure_12dp"
+                android:layout_height="@dimen/common_measure_12dp"
+                android:layout_marginTop="@dimen/common_measure_6dp"
+                android:background="@drawable/style_circle_blue_account_center"/>
+
+            <TextView
+                android:id="@+id/account_center_zhzc_fragment_djje_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/account_center_zhzc_fragment_djje_circle"
+                android:layout_marginLeft="@dimen/common_measure_5dp"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"
+                android:text="冻结金额（元）"/>
+
+            <TextView
+                android:id="@+id/account_center_zhzc_fragment_djje_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_5dp"
+                android:layout_marginLeft="@dimen/common_measure_15dp"
+                android:layout_below="@+id/account_center_zhzc_fragment_djje_circle"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_18dp"
+                android:text="0.00"/>
+
+            <ImageView
+                android:id="@+id/account_center_zhzc_fragment_wenhao_djje"
+                android:layout_width="@dimen/common_measure_15dp"
+                android:layout_height="@dimen/common_measure_15dp"
+                android:layout_marginBottom="@dimen/common_measure_5dp"
+                android:background="@drawable/wenhao_img"
+                android:layout_toRightOf="@+id/account_center_zhzc_fragment_djje_title"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_5dp"
+        android:layout_marginTop="@dimen/common_measure_15dp"
+        android:background="@color/child_background"/>
+
+    <!-- 元金币-->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_75dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_measure_20dp"
+        android:paddingRight="@dimen/common_measure_20dp">
+
+        <ImageView
+            android:layout_width="@dimen/common_measure_26dp"
+            android:layout_height="@dimen/common_measure_26dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/my_account_logo_jlmx" />
+
+        <TextView
+            android:layout_width="@dimen/common_measure_120dp"
+            android:layout_height="wrap_content"
+            android:text="元金币（元）"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_18dp" />
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_yjb_count_tv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_22dp" />
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_yjb_use_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即使用"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_yjb_detail_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:text="详情"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+
+    <!-- 红包-->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_75dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_measure_20dp"
+        android:paddingRight="@dimen/common_measure_20dp">
+
+        <ImageView
+            android:layout_width="@dimen/common_measure_26dp"
+            android:layout_height="@dimen/common_measure_26dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/red_bag" />
+
+        <TextView
+            android:layout_width="@dimen/common_measure_120dp"
+            android:layout_height="wrap_content"
+            android:text="红包（个）"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_18dp" />
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_hb_count_tv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_22dp" />
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_hb_use_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即使用"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_hb_detail_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:text="详情"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
+
+    <!-- 加息券 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_75dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/common_measure_20dp"
+        android:paddingRight="@dimen/common_measure_20dp">
+
+        <ImageView
+            android:layout_width="@dimen/common_measure_26dp"
+            android:layout_height="@dimen/common_measure_26dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/jxq_bg" />
+
+        <TextView
+            android:layout_width="@dimen/common_measure_120dp"
+            android:layout_height="wrap_content"
+            android:text="加息券（张）"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_18dp" />
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_jxq_count_tv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_measure_22dp" />
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_jxq_use_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即使用"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+        <TextView
+            android:id="@+id/account_center_zhzc_fragment_jxq_detail_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_30dp"
+            android:text="详情"
+            android:textColor="@color/orange_text"
+            android:textSize="@dimen/common_measure_18dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color"/>
 
 </LinearLayout>

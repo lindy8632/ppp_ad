@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncGetLXZXJXQ;
-import com.ylfcf.ppp.async.AsyncJXQLogList;
 import com.ylfcf.ppp.async.AsyncJXQRule;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.JXQRuleInfo;
@@ -60,7 +59,6 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 			case REQUEST_ISGETJXQ_WHAT:
 				//是否已经领取过加息券
 				boolean flag = (Boolean) msg.obj;
-				checkIsGetJXQ(SettingsManager.getUserId(getApplicationContext()), "开门红 乐享返现",flag);
 				break;
 			default:
 				break;
@@ -444,85 +442,6 @@ public class LXFXTempActivity extends BaseActivity implements OnClickListener{
 					}
 				});
 		task.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
-	}
-	
-	/**
-	 * 判断是否领取过加息券
-	 * @param userId
-	 * @param couponFrom 来源
-	 * @param btnClick 是否是通过点击领取按钮
-	 */
-	private void checkIsGetJXQ(String userId,String couponFrom,final boolean btnClick){
-		if(mLoadingDialog != null){
-			mLoadingDialog.show();
-		}
-		AsyncJXQLogList jxqListTask = new AsyncJXQLogList(LXFXTempActivity.this, userId, couponFrom, 
-				new OnCommonInter() {
-					@Override
-					public void back(BaseInfo baseInfo) {
-						if(mLoadingDialog != null){
-							mLoadingDialog.dismiss();
-						}
-						if(baseInfo != null){
-							int resultCode = SettingsManager.getResultCode(baseInfo);
-							if(resultCode == 0){
-								//已经领取过
-								if(SettingsManager.checkLXFXActivity() == 0){
-									leftBtn.setVisibility(View.VISIBLE);
-									rightBtn.setVisibility(View.VISIBLE);
-									middleBtn.setText("领取加息券");
-									middleBtn.setEnabled(false);
-									middleBtn.setBackgroundResource(R.drawable.lxfx_temp_btns_middle_unenable);
-									if(btnClick){
-										//通过按钮点击
-										showHasGetJXQDialog();
-									}
-								}else if(SettingsManager.checkLXFXActivity() == -1){
-									//活动结束
-									leftBtn.setVisibility(View.GONE);
-									rightBtn.setVisibility(View.GONE);
-									middleBtn.setEnabled(false);
-									middleBtn.setText("活动结束");
-									middleBtn.setBackgroundResource(R.drawable.lxfx_temp_btns_middle_unenable);
-								}else if(SettingsManager.checkLXFXActivity() == 1){
-									//活动还未开始
-									leftBtn.setVisibility(View.GONE);
-									rightBtn.setVisibility(View.GONE);
-									middleBtn.setEnabled(false);
-									middleBtn.setText("敬请期待");
-									middleBtn.setBackgroundResource(R.drawable.lxfx_temp_btns_middle_unenable);
-								}
-							}else{
-								//未领取过
-								if(SettingsManager.checkLXFXActivity() == 0 && SettingsManager.isPersonalUser(getApplicationContext())){
-									leftBtn.setVisibility(View.VISIBLE);
-									rightBtn.setVisibility(View.VISIBLE);
-									middleBtn.setText("领取加息券");
-									middleBtn.setEnabled(true);
-									middleBtn.setBackgroundResource(R.drawable.lxfx_temp_btns_middle_enable);
-									if(btnClick){
-										checkIsVerify("领取加息券");
-									}
-								}else if(SettingsManager.checkLXFXActivity() == -1){
-									//活动结束
-									leftBtn.setVisibility(View.GONE);
-									rightBtn.setVisibility(View.GONE);
-									middleBtn.setEnabled(false);
-									middleBtn.setText("活动结束");
-									middleBtn.setBackgroundResource(R.drawable.lxfx_temp_btns_middle_unenable);
-								}else if(SettingsManager.checkLXFXActivity() == 1){
-									//活动还未开始
-									leftBtn.setVisibility(View.GONE);
-									rightBtn.setVisibility(View.GONE);
-									middleBtn.setEnabled(false);
-									middleBtn.setText("敬请期待");
-									middleBtn.setBackgroundResource(R.drawable.lxfx_temp_btns_middle_unenable);
-								}
-							}
-						}
-					}
-				});
-		jxqListTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 	
 	/**

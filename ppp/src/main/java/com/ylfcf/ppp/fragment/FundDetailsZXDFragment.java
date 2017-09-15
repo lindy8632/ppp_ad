@@ -178,8 +178,7 @@ public class FundDetailsZXDFragment extends BaseFragment implements
 	private void initListeners() {
 		listview.setOnRefreshListener(new OnRefreshListener2<ListView>(){
 			@Override
-			public void onPullDownToRefresh(
-					PullToRefreshBase<ListView> refreshView) {
+			public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
 				// 下拉刷新
 				pageNo = 0;
 				new Handler().postDelayed(new Runnable() {
@@ -191,8 +190,7 @@ public class FundDetailsZXDFragment extends BaseFragment implements
 			}
 
 			@Override
-			public void onPullUpToRefresh(
-					PullToRefreshBase<ListView> refreshView) {
+			public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 				// 上拉加载更多
 				pageNo++;
 				new Handler().postDelayed(new Runnable() {
@@ -205,46 +203,6 @@ public class FundDetailsZXDFragment extends BaseFragment implements
 			}
 		});
 	}
-
-//	private void initTopDatas() {
-//		investTotalMoneyTV.setText(accountInfo.getSum_invest_money());
-//		interestTotalMoneyTV.setText(accountInfo.getHas_interest());
-//
-//	}
-
-//	private void requestAccountInfo(String userId) {
-//		if (loadingDialog != null) {
-//			loadingDialog.show();
-//		}
-//		AsyncAccountTotalInfo accountTask = new AsyncAccountTotalInfo(
-//				fundsDetailsActivity, userId, new OnCommonInter() {
-//					@Override
-//					public void back(BaseInfo baseInfo) {
-//						if (loadingDialog != null && loadingDialog.isShowing()) {
-//							loadingDialog.dismiss();
-//						}
-//						if (baseInfo != null) {
-//							int resultCode = SettingsManager
-//									.getResultCode(baseInfo);
-//							if (resultCode == 0) {
-//								accountInfo = baseInfo.getAccountTotalInfo();
-//								initTopDatas();
-//							} else {
-//								if (loadingDialog != null
-//										&& loadingDialog.isShowing()) {
-//									loadingDialog.dismiss();
-//								}
-//							}
-//						} else {
-//							if (loadingDialog != null
-//									&& loadingDialog.isShowing()) {
-//								loadingDialog.dismiss();
-//							}
-//						}
-//					}
-//				});
-//		accountTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
-//	}
 
 	/*
 	 * 资金明细列表(汇付、易联、宝付)

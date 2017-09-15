@@ -532,7 +532,8 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()
+				&& !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(
@@ -564,7 +565,7 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 	 * @param isShow
 	 */
 	private void getWDYBorrowDetails(String borrowStatus,String isShow){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncWDYBorrowDetail wdyTask = new AsyncWDYBorrowDetail(BorrowDetailWDYActivity.this, borrowStatus, isShow, 
@@ -598,7 +599,8 @@ public class BorrowDetailWDYActivity extends BaseActivity implements OnClickList
 	 * @param borrowId
 	 */
 	private void getWDYDetailById(String borrowId) {
-		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()
+				&& !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncWDYSelectone task = new AsyncWDYSelectone(BorrowDetailWDYActivity.this,

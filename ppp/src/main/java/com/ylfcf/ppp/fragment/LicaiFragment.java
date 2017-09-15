@@ -402,6 +402,11 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 	 * @param baseInfo
 	 */
 	private void computeSRZXCounts(BaseInfo baseInfo){
+		if(baseInfo == null){
+//			srzxCounts.setVisibility(View.VISIBLE);
+//			srzxCounts.setText("10");
+			return;
+		}
 		ProductPageInfo pageInfo = baseInfo.getProductPageInfo();
 		if(pageInfo != null && pageInfo.getProductList().size() > 0){
 			srzxCounts.setVisibility(View.VISIBLE);
@@ -487,7 +492,9 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if (resultCode == 0) {
 								computeSRZXCounts(baseInfo);
-							} 
+							}else{
+								computeSRZXCounts(null);
+							}
 						} 
 					}
 				});

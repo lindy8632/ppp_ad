@@ -1,5 +1,6 @@
 package com.ylfcf.ppp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.UserRMBAccountInfo;
 import com.ylfcf.ppp.fragment.AccountCenterHKRLFragment;
 import com.ylfcf.ppp.fragment.AccountCenterZHZCFragment;
 import com.ylfcf.ppp.util.UMengStatistics;
@@ -28,12 +31,19 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
 
     private Button zhzcTabBtn,hkrlTabBtn;//账户资产、回款日历
     public LoadingDialog loadingDialog;
+    private UserRMBAccountInfo yllianAccountInfo;//易联账户信息
+    private UserRMBAccountInfo huifuAccountInfo;//汇付账户信息
+    private BaseInfo yjbInterestBaseInfo;//元金币产生的收益
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.account_center_activity);
+        Intent intent = getIntent();
+        yllianAccountInfo = (UserRMBAccountInfo)intent.getSerializableExtra("ylUserRMBAccountInfo");
+        huifuAccountInfo = (UserRMBAccountInfo)intent.getSerializableExtra("hfUserRMBAccountInfo");
+        yjbInterestBaseInfo = (BaseInfo)intent.getSerializableExtra("yjbBaseInfo");
         loadingDialog = mLoadingDialog;
         fragmentManager = getSupportFragmentManager();
         findViews();
@@ -65,6 +75,18 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
             default:
                 break;
         }
+    }
+
+    public UserRMBAccountInfo getYLAccountInfo(){
+        return yllianAccountInfo;
+    }
+
+    public UserRMBAccountInfo getHFAccountInfo(){
+        return huifuAccountInfo;
+    }
+
+    public BaseInfo getYJBInterestInfo(){
+        return yjbInterestBaseInfo;
     }
 
     @Override
@@ -99,7 +121,7 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
                     zhzcFragment = new AccountCenterZHZCFragment();
                     trasection.replace(R.id.account_center_activity_mainlayout, zhzcFragment);
 
-                    zhzcTabBtn.setBackgroundResource(R.drawable.style_funds_details_nav_yxb);
+                    zhzcTabBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue_left_3dp);
                     zhzcTabBtn.setTextColor(getResources().getColor(R.color.white));
                     zhzcTabBtn.setTag("1");
                     hkrlTabBtn.setBackgroundResource(R.color.transparent);
@@ -107,18 +129,18 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
                     hkrlTabBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
                 }
                 break;
-            case R.id.funds_details_activity_nav_zxd_btn:
+            case R.id.account_center_activity_tab_hkrl:
                 String flag2 = (String) v.getTag();
                 if("0".equals(flag2)){
                     hkrlFragment = new AccountCenterHKRLFragment();
                     trasection.replace(R.id.account_center_activity_mainlayout, hkrlFragment);
 
-                    zhzcTabBtn.setBackgroundResource(R.drawable.style_funds_details_nav_dqvip);
-                    zhzcTabBtn.setTextColor(getResources().getColor(R.color.white));
-                    zhzcTabBtn.setTag("1");
-                    hkrlTabBtn.setBackgroundResource(R.color.transparent);
-                    hkrlTabBtn.setTag("0");
-                    hkrlTabBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
+                    zhzcTabBtn.setBackgroundResource(R.color.transparent);
+                    zhzcTabBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
+                    zhzcTabBtn.setTag("0");
+                    hkrlTabBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue_right_3dp);
+                    hkrlTabBtn.setTag("1");
+                    hkrlTabBtn.setTextColor(getResources().getColor(R.color.white));
                 }
                 break;
             default:

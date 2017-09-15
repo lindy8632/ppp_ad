@@ -7,10 +7,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.ylfcf.inter.OnExpDateClickListener;
+import com.example.ylfcf.inter.OnMonthScrollListener;
+import com.example.ylfcf.widget.ExpCalendarView;
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.async.AsyncRepayment;
+import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.RepaymentInfo;
+import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.ui.AccountCenterActivity;
+import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.YLFLogger;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 账户中心 -- 回款日历
@@ -19,13 +37,38 @@ import com.ylfcf.ppp.util.UMengStatistics;
 
 public class AccountCenterHKRLFragment extends BaseFragment implements OnClickListener {
     private static final String className = "AccountCenterHKRLFragment";
+    private static final int REQUEST_REPAYMENT_WHAT = 8945;
+    private static final int REQUEST_REPAYMENT_SUC = 8946;
+    private final Map<String,RepaymentDayData> repaymentDayDataMap = new HashMap<String,RepaymentDayData>();
+
     private AccountCenterActivity mainActivity;
     private View rootView;
+
+    private ImageView arrowLeftImg,arrowRightImg;
+    private TextView curMonthTV;//当前月份
+    private TextView hkTotalMoneyTV;//回款总额
+    private ExpCalendarView mExpCalendarView;//日历控件
+    private TextView curDateTV;//当前日期
+    private TextView hkCountTV;//当月还款笔数
+    private TextView hkMoneyTV;//当日回款金额
+    private Button catInvestRecordBtn;//查看回款日历
+
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月");
+    private SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private List<String> repaymentDateList;//回款日期 yyyyMMdd
+    private List<String> repaymentCurDayMoneyList;//当日回款金额
+    private List<String> repaymentCurDayCountList;//当日回款笔数
+
 
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            switch (msg.what){
+                case REQUEST_REPAYMENT_WHAT:
+                    requestRepaymentInfo(SettingsManager.getUserId(mainActivity));
+                    break;
+            }
         }
     };
 
@@ -42,16 +85,82 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
         if (parent != null) {
             parent.removeView(rootView);
         }
+        initCurMonthData("");
+        handler.sendEmptyMessage(REQUEST_REPAYMENT_WHAT);
         return rootView;
     }
 
     private void findViews(View rootView,LayoutInflater layoutInflater){
+        arrowLeftImg = (ImageView)rootView.findViewById(R.id.account_center_hkrl_arrow_left);
+        arrowLeftImg.setOnClickListener(this);
+        arrowRightImg = (ImageView)rootView.findViewById(R.id.account_center_hkrl_arrow_right);
+        arrowRightImg.setOnClickListener(this);
+        curMonthTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_date_tv);
+        hkTotalMoneyTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_curmonth_totalmoney);
+        mExpCalendarView = (ExpCalendarView) rootView.findViewById(R.id.account_center_hkrl_calendarview);
+        curDateTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_hkinfo_cur_date_tv);
+        hkCountTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_hkinfo_count);
+        hkMoneyTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_hkinfo_money);
+        catInvestRecordBtn = (Button) rootView.findViewById(R.id.account_center_hkrl_cat_invest_record_btn);
+        catInvestRecordBtn.setOnClickListener(this);
 
+        initListners();
+    }
+
+    private void initListners(){
+        mExpCalendarView.setOnDateClickListener(new OnExpDateClickListener()).setOnMonthScrollListener(new OnMonthScrollListener() {
+            @Override
+            public void onMonthChange(int year, int month) {
+                curMonthTV.setText(String.format("%d年%d月", year, month));
+            }
+
+            @Override
+            public void onMonthScroll(float positionOffset) {
+                YLFLogger.i("listener", "onMonthScroll:" + positionOffset);
+            }
+        });
+    }
+
+    private void initCurMonthData(String curDateStr){
+        if("".equals(curDateStr)){
+            curMonthTV.setText(sdf.format(new Date()));
+            return;
+        }
+        try{
+            curMonthTV.setText(sdf.format(sdf1.parse(curDateStr)));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 将每天的回款信息整理到一个集合里面
+     */
+    private void initRepaymentData(){
+        if(repaymentDateList == null || repaymentCurDayMoneyList == null
+                || repaymentCurDayCountList == null){
+            return;
+        }
+        for(int i=0;i<repaymentDateList.size();i++){
+            RepaymentDayData dayData = new RepaymentDayData();
+            dayData.setDate(repaymentDateList.get(i));
+            dayData.setCount(repaymentCurDayCountList.get(i));
+            dayData.setMoney(repaymentCurDayMoneyList.get(i));
+            repaymentDayDataMap.put(repaymentDateList.get(i),dayData);
+        }
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.account_center_hkrl_arrow_left:
+                //向左的箭头
 
+                break;
+            case R.id.account_center_hkrl_arrow_right:
+                //向右的箭头
+                break;
+        }
     }
 
     public void onResume() {
@@ -67,5 +176,59 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
     public void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
+    }
+
+    /**
+     * 回款信息
+     * @param userId
+     */
+    private void requestRepaymentInfo(String userId){
+        AsyncRepayment task = new AsyncRepayment(mainActivity, userId, new Inter.OnCommonInter() {
+            @Override
+            public void back(BaseInfo baseInfo) {
+                if(baseInfo != null){
+                    initCurMonthData(baseInfo.getTime());
+                    int resultCode = SettingsManager.getResultCode(baseInfo);
+                    if(resultCode == 0){
+                        RepaymentInfo info = baseInfo.getmRepaymentInfo();
+                        repaymentDateList = info.getRepaymentDateList();
+                        repaymentCurDayMoneyList = info.getRepaymentCurDayMoneyList();
+                        repaymentCurDayCountList = info.getRepaymentCurDayCountList();
+                        initRepaymentData();
+                    }
+                }
+            }
+        });
+        task.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+    }
+
+    class RepaymentDayData{
+        String date;
+        String money;//当天回款金额
+        String count;//当天回款笔数
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+        public String getMoney() {
+            return money;
+        }
+
+        public void setMoney(String money) {
+            this.money = money;
+        }
+
+        public String getCount() {
+            return count;
+        }
+
+        public void setCount(String count) {
+            this.count = count;
+        }
     }
 }

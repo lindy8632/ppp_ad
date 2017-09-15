@@ -1,17 +1,21 @@
 package com.ylfcf.ppp.ui;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.ylfcf.ppp.util.ImageLoaderManager;
 import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.YLFLogger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * 为了节省内存，BannerTopicActivity作为一个单独的进程运行，
+ * Application的OnCreate()方法会重复调用。
+ * 故在onCreate()方法中对初始化数据模块进行判断，只有主进程即进程名为com.ylfcf.ppp的进程才会执行初始化操作。
  * @author Administrator
  * 
  */
@@ -24,6 +28,24 @@ public class YLFApplication extends android.app.Application {
 		super.onCreate();
 		theApplication = this;
 		activityList = new ArrayList<Activity>();
+		int pid = android.os.Process.myPid();
+		YLFLogger.d("pid application onCreate():"+pid);
+		String processNameString = "";
+		ActivityManager mActivityManager = (ActivityManager)this.getSystemService(getApplicationContext().ACTIVITY_SERVICE);
+		for (ActivityManager.RunningAppProcessInfo appProcess : mActivityManager.getRunningAppProcesses()) {
+			if (appProcess.pid == pid) {
+				processNameString = appProcess.processName;
+			}
+		}
+		if("com.ylfcf.ppp".equals(processNameString)){
+			init();
+		}else{
+
+		}
+		YLFLogger.d("进程名:"+processNameString);
+	}
+
+	private void init(){
 		UMengStatistics.statisticsInit();//禁止默认的页面统计方式
 		UMShareAPI.get(this);
 		// 微信 appid appsecret

@@ -15,10 +15,19 @@ public class ExtensionNewPageInfo implements java.io.Serializable{
 	private String total;
 	private String extension_user_count;//推荐的好友的个数
 	private String reward_total;//总共赚取了多少
+	private String myself_total;//理财师自己投资所赚取的佣金
 	private String one_total;//一级好友
 	private String second_total;//二级好友
 	private String other_total;//历史好友
 	private List<ExtensionNewInfo> extensionList;
+
+	public String getMyself_total() {
+		return myself_total;
+	}
+
+	public void setMyself_total(String myself_total) {
+		this.myself_total = myself_total;
+	}
 
 	public String getOne_total() {
 		return one_total;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- 灰色透明的圆 -->
+
+    <!-- 填充 -->
+    <solid
+        android:color="@color/gray_trans"/><!-- 填充的颜色 -->
+    <corners android:radius="@dimen/common_measure_6dp" />
+
+</shape>

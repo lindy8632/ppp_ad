@@ -278,7 +278,7 @@ public class BorrowDetailYXBActivity extends BaseActivity implements
 	 * @param status
 	 */
 	private void requestYXBProduct(String id, String status) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncYXBProduct productTask = new AsyncYXBProduct(

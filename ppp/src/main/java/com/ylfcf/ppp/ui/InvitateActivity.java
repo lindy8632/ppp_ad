@@ -63,6 +63,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	private TextView knowMoreTV;//了解更多
 	private ImageView wayLogo1,wayLogo2,wayLogo3;
     private TextView way1Content;
+	private LinearLayout btnsLayout,tipsLayout;
 
 	private int page = 0;
 	private int pageSize = 20;
@@ -86,7 +87,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				requestUserInfo(SettingsManager.getUserId(getApplicationContext()),isVerify);
+				requestUserInfo(SettingsManager.getUserId(getApplicationContext()),"",isVerify);
 			}
 		}, 300L);
 	}
@@ -139,6 +140,16 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 			bottomBtn.setText("完成实名认证，激活另外两种推荐方式");
 			bottomBtn.setTextColor(getResources().getColor(R.color.white));
 			bottomBtn.setBackgroundResource(R.drawable.blue_fillet_btn_selector);
+		}
+
+		btnsLayout = (LinearLayout) findViewById(R.id.invitate_activity_btns_layout);
+		tipsLayout = (LinearLayout) findViewById(R.id.invitate_activity_tips_layout);
+		if(SettingsManager.isCompanyUser(getApplicationContext())){
+			btnsLayout.setVisibility(View.GONE);
+			tipsLayout.setVisibility(View.GONE);
+		}else{
+			btnsLayout.setVisibility(View.VISIBLE);
+			tipsLayout.setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -298,7 +309,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	 * @param userId
 	 */
 	private void requestExtension(String userId) {
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncExtensionNewPageInfo taks = new AsyncExtensionNewPageInfo(
@@ -309,10 +320,12 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 						if(mLoadingDialog != null && mLoadingDialog.isShowing()){
 							mLoadingDialog.dismiss();
 						}
-						int resultCode = SettingsManager
-								.getResultCode(baseInfo);
-						if (resultCode == 1 || resultCode == -1) {
-							pageInfo = baseInfo.getExtensionNewPageInfo();
+						if(baseInfo != null){
+							int resultCode = SettingsManager
+									.getResultCode(baseInfo);
+							if (resultCode == 1 || resultCode == -1) {
+								pageInfo = baseInfo.getExtensionNewPageInfo();
+							}
 						}
 					}
 				});
@@ -324,9 +337,9 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 	 * @param userId
 	 * @param isVerify true表示实名过
 	 */
-	private void requestUserInfo(String userId,final boolean isVerify) {
+	private void requestUserInfo(String userId,String coMobile,final boolean isVerify) {
 		AsyncUserSelectOne task = new AsyncUserSelectOne(InvitateActivity.this,
-				userId, "", "", new OnGetUserInfoByPhone() {
+				userId, "",coMobile, "", new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if(mLoadingDialog != null && mLoadingDialog.isShowing()){

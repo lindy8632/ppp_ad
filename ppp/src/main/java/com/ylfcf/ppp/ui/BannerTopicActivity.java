@@ -53,9 +53,10 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 	private static final int DOWNLOAD_PIC_WHAT = 2713;
 
 	private LinearLayout mainLayout;
+	private LinearLayout contentLayout;
 	private LinearLayout topLeftBtn;
-	private TextView topTitleTV;
 	private WebView webview;
+	private TextView topTitleTV;
 	private BannerInfo banner;
 	private String topicType = "";//专题的名字，根据后台来约定的。
 	private RelativeLayout topLayout;
@@ -94,11 +95,13 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		if(userid == null || "".equals(userid)){
 			loadURL();
 		}
+		YLFLogger.d("time onCreate():"+System.currentTimeMillis());
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
+		YLFLogger.d("time onStart():"+System.currentTimeMillis());
 		YLFLogger.d("activity"+"BannerTopicActivity-------onStart()");
 	}
 
@@ -119,13 +122,14 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 	@Override
 	protected void onResume() {
 		super.onResume();
+		YLFLogger.d("time onResume():"+System.currentTimeMillis());
 		UMengStatistics.statisticsOnPageStart(className);//友盟统计页面跳转
 		UMengStatistics.statisticsResume(this);//友盟统计时长
-		YLFLogger.d("activity"+"BannerTopicActivity-------OnResume()");
-		userid = SettingsManager.getUserId(BannerTopicActivity.this);
+		userid = SettingsManager.getUserId(getApplicationContext());
 		if(userid != null && !"".equals(userid) && isFirstLoad){
 			loadURL();
 		}
+		YLFLogger.d("activity"+"BannerTopicActivity-------OnResume()"+"----------isFirstLoad:"+isFirstLoad+"--------------userid:"+userid);
 	}
 
 	@Override
@@ -146,6 +150,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		topTitleTV = (TextView)findViewById(R.id.common_page_title);
 		topLayout = (RelativeLayout) findViewById(R.id.banner_topic_activity_toplayout);
 		mainLayout = (LinearLayout) findViewById(R.id.banner_topic_activity_mainlayout);
+		contentLayout = (LinearLayout) findViewById(R.id.banner_topic_activity_content);
 		if(TopicType.CHONGZHISONG.equals(topicType)){
 			//充值送的活动
 			topTitleTV.setText("充值送");
@@ -169,12 +174,13 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		}else{
 			topTitleTV.setText("专题详情");
 		}
-		
-		webview = (WebView) findViewById(R.id.banner_topic_activity_webview);
-		this.webview.getSettings().setSupportZoom(false);  
-        this.webview.getSettings().setJavaScriptEnabled(true);  //支持js
-        this.webview.getSettings().setDomStorageEnabled(true);
-		this.webview.addJavascriptInterface(new JavascriptAndroidInterface(this),"android");
+		webview = new WebView(getApplicationContext());
+		webview.setLayoutParams(new LinearLayout.
+				LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
+		webview.getSettings().setSupportZoom(false);
+        webview.getSettings().setJavaScriptEnabled(true);  //支持js
+        webview.getSettings().setDomStorageEnabled(true);
+		webview.addJavascriptInterface(new JavascriptAndroidInterface(this),"android");
 		webview.setWebViewClient(new WebViewClient(){
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -196,12 +202,16 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		webview.setWebChromeClient(new WebChromeClient(){
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {
-				if(newProgress == 100){
+				if(newProgress == 100 && mLoadingDialog.isShowing()){
 					//网页加载完成
 					mLoadingDialog.dismiss();
-				}else{
-					//网页加载中...
-					mLoadingDialog.show();
+					YLFLogger.d("webview加载完成："+String.valueOf(newProgress));
+				}else if(newProgress != 100 && !mLoadingDialog.isShowing()){
+					//网页加载中...,Activity没有销毁的时候显示
+					if(!isFinishing()){
+						mLoadingDialog.show();
+						YLFLogger.d("webview加载中："+String.valueOf(newProgress));
+					}
 				}
 			}
 
@@ -229,6 +239,13 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 				YLFLogger.d("activity"+"BannerTopicActivity-------onRequestFocus()");
 			}
 		});
+		webview.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				return true;
+			}
+		});
+		contentLayout.addView(webview);
 	}
 
 	private void loadURL(){
@@ -265,6 +282,11 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		CookieManager.getInstance().removeAllCookie();
 		handler.removeCallbacksAndMessages(null);
 		UMShareAPI.get(this).release();//友盟分享内存泄露处理
+		//还是不能有效的解决webview内存泄露的问题，终极办法是给webview开一个进程。结束的时候直接杀死该进程
+		webview.removeAllViews();
+		webview.destroy();
+		webview = null;
+		contentLayout.removeAllViews();
 	}
 
 	public class JavascriptAndroidInterface{

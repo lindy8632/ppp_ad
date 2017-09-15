@@ -226,7 +226,7 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 	 * @param id
 	 */
 	private void requestArticle(String id){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncArticle articleTask = new AsyncArticle(BannerDetailsActivity.this, id,new OnCommonInter() {

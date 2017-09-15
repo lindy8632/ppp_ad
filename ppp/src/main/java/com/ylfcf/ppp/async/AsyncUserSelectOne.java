@@ -3,7 +3,6 @@ package com.ylfcf.ppp.async;
 import android.content.Context;
 
 import com.ylfcf.ppp.entity.BaseInfo;
-import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.parse.JsonParseUserInfo;
 import com.ylfcf.ppp.util.BackType;
@@ -20,15 +19,18 @@ public class AsyncUserSelectOne extends AsyncTaskBase{
 	
 	private String id;
 	private String phone;
+	private String coMobile;
 	private String openId;//微信用户唯一标识 
 	private OnGetUserInfoByPhone onGetUserInfoByPhone;
 	
 	private BaseInfo baseInfo;
 	
-	public AsyncUserSelectOne(Context context,String id, String phone,String openId,OnGetUserInfoByPhone onGetUserInfoByPhone) {
+	public AsyncUserSelectOne(Context context,String id, String phone,
+							  String coMobile,String openId,OnGetUserInfoByPhone onGetUserInfoByPhone) {
 		this.context = context;
 		this.id = id;
 		this.phone = phone;
+		this.coMobile = coMobile;
 		this.openId = openId;
 		this.onGetUserInfoByPhone = onGetUserInfoByPhone;
 	}
@@ -38,7 +40,7 @@ public class AsyncUserSelectOne extends AsyncTaskBase{
 		String url[] = null;
 		String result = null;
 		try {
-			url = URLGenerator.getInstance().getUserInfo(id, phone, openId);
+			url = URLGenerator.getInstance().getUserInfo(id, phone,coMobile, openId);
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}

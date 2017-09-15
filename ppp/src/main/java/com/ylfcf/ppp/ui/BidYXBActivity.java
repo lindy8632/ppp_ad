@@ -398,7 +398,7 @@ public class BidYXBActivity extends BaseActivity implements OnClickListener {
 	 * @param dateTime
 	 */
 	private void requestYXBProductLog(String id, String dateTime) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncYXBProductLog productLogTask = new AsyncYXBProductLog(

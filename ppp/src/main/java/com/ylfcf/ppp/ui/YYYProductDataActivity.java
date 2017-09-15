@@ -364,7 +364,7 @@ public class YYYProductDataActivity extends BaseActivity implements OnClickListe
 	 * @param borrowId
 	 */
 	private void requestYYYCurrentUserInvest(String investUserId,String borrowId){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncYYYCurrentUserInvest task = new AsyncYYYCurrentUserInvest(YYYProductDataActivity.this, investUserId, borrowId, 

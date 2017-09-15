@@ -105,7 +105,7 @@ public class ChangeAddressActivity extends BaseActivity implements OnClickListen
 	}
 	
 	private void requestChangeAddres(String userId,String address,String postCode){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		changeAddressTask = new AsyncChangeAddress(ChangeAddressActivity.this, userId, address,
@@ -135,10 +135,10 @@ public class ChangeAddressActivity extends BaseActivity implements OnClickListen
 	 * @param phone
 	 */
 	private void requestUserInfo(String userId,String phone){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
-		AsyncUserSelectOne userTask = new AsyncUserSelectOne(ChangeAddressActivity.this, userId, phone, "", new OnGetUserInfoByPhone() {
+		AsyncUserSelectOne userTask = new AsyncUserSelectOne(ChangeAddressActivity.this, userId, phone, "","", new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
 				if(mLoadingDialog != null && mLoadingDialog.isShowing()){

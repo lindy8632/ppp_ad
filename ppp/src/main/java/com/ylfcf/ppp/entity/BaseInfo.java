@@ -74,6 +74,15 @@ public class BaseInfo implements java.io.Serializable{
 	private PopBannerInfo mPopBannerInfo;
 	private FriendsPageInfo mFriendsPageInfo;
 	private RedBagInfo mRedBagInfo;
+	private RepaymentInfo mRepaymentInfo;//»Ø¿î
+
+	public RepaymentInfo getmRepaymentInfo() {
+		return mRepaymentInfo;
+	}
+
+	public void setmRepaymentInfo(RepaymentInfo mRepaymentInfo) {
+		this.mRepaymentInfo = mRepaymentInfo;
+	}
 
 	public RedBagInfo getmRedBagInfo() {
 		return mRedBagInfo;

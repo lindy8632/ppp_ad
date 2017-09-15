@@ -20,6 +20,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.db.DBGesturePwdManager;
+import com.ylfcf.ppp.entity.GesturePwdEntity;
+import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.viewflow.ViewFlow;
 
@@ -35,8 +38,7 @@ public class IntroductionActivity extends BaseActivity {
 	// private CircleFlowIndicator circleIndicator;
 
 	private final int[] ids = { R.drawable.intro_page_1,
-			R.drawable.intro_page_2, R.drawable.intro_page_3,
-			R.drawable.intro_page_4 };
+			R.drawable.intro_page_2, R.drawable.intro_page_3};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,9 +110,21 @@ public class IntroductionActivity extends BaseActivity {
 				public void onClick(View v) {
 					if (position == ids.length - 1) {
 						finish();
+						GesturePwdEntity entity = DBGesturePwdManager.getInstance(
+								getApplicationContext()).getGesturePwdEntity(SettingsManager.getUserId(getApplicationContext()));
+						String gesturePwd = null;
+						if (entity != null) {
+							gesturePwd = entity.getPwd();
+						}
 						Intent intent = new Intent();
-						intent.setClass(IntroductionActivity.this.getApplicationContext(),
-								MainFragmentActivity.class);
+						if (gesturePwd != null && !"".equals(gesturePwd)) {
+							// 手势密码验证
+							intent.setClass(IntroductionActivity.this,
+									GestureVerifyActivity.class);
+						}else{
+							intent.setClass(IntroductionActivity.this.getApplicationContext(),
+									MainFragmentActivity.class);
+						}
 						IntroductionActivity.this.startActivity(intent);
 					} else {
 						viewFlow.snapToScreen(position + 1);

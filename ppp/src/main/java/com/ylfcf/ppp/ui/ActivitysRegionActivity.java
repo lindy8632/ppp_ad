@@ -207,7 +207,7 @@ public class ActivitysRegionActivity extends BaseActivity implements OnClickList
 	 */
 	private void requestActiveList(int page,int pageSize,
 								   String status,String fromWhere,String picShowStatus){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncActiveList task = new AsyncActiveList(ActivitysRegionActivity.this,String.valueOf(page),String.valueOf(pageSize),status,fromWhere,picShowStatus,

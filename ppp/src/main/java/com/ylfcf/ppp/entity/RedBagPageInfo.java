@@ -8,7 +8,16 @@ public class RedBagPageInfo implements java.io.Serializable {
 
 	private static final long serialVersionUID = -6813690178210486563L;
 	private String list;
+	private String total;
 	private List<RedBagInfo> redbagList;
+
+	public String getTotal() {
+		return total;
+	}
+
+	public void setTotal(String total) {
+		this.total = total;
+	}
 
 	public String getList() {
 		return list;

@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/common_measure_20dp"
-        android:lineSpacingMultiplier="1.1"
+        android:lineSpacingMultiplier="1.2"
         android:text="@string/myinvitation_tips_string"
         android:textSize="@dimen/common_measure_18dp"
         android:textColor="@color/gray"/>
@@ -38,6 +38,6 @@
             android:gravity="center"
             android:text="知道了"
             android:textColor="@color/common_topbar_bg_color"
-            android:textSize="@dimen/common_measure_24dp" />
+            android:textSize="@dimen/common_measure_22dp" />
 
 </LinearLayout>

@@ -427,7 +427,7 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 	 * @param phone
 	 */
 	private void requestUserInfo(final String userId,String phone){
-		AsyncUserSelectOne userTask = new AsyncUserSelectOne(this, userId, phone, "", new OnGetUserInfoByPhone() {
+		AsyncUserSelectOne userTask = new AsyncUserSelectOne(this, userId, phone, "","", new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
 				if(baseInfo != null){
@@ -485,7 +485,7 @@ public class UserInvestRecordActivity extends BaseActivity implements OnClickLis
 	 * @param borrowId
 	 */
 	private void getYJYInvestRecordList(String investUserId,String borrowId){
-		if(loadingDialog != null){
+		if(loadingDialog != null && !isFinishing()){
 			loadingDialog.show();
 		}
 		AsyncInvestYJYRecord asyncInvestRecord = new AsyncInvestYJYRecord(this, investUserId,borrowId,

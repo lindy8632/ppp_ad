@@ -170,7 +170,7 @@ public class AccountSettingActivity extends BaseActivity implements
 	 */
 	private void requestUserInfo(String userId, String phone) {
 		AsyncUserSelectOne userTask = new AsyncUserSelectOne(
-				AccountSettingActivity.this, userId, phone, "",
+				AccountSettingActivity.this, userId, phone, "","",
 				new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {
@@ -183,6 +183,8 @@ public class AccountSettingActivity extends BaseActivity implements
 										.obtainMessage(REQUEST_GET_USERINFO_SUCCESS);
 								msg.obj = userInfo;
 								handler.sendMessage(msg);
+							}else{
+								Util.toastLong(AccountSettingActivity.this,baseInfo.getMsg());
 							}
 						}
 					}

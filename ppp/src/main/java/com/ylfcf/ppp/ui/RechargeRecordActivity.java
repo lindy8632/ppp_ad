@@ -215,7 +215,7 @@ public class RechargeRecordActivity extends BaseActivity implements OnClickListe
 	 * @param userId
 	 */
 	private void getRechargeRecordList(String userId){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncRechargeRecord rechargeRecordTask = new AsyncRechargeRecord(RechargeRecordActivity.this, String.valueOf(page), 

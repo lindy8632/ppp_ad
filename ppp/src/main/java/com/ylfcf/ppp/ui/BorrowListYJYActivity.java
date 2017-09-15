@@ -228,7 +228,7 @@ public class BorrowListYJYActivity extends BaseActivity  implements
      *
      */
     private void requestProductPageInfo(String borrowStatus,String moneyStatus) {
-        if (isFirst) {
+        if (isFirst && mLoadingDialog != null && !isFinishing()) {
             mLoadingDialog.show();
         }
 

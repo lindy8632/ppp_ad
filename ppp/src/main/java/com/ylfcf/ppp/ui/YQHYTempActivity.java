@@ -164,7 +164,7 @@ public class YQHYTempActivity extends BaseActivity implements OnClickListener{
 	 * @param type “充值”,“提现”，“邀请有奖”
 	 */
 	private void checkIsVerify(final String type){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		RequestApis.requestIsVerify(YQHYTempActivity.this, SettingsManager.getUserId(YQHYTempActivity.this), new OnIsVerifyListener() {

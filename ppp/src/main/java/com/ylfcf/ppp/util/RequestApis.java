@@ -1,7 +1,6 @@
 package com.ylfcf.ppp.util;
 
 import android.content.Context;
-import android.os.AsyncTask;
 
 import com.ylfcf.ppp.async.AsyncUserBankCard;
 import com.ylfcf.ppp.async.AsyncUserSelectOne;
@@ -10,12 +9,12 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.UserCardInfo;
 import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
+import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.inter.Inter.OnIsBindingListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVerifyListener;
 import com.ylfcf.ppp.inter.Inter.OnIsVipUserListener;
 import com.ylfcf.ppp.inter.Inter.OnIsYXBInvestorListener;
 import com.ylfcf.ppp.inter.Inter.OnUserBankCardInter;
-import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 
 /**
  * 接口请求的API
@@ -29,7 +28,7 @@ public class RequestApis {
 	 * @param verifyListener 是否实名认证的接口回调
 	 */
 	public static void requestIsVerify(Context context,String userId,final OnIsVerifyListener verifyListener){
-		AsyncUserSelectOne task = new AsyncUserSelectOne(context, userId, "", "", new OnGetUserInfoByPhone() {
+		AsyncUserSelectOne task = new AsyncUserSelectOne(context, userId, "", "", "",new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
 				if(baseInfo == null){
@@ -67,7 +66,7 @@ public class RequestApis {
 	 * @param vipListener
 	 */
 	public static void requestIsVip(Context context,String userId,final OnIsVipUserListener vipListener){
-		AsyncUserSelectOne task = new AsyncUserSelectOne(context, userId, "", "", new OnGetUserInfoByPhone() {
+		AsyncUserSelectOne task = new AsyncUserSelectOne(context, userId, "", "","", new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
 				if(baseInfo == null){

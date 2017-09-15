@@ -157,7 +157,7 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 	}
 
 	private void requestModifyPwd(String userId, String newPwd, String phone,final String initPwd) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncUpdateUserInfo task = new AsyncUpdateUserInfo(
@@ -201,7 +201,7 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 	 */
 	private void requestUserInfo(String userId, String phone, String openId) {
 		AsyncUserSelectOne userTask = new AsyncUserSelectOne(
-				ModifyLoginPwdActivity.this, userId, phone, openId,
+				ModifyLoginPwdActivity.this, userId, phone, "",openId,
 				new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {

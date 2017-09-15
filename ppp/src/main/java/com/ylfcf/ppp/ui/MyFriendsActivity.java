@@ -24,9 +24,11 @@ import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.MyFriendAdapter;
 import com.ylfcf.ppp.async.AsyncFriendsPageInfo;
 import com.ylfcf.ppp.async.AsyncGetLCSName;
+import com.ylfcf.ppp.async.AsyncUserSelectOne;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.FriendInfo;
 import com.ylfcf.ppp.entity.FriendsPageInfo;
+import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
@@ -44,6 +46,7 @@ public class MyFriendsActivity extends BaseActivity implements View.OnClickListe
     private final int REQUEST_FRIENDS_LIST_WHAT = 6721;
     private final int REQUEST_FRIENDS_LIST_SUC = 6722;
     private final int REQUEST_FRIENDS_LIST_FAILT = 6723;
+    private static final int REQUEST_USERINFO_WHAT = 1203;
 
     private final int REQUEST_LCS_NAME_WHAT = 6724;//是否是理财师
 
@@ -67,6 +70,7 @@ public class MyFriendsActivity extends BaseActivity implements View.OnClickListe
     private MyFriendAdapter adapter;
 
     private boolean isLcs = false;
+    private UserInfo userInfo = null;
 
     private Handler handler = new Handler(){
         @Override
@@ -90,11 +94,15 @@ public class MyFriendsActivity extends BaseActivity implements View.OnClickListe
                     if(isLoadMore){
                         mXRefreshView.setLoadComplete(true);
                     }
+                    initDatas(null,friendInfoTempList);
                     isRefresh = false;
                     isLoadMore = false;
                     break;
                 case REQUEST_LCS_NAME_WHAT:
                     requestLcsName(SettingsManager.getUser(getApplicationContext()));
+                    break;
+                case REQUEST_USERINFO_WHAT:
+                    requestUserInfo(SettingsManager.getUserId(getApplicationContext()),"","");
                     break;
             }
         }
@@ -199,11 +207,14 @@ public class MyFriendsActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void initDatas(FriendsPageInfo pageInfo,List<FriendInfo> list){
-        if(isLcs){
+        if(isLcs || (userInfo != null && "微企汇".equals(userInfo.getType()))&&"0".equals(userInfo.getExtension_user_id())){
+            //理财师或者微企汇的A级用户
             zjjjLayout.setVisibility(View.VISIBLE);
         }else{
             zjjjLayout.setVisibility(View.GONE);
         }
+        if(pageInfo == null)
+            return;
         totalFriendsCountTV.setText(pageInfo.getCount_extension_user());
         zjhyCountTV.setText(pageInfo.getOne_level_users_count());
         jjhyCountTV.setText(pageInfo.getSecond_level_users_count());
@@ -285,7 +296,7 @@ public class MyFriendsActivity extends BaseActivity implements View.OnClickListe
      * @param userId
      */
     private void requestFriendsList(String userId){
-        if(mLoadingDialog != null){
+        if(mLoadingDialog != null && !isFinishing()){
             mLoadingDialog.show();
         }
         AsyncFriendsPageInfo friendsTask = new AsyncFriendsPageInfo(MyFriendsActivity.this, userId, String.valueOf(page),
@@ -344,9 +355,36 @@ public class MyFriendsActivity extends BaseActivity implements View.OnClickListe
                 }else{
                     isLcs = false;
                 }
-                handler.sendEmptyMessage(REQUEST_FRIENDS_LIST_WHAT);
+                handler.sendEmptyMessage(REQUEST_USERINFO_WHAT);
             }
         });
         lcsTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+    }
+
+    /**
+     * 请求用户信息，根据hf_user_id字段判断用户是否有汇付账户
+     * @param userId
+     * @param phone
+     */
+    private void requestUserInfo(final String userId,String phone,String coMobile){
+        AsyncUserSelectOne userTask = new AsyncUserSelectOne(MyFriendsActivity.this, userId, phone,coMobile, "",
+                new Inter.OnGetUserInfoByPhone() {
+                    @Override
+                    public void back(BaseInfo baseInfo) {
+                        if(baseInfo != null){
+                            int resultCode = SettingsManager.getResultCode(baseInfo);
+                            if(resultCode == 0){
+                                userInfo = baseInfo.getUserInfo();
+                                if(userInfo != null && "微企汇".equals(userInfo.getType())){
+                                    promptImg.setVisibility(View.GONE);
+                                }else{
+                                    promptImg.setVisibility(View.VISIBLE);
+                                }
+                            }
+                            handler.sendEmptyMessage(REQUEST_FRIENDS_LIST_WHAT);
+                        }
+                    }
+                });
+        userTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
     }
 }

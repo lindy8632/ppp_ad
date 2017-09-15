@@ -23,6 +23,7 @@ import com.ylfcf.ppp.async.AsyncGetUserInfoByPhone;
 import com.ylfcf.ppp.async.AsyncLogin;
 import com.ylfcf.ppp.async.AsyncRegiste;
 import com.ylfcf.ppp.async.AsyncSMSRegiste;
+import com.ylfcf.ppp.async.AsyncUserSelectOne;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.SMSType;
 import com.ylfcf.ppp.entity.TaskDate;
@@ -666,8 +667,8 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void requestNPRegiste(String phone, String password,
 								  String extension_code) {
-		if(mLoadingDialog != null)
-		mLoadingDialog.show();
+		if(mLoadingDialog != null && !isFinishing())
+		    mLoadingDialog.show();
 		String open_id = "";
 		AsyncRegiste registeTask = new AsyncRegiste(RegisteActivity.this,
 				phone, password, open_id, SettingsManager.USER_FROM,activityFlag,
@@ -685,8 +686,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 									String Params[] = SettingsManager
 											.getSMSRegisteSuccessParams(userInfo
 													.getUser_name());
-									requestSMSAuthCode(phoneNPNum,
-											SMSType.SMS_REGISTER_SUCCESS,
+									requestSMSAuthCode(phoneNPNum, SMSType.SMS_REGISTER_SUCCESS,
 											Params[1], "", "register_success");
 									requestNPLogin(phoneNPNum, pwdNP);
 								}
@@ -694,8 +694,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 								if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
 									mLoadingDialog.dismiss();
 								}
-								Util.toastShort(RegisteActivity.this,
-										baseInfo.getMsg());
+								Util.toastShort(RegisteActivity.this, baseInfo.getMsg());
 							}
 						}else{
 						}
@@ -712,7 +711,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void requestVIPRegiste(final String phone, final String password,
 								   String extension_code,String salesPhone) {
-		if(mLoadingDialog != null)
+		if(mLoadingDialog != null && !isFinishing())
 		mLoadingDialog.show();
 		String open_id = "";
 
@@ -777,7 +776,9 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 									//企业用户获取验证码
 									registeCompanyBtn.setEnabled(true);
 								}
-							}
+							}else{
+                                Util.toastLong(RegisteActivity.this,baseInfo.getMsg());
+                            }
 						}
 					}
 				});
@@ -790,7 +791,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	 * @param pwd
 	 */
 	private void requestNPLogin(final String phone,final String pwd){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 
@@ -831,7 +832,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	 * @param pwd
 	 */
 	private void requestVIPLogin(final String phone,final String pwd){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 
@@ -948,7 +949,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 	 * 根据手机号码获取用户信息
 	 * @param phone
 	 */
-	private void getUserInfoByPhone(String phone,final String type){
+	private void getUserInfoByPhone(final String phone,final String type){
 		AsyncGetUserInfoByPhone phoneTask = new AsyncGetUserInfoByPhone(RegisteActivity.this, phone,
 				new Inter.OnGetUserInfoByPhone() {
 			@Override
@@ -977,17 +978,61 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 								managerNameComp.setText("推荐人："+Util.hidRealName2(user.getReal_name()));
 							}
 						}
-					}else if(resultCode == -1){
-						//获取失败
-						Util.toastLong(RegisteActivity.this,"推荐人手机号错误");
 					}else{
-						Util.toastLong(RegisteActivity.this, baseInfo.getMsg());
+						getUserInfoById("","",phone,type);
 					}
 				}
 			}
 		}
 		);
 		phoneTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+	/**
+	 *
+	 * @param userId
+	 * @param phone
+	 * @param coMobile
+	 */
+	private void getUserInfoById(String userId,String phone,final String coMobile,final String type){
+		AsyncUserSelectOne task = new AsyncUserSelectOne(RegisteActivity.this,userId,phone,coMobile,"",
+				new Inter.OnGetUserInfoByPhone(){
+					@Override
+					public void back(BaseInfo baseInfo) {
+						if(baseInfo != null){
+							int resultCode = SettingsManager.getResultCode(baseInfo);
+							if(resultCode == 0){
+								UserInfo user = baseInfo.getUserInfo();
+								if(user == null){
+									return;
+								}
+								if("personal".equals(type)){
+									registeNPBtn.setEnabled(true);
+									if(user.getReal_name() == null || "".equals(user.getReal_name())){
+										recommendNPName.setVisibility(View.GONE);
+									}else{
+										recommendNPName.setVisibility(View.VISIBLE);
+										recommendNPName.setText("推荐人："+Util.hidRealName2(user.getReal_name()));
+									}
+								}else if("company".equals(type)){
+									registeCompanyBtn.setEnabled(true);
+									if(user.getReal_name() == null || "".equals(user.getReal_name())){
+										managerNameComp.setVisibility(View.GONE);
+									}else{
+										managerNameComp.setVisibility(View.VISIBLE);
+										managerNameComp.setText("推荐人："+Util.hidRealName2(user.getReal_name()));
+									}
+								}
+							}else if(resultCode == -1){
+								//获取失败
+								Util.toastLong(RegisteActivity.this,"推荐人手机号错误");
+							}else{
+								Util.toastLong(RegisteActivity.this, baseInfo.getMsg());
+							}
+						}
+					}
+				});
+		task.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 
 	/**

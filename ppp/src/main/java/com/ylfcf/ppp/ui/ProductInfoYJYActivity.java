@@ -365,7 +365,7 @@ public class ProductInfoYJYActivity extends BaseActivity implements
      */
     private void checkIsVerify(){
         investBtn.setEnabled(false);
-        if(mLoadingDialog != null){
+        if(mLoadingDialog != null && !isFinishing()){
             mLoadingDialog.show();
         }
         RequestApis.requestIsVerify(ProductInfoYJYActivity.this, SettingsManager.getUserId(getApplicationContext()), new Inter.OnIsVerifyListener() {
@@ -400,7 +400,7 @@ public class ProductInfoYJYActivity extends BaseActivity implements
      * @param guaranteeId
      */
     private void requestAssociatedCompany(String loanId,String recommendId,String guaranteeId){
-        if(mLoadingDialog != null){
+        if(mLoadingDialog != null && !isFinishing()){
             mLoadingDialog.show();
         }
         AsyncAsscociatedCompany task = new AsyncAsscociatedCompany(ProductInfoYJYActivity.this, loanId, recommendId, guaranteeId,

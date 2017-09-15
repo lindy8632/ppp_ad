@@ -635,7 +635,7 @@ public class BidVIPActivity extends BaseActivity implements OnClickListener {
 			String money, int bonusMoney, String investFrom,
 			String investFromSub, String experienceCode, String investFromHost,
 			String merPriv, String redBagLogId) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncVipBorrowInvest asyncBorrowInvest = new AsyncVipBorrowInvest(

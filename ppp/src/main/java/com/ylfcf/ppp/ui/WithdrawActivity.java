@@ -312,7 +312,7 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 	 * @param type
 	 */
 	private void requestUserVerify(String userId,String type){
-		if(mLoadingDialog != null)
+		if(mLoadingDialog != null && !isFinishing())
 		mLoadingDialog.show();
 		AsyncUserBankCard bankcardTask = new AsyncUserBankCard(WithdrawActivity.this, userId, type, new OnUserBankCardInter(){
 			@Override
@@ -338,7 +338,7 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 	 * @param dealPwd
 	 */
 	private  void checkDealPwd(String userId,String dealPwd){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncCheckDealPwd dealPwdTask = new AsyncCheckDealPwd(WithdrawActivity.this, userId, dealPwd, new OnCommonInter() {

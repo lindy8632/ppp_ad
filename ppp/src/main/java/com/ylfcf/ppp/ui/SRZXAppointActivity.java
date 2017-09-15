@@ -710,7 +710,7 @@ public class SRZXAppointActivity extends BaseActivity implements OnClickListener
 	 * @param purchaseTime 计划购买时间 格式yyyy-MM-dd HH:mm:ss
 	 */
 	private void requestAppointAdd(String userId,String money,String interestPeriod,String purchaseTime){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncAppointAdd appointAddTask = new AsyncAppointAdd(SRZXAppointActivity.this, userId, money, interestPeriod, purchaseTime, 
@@ -753,7 +753,7 @@ public class SRZXAppointActivity extends BaseActivity implements OnClickListener
 	 * @param pageSize
 	 */
 	private void requestAppointRecord(int page,int pageSize){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncAppointRecord recordTask = new AsyncAppointRecord(SRZXAppointActivity.this, String.valueOf(page), String.valueOf(pageSize), 

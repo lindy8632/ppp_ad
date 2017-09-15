@@ -10,6 +10,8 @@ import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.YLFLogger;
+
 /**
  * Banner接口
  * @author Administrator
@@ -44,7 +46,7 @@ public class AsyncBanner extends AsyncTaskBase{
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}
-			
+			YLFLogger.d("banner结果："+result+"banner链接："+url[0]+url[1]);
 			if (result == null) {
 				result = BackType.FAILE;
 			} else {

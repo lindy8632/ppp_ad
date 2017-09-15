@@ -511,7 +511,8 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 	 * @param borrowStatus
 	 */
 	private void getProductDetailsById(String id, String borrowStatus,String moneyStatus) {
-		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()
+				&& !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncYYYProductInfo task = new AsyncYYYProductInfo(BorrowDetailYYYActivity.this,

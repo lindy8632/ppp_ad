@@ -416,7 +416,7 @@ public class ForgetPwdActivity extends BaseActivity implements OnClickListener {
 	private void updateUserInfo(String id, String password, String phone,
 			String email, String openId, String dealEnabled, String dealPwd,
 			String tmpData) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncUpdateUserInfo asyncUpdateUserInfo = new AsyncUpdateUserInfo(
@@ -456,7 +456,7 @@ public class ForgetPwdActivity extends BaseActivity implements OnClickListener {
 	 * @param phone
 	 */
 	private void checkRegister(String phone) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncGetUserInfoByPhone asyncGetUserByPhone = new AsyncGetUserInfoByPhone(

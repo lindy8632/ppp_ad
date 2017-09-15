@@ -593,7 +593,7 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 	 */
 	private void checkIsVerify(final String type){
 		investBtn.setEnabled(false);
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		RequestApis.requestIsVerify(ProductDataActivity.this, SettingsManager.getUserId(getApplicationContext()), new OnIsVerifyListener() {
@@ -682,7 +682,7 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 	 * @param borrowId
 	 */
 	private void requestCurrentUserInvest(String investUserId,String borrowId){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncCurrentUserInvest task = new AsyncCurrentUserInvest(ProductDataActivity.this, investUserId, borrowId, 
@@ -711,7 +711,7 @@ public class ProductDataActivity extends BaseActivity implements OnClickListener
 	 * @param borrowId
 	 */
 	private void requestVIPCurrentUserInvest(String investUserId,String borrowId){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncVIPCurrentUserInvest task = new AsyncVIPCurrentUserInvest(ProductDataActivity.this, investUserId, borrowId, 

@@ -138,7 +138,7 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 	}
 	
 	private void requestModifyPwd(String userId,String newPwd,String phone){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncUpdateUserInfo task = new AsyncUpdateUserInfo(WithdrawPwdModifyActivity.this, userId, "", phone, 
@@ -168,10 +168,10 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 	 * @param phone
 	 */
 	private void requestUserInfo(String userId,String phone){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
-		AsyncUserSelectOne userTask = new AsyncUserSelectOne(WithdrawPwdModifyActivity.this, userId, phone, "", new OnGetUserInfoByPhone() {
+		AsyncUserSelectOne userTask = new AsyncUserSelectOne(WithdrawPwdModifyActivity.this, userId, phone, "","", new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
 				if(mLoadingDialog != null && mLoadingDialog.isShowing()){

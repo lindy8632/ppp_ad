@@ -1,6 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/account_center_hkrl_arrow_left"
+                android:layout_width="@dimen/common_measure_12dp"
+                android:layout_height="@dimen/common_measure_19dp"
+                android:src="@drawable/arrow_left_calendar"/>
+
+            <TextView
+                android:id="@+id/account_center_hkrl_date_tv"
+                android:layout_width="@dimen/common_measure_130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_40dp"
+                android:layout_marginRight="@dimen/common_measure_40dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_22dp"/>
+
+            <ImageView
+                android:id="@+id/account_center_hkrl_arrow_right"
+                android:layout_width="@dimen/common_measure_12dp"
+                android:layout_height="@dimen/common_measure_19dp"
+                android:src="@drawable/arrow_right_calendar"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_23dp"
+                android:layout_height="@dimen/common_measure_21dp"
+                android:src="@drawable/calendar_logo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_5dp"
+                android:text="本月回款总额："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"/>
+
+            <TextView
+                android:id="@+id/account_center_hkrl_curmonth_totalmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/common_topbar_bg_color"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="0.00"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_16dp"/>
+
+        </LinearLayout>
+
+        <com.example.ylfcf.widget.WeekColumnView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_measure_30dp"/>
+
+        <com.example.ylfcf.widget.ExpCalendarView
+            android:id="@+id/account_center_hkrl_calendarview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_300dp"
+            android:layout_marginTop="@dimen/common_measure_10dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_20dp"
+            android:layout_marginBottom="@dimen/common_measure_10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/account_center_hkrl_hkr_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginLeft="@dimen/common_measure_5dp"
+                android:text="回款日"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+            <View
+                android:layout_width="@dimen/common_measure_8dp"
+                android:layout_height="@dimen/common_measure_8dp"
+                android:background="@drawable/style_circle_blue"
+                android:layout_toLeftOf="@+id/account_center_hkrl_hkr_tv"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color"/>
+
+        <LinearLayout
+            android:id="@+id/account_center_hkrl_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/common_measure_20dp"
+            android:layout_marginBottom="@dimen/common_measure_20dp">
+
+            <TextView
+                android:id="@+id/account_center_hkrl_hkinfo_cur_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"
+                android:text="7月12日："/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="还款"
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/gray"/>
+
+            <TextView
+                android:id="@+id/account_center_hkrl_hkinfo_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/common_topbar_bg_color"
+                android:text="2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="笔，应收金额"
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/gray"/>
+
+            <TextView
+                android:id="@+id/account_center_hkrl_hkinfo_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/common_topbar_bg_color"
+                android:text="1258.69"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/gray"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/account_center_hkrl_cat_invest_record_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_63dp"
+            android:layout_marginBottom="@dimen/common_measure_30dp"
+            android:layout_marginLeft="@dimen/common_measure_20dp"
+            android:layout_marginRight="@dimen/common_measure_20dp"
+            android:layout_marginTop="@dimen/common_measure_20dp"
+            android:background="@drawable/blue_fillet_btn_selector"
+            android:text="查看投资记录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_measure_20dp"
+            android:layout_marginRight="@dimen/common_measure_20dp"
+            android:layout_marginBottom="@dimen/common_measure_20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/prompt_logo2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_5dp"
+                android:layout_weight="1"
+                android:textSize="@dimen/common_measure_16dp"
+                android:textColor="@color/gray"
+                android:text="@string/account_center_hkrl_tips"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

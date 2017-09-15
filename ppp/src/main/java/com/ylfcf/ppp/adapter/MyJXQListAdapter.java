@@ -109,7 +109,28 @@ public class MyJXQListAdapter extends ArrayAdapter<JiaxiquanInfo>{
 				|| "NULL".equals(info.getBorrow_type())){
 			viewHolder.syfwText.setText("一 一");
 		}else{
-			viewHolder.syfwText.setText(info.getBorrow_type());
+			if(info.getBorrow_type().contains("元月通")&&info.getBorrow_type().contains("元季融")&&
+					info.getBorrow_type().contains("元定和")&&info.getBorrow_type().contains("元年鑫")){
+				List<String> typeList = new ArrayList<String>();
+				String[] types = info.getBorrow_type().split(",");
+				typeList.add("元政盈");
+				for(int i=0;i<types.length;i++){
+					if(!"元月通".equals(types[i])&&!"元季融".equals(types[i])&&!"元定和".equals(types[i])&&!"元年鑫".equals(types[i])){
+						typeList.add(types[i]);
+					}
+				}
+				StringBuffer sb = new StringBuffer();
+				for(int i=0;i<typeList.size();i++){
+					if(i == typeList.size() - 1){
+						sb.append(typeList.get(i));
+					}else{
+						sb.append(typeList.get(i)).append(",");
+					}
+				}
+				viewHolder.syfwText.setText(sb.toString());
+			}else{
+				viewHolder.syfwText.setText(info.getBorrow_type());
+			}
 		}
 		
 		viewHolder.yxqText.setText(startTime+" ~ "+endTime);

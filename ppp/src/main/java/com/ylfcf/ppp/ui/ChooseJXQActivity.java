@@ -484,7 +484,7 @@ public class ChooseJXQActivity extends BaseActivity implements View.OnClickListe
      * @param transfer 0表示不可转让 1表示可转让 2表示已转让
      */
     private void requestTransferedCouponList(String userId,String useStatus,String transfer){
-        if(mLoadingDialog != null){
+        if(mLoadingDialog != null && !isFinishing()){
             mLoadingDialog.show();
         }
         AsyncTransferedCouponList couponListTask = new AsyncTransferedCouponList(ChooseJXQActivity.this,
@@ -524,7 +524,7 @@ public class ChooseJXQActivity extends BaseActivity implements View.OnClickListe
      * @param couponIds 加息券的id,用逗号分隔
      */
     private void transferCoupons(String userId,String couponIds){
-        if(mLoadingDialog != null){
+        if(mLoadingDialog != null && !isFinishing()){
             mLoadingDialog.show();
         }
         AsyncTransferCoupon couponTask = new AsyncTransferCoupon(ChooseJXQActivity.this, userId, couponIds,

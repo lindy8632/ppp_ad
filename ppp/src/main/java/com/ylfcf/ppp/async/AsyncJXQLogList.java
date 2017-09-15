@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.parse.JsonParseCommon;
+import com.ylfcf.ppp.parse.JsonParseJXQPageInfo;
 import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
 import com.ylfcf.ppp.util.URLGenerator;
@@ -18,15 +18,23 @@ public class AsyncJXQLogList extends AsyncTaskBase{
 
 	private String userId;
 	private String couponFrom;
+	private String useStatus;
+	private String page;
+	private String pageSize;
+	private String transfer;
 
 	private OnCommonInter onCommonInter;
 	private BaseInfo baseInfo;
 
-	public AsyncJXQLogList(Context context, String userId, String couponFrom,
-			OnCommonInter onCommonInter) {
+	public AsyncJXQLogList(Context context, String userId, String couponFrom,String useStatus,String page,
+						   String pageSize,String transfer, OnCommonInter onCommonInter) {
 		this.context = context;
 		this.userId = userId;
 		this.couponFrom = couponFrom;
+		this.useStatus = useStatus;
+		this.page = page;
+		this.pageSize = pageSize;
+		this.transfer = transfer;
 		this.onCommonInter = onCommonInter;
 	}
 
@@ -35,7 +43,7 @@ public class AsyncJXQLogList extends AsyncTaskBase{
 		String url[] = null;
 		String result = null;
 		try {
-			url = URLGenerator.getInstance().getIsGetJXQURL(userId, couponFrom);
+			url = URLGenerator.getInstance().getIsGetJXQURL(userId, couponFrom, useStatus, page, pageSize, transfer);
 			if (result == null) {
 				result = HttpConnection.postConnection(url[0], url[1]);
 			}
@@ -43,7 +51,7 @@ public class AsyncJXQLogList extends AsyncTaskBase{
 			if (result == null) {
 				result = BackType.FAILE;
 			} else {
-				baseInfo = JsonParseCommon.parseData(result);
+				baseInfo = JsonParseJXQPageInfo.parseData(result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -146,7 +146,7 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 	 * @param idNumber
 	 */
 	private void requestUserVerify(String userId,String idNumber,String realName){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncBFVerify task = new AsyncBFVerify(UserVerifyActivity.this, userId, idNumber, realName, new OnCommonInter() {

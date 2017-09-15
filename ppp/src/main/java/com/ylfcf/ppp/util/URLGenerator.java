@@ -14,14 +14,14 @@ public class URLGenerator {
 //	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
 
 	//验证环境
-//	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
-//	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
+	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境
+	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//测试环境
-	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
-	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
-	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+//	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//朱礼涛开发环境
 //	private static final String API_DOMAIN_URL = "http://www.ylf.com";//API环境
@@ -118,7 +118,6 @@ public class URLGenerator {
 	private final String USER_RMB_HUIFU_ACCOUNT = "/user/account/selectOne";// 汇付用户人民币账户
 	private final String USER_RMB_YILIAN_ACCOUNT = "/user/new_account/selectOne";// 易联用户人民币账户
 	private final String USER_YUAN_MONEY_ACCOUNT = "/user/hd_coin/selectOne";// 元金币账户
-	private final String ACCOUNT_INFO = "/user/account_log/accountInfo";// 账户进出情况
 	private final String INVESTMENT = "/borrow/invest/newTender";// 投资
 	private final String CURRENT_USER_INVEST = "/borrow/invest/currentUserInvest";// 获取当前用户是否投资过该标的
 	private final String BORROW_INVEST_SELECTLIST_ANDTOTAL = "/borrow/invest/selectListAndTotal";// 总的投资记录列表
@@ -303,6 +302,8 @@ public class URLGenerator {
 	private final String YGZX_BORROWINVEST_RECORD_URL = "/ygzx/borrow_invest/selectList";//投资记录
 	private final String YGZX_BORROWINVEST_URL = "/ygzx/borrow_invest/invest";//员工专属产品投标
 	private final String YGZX_BORROWINVEST_LIST_URL = "/ygzx/borrow_invest/getUserInvestList";//根据userid和borrowid获取用户投资的某支标的详情
+	//账户中心
+	private final String ACCOUNTLOG_REPAYMENTINFO_URL = "/user/account_log/repaymentInfo";//回款日历
 
 	private static URLGenerator mUrlGenerator;
 
@@ -509,18 +510,6 @@ public class URLGenerator {
 	public String[] getUserYUANMoneyAccountURL(String userId) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(USER_YUAN_MONEY_ACCOUNT).append("&user_id=")
-				.append(userId);
-		return new String[] { BASE_URL, sb.toString() };
-	}
-
-	/**
-	 * 获取账户情况
-	 *
-	 * @return
-	 */
-	public String[] getAccountInfoURL(String userId) {
-		StringBuffer sb = new StringBuffer();
-		sb.append("_URL_=").append(ACCOUNT_INFO).append("&user_id=")
 				.append(userId);
 		return new String[] { BASE_URL, sb.toString() };
 	}
@@ -945,9 +934,10 @@ public class URLGenerator {
 	 * @param id
 	 * @param phone
 	 * @param opneId
+	 * @param coMobile 企业用户手机号
 	 * @return
 	 */
-	public String[] getUserInfo(String id, String phone, String opneId) {
+	public String[] getUserInfo(String id, String phone,String coMobile, String opneId) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(USER_SELECT_ONE);
 		if (id != null && !"".equals(id)) {
@@ -955,6 +945,9 @@ public class URLGenerator {
 		}
 		if (phone != null && !"".equals(phone)) {
 			sb.append("&phone=").append(phone);
+		}
+		if (coMobile != null && !"".equals(coMobile)) {
+			sb.append("&co_mobile=").append(coMobile);
 		}
 		if (opneId != null && !"".equals(opneId)) {
 			sb.append("&open_id=").append(opneId);
@@ -2682,10 +2675,26 @@ public class URLGenerator {
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 */
-	public String[] getIsGetJXQURL(String userId,String couponFrom) throws UnsupportedEncodingException{
+	public String[] getIsGetJXQURL(String userId,String couponFrom,
+								   String useStatus,String page,String pageSize,
+								   String transfer) throws UnsupportedEncodingException{
 		StringBuffer sb = new StringBuffer();
-		sb.append("_URL_=").append(LXFX_ISGET_JXQ_URL).append("&user_id=").append(userId).
-				append("&coupon_from=").append(couponFrom);
+		sb.append("_URL_=").append(LXFX_ISGET_JXQ_URL).append("&user_id=").append(userId);
+		if(couponFrom != null && !"".equals(couponFrom)){
+			sb.append("&coupon_from=").append(couponFrom);
+		}
+		if(useStatus != null && !"".equals(useStatus)){
+			sb.append("&use_status=").append(useStatus);
+		}
+		if(page != null && !"".equals(page)){
+			sb.append("&page=").append(page);
+		}
+		if(pageSize != null && !"".equals(pageSize)){
+			sb.append("&page_size=").append(pageSize);
+		}
+		if(transfer != null && !"".equals(transfer)){
+			sb.append("&transfer=").append(transfer);
+		}
 		return new String[]{BASE_URL,sb.toString()};
 	}
 
@@ -3141,6 +3150,18 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(YGZX_BORROWINVEST_LIST_URL);
 		sb.append("&borrow_id=").append(borrowId).append("&user_id=").append(userId);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 账户中心回款信息
+	 * @param userId
+	 * @return
+	 */
+	public String[] getAccountLogRepaymentURL(String userId){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(ACCOUNTLOG_REPAYMENTINFO_URL);
+		sb.append("&user_id=").append(userId);
 		return new String[]{BASE_URL, sb.toString()};
 	}
 }

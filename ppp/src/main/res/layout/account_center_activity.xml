@@ -9,13 +9,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_120dp"
+        android:layout_marginRight="@dimen/common_measure_120dp"
         android:gravity="center_horizontal"
-        android:layout_marginTop="@dimen/common_measure_10dp">
+        android:background="@drawable/style_funds_details_nav_layout"
+        android:layout_marginTop="@dimen/common_measure_15dp">
 
         <Button
             android:id="@+id/account_center_activity_tab_zhzc"
-            android:layout_width="@dimen/common_measure_120dp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/common_measure_40dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/style_rect_fillet_filling_blue_left_3dp"
             android:textColor="@color/white"
@@ -25,8 +29,9 @@
 
         <Button
             android:id="@+id/account_center_activity_tab_hkrl"
-            android:layout_width="@dimen/common_measure_120dp"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/common_measure_40dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/style_rect_fillet_filling_blue_right_3dp"
             android:textColor="@color/common_topbar_bg_color"

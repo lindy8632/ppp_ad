@@ -11,6 +11,7 @@ public class ProductPageInfo implements java.io.Serializable{
 	
 	private String list;
 	private String total;
+	private String count;
 	private List<ProductInfo> productList;
 	public String getList() {
 		return list;
@@ -30,5 +31,12 @@ public class ProductPageInfo implements java.io.Serializable{
 	public void setProductList(List<ProductInfo> productList) {
 		this.productList = productList;
 	}
-	
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
 }

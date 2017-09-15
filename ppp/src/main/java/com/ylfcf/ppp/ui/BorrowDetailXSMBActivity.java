@@ -695,7 +695,8 @@ public class BorrowDetailXSMBActivity extends BaseActivity implements OnClickLis
 	 * @param id
 	 */
 	private void getProjectDetails(String id) {
-		if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+		if (mLoadingDialog != null && !mLoadingDialog.isShowing()
+				&& !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncProjectDetails task = new AsyncProjectDetails(

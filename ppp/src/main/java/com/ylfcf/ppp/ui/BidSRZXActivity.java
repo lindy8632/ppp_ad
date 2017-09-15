@@ -844,7 +844,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	 */
 	private void requestInvest(String borrowId, String investUserId,
 			String money, String investFrom,String redbagId,String couponId) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncAppointBorrowInvest asyncBorrowInvest = new AsyncAppointBorrowInvest(
@@ -883,7 +883,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	 * @param borrowType
 	 */
 	private void requestHBPageInfoByBorrowType(String userId, String borrowType) {
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncCurrentUserRedbagList currentUserRedbagListTask = new AsyncCurrentUserRedbagList(
@@ -941,7 +941,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	 * @param useStatus
 	 */
 	private void requestJXQList(String userId, String useStatus) {
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncJXQPageInfo redbagTask = new AsyncJXQPageInfo(BidSRZXActivity.this, userId,useStatus,

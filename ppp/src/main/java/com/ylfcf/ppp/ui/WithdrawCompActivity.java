@@ -361,7 +361,7 @@ public class WithdrawCompActivity extends BaseActivity implements
 	 * @param dealPwd
 	 */
 	private void checkDealPwd(String userId, String dealPwd) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncCheckDealPwd dealPwdTask = new AsyncCheckDealPwd(

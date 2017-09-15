@@ -398,7 +398,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	 * @param pwd
 	 */
 	private void requestLogin(String phone,String pwd){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		
@@ -415,7 +415,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 					handler.sendMessage(msg);
 				}else{
 					Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
-					msg.obj = "用户名或密码错误";
+					msg.obj = baseInfo.getMsg();
 					handler.sendMessage(msg);
 				}
 			}
@@ -450,7 +450,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	 * @param password
 	 */
 	private void requestCompLogin(String username,String password){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncCompLogin loginTask = new AsyncCompLogin(LoginActivity.this, username, password, 
@@ -476,7 +476,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 							}, 200L);
 						}else{
 							Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
-							msg.obj = "用户名或密码错误";
+							msg.obj = baseInfo.getMsg();
 							handler.sendMessage(msg);
 						}
 					}

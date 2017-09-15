@@ -544,7 +544,8 @@ public class BorrowDetailYJYActivity extends BaseActivity implements View.OnClic
      * @param id
      */
     private void getProjectDetails(String id) {
-        if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+        if (mLoadingDialog != null && !mLoadingDialog.isShowing()
+                && !isFinishing()) {
             mLoadingDialog.show();
         }
         AsyncProjectDetails task = new AsyncProjectDetails(
@@ -572,7 +573,8 @@ public class BorrowDetailYJYActivity extends BaseActivity implements View.OnClic
      * @param borrowId
      */
     private void getProductDetailsById(String borrowId) {
-        if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
+        if (mLoadingDialog != null && !mLoadingDialog.isShowing()
+                && !isFinishing()) {
             mLoadingDialog.show();
         }
         AsyncYJYBorrowDetails task = new AsyncYJYBorrowDetails(BorrowDetailYJYActivity.this,

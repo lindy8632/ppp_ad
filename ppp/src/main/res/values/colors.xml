@@ -95,4 +95,9 @@
     <!-- 会员福利计划礼品列表 -->
     <color name="prize_region_gift_item_bg">#fee697</color>
     <color name="prize_region_gift_item_tv_color">#8b5c06</color>
+
+    <!--账户中心改版-->
+    <color name="circle_blue">#6ab6fd</color>
+    <color name="circle_orange">#ff8346</color>
+    <color name="circle_green">#91e150</color>
 </resources>

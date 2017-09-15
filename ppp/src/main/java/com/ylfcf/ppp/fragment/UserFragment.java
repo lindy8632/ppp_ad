@@ -167,6 +167,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
     private LinearLayout zhszLayout;//账户设置
     private View line1,line2,line3,line4,line6;
     private View compMainLayout;
+	private LinearLayout accouncenterLayout;
 
 	//元聚盈模块
 	private LinearLayout yjyLayout;//元聚盈模块
@@ -176,6 +177,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
     
     private UserRMBAccountInfo yilianAccountInfo;//易联账户信息
     private UserRMBAccountInfo huifuAccountInfo;//汇付账户信息
+	private BaseInfo yjbInterestBaseInfo;//元金币产生的收益
     private UserInfo mUserInfo;
     
     private boolean isSetWithdrawPwd = false;//用户是否已经设置交易密码
@@ -219,7 +221,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				if(SettingsManager.checkLXFXActivity() == 0 && SettingsManager.isPersonalUser(mainActivity) &&
 						(SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx") || 
 								SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx_noverify"))){
-					checkIsGetJXQ(userInfo,SettingsManager.getUserId(getActivity()), "开门红 乐享返现");
+					checkIsGetJXQ(userInfo,SettingsManager.getUserId(getActivity()), "开门红 乐享返现","未使用","0","2","");
 				}
 				//判断会员福利2期是否还在进行
 				requestActiveTime("HYFL_02");
@@ -269,9 +271,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				companyTopLayout.setVisibility(View.VISIBLE);
 				loginLayout.setVisibility(View.GONE);
 				jlmxLayout.setVisibility(View.GONE);
-				yqyjLayout.setVisibility(View.GONE);
+				yqyjLayout.setVisibility(View.VISIBLE);
 				line2.setVisibility(View.GONE);
-				line4.setVisibility(View.GONE);
+				line4.setVisibility(View.VISIBLE);
 				break;
 			case REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT:
 				String loginMsg = (String) msg.obj;
@@ -307,9 +309,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 					personalTopLayout.setVisibility(View.GONE);
 					companyTopLayout.setVisibility(View.VISIBLE);
 					jlmxLayout.setVisibility(View.GONE);
-					yqyjLayout.setVisibility(View.GONE);
+					yqyjLayout.setVisibility(View.VISIBLE);
 					line2.setVisibility(View.GONE);
-					line4.setVisibility(View.GONE);
+					line4.setVisibility(View.VISIBLE);
 					if(mUserInfo.getUser_name() != null && !"".equals(mUserInfo.getUser_name())){
 						usernameTVComp.setText("您好！" + mUserInfo.getUser_name());
 					}else{
@@ -326,7 +328,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				requestYilianAccount(userId,false);
 				break;
 			case REQUEST_ISLCS_WHAT:
-				requestLcsName(SettingsManager.getUser(mainActivity.getApplicationContext()));
+				requestLcsName(SettingsManager.getUser(getActivity().getApplicationContext()));
 				break;
 			default:
 				break;
@@ -443,7 +445,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		line3 = view.findViewById(R.id.my_account_line3);
 		line4 = view.findViewById(R.id.my_account_line4);
 		line6 = view.findViewById(R.id.my_account_line6);
-		
+		accouncenterLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_layout_account_center);
+		accouncenterLayout.setOnClickListener(this);
+
 		//企业用户的账户中心
 		usernameTVComp = (TextView) view.findViewById(R.id.company_account_username);
 		companyNameTV = (TextView) view.findViewById(R.id.company_account_companyname);
@@ -456,13 +460,14 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		yjyAppointBtn = (Button) view.findViewById(R.id.my_account_personal_zscp_yy_btn);
 		yjyAppointBtn.setOnClickListener(this);
 		
-//		initMainLayout();
 	}
 	
 	private void initMainLayout(){
 		if(mainActivity == null){
 			mainActivity = (MainFragmentActivity) getActivity();
 		}
+		if(mainActivity == null)
+			return;
 		userId = SettingsManager.getUserId(mainActivity.getApplicationContext());
 		if(userId != null && !"".equals(userId)){
 			mainRefreshLayout.setVisibility(View.VISIBLE);
@@ -479,9 +484,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				personalTopLayout.setVisibility(View.GONE);
 				companyTopLayout.setVisibility(View.VISIBLE);
 				jlmxLayout.setVisibility(View.GONE);
-				yqyjLayout.setVisibility(View.GONE);
+				yqyjLayout.setVisibility(View.VISIBLE);
 				line2.setVisibility(View.GONE);
-				line4.setVisibility(View.GONE);
+				line4.setVisibility(View.VISIBLE);
 			}
 			handler.sendEmptyMessage(REQUEST_ISLCS_WHAT);
 			new Handler().postDelayed(new Runnable() {
@@ -522,7 +527,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
             	new Handler().postDelayed(new Runnable() {
     				@Override
     				public void run() {
-    					requestUserInfo(userId, SettingsManager.getUser(mainActivity.getApplicationContext()));
+    					requestUserInfo(userId, SettingsManager.getUser(getActivity().getApplicationContext()));
     				}
     			}, 1000L);
     			requestYuanMoney(userId);
@@ -563,6 +568,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		if(isVisibleToUser){
 			initMainLayout();
 		}
+		mainActivity = (MainFragmentActivity) getActivity();
 		if(isVisibleToUser && SettingsManager.checkLXFXActivity() == 0 && SettingsManager.isPersonalUser(mainActivity)){
 			boolean isLogin = !SettingsManager.getLoginPassword(
 					mainActivity).isEmpty()
@@ -570,7 +576,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 							.isEmpty();
 			if(isLogin && (SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx") || 
 					SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx_noverify")))
-			checkIsGetJXQ(mUserInfo,SettingsManager.getUserId(getActivity()), "开门红 乐享返现");
+			checkIsGetJXQ(mUserInfo,SettingsManager.getUserId(getActivity()), "开门红 乐享返现","未使用","0","2","");
 		}
 		
 		if(isVisibleToUser && SettingsManager.isPersonalUser(mainActivity) &&
@@ -749,6 +755,13 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			intentYJYAppoint.putExtra("BannerInfo",info);
 			startActivity(intentYJYAppoint);
 			break;
+		case R.id.my_account_comp_layout_account_center:
+//			Intent accCenterIntent = new Intent(mainActivity, AccountCenterActivity.class);
+//			accCenterIntent.putExtra("ylUserRMBAccountInfo",yilianAccountInfo);
+//			accCenterIntent.putExtra("hfUserRMBAccountInfo",huifuAccountInfo);
+//			accCenterIntent.putExtra("yjbBaseInfo",yjbInterestBaseInfo);
+//			startActivity(accCenterIntent);
+			break;
 		default:
 			break;
 		}
@@ -867,18 +880,15 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				if(mainActivity.loadingDialog != null && mainActivity.loadingDialog.isShowing()){
 					mainActivity.loadingDialog.dismiss();
 				}
-				if(SettingsManager.isCompanyUser(mainActivity)){
-					return;
-				}
 				if("邀请有奖".equals(type)){
 					rechargeBtn.setEnabled(true);
 					withdrawBtn.setEnabled(true);
 					yqyjLayout.setEnabled(true);
 					zhszLayout.setEnabled(true);
-					
-					Intent yqyjIntent = new Intent(mainActivity,InvitateActivity.class);
-					yqyjIntent.putExtra("is_verify", flag);
-					startActivity(yqyjIntent);
+					Intent intent = new Intent();
+					intent.setClass(mainActivity,InvitateActivity.class);
+					intent.putExtra("is_verify", flag);
+					startActivity(intent);
 					return;
 				}
 				if(flag){
@@ -908,7 +918,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			public void isSetWithdrawPwd(boolean flag, Object object) {
 				//用户是否已经设置提现密码
 				isSetWithdrawPwd = flag;
-				if(SettingsManager.isCompanyUser(getActivity().getApplicationContext())){
+				if(SettingsManager.isCompanyUser(getActivity().getApplicationContext())&&"提现".equals(type)){
 					rechargeBtn.setEnabled(true);
 					withdrawBtn.setEnabled(true);
 					yqyjLayout.setEnabled(true);
@@ -1000,7 +1010,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				if(resultCode == 0){
 					UserInfo user = baseInfo.getUserInfo();
 					if(user != null){
-						GesturePwdEntity entity = DBGesturePwdManager.getInstance(mainActivity.getApplicationContext()).getGesturePwdEntity(user.getId());
+						GesturePwdEntity entity = DBGesturePwdManager.getInstance(getActivity().getApplicationContext()).getGesturePwdEntity(user.getId());
 						if(entity != null && !entity.getPwd().isEmpty()){
 							
 						}else{
@@ -1019,7 +1029,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 					}, 200L);
 				}else{
 					Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
-					msg.obj = "用户名或密码错误";
+					msg.obj = baseInfo.getMsg();
 					handler.sendMessage(msg);
 				}
 			}
@@ -1033,7 +1043,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 	 * @param phone
 	 */
 	private void requestUserInfo(final String userId,String phone){
-		AsyncUserSelectOne userTask = new AsyncUserSelectOne(mainActivity, userId, phone, "", new OnGetUserInfoByPhone() {
+		AsyncUserSelectOne userTask = new AsyncUserSelectOne(mainActivity, userId, phone,"", "", new OnGetUserInfoByPhone() {
 			@Override
 			public void back(BaseInfo baseInfo) {
 				if(baseInfo != null){
@@ -1170,6 +1180,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);
 					if(resultCode == 0){
+						yjbInterestBaseInfo = baseInfo;
 						try {
 							initAccountData(yilianAccountInfo,huifuAccountInfo,Double.parseDouble(baseInfo.getMsg()));
 						} catch (Exception e) {
@@ -1208,7 +1219,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 						if(resultCode == 0){
 							UserInfo user = baseInfo.getUserInfo();
 							if(user != null){
-								GesturePwdEntity entity = DBGesturePwdManager.getInstance(mainActivity.getApplicationContext()).getGesturePwdEntity(user.getId());
+								GesturePwdEntity entity = DBGesturePwdManager.getInstance(getActivity().getApplicationContext()).getGesturePwdEntity(user.getId());
 								if(entity != null && !entity.getPwd().isEmpty()){
 									
 								}else{
@@ -1227,7 +1238,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 							}, 200L);
 						}else{
 							Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
-							msg.obj = "用户名或密码错误";
+							msg.obj = baseInfo.getMsg();
 							handler.sendMessage(msg);
 						}
 					}
@@ -1240,12 +1251,13 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 	 * @param userId
 	 * @param couponFrom 来源
 	 */
-	private void checkIsGetJXQ(final UserInfo info,String userId,String couponFrom){
+	private void checkIsGetJXQ(final UserInfo info,String userId,String couponFrom,String useStatus,String page,
+							   String pageSize,String transfer){
 		if(mainActivity.loadingDialog != null){
 			mainActivity.loadingDialog.show();
 		}
-		AsyncJXQLogList jxqListTask = new AsyncJXQLogList(mainActivity, userId, couponFrom, 
-				new OnCommonInter() {
+		AsyncJXQLogList jxqListTask = new AsyncJXQLogList(mainActivity, userId, couponFrom,useStatus,
+				page,pageSize,transfer, new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if(baseInfo != null){
@@ -1308,7 +1320,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if (resultCode == 0) {
 								//活动已开始
-								requestPrizeList(SettingsManager.getUserId(mainActivity.getApplicationContext()));
+								requestPrizeList(SettingsManager.getUserId(getActivity().getApplicationContext()));
 							} else if (resultCode == -3) {
 								//活动结束
 							} else if (resultCode == -2) {

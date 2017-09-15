@@ -103,7 +103,7 @@ public class WithdrawListActivity extends BaseActivity implements
 		setContentView(R.layout.withdraw_list_activity);
 		layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 		findViews();
-		if (isFirst) {
+		if (isFirst && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		handler.sendEmptyMessage(REQUEST_WITHDRAW_RECORD_WHAT);

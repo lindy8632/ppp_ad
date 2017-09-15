@@ -807,7 +807,7 @@ public class ProductInfoXSMBActivity extends BaseActivity implements
 	 * @param guaranteeId
 	 */
 	private void requestAssociatedCompany(String loanId,String recommendId,String guaranteeId){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncAsscociatedCompany task = new AsyncAsscociatedCompany(ProductInfoXSMBActivity.this, loanId, recommendId, guaranteeId, 

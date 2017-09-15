@@ -368,7 +368,7 @@ public class ProductRecordActivity extends BaseActivity implements
 	 */
 	private void checkIsVerify(final String type){
 		investBtn.setEnabled(false);
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		RequestApis.requestIsVerify(ProductRecordActivity.this, SettingsManager.getUserId(getApplicationContext()), new OnIsVerifyListener() {
@@ -436,7 +436,7 @@ public class ProductRecordActivity extends BaseActivity implements
 	 */
 	private void getInvestRecordList(String investUserId, String borrowId,
 			String status, String isAddCoin) {
-		if (isFirst && mLoadingDialog != null) {
+		if (isFirst && mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 

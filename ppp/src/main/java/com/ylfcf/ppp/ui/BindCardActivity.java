@@ -435,7 +435,7 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void requestBFBindcard(String idNum,String realName,String bankCard,String bankName,
 			String bankCode,String bankPhone,String smsCode,String orderSN){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncBFBindCard bindcardTask = new AsyncBFBindCard(BindCardActivity.this, SettingsManager.getUserId(getApplicationContext()), 
@@ -469,10 +469,10 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 	 * @param userId 
 	 */
 	private void requestUserInfo(String userId){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
-		AsyncUserSelectOne userTask = new AsyncUserSelectOne(BindCardActivity.this, userId, "", "", 
+		AsyncUserSelectOne userTask = new AsyncUserSelectOne(BindCardActivity.this, userId, "", "", "",
 				new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {

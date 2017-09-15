@@ -722,7 +722,7 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 	 * @param useStatus
 	 */
 	private void requestJXQList(String userId, String useStatus) {
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncJXQPageInfo redbagTask = new AsyncJXQPageInfo(BidWDYActivity.this, userId,useStatus,
@@ -760,7 +760,7 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 	private void requestInvest(String borrowId, String investUserId,
 			String money, String coinMoney, String investFrom,
 			String redBagLogId,String couponLogId) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncWDYInvest asyncBorrowInvest = new AsyncWDYInvest(

@@ -362,7 +362,7 @@ public class BidXSMBActivity extends BaseActivity implements OnClickListener{
 	 */
 	private void requestXSMBDetails(String borrowStatus){
 		bidBtn.setEnabled(false);
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncXSMBDetail xsmbTask = new AsyncXSMBDetail(BidXSMBActivity.this, borrowStatus,new OnCommonInter() {

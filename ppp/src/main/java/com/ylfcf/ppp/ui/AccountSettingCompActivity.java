@@ -17,11 +17,11 @@ import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter.OnGetUserInfoByPhone;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.Util;
 
 /**
  * 企业用户的账户设置页面
  * @author Mr.liu
- *
  */
 public class AccountSettingCompActivity extends BaseActivity implements
 			OnClickListener{
@@ -146,7 +146,7 @@ public class AccountSettingCompActivity extends BaseActivity implements
 	 */
 	private void requestUserInfo(String userId, String phone) {
 		AsyncUserSelectOne userTask = new AsyncUserSelectOne(
-				AccountSettingCompActivity.this, userId, phone, "",
+				AccountSettingCompActivity.this, userId, phone, "","",
 				new OnGetUserInfoByPhone() {
 					@Override
 					public void back(BaseInfo baseInfo) {
@@ -159,6 +159,8 @@ public class AccountSettingCompActivity extends BaseActivity implements
 										.obtainMessage(REQUEST_GET_USERINFO_SUCCESS);
 								msg.obj = userInfo;
 								handler.sendMessage(msg);
+							}else{
+								Util.toastLong(AccountSettingCompActivity.this,baseInfo.getMsg());
 							}
 						}
 					}

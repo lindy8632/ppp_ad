@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ylfcf.ppp"
-    android:versionCode="155"
-    android:versionName="1.5.5">
+    android:versionCode="158"
+    android:versionName="1.5.8">
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -74,19 +74,18 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.IntroductionActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppMainStartLoad">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+        <!--<activity
             android:name=".ui.IntroductionActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" />-->
 
         <!--
          windowSoftInputMode属性不会将布局顶上去
@@ -264,10 +263,14 @@
             android:name=".ui.BannerDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
+        <!--android:process=":webview"-->
         <activity
             android:name=".ui.BannerTopicActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
+        <service
+            android:name=".service.PreloadProcessService"
+            android:process=":webview"/>
         <activity
             android:name=".ui.BankVerifyRecActivity"
             android:screenOrientation="portrait"
@@ -597,10 +600,6 @@
             android:theme="@style/AnimActivityTheme" />
         <activity
             android:name=".ui.YQHYTempActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AnimActivityTheme" />
-        <activity
-            android:name=".ui.WebViewCookieTestActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
         <!-- JPush -->

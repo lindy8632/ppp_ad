@@ -22,6 +22,7 @@ import com.umeng.socialize.media.UMWeb;
 import com.umeng.socialize.utils.Log;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.ShareInfo;
+import com.ylfcf.ppp.util.Util;
 
 import java.util.Map;
 
@@ -81,8 +82,8 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 		this.setFocusable(true);
 		this.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
 		if("邀请有奖".equals(fromWhere)){
-			title = "我来喊你注册啦，来拿百元现金和加息券，有钱一起赚";
-			text = "注册立得加息券，更有百元现金等你拿，好友喊你来元立方赚钱啦~";
+			title = "邀您注册，答题有奖，尽享加息！";
+			text = "参与答题抽奖，加息券、现金送不停，更有机会探访世界百强企业，尽在元立方！";
 			image = new UMImage(context, R.drawable.share_logo);
 		}else if("新春福利2017".equals(fromWhere)){
 			title = "小元喊你来领压岁钱";
@@ -154,6 +155,10 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	 * @param plateName
 	 */
 	private void shareWechat(SHARE_MEDIA plateName) {
+		if(url == null || "".equals(url)){
+			Util.toastLong(context,"分享失败");
+			return;
+		}
 		UMWeb web = new UMWeb(url);//分享链接
 		web.setTitle(title);//标题
 		web.setThumb(image);  //缩略图
@@ -169,6 +174,10 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	 * @param plateName
 	 */
 	private void shareQQ(SHARE_MEDIA plateName) {
+		if(url == null || "".equals(url)){
+			Util.toastLong(context,"分享失败");
+			return;
+		}
 		UMWeb web = new UMWeb(url);//分享链接
 		web.setTitle(title);//标题
 		web.setThumb(image);  //缩略图
@@ -184,6 +193,10 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	 * @param plateName
 	 */
 	private void shareSina(SHARE_MEDIA plateName) {
+		if(url == null || "".equals(url)){
+			Util.toastLong(context,"分享失败");
+			return;
+		}
 		UMWeb web = new UMWeb(url);//分享链接
 		web.setTitle(title);//标题
 		web.setThumb(image);  //缩略图

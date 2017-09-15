@@ -303,7 +303,7 @@ public class MyGiftsActivity extends BaseActivity implements OnClickListener{
 	 * @param source
 	 */
 	private void requestPrizeList(String userId,String source){
-		if(mLoadingDialog != null && isFrist){
+		if(mLoadingDialog != null && isFrist && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncPrizeList prizeListTask = new AsyncPrizeList(MyGiftsActivity.this, userId, String.valueOf(pageNo), String.valueOf(pageSize), source,"",

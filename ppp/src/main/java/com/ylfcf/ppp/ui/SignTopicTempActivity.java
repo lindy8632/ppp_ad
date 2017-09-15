@@ -234,7 +234,7 @@ public class SignTopicTempActivity extends BaseActivity implements OnClickListen
 	 * @param userId
 	 */
 	private void marchAdd(String userId){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncMarchAddResult marchTask = new AsyncMarchAddResult(SignTopicTempActivity.this, userId, new OnCommonInter() {
@@ -265,7 +265,7 @@ public class SignTopicTempActivity extends BaseActivity implements OnClickListen
 	 * @param activeTitle
 	 */
 	private void requestSignActiveTime(String activeTitle){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncXCFLActiveTime task = new AsyncXCFLActiveTime(SignTopicTempActivity.this, activeTitle, 

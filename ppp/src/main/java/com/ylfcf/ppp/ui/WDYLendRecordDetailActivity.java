@@ -351,7 +351,7 @@ public class WDYLendRecordDetailActivity extends BaseActivity implements OnClick
 	 * 用户账户信息
 	 */
 	private void requestUserAccountInfo(String userId,final WDYChildRecordInfo childRecordInfo) {
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncYiLianRMBAccount yilianTask = new AsyncYiLianRMBAccount(

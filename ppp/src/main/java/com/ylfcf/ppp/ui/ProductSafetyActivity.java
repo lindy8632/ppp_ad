@@ -461,7 +461,7 @@ public class ProductSafetyActivity extends BaseActivity implements OnClickListen
 	 */
 	private void checkIsVerify(final String type){
 		investBtn.setEnabled(false);
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		RequestApis.requestIsVerify(ProductSafetyActivity.this, SettingsManager.getUserId(getApplicationContext()), new OnIsVerifyListener() {

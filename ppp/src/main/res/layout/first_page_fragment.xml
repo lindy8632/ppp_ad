@@ -30,15 +30,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/common_measure_254dp" >
-			<!-- <RelativeLayout 
-			    android:id="@+id/first_page_fragment_cycleviewpager_layout"
-			    android:layout_width="match_parent"
-			    android:layout_height="match_parent"/> -->
-            <fragment
-                android:id="@+id/main_fragment1_banner_layout"
-                android:name="com.ylfcf.ppp.widget.CycleViewPager"
+
+            <com.youth.banner.Banner
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/first_page_fragment_banner"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/common_measure_254dp"/>
+                android:layout_height="@dimen/common_measure_254dp"
+                app:indicator_drawable_selected="@drawable/style_circle_white"
+                app:indicator_drawable_unselected="@drawable/style_circle_gray_trans"
+                app:indicator_height="8dp"
+                app:indicator_margin="4dp"
+                app:indicator_width="8dp"/>
 
             <ImageView
                 android:id="@+id/first_page_fragment_default_img"
@@ -46,6 +48,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_empty" />
+
         </RelativeLayout>
 
         <!-- 公告 -->
@@ -105,8 +108,8 @@
 
                 <Button
                     android:id="@+id/first_page_fragment_hytj_btn"
-                    android:layout_width="@dimen/common_measure_89dp"
-                    android:layout_height="@dimen/common_measure_89dp"
+                    android:layout_width="@dimen/common_measure_80dp"
+                    android:layout_height="@dimen/common_measure_80dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/first_page_fragment_hytj_enable"
                     android:layout_weight="1"/>
@@ -126,8 +129,8 @@
 
                 <Button
                     android:id="@+id/first_page_fragment_hdzq_btn"
-                    android:layout_width="@dimen/common_measure_89dp"
-                    android:layout_height="@dimen/common_measure_89dp"
+                    android:layout_width="@dimen/common_measure_80dp"
+                    android:layout_height="@dimen/common_measure_80dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/first_page_fragment_hdzq_enable"
                     android:layout_weight="1"/>

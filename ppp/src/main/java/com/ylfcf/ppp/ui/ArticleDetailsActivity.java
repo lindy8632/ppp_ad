@@ -19,6 +19,7 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
+import com.ylfcf.ppp.util.Util;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -174,7 +175,7 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 	}
 	
 	private void requestArticle(String id){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncArticle articleTask = new AsyncArticle(ArticleDetailsActivity.this, id,new OnCommonInter() {
@@ -185,6 +186,8 @@ public class ArticleDetailsActivity extends BaseActivity implements OnClickListe
 					if(resultCode == 0){
 						articleInfoTemp = baseInfo.getmArticleInfo();
 						initData(articleInfoTemp);
+					}else{
+						Util.toastLong(ArticleDetailsActivity.this,baseInfo.getMsg());
 					}
 				}
 			}

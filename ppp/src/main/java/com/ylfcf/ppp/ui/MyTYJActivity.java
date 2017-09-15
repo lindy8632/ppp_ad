@@ -155,7 +155,7 @@ public class MyTYJActivity extends BaseActivity implements OnClickListener {
 	 */
 	private void requestTYJPageInfo(String status, String userId,
 			String putStatus, String activeTitle) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 

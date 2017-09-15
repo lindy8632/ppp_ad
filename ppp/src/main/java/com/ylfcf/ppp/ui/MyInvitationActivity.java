@@ -25,10 +25,12 @@ import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.adapter.ExtensionAdapter;
 import com.ylfcf.ppp.async.AsyncExtensionNewPageInfo;
 import com.ylfcf.ppp.async.AsyncGetLCSName;
+import com.ylfcf.ppp.async.AsyncUserSelectOne;
 import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.ExtensionNewInfo;
 import com.ylfcf.ppp.entity.ExtensionNewPageInfo;
+import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.util.Constants.TopicType;
@@ -40,7 +42,6 @@ import java.util.List;
 
 /**
  * 我的邀请
- * 
  * @author jianbing
  * 
  */
@@ -48,16 +49,19 @@ public class MyInvitationActivity extends BaseActivity implements
 		OnClickListener {
 	private static final int REQUEST_EXTENSION_WHAT = 1200;
 	private static final int REQUEST_EXTENSION_SUCCESS_WHAT = 1201;
+	private static final int REQUEST_USERINFO_WHAT = 1203;
+	private static final int REQUEST_USERINFO_SUC = 1204;
 
 	private static final int REQUEST_LCS_WHAT = 1202;
 	
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private TextView totalMoneyTV;
+	private TextView myselfMoneyTV;
 	private TextView oneMoneyTV;
 	private TextView twoMoneyTV;
 	private TextView otherMoneyTV;
-	private LinearLayout totalMoneyLayout,oneMoneyLayout,twoMoneyLayout,otherMoneyLayout;
+	private LinearLayout totalMoneyLayout,myselfMoneyLayout,oneMoneyLayout,twoMoneyLayout,otherMoneyLayout;
 	private Button qsztcBtn;//轻松赚提成
 	private Button catTipsBtn;//查看提示
 	private PullToRefreshListView mListView;
@@ -69,7 +73,8 @@ public class MyInvitationActivity extends BaseActivity implements
 	private List<ExtensionNewInfo> extensionList = new ArrayList<ExtensionNewInfo>();
 	private boolean isLoadMore = false;
 	private boolean isLcs = false;
-	
+	private UserInfo userInfo = null;
+
 	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
@@ -93,6 +98,9 @@ public class MyInvitationActivity extends BaseActivity implements
 				break;
 			case REQUEST_LCS_WHAT:
 				requestLcsName(SettingsManager.getUser(getApplicationContext()));
+				break;
+			case REQUEST_USERINFO_WHAT:
+				requestUserInfo(SettingsManager.getUserId(getApplicationContext()),"");
 				break;
 			default:
 				break;
@@ -122,16 +130,18 @@ public class MyInvitationActivity extends BaseActivity implements
 		catTipsBtn = (Button) findViewById(R.id.myinvitation_activity_top_cat_tipsbtn);
 		catTipsBtn.setOnClickListener(this);
 		totalMoneyTV = (TextView) findViewById(R.id.myinvitation_activity_totalmoney);
+		myselfMoneyTV = (TextView) findViewById(R.id.myinvitation_activity_myselfmoney);
 		oneMoneyTV = (TextView) findViewById(R.id.myinvitation_activity_onemoney);
 		twoMoneyTV = (TextView) findViewById(R.id.myinvitation_activity_twomoney);
 		otherMoneyTV = (TextView) findViewById(R.id.myinvitation_activity_othermoney);
 		totalMoneyLayout = (LinearLayout) findViewById(R.id.myinvitation_activity_totalmoney_layout);
+		myselfMoneyLayout = (LinearLayout) findViewById(R.id.myinvitation_activity_myself_layout);
 		oneMoneyLayout = (LinearLayout) findViewById(R.id.myinvitation_activity_onemoney_layout);
 		twoMoneyLayout = (LinearLayout) findViewById(R.id.myinvitation_activity_twomoney_layout);
 		otherMoneyLayout = (LinearLayout) findViewById(R.id.myinvitation_activity_othermoney_layout);
 		nodataTV = (TextView) findViewById(R.id.myinvitation_activity_nodata);
 		mListView = (PullToRefreshListView) findViewById(R.id.myinvitation_listview);
-		mListView.setMode(Mode.BOTH);
+		mListView.setMode(Mode.PULL_FROM_END);
 		initListeners();
 		initAdapter();
 	}
@@ -167,9 +177,10 @@ public class MyInvitationActivity extends BaseActivity implements
 			}
 		});
 	}
-	
+
 	private void initData(){
-		if(isLcs){
+		if(isLcs || (userInfo != null && "微企汇".equals(userInfo.getType()) && "0".equals(userInfo.getExtension_user_id()))){
+			//理财师或者微企汇的A级用户
 			totalMoneyLayout.setVisibility(View.VISIBLE);
 			totalMoneyLayout.setGravity(Gravity.LEFT);
 			oneMoneyLayout.setVisibility(View.VISIBLE);
@@ -185,6 +196,26 @@ public class MyInvitationActivity extends BaseActivity implements
 			}else{
 				otherMoneyLayout.setVisibility(View.GONE);
 			}
+			if(userInfo != null && "微企汇".equals(userInfo.getType())
+					&& "0".equals(userInfo.getExtension_user_id())){
+				//微企汇A级用户不显示历史好友
+				otherMoneyLayout.setVisibility(View.GONE);
+			}
+			if(mExtensionPageInfo != null && isLcs){
+				try{
+					double myselfMoneyD = Double.parseDouble(mExtensionPageInfo.getMyself_total());
+					if(myselfMoneyD > 0){
+						myselfMoneyLayout.setVisibility(View.VISIBLE);
+					}else{
+						myselfMoneyLayout.setVisibility(View.GONE);
+					}
+				}catch (Exception e){
+					myselfMoneyLayout.setVisibility(View.GONE);
+					e.printStackTrace();
+				}
+			}else{
+				myselfMoneyLayout.setVisibility(View.GONE);
+			}
 		}else{
 			totalMoneyLayout.setVisibility(View.VISIBLE);
 			totalMoneyLayout.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -194,28 +225,25 @@ public class MyInvitationActivity extends BaseActivity implements
 		}
 		if(mExtensionPageInfo == null){
 			totalMoneyTV.setText("0");
+			myselfMoneyTV.setText("0");
 			oneMoneyTV.setText("0");
 			twoMoneyTV.setText("0");
 			otherMoneyTV.setText("0");
 			return;
 		}
 		totalMoneyTV.setText(mExtensionPageInfo.getReward_total());
+		myselfMoneyTV.setText(mExtensionPageInfo.getMyself_total());
 		oneMoneyTV.setText(mExtensionPageInfo.getOne_total());
 		twoMoneyTV.setText(mExtensionPageInfo.getSecond_total());
 		otherMoneyTV.setText(mExtensionPageInfo.getOther_total());
 
-		if(mExtensionPageInfo.getExtensionList() == null || mExtensionPageInfo.getExtensionList().size() <= 0){
+		if(mExtensionPageInfo.getExtensionList() == null || mExtensionPageInfo.getExtensionList().size() <= 0 ){
 			mListView.setVisibility(View.GONE);
 			nodataTV.setVisibility(View.VISIBLE);
 			return;
 		}
 		mListView.setVisibility(View.VISIBLE);
 		nodataTV.setVisibility(View.GONE);
-		extensionList.addAll(mExtensionPageInfo.getExtensionList());
-		try {
-			updateAdapter(mExtensionPageInfo.getExtensionList());
-		} catch (Exception e) {
-		}
 	}
 	
 	private void initAdapter() {
@@ -224,6 +252,13 @@ public class MyInvitationActivity extends BaseActivity implements
 	}
 
 	private void updateAdapter(List<ExtensionNewInfo> list) {
+		if(list == null || list.size() <= 0){
+			nodataTV.setVisibility(View.VISIBLE);
+			mListView.setVisibility(View.GONE);
+			return;
+		}
+		nodataTV.setVisibility(View.GONE);
+		mListView.setVisibility(View.VISIBLE);
 		adapter.setItems(list);
 	}
 
@@ -271,8 +306,8 @@ public class MyInvitationActivity extends BaseActivity implements
 		View contentView = LayoutInflater.from(MyInvitationActivity.this).inflate(R.layout.myinvitation_tips_dialog_layout, null);
 		final Button okBtn = (Button) contentView.findViewById(R.id.myinvitation_tips_dialog_sure_btn);
 		final TextView contentTV = (TextView) contentView.findViewById(R.id.myinvitation_tips_content);
-		if(isLcs){
-			//理财师
+		if(userInfo != null && "微企汇".equals(userInfo.getType()) && "0".equals(userInfo.getExtension_user_id())){
+			//微企汇A级用户
 			double otherTotalD = 0d;
 			try{
 				otherTotalD = Double.parseDouble(mExtensionPageInfo.getOther_total());
@@ -286,6 +321,24 @@ public class MyInvitationActivity extends BaseActivity implements
 				//理财师的直接好友里面有晋级为理财师的情况
 				contentTV.setText(getResources().getString(R.string.myinvitation_tips_string1));
 			}
+		}else if(isLcs){
+			//理财师A级用户
+			double otherTotalD = 0d;
+			try{
+				otherTotalD = Double.parseDouble(mExtensionPageInfo.getOther_total());
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+			if(otherTotalD <= 0){
+				//理财师的直接好友里面没有晋级为理财师的情况
+				contentTV.setText(getResources().getString(R.string.myinvitation_tips_string4));
+			}else{
+				//理财师的直接好友里面有晋级为理财师的情况
+				contentTV.setText(getResources().getString(R.string.myinvitation_tips_string5));
+			}
+		}else if(userInfo != null && "微企汇".equals(userInfo.getType()) && !"0".equals(userInfo.getExtension_user_id())){
+			//微企汇的B级C级用户
+			contentTV.setText(getResources().getString(R.string.myinvitation_tips_string3));
 		}else{
 			//非理财师
 			contentTV.setText(getResources().getString(R.string.myinvitation_tips_string2));
@@ -320,7 +373,7 @@ public class MyInvitationActivity extends BaseActivity implements
 	 * @param userId
 	 */
 	private void requestExtension(String userId) {
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncExtensionNewPageInfo taks = new AsyncExtensionNewPageInfo(
@@ -329,7 +382,7 @@ public class MyInvitationActivity extends BaseActivity implements
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if(mLoadingDialog != null && mLoadingDialog.isShowing())
-						mLoadingDialog.dismiss();
+							mLoadingDialog.dismiss();
 						mListView.onRefreshComplete();
 						if(baseInfo == null){
 							return;
@@ -353,7 +406,7 @@ public class MyInvitationActivity extends BaseActivity implements
 	 * @param phone
 	 */
 	private void requestLcsName(String phone){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncGetLCSName lcsTask = new AsyncGetLCSName(MyInvitationActivity.this, phone, new Inter.OnCommonInter() {
@@ -374,13 +427,30 @@ public class MyInvitationActivity extends BaseActivity implements
 				}else{
 					isLcs = false;
 				}
-				if(mExtensionPageInfo != null){
-					initData();
-				}else{
-					handler.sendEmptyMessage(REQUEST_EXTENSION_WHAT);
-				}
+				handler.sendEmptyMessage(REQUEST_USERINFO_WHAT);
 			}
 		});
 		lcsTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+	/**
+	 * @param userId
+	 * @param phone
+	 */
+	private void requestUserInfo(final String userId,String phone){
+		AsyncUserSelectOne userTask = new AsyncUserSelectOne(MyInvitationActivity.this, userId, phone, "","",
+				new Inter.OnGetUserInfoByPhone() {
+			@Override
+			public void back(BaseInfo baseInfo) {
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0){
+						userInfo = baseInfo.getUserInfo();
+					}
+				}
+				handler.sendEmptyMessage(REQUEST_EXTENSION_WHAT);
+			}
+		});
+		userTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 }

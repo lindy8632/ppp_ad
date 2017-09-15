@@ -428,7 +428,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 			@Override
 			public void back() {
 				setViewPagerCurPostion(1);
-				onFirstPageDQListener.back();
 			}
 		},new OnUserFragmentLoginSucListener(){
 			@Override
@@ -494,7 +493,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		ImageLoader.getInstance().clearMemoryCache();
 		handler.removeCallbacksAndMessages(null);
 	}
-	
+
 	/**
 	 * 获取版本信息以及升级包的URL
 	 * @param 
@@ -719,11 +718,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		void onLogoutSuc();
 	}
 	
-	OnFirstPageDQListener onFirstPageDQListener;
-	public void setOnFirstPageDQListener(OnFirstPageDQListener onFirstPageDQListener){
-		this.onFirstPageDQListener = onFirstPageDQListener;
-	}
-	
 	OnNetStatusChangeListener onNetStatusChangeListener1;//首页fragment
 	OnNetStatusChangeListener onNetStatusChangeListener2;//理财页面fragment
 	public void setOnNetStatusChangeListener(OnNetStatusChangeListener listener1,OnNetStatusChangeListener listener2){
@@ -734,14 +728,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 			this.onNetStatusChangeListener2 = listener2;
 		}
 	}
-	
-	/**
-	 * 点击首页的政信贷跳到理财页面,再跳到政信贷
-	 */
-	public interface OnFirstPageDQListener{
-		void back();
-	}
-	
 	
 	public interface OnDownLoadListener{
 		void onDownLoad(long lastDownId);

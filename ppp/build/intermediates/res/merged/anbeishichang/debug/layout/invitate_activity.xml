@@ -149,9 +149,10 @@
                         android:background="@drawable/blue_fillet_btn_selector"
                         android:text="立即邀请"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/common_measure_26dp" />
+                        android:textSize="@dimen/common_measure_24dp" />
 
                     <LinearLayout
+                        android:id="@+id/invitate_activity_btns_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/common_measure_20dp"
@@ -166,7 +167,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/blue_fillet_btn_selector"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/common_measure_26dp" />
+                            android:textSize="@dimen/common_measure_24dp" />
 
                         <Button
                             android:id="@+id/invitate_activity_btn_bottom_catfriends"
@@ -177,7 +178,7 @@
                             android:background="@drawable/style_rect_fillet_blue"
                             android:text="查看好友详情"
                             android:textColor="@color/common_topbar_bg_color"
-                            android:textSize="@dimen/common_measure_26dp"
+                            android:textSize="@dimen/common_measure_24dp"
                             android:visibility="gone"/>
 
                     </LinearLayout>
@@ -185,6 +186,7 @@
                 </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/invitate_activity_tips_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/common_measure_30dp"

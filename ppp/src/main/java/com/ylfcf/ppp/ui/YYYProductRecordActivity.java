@@ -380,7 +380,7 @@ public class YYYProductRecordActivity extends BaseActivity implements
 	 */
 	private void getYYYInvestRecordList(String borrowId, String investStatus,
 			String investUserId, String returnStatus,String type) {
-		if (isFirst && mLoadingDialog != null) {
+		if (isFirst && mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncYYYInvestRecord asyncInvestRecord = new AsyncYYYInvestRecord(
@@ -418,7 +418,7 @@ public class YYYProductRecordActivity extends BaseActivity implements
 	 * @param borrowId
 	 */
 	private void getWDYInvestRecordList(String borrowId){
-		if (isFirst && mLoadingDialog != null) {
+		if (isFirst && mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncWDYInvestRecord task = new AsyncWDYInvestRecord(YYYProductRecordActivity.this, borrowId, "","","",pageNo, pageSize, 

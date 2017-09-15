@@ -159,6 +159,7 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/my_account_comp_layout_account_center"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/common_measure_66dp" >
 

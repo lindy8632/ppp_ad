@@ -9,10 +9,10 @@ android {
 
     defaultConfig {
         applicationId "com.ylfcf.ppp"
-        minSdkVersion 9
+        minSdkVersion 16
         targetSdkVersion 22
-        versionCode 155
-        versionName "1.5.5"
+        versionCode 158
+        versionName "1.5.8"
     }
 
     compileOptions {
@@ -130,4 +130,6 @@ dependencies {
     compile files('libs/sun.misc.BASE64Decoder.jar')
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile files('libs/json_simple-1.1.jar')
+    compile 'com.youth.banner:banner:1.4.9'  //轮播控件 最新版本
+    compile "com.github.bumptech.glide:glide:3.7.0"//图片加载
 }

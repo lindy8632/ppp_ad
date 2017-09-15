@@ -216,7 +216,7 @@ public class BorrowListVIPActivity extends BaseActivity implements
 	 */
 	private void requestProductPageInfo(String borrowType, String borrowStatus,String moneyStatus,
 			String isShow, String isWap, String plan) {
-		if (isFirst) {
+		if (isFirst && mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 

@@ -109,7 +109,7 @@ public class WithdrawDetailsActivity extends BaseActivity implements
 
 	private void requestWithdrawCancel(String id, String status, String userId,
 			String auditType) {
-		if (mLoadingDialog != null) {
+		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 		AsyncWithdrawCancel cancelTask = new AsyncWithdrawCancel(

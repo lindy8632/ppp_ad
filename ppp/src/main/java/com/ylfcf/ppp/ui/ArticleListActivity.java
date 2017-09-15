@@ -82,9 +82,6 @@ public class ArticleListActivity extends BaseActivity implements OnClickListener
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		if(loadingDialog != null){
-			loadingDialog.dismiss();
-		}
 	}
 
 	private NoticeFragment noticeFragment;

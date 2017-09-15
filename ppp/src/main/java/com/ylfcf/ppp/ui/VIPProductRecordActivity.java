@@ -488,7 +488,7 @@ public class VIPProductRecordActivity extends BaseActivity implements
 	 */
 	private void getInvestRecordList(String investUserId, String borrowId,
 			String status) {
-		if (isFirst && mLoadingDialog != null) {
+		if (isFirst && mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
 

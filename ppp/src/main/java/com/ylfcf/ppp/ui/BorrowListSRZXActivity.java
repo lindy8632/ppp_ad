@@ -24,6 +24,7 @@ import com.ylfcf.ppp.async.AsyncAppointBorrowList;
 import com.ylfcf.ppp.common.FileUtil;
 import com.ylfcf.ppp.entity.BannerInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.MoneyStatus;
 import com.ylfcf.ppp.entity.ProductInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
 import com.ylfcf.ppp.parse.JsonParseProductPageInfo;
@@ -47,13 +48,13 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 	public final int REQUEST_PRODUCT_LIST_WHAT = 1800;
 	private final int REQUEST_PRODUCT_LIST_SUCCESS = 1801;
 	private final int REQUEST_PRODUCT_LIST_FAILE = 1802;
-	
+
 	private View topLayout;
 	private TextView topTitle;
 	private LinearLayout topLeftLayout;
 	
 	private int pageNo = 0;
-	private int pageSize = 20;
+	private int pageSize = 10;
 	private PullToRefreshListView pullListView;
 	private BorrowListSRZXAdapter mBidListAdapter;
 	private List<ProductInfo> productList = new ArrayList<ProductInfo>();
@@ -66,7 +67,7 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 			super.handleMessage(msg);
 			switch (msg.what) {
 			case REQUEST_PRODUCT_LIST_WHAT:
-				requestProductPageInfo("发布","");
+				requestProductPageInfo("发布",MoneyStatus.NOFULL);
 				break;
 			case REQUEST_PRODUCT_LIST_SUCCESS:
 				BaseInfo baseInfo = (BaseInfo) msg.obj;
@@ -77,6 +78,11 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 					productList.addAll(baseInfo.getProductPageInfo()
 							.getProductList());
 					mBidListAdapter.setItems(productList);
+					if("10".equals(baseInfo.getProductPageInfo().getCount())){
+						pullListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+					}else{
+						pullListView.setMode(PullToRefreshBase.Mode.BOTH);
+					}
 				}
 				isLoadMore = false;
 				pullListView.onRefreshComplete();
@@ -219,11 +225,10 @@ public class BorrowListSRZXActivity extends BaseActivity implements
 	 * 私人尊享产品列表
 	 * 
 	 */
-	private void requestProductPageInfo(String borrowStatus,String moneyStatus) {
-		if (isFirst) {
+	private void requestProductPageInfo(String borrowStatus, final String moneyStatus) {
+		if (isFirst && mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
-
 		// 如果是第一次请求此接口，先加载缓存里面的数据，然后再请求接口刷新
 		if (isFirst) {
 			String result = null;

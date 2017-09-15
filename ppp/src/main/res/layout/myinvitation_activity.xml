@@ -44,6 +44,37 @@
 
         </LinearLayout>
 
+        <!-- 本人的投资奖励-->
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_myself_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="本人的投资奖励："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_myselfmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/myinvitation_activity_onemoney_layout"
             android:layout_width="match_parent"

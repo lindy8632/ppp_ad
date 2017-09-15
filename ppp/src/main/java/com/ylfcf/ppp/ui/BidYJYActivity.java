@@ -408,7 +408,7 @@ public class BidYJYActivity extends BaseActivity implements View.OnClickListener
      */
     private void requestInvest(String borrowId, String investUserId,
                                String money, String investFrom) {
-        if (mLoadingDialog != null) {
+        if (mLoadingDialog != null && !isFinishing()) {
             mLoadingDialog.show();
         }
         AsyncYJYBorrowInvest asyncBorrowInvest = new AsyncYJYBorrowInvest(

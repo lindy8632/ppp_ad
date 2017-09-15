@@ -351,7 +351,7 @@
     <string name="comm_ques_account_4t_1d">您好，账户和实名信息是一对一的绑定关系，为了确保账户信息的唯一性，保护您的投资安全，同一个身份证号码不能注册两个账号。希望您理解。</string>
 
     <string name="comm_ques_account_5t">已经绑定的银行卡能换绑吗？</string>
-    <string name="comm_ques_account_5t_1d">您好，为了保障账户资金安全，已经绑定的银行卡是不建议进行更换。如您的银行卡出现挂失、注销、冻结、预留手机号码变更、姓名变更等特殊情况，建议您直接联系元立方客服（客服电话：400-150-1568）寻求帮助。</string>
+    <string name="comm_ques_account_5t_1d">您好，为了保障账户资金安全，已经绑定的银行卡是不建议进行更换。如您的银行卡出现挂失、注销、冻结、预留手机号码变更、姓名变更等特殊情况，建议您直接联系元立方客服寻求帮助，客服电话：400-150-1568。</string>
 
     <string name="comm_ques_recharge_1t">充值收费吗？充值有金额限制吗？</string>
     <string name="comm_ques_recharge_1t_1d">您好，充值不收取手续费，全部有本平台垫付；充值金额1元起充，每天充值金额低于1000元的不得超过2笔；单日单卡成功充值次数最高为5次。</string>
@@ -489,8 +489,16 @@
     <string name="myinvitation_tips_string">1、奖励将在好友投资的标的起息后予以显示并按“预计到账时间”发放，仅展示当前直接好友的投资详情。\n2、“赚取”的奖励总额，包括来自直接好友的奖励和来自间接好友的奖励。</string>
     <string name="myinvitation_tips_string1">1、奖励将在好友投资的标的起息后予以显示并按“预计到账时间”发放，仅展示当前直接好友的投资详情。\n2、“赚取”的奖励总额，包括了您从历史好友的投资中获得的奖励以及从当前好友的投资中获得的奖励。</string>
     <string name="myinvitation_tips_string2">1、奖励将在好友投资的标的起息后予以显示并按“预计到账时间”发放。\n2、“赚取”的奖励总额，包括了您从历史好友的投资中获得的奖励以及从当前好友的投资中获得的奖励。\n3、好友信息指有效期内的好友信息。</string>
-
+    <string name="myinvitation_tips_string3">奖励将在好友投资的标的起息后予以显示并按“预计到账时间”发放。</string>
+    <string name="myinvitation_tips_string4">1、奖励将在您本人或好友的投资标的起息后予以显示并按"预计到账时间"发放 。\n2、“投资人”指您本人及您的直接好友。\n3、"累计已赚取"的奖励， 包括您本人投资后获得的奖励，以及来自直接好友和间接好友的奖励。</string>
+    <string name="myinvitation_tips_string5">1、奖励将在您本人或好友的投资标的起息后予以显示并按"预计到账时间"发放 。\n2、“投资人”指您本人及您的直接好友。\n3、"累计已赚取"的奖励， 包括您本人投资后获得的奖励，以及您从历史好友、当前好友的投资中获得的奖励。</string>
     <string name="yyy_investrecord_top_prompt">提示：\n1.本期预期年化利率和本期投资总收益，均包含活动或道具带来的加息（如有）。\n2.已赎回的元月盈，其本期年化利率指赎回前最后一个锁定期的标的利率，含活动或道具带来的加息（如有）。</string>
     <string name="my_friends_list_activity_toptips">1、统计有效期内的好友数量。\n2、仅显示直接好友的详细信息。</string>
+
+    <!--账户中心-->
+    <string name="account_center_tips_string1">账户余额指投资人账户内可自由支配的资金</string>
+    <string name="account_center_tips_string2">待收金额指投资项目待收回的本金及收益+投资使用的奖励的本金及收益</string>
+    <string name="account_center_tips_string3">冻结金额指投资人已完成支付但标的未完成募集的本金和尚在提现审批中的资金</string>
+    <string name="account_center_hkrl_tips">提示：\n1、回款日历包括投资项目待收回的本金、收益及投资使用的奖励的本金和收益，以及“我的奖励”。\n2、因“薪盈计划”产品的特殊性，仅对“薪盈计划”的还款时间做日期提示，“还款总额”不包括“薪盈计划”的回款金额。</string>
 
 </resources>

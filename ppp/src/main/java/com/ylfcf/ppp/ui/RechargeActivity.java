@@ -384,7 +384,7 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 	 * @param smsCode 短信验证码
 	 */
 	private void requestBFRecharge(final String amount,String smsCode,String orderId){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncBFRecharge rechargeTask = new AsyncBFRecharge(RechargeActivity.this, 
@@ -451,7 +451,7 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 	 * 获取银行卡信息
 	 */
 	private void requestBankCardInfo(){
-		if(mLoadingDialog != null){
+		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
 		AsyncUserBankCard rechargeTask = new AsyncUserBankCard(RechargeActivity.this,

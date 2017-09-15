@@ -9,6 +9,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
@@ -56,13 +58,15 @@ import com.ylfcf.ppp.ui.UserVerifyActivity;
 import com.ylfcf.ppp.ui.YQHYTempActivity;
 import com.ylfcf.ppp.util.Constants.ActivityCode;
 import com.ylfcf.ppp.util.Constants.ArticleType;
+import com.ylfcf.ppp.util.GlideImageLoader;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.YLFLogger;
-import com.ylfcf.ppp.widget.CycleViewPager;
-import com.ylfcf.ppp.widget.CycleViewPager.ImageCycleViewListener;
-import com.ylfcf.ppp.widget.ImageViewFactory;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -70,34 +74,35 @@ import java.util.List;
 
 /**
  * 首页
- * 
+ *
  * @author Administrator
- * 
+ *
  */
-public class FirstPageFragment extends BaseFragment implements OnClickListener {
+public class FirstPageFragment extends BaseFragment implements OnClickListener,OnBannerListener {
 	private static final String className = "FirstPageFragment";
 
 	private static final int REQUEST_ARTICLELIST_WHAT = 5701;// 公告
 	private static final int REQUEST_ARTICLELIST_SUCCESS = 5702;
 	private static final int REFRESH_NOTICE = 5703;
-	
+
 	private MainFragmentActivity mainActivity;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 	private List<ImageView> views = new ArrayList<ImageView>();
 	private List<BannerInfo> bannerList = new ArrayList<BannerInfo>();
-	private CycleViewPager cycleViewPager;// banner
 	private ViewPager subjectViewPager;// 系列标的viewpager
 	private Button hytjBtn,hdzqBtn;//壕友推荐 活动专区按钮
+	private Banner mBanner;
 
 	/*
 	 * 新手标
 	 */
 	private View xsbLayout;
-	private RelativeLayout xsbMainLayout;
-	private Button xsbInvestBtn;//新手标的立即投资按钮
-	
+	private ImageView xsbImg,yyyImg,yzyImg;
+	private LinearLayout bottomLayout;
+
 	private LinearLayout noticeLayout;// 公告的布局
 	private TextView noticeTitle, noticeTime;
+	private TextView tipsText;
 	private List<View> viewsList = new ArrayList<View>();
 
 	private ImageView defaultImg;
@@ -116,29 +121,29 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			switch (msg.what) {
-			case REQUEST_ARTICLELIST_WHAT:
-				requestNoticeList("正常", ArticleType.NOTICE);
-				break;
-			case REQUEST_ARTICLELIST_SUCCESS:
-				BaseInfo baseInfo = (BaseInfo) msg.obj;
-				if (baseInfo != null) {
-					articleList = baseInfo.getmArticlePageInfo()
-							.getArticleList();
+				case REQUEST_ARTICLELIST_WHAT:
+					requestNoticeList("正常", ArticleType.NOTICE);
+					break;
+				case REQUEST_ARTICLELIST_SUCCESS:
+					BaseInfo baseInfo = (BaseInfo) msg.obj;
+					if (baseInfo != null) {
+						articleList = baseInfo.getmArticlePageInfo()
+								.getArticleList();
+						initNoticeData();
+					}
+					break;
+				case REFRESH_NOTICE:
 					initNoticeData();
-				}
-				break;
-			case REFRESH_NOTICE:
-				initNoticeData();
-				break;
-			default:
-				break;
+					break;
+				default:
+					break;
 			}
 		}
 	};
 
 	/**
 	 * 创建当前Fragment的实例对象
-	 * 
+	 *
 	 * @param position
 	 * @return
 	 */
@@ -167,7 +172,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 	@Override
 	@Nullable
 	public View onCreateView(LayoutInflater inflater,
-			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+							 @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		mainActivity = (MainFragmentActivity) getActivity();
 		fragmentManager = getActivity().getSupportFragmentManager();
 		if (rootView == null) {
@@ -189,11 +194,23 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 	private void findViews(View view, LayoutInflater inflater) {
 		xsbLayout = inflater.inflate(R.layout.first_page_subject_xsb, null);
 		viewsList.add(xsbLayout);
-		
-		xsbMainLayout = (RelativeLayout)xsbLayout.findViewById(R.id.first_page_subject_xsb_mainlayout);
-		xsbMainLayout.setOnClickListener(this);
-		xsbInvestBtn = (Button)xsbLayout.findViewById(R.id.first_page_subject_xsb_bidBtn);
-		xsbInvestBtn.setOnClickListener(this);
+
+		xsbImg = (ImageView)xsbLayout.findViewById(R.id.first_page_subject_xsb_logo);
+		xsbImg.setOnClickListener(this);
+		yyyImg = (ImageView)xsbLayout.findViewById(R.id.first_page_subject_yyy_logo);
+		yyyImg.setOnClickListener(this);
+		yzyImg = (ImageView)xsbLayout.findViewById(R.id.first_page_subject_yzy_logo);
+		yzyImg.setOnClickListener(this);
+		bottomLayout = (LinearLayout) xsbLayout.findViewById(R.id.first_page_subject_bottom_layout);
+		bottomLayout.setOnClickListener(this);
+		tipsText = (TextView) xsbLayout
+				.findViewById(R.id.first_page_subject_xsb_text1);
+		SpannableStringBuilder builder = new SpannableStringBuilder(tipsText.getText().toString());
+		//ForegroundColorSpan 为文字前景色，BackgroundColorSpan为文字背景色
+		ForegroundColorSpan orangeSpan = new ForegroundColorSpan(getResources().getColor(R.color.orange_text));
+		builder.setSpan(orangeSpan, 8,12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		tipsText.setText(builder);
+
 		hytjBtn = (Button)view.findViewById(R.id.first_page_fragment_hytj_btn);
 		hytjBtn.setOnClickListener(this);
 		hdzqBtn = (Button)view.findViewById(R.id.first_page_fragment_hdzq_btn);
@@ -208,17 +225,13 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 				.findViewById(R.id.first_page_fragment_notice_text);
 		noticeTime = (TextView) view
 				.findViewById(R.id.first_page_fragment_notice_time);
-//		cycleViewPager = new CycleViewPager();
-//		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//		fragmentTransaction.add(R.id.first_page_fragment_cycleviewpager_layout, cycleViewPager);
-		cycleViewPager = (CycleViewPager) getActivity().getFragmentManager()
-				.findFragmentById(R.id.main_fragment1_banner_layout);
-		// cycleViewPager.setScrollable(false);//禁止滑动
+
 		subjectViewPager = (ViewPager) view
 				.findViewById(R.id.first_page_fragment_viewpager);
 		subjectViewPager.setAdapter(new SubjectPagerAdapter(viewsList));
 		subjectViewPager.setCurrentItem(0);
-
+		mBanner = (Banner) view.findViewById(R.id.first_page_fragment_banner);
+		mBanner.setOnBannerListener(this);
 		mainActivity.setOnRequestBorrowListener(
 				new OnRequestBorrowListListener() {
 					@Override
@@ -229,7 +242,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 		mainActivity.setOnYXBDataListener(new OnYXBDataListener() {
 			@Override
 			public void back(YXBProductInfo mYXBProductInfo,
-					YXBProductLogInfo mYXBProductLogInfo) {
+							 YXBProductLogInfo mYXBProductLogInfo) {
 			}
 		}, null);
 		mainActivity.setOnNetStatusChangeListener(new OnNetStatusChangeListener() {
@@ -241,23 +254,11 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 				}
 			}
 		},null);
-		initHYTJBtn();
-	}
-
-	private void initHYTJBtn(){
-		if(SettingsManager.isCompanyUser(mainActivity)){
-			//企业用户
-			hytjBtn.setEnabled(false);
-			hytjBtn.setBackgroundResource(R.drawable.first_page_fragment_hytj_unenable);
-		}else{
-			hytjBtn.setEnabled(true);
-			hytjBtn.setBackgroundResource(R.drawable.first_page_fragment_hytj_enable);
-		}
 	}
 
 	/**
 	 * 初始化公告栏
-	 * 
+	 *
 	 * @param
 	 */
 	private void initNoticeData() {
@@ -268,115 +269,121 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 		noticeTitle.setText(info.getTitle());
 		noticeTime.setText(info.getAdd_time().split(" ")[0].replaceAll("-", "/"));
 	}
-	
-	/**
-	 * 初始化banner数据
-	 * @param list
-	 */
-	private void initBannerData(List<BannerInfo> list) {
-		views.clear();
-		// 将最后一个ImageView添加进来
-		views.add(ImageViewFactory.getImageView(getActivity(),
-				list.get(list.size() - 1).getPic_url()));
-		for (int i = 0; i < list.size(); i++) {
-			views.add(ImageViewFactory.getImageView(getActivity(), list.get(i).getPic_url()));
+
+	private void initBanner(List<BannerInfo> bannerList){
+		if(bannerList == null || bannerList.size() <= 0)
+			return;
+		List<String> images = new ArrayList<>();
+		List<String> titles = new ArrayList<>();
+		for(BannerInfo info : bannerList){
+			images.add(info.getPic_url());
+			titles.add(info.getId());
 		}
-		// 将第一个ImageView添加进来
-		views.add(ImageViewFactory.getImageView(getActivity(), list.get(0)
-				.getPic_url()));
-
-		// 设置循环，在调用setData方法前调用
-		cycleViewPager.setCycle(true);
-		// 在加载数据前设置是否循环
-		cycleViewPager.setData(views, list, mAdCycleViewListener);
-		// 设置轮播
-		cycleViewPager.setWheel(true);
-
-		// 设置轮播时间，默认5000ms
-		cycleViewPager.setTime(2000);
-		// 设置圆点指示图标组居中显示，默认靠右
-		cycleViewPager.setIndicatorCenter();
+		//设置banner样式
+		mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+		//设置图片加载器
+		mBanner.setImageLoader(new GlideImageLoader());
+		//设置图片集合
+		mBanner.setImages(images);
+		//设置banner动画效果
+		mBanner.setBannerAnimation(Transformer.Accordion);
+		//设置自动轮播，默认为true
+		mBanner.isAutoPlay(true);
+		//设置轮播时间
+		mBanner.setDelayTime(2500);
+		//设置指示器位置（当banner模式中有指示器时）
+		mBanner.setIndicatorGravity(BannerConfig.CENTER);
+		//banner设置方法全部调用完毕时最后调用
+		mBanner.start();
 	}
 
-	/**
-	 * banner的item的点击事件
-	 */
-	private ImageCycleViewListener mAdCycleViewListener = new ImageCycleViewListener() {
-		@Override
-		public void onImageClick(BannerInfo info, int position, View imageView) {
-			if (cycleViewPager.isCycle()) {
-				position = position - 1;
-				Intent intent = null;
-				if ("文章".equals(info.getType())) {
-					if("".equals(info.getArticle_id()) || "0".equals(info.getArticle_id())){
-						
-					}else{
-						intent = new Intent(mainActivity,
-								BannerDetailsActivity.class);
-						intent.putExtra("BannerInfo", info);
-						startActivity(intent);
-					}
-				} else if ("专题页".equals(info.getType())) {
-					intent = new Intent(mainActivity, BannerTopicActivity.class);
-					intent.putExtra("BannerInfo", info);
-					if (info.getArticle_id() != null && !"".equals(info.getArticle_id())) {
-						startActivity(intent);
-					}
-				}else if("窗口页面".equals(info.getType())){
-					if(ActivityCode.YYY_DETAILS_ACTIVITY.equals(info.getArticle_id())){
-						//元月盈详情页面
-						intent = new Intent(getActivity(),BorrowDetailYYYActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.XSB_DETAILS_ACTIVITY.equals(info.getArticle_id())){
-						//新手标详情页面
-						intent = new Intent(getActivity(),BorrowDetailXSBActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.DQLC_LIST_ACTIVITY.equals(info.getArticle_id())){
-						//定期理财产品列表页面
-						intent = new Intent(getActivity(),BorrowListZXDActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.VIP_LIST_ACTIVITY.equals(info.getArticle_id())){
-						//VIP产品列表页面
-						intent = new Intent(getActivity(),BorrowListVIPActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.SRZX_APPOINT_ACTIVITY.equals(info.getArticle_id())){
-						//私人尊享预约页面
-						intent = new Intent(getActivity(),SRZXAppointActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.FLJH_ACTIVITY.equals(info.getArticle_id())){
-						//会员福利计划
-						intent = new Intent(getActivity(),PrizeRegionTempActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.LXFX_ACTIVITY.equals(info.getArticle_id())){
-						//乐享返现 开年红
-						intent = new Intent(getActivity(),LXFXTempActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.SIGN_ACTIVITY.equals(info.getArticle_id())){
-						intent = new Intent(getActivity(),SignTopicTempActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.FLJH_ACTIVITY_02.equals(info.getArticle_id())){
-						intent = new Intent(getActivity(),PrizeRegion2TempActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.YQHY_ACTIVITY.equals(info.getArticle_id())){
-						intent = new Intent(getActivity(),YQHYTempActivity.class);
-						startActivity(intent);
-					}else if(ActivityCode.QXJ5_ACTIVITY.equals(info.getArticle_id())){
-						intent = new Intent(getActivity(),LXJ5TempActivity.class);
-						startActivity(intent);
-					}
-				}
+	@Override
+	public void OnBannerClick(int position) {
+		if(bannerList == null || bannerList.size() <= 0)
+			return;
+		BannerInfo info = bannerList.get(position);
+		Intent intent = null;
+		if ("文章".equals(info.getType())) {
+			if("".equals(info.getArticle_id()) || "0".equals(info.getArticle_id())){
+
+			}else{
+				intent = new Intent(mainActivity,
+						BannerDetailsActivity.class);
+				intent.putExtra("BannerInfo", info);
+				startActivity(intent);
+			}
+		} else if ("专题页".equals(info.getType())) {
+			intent = new Intent(mainActivity, BannerTopicActivity.class);
+			intent.putExtra("BannerInfo", info);
+			if (info.getArticle_id() != null && !"".equals(info.getArticle_id())) {
+				startActivity(intent);
+			}
+		}else if("窗口页面".equals(info.getType())){
+			if(ActivityCode.YYY_DETAILS_ACTIVITY.equals(info.getArticle_id())){
+				//元月盈详情页面
+				intent = new Intent(getActivity(),BorrowDetailYYYActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.XSB_DETAILS_ACTIVITY.equals(info.getArticle_id())){
+				//新手标详情页面
+				intent = new Intent(getActivity(),BorrowDetailXSBActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.DQLC_LIST_ACTIVITY.equals(info.getArticle_id())){
+				//定期理财产品列表页面
+				intent = new Intent(getActivity(),BorrowListZXDActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.VIP_LIST_ACTIVITY.equals(info.getArticle_id())){
+				//VIP产品列表页面
+				intent = new Intent(getActivity(),BorrowListVIPActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.SRZX_APPOINT_ACTIVITY.equals(info.getArticle_id())){
+				//私人尊享预约页面
+				intent = new Intent(getActivity(),SRZXAppointActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.FLJH_ACTIVITY.equals(info.getArticle_id())){
+				//会员福利计划
+				intent = new Intent(getActivity(),PrizeRegionTempActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.LXFX_ACTIVITY.equals(info.getArticle_id())){
+				//乐享返现 开年红
+				intent = new Intent(getActivity(),LXFXTempActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.SIGN_ACTIVITY.equals(info.getArticle_id())){
+				intent = new Intent(getActivity(),SignTopicTempActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.FLJH_ACTIVITY_02.equals(info.getArticle_id())){
+				intent = new Intent(getActivity(),PrizeRegion2TempActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.YQHY_ACTIVITY.equals(info.getArticle_id())){
+				intent = new Intent(getActivity(),YQHYTempActivity.class);
+				startActivity(intent);
+			}else if(ActivityCode.QXJ5_ACTIVITY.equals(info.getArticle_id())){
+				intent = new Intent(getActivity(),LXJ5TempActivity.class);
+				startActivity(intent);
 			}
 		}
-	};
+	}
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		super.setUserVisibleHint(isVisibleToUser);
 		YLFLogger.d("FirstPageFragment -- setUserVisibleHint ---"
 				+ isVisibleToUser);
-		if(mainActivity != null && isVisibleToUser){
-			initHYTJBtn();
-		}
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		//开始轮播
+		if(mBanner != null)
+			mBanner.startAutoPlay();
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		//结束轮播
+		if(mBanner != null)
+			mBanner.stopAutoPlay();
 	}
 
 	@Override
@@ -401,29 +408,45 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.first_page_fragment_notice_layout:
-			Intent intentArt = new Intent(mainActivity,
-					ArticleListActivity.class);
-			startActivity(intentArt);
-			break;
-		case R.id.first_page_subject_xsb_bidBtn:
-		case R.id.first_page_subject_xsb_mainlayout:
-			Intent intentXSB = new Intent(mainActivity,
-					BorrowDetailXSBActivity.class);
-			intentXSB.putExtra("PRODUCT_INFO", xsbInfo);
-			startActivity(intentXSB);
-			break;
-		case R.id.first_page_fragment_hytj_btn:
-			//壕友推荐
-			shared();
-			break;
-		case R.id.first_page_fragment_hdzq_btn:
-			//活动专区
-			Intent intentHDZQ = new Intent(mainActivity, ActivitysRegionActivity.class);
-			mainActivity.startActivity(intentHDZQ);
-			break;
-		default:
-			break;
+			case R.id.first_page_fragment_notice_layout:
+				Intent intentArt = new Intent(mainActivity,
+						ArticleListActivity.class);
+				startActivity(intentArt);
+				break;
+			case R.id.first_page_subject_xsb_logo:
+				//新手标
+				Intent intentXSB = new Intent(mainActivity,
+						BorrowDetailXSBActivity.class);
+				intentXSB.putExtra("PRODUCT_INFO", xsbInfo);
+				startActivity(intentXSB);
+				break;
+			case R.id.first_page_subject_yyy_logo:
+				//元月盈
+				Intent intentYYY = new Intent(mainActivity,
+						BorrowDetailYYYActivity.class);
+				startActivity(intentYYY);
+				break;
+			case R.id.first_page_subject_yzy_logo:
+				//元月盈
+				Intent intentYZY = new Intent(mainActivity,
+						BorrowListZXDActivity.class);
+				startActivity(intentYZY);
+				break;
+			case R.id.first_page_subject_bottom_layout:
+				if(firstPageZXDListener != null)
+					firstPageZXDListener.back();
+				break;
+			case R.id.first_page_fragment_hytj_btn:
+				//壕友推荐
+				shared();
+				break;
+			case R.id.first_page_fragment_hdzq_btn:
+				//活动专区
+				Intent intentHDZQ = new Intent(mainActivity, ActivitysRegionActivity.class);
+				mainActivity.startActivity(intentHDZQ);
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -455,9 +478,10 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 				}
 				if("邀请有奖".equals(type)){
 					hytjBtn.setEnabled(true);
-					Intent yqyjIntent = new Intent(mainActivity,InvitateActivity.class);
-					yqyjIntent.putExtra("is_verify", flag);
-					startActivity(yqyjIntent);
+					Intent intent = new Intent();
+					intent.setClass(mainActivity, InvitateActivity.class);
+					intent.putExtra("is_verify", flag);
+					startActivity(intent);
 					return;
 				}
 				if(flag){
@@ -548,7 +572,8 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 					bannerList.add(banner);
 				}
 			}
-			initBannerData(bannerList);
+//			initBannerData(bannerList);
+			initBanner(bannerList);
 			defaultImg.setVisibility(View.GONE);
 			return;
 		}
@@ -572,7 +597,8 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 										bannerList.add(banner);
 									}
 								}
-								initBannerData(bannerList);
+//								initBannerData(bannerList);
+								initBanner(bannerList);
 								defaultImg.setVisibility(View.GONE);
 							}
 						}
@@ -583,7 +609,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener {
 
 	/**
 	 * 公告列表 ---- 取第一条最新的数据
-	 * 
+	 *
 	 * @param status
 	 * @param type
 	 */

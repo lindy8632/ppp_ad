@@ -56,10 +56,10 @@ public class RechargeProofActivity extends BaseActivity implements OnClickListen
         wv.setWebChromeClient(new WebChromeClient(){
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {	
-				if(newProgress == 100){
+				if(newProgress == 100 && mLoadingDialog.isShowing()){
 					//网页加载完成
 					loadingDialog.dismiss();
-				}else{
+				}else if(newProgress != 100 && !mLoadingDialog.isShowing() && !isFinishing()){
 					//网页加载中...
 					loadingDialog.show();
 				}
@@ -91,5 +91,13 @@ public class RechargeProofActivity extends BaseActivity implements OnClickListen
 		super.onPause();
 		UMengStatistics.statisticsOnPageEnd(className);//友盟统计页面跳转
 		UMengStatistics.statisticsPause(this);//友盟统计时长
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if(loadingDialog != null && loadingDialog.isShowing()){
+			loadingDialog.dismiss();
+		}
 	}
 }
