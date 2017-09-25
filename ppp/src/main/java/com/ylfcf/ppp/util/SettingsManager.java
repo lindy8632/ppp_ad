@@ -100,6 +100,7 @@ public class SettingsManager extends DefaultPreferences {
 	public static final String MAINACTIVITY_FIRSTPAGE = "firstpage";//首页
 	public static final String DOWNLOAD_APK_NUM = "download_apk";//apk下载的进程号
 	public static final String SHARED_BANNER_CACHE_TIME = "banner_cache_time";
+	public static final String ACCOUNTCENTER_ISFLOAT = "account_center_float";
 	
 	public static final Map<String,BankInfo> bankMap = new LinkedHashMap<String,BankInfo>();//快捷支付银行列表 key为bankcode  value为银行对象
 	public static final Map<String,Integer> bankLogosMap = new LinkedHashMap<String,Integer>();//快捷支付银行logo key为bank_code  value为图片资源id
@@ -453,6 +454,15 @@ public class SettingsManager extends DefaultPreferences {
     public static void setMainProductListFlag(Context context,boolean flag){
     	DefaultPreferences.setBoolean(context, MAINACTIVITY_PRODUCTLIST, flag);
     }
+
+	/**
+	 * 账户中心浮窗是否显示
+	 * @param context
+	 * @param flag
+	 */
+	public static void setAccountCenterFloatFlag(Context context,boolean flag){
+		DefaultPreferences.setBoolean(context,ACCOUNTCENTER_ISFLOAT,flag);
+	}
     
     /**
      * 是否要跳转到我的账户页面
@@ -501,6 +511,11 @@ public class SettingsManager extends DefaultPreferences {
     	boolean flag = DefaultPreferences.getBoolean(context, MAINACTIVITY_PRODUCTLIST, false);
     	return flag;
     }
+
+    public static boolean getAccountCenterFloatFlag(Context context){
+		boolean flag = DefaultPreferences.getBoolean(context, ACCOUNTCENTER_ISFLOAT, false);
+		return flag;
+	}
     
     /**
      * 在首页上是否跳转到我的账户页面

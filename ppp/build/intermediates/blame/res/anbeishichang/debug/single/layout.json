@@ -268,6 +268,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\recharge_result_activity.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\user_login_fragment.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\user_login_fragment.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\yxb_redeem_success_dialog.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\yxb_redeem_success_dialog.xml"
     },
@@ -1104,6 +1108,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\borrow_info_activity.xml"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\user_personal_fragment.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\user_personal_fragment.xml"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\025240461d7d7ceddedae0eb23940c582858844e\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
@@ -1178,6 +1186,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\yyy_investrecord_top_layout.xml",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\yyy_investrecord_top_layout.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\user_comp_fragment.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\user_comp_fragment.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\bid_yyy_activity.xml",

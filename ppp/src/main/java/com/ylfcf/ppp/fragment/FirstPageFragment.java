@@ -273,8 +273,8 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 	private void initBanner(List<BannerInfo> bannerList){
 		if(bannerList == null || bannerList.size() <= 0)
 			return;
-		List<String> images = new ArrayList<>();
-		List<String> titles = new ArrayList<>();
+		List<String> images = new ArrayList<String>();
+		List<String> titles = new ArrayList<String>();
 		for(BannerInfo info : bannerList){
 			images.add(info.getPic_url());
 			titles.add(info.getId());
@@ -572,7 +572,6 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 					bannerList.add(banner);
 				}
 			}
-//			initBannerData(bannerList);
 			initBanner(bannerList);
 			defaultImg.setVisibility(View.GONE);
 			return;
@@ -597,7 +596,6 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 										bannerList.add(banner);
 									}
 								}
-//								initBannerData(bannerList);
 								initBanner(bannerList);
 								defaultImg.setVisibility(View.GONE);
 							}

@@ -220,6 +220,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\prize_region_btn_enable.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\my_account_personal_bankcard_light.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\my_account_personal_bankcard_light.png"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\banklogo_abc.jpg",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\banklogo_abc.jpg"
     },
@@ -358,10 +362,6 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\account_setting_logo8.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\account_setting_logo8.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\my_account_personal_zscp_layout_logo.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\my_account_personal_zscp_layout_logo.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\first_page_subject_huojian_img.png",
@@ -542,6 +542,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\qxj5_jqqd_btn.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\qxj5_jqqd_btn.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\account_center_float_logo.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\account_center_float_logo.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
@@ -870,6 +874,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\yxb_promt_logo3.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\yxb_promt_logo3.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\my_account_personal_idcard_light.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\my_account_personal_idcard_light.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\activity_prizeregion2_bg.png",
@@ -1230,6 +1238,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\ynx_list_logo.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\ynx_list_logo.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\my_account_personal_phone_light.png",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\my_account_personal_phone_light.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\transfer_coupon_item_bg.png",
