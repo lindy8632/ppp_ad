@@ -38,12 +38,11 @@
                 android:layout_marginBottom="@dimen/common_measure_10dp"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitCenter"
-                android:src="@drawable/my_account_personal_nor_headlogo"/>
+                android:background="@drawable/my_account_personal_nor_headlogo"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/my_account_personal_phone_img"
@@ -51,68 +50,81 @@
                     android:layout_height="@dimen/common_measure_24dp"
                     android:layout_toLeftOf="@+id/my_account_personal_idcard_img"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/my_account_personal_phone_logo"/>
+                    android:background="@drawable/my_account_personal_phone_logo"/>
 
                 <ImageView
                     android:id="@+id/my_account_personal_idcard_img"
                     android:layout_width="@dimen/common_measure_25dp"
                     android:layout_height="@dimen/common_measure_24dp"
                     android:layout_marginLeft="@dimen/common_measure_10dp"
+                    android:layout_marginRight="@dimen/common_measure_10dp"
+                    android:layout_centerInParent="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/my_account_personal_idcard_logo"/>
+                    android:background="@drawable/my_account_personal_idcard_logo"/>
 
                 <ImageView
                     android:id="@+id/my_account_personal_bankcard_img"
                     android:layout_width="@dimen/common_measure_25dp"
                     android:layout_height="@dimen/common_measure_24dp"
-                    android:layout_marginRight="@dimen/common_measure_10dp"
                     android:layout_toRightOf="@+id/my_account_personal_idcard_img"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/my_account_personal_bankcard_logo"/>
+                    android:background="@drawable/my_account_personal_bankcard_logo"/>
 
             </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/my_account_personal_layout_account_center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/common_measure_40dp"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/common_measure_20dp">
+                
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/common_measure_18dp"
+                        android:textColorHint="@color/white"
+                        android:text="资产总额："/>
+
+                    <TextView
+                        android:id="@+id/my_account_personal_totalmoney_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/common_measure_20dp"
+                        android:textColorHint="@color/white"
+                        android:textStyle="bold"
+                        android:text="0.00"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/common_measure_18dp"
+                        android:textColorHint="@color/white"
+                        android:text="元"/>
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/common_measure_18dp"
-                    android:textColorHint="@color/white"
-                    android:text="资产总额："/>
-
-                <TextView
-                    android:id="@+id/my_account_personal_totalmoney_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/common_measure_20dp"
-                    android:textColorHint="@color/white"
-                    android:textStyle="bold"
-                    android:text="0.00"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/common_measure_18dp"
-                    android:textColorHint="@color/white"
-                    android:text="元"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:textSize="@dimen/common_measure_18dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:textSize="@dimen/common_measure_22dp"
                     android:textColorHint="@color/white"
                     android:text=">"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
          </LinearLayout>
 
@@ -149,18 +161,20 @@
                     <TextView
                         android:id="@+id/my_account_personal_balancemoney_tv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
                         android:textSize="@dimen/common_measure_18dp"
-                        android:textColorHint="@color/black"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:text="0.00"/>
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
                         android:textSize="@dimen/common_measure_18dp"
-                        android:textColorHint="@color/black"
+                        android:textColor="@color/black"
                         android:text="元"/>
 
                 </LinearLayout>
@@ -180,13 +194,11 @@
                     android:background="@null"
                     android:text="提现"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/common_measure_18dp"/>
+                    android:textSize="@dimen/common_measure_20dp"/>
 
                 <View
                     android:layout_width="@dimen/common_measure_1dp"
-                    android:layout_height="@dimen/common_measure_30dp"
-                    android:layout_marginLeft="@dimen/common_measure_6dp"
-                    android:layout_marginRight="@dimen/common_measure_6dp"
+                    android:layout_height="@dimen/common_measure_20dp"
                     android:background="@color/gray1"/>
 
                 <Button
@@ -196,7 +208,7 @@
                     android:background="@null"
                     android:text="充值"
                     android:textColor="@color/common_topbar_bg_color"
-                    android:textSize="@dimen/common_measure_18dp"/>
+                    android:textSize="@dimen/common_measure_20dp"/>
 
             </LinearLayout>
 
@@ -210,210 +222,420 @@
             android:paddingRight="@dimen/common_measure_20dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:background="@color/common_topbar_bg_color">
+            android:background="@color/yellow5"
+            android:visibility="gone">
 
             <TextView
+                android:id="@+id/my_account_personal_unverify_prompt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:text="您尚未完成实名认证，点击去实名"
                 android:textColor="@color/orange_text"
                 android:textSize="@dimen/common_measure_18dp"/>
 
             <ImageView
                 android:id="@+id/my_account_personal_x_img"
-                android:layout_width="@dimen/common_measure_18dp"
-                android:layout_height="@dimen/common_measure_18dp"
+                android:layout_width="@dimen/common_measure_22dp"
+                android:layout_height="@dimen/common_measure_22dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/my_account_personal_x_logo"/>
 
         </LinearLayout>
 
         <!--员工专属产品-->
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/my_account_personal_zscp_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/common_measure_220dp"
-            android:layout_marginTop="@dimen/common_measure_5dp"
-            android:background="@color/white">
-
-            <ImageView
-                android:id="@+id/my_account_personal_zscp_layout_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:background="@drawable/my_account_personal_zscp_layout_logo"/>
+            android:layout_marginTop="@dimen/common_measure_6dp"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/common_measure_20dp"
+            android:paddingRight="@dimen/common_measure_20dp"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <LinearLayout
-                android:id="@+id/my_account_personal_zscp_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/common_measure_20dp"
-                android:layout_marginRight="@dimen/common_measure_20dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_height="@dimen/common_measure_30dp"
+                android:layout_marginTop="@dimen/common_measure_20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/common_measure_30dp"
-                    android:layout_marginTop="@dimen/common_measure_20dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/common_measure_24dp"
+                    android:layout_height="@dimen/common_measure_28dp"
+                    android:src="@drawable/my_account_personal_zscp_huangguan_logo"
+                    android:scaleType="fitCenter"/>
 
-                    <ImageView
-                        android:layout_width="@dimen/common_measure_32dp"
-                        android:layout_height="@dimen/common_measure_23dp"
-                        android:src="@drawable/my_account_personal_zscp_huangguan_logo"
-                        android:scaleType="fitCenter"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_measure_10dp"
+                    android:layout_marginRight="@dimen/common_measure_20dp"
+                    android:text="元聚盈"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_measure_18dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/common_measure_10dp"
-                        android:layout_marginRight="@dimen/common_measure_20dp"
-                        android:text="员工专属产品"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/common_measure_18dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/common_measure_10dp"
-                        android:layout_marginRight="@dimen/common_measure_20dp"
-                        android:text="即投即满，次日起息"
-                        android:textColor="@color/gray1"
-                        android:textSize="@dimen/common_measure_18dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="7.5"
-                        android:textSize="@dimen/common_measure_30dp"
-                        android:textColor="@color/orange_text"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="%～"
-                        android:textSize="@dimen/common_measure_18dp"
-                        android:textColor="@color/orange_text"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10.5"
-                        android:textSize="@dimen/common_measure_30dp"
-                        android:textColor="@color/orange_text"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="%"
-                        android:textSize="@dimen/common_measure_18dp"
-                        android:textColor="@color/orange_text"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="92"
-                        android:textSize="@dimen/common_measure_18dp"
-                        android:textColor="@color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="天～"
-                        android:textSize="@dimen/common_measure_16dp"
-                        android:textColor="@color/gray1"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="365"
-                        android:textSize="@dimen/common_measure_18dp"
-                        android:textColor="@color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="天"
-                        android:textSize="@dimen/common_measure_16dp"
-                        android:textColor="@color/gray1"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="预期年化收益率"
-                        android:textSize="@dimen/common_measure_16dp"
-                        android:textColor="@color/gray1"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="投资期限"
-                        android:textSize="@dimen/common_measure_16dp"
-                        android:textColor="@color/gray1"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/common_measure_1dp"
-                    android:layout_marginTop="@dimen/common_measure_10dp"
-                    android:background="@color/edittext_line_color"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="1万起投"
-                        android:textSize="@dimen/common_measure_20dp"
-                        android:textColor="@color/black"/>
-
-                    <Button
-                        android:id="@+id/my_account_personal_zscp_yy_btn"
-                        android:layout_width="@dimen/common_measure_80dp"
-                        android:layout_height="@dimen/common_measure_30dp"
-                        android:background="@drawable/style_rect_fillet_orange"
-                        android:gravity="center"
-                        android:text="预约"
-                        android:textSize="@dimen/common_measure_16dp"
-                        android:textColor="@color/orange_text"/>
-
-                    <Button
-                        android:id="@+id/my_account_personal_zscp_invest_btn"
-                        android:layout_width="@dimen/common_measure_80dp"
-                        android:layout_height="@dimen/common_measure_30dp"
-                        android:background="@drawable/style_rect_fillet_orange"
-                        android:gravity="center"
-                        android:text="投资"
-                        android:textSize="@dimen/common_measure_16dp"
-                        android:textColor="@color/orange_text"/>
-
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="仅属于员工的高收益定制理财产品"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_17dp"/>
 
             </LinearLayout>
 
-        </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:layout_marginBottom="@dimen/common_measure_10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    android:textSize="@dimen/common_measure_36dp"
+                    android:textColor="@color/orange_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%～"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:textColor="@color/orange_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textSize="@dimen/common_measure_36dp"
+                    android:textColor="@color/orange_text"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="%"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:textColor="@color/orange_text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="92"
+                    android:textSize="@dimen/common_measure_24dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天～"
+                    android:textSize="@dimen/common_measure_16dp"
+                    android:textColor="@color/gray1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="365"
+                    android:textSize="@dimen/common_measure_24dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天"
+                    android:textSize="@dimen/common_measure_16dp"
+                    android:textColor="@color/gray1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_measure_23dp"
+                    android:layout_weight="1"
+                    android:text="预期年化收益率"
+                    android:textSize="@dimen/common_measure_16dp"
+                    android:textColor="@color/gray1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/common_measure_23dp"
+                    android:text="投资期限"
+                    android:textSize="@dimen/common_measure_16dp"
+                    android:textColor="@color/gray1"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:layout_marginTop="@dimen/common_measure_15dp"
+                android:background="@color/edittext_line_color"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1万起投"
+                    android:textSize="@dimen/common_measure_20dp"
+                    android:textColor="@color/gray"/>
+
+                <Button
+                    android:id="@+id/my_account_personal_zscp_invest_btn"
+                    android:layout_width="@dimen/common_measure_80dp"
+                    android:layout_height="@dimen/common_measure_30dp"
+                    android:background="@drawable/style_rect_fillet_blue"
+                    android:gravity="center"
+                    android:text="投资"
+                    android:textSize="@dimen/common_measure_16dp"
+                    android:textColor="@color/common_topbar_bg_color"/>
+
+                <Button
+                    android:id="@+id/my_account_personal_zscp_yy_btn"
+                    android:layout_width="@dimen/common_measure_80dp"
+                    android:layout_height="@dimen/common_measure_30dp"
+                    android:layout_marginLeft="@dimen/common_measure_16dp"
+                    android:background="@drawable/style_rect_fillet_orange_5dp"
+                    android:gravity="center"
+                    android:text="预约"
+                    android:textSize="@dimen/common_measure_16dp"
+                    android:textColor="@color/orange_text"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/my_account_personal_line1"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:layout_marginTop="@dimen/common_measure_6dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/my_account_personal_yqyj_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_75dp"
+            android:background="@drawable/long_btn_click_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_measure_30dp"
+            android:paddingRight="@dimen/common_measure_20dp" >
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_26dp"
+                android:layout_height="@dimen/common_measure_26dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/my_account_logo_yqyj" />
+
+            <TextView
+                android:id="@+id/my_account_personal_yqyj_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="邀请有奖"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_22dp" />
+            
+            <TextView
+                android:id="@+id/my_account_personal_yqyj_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/common_measure_10dp"
+                android:text="君子爱财，取自友道"
+                android:textColor="@color/edittext_hint_color"
+                android:textSize="@dimen/common_measure_20dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/my_account_arrow"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/my_account_personal_line2"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/my_account_personal_jlmx_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_75dp"
+            android:background="@drawable/long_btn_click_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_measure_30dp"
+            android:paddingRight="@dimen/common_measure_20dp" >
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_26dp"
+                android:layout_height="@dimen/common_measure_26dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/my_account_logo_jlmx" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="奖励明细"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_22dp" />
+
+            <TextView
+                android:id="@+id/my_account_personal_used_yjb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/common_measure_10dp"
+                android:text="0元金币可用"
+                android:textColor="@color/edittext_hint_color"
+                android:textSize="@dimen/common_measure_20dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/my_account_arrow"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/my_account_personal_line3"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/my_account_personal_zjmx_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_75dp"
+            android:background="@drawable/long_btn_click_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_measure_30dp"
+            android:paddingRight="@dimen/common_measure_20dp" >
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_26dp"
+                android:layout_height="@dimen/common_measure_26dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/my_account_logo_zjmx" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="资金明细"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_22dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/my_account_arrow"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/my_account_personal_line4"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/my_account_personal_tbjl_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_75dp"
+            android:background="@drawable/long_btn_click_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_measure_30dp" >
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_26dp"
+                android:layout_height="@dimen/common_measure_26dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/my_account_logo_tbjl" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="投资记录"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_22dp" />
+
+            <ImageView
+                android:id="@+id/my_account_personal_tbjl_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:background="@drawable/my_account_arrow"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/my_account_personal_line5"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
+
+        <LinearLayout
+            android:id="@+id/my_account_personal_zhsz_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_75dp"
+            android:background="@drawable/long_btn_click_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_measure_30dp"
+            android:paddingRight="@dimen/common_measure_20dp" >
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_26dp"
+                android:layout_height="@dimen/common_measure_26dp"
+                android:layout_marginRight="@dimen/common_measure_20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/my_account_logo_zhsz" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="账户设置"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_measure_22dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/my_account_arrow"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/my_account_personal_line6"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_1dp"
+            android:background="@color/edittext_line_color" />
 
     </LinearLayout>
 

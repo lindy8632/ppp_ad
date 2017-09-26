@@ -203,7 +203,7 @@
                                 android:layout_height="@dimen/common_measure_48dp"
                                 android:layout_centerHorizontal="true"
                                 android:background="@null"
-                                android:gravity="center_horizontal"
+                                android:gravity="center_horizontal|bottom"
                                 android:hint="请输入投资金额"
                                 android:inputType="number"
                                 android:textCursorDrawable="@null"

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/common_measure_20dp"
+    android:layout_marginRight="@dimen/common_measure_20dp"
+    android:background="@drawable/style_rect_fillet_filling_white_dialog"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/jxq_transfer_suc_dialog_delbtn"
+        android:layout_width="@dimen/common_measure_35dp"
+        android:layout_height="@dimen/common_measure_35dp"
+        android:src="@drawable/qxj_del_btn_logo"
+        android:layout_marginTop="@dimen/common_measure_5dp"
+        android:layout_marginRight="@dimen/common_measure_5dp"
+        android:layout_gravity="right"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/common_measure_30dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/common_measure_30dp"
+            android:layout_height="@dimen/common_measure_30dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:src="@drawable/duihao"/>
+
+        <TextView
+            android:id="@+id/jxq_transfer_suc_dialog_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="加息券转让成功！"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_20dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/jxq_transfer_suc_dialog_receivername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_50dp"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/common_measure_18dp" />
+
+    <TextView
+        android:id="@+id/jxq_transfer_suc_dialog_receiverphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_50dp"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/common_measure_18dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:layout_marginTop="@dimen/common_measure_30dp"
+        android:background="@color/edittext_line_color" />
+
+    <Button
+        android:id="@+id/jxq_transfer_suc_dialog_okbtn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_50dp"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="center"
+        android:text="确认"
+        android:textColor="@color/common_topbar_bg_color"
+        android:textSize="@dimen/common_measure_24dp" />
+
+</LinearLayout>

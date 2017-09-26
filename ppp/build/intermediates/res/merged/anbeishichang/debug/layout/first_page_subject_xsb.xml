@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/child_background"
@@ -7,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_measure_180dp"
+        android:layout_height="@dimen/common_measure_144dp"
         android:background="@color/white"
         android:paddingBottom="@dimen/common_measure_4dp"
         android:orientation="horizontal">
@@ -32,12 +33,28 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/first_page_subject_yzy_logo"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_measure_97dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/first_page_subject_yzy_img"/>
+        android:layout_height="@dimen/common_measure_141dp">
+
+        <ImageView
+            android:id="@+id/first_page_subject_yzy_logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_measure_141dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/first_page_subject_yzy_img"/>
+
+        <com.cunoraz.gifview.library.GifView
+            android:id="@+id/first_page_subject_xsb_gif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/common_measure_30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            custom:gif="@drawable/first_page_subject_gif"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/first_page_subject_bottom_layout"
@@ -75,8 +92,8 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/common_measure_75dp"
-            android:layout_height="@dimen/common_measure_79dp"
+            android:layout_width="@dimen/common_measure_66dp"
+            android:layout_height="@dimen/common_measure_69dp"
             android:layout_marginLeft="@dimen/common_measure_60dp"
             android:layout_marginRight="@dimen/common_measure_30dp"
             android:src="@drawable/first_page_subject_huojian_img"

@@ -96,252 +96,252 @@ import static com.ylfcf.ppp.R.id.my_account_personal_zscp_invest_btn;
 public class UserFragment extends BaseFragment implements OnClickListener{
 	private static final String className = "UserFragment";
 	private MainFragmentActivity mainActivity;
-	
+
 	private static final int REQUEST_PERSONAL_LOGIN_SUCCESS_WHAT = 1001;
 	private static final int REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT = 1002;
-	
+
 	private static final int REQUEST_COMPANY_LOGIN_SUCCESS_WHAT = 1005;
 	private static final int REQUEST_COMPANY_LOGIN_EXCEPTION = 1006;
-	
+
 	private static final int REQUEST_GET_USERINFO_WHAT = 1003;
 	private static final int REQUEST_GET_USERINFO_SUCCESS = 1004;
 
 	private static final int REQUEST_ISLCS_WHAT = 1007;//改用户是否是理财师
 	private static final int REQUEST_ISLCS_SUC = 1008;
-	
-    private View rootView;
+
+	private View rootView;
 	private View topLayout;
-    private TextView topTitle;
-    private LinearLayout topbarLeftLayout;
-	
+	private TextView topTitle;
+	private LinearLayout topbarLeftLayout;
+
 	/**
 	 * 登录界面
 	 */
-    private LinearLayout loginLayout;
+	private LinearLayout loginLayout;
 	private Button navPersonalBtn,navCompanyBtn;
-    private View personalLoginLayout,companyLoginLayout;
-	
-    /**
-     * 个人登录
-     */
-    private TextView registerPersonalTV,forgetPwdPersonalTV;
-    private Button loginPersonalBtn;
-    private EditText phonePersonalET,pwdPersonalET;
-    private String phonePersonal = "";
-    private String pwdPersonal = "";
-    private String userId = "";
-    private String hfuserId = "";
-    
-    /**
-     * 企业登录
-     */
-    private TextView registerCompanyTV,forgetPwdCompanyTV;
-    private Button loginCompanyBtn;
-    private EditText phoneCompanyET,pwdCompanyET;
-    private String usernameCompany = "";
-    private String pwdCompany = "";
-    /**
-     * 我的账户
-     */
-    //个人用户顶部
-    private LinearLayout personalTopLayout;//个人顶部布局
-    private TextView usernameTVNP;//个人用户的用户名
-    private TextView zhyeTotalTVNP;//账户总余额
-    
-    //企业用户顶部
-    private LinearLayout companyTopLayout;//企业顶部布局
-    private TextView usernameTVComp;//企业用户的用户名
-    private TextView companyNameTV;//企业名
-    private TextView zhyeTotalTVComp;//企业用户的账户总额
-    
-    private TextView zhyeYiLianTV;//账户余额
-    private TextView djjeTV;//冻结金额
-    private TextView dsjeTV;//待收金额
-    private Button withdrawBtn;
-    private Button rechargeBtn;
-    private TextView usedYJBTV;//元金币可用金额
-    private LinearLayout jlmxLayout;//奖励明细
-    private LinearLayout zjmxLayout;//资金明细
-    private LinearLayout tbjlLayout;//投标记录
-    private LinearLayout yqyjLayout;//邀请有奖
-    private LinearLayout zhszLayout;//账户设置
-    private View line1,line2,line3,line4,line6;
-    private View compMainLayout;
+	private View personalLoginLayout,companyLoginLayout;
+
+	/**
+	 * 个人登录
+	 */
+	private TextView registerPersonalTV,forgetPwdPersonalTV;
+	private Button loginPersonalBtn;
+	private EditText phonePersonalET,pwdPersonalET;
+	private String phonePersonal = "";
+	private String pwdPersonal = "";
+	private String userId = "";
+	private String hfuserId = "";
+
+	/**
+	 * 企业登录
+	 */
+	private TextView registerCompanyTV,forgetPwdCompanyTV;
+	private Button loginCompanyBtn;
+	private EditText phoneCompanyET,pwdCompanyET;
+	private String usernameCompany = "";
+	private String pwdCompany = "";
+	/**
+	 * 我的账户
+	 */
+	//个人用户顶部
+	private LinearLayout personalTopLayout;//个人顶部布局
+	private TextView usernameTVNP;//个人用户的用户名
+	private TextView zhyeTotalTVNP;//账户总余额
+
+	//企业用户顶部
+	private LinearLayout companyTopLayout;//企业顶部布局
+	private TextView usernameTVComp;//企业用户的用户名
+	private TextView companyNameTV;//企业名
+	private TextView zhyeTotalTVComp;//企业用户的账户总额
+
+	private TextView zhyeYiLianTV;//账户余额
+	private TextView djjeTV;//冻结金额
+	private TextView dsjeTV;//待收金额
+	private Button withdrawBtn;
+	private Button rechargeBtn;
+	private TextView usedYJBTV;//元金币可用金额
+	private LinearLayout jlmxLayout;//奖励明细
+	private LinearLayout zjmxLayout;//资金明细
+	private LinearLayout tbjlLayout;//投标记录
+	private LinearLayout yqyjLayout;//邀请有奖
+	private LinearLayout zhszLayout;//账户设置
+	private View line1,line2,line3,line4,line6;
+	private View compMainLayout;
 	private LinearLayout accouncenterLayout;
 
 	//元聚盈模块
 	private LinearLayout yjyLayout;//元聚盈模块
 	private Button yjyInvestBtn,yjyAppointBtn;//元聚盈投资以及预约按钮
-    
-    private PtrClassicFrameLayout mainRefreshLayout = null;//下拉刷新的布局
-    
-    private UserRMBAccountInfo yilianAccountInfo;//易联账户信息
-    private UserRMBAccountInfo huifuAccountInfo;//汇付账户信息
+
+	private PtrClassicFrameLayout mainRefreshLayout = null;//下拉刷新的布局
+
+	private UserRMBAccountInfo yilianAccountInfo;//易联账户信息
+	private UserRMBAccountInfo huifuAccountInfo;//汇付账户信息
 	private BaseInfo yjbInterestBaseInfo;//元金币产生的收益
-    private UserInfo mUserInfo;
-    
-    private boolean isSetWithdrawPwd = false;//用户是否已经设置交易密码
-    private boolean isShowCompLoginPWDDialog = false;//是否已经弹出过修改企业用户初始登录密码的dialog
+	private UserInfo mUserInfo;
+
+	private boolean isSetWithdrawPwd = false;//用户是否已经设置交易密码
+	private boolean isShowCompLoginPWDDialog = false;//是否已经弹出过修改企业用户初始登录密码的dialog
 	private boolean isLcs = false;
-    
-    private Handler handler = new Handler(){
+
+	private Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			switch (msg.what) {
-			case REQUEST_PERSONAL_LOGIN_SUCCESS_WHAT:
-				BaseInfo baseInfo = (BaseInfo) msg.obj;
-				UserInfo userInfo = null;
-				if(baseInfo != null){
-					userInfo = baseInfo.getUserInfo();
-					if(userInfo != null){
-						SettingsManager.setUser(mainActivity,phonePersonal);
-						SettingsManager.setLoginPassword(mainActivity,pwdPersonal,true);
-						SettingsManager.setUserId(mainActivity, userInfo.getId());
-						SettingsManager.setUserName(mainActivity, userInfo.getUser_name());
-						SettingsManager.setUserRegTime(mainActivity, userInfo.getReg_time());
-						if("vip".equals(userInfo.getType())){
-							SettingsManager.setUserType(mainActivity, UserType.USER_VIP_PERSONAL);
-						}else{
-							SettingsManager.setUserType(mainActivity, UserType.USER_NORMAL_PERSONAL);
+				case REQUEST_PERSONAL_LOGIN_SUCCESS_WHAT:
+					BaseInfo baseInfo = (BaseInfo) msg.obj;
+					UserInfo userInfo = null;
+					if(baseInfo != null){
+						userInfo = baseInfo.getUserInfo();
+						if(userInfo != null){
+							SettingsManager.setUser(mainActivity,phonePersonal);
+							SettingsManager.setLoginPassword(mainActivity,pwdPersonal,true);
+							SettingsManager.setUserId(mainActivity, userInfo.getId());
+							SettingsManager.setUserName(mainActivity, userInfo.getUser_name());
+							SettingsManager.setUserRegTime(mainActivity, userInfo.getReg_time());
+							if("vip".equals(userInfo.getType())){
+								SettingsManager.setUserType(mainActivity, UserType.USER_VIP_PERSONAL);
+							}else{
+								SettingsManager.setUserType(mainActivity, UserType.USER_NORMAL_PERSONAL);
+							}
+							requestUserInfo(userInfo.getId(), userInfo.getPhone());
+							requestYuanMoney(userInfo.getId());
+							addPhoneInfo(userInfo.getId(), phonePersonal, "", "");
+							onLoginSuc.onLoginSuc();
 						}
-						requestUserInfo(userInfo.getId(), userInfo.getPhone());
-						requestYuanMoney(userInfo.getId());
-						addPhoneInfo(userInfo.getId(), phonePersonal, "", "");
-						onLoginSuc.onLoginSuc();
 					}
-				}
-				topTitle.setText("我的账户");
-				mainRefreshLayout.setVisibility(View.VISIBLE);
-				personalTopLayout.setVisibility(View.VISIBLE);
-				companyTopLayout.setVisibility(View.GONE);
-				loginLayout.setVisibility(View.GONE);
-				line2.setVisibility(View.VISIBLE);
-				line4.setVisibility(View.VISIBLE);
-				if(SettingsManager.checkLXFXActivity() == 0 && SettingsManager.isPersonalUser(mainActivity) &&
-						(SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx") || 
-								SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx_noverify"))){
-					checkIsGetJXQ(userInfo,SettingsManager.getUserId(getActivity()), "开门红 乐享返现","未使用","0","2","");
-				}
-				//判断会员福利2期是否还在进行
-				requestActiveTime("HYFL_02");
-				break;
-			case REQUEST_COMPANY_LOGIN_SUCCESS_WHAT:
-				BaseInfo baseInfoComp = (BaseInfo) msg.obj;
-				if(baseInfoComp != null){
-					mUserInfo = baseInfoComp.getUserInfo();
-					if(mUserInfo != null){
-						topTitle.setText("我的账户");
-						if(mUserInfo.getUser_name() != null && !"".equals(mUserInfo.getUser_name())){
-							usernameTVComp.setText("您好！" + mUserInfo.getUser_name());
-						}else{
-							usernameTVComp.setText("您好！尊敬的客户！" );
-						}
-						companyNameTV.setText(mUserInfo.getReal_name());
-						hfuserId = mUserInfo.getHf_user_id();
-						if(hfuserId != null && !"".equals(hfuserId)){
-							requestYilianAccount(userId,true);
-						}else{
-							requestYilianAccount(userId,false);
-						}
-						
-						SettingsManager.setUser(mainActivity,usernameCompany);
-						SettingsManager.setLoginPassword(mainActivity,pwdCompany,true);
-						SettingsManager.setUserId(mainActivity, mUserInfo.getId());
-						SettingsManager.setUserName(mainActivity, mUserInfo.getUser_name());
-						SettingsManager.setUserRegTime(mainActivity, mUserInfo.getReg_time());
-						SettingsManager.setUserType(mainActivity, UserType.USER_COMPANY);
-						SettingsManager.setCompPhone(mainActivity, mUserInfo.getCo_mobile());
+					topTitle.setText("我的账户");
+					mainRefreshLayout.setVisibility(View.VISIBLE);
+					personalTopLayout.setVisibility(View.VISIBLE);
+					companyTopLayout.setVisibility(View.GONE);
+					loginLayout.setVisibility(View.GONE);
+					line2.setVisibility(View.VISIBLE);
+					line4.setVisibility(View.VISIBLE);
+					if(SettingsManager.checkLXFXActivity() == 0 && SettingsManager.isPersonalUser(mainActivity) &&
+							(SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx") ||
+									SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx_noverify"))){
+						checkIsGetJXQ(userInfo,SettingsManager.getUserId(getActivity()), "开门红 乐享返现","未使用","0","2","");
+					}
+					//判断会员福利2期是否还在进行
+					requestActiveTime("HYFL_02");
+					break;
+				case REQUEST_COMPANY_LOGIN_SUCCESS_WHAT:
+					BaseInfo baseInfoComp = (BaseInfo) msg.obj;
+					if(baseInfoComp != null){
+						mUserInfo = baseInfoComp.getUserInfo();
+						if(mUserInfo != null){
+							topTitle.setText("我的账户");
+							if(mUserInfo.getUser_name() != null && !"".equals(mUserInfo.getUser_name())){
+								usernameTVComp.setText("您好！" + mUserInfo.getUser_name());
+							}else{
+								usernameTVComp.setText("您好！尊敬的客户！" );
+							}
+							companyNameTV.setText(mUserInfo.getReal_name());
+							hfuserId = mUserInfo.getHf_user_id();
+							if(hfuserId != null && !"".equals(hfuserId)){
+								requestYilianAccount(userId,true);
+							}else{
+								requestYilianAccount(userId,false);
+							}
+
+							SettingsManager.setUser(mainActivity,usernameCompany);
+							SettingsManager.setLoginPassword(mainActivity,pwdCompany,true);
+							SettingsManager.setUserId(mainActivity, mUserInfo.getId());
+							SettingsManager.setUserName(mainActivity, mUserInfo.getUser_name());
+							SettingsManager.setUserRegTime(mainActivity, mUserInfo.getReg_time());
+							SettingsManager.setUserType(mainActivity, UserType.USER_COMPANY);
+							SettingsManager.setCompPhone(mainActivity, mUserInfo.getCo_mobile());
 //						requestUserInfo(userInfo.getId(), userInfo.getCo_phone());
-						requestYuanMoney(mUserInfo.getId());
-						addPhoneInfo(mUserInfo.getId(), mUserInfo.getCo_phone(), "", "");
-						requestYilianAccount(mUserInfo.getId(), false);
-						onLoginSuc.onLoginSuc();
+							requestYuanMoney(mUserInfo.getId());
+							addPhoneInfo(mUserInfo.getId(), mUserInfo.getCo_phone(), "", "");
+							requestYilianAccount(mUserInfo.getId(), false);
+							onLoginSuc.onLoginSuc();
+							if("0".equals(mUserInfo.getInit_pwd())){
+								//企业用户没有修改初始登录密码
+								showCompLoginPwdDialog();
+							}else{
+								//已经修改过初始登录密码
+							}
+						}
+					}
+					topTitle.setText("我的账户");
+					mainRefreshLayout.setVisibility(View.VISIBLE);
+					personalTopLayout.setVisibility(View.GONE);
+					companyTopLayout.setVisibility(View.VISIBLE);
+					loginLayout.setVisibility(View.GONE);
+					jlmxLayout.setVisibility(View.GONE);
+					yqyjLayout.setVisibility(View.VISIBLE);
+					line2.setVisibility(View.GONE);
+					line4.setVisibility(View.VISIBLE);
+					break;
+				case REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT:
+					String loginMsg = (String) msg.obj;
+					Util.toastShort(mainActivity, loginMsg);
+					break;
+				case REQUEST_GET_USERINFO_WHAT:
+					requestUserInfo(SettingsManager.getUserId(mainActivity), phonePersonal);
+					break;
+				case REQUEST_GET_USERINFO_SUCCESS:
+					mUserInfo = (UserInfo) msg.obj;
+					topTitle.setText("我的账户");
+					mainRefreshLayout.setVisibility(View.VISIBLE);
+					loginLayout.setVisibility(View.GONE);
+					if(SettingsManager.isPersonalUser(mainActivity)){
+						personalTopLayout.setVisibility(View.VISIBLE);
+						companyTopLayout.setVisibility(View.GONE);
+						jlmxLayout.setVisibility(View.VISIBLE);
+						yqyjLayout.setVisibility(View.VISIBLE);
+						line2.setVisibility(View.VISIBLE);
+						line4.setVisibility(View.VISIBLE);
+						if(mUserInfo.getReal_name() != null && !"".equals(mUserInfo.getReal_name())){
+							usernameTVNP.setText("您好！" + mUserInfo.getReal_name());
+						}else{
+							usernameTVNP.setText("您好！" + mUserInfo.getUser_name());
+						}
+					}else if(SettingsManager.isCompanyUser(mainActivity)){
 						if("0".equals(mUserInfo.getInit_pwd())){
 							//企业用户没有修改初始登录密码
 							showCompLoginPwdDialog();
 						}else{
 							//已经修改过初始登录密码
 						}
+						personalTopLayout.setVisibility(View.GONE);
+						companyTopLayout.setVisibility(View.VISIBLE);
+						jlmxLayout.setVisibility(View.GONE);
+						yqyjLayout.setVisibility(View.VISIBLE);
+						line2.setVisibility(View.GONE);
+						line4.setVisibility(View.VISIBLE);
+						if(mUserInfo.getUser_name() != null && !"".equals(mUserInfo.getUser_name())){
+							usernameTVComp.setText("您好！" + mUserInfo.getUser_name());
+						}else{
+							usernameTVComp.setText("您好！尊敬的客户！" );
+						}
+						companyNameTV.setText(mUserInfo.getReal_name());
 					}
-				}
-				topTitle.setText("我的账户");
-				mainRefreshLayout.setVisibility(View.VISIBLE);
-				personalTopLayout.setVisibility(View.GONE);
-				companyTopLayout.setVisibility(View.VISIBLE);
-				loginLayout.setVisibility(View.GONE);
-				jlmxLayout.setVisibility(View.GONE);
-				yqyjLayout.setVisibility(View.VISIBLE);
-				line2.setVisibility(View.GONE);
-				line4.setVisibility(View.VISIBLE);
-				break;
-			case REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT:
-				String loginMsg = (String) msg.obj;
-				Util.toastShort(mainActivity, loginMsg);
-				break;
-			case REQUEST_GET_USERINFO_WHAT:
-				requestUserInfo(SettingsManager.getUserId(mainActivity), phonePersonal);
-				break;
-			case REQUEST_GET_USERINFO_SUCCESS:
-				mUserInfo = (UserInfo) msg.obj;
-				topTitle.setText("我的账户");
-				mainRefreshLayout.setVisibility(View.VISIBLE);
-				loginLayout.setVisibility(View.GONE);
-				if(SettingsManager.isPersonalUser(mainActivity)){
-					personalTopLayout.setVisibility(View.VISIBLE);
-					companyTopLayout.setVisibility(View.GONE);
-					jlmxLayout.setVisibility(View.VISIBLE);
-					yqyjLayout.setVisibility(View.VISIBLE);
-					line2.setVisibility(View.VISIBLE);
-					line4.setVisibility(View.VISIBLE);
-					if(mUserInfo.getReal_name() != null && !"".equals(mUserInfo.getReal_name())){
-						usernameTVNP.setText("您好！" + mUserInfo.getReal_name());
-					}else{
-						usernameTVNP.setText("您好！" + mUserInfo.getUser_name());
+
+					hfuserId = mUserInfo.getHf_user_id();
+					if(hfuserId != null && !"".equals(hfuserId)){
+						requestYilianAccount(userId,true);
+						return;
 					}
-				}else if(SettingsManager.isCompanyUser(mainActivity)){
-					if("0".equals(mUserInfo.getInit_pwd())){
-						//企业用户没有修改初始登录密码
-						showCompLoginPwdDialog();
-					}else{
-						//已经修改过初始登录密码
-					}
-					personalTopLayout.setVisibility(View.GONE);
-					companyTopLayout.setVisibility(View.VISIBLE);
-					jlmxLayout.setVisibility(View.GONE);
-					yqyjLayout.setVisibility(View.VISIBLE);
-					line2.setVisibility(View.GONE);
-					line4.setVisibility(View.VISIBLE);
-					if(mUserInfo.getUser_name() != null && !"".equals(mUserInfo.getUser_name())){
-						usernameTVComp.setText("您好！" + mUserInfo.getUser_name());
-					}else{
-						usernameTVComp.setText("您好！尊敬的客户！" );
-					}
-					companyNameTV.setText(mUserInfo.getReal_name());
-				}
-				
-				hfuserId = mUserInfo.getHf_user_id();
-				if(hfuserId != null && !"".equals(hfuserId)){
-					requestYilianAccount(userId,true);
-					return;
-				}
-				requestYilianAccount(userId,false);
-				break;
-			case REQUEST_ISLCS_WHAT:
-				requestLcsName(SettingsManager.getUser(getActivity().getApplicationContext()));
-				break;
-			default:
-				break;
+					requestYilianAccount(userId,false);
+					break;
+				case REQUEST_ISLCS_WHAT:
+					requestLcsName(SettingsManager.getUser(getActivity().getApplicationContext()));
+					break;
+				default:
+					break;
 			}
 		}
-    };
+	};
 
 	/**
 	 * 创建当前Fragment的实例对象
 	 * @param position
 	 * @return
 	 */
-    static OnUserFragmentLoginSucListener onLoginSuc;
+	static OnUserFragmentLoginSucListener onLoginSuc;
 	public static Fragment newInstance(int position,OnUserFragmentLoginSucListener onLoginSucListener) {
 		UserFragment f = new UserFragment();
 		onLoginSuc = onLoginSucListener;
@@ -350,7 +350,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		f.setArguments(args);
 		return f;
 	}
-	
+
 	@Override
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
@@ -366,19 +366,19 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 	@Override
 	@Nullable
 	public View onCreateView(LayoutInflater inflater,
-			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+							 @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		mainActivity = (MainFragmentActivity) getActivity();
 		if(rootView==null){
-            rootView=inflater.inflate(R.layout.user_fragment, null);
-        }
+			rootView=inflater.inflate(R.layout.user_fragment, null);
+		}
 		findViews(rootView);
 //		//缓存的rootView需要判断是否已经被加过parent， 如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
-        ViewGroup parent = (ViewGroup) rootView.getParent();
-        if (parent != null) {
-            parent.removeView(rootView);
-        } 
-        YLFLogger.d("UserFragment -- onCreateView");
-        return rootView;
+		ViewGroup parent = (ViewGroup) rootView.getParent();
+		if (parent != null) {
+			parent.removeView(rootView);
+		}
+		YLFLogger.d("UserFragment -- onCreateView");
+		return rootView;
 	}
 
 	private void findViews(View view){
@@ -388,14 +388,14 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		topbarLeftLayout = (LinearLayout) topLayout.findViewById(R.id.common_topbar_left_layout);
 		topbarLeftLayout.setVisibility(View.GONE);
 		topTitle = (TextView) topLayout.findViewById(R.id.common_page_title);
-		
+
 		navPersonalBtn = (Button) view.findViewById(R.id.user_fragment_nav_personal_btn);
 		navPersonalBtn.setOnClickListener(this);
 		navCompanyBtn = (Button) view.findViewById(R.id.user_fragment_nav_company_btn);
 		navCompanyBtn.setOnClickListener(this);
 		personalLoginLayout = view.findViewById(R.id.user_fragment_personal_login_layout);
 		companyLoginLayout = view.findViewById(R.id.user_fragment_company_login_layout);
-		
+
 		//个人用户登录页面
 		phonePersonalET = (EditText)view.findViewById(R.id.login_personal_phone_et);
 		pwdPersonalET = (EditText)view.findViewById(R.id.login_personal_pwd_et);
@@ -405,7 +405,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		registerPersonalTV.setOnClickListener(this);
 		forgetPwdPersonalTV = (TextView)view.findViewById(R.id.login_personal_forget_pwd_tv);
 		forgetPwdPersonalTV.setOnClickListener(this);
-		
+
 		//企业用户登录页面
 		phoneCompanyET = (EditText)view.findViewById(R.id.login_company_phone_et);
 		pwdCompanyET = (EditText)view.findViewById(R.id.login_company_pwd_et);
@@ -415,7 +415,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		registerCompanyTV.setOnClickListener(this);
 		forgetPwdCompanyTV = (TextView)view.findViewById(R.id.login_company_forget_pwd_tv);
 		forgetPwdCompanyTV.setOnClickListener(this);
-		
+
 		//个人用户的账户中心
 		personalTopLayout = (LinearLayout) view.findViewById(R.id.my_account_personal_toplayout);
 		companyTopLayout = (LinearLayout) view.findViewById(R.id.my_account_company_toplayout);
@@ -459,9 +459,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		yjyInvestBtn.setOnClickListener(this);
 		yjyAppointBtn = (Button) view.findViewById(R.id.my_account_personal_zscp_yy_btn);
 		yjyAppointBtn.setOnClickListener(this);
-		
+
 	}
-	
+
 	private void initMainLayout(){
 		if(mainActivity == null){
 			mainActivity = (MainFragmentActivity) getActivity();
@@ -502,7 +502,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				}
 			}, 1000L);
 			requestYuanMoney(userId);
-			
+
 		}else{
 			loginLayout.setVisibility(View.VISIBLE);
 			mainRefreshLayout.setVisibility(View.GONE);
@@ -513,7 +513,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			isShowCompLoginPWDDialog = false;
 		}
 	}
-	
+
 	/**
 	 * 下拉刷新的布局
 	 * @param v
@@ -522,44 +522,44 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		mainRefreshLayout = (PtrClassicFrameLayout) v.findViewById(R.id.user_fragment_refresh_layout);
 		mainRefreshLayout.setLastUpdateTimeRelateObject(this);
 		mainRefreshLayout.setPtrHandler(new PtrHandler() {
-            @Override
-            public void onRefreshBegin(PtrFrameLayout frame) {
-            	new Handler().postDelayed(new Runnable() {
-    				@Override
-    				public void run() {
-    					requestUserInfo(userId, SettingsManager.getUser(getActivity().getApplicationContext()));
-    				}
-    			}, 1000L);
-    			requestYuanMoney(userId);
-            }
+			@Override
+			public void onRefreshBegin(PtrFrameLayout frame) {
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						requestUserInfo(userId, SettingsManager.getUser(getActivity().getApplicationContext()));
+					}
+				}, 1000L);
+				requestYuanMoney(userId);
+			}
 
-            @Override
-            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-            	return PtrDefaultHandler.checkContentCanBePulledDown(frame, compMainLayout, header);
-            }
-        });
+			@Override
+			public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+				return PtrDefaultHandler.checkContentCanBePulledDown(frame, compMainLayout, header);
+			}
+		});
 		mainRefreshLayout.setResistance(1.7f);
 		mainRefreshLayout.setRatioOfHeaderHeightToRefresh(1.2f);
 		mainRefreshLayout.setDurationToClose(200);
 		mainRefreshLayout.setDurationToCloseHeader(1000);
-        // default is false
+		// default is false
 		mainRefreshLayout.setPullToRefresh(false);
-        // default is true
+		// default is true
 		mainRefreshLayout.setKeepHeaderWhenRefresh(true);
 	}
-	
+
 	@Override
 	public void onStart() {
 		super.onStart();
 		YLFLogger.d("UserFragment -- onStart");
 	}
-	
+
 	@Override
 	public void onHiddenChanged(boolean hidden) {
 		super.onHiddenChanged(hidden);
 		YLFLogger.d("UserFragment -- onHiddenChanged");
 	}
-	
+
 	//相当于activity的onResume()
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -573,24 +573,24 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			boolean isLogin = !SettingsManager.getLoginPassword(
 					mainActivity).isEmpty()
 					&& !SettingsManager.getUser(mainActivity)
-							.isEmpty();
-			if(isLogin && (SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx") || 
+					.isEmpty();
+			if(isLogin && (SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx") ||
 					SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx_noverify")))
-			checkIsGetJXQ(mUserInfo,SettingsManager.getUserId(getActivity()), "开门红 乐享返现","未使用","0","2","");
+				checkIsGetJXQ(mUserInfo,SettingsManager.getUserId(getActivity()), "开门红 乐享返现","未使用","0","2","");
 		}
-		
+
 		if(isVisibleToUser && SettingsManager.isPersonalUser(mainActivity) &&
 				SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"hyfl02")){
 			boolean isLogin = !SettingsManager.getLoginPassword(
 					mainActivity).isEmpty()
 					&& !SettingsManager.getUser(mainActivity)
-							.isEmpty();
+					.isEmpty();
 			if(isLogin){
 				requestActiveTime("HYFL_02");
 			}
 		}
 	}
-	
+
 	private boolean isInitedMain = false;
 	@Override
 	public void onResume() {
@@ -601,7 +601,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			initMainLayout();
 		}
 	}
-	
+
 	@Override
 	public void onPause() {
 		isInitedMain = true;
@@ -609,14 +609,14 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		UMengStatistics.statisticsOnPageEnd(className);
 		YLFLogger.d("UserFragment -- onPause");
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		handler.removeCallbacksAndMessages(null);
 		YLFLogger.d("UserFragment -- onDestroy");
 	}
-	
+
 	/**
 	 * 检查个人用户登录信息
 	 */
@@ -625,17 +625,17 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		Util.hiddenSoftInputWindow(mainActivity);
 		phonePersonal = phonePersonalET.getText().toString().trim();
 		pwdPersonal = pwdPersonalET.getText().toString().trim();
-        if(Util.checkPhoneNumber(phonePersonal)) {
-        	if(Util.checkPassword(pwdPersonal)) {
-        		requestLogin(phonePersonal,pwdPersonal);
-        	}else{
-        		Util.toastShort(mainActivity, "请输入登录密码");
-        	}
-        }else{
-        	Util.toastShort(mainActivity, "手机号码不合法");
-        }
+		if(Util.checkPhoneNumber(phonePersonal)) {
+			if(Util.checkPassword(pwdPersonal)) {
+				requestLogin(phonePersonal,pwdPersonal);
+			}else{
+				Util.toastShort(mainActivity, "请输入登录密码");
+			}
+		}else{
+			Util.toastShort(mainActivity, "手机号码不合法");
+		}
 	}
-	
+
 	/**
 	 * 检查企业用户登录信息
 	 */
@@ -662,111 +662,111 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.login_personal_loginbtn:
-			checkPersonalUserData();
-			break;
-		case R.id.login_company_loginbtn:
-			checkCompanyUserData();
-			break;
-		case R.id.login_personal_register_tv:
-			Intent intentPer = new Intent(mainActivity,RegisteActivity.class);
-			intentPer.putExtra("from_where", UserType.USER_NORMAL_PERSONAL);
-			startActivity(intentPer);
-			break;
-		case R.id.login_company_register_tv:
-			Intent intentComp = new Intent(mainActivity,RegisteActivity.class);
-			intentComp.putExtra("from_where", UserType.USER_COMPANY);
-			startActivity(intentComp);
-			break;
-		case R.id.login_personal_forget_pwd_tv:
-			Intent intentFP = new Intent(mainActivity,ForgetPwdActivity.class);
-			intentFP.putExtra("from_where", UserType.USER_NORMAL_PERSONAL);
-			startActivity(intentFP);
-			break;
-		case R.id.login_company_forget_pwd_tv:
-			Intent intentFC = new Intent(mainActivity,ForgetPwdActivity.class);
-			intentFC.putExtra("from_where", UserType.USER_COMPANY);
-			startActivity(intentFC);
-			break;
-		case R.id.my_account_withdraw_btn:
-			//提现
-			withdrawBtn.setEnabled(false);
-			checkIsVerify("提现");
-			break;
-		case R.id.my_account_recharge_btn:
-			//充值
-			if(SettingsManager.isPersonalUser(mainActivity)){
-				checkIsVerify("充值");
-			}else if(SettingsManager.isCompanyUser(mainActivity)){
-				Intent intentRechargeComp = new Intent(mainActivity,RechargeCompActivity.class);
-				startActivity(intentRechargeComp);
-			}
-			
-			break;
-		case R.id.my_account_jlmx_layout:
-			Intent intentAward = new Intent(mainActivity,AwardDetailsActivity.class);
-			startActivity(intentAward);
-			break;
-		case R.id.my_account_zjmx_layout:
-			//资金明细
-			Intent intentFund = new Intent(mainActivity,FundsDetailsActivity.class);
-			intentFund.putExtra("userinfo", mUserInfo);
-			startActivity(intentFund);
-			break;
-		case R.id.my_account_tbjl_layout:
+			case R.id.login_personal_loginbtn:
+				checkPersonalUserData();
+				break;
+			case R.id.login_company_loginbtn:
+				checkCompanyUserData();
+				break;
+			case R.id.login_personal_register_tv:
+				Intent intentPer = new Intent(mainActivity,RegisteActivity.class);
+				intentPer.putExtra("from_where", UserType.USER_NORMAL_PERSONAL);
+				startActivity(intentPer);
+				break;
+			case R.id.login_company_register_tv:
+				Intent intentComp = new Intent(mainActivity,RegisteActivity.class);
+				intentComp.putExtra("from_where", UserType.USER_COMPANY);
+				startActivity(intentComp);
+				break;
+			case R.id.login_personal_forget_pwd_tv:
+				Intent intentFP = new Intent(mainActivity,ForgetPwdActivity.class);
+				intentFP.putExtra("from_where", UserType.USER_NORMAL_PERSONAL);
+				startActivity(intentFP);
+				break;
+			case R.id.login_company_forget_pwd_tv:
+				Intent intentFC = new Intent(mainActivity,ForgetPwdActivity.class);
+				intentFC.putExtra("from_where", UserType.USER_COMPANY);
+				startActivity(intentFC);
+				break;
+			case R.id.my_account_withdraw_btn:
+				//提现
+				withdrawBtn.setEnabled(false);
+				checkIsVerify("提现");
+				break;
+			case R.id.my_account_recharge_btn:
+				//充值
+				if(SettingsManager.isPersonalUser(mainActivity)){
+					checkIsVerify("充值");
+				}else if(SettingsManager.isCompanyUser(mainActivity)){
+					Intent intentRechargeComp = new Intent(mainActivity,RechargeCompActivity.class);
+					startActivity(intentRechargeComp);
+				}
+
+				break;
+			case R.id.my_account_jlmx_layout:
+				Intent intentAward = new Intent(mainActivity,AwardDetailsActivity.class);
+				startActivity(intentAward);
+				break;
+			case R.id.my_account_zjmx_layout:
+				//资金明细
+				Intent intentFund = new Intent(mainActivity,FundsDetailsActivity.class);
+				intentFund.putExtra("userinfo", mUserInfo);
+				startActivity(intentFund);
+				break;
+			case R.id.my_account_tbjl_layout:
 //			initAllRecLayout();
-			Intent intentUserRecord = new Intent(mainActivity,UserInvestRecordActivity.class);
-			startActivity(intentUserRecord);
-			break;
-		case R.id.my_account_yqyj_layout:
-			//邀请有奖、
-			yqyjLayout.setEnabled(false);
-			checkIsVerify("邀请有奖");
-			break;
-		case R.id.my_account_zhsz_layout:
-			//账户设置
-			if(SettingsManager.isPersonalUser(mainActivity)){
-				zhszLayout.setEnabled(false);
-				checkIsVerify("账户设置");
-			}else if(SettingsManager.isCompanyUser(mainActivity)){
-				Intent intentZHSZComp = new Intent(mainActivity,AccountSettingCompActivity.class);
-				startActivity(intentZHSZComp);
-			}
-			break;
-		case R.id.user_fragment_nav_personal_btn:
-			//个人登录的导航
-			initPersonalLayout();
-			break;
-		case R.id.user_fragment_nav_company_btn:
-			//企业登录导航
-			initCompanyLayout();
-			break;
-		case R.id.my_account_personal_zscp_invest_btn:
-			//元聚盈投资按钮
-			Intent yjyInvestIntent = new Intent(mainActivity,BorrowListYJYActivity.class);
-			startActivity(yjyInvestIntent);
-			break;
-		case R.id.my_account_personal_zscp_yy_btn:
-			//元聚盈预约
-			Intent intentYJYAppoint = new Intent(getActivity(),BannerTopicActivity.class);
-			BannerInfo info = new BannerInfo();
-			info.setArticle_id(Constants.TopicType.YJY_APPOINT);
-			info.setLink_url(URLGenerator.YJY_TOPIC_URL);
-			intentYJYAppoint.putExtra("BannerInfo",info);
-			startActivity(intentYJYAppoint);
-			break;
-		case R.id.my_account_comp_layout_account_center:
+				Intent intentUserRecord = new Intent(mainActivity,UserInvestRecordActivity.class);
+				startActivity(intentUserRecord);
+				break;
+			case R.id.my_account_yqyj_layout:
+				//邀请有奖、
+				yqyjLayout.setEnabled(false);
+				checkIsVerify("邀请有奖");
+				break;
+			case R.id.my_account_zhsz_layout:
+				//账户设置
+				if(SettingsManager.isPersonalUser(mainActivity)){
+					zhszLayout.setEnabled(false);
+					checkIsVerify("账户设置");
+				}else if(SettingsManager.isCompanyUser(mainActivity)){
+					Intent intentZHSZComp = new Intent(mainActivity,AccountSettingCompActivity.class);
+					startActivity(intentZHSZComp);
+				}
+				break;
+			case R.id.user_fragment_nav_personal_btn:
+				//个人登录的导航
+				initPersonalLayout();
+				break;
+			case R.id.user_fragment_nav_company_btn:
+				//企业登录导航
+				initCompanyLayout();
+				break;
+			case R.id.my_account_personal_zscp_invest_btn:
+				//元聚盈投资按钮
+				Intent yjyInvestIntent = new Intent(mainActivity,BorrowListYJYActivity.class);
+				startActivity(yjyInvestIntent);
+				break;
+			case R.id.my_account_personal_zscp_yy_btn:
+				//元聚盈预约
+				Intent intentYJYAppoint = new Intent(getActivity(),BannerTopicActivity.class);
+				BannerInfo info = new BannerInfo();
+				info.setArticle_id(Constants.TopicType.YJY_APPOINT);
+				info.setLink_url(URLGenerator.YJY_TOPIC_URL);
+				intentYJYAppoint.putExtra("BannerInfo",info);
+				startActivity(intentYJYAppoint);
+				break;
+			case R.id.my_account_comp_layout_account_center:
 //			Intent accCenterIntent = new Intent(mainActivity, AccountCenterActivity.class);
 //			accCenterIntent.putExtra("ylUserRMBAccountInfo",yilianAccountInfo);
 //			accCenterIntent.putExtra("hfUserRMBAccountInfo",huifuAccountInfo);
 //			accCenterIntent.putExtra("yjbBaseInfo",yjbInterestBaseInfo);
 //			startActivity(accCenterIntent);
-			break;
-		default:
-			break;
+				break;
+			default:
+				break;
 		}
 	}
-	
+
 	/**
 	 * 初始化个人登录的布局
 	 */
@@ -778,7 +778,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		navCompanyBtn.setEnabled(true);
 		navCompanyBtn.setTextColor(getResources().getColor(R.color.gray));
 	}
-	
+
 	/**
 	 * 初始化企业登录的布局
 	 */
@@ -790,7 +790,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		navCompanyBtn.setEnabled(false);
 		navCompanyBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
 	}
-	
+
 	private void initAccountData(UserRMBAccountInfo yilianAccount,UserRMBAccountInfo huifuAccount,double yjbInterest){
 		double yilianBalance = 0d;
 		double huifuBalance = 0d;
@@ -813,7 +813,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		}else{
 			dsjeTV.setText(df.format(dsBalance));
 		}
-		
+
 		try {
 			yilianBalance = Double.parseDouble(yilianAccount.getUse_money());
 			if(huifuAccount != null){
@@ -938,7 +938,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			}
 		});
 	}
-	
+
 	/**
 	 * 判断用户是否已经绑卡
 	 * @param type "充值","提现","邀请有奖"
@@ -952,7 +952,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				yqyjLayout.setEnabled(true);
 				zhszLayout.setEnabled(true);
 				Intent intent = new Intent();
-				if(flag){ 
+				if(flag){
 					//用户已经绑卡
 					if("充值".equals(type)){
 						//那么直接跳到充值页面
@@ -988,9 +988,9 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			}
 		});
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param phone
 	 * @param pwd
 	 */
@@ -1012,13 +1012,13 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 					if(user != null){
 						GesturePwdEntity entity = DBGesturePwdManager.getInstance(getActivity().getApplicationContext()).getGesturePwdEntity(user.getId());
 						if(entity != null && !entity.getPwd().isEmpty()){
-							
+
 						}else{
 							Intent intent = new Intent(mainActivity,GestureEditActivity.class);
 							startActivity(intent);
 						}
 					}
-					
+
 					new Handler().postDelayed(new Runnable() {
 						@Override
 						public void run() {
@@ -1036,7 +1036,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		});
 		loginTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 请求用户信息，根据hf_user_id字段判断用户是否有汇付账户
 	 * @param userId
@@ -1063,7 +1063,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		});
 		userTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 易联账户
 	 * @param userId
@@ -1088,7 +1088,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		});
 		yilianTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 汇付账户信息
 	 * @param userId
@@ -1108,7 +1108,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		});
 		huifuTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 将手机信息加入到后台数据库
 	 * @param userId
@@ -1120,51 +1120,51 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		String phoneModel = android.os.Build.MODEL;
 		String sdkVersion = android.os.Build.VERSION.SDK;
 		String systemVersion = android.os.Build.VERSION.RELEASE;
-		AsyncAddPhoneInfo addPhoneInfoTask = new AsyncAddPhoneInfo(mainActivity, userId, phone, phoneModel, 
+		AsyncAddPhoneInfo addPhoneInfoTask = new AsyncAddPhoneInfo(mainActivity, userId, phone, phoneModel,
 				sdkVersion, systemVersion, "android", location, contact, new OnCommonInter() {
-					@Override
-					public void back(BaseInfo baseInfo) {
-						
-					}
-				});
+			@Override
+			public void back(BaseInfo baseInfo) {
+
+			}
+		});
 		addPhoneInfoTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 元金币账户
 	 * @param userId
 	 */
 	private void requestYuanMoney(String userId){
-		AsyncUserYUANAccount accountTask = new AsyncUserYUANAccount(mainActivity, 
+		AsyncUserYUANAccount accountTask = new AsyncUserYUANAccount(mainActivity,
 				userId, new OnUserYUANAccountInter() {
-					@Override
-					public void back(BaseInfo info) {
-						mainRefreshLayout.refreshComplete();
-						if(info != null){
-							int resultCode = SettingsManager.getResultCode(info);
-							if(resultCode == 0){
-								UserYUANAccountInfo accountInfo = info.getYuanAccountInfo();
-								if(accountInfo != null){
-									double coinD = 0d;
-									try {
-										coinD= Double.parseDouble(accountInfo.getUse_coin());
-									} catch (Exception e) {
-									}
-									if(coinD <= 0){
-										usedYJBTV.setVisibility(View.GONE);
-									}else{
-										usedYJBTV.setVisibility(View.VISIBLE);
-										usedYJBTV.setText(accountInfo.getUse_coin()+"元金币可用");
-									}
-								}
-							}else{
-								usedYJBTV.setVisibility(View.GONE);
+			@Override
+			public void back(BaseInfo info) {
+				mainRefreshLayout.refreshComplete();
+				if(info != null){
+					int resultCode = SettingsManager.getResultCode(info);
+					if(resultCode == 0){
+						UserYUANAccountInfo accountInfo = info.getYuanAccountInfo();
+						if(accountInfo != null){
+							double coinD = 0d;
+							try {
+								coinD= Double.parseDouble(accountInfo.getUse_coin());
+							} catch (Exception e) {
 							}
-						}else{
-							usedYJBTV.setVisibility(View.GONE);
+							if(coinD <= 0){
+								usedYJBTV.setVisibility(View.GONE);
+							}else{
+								usedYJBTV.setVisibility(View.VISIBLE);
+								usedYJBTV.setText(accountInfo.getUse_coin()+"元金币可用");
+							}
 						}
+					}else{
+						usedYJBTV.setVisibility(View.GONE);
 					}
-				});
+				}else{
+					usedYJBTV.setVisibility(View.GONE);
+				}
+			}
+		});
 		accountTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 
@@ -1194,7 +1194,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		});
 		yjbTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 企业用户登录
 	 * @param username
@@ -1204,7 +1204,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		if(mainActivity.loadingDialog != null){
 			mainActivity.loadingDialog.show();
 		}
-		AsyncCompLogin loginTask = new AsyncCompLogin(mainActivity, username, password, 
+		AsyncCompLogin loginTask = new AsyncCompLogin(mainActivity, username, password,
 				new OnCommonInter(){
 					@Override
 					public void back(final BaseInfo baseInfo) {
@@ -1221,13 +1221,13 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 							if(user != null){
 								GesturePwdEntity entity = DBGesturePwdManager.getInstance(getActivity().getApplicationContext()).getGesturePwdEntity(user.getId());
 								if(entity != null && !entity.getPwd().isEmpty()){
-									
+
 								}else{
 									Intent intent = new Intent(mainActivity,GestureEditActivity.class);
 									startActivity(intent);
 								}
 							}
-							
+
 							new Handler().postDelayed(new Runnable() {
 								@Override
 								public void run() {
@@ -1242,10 +1242,10 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 							handler.sendMessage(msg);
 						}
 					}
-		});
+				});
 		loginTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 判断是否领取过加息券
 	 * @param userId
@@ -1258,29 +1258,29 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		}
 		AsyncJXQLogList jxqListTask = new AsyncJXQLogList(mainActivity, userId, couponFrom,useStatus,
 				page,pageSize,transfer, new OnCommonInter() {
-					@Override
-					public void back(BaseInfo baseInfo) {
-						if(baseInfo != null){
-							int resultCode = SettingsManager.getResultCode(baseInfo);
-							if(resultCode == 0){
-								//已经领取过
-								mainActivity.loadingDialog.dismiss();
-								if(SettingsManager.checkLXFXActivity() == 0){
-								}
-							}else{
-								//未领取过
-								//判断有没有实名
-								checkIsVerify();
-							}
-						}else{
-							mainActivity.loadingDialog.dismiss();
+			@Override
+			public void back(BaseInfo baseInfo) {
+				if(baseInfo != null){
+					int resultCode = SettingsManager.getResultCode(baseInfo);
+					if(resultCode == 0){
+						//已经领取过
+						mainActivity.loadingDialog.dismiss();
+						if(SettingsManager.checkLXFXActivity() == 0){
 						}
+					}else{
+						//未领取过
+						//判断有没有实名
+						checkIsVerify();
 					}
-				});
+				}else{
+					mainActivity.loadingDialog.dismiss();
+				}
+			}
+		});
 		jxqListTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
-	
+
+
 	/**
 	 * 我的礼品列表
 	 * @param userId
@@ -1303,16 +1303,16 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 						}else{
 						}
 					}
-		});
+				});
 		prizeListTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 判断活动是否已经开始
 	 * @param activeTitle
 	 */
 	private void requestActiveTime(String activeTitle){
-		AsyncXCFLActiveTime task = new AsyncXCFLActiveTime(mainActivity, activeTitle, 
+		AsyncXCFLActiveTime task = new AsyncXCFLActiveTime(mainActivity, activeTitle,
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
@@ -1331,7 +1331,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				});
 		task.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
-	
+
 	/**
 	 * 验证用户是否已经认证
 	 */
@@ -1348,7 +1348,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				}else{
 					//用户没有实名
 					if(SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"lxfx_noverify")){
-						showNoVerifyDialog();	
+						showNoVerifyDialog();
 					}
 				}
 			}
@@ -1357,7 +1357,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 			}
 		});
 	}
-	
+
 	/**
 	 * 企业用户弹出修改初始密码的dialog
 	 */
@@ -1367,11 +1367,11 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		View contentView = LayoutInflater.from(mainActivity).inflate(R.layout.comp_change_pwd_dialog, null);
 		final Button sureBtn = (Button) contentView.findViewById(R.id.comp_change_pwd_dialog_sure_btn);//马上修改
 		final Button cancelBtn = (Button) contentView.findViewById(R.id.comp_change_pwd_dialog_cancel_btn);//稍后修改
-		AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity, R.style.Dialog_Transparent);  //先得到构造器  
-        builder.setView(contentView);
-        builder.setCancelable(true);
-        final AlertDialog dialog = builder.create();
-        sureBtn.setOnClickListener(new OnClickListener() {
+		AlertDialog.Builder builder=new AlertDialog.Builder(mainActivity, R.style.Dialog_Transparent);  //先得到构造器
+		builder.setView(contentView);
+		builder.setCancelable(true);
+		final AlertDialog dialog = builder.create();
+		sureBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				dialog.dismiss();
@@ -1380,22 +1380,22 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 				startActivity(intent);
 			}
 		});
-        cancelBtn.setOnClickListener(new OnClickListener() {
+		cancelBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				dialog.dismiss();
 			}
 		});
-        //参数都设置完成了，创建并显示出来  
-        dialog.show();  
-        WindowManager windowManager = mainActivity.getWindowManager();
-        Display display = windowManager.getDefaultDisplay();
-        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-        lp.width = display.getWidth()*6/7;
-        dialog.getWindow().setAttributes(lp);
-        isShowCompLoginPWDDialog = true;
+		//参数都设置完成了，创建并显示出来
+		dialog.show();
+		WindowManager windowManager = mainActivity.getWindowManager();
+		Display display = windowManager.getDefaultDisplay();
+		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+		lp.width = display.getWidth()*6/7;
+		dialog.getWindow().setAttributes(lp);
+		isShowCompLoginPWDDialog = true;
 	}
-	
+
 	/**
 	 * 领取加息券的Dialog
 	 */
@@ -1491,7 +1491,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 		lp.width = display.getWidth() * 4 / 5;
 		dialog.getWindow().setAttributes(lp);
 	}
-	
+
 	/**
 	 * 未实名 乐享返现
 	 */

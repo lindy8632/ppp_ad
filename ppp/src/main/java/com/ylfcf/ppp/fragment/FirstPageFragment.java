@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.cunoraz.gifview.library.GifView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncArticleList;
 import com.ylfcf.ppp.async.AsyncBanner;
@@ -70,6 +71,7 @@ import com.youth.banner.listener.OnBannerListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -87,6 +89,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 
 	private MainFragmentActivity mainActivity;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	private SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private List<ImageView> views = new ArrayList<ImageView>();
 	private List<BannerInfo> bannerList = new ArrayList<BannerInfo>();
 	private ViewPager subjectViewPager;// 系列标的viewpager
@@ -99,6 +102,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 	private View xsbLayout;
 	private ImageView xsbImg,yyyImg,yzyImg;
 	private LinearLayout bottomLayout;
+	private GifView mGifView;
 
 	private LinearLayout noticeLayout;// 公告的布局
 	private TextView noticeTitle, noticeTime;
@@ -201,6 +205,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 		yyyImg.setOnClickListener(this);
 		yzyImg = (ImageView)xsbLayout.findViewById(R.id.first_page_subject_yzy_logo);
 		yzyImg.setOnClickListener(this);
+		mGifView = (GifView) xsbLayout.findViewById(R.id.first_page_subject_xsb_gif);
 		bottomLayout = (LinearLayout) xsbLayout.findViewById(R.id.first_page_subject_bottom_layout);
 		bottomLayout.setOnClickListener(this);
 		tipsText = (TextView) xsbLayout
@@ -273,8 +278,8 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 	private void initBanner(List<BannerInfo> bannerList){
 		if(bannerList == null || bannerList.size() <= 0)
 			return;
-		List<String> images = new ArrayList<>();
-		List<String> titles = new ArrayList<>();
+		List<String> images = new ArrayList<String>();
+		List<String> titles = new ArrayList<String>();
 		for(BannerInfo info : bannerList){
 			images.add(info.getPic_url());
 			titles.add(info.getId());
@@ -360,6 +365,16 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 				intent = new Intent(getActivity(),LXJ5TempActivity.class);
 				startActivity(intent);
 			}
+		}
+	}
+
+	private void checkOct2017Active(String sysTime){
+		int flag = SettingsManager.checkActiveStatusBySysTime(sysTime,SettingsManager.activeOct2017_StartTime,SettingsManager.activeOct2017_EndTime);
+		if(flag == 0){
+			//活动进行中
+			mGifView.setVisibility(View.VISIBLE);
+		}else{
+			mGifView.setVisibility(View.GONE);
 		}
 	}
 
@@ -572,7 +587,6 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 					bannerList.add(banner);
 				}
 			}
-//			initBannerData(bannerList);
 			initBanner(bannerList);
 			defaultImg.setVisibility(View.GONE);
 			return;
@@ -583,6 +597,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if (baseInfo != null) {
+							checkOct2017Active(baseInfo.getTime());
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
@@ -597,10 +612,11 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 										bannerList.add(banner);
 									}
 								}
-//								initBannerData(bannerList);
 								initBanner(bannerList);
 								defaultImg.setVisibility(View.GONE);
 							}
+						}else{
+							checkOct2017Active(sdf1.format(new Date()));
 						}
 					}
 				});

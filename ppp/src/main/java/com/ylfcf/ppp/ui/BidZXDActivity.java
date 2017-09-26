@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -142,6 +143,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 	private List<RedBagInfo> hbList = new ArrayList<RedBagInfo>();// 用户未使用的红包列表
 	private List<JiaxiquanInfo> jxqList = new ArrayList<JiaxiquanInfo>();//可使用的加息券列表
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private String sysTimeStr = "";
 	
 	//SettingsManager.getUserFromSub(getApplicationContext())
 	private Handler handler = new Handler() {
@@ -764,6 +766,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		userBanlanceDouble = Double.parseDouble(userBanlance);
 		String borrowBalance = String.valueOf(borrowBalanceTemp);
 		borrowBalanceDouble = Double.parseDouble(borrowBalance);
+		int flagOtc = SettingsManager.checkActiveStatusBySysTime(sysTimeStr,
+				SettingsManager.activeOct2017_StartTime,SettingsManager.activeOct2017_EndTime);//10月活动
 		if (moneyInvest < 100L) {
 			Util.toastShort(BidZXDActivity.this, "投资金额不能小于100元");
 		} else if (moneyInvest % 100 != 0) {
@@ -783,9 +787,107 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			Util.toastLong(BidZXDActivity.this, "标的可投余额不足");
 		} else if(!cb.isChecked()){
 			Util.toastLong(BidZXDActivity.this, "请先阅读并同意借款协议");
+		}else if(flagOtc == 0 && (mProductInfo.getInterest_period().contains("92")||mProductInfo.getInterest_period().contains("365"))){
+			//2017十月活动加息 元季融和元年鑫才有加息
+			if(hbDouble > 0){
+				showOtcActivityPromptDialog("红包");
+			}else if(yuanInputMoney > 0){
+				showOtcActivityPromptDialog("元金币");
+			}else if(jxqDouble > 0){
+				showOtcActivityPromptDialog("加息券");
+			}else{
+				showInvestDialog();
+			}
 		}else {
 			showInvestDialog();
 		}
+	}
+
+	private void showOtcActivityPromptDialog(String flag){
+		View contentView = LayoutInflater.from(this).inflate(R.layout.active_otc_dialog_layout, null);
+		final Button leftBtn = (Button) contentView.findViewById(R.id.active_otc_dialog_left_btn);
+		final Button rightBtn = (Button) contentView.findViewById(R.id.active_otc_dialog_right_btn);
+		TextView contentTV = (TextView) contentView.findViewById(R.id.active_otc_dialog_content);
+		if(mProductInfo.getInterest_period().contains("92")){
+			//元季融
+			if("红包".equals(flag)){
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>红包</font>，" +
+							"将不能享受<font color='#31B2FE'>0.5%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+				} else {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>红包</font>，" +
+							"将不能享受<font color='#31B2FE'>0.5%</font>的活动加息，是否要继续？"));
+				}
+			}else if("元金币".equals(flag)){
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>元金币</font>，" +
+							"将不能享受<font color='#31B2FE'>0.5%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+				} else {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>元金币</font>，" +
+							"将不能享受<font color='#31B2FE'>0.5%</font>的活动加息，是否要继续？"));
+				}
+			}else if("加息券".equals(flag)){
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>加息券</font>，" +
+							"将不能享受<font color='#31B2FE'>0.5%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+				} else {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>加息券</font>，" +
+							"将不能享受<font color='#31B2FE'>0.5%</font>的活动加息，是否要继续？"));
+				}
+			}
+		}else if(mProductInfo.getInterest_period().contains("365")){
+			//元季融
+			if("红包".equals(flag)){
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>红包</font>，" +
+							"将不能享受<font color='#31B2FE'>0.8%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+				} else {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>红包</font>，" +
+							"将不能享受<font color='#31B2FE'>0.8%</font>的活动加息，是否要继续？"));
+				}
+			}else if("元金币".equals(flag)){
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>元金币</font>，" +
+							"将不能享受<font color='#31B2FE'>0.8%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+				} else {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>元金币</font>，" +
+							"将不能享受<font color='#31B2FE'>0.8%</font>的活动加息，是否要继续？"));
+				}
+			}else if("加息券".equals(flag)){
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>加息券</font>，" +
+							"将不能享受<font color='#31B2FE'>0.8%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+				} else {
+					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>加息券</font>，" +
+							"将不能享受<font color='#31B2FE'>0.8%</font>的活动加息，是否要继续？"));
+				}
+			}
+		}
+
+		AlertDialog.Builder builder=new AlertDialog.Builder(this, R.style.Dialog_Transparent);  //先得到构造器
+		builder.setView(contentView);
+		builder.setCancelable(true);
+		final AlertDialog dialog = builder.create();
+		leftBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				showInvestDialog();
+			}
+		});
+		rightBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		//参数都设置完成了，创建并显示出来
+		dialog.show();
+		WindowManager windowManager = getWindowManager();
+		Display display = windowManager.getDefaultDisplay();
+		WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+		lp.width = display.getWidth()*6/7;
+		dialog.getWindow().setAttributes(lp);
 	}
 
 	/**
@@ -1096,7 +1198,6 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			}
 		} catch (Exception e) {
 		}
-		;
 		if (usedTemp <= usedYuanTotalInt) {
 			yuanUsedTV.setText(usedTemp + "");
 		} else {
@@ -1196,6 +1297,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if (baseInfo != null) {
+							sysTimeStr = baseInfo.getTime();
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
@@ -1206,6 +1308,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 											.getUse_coin());
 								}
 							}
+						}else{
+							sysTimeStr = sdf.format(new Date());
 						}
 					}
 				});
@@ -1228,8 +1332,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if (baseInfo != null) {
-							int resultCode = SettingsManager
-									.getResultCode(baseInfo);
+							sysTimeStr = baseInfo.getTime();
+							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if (resultCode == 0) {
 								if ("开启".equals(mProductInfo.getIs_TYJ())) {
 									// 体验金开启
@@ -1250,6 +1354,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 								tyjLayout.setVisibility(View.GONE);
 								line4.setVisibility(View.GONE);
 							}
+						}else{
+							sysTimeStr = sdf.format(new Date());
 						}
 					}
 				});
@@ -1268,6 +1374,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if (baseInfo != null) {
+							sysTimeStr = baseInfo.getTime();
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
@@ -1294,6 +1401,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 								hbLayout.setVisibility(View.GONE);
 								line5.setVisibility(View.GONE);
 							}
+						}else{
+							sysTimeStr = sdf.format(new Date());
 						}
 					}
 				});
@@ -1318,6 +1427,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 							mLoadingDialog.dismiss();
 						}
 						if (baseInfo != null) {
+							sysTimeStr = baseInfo.getTime();
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
@@ -1326,6 +1436,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 								msg.obj = baseInfo;
 								handler.sendMessage(msg);
 							} 
+						}else{
+							sysTimeStr = sdf.format(new Date());
 						}
 					}
 				});

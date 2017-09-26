@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/common_measure_20dp"
+              android:layout_marginRight="@dimen/common_measure_20dp"
+              android:background="@drawable/style_rect_fillet_filling_white_dialog"
+              android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/active_otc_dialog_content"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_130dp"
+        android:layout_marginRight="@dimen/common_measure_30dp"
+        android:layout_marginLeft="@dimen/common_measure_30dp"
+        android:lineSpacingMultiplier="1.2"
+        android:gravity="center_vertical"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/common_measure_20dp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_1dp"
+        android:background="@color/edittext_line_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/active_otc_dialog_left_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="继续"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_24dp" />
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="fill_parent"
+            android:background="@color/edittext_line_color" />
+
+        <Button
+            android:id="@+id/active_otc_dialog_right_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="再考虑下"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

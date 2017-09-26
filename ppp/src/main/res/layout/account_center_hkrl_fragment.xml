@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/common_measure_18dp"
-                android:text="7月12日："/>
+                android:text="1月1日："/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/common_measure_20dp"
                 android:textColor="@color/common_topbar_bg_color"
-                android:text="2"/>
+                android:text="0"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -164,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/common_measure_20dp"
                 android:textColor="@color/common_topbar_bg_color"
-                android:text="1258.69"/>
+                android:text="0"/>
 
             <TextView
                 android:layout_width="wrap_content"

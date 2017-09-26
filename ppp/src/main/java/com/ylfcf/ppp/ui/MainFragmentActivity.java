@@ -269,7 +269,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		}
 		requestProductPageInfo("", "发布","未满标","是","","");//请求产品列表
 		downloadChangeObserver();
-//		setJPushAlias();
+		setJPushAlias();
 	}
 
 	class DownloadChangeObserver extends ContentObserver {

@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.UserRMBAccountInfo;
 import com.ylfcf.ppp.fragment.AccountCenterHKRLFragment;
 import com.ylfcf.ppp.fragment.AccountCenterZHZCFragment;
+import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.widget.LoadingDialog;
 
@@ -34,6 +36,7 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
     private UserRMBAccountInfo yllianAccountInfo;//易联账户信息
     private UserRMBAccountInfo huifuAccountInfo;//汇付账户信息
     private BaseInfo yjbInterestBaseInfo;//元金币产生的收益
+    private ImageView floatImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,8 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
         topTitleTV = (TextView)findViewById(R.id.common_page_title);
         topTitleTV.setText("账户中心");
 
+        floatImg = (ImageView) findViewById(R.id.account_center_activity_float_image);
+        floatImg.setOnClickListener(this);
         zhzcTabBtn = (Button)findViewById(R.id.account_center_activity_tab_zhzc);
         zhzcTabBtn.setOnClickListener(this);
         hkrlTabBtn = (Button)findViewById(R.id.account_center_activity_tab_hkrl);
@@ -71,6 +76,9 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
             case R.id.account_center_activity_tab_zhzc:
             case R.id.account_center_activity_tab_hkrl:
                 onNavBtnOnClick(v);
+                break;
+            case R.id.account_center_activity_float_image:
+                floatImg.setVisibility(View.GONE);
                 break;
             default:
                 break;
@@ -141,6 +149,12 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
                     hkrlTabBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue_right_3dp);
                     hkrlTabBtn.setTag("1");
                     hkrlTabBtn.setTextColor(getResources().getColor(R.color.white));
+
+                    boolean isFloat = SettingsManager.getAccountCenterFloatFlag(getApplicationContext());
+                    if(!isFloat){
+                        floatImg.setVisibility(View.VISIBLE);
+                        SettingsManager.setAccountCenterFloatFlag(getApplicationContext(),true);
+                    }
                 }
                 break;
             default:
