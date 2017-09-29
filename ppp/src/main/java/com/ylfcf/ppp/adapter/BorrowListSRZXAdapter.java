@@ -12,12 +12,13 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.MoneyStatus;
 import com.ylfcf.ppp.entity.ProductInfo;
-import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.widget.RoundProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ylfcf.ppp.util.Util.formatRate;
 
 /**
  * 私人尊享产品列表的adapter
@@ -122,8 +123,12 @@ public class BorrowListSRZXAdapter extends ArrayAdapter<ProductInfo> {
         	try {
         		investMoneyD = Double.parseDouble(info.getInvest_money());
         		totalMoneyD = Double.parseDouble(info.getTotal_money());
-        		viewHolder.progressTV.setText(Util.double2PointDouble(investMoneyD/totalMoneyD)+"%");
 			} catch (Exception e) {
+			}
+			try{
+				viewHolder.progressTV.setText((int)(investMoneyD/totalMoneyD)+"%");
+			}catch (Exception e){
+
 			}
         	viewHolder.progressTV.setTextColor(context.getResources().getColor(R.color.common_topbar_bg_color));
         	viewHolder.roundProgressBar.setProgress(biteInt);
@@ -143,7 +148,7 @@ public class BorrowListSRZXAdapter extends ArrayAdapter<ProductInfo> {
 		}
         if(extraInterestD > 0){
         	viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
-        	viewHolder.extraInterestText.setText("+"+info.getAndroid_interest_rate());
+        	viewHolder.extraInterestText.setText("+"+formatRate(info.getAndroid_interest_rate()));
         }else{
         	viewHolder.extraInterestLayout.setVisibility(View.GONE);
         }
@@ -154,7 +159,7 @@ public class BorrowListSRZXAdapter extends ArrayAdapter<ProductInfo> {
         }
 		viewHolder.interestRateMin.setVisibility(View.GONE);
 		viewHolder.middleText.setVisibility(View.GONE);
-		viewHolder.interestRateMax.setText(info.getInterest_rate());
+		viewHolder.interestRateMax.setText(formatRate(info.getInterest_rate()));
         
 		return convertView;
 	}
@@ -178,4 +183,5 @@ public class BorrowListSRZXAdapter extends ArrayAdapter<ProductInfo> {
 		RelativeLayout extraInterestLayout;// 加息的布局
 		TextView extraInterestText;//加息的text
 	}
+
 }

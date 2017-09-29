@@ -126,13 +126,11 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.android.support:appcompat-v7:23.4.0'
-    compile files('libs/sun.misc.BASE64Decoder.jar')
     compile 'com.umeng.analytics:analytics:latest.integration'
-    compile files('libs/json_simple-1.1.jar')
     compile 'com.youth.banner:banner:1.4.9'
     //轮播控件 最新版本
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //图片加载
-    compile 'com.github.Cutta:GifView:1.1'
+//    compile 'com.github.Cutta:GifView:1.1'
     //gif图片加载
 }

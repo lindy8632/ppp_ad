@@ -16,6 +16,8 @@ import com.ylfcf.ppp.entity.ProductInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ylfcf.ppp.util.Util.formatRate;
+
 /**
  * Ôª¾ÛÓ¯ÁÐ±í
  * Created by Administrator on 2017/7/25.
@@ -134,7 +136,7 @@ public class BorrowListYJYAdapter extends ArrayAdapter<ProductInfo> {
         }
         if(extraInterestD > 0){
             viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
-            viewHolder.extraInterestText.setText("+"+info.getAndroid_interest_rate());
+            viewHolder.extraInterestText.setText("+"+formatRate(info.getAndroid_interest_rate()));
         }else{
             viewHolder.extraInterestLayout.setVisibility(View.GONE);
         }
@@ -145,7 +147,7 @@ public class BorrowListYJYAdapter extends ArrayAdapter<ProductInfo> {
         }
         viewHolder.interestRateMin.setVisibility(View.GONE);
         viewHolder.middleText.setVisibility(View.GONE);
-        viewHolder.interestRateMax.setText(info.getInterest_rate());
+        viewHolder.interestRateMax.setText(formatRate(info.getInterest_rate()));
         viewHolder.bidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

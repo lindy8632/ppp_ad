@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.cunoraz.gifview.library.GifView;
+import com.ant.liao.GifView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.async.AsyncArticleList;
 import com.ylfcf.ppp.async.AsyncBanner;
@@ -194,7 +194,6 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 		return rootView;
 	}
 
-	int mm = 0;
 	private void findViews(View view, LayoutInflater inflater) {
 		xsbLayout = inflater.inflate(R.layout.first_page_subject_xsb, null);
 		viewsList.add(xsbLayout);
@@ -206,6 +205,9 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 		yzyImg = (ImageView)xsbLayout.findViewById(R.id.first_page_subject_yzy_logo);
 		yzyImg.setOnClickListener(this);
 		mGifView = (GifView) xsbLayout.findViewById(R.id.first_page_subject_xsb_gif);
+		mGifView.setGifImage(R.drawable.first_page_subject_gif);
+		mGifView.setShowDimension(mainActivity.getResources().getDimensionPixelSize(R.dimen.common_measure_63dp),
+				mainActivity.getResources().getDimensionPixelSize(R.dimen.common_measure_54dp));
 		bottomLayout = (LinearLayout) xsbLayout.findViewById(R.id.first_page_subject_bottom_layout);
 		bottomLayout.setOnClickListener(this);
 		tipsText = (TextView) xsbLayout
@@ -589,6 +591,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 			}
 			initBanner(bannerList);
 			defaultImg.setVisibility(View.GONE);
+			checkOct2017Active(baseInfo.getTime());
 			return;
 		}
 		AsyncBanner bannerTask = new AsyncBanner(mainActivity,

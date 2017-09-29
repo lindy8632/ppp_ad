@@ -8,9 +8,18 @@ public class DayData {
     private DateData date;
     private int textColor;
     private int textSize;
+    private boolean enabled;
 
     public DayData(DateData date){
         this.date = date;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public int getTextColor() {

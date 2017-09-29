@@ -145,7 +145,6 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private String sysTimeStr = "";
 	
-	//SettingsManager.getUserFromSub(getApplicationContext())
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -266,7 +265,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 						SettingsManager.getUserId(getApplicationContext()), "",
 						"");
 			}
-		}, 500L);
+		}, 50L);
 
 		new Handler().postDelayed(new Runnable() {
 			@Override
@@ -274,9 +273,9 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 				requestYuanAccountInfo(SettingsManager
 						.getUserId(getApplicationContext()));
 			}
-		}, 1000L);
+		}, 60L);
 
-		handler.sendEmptyMessageDelayed(REQUEST_JXQ_LIST_WHAT,1100L);
+		handler.sendEmptyMessageDelayed(REQUEST_JXQ_LIST_WHAT,60L);
 	}
 
 	private void updateUsePrompt(List<String> usePromptList){
@@ -525,6 +524,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			hbEditText.setText("");
 			hbEditText.setTag("");
 			hbArrowLayout.setTag("0");
+			updateInterest();
 		}
 
 		@Override
@@ -766,7 +766,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		userBanlanceDouble = Double.parseDouble(userBanlance);
 		String borrowBalance = String.valueOf(borrowBalanceTemp);
 		borrowBalanceDouble = Double.parseDouble(borrowBalance);
-		int flagOtc = SettingsManager.checkActiveStatusBySysTime(sysTimeStr,
+		int flagOtc = SettingsManager.checkActiveStatusBySysTime(mProductInfo.getAdd_time(),
 				SettingsManager.activeOct2017_StartTime,SettingsManager.activeOct2017_EndTime);//10月活动
 		if (moneyInvest < 100L) {
 			Util.toastShort(BidZXDActivity.this, "投资金额不能小于100元");
@@ -1159,7 +1159,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 
 		}
 		days = limitInvest;
-		nhsyText.setText(Util.double2PointDouble((rateD + floatRateD)) + "%");//享的利率
+		nhsyText.setText(Util.double2PointDouble((rateD + floatRateD + extraRateD)) + "%");//享的利率
 
 		double income = 0d;
 		income = (rateD + extraRateD + floatRateD + couponRateD) * investMoney * days / 36500

@@ -78,6 +78,7 @@ public class SettingsManager extends DefaultPreferences {
 	public static final String activeJuly2017_StartTime = "2017-07-03 00:00:00";
 	public static final String activeJuly2017_EndTime = "2017-07-31 00:00:00";
 
+	//2017年十月双节活动
 	public static final String activeOct2017_StartTime = "2017-10-01 00:00:00";
 	public static final String activeOct2017_EndTime = "2017-10-08 23:59:59";
 

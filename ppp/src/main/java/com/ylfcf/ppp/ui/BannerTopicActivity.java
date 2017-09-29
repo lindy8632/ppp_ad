@@ -53,7 +53,6 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 	private static final int DOWNLOAD_PIC_WHAT = 2713;
 
 	private LinearLayout mainLayout;
-	private LinearLayout contentLayout;
 	private LinearLayout topLeftBtn;
 	private WebView webview;
 	private TextView topTitleTV;
@@ -150,7 +149,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		topTitleTV = (TextView)findViewById(R.id.common_page_title);
 		topLayout = (RelativeLayout) findViewById(R.id.banner_topic_activity_toplayout);
 		mainLayout = (LinearLayout) findViewById(R.id.banner_topic_activity_mainlayout);
-		contentLayout = (LinearLayout) findViewById(R.id.banner_topic_activity_content);
+		webview = (WebView) findViewById(R.id.banner_topic_activity_webview);
 		if(TopicType.CHONGZHISONG.equals(topicType)){
 			//充值送的活动
 			topTitleTV.setText("充值送");
@@ -174,9 +173,6 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		}else{
 			topTitleTV.setText("专题详情");
 		}
-		webview = new WebView(getApplicationContext());
-		webview.setLayoutParams(new LinearLayout.
-				LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
 		webview.getSettings().setSupportZoom(false);
         webview.getSettings().setJavaScriptEnabled(true);  //支持js
         webview.getSettings().setDomStorageEnabled(true);
@@ -245,7 +241,6 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 				return true;
 			}
 		});
-		contentLayout.addView(webview);
 	}
 
 	private void loadURL(){
@@ -286,7 +281,6 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		webview.removeAllViews();
 		webview.destroy();
 		webview = null;
-		contentLayout.removeAllViews();
 	}
 
 	public class JavascriptAndroidInterface{

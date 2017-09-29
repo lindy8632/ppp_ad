@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/child_background"
@@ -44,15 +43,14 @@
             android:scaleType="fitXY"
             android:src="@drawable/first_page_subject_yzy_img"/>
 
-        <com.cunoraz.gifview.library.GifView
+        <com.ant.liao.GifView
             android:id="@+id/first_page_subject_xsb_gif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/common_measure_63dp"
+            android:layout_height="@dimen/common_measure_54dp"
             android:layout_marginRight="@dimen/common_measure_30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            custom:gif="@drawable/first_page_subject_gif"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
     </RelativeLayout>
 

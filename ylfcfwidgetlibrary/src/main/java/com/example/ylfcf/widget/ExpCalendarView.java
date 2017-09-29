@@ -73,8 +73,6 @@ public class ExpCalendarView extends ViewPager {
         float density = getContext().getResources().getSystem().getDisplayMetrics().density;
         CellConfig.cellHeight = getContext().getResources().getSystem().getDisplayMetrics().widthPixels / 7 / density;
         CellConfig.cellWidth = getContext().getResources().getSystem().getDisplayMetrics().widthPixels / 7 / density;
-
-//        this.addOnPageChangeListener(new );
     }
 
     //// TODO: 15/8/28 May cause trouble when invoked after inited

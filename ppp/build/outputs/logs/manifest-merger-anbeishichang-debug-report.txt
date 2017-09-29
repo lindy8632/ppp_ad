@@ -1,18 +1,18 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:2:1-729:12
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:2:1-728:12
 	package
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:4:5-28
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:4:11-34
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:6:5-32
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:6:11-38
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:3:5-51
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:3:11-57
 	android:versionCode
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:5:5-30
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:5:11-36
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 	xmlns:android
@@ -34,7 +34,6 @@ MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\
 MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.youth.banner:banner:1.4.9] C:\Users\Administrator\.android\build-cache\34c3ed598080eaa35ace803d4b5ac5631581cdee\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.Cutta:GifView:1.1] C:\Users\Administrator\.android\build-cache\84ad7ac3918bcde493c5d6ea09d8a664c6f7cdd6\output\AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
@@ -192,7 +191,7 @@ ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:65:5-71
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:65:22-68
 application
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:67:5-727:19
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:67:5-726:19
 MERGED from [ppp_ad:library:unspecified] D:\GitRepository\ppp_ad\library\build\intermediates\bundles\default\AndroidManifest.xml:11:5-20
 MERGED from [ppp_ad:ylfcfwidgetlibrary:unspecified] D:\GitRepository\ppp_ad\ylfcfwidgetlibrary\build\intermediates\bundles\default\AndroidManifest.xml:11:5-15:19
 MERGED from [com.android.support:cardview-v7:25.1.1] C:\Users\Administrator\.android\build-cache\2a745ea31c390f1d4ff6f7504b6a3f6009dc22cc\output\AndroidManifest.xml:22:5-20
@@ -205,7 +204,6 @@ MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Administr
 MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\.android\build-cache\a3bb2a3ad5dd37a75f6f2da7b420f1b0dc2cea57\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:25:5-20
-MERGED from [com.github.Cutta:GifView:1.1] C:\Users\Administrator\.android\build-cache\84ad7ac3918bcde493c5d6ea09d8a664c6f7cdd6\output\AndroidManifest.xml:11:5-15:19
 	android:label
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:72:9-41
 	android:supportsRtl
@@ -817,59 +815,59 @@ ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:379:9-382:56
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:380:13-48
 activity#com.ylfcf.ppp.ui.MyFriendsActivity
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:383:9-385:56
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:383:9-385:62
 	android:screenOrientation
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:384:13-49
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:384:19-55
 	android:theme
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:385:13-53
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:385:19-59
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:383:19-55
 activity#com.ylfcf.ppp.ui.ChooseJXQActivity
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:386:9-388:56
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:386:9-388:62
 	android:screenOrientation
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:387:13-49
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:387:19-55
 	android:theme
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:388:13-53
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:388:19-59
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:386:19-55
 activity#com.ylfcf.ppp.ui.BorrowListYJYActivity
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:389:9-391:56
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:389:9-391:62
 	android:screenOrientation
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:390:13-49
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:390:19-55
 	android:theme
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:391:13-53
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:391:19-59
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:389:19-59
 activity#com.ylfcf.ppp.ui.BorrowDetailYJYActivity
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:392:9-394:56
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:392:9-394:62
 	android:screenOrientation
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:393:13-49
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:393:19-55
 	android:theme
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:394:13-53
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:394:19-59
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:392:19-61
 activity#com.ylfcf.ppp.ui.BidYJYActivity
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:395:9-397:56
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:395:9-397:62
 	android:screenOrientation
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:396:13-49
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:396:19-55
 	android:theme
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:397:13-53
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:397:19-59
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:395:19-52
 activity#com.ylfcf.ppp.ui.ProductInfoYJYActivity
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:398:9-400:56
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:398:9-400:62
 	android:screenOrientation
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:399:13-49
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:399:19-55
 	android:theme
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:400:13-53
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:400:19-59
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:398:19-60
 activity#com.ylfcf.ppp.ui.AccountCenterActivity
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:401:9-403:56
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:401:9-403:62
 	android:screenOrientation
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:402:13-49
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:402:19-55
 	android:theme
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:403:13-53
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:403:19-59
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:401:19-59
 activity#com.umeng.socialize.editorpage.ShareActivity
@@ -1393,28 +1391,28 @@ ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:706:9-708:56
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:707:13-40
 meta-data#UMENG_APPKEY
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:712:9-714:66
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:711:9-713:66
 	android:value
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:714:13-53
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:713:13-53
 	android:name
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:713:13-40
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:712:13-40
 meta-data#UMENG_MESSAGE_SECRET
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:715:9-717:74
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:714:9-716:74
 	android:value
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:717:13-61
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:716:13-61
 	android:name
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:716:13-48
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:715:13-48
 meta-data#UMENG_CHANNEL
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:719:9-721:54
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:718:9-720:54
 	android:value
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:721:13-51
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:720:13-51
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 	android:name
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:720:13-41
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:719:13-41
 meta-data#USER_FROM_SUB
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:723:9-725:54
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:722:9-724:54
 	android:value
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:725:13-51
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:724:13-51
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 	android:name
-		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:724:13-41
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:723:13-41

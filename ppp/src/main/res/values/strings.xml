@@ -340,12 +340,12 @@
 400-150-1568），客户服务时间： 工作日 9:00-18:00。</string>
 
     <string name="comm_ques_account_2t">我的账号密码忘记了，该如何找回？</string>
-    <string name="comm_ques_account_2t_1d">（1）登录密码：元立方金服首页点击登录，在登录页面点击“忘记密码”，输入注册手机号码，输入图形验证码，再点击“获取验证码”，输入手机收到的验证码，然后两次输入新的登录密码，并点击“确认”，即完成登录密码的重置。</string>
-    <string name="comm_ques_account_2t_2d">（2）提现密码：在登录页面，进入账户中心，在“基本设置”页面点击“提现密码”中的“找回提现密码”，再点击“获取验证码”，输入手机收到的验证码，然后两次输入新的提现密码，并点击“提交”，即完成提现密码的找回。</string>
+    <string name="comm_ques_account_2t_1d">（1）登录密码：在登录页面点“忘记密码”，根据页面提示进行验证身份后即可重置登录密码。</string>
+    <string name="comm_ques_account_2t_2d">（2）提现密码：在提现页面点击“找回提现密码”，获取验证码后输入验证码，再输入新密码，点击“提交修改”后即可完成提现密码重置。或在APP下端点击“我的”-“账户设置”-“提现密码”-“找回提现密码”，根据页面提示验证身份后输入新密码，即可完成提现密码重置。</string>
 
     <string name="comm_ques_account_3t">我想修改密码，如何操作？</string>
-    <string name="comm_ques_account_3t_1d">（1）修改登录密码：在登录页面，进入账户中心，在“基本设置”页面点击“密码管理”中的“修改”，然后输入您的原始密码，再两次输入新的登录密码，并点击“提交更新”，即完成登录密码的修改。</string>
-    <string name="comm_ques_account_3t_2d">（2）修改提现密码：（首次提现需要设置提现密码。）在登录页面，进入账户中心，在“基本设置”页面点击“提现密码”中的“修改提现密码”，然后输入您的原密码，再两次输入新的提现密码，并点击“提交”，即完成提现密码的修改。</string>
+    <string name="comm_ques_account_3t_1d">登录密码：在APP下端点击“我的”-“账户设置”-“登录密码”，输入原始密码后，再输入新密码，点击“提交修改”即可完成修改。</string>
+    <string name="comm_ques_account_3t_2d">提现密码：在APP下端点击“我的”-“账户设置”-“提现密码”-“修改提现密码”，输入原始密码后，再输入新密码，点击“提交修改”即可完成修改。</string>
 
     <string name="comm_ques_account_4t">我能申请多个账户吗？</string>
     <string name="comm_ques_account_4t_1d">您好，账户和实名信息是一对一的绑定关系，为了确保账户信息的唯一性，保护您的投资安全，同一个身份证号码不能注册两个账号。希望您理解。</string>
@@ -384,7 +384,7 @@
     <string name="comm_ques_interest_2t">投资是否收取手续费？</string>
     <string name="comm_ques_interest_2t_1d">您好，我们现在处于推广优惠期，对所有客户均不收取投资手续费。</string>
     <string name="comm_ques_interest_3t">我投资了之后会有合同吗？</string>
-    <string name="comm_ques_interest_3t_1d">您好，标的满标后，系统会生成一份电子合同，可以在您的账户中查看合同内容。按照《合同法》的规定，电子合同与纸质合同具有同样的法律效力，所以请您放心。</string>
+    <string name="comm_ques_interest_3t_1d">您好，在您投资的标的满标后，系统会自动生成一份电子合同，您可以在您账户的投资管理-备注中查看合同内容。其中元月盈、私人尊享、薪盈计划满标后随即生成电子合同，元政盈系列和新手标满标后的次日生成电子合同。根据《合同法》的规定，电子合同与纸质合同具有同等法律效力，请您放心。</string>
     <string name="comm_ques_interest_4t">收益是什么时候开始计算的？</string>
     <string name="comm_ques_interest_4t_1d">您好，为了综合平衡借款人和投资者双方的利益，所有客户的利息都是从满标次日起计算的。</string>
     <string name="comm_ques_interest_5t">收益是如何计算的呢？</string>

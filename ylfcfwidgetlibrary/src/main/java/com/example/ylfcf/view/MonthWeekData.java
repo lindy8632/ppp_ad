@@ -88,6 +88,7 @@ public class MonthWeekData {
         for (int preDay = lastMonthDayNumber - preNumber + 1; preDay < lastMonthDayNumber + 1; preDay++) {
             addDate = new DayData(new DateData(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, preDay));
             addDate.setTextColor(Color.LTGRAY);
+            addDate.setEnabled(false);
             monthContent.add(addDate);
         }
 
@@ -97,6 +98,7 @@ public class MonthWeekData {
         for (int day = 1; day < thisMonthDayNumber + 1; day++) {
             addDate = new DayData(new DateData(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, day));
             addDate.setTextColor(Color.BLACK);
+            addDate.setEnabled(true);
             monthContent.add(addDate);
         }
 
@@ -106,6 +108,7 @@ public class MonthWeekData {
         for (int afterDay = 1; afterDay < afterNumber; afterDay++) {
             addDate = new DayData(new DateData(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, afterDay));
             addDate.setTextColor(Color.LTGRAY);
+            addDate.setEnabled(false);
             monthContent.add(addDate);
         }
         calendar.add(Calendar.MONTH, -1);

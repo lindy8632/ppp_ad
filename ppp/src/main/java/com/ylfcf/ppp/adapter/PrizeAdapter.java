@@ -263,6 +263,20 @@ public class PrizeAdapter extends ArrayAdapter<PrizeInfo> {
 				viewHolder.endTime.setVisibility(View.VISIBLE);
 				viewHolder.endTime.setText("领取时间：" + info.getSend_time());
 			}
+		}else if("GQCJ201710".equals(info.getActive_title())){
+			//2017年10月活动
+			viewHolder.endTime.setVisibility(View.VISIBLE);
+			viewHolder.catDetails.setVisibility(View.GONE);
+			String name = info.getName();
+			viewHolder.title.setText(name);
+			if (name != null && name.contains("元金币") || name.contains("红包") || name.contains("加息券")) {
+				viewHolder.endTime.setText("领取时间：" + info.getSend_time());
+			} else if (name.contains("抽奖机会")){
+				viewHolder.endTime.setText("有效期截止到活动结束" );
+			}else if(name != null && name.contains("食用油")){
+				viewHolder.endTime.setText(info.getRemark());
+			}
+
 		}else{
 			viewHolder.endTime.setVisibility(View.VISIBLE);
 			viewHolder.catDetails.setVisibility(View.GONE);

@@ -50,7 +50,7 @@ public class BidSuccessActivity extends BaseActivity implements OnClickListener{
 		catRecords = (TextView)findViewById(R.id.bid_success_activity_cat_record);
 		catRecords.setOnClickListener(this);
 
-		if(mBaseInfo != null && mBaseInfo.getmInvestResultInfo() != null){
+		if(mBaseInfo != null && mBaseInfo.getmInvestResultInfo() != null&&mBaseInfo.getmInvestResultInfo().getmInvestStatus()!=null){
 			if("0".equals(mBaseInfo.getmInvestResultInfo().getmInvestStatus().getStatus())){
 				//当天第一次投资
 				promptTV.setVisibility(View.VISIBLE);

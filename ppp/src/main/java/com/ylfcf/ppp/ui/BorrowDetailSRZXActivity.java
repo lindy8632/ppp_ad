@@ -211,7 +211,7 @@ public class BorrowDetailSRZXActivity extends BaseActivity implements
 			rateF = Float.parseFloat(rate);
 		} catch (Exception e) {
 		}
-		borrowRate.setText(String.valueOf(rateF));
+		borrowRate.setText(Util.formatRate(String.valueOf(rateF)));
 		timeLimit.setText(horizon);
 		if(productInfo.getRepay_way() != null && !"".equals(productInfo.getRepay_way())){
 			repayType1.setText(productInfo.getRepay_way());
@@ -279,7 +279,7 @@ public class BorrowDetailSRZXActivity extends BaseActivity implements
 		String horizon = info.getInvest_period();
 		int horizonInt = Integer.parseInt(horizon);
 		
-		borrowRate.setText(rate);
+		borrowRate.setText(Util.formatRate(rate));
 		timeLimit.setText(horizon);
 		if(productInfo.getRepay_way() != null && !"".equals(productInfo.getRepay_way())){
 			repayType1.setText(productInfo.getRepay_way());

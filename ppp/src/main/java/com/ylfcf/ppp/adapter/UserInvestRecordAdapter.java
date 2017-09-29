@@ -169,11 +169,11 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				sumInterestD = Double.parseDouble(info.getSum_interest());                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 			} catch (Exception e) {
 			}
-			viewHolder.rate.setText(Util.double2PointDouble(interestRateD)+ "%");//年化收益
-			if(androidInterestRateD + couponRateD + interestD <= 0){
+			viewHolder.rate.setText(Util.double2PointDouble(interestRateD + interestRateFloat)+ "%");//年化收益
+			if(couponRateD + interestD <= 0){
 				viewHolder.addRate.setText("— —");
 			}else{
-				viewHolder.addRate.setText(Util.double2PointDouble(interestRateFloat + androidInterestRateD + couponRateD + interestD)+"%");//加息奖励
+				viewHolder.addRate.setText(Util.double2PointDouble(couponRateD + interestD)+"%");//加息奖励
 			}
 			int interestPeroidI = 0;//投资期限
 			try {
@@ -185,8 +185,14 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				totalInvestMoneyD = Double.parseDouble(info.getMoney());
 			} catch (Exception e) {
 			}
-			double totalRate = interestRateD + interestRateFloat + androidInterestRateD + couponRateD + interestD;//基础利率+浮动利率+加息利率+加息券
-			double totalInterestD = totalInvestMoneyD * totalRate * interestPeroidI / 36500;
+			double redbagMoneyD = 0d;
+			try{
+				redbagMoneyD = Double.parseDouble(info.getRed_bag_money());//红包金额
+			}catch (Exception e){
+
+			}
+			double totalRate = interestRateD + interestRateFloat + couponRateD + interestD;//基础利率+浮动利率+加息利率+加息券
+			double totalInterestD = totalInvestMoneyD * totalRate * interestPeroidI / 36500 + redbagMoneyD * interestRateD * interestPeroidI / 36500;
 			if(sumInterestD == 0){
 				//还没有跑满标脚本，自己计算
 				viewHolder.interestMoney.setText(Util.double2PointDouble(totalInterestD) + "元");//投资收益

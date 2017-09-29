@@ -45,6 +45,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.ylfcf.ppp.util.Util.formatRate;
+
 /**
  * 政信贷-0-项目详情
  * 
@@ -245,12 +247,6 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 		} catch (Exception e) {
 		}
 
-		Date addDate = null;
-		try{
-			addDate = sdf.parse(productInfo.getAdd_time());
-		}catch (Exception e){
-
-		}
 		if(SettingsManager.checkActiveStatusBySysTime(productInfo.getAdd_time(),SettingsManager.yyyJIAXIStartTime,
 				SettingsManager.yyyJIAXIEndTime) == 0 && BorrowType.YUANNIANXIN.equals(productInfo.getBorrow_type())){
 			extraInterestLayout.setVisibility(View.VISIBLE);
@@ -261,7 +257,7 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 				extraInterestLayout.setVisibility(View.VISIBLE);
 				jiaxiTipsImg.setVisibility(View.GONE);
 				extraInterestText.setText("+"
-						+ productInfo.getAndroid_interest_rate());
+						+ formatRate(productInfo.getAndroid_interest_rate()));
 			} else {
 				extraInterestLayout.setVisibility(View.GONE);
 			}
@@ -294,17 +290,17 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 			if(productInfo.getInterest_period().contains("365")){
 				borrowRateMin.setVisibility(View.GONE);
 				borrowRateMiddle.setVisibility(View.GONE);
-				borrowRateMax.setText(String.valueOf(minRateF));
+				borrowRateMax.setText(formatRate(String.valueOf(minRateF)));
 			}else{
 				borrowRateMin.setVisibility(View.VISIBLE);
 				borrowRateMiddle.setVisibility(View.VISIBLE);
-				borrowRateMin.setText(String.valueOf(minRateF));
-				borrowRateMax.setText(String.valueOf(maxRateF));
+				borrowRateMin.setText(formatRate(String.valueOf(minRateF)));
+				borrowRateMax.setText(formatRate(String.valueOf(maxRateF)));
 			}
         }else{
         	borrowRateMin.setVisibility(View.GONE);
 			borrowRateMiddle.setVisibility(View.GONE);
-			borrowRateMax.setText(String.valueOf(minRateF));
+			borrowRateMax.setText(formatRate(String.valueOf(minRateF)));
         }
 		timeLimit.setText(horizon);
 		repayType1.setText(productInfo.getRepay_way());
@@ -380,7 +376,7 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 				extraInterestLayout.setVisibility(View.VISIBLE);
 				jiaxiTipsImg.setVisibility(View.GONE);
 				extraInterestText.setText("+"
-						+ productInfo.getAndroid_interest_rate());
+						+ formatRate(productInfo.getAndroid_interest_rate()));
 			} else {
 				extraInterestLayout.setVisibility(View.GONE);
 			}
@@ -407,18 +403,19 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 			if(productInfo.getInterest_period().contains("365")){
 				borrowRateMin.setVisibility(View.GONE);
 				borrowRateMiddle.setVisibility(View.GONE);
-				borrowRateMax.setText(String.valueOf(minRateF));
+				borrowRateMax.setText(formatRate(String.valueOf(minRateF)));
 			}else{
 				borrowRateMin.setVisibility(View.VISIBLE);
 				borrowRateMiddle.setVisibility(View.VISIBLE);
-				borrowRateMin.setText(String.valueOf(minRateF));
-				borrowRateMax.setText(String.valueOf(maxRateF));
+				borrowRateMin.setText(formatRate(String.valueOf(minRateF)));
+				borrowRateMax.setText(formatRate(String.valueOf(maxRateF)));
 			}
         }else{
         	borrowRateMin.setVisibility(View.GONE);
 			borrowRateMiddle.setVisibility(View.GONE);
-			borrowRateMax.setText(String.valueOf(minRateF));
-        }		timeLimit.setText(horizon);
+			borrowRateMax.setText(formatRate(String.valueOf(minRateF)));
+        }
+        timeLimit.setText(horizon);
 		repayType1.setText(info.getRepay_way());
 		repayType2.setText(info.getRepay_way());
 		qitouMoneyTv.setText(info.getInvest_lowest()+"元");

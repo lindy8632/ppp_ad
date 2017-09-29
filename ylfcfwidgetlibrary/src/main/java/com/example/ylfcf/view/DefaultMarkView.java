@@ -48,7 +48,8 @@ public class DefaultMarkView extends BaseMarkView{
                 textView.setTextColor(Color.WHITE);
                 circleDrawable = new ShapeDrawable(new OvalShape());
                 circleDrawable.getPaint().setColor(style.getColor());
-                this.setPadding(20, 20, 20, 20);
+//                this.setPadding(20, 20, 20, 20);
+                this.setPadding(22, 2, 22, 2);
                 textView.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, (float) 1.0));
                 textView.setBackground(circleDrawable);
                 this.addView(textView);

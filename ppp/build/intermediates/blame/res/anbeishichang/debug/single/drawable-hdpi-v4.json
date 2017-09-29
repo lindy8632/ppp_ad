@@ -148,6 +148,10 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\my_account_logo_srzx.png"
     },
     {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\brand_intro_bg2.jpg",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\brand_intro_bg2.jpg"
+    },
+    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\first_page_fragment_zxd_logo1.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\first_page_fragment_zxd_logo1.png"
     },
@@ -410,6 +414,10 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\more_logo5.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\more_logo5.png"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\brand_intro_bg1.jpg",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\brand_intro_bg1.jpg"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\sina_icon.png",
@@ -738,10 +746,6 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\first_page_subject_yzy_img.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\first_page_subject_yzy_img.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\brand_intro_bg2.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\brand_intro_bg2.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
@@ -1434,10 +1438,6 @@
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\intro_page_1.png",
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\intro_page_1.png"
-    },
-    {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\brand_intro_bg1.png",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\drawable-hdpi\\brand_intro_bg1.png"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\drawable-hdpi-v4\\borrow_details_icon7.png",

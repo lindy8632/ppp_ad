@@ -10,18 +10,18 @@
         android:id="@+id/banner_topic_activity_toplayout"
         layout="@layout/common_topbar"/>
 
-    <LinearLayout
+    <!--<LinearLayout
         android:id="@+id/banner_topic_activity_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"></LinearLayout>
+        android:layout_weight="1"></LinearLayout>-->
 
-    <!--<WebView
+    <WebView
         android:id="@+id/banner_topic_activity_webview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_x="0.0dip"
         android:layout_y="0.0dip"
-        android:layout_weight="1"/>-->
+        android:layout_weight="1"/>
 
 </LinearLayout>

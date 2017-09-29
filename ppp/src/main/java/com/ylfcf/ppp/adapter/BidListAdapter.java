@@ -24,6 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ylfcf.ppp.util.Util.formatRate;
+
 /**
  * 投资项目列表页面的适配器
  * @author Waggoner.wang
@@ -137,7 +139,7 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         viewHolder.roundProgressBar.setMax(10000);
         YLFLogger.d("百分比："+viewHolder.roundProgressBar.getProgress());
         if(MoneyStatus.NOFULL.equals(info.getMoney_status())){
-        	viewHolder.progressTV.setText(info.getBite());
+        	viewHolder.progressTV.setText(String.valueOf(biteInt/100)+"%");
         	viewHolder.progressTV.setTextColor(context.getResources().getColor(R.color.common_topbar_bg_color));
         	viewHolder.roundProgressBar.setProgress(biteInt);
         }else{
@@ -205,7 +207,7 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
 				viewHolder.extraInterestLayout.setVisibility(View.VISIBLE);
 				viewHolder.jxtipsImg.setVisibility(View.GONE);
 				viewHolder.extraInterestText.setText("+"
-						+ info.getAndroid_interest_rate());
+						+ formatRate(info.getAndroid_interest_rate()) + "%");
 			} else {
 				viewHolder.extraInterestLayout.setVisibility(View.GONE);
 			}
@@ -218,15 +220,15 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         if(info.getBorrow_type().contains("元计划")){
         	viewHolder.interestRateMin.setVisibility(View.GONE);
         	viewHolder.middleText.setVisibility(View.GONE);
-        	viewHolder.interestRateMax.setText(info.getInterest_rate());
+        	viewHolder.interestRateMax.setText(formatRate(info.getInterest_rate()));
         }else if("vip".equals(info.getBorrow_type())){
         	viewHolder.interestRateMin.setVisibility(View.GONE);
         	viewHolder.middleText.setVisibility(View.GONE);
-        	viewHolder.interestRateMax.setText(info.getInterest_rate());
+        	viewHolder.interestRateMax.setText(formatRate(info.getInterest_rate()));
         }else if("元年鑫".equals(info.getBorrow_type())){
 			viewHolder.interestRateMin.setVisibility(View.GONE);
 			viewHolder.middleText.setVisibility(View.GONE);
-			viewHolder.interestRateMax.setText(info.getInterest_rate());
+			viewHolder.interestRateMax.setText(formatRate(info.getInterest_rate()));
 		}else if(BorrowType.SUYING.equals(info.getBorrow_type()) || BorrowType.BAOYING.equals(info.getBorrow_type()) ||
         		BorrowType.WENYING.equals(info.getBorrow_type())){
         	float minRateF = 0f;
@@ -239,12 +241,12 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         	if(SettingsManager.checkFloatRate(info) && !info.getInterest_period().contains("365")){
         		viewHolder.interestRateMin.setVisibility(View.VISIBLE);
             	viewHolder.middleText.setVisibility(View.VISIBLE);
-            	viewHolder.interestRateMin.setText(Util.float2PointFloat(minRateF));
-            	viewHolder.interestRateMax.setText(Util.float2PointFloat(maxRateF));
+            	viewHolder.interestRateMin.setText(formatRate(String.valueOf(minRateF)));
+            	viewHolder.interestRateMax.setText(formatRate(String.valueOf(maxRateF)));
         	}else{
         		viewHolder.interestRateMin.setVisibility(View.GONE);
             	viewHolder.middleText.setVisibility(View.GONE);
-            	viewHolder.interestRateMax.setText(info.getInterest_rate());
+            	viewHolder.interestRateMax.setText(formatRate(info.getInterest_rate()));
         	}
         }
 		return convertView;
@@ -271,5 +273,4 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
 		private ImageView jxtipsImg;//加息logo
 		ImageView timeLimitTipsImg;//期限顶部的图片标记
 	}
-	
 }

@@ -279,6 +279,30 @@ public class Util {
 		  return s;   
 
 	}
+
+	/**
+	 * 初始化利率，将多余的0去除
+	 * @param rate
+	 * @return
+	 */
+	public static String formatRate(String rate){
+		double rateD = 0d;
+		try {
+			rateD = Double.parseDouble(rate);
+			if((rateD * 10)%10 == 0){
+				//说明利率是整数，没有小数
+				return String.valueOf((int)rateD);
+			}else{
+				if((rateD * 10)%1 == 0){
+					return Util.double2PointDoubleOne(rateD);
+				}else{
+					return rate;
+				}
+			}
+		} catch (Exception e) {
+		}
+		return rate;
+	}
 	
 	/**
 	 * 用逗号将数字型字符串每三位分割(浮点型，小数点后两位小数)

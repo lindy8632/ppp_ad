@@ -37,6 +37,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.ylfcf.ppp.util.Util.formatRate;
+
 /**
  * Ôª¾ÛÓ¯ÏêÇéÒ³
  * Created by Administrator on 2017/7/21.
@@ -188,7 +190,7 @@ public class BorrowDetailYJYActivity extends BaseActivity implements View.OnClic
             rateF = Float.parseFloat(rate);
         } catch (Exception e) {
         }
-        borrowRate.setText(String.valueOf(rateF));
+        borrowRate.setText(formatRate(String.valueOf(rateF)));
         timeLimit.setText(horizon);
         if(productInfo.getRepay_way() != null && !"".equals(productInfo.getRepay_way())){
             repayType1.setText(productInfo.getRepay_way());
@@ -241,7 +243,7 @@ public class BorrowDetailYJYActivity extends BaseActivity implements View.OnClic
         }
         if(extraRateF > 0){
             extraInterestLayout.setVisibility(View.VISIBLE);
-            extraInterestText.setText("+"+extraRateF);
+            extraInterestText.setText("+"+Util.formatRate(String.valueOf(extraRateF)));
         }else{
             extraInterestLayout.setVisibility(View.GONE);
         }
@@ -249,7 +251,7 @@ public class BorrowDetailYJYActivity extends BaseActivity implements View.OnClic
         String horizon = info.getInvest_period();
         int horizonInt = Integer.parseInt(horizon);
 
-        borrowRate.setText(rate);
+        borrowRate.setText(formatRate(rate));
         timeLimit.setText(horizon);
         if(productInfo.getRepay_way() != null && !"".equals(productInfo.getRepay_way())){
             repayType1.setText(productInfo.getRepay_way());

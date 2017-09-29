@@ -46,7 +46,7 @@ public class CalendarExpAdapter extends ArrayAdapter implements Observer {
         DayData dayData = (DayData) data.get(position);
         MarkStyle style = MarkedDates.getInstance().check(dayData.getDate());
         boolean marked = style != null;
-        if (marked) {
+        if (marked && dayData.isEnabled()) {
             dayData.getDate().setMarkStyle(style);
             if (markView > 0) {
                 BaseMarkView baseMarkView = (BaseMarkView) View.inflate(getContext(), markView, null);
@@ -67,7 +67,7 @@ public class CalendarExpAdapter extends ArrayAdapter implements Observer {
             }
         }
         ((BaseCellView) ret).setDate(dayData.getDate());
-        if (OnDateClickListener.instance != null) {
+        if (OnDateClickListener.instance != null && dayData.isEnabled()) {
             ((BaseCellView) ret).setOnDateClickListener(OnDateClickListener.instance);
         }
         if (dayData.getDate().equals(CurrentCalendar.getCurrentDateData()) &&

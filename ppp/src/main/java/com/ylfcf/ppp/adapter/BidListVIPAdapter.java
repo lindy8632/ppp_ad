@@ -146,7 +146,8 @@ public class BidListVIPAdapter extends ArrayAdapter<ProductInfo> {
 		viewHolder.roundProgressBar.setMax(10000);
 		YLFLogger.d("°Ù·Ö±È£º" + viewHolder.roundProgressBar.getProgress());
 		if (MoneyStatus.NOFULL.equals(info.getMoney_status())) {
-			viewHolder.progressTV.setText(info.getBite());
+//			viewHolder.progressTV.setText(info.getBite());
+			viewHolder.progressTV.setText(biteInt/100);
 			viewHolder.progressTV.setTextColor(context.getResources().getColor(
 					R.color.common_topbar_bg_color));
 			viewHolder.roundProgressBar.setProgress(biteInt);

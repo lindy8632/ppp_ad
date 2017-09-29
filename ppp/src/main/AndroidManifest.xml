@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.ylfcf.ppp"
-    android:versionCode="158"
-    android:versionName="1.5.8">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.ylfcf.ppp"
+          android:versionCode="158"
+          android:versionName="1.5.8">
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -381,26 +381,26 @@
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
         <activity android:name=".ui.MyFriendsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AnimActivityTheme" />
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AnimActivityTheme" />
         <activity android:name=".ui.ChooseJXQActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AnimActivityTheme" />
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AnimActivityTheme" />
         <activity android:name=".ui.BorrowListYJYActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AnimActivityTheme" />
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AnimActivityTheme" />
         <activity android:name=".ui.BorrowDetailYJYActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AnimActivityTheme" />
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AnimActivityTheme" />
         <activity android:name=".ui.BidYJYActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AnimActivityTheme" />
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AnimActivityTheme" />
         <activity android:name=".ui.ProductInfoYJYActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AnimActivityTheme" />
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AnimActivityTheme" />
         <activity android:name=".ui.AccountCenterActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AnimActivityTheme" />
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AnimActivityTheme" />
 
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
@@ -706,7 +706,6 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="19c071a676c46b8d7522346d" /> <!-- </>值来自开发者平台取得的AppKey -->
-
 
         <!-- 友盟的appkey -->
         <meta-data
