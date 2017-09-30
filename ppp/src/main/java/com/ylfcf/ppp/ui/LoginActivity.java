@@ -37,8 +37,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	private static final int REQUEST_PERSONAL_LOGIN_SUCCESS_WHAT = 1001;
 	private static final int REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT = 1002;
 	private static final int REQUEST_COMPANY_LOGIN_SUCCESS_WHAT = 1003;
-	private static final int REQUEST_COMPANY_LOGIN_EXCEPTION_WHAT = 1004;
-	
+
     private LinearLayout topLeftBtn;
     private TextView topTitleTV;
     
@@ -105,7 +104,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				finish();
 				break;
 			case REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT:
-				Util.toastShort(LoginActivity.this, "用户名或密码错误");
+				String loginMsg = (String) msg.obj;
+				Util.toastShort(LoginActivity.this, loginMsg);
 				break;
 			case REQUEST_COMPANY_LOGIN_SUCCESS_WHAT:
 				BaseInfo baseInfoComp = (BaseInfo) msg.obj;
@@ -408,10 +408,20 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
 					mLoadingDialog.dismiss();
 				}
+				if(baseInfo == null){
+					Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
+					msg.obj = "您的网络不给力";
+					handler.sendMessage(msg);
+					return;
+				}
 				int resultCode = SettingsManager.getResultCode(baseInfo);
 				if(resultCode == 0){
 					Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_SUCCESS_WHAT);
 					msg.obj = baseInfo;
+					handler.sendMessage(msg);
+				}else if(resultCode == -1){
+					Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
+					msg.obj = "用户名或者密码错误！";
 					handler.sendMessage(msg);
 				}else{
 					Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
@@ -474,6 +484,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 									handler.sendMessage(msg);
 								}
 							}, 200L);
+						}else if(resultCode == -1){
+							Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
+							msg.obj = "用户名或者密码错误！";
+							handler.sendMessage(msg);
 						}else{
 							Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
 							msg.obj = baseInfo.getMsg();

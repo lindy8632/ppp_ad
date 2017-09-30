@@ -49,7 +49,7 @@
                     android:id="@+id/myyuanmoney_actiivty_used_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0.00"
+                    android:text="0"
                     android:textColor="@color/orange_text"
                     android:textSize="@dimen/common_measure_22dp" />
 
@@ -57,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/common_measure_40dp"
+                    android:layout_marginLeft="@dimen/common_measure_5dp"
                     android:text="元"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/common_measure_20dp" />
@@ -93,7 +94,7 @@
                     android:id="@+id/myyuanmoney_actiivty_frozen_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0.00"
+                    android:text="0"
                     android:textColor="@color/orange_text"
                     android:textSize="@dimen/common_measure_22dp" />
 
@@ -101,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/common_measure_40dp"
+                    android:layout_marginLeft="@dimen/common_measure_5dp"
                     android:text="元"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/common_measure_20dp" />
@@ -137,7 +139,7 @@
                     android:id="@+id/myyuanmoney_actiivty_daishou_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0.00"
+                    android:text="0"
                     android:textColor="@color/orange_text"
                     android:textSize="@dimen/common_measure_22dp" />
 
@@ -145,6 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/common_measure_40dp"
+                    android:layout_marginLeft="@dimen/common_measure_5dp"
                     android:text="元"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/common_measure_20dp" />

@@ -35,7 +35,6 @@ import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.SimpleCrypto;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
 
@@ -127,6 +126,10 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		userid = SettingsManager.getUserId(getApplicationContext());
 		if(userid != null && !"".equals(userid) && isFirstLoad){
 			loadURL();
+		}else if(!isFirstLoad && webview != null && banner != null) {
+			if(banner.getLink_url().contains("mdFestivalLottery")){
+				webview.reload();
+			}
 		}
 		YLFLogger.d("activity"+"BannerTopicActivity-------OnResume()"+"----------isFirstLoad:"+isFirstLoad+"--------------userid:"+userid);
 	}
@@ -177,6 +180,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
         webview.getSettings().setJavaScriptEnabled(true);  //支持js
         webview.getSettings().setDomStorageEnabled(true);
 		webview.addJavascriptInterface(new JavascriptAndroidInterface(this),"android");
+		webview.setLayerType(View.LAYER_TYPE_SOFTWARE,null);//加速
 		webview.setWebViewClient(new WebViewClient(){
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -429,7 +433,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			webview.reload();
 		}else{
 			//请更新至最新版本
-			Util.toastLong(BannerTopicActivity.this, url.toString());
+//			Util.toastLong(BannerTopicActivity.this, url.toString());
 		}
 	}
 	

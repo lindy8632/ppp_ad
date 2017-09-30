@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
-import com.ylfcf.ppp.widget.LoadingDialog;
 /**
  * 充值凭证
  * @author Mr.liu
@@ -24,14 +23,12 @@ public class RechargeProofActivity extends BaseActivity implements OnClickListen
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private WebView wv;
-	private LoadingDialog loadingDialog;
 	private String rechargeId = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.recharge_proof_activity);
-		loadingDialog = new LoadingDialog(RechargeProofActivity.this, "正在加载...", R.anim.loading);
 		rechargeId = getIntent().getStringExtra("recharge_id");
 		findViews();
 	}
@@ -58,10 +55,10 @@ public class RechargeProofActivity extends BaseActivity implements OnClickListen
 			public void onProgressChanged(WebView view, int newProgress) {	
 				if(newProgress == 100 && mLoadingDialog.isShowing()){
 					//网页加载完成
-					loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 				}else if(newProgress != 100 && !mLoadingDialog.isShowing() && !isFinishing()){
 					//网页加载中...
-					loadingDialog.show();
+					mLoadingDialog.show();
 				}
 			}
 		});
@@ -96,8 +93,5 @@ public class RechargeProofActivity extends BaseActivity implements OnClickListen
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		if(loadingDialog != null && loadingDialog.isShowing()){
-			loadingDialog.dismiss();
-		}
 	}
 }

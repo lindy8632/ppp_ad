@@ -19,6 +19,7 @@ import com.ylfcf.ppp.inter.Inter.OnUserYUANAccountInter;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.Util;
 
 /**
  * 我的元金币
@@ -106,9 +107,9 @@ public class MyYuanMoneyActivity extends BaseActivity implements OnClickListener
 	}
 
 	private void initData(UserYUANAccountInfo info){
-		yuanMoneyUsed.setText(info.getUse_coin());
-		yuanMoneyFrozen.setText(info.getFrozen_coin());
-		yuanMoneyDaishou.setText(info.getCollection_coin());
+		yuanMoneyUsed.setText(Util.formatRate(info.getUse_coin()));
+		yuanMoneyFrozen.setText(Util.formatRate(info.getFrozen_coin()));
+		yuanMoneyDaishou.setText(Util.formatRate(info.getCollection_coin()));
 		double userCoinD = 0d;
 		try{
 			userCoinD = Double.parseDouble(info.getUse_coin());

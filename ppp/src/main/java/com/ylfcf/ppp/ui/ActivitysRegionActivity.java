@@ -31,7 +31,6 @@ import java.util.List;
 /**
  * 活动专区
  * @author Mr.liu
- *
  */
 public class ActivitysRegionActivity extends BaseActivity implements OnClickListener{
 	private static final String className = "ActivitysRegionActivity";

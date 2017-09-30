@@ -44,8 +44,8 @@ public class ActivitysRegionAdapter extends ArrayAdapter<ActiveInfo>{
         activeList = new ArrayList<ActiveInfo>();
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         this.imageLoader = ImageLoaderManager.newInstance();
-        options = ImageLoaderManager.configurationOption(R.drawable.default_vertical_logo,
-                R.drawable.default_vertical_logo);
+        options = ImageLoaderManager.configurationOption(R.drawable.icon_empty,
+                R.drawable.icon_empty);
     }
 
     /**

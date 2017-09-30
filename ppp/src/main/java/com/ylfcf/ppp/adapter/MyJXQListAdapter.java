@@ -104,7 +104,7 @@ public class MyJXQListAdapter extends ArrayAdapter<JiaxiquanInfo>{
 		} catch (Exception e) {
 		}
 		
-		viewHolder.jxText.setText(info.getMoney()+"%");
+		viewHolder.jxText.setText(Util.formatRate(info.getMoney())+"%");
 		if("".equals(info.getBorrow_type()) || info.getBorrow_type() == null || "null".equals(info.getBorrow_type())
 				|| "NULL".equals(info.getBorrow_type())){
 			viewHolder.syfwText.setText("一 一");
@@ -141,9 +141,13 @@ public class MyJXQListAdapter extends ArrayAdapter<JiaxiquanInfo>{
 			e.printStackTrace();
 		}
 		if(limitMoneyD >= 10000){
-			viewHolder.syyqText.setText("使用规则："+"单笔投资金额不低于"+limitMoneyD/10000+"万元");
+			if(limitMoneyD % 10000 == 0){
+				viewHolder.syyqText.setText("使用规则："+"单笔投资金额不低于"+(int)(limitMoneyD/10000)+"万元");
+			}else{
+				viewHolder.syyqText.setText("使用规则："+"单笔投资金额不低于"+(int)(limitMoneyD)/10000d+"万元");
+			}
 		}else{
-			viewHolder.syyqText.setText("使用规则："+"单笔投资金额不低于"+info.getMin_invest_money()+"元");
+			viewHolder.syyqText.setText("使用规则："+"单笔投资金额不低于"+(int)limitMoneyD+"元");
 		}
 
 		if(info.getCoupon_from() == null || "".equals(info.getCoupon_from())){

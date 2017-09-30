@@ -1027,6 +1027,10 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 							handler.sendMessage(msg);
 						}
 					}, 200L);
+				}else if(resultCode == -1){
+					Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
+					msg.obj = "用户名或者密码错误！";
+					handler.sendMessage(msg);
 				}else{
 					Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
 					msg.obj = baseInfo.getMsg();
@@ -1236,6 +1240,10 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 									handler.sendMessage(msg);
 								}
 							}, 200L);
+						}else if(resultCode == -1){
+							Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
+							msg.obj = "用户名或者密码错误！";
+							handler.sendMessage(msg);
 						}else{
 							Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
 							msg.obj = baseInfo.getMsg();

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.RedBagInfo;
+import com.ylfcf.ppp.util.Util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -147,7 +148,7 @@ public class RedBagAdapter extends ArrayAdapter<RedBagInfo> {
 		}else{
 			viewHolder.remark.setText("备注： — —");
 		}
-		viewHolder.eduText.setText(info.getMoney());
+		viewHolder.eduText.setText(Util.formatRate(info.getMoney()));
 		if("已使用".equals(info.getUse_status())){
 			viewHolder.useFanweiText.setText("投资标的：" + info.getBorrow_name());
 			viewHolder.validityText.setText("使用时间：" + info.getUse_time());
@@ -162,8 +163,13 @@ public class RedBagAdapter extends ArrayAdapter<RedBagInfo> {
 
 			}
 			if(needInvestMoneyI >= 10000){
-				viewHolder.useLimitText.setText("使用规则：单笔投资金额不低于"
-						+ needInvestMoneyI/10000 + "万元");
+				if(needInvestMoneyI % 10000 == 0){
+					viewHolder.useLimitText.setText("使用规则：单笔投资金额不低于"
+							+ needInvestMoneyI/10000 + "万元");
+				}else{
+					viewHolder.useLimitText.setText("使用规则：单笔投资金额不低于"
+							+ needInvestMoneyI/10000d + "万元");
+				}
 			}else if(needInvestMoneyI <= 0){
 				viewHolder.useLimitText.setText("使用规则：无");
 			}else{
