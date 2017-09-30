@@ -1,20 +1,19 @@
 package com.ylfcf.ppp.adapter;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.entity.InvestRecordInfo;
-import com.ylfcf.ppp.util.SettingsManager;
-import com.ylfcf.ppp.util.Util;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.entity.InvestRecordInfo;
+import com.ylfcf.ppp.util.Util;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 某支标的投资记录（不是用户的投资记录...）
@@ -95,9 +94,14 @@ public class BorrowRecordsAdapter extends ArrayAdapter<InvestRecordInfo>{
 		try {
 			moneyD = Double.parseDouble(info.getMoney());
 			if(moneyD >= 10000){
-				viewHolder.investMoney.setText(Util.double2PointDouble(moneyD/10000)+"万");
+				if(moneyD % 10000 == 0){
+					//一万的整数倍
+					viewHolder.investMoney.setText((int)(moneyD/10000)+"万");
+				}else{
+					viewHolder.investMoney.setText((int)moneyD/10000d+"万");
+				}
 			}else{
-				viewHolder.investMoney.setText(Util.double2PointDouble(moneyD));
+				viewHolder.investMoney.setText(Util.formatRate(String.valueOf(moneyD)));
 			}
 		} catch (Exception e) {
 			viewHolder.investMoney.setText(info.getMoney());

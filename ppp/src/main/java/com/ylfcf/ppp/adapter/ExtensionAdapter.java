@@ -90,8 +90,8 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 		viewHolder.borrowNameTV.setText(info.getBorrow_name());
 		viewHolder.phone.setText(info.getInvest_user_mobile());// 用户名
 		viewHolder.time.setText("投资时间: "+info.getInvest_time().split(" ")[0]);
-		viewHolder.hasInterest.setText(info.getPercentage()+"元");
-		viewHolder.investMoney.setText(info.getInvest_money()+"元");
+		viewHolder.hasInterest.setText(Util.formatRate(info.getPercentage())+"元");
+		viewHolder.investMoney.setText(Util.formatRate(info.getInvest_money())+"元");
 		viewHolder.nameTV.setText("姓名: "+Util.hidRealName2(info.getInvest_user_name()));
 		viewHolder.interestStartTime.setText(info.getInterest_start_time().split(" ")[0]);
 		viewHolder.collectedTime.setText("预计到账时间: "+info.getReturn_time().split(" ")[0]);

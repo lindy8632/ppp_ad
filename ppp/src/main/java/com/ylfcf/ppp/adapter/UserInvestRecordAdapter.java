@@ -130,7 +130,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			interestD = Double.parseDouble(info.getInterest().replace("%", ""));
 		} catch (Exception e) {
 		}
-		viewHolder.rate.setText(Util.double2PointDouble(interestRateD + interestRateFloat)+ "%");//年化收益
+		viewHolder.rate.setText(Util.formatRate(String.valueOf(interestRateD + interestRateFloat))+ "%");//年化收益
 		double investMoneyD = 0d;
 		try {
 			investMoneyD = Double.parseDouble(info.getFact_money());
@@ -169,11 +169,11 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				sumInterestD = Double.parseDouble(info.getSum_interest());                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 			} catch (Exception e) {
 			}
-			viewHolder.rate.setText(Util.double2PointDouble(interestRateD + interestRateFloat)+ "%");//年化收益
+			viewHolder.rate.setText(Util.formatRate(String.valueOf(interestRateD + interestRateFloat))+ "%");//年化收益
 			if(couponRateD + interestD <= 0){
 				viewHolder.addRate.setText("— —");
 			}else{
-				viewHolder.addRate.setText(Util.double2PointDouble(couponRateD + interestD)+"%");//加息奖励
+				viewHolder.addRate.setText(Util.formatRate(String.valueOf(couponRateD + interestD))+"%");//加息奖励
 			}
 			int interestPeroidI = 0;//投资期限
 			try {
@@ -195,10 +195,10 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			double totalInterestD = totalInvestMoneyD * totalRate * interestPeroidI / 36500 + redbagMoneyD * interestRateD * interestPeroidI / 36500;
 			if(sumInterestD == 0){
 				//还没有跑满标脚本，自己计算
-				viewHolder.interestMoney.setText(Util.double2PointDouble(totalInterestD) + "元");//投资收益
+				viewHolder.interestMoney.setText(Util.formatRate(Util.double2PointDouble(totalInterestD)) + "元");//投资收益
 			}else{
 				//已跑满标脚本，直接取值
-				viewHolder.interestMoney.setText(info.getSum_interest() + "元");//投资收益
+				viewHolder.interestMoney.setText(Util.formatRate(info.getSum_interest()) + "元");//投资收益
 			}
 		}else if("vip".equals(fromWhere)){
 			if(info.getInvest_start_time() == null || "".equals(info.getInvest_start_time()) || "0000-00-00 00:00:00".equals(info.getInvest_start_time())){
@@ -218,7 +218,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			viewHolder.nhsyText.setText("业绩比较基准");
 			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);
 			try {
-				viewHolder.interestMoney.setText(Util.double2PointDouble(Double.parseDouble(info.getInterest()))+ "元");
+				viewHolder.interestMoney.setText(Util.formatRate(info.getInterest())+ "元");
 			} catch (Exception e) {
 				viewHolder.interestMoney.setText("0元");
 			}
@@ -227,7 +227,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			if(androidInterestRateD + couponRateD <= 0){
 				viewHolder.addRate.setText("— —");
 			}else{
-				viewHolder.addRate.setText(Util.double2PointDouble(androidInterestRateD + couponRateD)+"%");
+				viewHolder.addRate.setText(Util.formatRate(String.valueOf(androidInterestRateD + couponRateD))+"%");
 			}
 			try {
 				investMoneyD = Double.parseDouble(info.getMoney());
@@ -261,14 +261,14 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			}catch (Exception e){
 
 			}
-			viewHolder.interestMoney.setText(Util.double2PointDouble(interestSRZX+hbInterestSRZX) + "元");
+			viewHolder.interestMoney.setText(Util.formatRate(String.valueOf(interestSRZX + hbInterestSRZX)) + "元");
 			viewHolder.status.setText("投资状态: " + info.getInvest_status());
 			//加息
-			viewHolder.rate.setText(Util.double2PointDouble(interestRateD)+ "%");//年化收益
+			viewHolder.rate.setText(Util.formatRate(String.valueOf(interestRateD))+ "%");//年化收益
 			if(androidInterestRateD + interestRateFloat + couponRateD <= 0){
 				viewHolder.addRate.setText("— —");
 			}else{
-				viewHolder.addRate.setText(Util.double2PointDouble(androidInterestRateD + interestRateFloat + couponRateD)+"%");
+				viewHolder.addRate.setText(Util.formatRate(String.valueOf(androidInterestRateD + interestRateFloat + couponRateD))+"%");
 			}
 			try {
 				investMoneyD = Double.parseDouble(info.getMoney());
@@ -304,10 +304,10 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			}catch (Exception e){
 
 			}
-			viewHolder.interestMoney.setText(Util.double2PointDouble(interestSRZX+hbInterestSRZX) + "元");
+			viewHolder.interestMoney.setText(Util.formatRate(String.valueOf(interestSRZX + hbInterestSRZX)) + "元");
 			viewHolder.status.setText("投资状态: " + info.getInvest_status());
 			//加息
-			viewHolder.rate.setText(Util.double2PointDouble(interestRateD)+ "%");//年化收益
+			viewHolder.rate.setText(Util.formatRate(String.valueOf(interestRateD))+ "%");//年化收益
 			try {
 				investMoneyD = Double.parseDouble(info.getMoney());
 				viewHolder.investMoney.setText((int)investMoneyD + "元");
@@ -338,16 +338,9 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				interestDays = Integer.parseInt(info.getInterest_days());
 			} catch (Exception e) {
 			}
-			viewHolder.interestMoney.setText(Util.double2PointDouble(investMoneyD * interestRateD /100 * interestDays / 365) + "元");
-			try {
-				if((int)((interestRateD + interestRateFloat) * 10)%10 == 0){
-					//说明利率是整数，没有小数
-					viewHolder.rate.setText((int)(interestRateD + interestRateFloat) + "%");
-				}else{
-					viewHolder.rate.setText(Util.double2PointDoubleOne(interestRateD + interestRateFloat)+"%");
-				}
-			} catch (Exception e) {
-			}
+			viewHolder.interestMoney.setText(Util.formatRate(Util.double2PointDouble(investMoneyD * interestRateD /100 * interestDays / 365)) + "元");
+			viewHolder.rate.setText(Util.formatRate(String.valueOf(interestRateD + interestRateFloat)) + "%");
+
 			try {
 				investMoneyD = Double.parseDouble(info.getMoney());
 				viewHolder.investMoney.setText((int)investMoneyD + "元");

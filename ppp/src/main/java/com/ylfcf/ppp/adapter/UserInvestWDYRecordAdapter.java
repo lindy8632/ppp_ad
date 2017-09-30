@@ -144,7 +144,7 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 				
 				if(info.getWdy_pro_interest() != null){
 					try {
-						viewHolder.interestMoney.setText(Util.double2PointDouble(Double.parseDouble(info.getWdy_pro_interest()))+"元");
+						viewHolder.interestMoney.setText(Util.formatRate(info.getWdy_pro_interest())+"元");
 					} catch (Exception e) {
 						viewHolder.interestMoney.setText(info.getWdy_pro_interest()+"元");
 					}
@@ -163,12 +163,12 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 			viewHolder.interestMoneyTitle.setText("实际收益");
 			if(info.getWdy_real_interest() != null){
 				try {
-					viewHolder.interestMoney.setText(Util.double2PointDouble(Double.parseDouble(info.getWdy_real_interest()))+"元");
+					viewHolder.interestMoney.setText(Util.formatRate(info.getWdy_real_interest())+"元");
 				} catch (Exception e) {
 					viewHolder.interestMoney.setText(info.getWdy_pro_interest()+"元");
 				}
 			}else{
-				viewHolder.interestMoney.setText(info.getWdy_pro_interest()+"元");
+				viewHolder.interestMoney.setText(Util.formatRate(info.getWdy_pro_interest())+"元");
 			}
 		}
 
@@ -182,9 +182,9 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 		}
 		if("1".equals(info.getPeriod())){
 			//首期
-			viewHolder.nhllTV.setText(Util.double2PointDouble(baseRateD+addRateD)+"%");
+			viewHolder.nhllTV.setText(Util.formatRate(String.valueOf(baseRateD + addRateD))+"%");
 		}else{
-			viewHolder.nhllTV.setText(Util.double2PointDouble(baseRateD)+"%");
+			viewHolder.nhllTV.setText(Util.formatRate(String.valueOf(baseRateD))+"%");
 		}
 		try {
 			viewHolder.firstTime.setText("首投日：" + info.getAdd_time().split(" ")[0]);
@@ -203,7 +203,7 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 			viewHolder.totalBidMoney.setText(info.getTotal_money()+"元");
 		}
 		if(addRateD > 0){
-			viewHolder.remark.setText("首期共加息"+Util.double2PointDouble(addRateD)+"%");
+			viewHolder.remark.setText("首期共加息"+Util.formatRate(String.valueOf(addRateD))+"%");
 		}else{
 			viewHolder.remark.setText("一 一");
 		}

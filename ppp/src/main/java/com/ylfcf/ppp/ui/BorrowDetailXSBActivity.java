@@ -300,7 +300,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		timeLimit.setText(horizon);
 		repayType1.setText(productInfo.getRepay_way());
 		repayType2.setText(productInfo.getRepay_way());
-		highestMoneyTv.setText(productInfo.getInvest_highest()+"元");
+		highestMoneyTv.setText(Util.formatRate(productInfo.getInvest_highest())+"元");
 
 		double totalMoneyL = 0d;
 		int totalMoneyI = 0;
@@ -380,7 +380,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 		timeLimit.setText(horizon);
 		repayType1.setText(info.getRepay_way());
 		repayType2.setText(info.getRepay_way());
-		highestMoneyTv.setText(info.getInvest_highest()+"元");
+		highestMoneyTv.setText(Util.formatRate(info.getInvest_highest())+"元");
 
 		double totalMoneyL = 0d;
 		double investedMoneyD = 0d;//已投资的钱

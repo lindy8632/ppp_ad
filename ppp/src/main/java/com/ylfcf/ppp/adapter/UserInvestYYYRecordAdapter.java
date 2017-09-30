@@ -133,9 +133,9 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			e.printStackTrace();
 		}
 		if("0".equals(info.getInvest_times())){
-			viewHolder.nhllTV.setText(Util.double2PointDouble(baseRateD+addRateD)+"%");
+			viewHolder.nhllTV.setText(Util.formatRate(String.valueOf(baseRateD + addRateD))+"%");
 		}else{
-			viewHolder.nhllTV.setText(Util.double2PointDouble(baseRateD)+"%");
+			viewHolder.nhllTV.setText(Util.formatRate(String.valueOf(baseRateD))+"%");
 		}
 		viewHolder.firstTime.setText("首投日: " + info.getFirst_borrow_time().split(" ")[0]);
 		int times = 0;//投资次数，大于0表示复投
@@ -173,7 +173,7 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
 		}
-		viewHolder.firstMoney.setText(info.getMoney() + "元");
+		viewHolder.firstMoney.setText(Util.formatRate(info.getMoney()) + "元");
 		double interestMoneyD = 0d;
 		double returnTotalMoneyD = 0d;
 		double moneyD = 0d;
@@ -194,11 +194,11 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 			e.printStackTrace();
 		}
 		if("已赎回".equals(info.getReturn_status())){
-			viewHolder.nowMoney.setText("0.00元");
-			viewHolder.interestMoney.setText(Util.double2PointDouble(returnTotalMoneyD - moneyD - hbMoneyD) + "元");
+			viewHolder.nowMoney.setText("0元");
+			viewHolder.interestMoney.setText(Util.formatRate(String.valueOf(returnTotalMoneyD - moneyD - hbMoneyD)) + "元");
 		}else{
-			viewHolder.nowMoney.setText(info.getInvest_money() + "元");
-			viewHolder.interestMoney.setText(Util.double2PointDouble(interestMoneyD) + "元");
+			viewHolder.nowMoney.setText(Util.formatRate(info.getInvest_money()) + "元");
+			viewHolder.interestMoney.setText(Util.formatRate(String.valueOf(interestMoneyD)) + "元");
 		}
 		double interestAddD = 0d;
 		try {

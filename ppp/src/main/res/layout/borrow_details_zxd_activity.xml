@@ -389,7 +389,7 @@
                         android:id="@+id/borrow_detail_zxd_activity_qitou"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100.00元"
+                        android:text="100元"
                         android:textColor="@color/gray1"
                         android:textSize="@dimen/common_measure_18dp" />
                 </LinearLayout>
@@ -459,7 +459,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100.00元"
+                        android:text="100元"
                         android:textColor="@color/gray1"
                         android:textSize="@dimen/common_measure_18dp" />
                 </LinearLayout>

@@ -378,7 +378,7 @@
                         android:id="@+id/borrow_detail_yyy_activity_qitou"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="不低于100.00元且为100.00元的整数倍"
+                        android:text="不低于100元且为100元的整数倍"
                         android:textColor="@color/gray1"
                         android:textSize="@dimen/common_measure_18dp" />
                 </LinearLayout>

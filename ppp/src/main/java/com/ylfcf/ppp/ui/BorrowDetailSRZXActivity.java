@@ -219,7 +219,7 @@ public class BorrowDetailSRZXActivity extends BaseActivity implements
 			repayType1.setText("到期还本付息");
 		}
 		
-		qitouMoneyTv.setText(productInfo.getInvest_lowest()+"元");
+		qitouMoneyTv.setText(Util.formatRate(productInfo.getInvest_lowest())+"元");
 
 		double totalMoneyL = 0d;
 		int totalMoneyI = 0;
@@ -286,7 +286,7 @@ public class BorrowDetailSRZXActivity extends BaseActivity implements
 		}else{
 			repayType1.setText("到期还本付息");
 		}
-		qitouMoneyTv.setText(info.getInvest_lowest()+"元");
+		qitouMoneyTv.setText(Util.formatRate(info.getInvest_lowest())+"元");
 
 		double totalMoneyL = 0d;
 		double investedMoneyD = 0d;//已投资的钱

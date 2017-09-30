@@ -277,7 +277,6 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 			horizonInt = 0;
 		}
 		
-//		borrowRate.setText(rate);
 		float minRateF = 0f;
 		float maxRateF = 0f;
 		try {
@@ -305,7 +304,7 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
 		timeLimit.setText(horizon);
 		repayType1.setText(productInfo.getRepay_way());
 		repayType2.setText(productInfo.getRepay_way());
-		qitouMoneyTv.setText(productInfo.getInvest_lowest()+"元");
+		qitouMoneyTv.setText(Util.formatRate(productInfo.getInvest_lowest())+"元");
 
 		double totalMoneyL = 0d;
 		int totalMoneyI = 0;
@@ -418,7 +417,7 @@ public class BorrowDetailZXDActivity extends BaseActivity implements
         timeLimit.setText(horizon);
 		repayType1.setText(info.getRepay_way());
 		repayType2.setText(info.getRepay_way());
-		qitouMoneyTv.setText(info.getInvest_lowest()+"元");
+		qitouMoneyTv.setText(Util.formatRate(info.getInvest_lowest())+"元");
 
 		double totalMoneyL = 0d;
 		double investedMoneyD = 0d;//已投资的钱

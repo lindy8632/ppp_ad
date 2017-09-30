@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.FundsDetailsInfo;
+import com.ylfcf.ppp.util.Util;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -109,7 +110,7 @@ public class FundsDetailsAdapter extends ArrayAdapter<FundsDetailsInfo>{
 		}else{
 			viewHolder.textName1.setText("可用余额：");
 			viewHolder.balance.setText(df.format(userMoneyD) +"元");
-			viewHolder.changedMoney.setText(df.format(moneyD)+"元");
+			viewHolder.changedMoney.setText(Util.formatRate(String.valueOf(moneyD))+"元");
 		}
 		if("现金券本金".equals(info.getRemark())){
 			viewHolder.typeText.setText("红包本金");

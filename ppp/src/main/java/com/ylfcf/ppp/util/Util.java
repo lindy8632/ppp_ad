@@ -296,7 +296,7 @@ public class Util {
 				if((rateD * 10)%1 == 0){
 					return Util.double2PointDoubleOne(rateD);
 				}else{
-					return rate;
+					return Util.double2PointDouble(rateD);
 				}
 			}
 		} catch (Exception e) {

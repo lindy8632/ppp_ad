@@ -9,9 +9,9 @@ import java.io.UnsupportedEncodingException;
  */
 public class URLGenerator {
 	//正式环境
-	private static final String API_DOMAIN_URL = "http://www.ylfcf.com";//API环境
-	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
-	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
+//	private static final String API_DOMAIN_URL = "http://www.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
 
 	//验证环境
 //	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
@@ -19,9 +19,9 @@ public class URLGenerator {
 //	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//测试环境
-//	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
-//	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
+	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
+	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//朱礼涛开发环境
 //	private static final String API_DOMAIN_URL = "http://www.ylf.com";//API环境

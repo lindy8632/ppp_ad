@@ -1158,7 +1158,7 @@ public class UserFragment extends BaseFragment implements OnClickListener{
 								usedYJBTV.setVisibility(View.GONE);
 							}else{
 								usedYJBTV.setVisibility(View.VISIBLE);
-								usedYJBTV.setText(accountInfo.getUse_coin()+"元金币可用");
+								usedYJBTV.setText(Util.formatRate(accountInfo.getUse_coin())+"元金币可用");
 							}
 						}
 					}else{
