@@ -11,8 +11,8 @@ android {
         applicationId "com.ylfcf.ppp"
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 159
-        versionName "1.5.9"
+        versionCode 158
+        versionName "1.5.8"
     }
 
     compileOptions {

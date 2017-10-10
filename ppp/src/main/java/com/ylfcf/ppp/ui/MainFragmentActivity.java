@@ -543,7 +543,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		addPhoneInfoTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
 	}
 	
-	private void showUpdateDialog(AppInfo info) {
+	private void showUpdateDialog(final AppInfo info) {
 		View popView = LayoutInflater.from(this).inflate(
 				R.layout.update_window_layout, null);
 		int[] screen = SettingsManager.getScreenDispaly(MainFragmentActivity.this);

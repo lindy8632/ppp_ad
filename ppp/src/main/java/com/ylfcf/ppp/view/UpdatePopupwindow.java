@@ -99,14 +99,13 @@ public class UpdatePopupwindow extends PopupWindow implements OnClickListener {
 	@SuppressWarnings("deprecation")
 	public void show(View parentView) {
 		if ("1".equals(info.getForce_update())) {
-
 		} else {
 			this.setBackgroundDrawable(new BitmapDrawable()); // 使得返回键有效
 		}
 		context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND); 
 		this.setAnimationStyle(R.style.rechargeMsgPopwindowStyle);
 		this.setOutsideTouchable(false);
-		this.setFocusable(true);
+		this.setFocusable(false);
 		this.showAtLocation(parentView, Gravity.CENTER, 0, 0);
 	}
 
