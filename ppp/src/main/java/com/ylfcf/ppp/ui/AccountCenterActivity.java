@@ -119,47 +119,68 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
     Fragment zhzcFragment;
     Fragment hkrlFragment;
     public FragmentManager fragmentManager;
+    FragmentTransaction trasection;
     private void onNavBtnOnClick(View v){
-        FragmentTransaction trasection = fragmentManager.beginTransaction();
+        trasection = fragmentManager.beginTransaction();
         switch (v.getId()) {
             case R.id.account_center_activity_tab_zhzc:
                 //ÕË»§×Ê²ú
                 String flag1 = (String) v.getTag();
                 if("0".equals(flag1)){
-                    zhzcFragment = new AccountCenterZHZCFragment();
-                    trasection.replace(R.id.account_center_activity_mainlayout, zhzcFragment);
-
                     zhzcTabBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue_left_3dp);
                     zhzcTabBtn.setTextColor(getResources().getColor(R.color.white));
                     zhzcTabBtn.setTag("1");
                     hkrlTabBtn.setBackgroundResource(R.color.transparent);
                     hkrlTabBtn.setTag("0");
                     hkrlTabBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
+
+                    if(zhzcFragment == null){
+                        zhzcFragment = new AccountCenterZHZCFragment();
+//                        trasection.replace(R.id.account_center_activity_mainlayout, zhzcFragment);
+                        trasection.add(R.id.account_center_activity_mainlayout, zhzcFragment);
+                    }else{
+                        hidFragments();
+                        trasection.show(zhzcFragment);
+                    }
+                    trasection.commit();
                 }
                 break;
             case R.id.account_center_activity_tab_hkrl:
                 String flag2 = (String) v.getTag();
                 if("0".equals(flag2)){
-                    hkrlFragment = new AccountCenterHKRLFragment();
-                    trasection.replace(R.id.account_center_activity_mainlayout, hkrlFragment);
-
                     zhzcTabBtn.setBackgroundResource(R.color.transparent);
                     zhzcTabBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
                     zhzcTabBtn.setTag("0");
                     hkrlTabBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue_right_3dp);
                     hkrlTabBtn.setTag("1");
                     hkrlTabBtn.setTextColor(getResources().getColor(R.color.white));
-
                     boolean isFloat = SettingsManager.getAccountCenterFloatFlag(getApplicationContext());
                     if(!isFloat){
                         floatImg.setVisibility(View.VISIBLE);
                         SettingsManager.setAccountCenterFloatFlag(getApplicationContext(),true);
                     }
+
+                    if(hkrlFragment == null){
+                        hkrlFragment = new AccountCenterHKRLFragment();
+                        trasection.add(R.id.account_center_activity_mainlayout, hkrlFragment);
+                    }else{
+                        hidFragments();
+                        trasection.show(hkrlFragment);
+                    }
+                    trasection.commit();
                 }
                 break;
             default:
                 break;
         }
-        trasection.commit();
+    }
+
+    private void hidFragments(){
+        if(zhzcFragment != null){
+            trasection.hide(zhzcFragment);
+        }
+        if(hkrlFragment != null){
+            trasection.hide(hkrlFragment);
+        }
     }
 }

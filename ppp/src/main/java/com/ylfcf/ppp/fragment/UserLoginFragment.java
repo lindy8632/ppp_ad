@@ -91,7 +91,7 @@ public class UserLoginFragment extends BaseFragment implements View.OnClickListe
                                 SettingsManager.setUserType(mainActivity, UserType.USER_NORMAL_PERSONAL);
                             }
                             addPhoneInfo(userInfo.getId(), phonePersonal, "", "");
-//                            onLoginSuc.onLoginSuc(userInfo);
+                            onLoginSuc.onLoginSuc(userInfo);
                         }
                     }
                     break;
@@ -107,7 +107,7 @@ public class UserLoginFragment extends BaseFragment implements View.OnClickListe
                         SettingsManager.setUserType(mainActivity, UserType.USER_COMPANY);
                         SettingsManager.setCompPhone(mainActivity, mUserInfo.getCo_mobile());
                         addPhoneInfo(mUserInfo.getId(), mUserInfo.getCo_phone(), "", "");
-//                        onLoginSuc.onLoginSuc(mUserInfo);
+                        onLoginSuc.onLoginSuc(mUserInfo);
                     }
                     break;
                 case REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT:
@@ -320,6 +320,10 @@ public class UserLoginFragment extends BaseFragment implements View.OnClickListe
                             handler.sendMessage(msg);
                         }
                     }, 200L);
+                } else if(resultCode == -1){
+                    Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
+                    msg.obj = "用户名或者密码错误！";
+                    handler.sendMessage(msg);
                 }else{
                     Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
                     msg.obj = baseInfo.getMsg();

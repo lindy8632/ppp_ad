@@ -44,6 +44,7 @@ import com.ylfcf.ppp.async.AsyncProductPageInfo;
 import com.ylfcf.ppp.entity.AppInfo;
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.PopBannerInfo;
+import com.ylfcf.ppp.entity.UserInfo;
 import com.ylfcf.ppp.entity.YXBProductInfo;
 import com.ylfcf.ppp.entity.YXBProductLogInfo;
 import com.ylfcf.ppp.inter.Inter.OnApiQueryBack;
@@ -431,13 +432,14 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 			}
 		},new OnUserFragmentLoginSucListener(){
 			@Override
-			public void onLoginSuc() {
+			public void onLoginSuc(UserInfo info) {
 				//产品登录成功的回调
 			}
 		},new OnMoreFragmentLogoutListener(){
 			@Override
 			public void onLogoutSuc() {
-				//产品退出成功的回调
+				//退出成功的回调
+
 			}
 		},new OnFirstPageHYTJOnClickListener(){
 
@@ -706,7 +708,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	 *
 	 */
 	public interface OnUserFragmentLoginSucListener{
-		void onLoginSuc();
+		void onLoginSuc(UserInfo userInfo);
 	}
 	
 	/**

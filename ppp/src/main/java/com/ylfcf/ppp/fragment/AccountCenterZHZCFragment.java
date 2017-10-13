@@ -20,6 +20,7 @@ import com.ylfcf.ppp.async.AsyncJXQLogList;
 import com.ylfcf.ppp.async.AsyncRedbgList;
 import com.ylfcf.ppp.async.AsyncUserYUANAccount;
 import com.ylfcf.ppp.entity.BaseInfo;
+import com.ylfcf.ppp.entity.JiaxiquanInfo;
 import com.ylfcf.ppp.entity.JiaxiquanPageInfo;
 import com.ylfcf.ppp.entity.RedBagPageInfo;
 import com.ylfcf.ppp.entity.UserRMBAccountInfo;
@@ -35,6 +36,10 @@ import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 账户中心 -- 账户资产
@@ -81,6 +86,8 @@ public class AccountCenterZHZCFragment extends BaseFragment implements View.OnCl
     private TextView jxqCountTV;//加息券个数
     private TextView jxqUseBtn;
     private TextView jxqDetailBtn;
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private List<JiaxiquanInfo> jxqList = new ArrayList<JiaxiquanInfo>();
 
     private Handler handler = new Handler(){
         @Override
@@ -92,7 +99,7 @@ public class AccountCenterZHZCFragment extends BaseFragment implements View.OnCl
                     break;
                 case REQUEST_JXQ_LIST_WHAT:
                     requestJXQList(SettingsManager.getUserId(mainActivity
-                            .getApplicationContext()), "","未使用",0,2,"");
+                            .getApplicationContext()), "","未使用",0,50,"0");
                     break;
                 case REQUEST_HB_LIST_WHAT:
                     requestHBList(SettingsManager.getUserId(mainActivity
@@ -335,6 +342,29 @@ public class AccountCenterZHZCFragment extends BaseFragment implements View.OnCl
         dialog.getWindow().setAttributes(lp);
     }
 
+    private void initJXQData(BaseInfo baseInfo){
+        JiaxiquanPageInfo pageInfo = baseInfo.getmJiaxiquanPageInfo();
+        if(pageInfo == null || pageInfo.getInfoList() == null
+                || pageInfo.getInfoList().size() <= 0){
+            jxqCountTV.setText("0");
+            return;
+        }
+        Date endDate = null;
+        jxqList.clear();
+        for(int i=0;i<pageInfo.getInfoList().size();i++){
+            JiaxiquanInfo info = pageInfo.getInfoList().get(i);
+            try {
+                endDate = sdf.parse(info.getEffective_end_time());
+                if(endDate.compareTo(sdf.parse(baseInfo.getTime())) == 1){
+                    //表示加息券还未过期
+                    jxqList.add(info);
+                }
+            } catch (Exception e) {
+            }
+        }
+        jxqCountTV.setText(String.valueOf(jxqList.size()));
+    }
+
     /**
      * 元金币账户
      * @param userId
@@ -373,8 +403,7 @@ public class AccountCenterZHZCFragment extends BaseFragment implements View.OnCl
                     int resultCode = SettingsManager
                             .getResultCode(baseInfo);
                     if (resultCode == 0) {
-                        JiaxiquanPageInfo pageInfo = baseInfo.getmJiaxiquanPageInfo();
-                        jxqCountTV.setText(pageInfo.getTotal());
+                        initJXQData(baseInfo);
                     }
                 }
             }

@@ -50,7 +50,7 @@
                     android:layout_height="@dimen/common_measure_24dp"
                     android:layout_toLeftOf="@+id/my_account_personal_idcard_img"
                     android:scaleType="fitCenter"
-                    android:background="@drawable/my_account_personal_phone_logo"/>
+                    android:background="@drawable/my_account_personal_phone_light"/>
 
                 <ImageView
                     android:id="@+id/my_account_personal_idcard_img"
@@ -91,7 +91,7 @@
                         android:layout_gravity="center_horizontal"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/common_measure_18dp"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
                         android:text="资产总额："/>
 
                     <TextView
@@ -100,8 +100,8 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/common_measure_20dp"
-                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/common_measure_22dp"
+                        android:textColor="@color/white"
                         android:textStyle="bold"
                         android:text="0.00"/>
 
@@ -111,18 +111,17 @@
                         android:layout_gravity="center_horizontal"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/common_measure_18dp"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
                         android:text="元"/>
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                <ImageView
+                    android:layout_width="@dimen/common_measure_17dp"
+                    android:layout_height="@dimen/common_measure_23dp"
                     android:layout_alignParentRight="true"
-                    android:textSize="@dimen/common_measure_22dp"
-                    android:textColorHint="@color/white"
-                    android:text=">"/>
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/common_topbar_right_btn_press"/>
 
             </RelativeLayout>
 
@@ -146,16 +145,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="left|center_vertical"
+                    android:gravity="left|bottom"
                     android:text="账户余额"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/common_measure_18dp" />
                 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="left|center_vertical"
+                    android:gravity="left|top"
                     android:orientation="horizontal">
 
                     <TextView
@@ -164,8 +163,8 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/common_measure_18dp"
-                        android:textColor="@color/black"
+                        android:textSize="@dimen/common_measure_20dp"
+                        android:textColor="@color/gray"
                         android:textStyle="bold"
                         android:text="0.00"/>
 
@@ -174,7 +173,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/common_measure_18dp"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:text="元"/>
 
                 </LinearLayout>
@@ -187,10 +186,12 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <Button
+                <TextView
                     android:id="@+id/my_account_personal_withdraw_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/common_measure_10dp"
+                    android:paddingLeft="@dimen/common_measure_10dp"
                     android:background="@null"
                     android:text="提现"
                     android:textColor="@color/gray"
@@ -199,12 +200,14 @@
                 <View
                     android:layout_width="@dimen/common_measure_1dp"
                     android:layout_height="@dimen/common_measure_20dp"
-                    android:background="@color/gray1"/>
+                    android:background="@color/edittext_line_color"/>
 
-                <Button
+                <TextView
                     android:id="@+id/my_account_personal_recharge_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/common_measure_10dp"
+                    android:paddingLeft="@dimen/common_measure_10dp"
                     android:background="@null"
                     android:text="充值"
                     android:textColor="@color/common_topbar_bg_color"

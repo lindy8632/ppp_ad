@@ -240,7 +240,7 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 					Util.toastShort(mainActivity, "用户已退出");
 					logoutSucListener.onLogoutSuc();
 				}
-			}, 1000L);
+			}, 500L);
 		}
 	}
 	

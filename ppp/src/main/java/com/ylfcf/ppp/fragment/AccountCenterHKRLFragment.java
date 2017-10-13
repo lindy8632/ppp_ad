@@ -1,5 +1,6 @@
 package com.ylfcf.ppp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,6 +10,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.ylfcf.info.DateData;
@@ -22,10 +26,12 @@ import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.entity.RepaymentInfo;
 import com.ylfcf.ppp.inter.Inter;
 import com.ylfcf.ppp.ui.AccountCenterActivity;
+import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
+import com.ylfcf.ppp.view.DateWheelPopupwindow;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +39,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.ylfcf.ppp.R.id.account_center_hkrl_date_tv;
 
 /**
  * 账户中心 -- 回款日历
@@ -47,14 +55,21 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
 
     private AccountCenterActivity mainActivity;
     private View rootView;
+    private ScrollView mainLayout;
 
     private ImageView arrowLeftImg,arrowRightImg;
     private TextView curMonthTV;//当前月份
     private TextView hkTotalMoneyTV;//回款总额
     private ExpCalendarView mExpCalendarView;//日历控件
+
+    private RelativeLayout hkInfoLayout;//某日回款信息
+    private LinearLayout hkInfoNorLayout;
     private TextView curDateTV;//当前日期
     private TextView hkCountTV;//当月还款笔数
     private TextView hkMoneyTV;//当日回款金额
+    private LinearLayout hkInfoWdyLayout;
+    private TextView curDateWdyTV;
+    private TextView hkCountWdyTV;
     private Button catInvestRecordBtn;//查看回款日历
 
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月");
@@ -64,6 +79,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
     private List<String> repaymentDateList;//回款日期 yyyyMMdd
     private List<String> repaymentCurDayMoneyList;//当日回款金额
     private List<String> repaymentCurDayCountList;//当日回款笔数
+    private List<String> wdyDateList;//薪盈计划回款日期
     private int curYear = 2017;//当前的年份
     private int curMonth = 1;//当前的月份
 
@@ -102,16 +118,24 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
         arrowLeftImg.setOnClickListener(this);
         arrowRightImg = (ImageView)rootView.findViewById(R.id.account_center_hkrl_arrow_right);
         arrowRightImg.setOnClickListener(this);
-        curMonthTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_date_tv);
+        curMonthTV = (TextView) rootView.findViewById(account_center_hkrl_date_tv);
+        curMonthTV.setOnClickListener(this);
         hkTotalMoneyTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_curmonth_totalmoney);
         mExpCalendarView = (ExpCalendarView) rootView.findViewById(R.id.account_center_hkrl_calendarview);
+        hkInfoLayout = (RelativeLayout) rootView.findViewById(R.id.account_center_hkrl_info_layout);
+        hkInfoNorLayout = (LinearLayout) rootView.findViewById(R.id.account_center_hkrl_info_layout_nor);
         curDateTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_hkinfo_cur_date_tv);
         hkCountTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_hkinfo_count);
         hkMoneyTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_hkinfo_money);
+        hkInfoWdyLayout = (LinearLayout) rootView.findViewById(R.id.account_center_hkrl_info_layout_wdy);
+        curDateWdyTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_hkinfo_cur_date_tv_wdy);
+        hkCountWdyTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_hkinfo_count_wdy);
         catInvestRecordBtn = (Button) rootView.findViewById(R.id.account_center_hkrl_cat_invest_record_btn);
         catInvestRecordBtn.setOnClickListener(this);
+        mainLayout = (ScrollView) rootView.findViewById(R.id.account_center_hkrl_fragment_mainlayout);
 
         initListners();
+        initCurMonthData("");
     }
 
     private void initListners(){
@@ -125,6 +149,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
             @Override
             public void onMonthChange(int year, int month) {
                 curMonthTV.setText(String.format("%d年%d月", year, month));
+                hkInfoLayout.setVisibility(View.GONE);
                 if(month < 10){
                     getCurMonthRepayment(new StringBuffer().append(year).append("0").append(month).toString());
                 }else{
@@ -147,28 +172,47 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
         }
         String key = new StringBuffer().append(data.getYear()).append(data.getMonthString()).append(data.getDayString()).toString();
         RepaymentDayData dayData = repaymentDayDataMap.get(key);
+        hkInfoLayout.setVisibility(View.VISIBLE);
         if(dayData == null){
+            hkInfoNorLayout.setVisibility(View.VISIBLE);
+            hkInfoWdyLayout.setVisibility(View.GONE);
             curDateTV.setText(data.getMonth()+"月"+data.getDay()+"日");
             hkCountTV.setText("0");
             hkMoneyTV.setText("0");
             return;
         }
-        curDateTV.setText(data.getMonth()+"月"+data.getDay()+"日");
-        hkCountTV.setText(dayData.getCount());
-        hkMoneyTV.setText(dayData.getMoney());
+        if("0".equals(dayData.getMoney())){
+            //说明是薪盈计划
+            hkInfoNorLayout.setVisibility(View.GONE);
+            hkInfoWdyLayout.setVisibility(View.VISIBLE);
+            curDateWdyTV.setText(data.getMonth()+"月"+data.getDay()+"日");
+            hkCountWdyTV.setText(dayData.getCount());
+        }else{
+            hkInfoNorLayout.setVisibility(View.VISIBLE);
+            hkInfoWdyLayout.setVisibility(View.GONE);
+            curDateTV.setText(data.getMonth()+"月"+data.getDay()+"日");
+            hkCountTV.setText(dayData.getCount());
+            double moneyD = 0d;
+            try{
+                moneyD = Double.parseDouble(dayData.getMoney());
+                hkMoneyTV.setText(Util.double2PointDouble(moneyD));
+            }catch (Exception e){
+                hkMoneyTV.setText(dayData.getMoney());
+            }
+        }
     }
 
     private void initCurMonthData(String curDateStr){
-        if("".equals(curDateStr)){
+        if(curDateStr == null || "".equals(curDateStr)){
             curMonthTV.setText(sdf.format(new Date()));
             getCurMonthRepayment(String.valueOf(sdf2.format(new Date())));
-            intCurYearAndMonth(sdf2.format(new Date()));
+            intCurYearAndMonth(sdf1.format(new Date()));
             return;
         }
         try{
             curMonthTV.setText(sdf.format(sdf1.parse(curDateStr)));
             getCurMonthRepayment(sdf2.format(sdf1.parse(curDateStr)));
-            intCurYearAndMonth(sdf2.format(sdf1.parse(curDateStr)));
+            intCurYearAndMonth(curDateStr);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -183,9 +227,9 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
         String monthS="";
         String dayS="";
         try {
-            yearS = sdfYear.format(sdf2.parse(date));
-            monthS = sdfMonth.format(sdf3.parse(date));
-            dayS = sdfDay.format(sdf3.parse(date));
+            yearS = sdfYear.format(sdf1.parse(date));
+            monthS = sdfMonth.format(sdf1.parse(date));
+            dayS = sdfDay.format(sdf1.parse(date));
         }catch(Exception e){
 
         }
@@ -246,7 +290,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
 
             }
             DateData data = new DateData(year,month,day);
-            data.setMarkStyle(new MarkStyle(MarkStyle.DEFAULT,MarkStyle.defaultColor));
+            data.setMarkStyle(new MarkStyle(MarkStyle.DEFAULT, MarkStyle.defaultColor));
             mExpCalendarView.markDate(data);
         }
     }
@@ -287,8 +331,9 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
                 }else{
                     curMonth--;
                 }
-                DateData data = new DateData(curYear,curMonth,1);
+                DateData data = new DateData(curYear,curMonth,0);
                 mExpCalendarView.travelTo(data);
+                hkInfoLayout.setVisibility(View.GONE);
                 break;
             case R.id.account_center_hkrl_arrow_right:
                 //向右的箭头
@@ -298,10 +343,39 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
                 }else{
                     curMonth++;
                 }
-                DateData data1 = new DateData(curYear,curMonth,1);
+                DateData data1 = new DateData(curYear,curMonth,0);
                 mExpCalendarView.travelTo(data1);
+                hkInfoLayout.setVisibility(View.GONE);
+                break;
+            case account_center_hkrl_date_tv:
+                showDatePopwindow();
+                break;
+            case R.id.account_center_hkrl_cat_invest_record_btn:
+                //查看投资记录
+                Intent intent = new Intent(mainActivity, UserInvestRecordActivity.class);
+                intent.putExtra("from_where","元政盈");
+                startActivity(intent);
                 break;
         }
+    }
+
+    private void showDatePopwindow(){
+        View popView = LayoutInflater.from(mainActivity).inflate(
+                R.layout.date_wheel_popupwindow, null);
+        DateWheelPopupwindow popwindow = new DateWheelPopupwindow(mainActivity,
+                popView,new OnDatePopwindowOkListener(){
+            @Override
+            public void onClickListener(String year, String month) {
+                try{
+                    curYear = Integer.parseInt(year.replace("年",""));
+                    curMonth = Integer.parseInt(month.replace("月",""));
+                }catch (Exception e){
+                }
+                DateData data = new DateData(curYear,curMonth,0);
+                mExpCalendarView.travelTo(data);
+            }
+        },curYear,curMonth);
+        popwindow.show(mainLayout);
     }
 
     public void onResume() {
@@ -334,6 +408,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
                         repaymentDateList = info.getRepaymentDateList();
                         repaymentCurDayMoneyList = info.getRepaymentCurDayMoneyList();
                         repaymentCurDayCountList = info.getRepaymentCurDayCountList();
+                        wdyDateList = info.getWdyDateList();
                         initRepaymentData();
                         initCurMonthData(baseInfo.getTime());
                     }
@@ -371,5 +446,9 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
         public void setCount(String count) {
             this.count = count;
         }
+    }
+
+    public interface OnDatePopwindowOkListener{
+        void onClickListener(String year,String month);
     }
 }

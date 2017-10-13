@@ -139,7 +139,6 @@ public class MyJXQNousedFragment extends BaseFragment{
 		if (parent != null) {
 			parent.removeView(rootView);
 		}
-//		handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
 		return rootView;
 	}
 

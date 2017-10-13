@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.parse.JsonParseJXQPageInfo;
+import com.ylfcf.ppp.parse.JsonParseJXQLogList;
 import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
 import com.ylfcf.ppp.util.URLGenerator;
@@ -51,7 +51,7 @@ public class AsyncJXQLogList extends AsyncTaskBase{
 			if (result == null) {
 				result = BackType.FAILE;
 			} else {
-				baseInfo = JsonParseJXQPageInfo.parseData(result);
+				baseInfo = JsonParseJXQLogList.parseData(result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

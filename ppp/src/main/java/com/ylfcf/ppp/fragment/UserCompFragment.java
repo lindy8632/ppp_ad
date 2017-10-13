@@ -32,11 +32,15 @@ import com.ylfcf.ppp.ptr.PtrDefaultHandler;
 import com.ylfcf.ppp.ptr.PtrFrameLayout;
 import com.ylfcf.ppp.ptr.PtrHandler;
 import com.ylfcf.ppp.ui.AccountSettingActivity;
+import com.ylfcf.ppp.ui.AccountSettingCompActivity;
 import com.ylfcf.ppp.ui.BindCardActivity;
+import com.ylfcf.ppp.ui.FundsDetailsActivity;
 import com.ylfcf.ppp.ui.InvitateActivity;
 import com.ylfcf.ppp.ui.MainFragmentActivity;
 import com.ylfcf.ppp.ui.ModifyLoginPwdActivity;
 import com.ylfcf.ppp.ui.RechargeActivity;
+import com.ylfcf.ppp.ui.RechargeCompActivity;
+import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.ui.UserVerifyActivity;
 import com.ylfcf.ppp.ui.WithdrawActivity;
 import com.ylfcf.ppp.ui.WithdrawCompActivity;
@@ -130,23 +134,23 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void findViews(View view){
-//        usernameTVComp = (TextView) view.findViewById(R.id.my_account_comp_username);
-//        companyNameTV = (TextView) view.findViewById(R.id.my_account_comp_companyname);
-//        zhyeTotalTVComp = (TextView) view.findViewById(R.id.my_account_comp_zhye_total_tv);
-//        zhyeBalanceTV = (TextView)view.findViewById(R.id.my_account_comp_zhye_balance);
-//        djjeTV = (TextView)view.findViewById(R.id.my_account_comp_djje_tv);
-//        dsjeTV = (TextView)view.findViewById(R.id.my_account_comp_dsje_tv);
-//        withdrawBtn = (Button)view.findViewById(R.id.my_account_comp_withdraw_btn);
-//        withdrawBtn.setOnClickListener(this);
-//        rechargeBtn = (Button)view.findViewById(R.id.my_account_comp_recharge_btn);
-//        rechargeBtn.setOnClickListener(this);
-//        zjmxLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_zjmx_layout);
-//        zjmxLayout.setOnClickListener(this);
-//        tbjlLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_tbjl_layout);
-//        tbjlLayout.setOnClickListener(this);
-//        yqyjLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_yqyj_layout);
-//        yqyjLayout.setOnClickListener(this);
-//        zhszLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_zhsz_layout);
+        usernameTVComp = (TextView) view.findViewById(R.id.my_account_comp_username);
+        companyNameTV = (TextView) view.findViewById(R.id.my_account_comp_companyname);
+        zhyeTotalTVComp = (TextView) view.findViewById(R.id.my_account_comp_zhye_total_tv);
+        zhyeBalanceTV = (TextView)view.findViewById(R.id.my_account_comp_zhye_balance);
+        djjeTV = (TextView)view.findViewById(R.id.my_account_comp_djje_tv);
+        dsjeTV = (TextView)view.findViewById(R.id.my_account_comp_dsje_tv);
+        withdrawBtn = (Button)view.findViewById(R.id.my_account_comp_withdraw_btn);
+        withdrawBtn.setOnClickListener(this);
+        rechargeBtn = (Button)view.findViewById(R.id.my_account_comp_recharge_btn);
+        rechargeBtn.setOnClickListener(this);
+        zjmxLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_zjmx_layout);
+        zjmxLayout.setOnClickListener(this);
+        tbjlLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_tbjl_layout);
+        tbjlLayout.setOnClickListener(this);
+        yqyjLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_yqyj_layout);
+        yqyjLayout.setOnClickListener(this);
+        zhszLayout = (LinearLayout)view.findViewById(R.id.my_account_comp_zhsz_layout);
         zhszLayout.setOnClickListener(this);
         compMainLayout = view.findViewById(R.id.user_comp_fragment_layout);
         initRefreshLayout(view);
@@ -205,46 +209,46 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.my_account_comp_withdraw_btn:
-//                //提现
-//                withdrawBtn.setEnabled(false);
-//                checkIsVerify("提现");
-//                break;
-//            case R.id.my_account_comp_recharge_btn:
-//                //充值
-//                if(SettingsManager.isPersonalUser(mainActivity)){
-//                    checkIsVerify("充值");
-//                }else if(SettingsManager.isCompanyUser(mainActivity)){
-//                    Intent intentRechargeComp = new Intent(mainActivity,RechargeCompActivity.class);
-//                    startActivity(intentRechargeComp);
-//                }
-//                break;
-//            case R.id.my_account_comp_zjmx_layout:
-//                //资金明细
-//                Intent intentFund = new Intent(mainActivity,FundsDetailsActivity.class);
-//                intentFund.putExtra("userinfo", mUserInfo);
-//                startActivity(intentFund);
-//                break;
-//            case R.id.my_account_comp_tbjl_layout:
-//    //			initAllRecLayout();
-//                Intent intentUserRecord = new Intent(mainActivity,UserInvestRecordActivity.class);
-//                startActivity(intentUserRecord);
-//                break;
-//            case R.id.my_account_comp_yqyj_layout:
-//                //邀请有奖、
-//                yqyjLayout.setEnabled(false);
-//                checkIsVerify("邀请有奖");
-//                break;
-//            case R.id.my_account_comp_zhsz_layout:
-//                //账户设置
-//                if(SettingsManager.isPersonalUser(mainActivity)){
-//                    zhszLayout.setEnabled(false);
-//                    checkIsVerify("账户设置");
-//                }else if(SettingsManager.isCompanyUser(mainActivity)){
-//                    Intent intentZHSZComp = new Intent(mainActivity,AccountSettingCompActivity.class);
-//                    startActivity(intentZHSZComp);
-//                }
-//                break;
+            case R.id.my_account_comp_withdraw_btn:
+                //提现
+                withdrawBtn.setEnabled(false);
+                checkIsVerify("提现");
+                break;
+            case R.id.my_account_comp_recharge_btn:
+                //充值
+                if(SettingsManager.isPersonalUser(mainActivity)){
+                    checkIsVerify("充值");
+                }else if(SettingsManager.isCompanyUser(mainActivity)){
+                    Intent intentRechargeComp = new Intent(mainActivity,RechargeCompActivity.class);
+                    startActivity(intentRechargeComp);
+                }
+                break;
+            case R.id.my_account_comp_zjmx_layout:
+                //资金明细
+                Intent intentFund = new Intent(mainActivity,FundsDetailsActivity.class);
+                intentFund.putExtra("userinfo", mUserInfo);
+                startActivity(intentFund);
+                break;
+            case R.id.my_account_comp_tbjl_layout:
+    //			initAllRecLayout();
+                Intent intentUserRecord = new Intent(mainActivity,UserInvestRecordActivity.class);
+                startActivity(intentUserRecord);
+                break;
+            case R.id.my_account_comp_yqyj_layout:
+                //邀请有奖、
+                yqyjLayout.setEnabled(false);
+                checkIsVerify("邀请有奖");
+                break;
+            case R.id.my_account_comp_zhsz_layout:
+                //账户设置
+                if(SettingsManager.isPersonalUser(mainActivity)){
+                    zhszLayout.setEnabled(false);
+                    checkIsVerify("账户设置");
+                }else if(SettingsManager.isCompanyUser(mainActivity)){
+                    Intent intentZHSZComp = new Intent(mainActivity,AccountSettingCompActivity.class);
+                    startActivity(intentZHSZComp);
+                }
+                break;
         }
     }
 
@@ -383,7 +387,10 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
                 }
                 if(flag){
                     //用户已经实名
-                    checkIsBindCard(type);
+                    if(!SettingsManager.isCompanyUser(getActivity().getApplicationContext())){
+                        //企业用户已在线下实名，所以不再进行判断
+                        checkIsBindCard(type);
+                    }
                 }else{
                     rechargeBtn.setEnabled(true);
                     withdrawBtn.setEnabled(true);

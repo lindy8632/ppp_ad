@@ -93,8 +93,8 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
     private TextView usernameTV;//个人用户的用户名
     private TextView zhyeTotalTV;//账户总余额
     private TextView zhyeBalanceTV;//账户余额
-    private Button withdrawBtn;
-    private Button rechargeBtn;
+    private TextView withdrawBtn;
+    private TextView rechargeBtn;
 
     //未实名的提示布局
     private LinearLayout unverifyLayout;
@@ -194,9 +194,9 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
         usernameTV = (TextView)view.findViewById(R.id.my_account_personal_username);
         zhyeTotalTV = (TextView)view.findViewById(R.id.my_account_personal_totalmoney_tv);
         zhyeBalanceTV = (TextView)view.findViewById(R.id.my_account_personal_balancemoney_tv);
-        withdrawBtn = (Button)view.findViewById(R.id.my_account_personal_withdraw_btn);
+        withdrawBtn = (TextView)view.findViewById(R.id.my_account_personal_withdraw_btn);
         withdrawBtn.setOnClickListener(this);
-        rechargeBtn = (Button)view.findViewById(R.id.my_account_personal_recharge_btn);
+        rechargeBtn = (TextView)view.findViewById(R.id.my_account_personal_recharge_btn);
         rechargeBtn.setOnClickListener(this);
         unverifyLayout = (LinearLayout) view.findViewById(R.id.my_account_personal_unverify_layout);
         unverifyLayout.setOnClickListener(this);
@@ -326,22 +326,29 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
         }
     }
 
-    private void initUserInfoData(boolean isVerify,boolean isBinding){
-        if(mUserInfo != null && !"".equals(mUserInfo.getPhone())){
-            phoneLogo.setBackgroundResource(R.drawable.my_account_personal_phone_light);
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser && (!isBindcard || !isVerify)){
+            checkIsVerify("初始化");
         }
+    }
+
+    private void initUserInfoData(boolean isVerify, boolean isBinding){
+        unverifyLayout.setVisibility(View.VISIBLE);
         if(isVerify){
             idcardLogo.setBackgroundResource(R.drawable.my_account_personal_idcard_light);
+            if(isBinding){
+                unverifyLayout.setVisibility(View.GONE);
+                bankcardLogo.setBackgroundResource(R.drawable.my_account_personal_bankcard_light);
+            }else{
+                bankcardLogo.setBackgroundResource(R.drawable.my_account_personal_bankcard_logo);
+                unverifyPromptTV.setText("您尚未绑定银行卡，点击去绑定");
+            }
         }else{
+            idcardLogo.setBackgroundResource(R.drawable.my_account_personal_idcard_logo);
+            bankcardLogo.setBackgroundResource(R.drawable.my_account_personal_bankcard_logo);
             unverifyPromptTV.setText("您尚未完成实名认证，点击去实名");
-        }
-        if(isBinding){
-            bankcardLogo.setBackgroundResource(R.drawable.my_account_personal_bankcard_light);
-        }else{
-            unverifyPromptTV.setText("您尚未绑定银行卡，点击去绑定");
-        }
-        if(isVerify && isBinding){
-            unverifyLayout.setVisibility(View.GONE);
         }
     }
 
@@ -358,7 +365,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                 handler.sendEmptyMessageDelayed(REQUEST_GET_USERINFO_WHAT,200L);
                 handler.sendEmptyMessageDelayed(REQUEST_YUANMONEY_WHAT,300L);
                 if(!isVerify || !isBindcard){
-                    unverifyLayout.setVisibility(View.VISIBLE);
+                    checkIsVerify("初始化");
                 }
             }
 
@@ -866,6 +873,8 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                         usernameTV.setText("您好，尊贵的"+mUserInfo.getReal_name());
                     }
                     headLogo.setBackgroundResource(R.drawable.my_account_personal_lcs_headlogo);
+                    yqyjPrompt.setText("君子爱财，取自友道");
+                    yqyjText.setText("元财道");
                 }else{
                     if("".equals(mUserInfo.getReal_name())){
                         usernameTV.setText("您好，尊敬的"+mUserInfo.getUser_name());
@@ -873,6 +882,8 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                         usernameTV.setText("您好，尊敬的"+mUserInfo.getReal_name());
                     }
                     headLogo.setBackgroundResource(R.drawable.my_account_personal_nor_headlogo);
+                    yqyjPrompt.setText("");
+                    yqyjText.setText("邀请有奖");
                 }
             }
         });

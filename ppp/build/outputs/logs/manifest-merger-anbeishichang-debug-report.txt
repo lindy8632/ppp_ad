@@ -34,6 +34,7 @@ MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\
 MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.youth.banner:banner:1.4.9] C:\Users\Administrator\.android\build-cache\34c3ed598080eaa35ace803d4b5ac5631581cdee\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.wx.wheelview:wheelview:1.3.3] C:\Users\Administrator\.android\build-cache\edba68e4ffd3ae206323f3dd2144286c14487923\output\AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
@@ -204,6 +205,7 @@ MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Administr
 MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\.android\build-cache\a3bb2a3ad5dd37a75f6f2da7b420f1b0dc2cea57\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:25:5-20
+MERGED from [com.wx.wheelview:wheelview:1.3.3] C:\Users\Administrator\.android\build-cache\edba68e4ffd3ae206323f3dd2144286c14487923\output\AndroidManifest.xml:11:5-14:19
 	android:label
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:72:9-41
 	android:supportsRtl
