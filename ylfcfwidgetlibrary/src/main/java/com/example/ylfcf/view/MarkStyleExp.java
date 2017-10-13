@@ -12,8 +12,8 @@ import android.graphics.drawable.Drawable;
  */
 
 public class MarkStyleExp {
-    public static final int chooseColor = Color.rgb(49, 178, 254);
-    public static final int lightGrayColor = Color.rgb(245, 245, 245);
+    public static final int chooseColor = Color.rgb(63, 81, 200);//点击时的颜色
+    public static final int lightGrayColor = Color.rgb(245, 245, 245);//今天标记的颜色
 
     public static Drawable choose = new Drawable() {
         private Paint paint;
@@ -28,7 +28,7 @@ public class MarkStyleExp {
         public void draw(Canvas canvas) {
             canvas.drawCircle(canvas.getWidth() / 2,
                     canvas.getHeight() / 2,
-                    canvas.getHeight() / 2,
+                    (int)(canvas.getHeight() / 2.5),
                     paint);
         }
 
@@ -61,7 +61,7 @@ public class MarkStyleExp {
         public void draw(Canvas canvas) {
             canvas.drawCircle(canvas.getWidth() / 2,
                     canvas.getHeight() / 2,
-                    canvas.getHeight() / 2,
+                    (int)(canvas.getHeight() / 2.5),
                     paint);
         }
 

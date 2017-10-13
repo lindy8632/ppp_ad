@@ -5,6 +5,7 @@ import android.view.View;
 import com.example.ylfcf.info.DateData;
 import com.example.ylfcf.view.CurrentCalendar;
 import com.example.ylfcf.view.DefaultCellView;
+import com.example.ylfcf.view.DefaultMarkView;
 
 /**
  * Created by Bigflower on 2015/12/10.
@@ -29,14 +30,34 @@ public class OnExpDateClickListener extends OnDateClickListener {
                 // 节约！
                 if (lastClickedView == view)
                     return;
-                if (lastClickedDate.equals(CurrentCalendar.getCurrentDateData())) {
-                    ((DefaultCellView) lastClickedView).setDateToday();
-                } else {
-                    ((DefaultCellView) lastClickedView).setDateNormal();
+                if(lastClickedView instanceof DefaultCellView){
+                    if (lastClickedDate.equals(CurrentCalendar.getCurrentDateData())) {
+                        ((DefaultCellView) lastClickedView).setDateToday();
+                    } else {
+                        ((DefaultCellView) lastClickedView).setDateNormal();
+                    }
+                }else if(lastClickedView instanceof DefaultMarkView){
+                    ((DefaultMarkView) lastClickedView).setDateMark();
                 }
             }
             // 判断这次的点击
             ((DefaultCellView) view).setDateChoose();
+            lastClickedView = view;
+            lastClickedDate = date;
+        }else if(view instanceof DefaultMarkView){
+            // 判断上次的点击
+            if (lastClickedView != null) {
+                // 节约！
+                if (lastClickedView == view)
+                    return;
+                if(lastClickedView instanceof DefaultCellView){
+                    ((DefaultCellView) lastClickedView).setDateNormal();
+                }else if(lastClickedView instanceof DefaultMarkView){
+                    ((DefaultMarkView) lastClickedView).setDateMark();
+                }
+            }
+            // 判断这次的点击
+            ((DefaultMarkView) view).setDateChoose();
             lastClickedView = view;
             lastClickedDate = date;
         }

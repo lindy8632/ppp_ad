@@ -46,12 +46,9 @@ public class DefaultMarkView extends BaseMarkView{
                 this.setLayoutParams(matchParentParams);
                 this.setOrientation(HORIZONTAL);
                 textView.setTextColor(Color.WHITE);
-                circleDrawable = new ShapeDrawable(new OvalShape());
-                circleDrawable.getPaint().setColor(style.getColor());
-//                this.setPadding(20, 20, 20, 20);
                 this.setPadding(22, 2, 22, 2);
                 textView.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, (float) 1.0));
-                textView.setBackground(circleDrawable);
+                textView.setBackground(MarkStyle.choose);
                 this.addView(textView);
                 return;
             case MarkStyle.BACKGROUND:
@@ -100,6 +97,22 @@ public class DefaultMarkView extends BaseMarkView{
             default:
                 throw new IllegalArgumentException("Invalid Mark Style Configuration!");
         }
+    }
+
+    public void setDateNormal() {
+        textView.setTextColor(Color.BLACK);
+        textView.setBackgroundDrawable(null);
+    }
+
+    public void setDateMark(){
+        textView.setBackgroundDrawable(MarkStyle.choose);
+        textView.setTextColor(Color.WHITE);
+    }
+
+    public boolean setDateChoose() {
+        textView.setBackgroundDrawable(MarkStyleExp.choose);
+        textView.setTextColor(Color.WHITE);
+        return true ;
     }
 
     @Override

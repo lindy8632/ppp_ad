@@ -19,7 +19,7 @@ public class MarkStyle {
     public static final int TEXT = 5;
     public static final int DEFAULT = 10;
 
-    public static int defaultColor = Color.rgb(0, 148, 243);
+    public static int defaultColor = Color.rgb(49,178,254);
 
     public static String text;
     public static int textColor;
@@ -36,7 +36,7 @@ public class MarkStyle {
         public void draw(Canvas canvas) {
             canvas.drawCircle(canvas.getWidth() / 2,
                     canvas.getHeight() / 2,
-                    canvas.getHeight() / 2,
+                    (int)(canvas.getHeight() / 2.5),
                     paint);
         }
 
@@ -61,13 +61,13 @@ public class MarkStyle {
         {
             paint = new Paint();
             paint.setAntiAlias(true);
-            paint.setColor(Color.LTGRAY);
+            paint.setColor(defaultColor);
         }
         @Override
         public void draw(Canvas canvas) {
             canvas.drawCircle(canvas.getWidth() / 2,
                     canvas.getHeight() / 2,
-                    canvas.getHeight() / 2,
+                    (int)(canvas.getHeight() / 2.5),
                     paint);
         }
 
