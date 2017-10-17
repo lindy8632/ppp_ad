@@ -247,7 +247,6 @@
                                 android:id="@+id/bid_zxd_activity_nhsy"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="6.0%"
                                 android:textColor="@color/orange_text"
                                 android:textSize="@dimen/common_measure_16dp" />
                             

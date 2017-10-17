@@ -99,7 +99,7 @@ public class AccountCenterZHZCFragment extends BaseFragment implements View.OnCl
                     break;
                 case REQUEST_JXQ_LIST_WHAT:
                     requestJXQList(SettingsManager.getUserId(mainActivity
-                            .getApplicationContext()), "","未使用",0,50,"0");
+                            .getApplicationContext()), "","未使用",0,Integer.MAX_VALUE,"0");
                     break;
                 case REQUEST_HB_LIST_WHAT:
                     requestHBList(SettingsManager.getUserId(mainActivity

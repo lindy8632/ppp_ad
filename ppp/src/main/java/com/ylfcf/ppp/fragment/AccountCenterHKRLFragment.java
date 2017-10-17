@@ -51,7 +51,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
     private static final String className = "AccountCenterHKRLFragment";
     private static final int REQUEST_REPAYMENT_WHAT = 8945;
     private static final int REQUEST_REPAYMENT_SUC = 8946;
-    private final Map<String,RepaymentDayData> repaymentDayDataMap = new HashMap<String,RepaymentDayData>();
+    private Map<String,RepaymentDayData> repaymentDayDataMap = new HashMap<String,RepaymentDayData>();
 
     private AccountCenterActivity mainActivity;
     private View rootView;
@@ -76,10 +76,10 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
     private SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMM");
     private SimpleDateFormat sdf3 = new SimpleDateFormat("yyyyMMdd");
-    private List<String> repaymentDateList;//回款日期 yyyyMMdd
-    private List<String> repaymentCurDayMoneyList;//当日回款金额
-    private List<String> repaymentCurDayCountList;//当日回款笔数
-    private List<String> wdyDateList;//薪盈计划回款日期
+    private List<String> repaymentDateList = new ArrayList<>();//回款日期 yyyyMMdd
+    private List<String> repaymentCurDayMoneyList = new ArrayList<>();//当日回款金额
+    private List<String> repaymentCurDayCountList = new ArrayList<>();//当日回款笔数
+    private List<String> wdyDateList = new ArrayList<>();//薪盈计划回款日期
     private int curYear = 2017;//当前的年份
     private int curMonth = 1;//当前的月份
 
@@ -231,7 +231,6 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
             monthS = sdfMonth.format(sdf1.parse(date));
             dayS = sdfDay.format(sdf1.parse(date));
         }catch(Exception e){
-
         }
 
         int year = 0;
@@ -259,6 +258,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
                 || repaymentCurDayCountList == null){
             return;
         }
+        repaymentDayDataMap.clear();
         for(int i=0;i<repaymentDateList.size();i++){
             RepaymentDayData dayData = new RepaymentDayData();
             dayData.setDate(repaymentDateList.get(i));
@@ -391,6 +391,8 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
     public void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
+        mExpCalendarView.unMarkDateAll();
+        mExpCalendarView = null;
     }
 
     /**
@@ -404,11 +406,15 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
                 if(baseInfo != null){
                     int resultCode = SettingsManager.getResultCode(baseInfo);
                     if(resultCode == 0){
+                        repaymentDateList.clear();
+                        repaymentCurDayMoneyList.clear();
+                        repaymentCurDayCountList.clear();
+                        wdyDateList.clear();
                         RepaymentInfo info = baseInfo.getmRepaymentInfo();
-                        repaymentDateList = info.getRepaymentDateList();
-                        repaymentCurDayMoneyList = info.getRepaymentCurDayMoneyList();
-                        repaymentCurDayCountList = info.getRepaymentCurDayCountList();
-                        wdyDateList = info.getWdyDateList();
+                        repaymentDateList.addAll(info.getRepaymentDateList());
+                        repaymentCurDayMoneyList.addAll(info.getRepaymentCurDayMoneyList());
+                        repaymentCurDayCountList.addAll(info.getRepaymentCurDayCountList());
+//                        wdyDateList.addAll(info.getWdyDateList());
                         initRepaymentData();
                         initCurMonthData(baseInfo.getTime());
                     }

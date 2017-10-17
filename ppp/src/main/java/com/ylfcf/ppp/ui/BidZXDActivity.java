@@ -371,7 +371,6 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					if (investMoney > borrowBalanceDouble) {
 						Util.toastLong(BidZXDActivity.this, "标的剩余可投金额不足");
 					}
-
 				} catch (Exception e) {
 				}
 
@@ -1021,7 +1020,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		} else {
 			investMoneyET.setText(investMoneyInt + "");
 		}
-		if(investMoneyInt < 100000){
+		if(investMoneyInt < 100000 || mProductInfo.getInterest_period().contains("365")){
 			floatRateStr = "0";
 		}else if(investMoneyInt >= 100000 && investMoneyInt <300000){
 			floatRateStr = "0.1";
@@ -1048,7 +1047,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		}
 		investMoneyInt += 100;
 		investMoneyET.setText(investMoneyInt + "");
-		if(investMoneyInt < 100000){
+		if(investMoneyInt < 100000 || mProductInfo.getInterest_period().contains("365")){
 			floatRateStr = "0";
 		}else if(investMoneyInt >= 100000 && investMoneyInt <300000){
 			floatRateStr = "0.1";
@@ -1073,7 +1072,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			investMoneyInt = Integer.parseInt(investMoneyStr);
 		} catch (Exception e) {
 		}
-		if(investMoneyInt < 100000){
+		if(investMoneyInt < 100000 || mProductInfo.getInterest_period().contains("365")){
 			floatRateStr = "0";
 		}else if(investMoneyInt >= 100000 && investMoneyInt <300000){
 			floatRateStr = "0.1";

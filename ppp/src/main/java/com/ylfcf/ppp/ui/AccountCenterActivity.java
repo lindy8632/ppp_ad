@@ -112,7 +112,11 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        fragmentManager.beginTransaction().remove(zhzcFragment);
+        fragmentManager.beginTransaction().remove(hkrlFragment);
         fragmentManager = null;
+        zhzcFragment = null;
+        hkrlFragment = null;
         finish();
     }
 
@@ -133,11 +137,10 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
                     hkrlTabBtn.setBackgroundResource(R.color.transparent);
                     hkrlTabBtn.setTag("0");
                     hkrlTabBtn.setTextColor(getResources().getColor(R.color.common_topbar_bg_color));
-
+                    zhzcFragment = fragmentManager.findFragmentByTag("zhzctab");
                     if(zhzcFragment == null){
                         zhzcFragment = new AccountCenterZHZCFragment();
-//                        trasection.replace(R.id.account_center_activity_mainlayout, zhzcFragment);
-                        trasection.add(R.id.account_center_activity_mainlayout, zhzcFragment);
+                        trasection.add(R.id.account_center_activity_mainlayout, zhzcFragment,"zhzctab");
                     }else{
                         hidFragments();
                         trasection.show(zhzcFragment);
@@ -159,10 +162,10 @@ public class AccountCenterActivity extends BaseActivity implements View.OnClickL
                         floatImg.setVisibility(View.VISIBLE);
                         SettingsManager.setAccountCenterFloatFlag(getApplicationContext(),true);
                     }
-
+                    hkrlFragment = fragmentManager.findFragmentByTag("hkrltab");
                     if(hkrlFragment == null){
                         hkrlFragment = new AccountCenterHKRLFragment();
-                        trasection.add(R.id.account_center_activity_mainlayout, hkrlFragment);
+                        trasection.add(R.id.account_center_activity_mainlayout, hkrlFragment,"hkrltab");
                     }else{
                         hidFragments();
                         trasection.show(hkrlFragment);
