@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/xrefreshview_header_text"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:paddingBottom="10dp">
+
+    <RelativeLayout
+        android:id="@+id/left_images"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/xrefreshview_header_hint_textview"
+        android:layout_marginRight="20dp">
+
+        <ImageView
+            android:id="@+id/xrefreshview_header_arrow"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/xrefreshview_arrow" />
+
+        <!--style="?android:attr/progressBarStyleSmall"-->
+        <ProgressBar
+            style="@style/style_loading_jh"
+            android:id="@+id/xrefreshview_header_progressbar"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/xrefreshview_header_ok"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/xrefresh_ok" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/xrefreshview_header_hint_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="14sp"
+        android:textColor="@color/header_view_textcolor"
+        android:text="@string/xrefreshview_header_hint_normal" />
+
+</RelativeLayout>
