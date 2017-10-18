@@ -138,11 +138,11 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				if(isChecked){
 					//´ò¿ª
-					mainActivity.mPushAgent.enable();
+//					mainActivity.mPushAgent.enable();
 					SettingsManager.setMsgSendFlag(mainActivity.getApplicationContext(), true);
 				}else{
 					//¹Ø±Õ
-					mainActivity.mPushAgent.disable();
+//					mainActivity.mPushAgent.disable();
 					SettingsManager.setMsgSendFlag(mainActivity.getApplicationContext(), false);
 				}
 			}

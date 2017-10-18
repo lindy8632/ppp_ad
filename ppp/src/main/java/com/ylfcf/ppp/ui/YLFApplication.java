@@ -3,6 +3,8 @@ package com.ylfcf.ppp.ui;
 import android.app.Activity;
 import android.app.ActivityManager;
 
+import com.umeng.message.IUmengRegisterCallback;
+import com.umeng.message.PushAgent;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.ylfcf.ppp.util.ImageLoaderManager;
@@ -17,7 +19,7 @@ import java.util.List;
  * Application的OnCreate()方法会重复调用。
  * 故在onCreate()方法中对初始化数据模块进行判断，只有主进程即进程名为com.ylfcf.ppp的进程才会执行初始化操作。
  * @author Administrator
- * 
+ *
  */
 public class YLFApplication extends android.app.Application {
 	private List<Activity> activityList;
@@ -43,6 +45,19 @@ public class YLFApplication extends android.app.Application {
 
 		}
 		YLFLogger.d("进程名:"+processNameString);
+		PushAgent mPushAgent = PushAgent.getInstance(this);
+		mPushAgent.register(new IUmengRegisterCallback() {
+			@Override
+			public void onSuccess(String deviceToken) {
+				//注册成功返回device_token
+				YLFLogger.d("deviceToken:"+deviceToken);
+			}
+
+			@Override
+			public void onFailure(String s, String s1) {
+
+			}
+		});
 	}
 
 	private void init(){
@@ -70,7 +85,7 @@ public class YLFApplication extends android.app.Application {
 
 	/**
 	 * 获取单例Application实例
-	 * 
+	 *
 	 * @return
 	 */
 	public static YLFApplication getApplication() {
@@ -107,7 +122,7 @@ public class YLFApplication extends android.app.Application {
 
 	/**
 	 * 获取Context
-	 * 
+	 *
 	 * @return
 	 */
 	public static YLFApplication getContext() {
