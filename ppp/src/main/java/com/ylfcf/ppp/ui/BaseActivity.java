@@ -49,4 +49,11 @@ public class BaseActivity extends FragmentActivity{
 			mLoadingDialog.dismiss();
 		}
 	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		//不保存Fragment的状态，Activity销毁后，而fragment并没有销毁，
+		// 导致Activity再次重建时，之前保存的fragment（所附属的activity已销毁）引用getActivity为空。
+//        super.onSaveInstanceState(outState);
+	}
 }

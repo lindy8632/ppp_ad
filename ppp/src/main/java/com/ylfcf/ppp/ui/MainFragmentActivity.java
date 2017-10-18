@@ -31,8 +31,6 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.message.PushAgent;
-import com.umeng.message.UmengRegistrar;
 import com.ylfcf.ppp.Permission.BasePermissionActivity;
 import com.ylfcf.ppp.Permission.PermissionCallBackM;
 import com.ylfcf.ppp.R;
@@ -64,12 +62,8 @@ import com.ylfcf.ppp.widget.NavigationBarView;
 import com.ylfcf.ppp.widget.NoScrollViewPager;
 
 import java.text.SimpleDateFormat;
-import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import cn.jpush.android.api.JPushInterface;
-import cn.jpush.android.api.TagAliasCallback;
 
 /**
  * 主页面
@@ -82,8 +76,6 @@ import cn.jpush.android.api.TagAliasCallback;
 public class MainFragmentActivity extends BasePermissionActivity implements OnClickListener, NetworkStateListener{
 	public static final String MESSAGE_RECEIVED_ACTION = "com.ylfcf.ppp.MESSAGE_RECEIVED_ACTION";
 
-	private static final int MSG_SET_ALIAS = 3219;
-	
 	private static final int DOWNLOAD_SUCCESS = 2105;
 	private static final int RQ_STORAGE_PERM = 123;//存储权限请求码
 
@@ -99,8 +91,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	public FragmentManager fragmentManager = null;
 	
 	private NavigationBarView mNavigationBarView;
-	public PushAgent mPushAgent = null;
-	
+
 	public RelativeLayout mainLayout;
 	
 	public DownloadManager downManager ;
@@ -131,12 +122,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 					downloadBtn.setEnabled(true);
 				}
 				break;
-			case MSG_SET_ALIAS:
-				JPushInterface.setAliasAndTags(getApplicationContext(),
-                         (String) msg.obj,
-                          null,
-                          mAliasCallback);
-				break;
 			case REQUEST_BANNERPOP_WHAT:
 				requestPopBanner();
 				break;
@@ -144,26 +129,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 				break;
 			}
 		}
-	};
-	
-	private final TagAliasCallback mAliasCallback = new TagAliasCallback() {
-	    @Override
-	    public void gotResult(int code, String alias, Set<String> tags) {
-	        String logs ;
-	        switch (code) {
-	        case 0:
-	            logs = "Set tag and alias success";
-	            // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
-	            break;
-	        case 6002:
-	            logs = "Failed to set alias and tags due to timeout. Try again after 60s.";
-	            // 延迟 60 秒来调用 Handler 设置别名
-	            handler.sendMessageDelayed(handler.obtainMessage(MSG_SET_ALIAS, alias), 1000 * 60);
-	            break;
-	        default:
-	            logs = "Failed with errorCode = " + code;
-	        }
-	    }
 	};
 	
 	private int page = 0;
@@ -224,10 +189,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		}else{
 //			AnalyticsConfig.enableEncrypt(true);//6.0.0版本以前
 		}
-		//极光推送
-		JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
-		JPushInterface.init(this);     		// 初始化 JPush
-//		JPushInterface.setAliasAndTags(MainFragmentActivity.this, "test", null);
 		this.loadingDialog = mLoadingDialog;
 		downManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
 		IntentFilter filter = new IntentFilter();
@@ -241,19 +202,9 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 				android.os.Build.VERSION.SDK + "\n系统版本号：" + android.os.Build.VERSION.RELEASE);
 		fragmentManager = getSupportFragmentManager();
 		
-		//开启推送服务
-		boolean msgFlag = SettingsManager.getMsgSendFlag(getApplicationContext());
-		mPushAgent = PushAgent.getInstance(getApplicationContext());
-		if(msgFlag){
-			mPushAgent.enable();
-		}else{
-			mPushAgent.disable();
-		}
-		
 		float scale = getResources().getDisplayMetrics().density;
 		YLFLogger.d("本机的像素密度：-----"+scale);
 		findViews();
-		YLFLogger.d("设备号：————————"+UmengRegistrar.getRegistrationId(getApplicationContext()));
 
 		//检查版本更新
 		new Handler().postDelayed(new Runnable() {
@@ -270,7 +221,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		}
 		requestProductPageInfo("", "发布","未满标","是","","");//请求产品列表
 		downloadChangeObserver();
-		setJPushAlias();
 	}
 
 	class DownloadChangeObserver extends ContentObserver {
@@ -301,13 +251,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
                 });
 	}
 
-	/**
-	 * 设置极光推送的别名
-	 */
-	private void setJPushAlias(){
-		handler.sendMessage(handler.obtainMessage(MSG_SET_ALIAS, "test_android"));
-	}
-	
 	/**
 	 * 监听下载状态
 	 */

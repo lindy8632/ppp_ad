@@ -238,6 +238,8 @@ public class WithdrawPwdGetbackActivity extends BaseActivity implements OnClickL
 				}else if(SettingsManager.isCompanyUser(getApplicationContext())){
 					userPhone = SettingsManager.getCompPhone(getApplicationContext());
 					params = SettingsManager.getSMSGetbackDealPwdCompParams(userName);//拼接短信验证码格式
+				}else{
+					params = SettingsManager.getSMSGetbackDealPwdParams(userName);//拼接短信验证码格式
 				}
 			}else{
 				params = SettingsManager.getSMSGetbackDealPwdParamsDefault();//拼接短信验证码格式

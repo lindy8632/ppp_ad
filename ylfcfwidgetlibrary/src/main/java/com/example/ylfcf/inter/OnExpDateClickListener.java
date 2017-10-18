@@ -51,7 +51,11 @@ public class OnExpDateClickListener extends OnDateClickListener {
                 if (lastClickedView == view)
                     return;
                 if(lastClickedView instanceof DefaultCellView){
-                    ((DefaultCellView) lastClickedView).setDateNormal();
+                    if (lastClickedDate.equals(CurrentCalendar.getCurrentDateData())) {
+                        ((DefaultCellView) lastClickedView).setDateToday();
+                    } else {
+                        ((DefaultCellView) lastClickedView).setDateNormal();
+                    }
                 }else if(lastClickedView instanceof DefaultMarkView){
                     ((DefaultMarkView) lastClickedView).setDateMark();
                 }
