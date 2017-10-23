@@ -382,7 +382,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 			@Override
 			public void onLogoutSuc() {
 				//退出成功的回调
-
+				fragmentAdapter.getItem(2).setUserVisibleHint(true);
 			}
 		},new OnFirstPageHYTJOnClickListener(){
 
@@ -446,7 +446,8 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	 */
 	private AppInfo mAppInfo;
 	private void requestAPIQuery(int versionCode){
-		AsyncAPIQuery apiQueryTask = new AsyncAPIQuery(MainFragmentActivity.this, versionCode, new OnApiQueryBack() {
+		AsyncAPIQuery apiQueryTask = new AsyncAPIQuery(MainFragmentActivity.this,
+				versionCode, new OnApiQueryBack() {
 			@Override
 			public void back(AppInfo info) {
 				if(info != null){

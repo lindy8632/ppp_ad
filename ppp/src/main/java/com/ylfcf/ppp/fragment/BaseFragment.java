@@ -1,6 +1,7 @@
 package com.ylfcf.ppp.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -10,9 +11,16 @@ import android.support.v4.app.Fragment;
  *
  */
 public class BaseFragment extends Fragment{
+    Context mContext;
     @Override
     public void onAttach(Activity context) {
         super.onAttach(context);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext = context;
     }
 
     @Override

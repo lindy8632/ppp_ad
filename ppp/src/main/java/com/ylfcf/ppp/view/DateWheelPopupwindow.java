@@ -30,14 +30,16 @@ public class DateWheelPopupwindow extends PopupWindow implements
     private WheelView mYearWheelView;
     private WheelView mMonthWheelView;
     private AccountCenterHKRLFragment.OnDatePopwindowOkListener mOnDatePopwindowOkListener;
-    private int yearInt,monthInt;
+    private int yearInt,thisYearInt,monthInt;
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 
     public DateWheelPopupwindow(Context context, View convertView,
-                                AccountCenterHKRLFragment.OnDatePopwindowOkListener mOnDatePopwindowOkListener,int yearInt,int monthInt) {
+                                AccountCenterHKRLFragment.OnDatePopwindowOkListener mOnDatePopwindowOkListener,
+                                int yearInt,int thisYearInt,int monthInt) {
         super(convertView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         this.context = (Activity) context;
         this.yearInt = yearInt;
+        this.thisYearInt = thisYearInt;
         this.monthInt = monthInt;
         this.mOnDatePopwindowOkListener = mOnDatePopwindowOkListener;
         findViews(convertView);
@@ -93,7 +95,7 @@ public class DateWheelPopupwindow extends PopupWindow implements
 
     private ArrayList<String> createYearDatas(){
         ArrayList<String> yearList = new ArrayList<>();
-        int curYearI = this.yearInt;
+        int curYearI = this.thisYearInt;
         int fromYearI = 2012;
         int endYearI = 2030;
         if(curYearI <= fromYearI){
