@@ -81,6 +81,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
     private List<String> repaymentCurDayCountList = new ArrayList<>();//当日回款笔数
     private List<String> wdyDateList = new ArrayList<>();//薪盈计划回款日期
     private int curYear = 2017;//当前的年份
+    private int thisYear = 2017;//今年的年份
     private int curMonth = 1;//当前的月份
 
 
@@ -244,6 +245,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
 
         }
         curYear = year;
+        thisYear = year;
         curMonth = month;
     }
 
@@ -374,7 +376,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
                 DateData data = new DateData(curYear,curMonth,0);
                 mExpCalendarView.travelTo(data);
             }
-        },curYear,curMonth);
+        },curYear,thisYear,curMonth);
         popwindow.show(mainLayout);
     }
 
@@ -411,10 +413,18 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
                         repaymentCurDayCountList.clear();
                         wdyDateList.clear();
                         RepaymentInfo info = baseInfo.getmRepaymentInfo();
-                        repaymentDateList.addAll(info.getRepaymentDateList());
-                        repaymentCurDayMoneyList.addAll(info.getRepaymentCurDayMoneyList());
-                        repaymentCurDayCountList.addAll(info.getRepaymentCurDayCountList());
-//                        wdyDateList.addAll(info.getWdyDateList());
+                        if(info.getRepaymentDateList() != null){
+                            repaymentDateList.addAll(info.getRepaymentDateList());
+                        }
+                        if(info.getRepaymentCurDayMoneyList() != null){
+                            repaymentCurDayMoneyList.addAll(info.getRepaymentCurDayMoneyList());
+                        }
+                        if(info.getRepaymentCurDayCountList() != null){
+                            repaymentCurDayCountList.addAll(info.getRepaymentCurDayCountList());
+                        }
+//                        if(info.getWdyDateList() != null){
+//                            wdyDateList.addAll(info.getWdyDateList());
+//                        }
                         initRepaymentData();
                         initCurMonthData(baseInfo.getTime());
                     }

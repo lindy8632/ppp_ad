@@ -1,0 +1,1450 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:2:1-622:12
+	package
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:4:11-34
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:6:11-38
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:3:11-57
+	android:versionCode
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:5:11-36
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:8:5-10:41
+MERGED from [ppp_ad:imageLoaderLibrary:unspecified] D:\GitRepository\ppp_ad\imageLoaderLibrary\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [ppp_ad:library:unspecified] D:\GitRepository\ppp_ad\library\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [ppp_ad:ylfcfwidgetlibrary:unspecified] D:\GitRepository\ppp_ad\ylfcfwidgetlibrary\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:25.0.1] C:\Users\Administrator\.android\build-cache\20ec0065ed4694f550a5ec8952284b86cfa1824b\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.1.1] C:\Users\Administrator\.android\build-cache\2a745ea31c390f1d4ff6f7504b6a3f6009dc22cc\output\AndroidManifest.xml:20:5-43
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\Administrator\.android\build-cache\f22820f1351e560326c3da57bf5496356a5b5345\output\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\Administrator\.android\build-cache\b80aaf51280bd011e968e65301122714b24a8717\output\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Administrator\.android\build-cache\e9b8bb9837da37deacd259e3e73a6d425d961a45\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Administrator\.android\build-cache\bd9fdab2a42f8266f295be07ea9f08eb9d2a2e1a\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Administrator\.android\build-cache\8aff0c3355ee831143efac8bc677269c356da594\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\.android\build-cache\a3bb2a3ad5dd37a75f6f2da7b420f1b0dc2cea57\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.youth.banner:banner:1.4.9] C:\Users\Administrator\.android\build-cache\34c3ed598080eaa35ace803d4b5ac5631581cdee\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.wx.wheelview:wheelview:1.3.3] C:\Users\Administrator\.android\build-cache\edba68e4ffd3ae206323f3dd2144286c14487923\output\AndroidManifest.xml:7:5-9:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:10:9-38
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:9:9-34
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+supports-screens
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:12:5-17:39
+	android:largeScreens
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:14:9-36
+	android:smallScreens
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:17:9-36
+	android:normalScreens
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:15:9-37
+	android:resizeable
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:16:9-34
+	android:anyDensity
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:13:9-34
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:20:5-81
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:14:5-81
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:20:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:21:5-80
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:21:22-77
+uses-permission#android.permission.DOWNLOAD_WITHOUT_NOTIFICATION
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:22:5-88
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:22:22-85
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:24:5-79
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:24:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:26:5-76
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:13:5-76
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:26:22-73
+uses-permission#android.permission.INTERNET
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:27:5-67
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:27:22-64
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:29:5-79
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:29:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:30:5-76
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:25:5-76
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:30:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:31:5-75
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:16:5-75
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:31:22-72
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:32:5-68
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:15:5-68
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:32:22-65
+uses-permission#android.permission.VIBRATE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:33:5-66
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:33:22-63
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:34:5-73
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:34:22-70
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:35:5-81
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:35:22-78
+uses-permission#android.permission.READ_LOGS
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:36:5-68
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:36:22-65
+uses-permission#android.permission.CALL_PHONE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:37:5-69
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:37:22-66
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:38:5-79
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:38:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:39:5-81
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:39:22-78
+uses-permission#android.permission.SET_DEBUG_APP
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:40:5-72
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:40:22-69
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:41:5-78
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:41:22-75
+uses-permission#android.permission.USE_CREDENTIALS
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:42:5-74
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:42:22-71
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:43:5-74
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:43:22-71
+uses-permission#android.permission.GET_TASKS
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:46:5-68
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:22:5-68
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:46:22-65
+uses-permission#android.permission.RECEIVE_USER_PRESENT
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:48:5-79
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:48:22-76
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:49:5-84
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:49:22-81
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:50:5-89
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:50:22-86
+uses-permission#android.permission.BROADCAST_PACKAGE_ADDED
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:53:5-82
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:17:5-82
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:53:22-79
+uses-permission#android.permission.BROADCAST_PACKAGE_CHANGED
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:54:5-84
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:18:5-84
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:54:22-81
+uses-permission#android.permission.BROADCAST_PACKAGE_INSTALL
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:55:5-84
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:19:5-84
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:55:22-81
+uses-permission#android.permission.BROADCAST_PACKAGE_REPLACED
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:56:5-85
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:20:5-85
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:56:22-82
+uses-permission#android.permission.RESTART_PACKAGES
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:57:5-75
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:21:5-75
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:57:22-72
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:58:5-71
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:58:22-68
+application
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:60:5-620:19
+MERGED from [ppp_ad:library:unspecified] D:\GitRepository\ppp_ad\library\build\intermediates\bundles\default\AndroidManifest.xml:11:5-20
+MERGED from [ppp_ad:ylfcfwidgetlibrary:unspecified] D:\GitRepository\ppp_ad\ylfcfwidgetlibrary\build\intermediates\bundles\default\AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:cardview-v7:25.1.1] C:\Users\Administrator\.android\build-cache\2a745ea31c390f1d4ff6f7504b6a3f6009dc22cc\output\AndroidManifest.xml:22:5-20
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:27:5-156:19
+MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\Administrator\.android\build-cache\f22820f1351e560326c3da57bf5496356a5b5345\output\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\Administrator\.android\build-cache\b80aaf51280bd011e968e65301122714b24a8717\output\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Administrator\.android\build-cache\e9b8bb9837da37deacd259e3e73a6d425d961a45\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Administrator\.android\build-cache\bd9fdab2a42f8266f295be07ea9f08eb9d2a2e1a\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Administrator\.android\build-cache\8aff0c3355ee831143efac8bc677269c356da594\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\.android\build-cache\a3bb2a3ad5dd37a75f6f2da7b420f1b0dc2cea57\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:25:5-20
+MERGED from [com.wx.wheelview:wheelview:1.3.3] C:\Users\Administrator\.android\build-cache\edba68e4ffd3ae206323f3dd2144286c14487923\output\AndroidManifest.xml:11:5-14:19
+	android:label
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:65:9-41
+	android:supportsRtl
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:66:9-35
+	android:allowBackup
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:63:9-35
+	android:icon
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:64:9-45
+	android:largeHeap
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:67:9-33
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:68:9-40
+	tools:replace
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:61:9-52
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:62:9-42
+activity#com.ylfcf.ppp.ui.IntroductionActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:69:9-78:20
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:72:13-49
+	android:label
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:71:13-45
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:73:13-58
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:70:13-52
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:74:13-77:29
+action#android.intent.action.MAIN
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:75:17-69
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:75:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:76:17-77
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:76:27-74
+activity#com.ylfcf.ppp.ui.MainFragmentActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:87:9-92:73
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:90:13-49
+	android:launchMode
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:89:13-44
+	android:windowSoftInputMode
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:92:13-70
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:91:13-54
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:88:13-52
+activity#com.ylfcf.ppp.ui.BorrowDetailZXDActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:93:9-96:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:95:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:96:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:94:13-55
+activity#com.ylfcf.ppp.ui.BorrowDetailYXBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:97:9-100:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:99:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:100:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:98:13-55
+activity#com.ylfcf.ppp.ui.LoginActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:101:9-104:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:103:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:104:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:102:13-45
+activity#com.ylfcf.ppp.ui.BidZXDActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:105:9-108:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:107:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:108:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:106:13-46
+activity#com.ylfcf.ppp.ui.BidYXBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:109:9-112:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:111:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:112:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:110:13-46
+activity#com.ylfcf.ppp.ui.RegisteActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:113:9-116:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:115:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:116:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:114:13-47
+activity#com.ylfcf.ppp.ui.ForgetPwdActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:117:9-120:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:119:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:120:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:118:13-49
+activity#com.ylfcf.ppp.ui.GestureEditActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:121:9-124:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:123:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:124:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:122:13-51
+activity#com.ylfcf.ppp.ui.GestureVerifyActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:125:9-128:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:127:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:128:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:126:13-53
+activity#com.ylfcf.ppp.ui.RechargeActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:129:9-132:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:131:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:132:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:130:13-48
+activity#com.ylfcf.ppp.ui.WithdrawActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:133:9-137:57
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:135:13-49
+	android:windowSoftInputMode
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:137:13-54
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:136:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:134:13-48
+activity#com.ylfcf.ppp.ui.ProductInfoActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:138:9-141:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:140:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:141:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:139:13-51
+activity#com.ylfcf.ppp.ui.ProductDataActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:142:9-145:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:144:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:145:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:143:13-51
+activity#com.ylfcf.ppp.ui.ProductSafetyActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:146:9-149:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:148:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:149:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:147:13-53
+activity#com.ylfcf.ppp.ui.UserVerifyActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:150:9-153:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:152:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:153:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:151:13-50
+activity#com.ylfcf.ppp.ui.ModifyLoginPwdActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:154:9-157:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:156:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:157:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:155:13-54
+activity#com.ylfcf.ppp.ui.FeedbackActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:158:9-161:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:160:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:161:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:159:13-48
+activity#com.ylfcf.ppp.ui.RechargeResultActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:162:9-165:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:164:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:165:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:163:13-54
+activity#com.ylfcf.ppp.ui.BidSuccessActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:166:9-169:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:168:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:169:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:167:13-50
+activity#com.ylfcf.ppp.ui.WithdrawListActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:170:9-173:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:172:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:173:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:171:13-52
+activity#com.ylfcf.ppp.ui.BindCardActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:174:9-177:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:176:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:177:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:175:13-48
+activity#com.ylfcf.ppp.ui.BrandIntroActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:178:9-181:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:180:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:181:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:179:13-50
+activity#com.ylfcf.ppp.ui.AccountSettingActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:182:9-185:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:184:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:185:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:183:13-54
+activity#com.ylfcf.ppp.ui.FundsDetailsActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:186:9-189:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:188:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:189:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:187:13-52
+activity#com.ylfcf.ppp.ui.GestureSettingActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:190:9-193:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:192:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:193:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:191:13-54
+activity#com.ylfcf.ppp.ui.WithdrawPwdOptionActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:194:9-197:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:196:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:197:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:195:13-57
+activity#com.ylfcf.ppp.ui.WithdrawPwdModifyActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:198:9-201:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:200:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:201:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:199:13-57
+activity#com.ylfcf.ppp.ui.WithdrawPwdGetbackActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:202:9-205:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:204:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:205:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:203:13-58
+activity#com.ylfcf.ppp.ui.WithdrawSuccessActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:206:9-209:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:208:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:209:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:207:13-55
+activity#com.ylfcf.ppp.ui.AwardDetailsActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:210:9-213:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:212:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:213:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:211:13-52
+activity#com.ylfcf.ppp.ui.MyGiftsActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:214:9-217:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:216:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:217:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:215:13-47
+activity#com.ylfcf.ppp.ui.MyYuanMoneyActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:218:9-221:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:220:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:221:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:219:13-51
+activity#com.ylfcf.ppp.ui.MyTYJActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:222:9-225:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:224:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:225:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:223:13-45
+activity#com.ylfcf.ppp.ui.ProductRecordActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:226:9-229:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:228:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:229:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:227:13-53
+activity#com.ylfcf.ppp.ui.ChangeAddressActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:230:9-233:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:232:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:233:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:231:13-53
+activity#com.ylfcf.ppp.ui.InvitateActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:234:9-237:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:236:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:237:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:235:13-48
+activity#com.ylfcf.ppp.ui.MyInvitationActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:238:9-242:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:241:13-49
+	android:hardwareAccelerated
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:240:13-48
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:242:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:239:13-52
+activity#com.ylfcf.ppp.ui.RegisteAgreementActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:243:9-246:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:245:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:246:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:244:13-56
+activity#com.ylfcf.ppp.ui.WithdrawDetailsActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:247:9-250:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:249:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:250:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:248:13-55
+activity#com.ylfcf.ppp.ui.LimitPromptActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:251:9-254:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:253:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:254:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:252:13-51
+activity#com.ylfcf.ppp.ui.BannerDetailsActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:255:9-258:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:257:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:258:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:256:13-53
+activity#com.ylfcf.ppp.ui.BannerTopicActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:260:9-263:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:262:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:263:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:261:13-51
+service#com.ylfcf.ppp.service.PreloadProcessService
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:264:9-266:41
+	android:process
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:266:13-39
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:265:13-58
+activity#com.ylfcf.ppp.ui.BankVerifyRecActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:267:9-270:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:269:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:270:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:268:13-53
+activity#com.ylfcf.ppp.ui.YXBIntroActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:271:9-274:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:273:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:274:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:272:13-48
+activity#com.ylfcf.ppp.ui.YXBBidSuccessActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:275:9-278:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:277:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:278:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:276:13-53
+activity#com.ylfcf.ppp.ui.YXBTransRecordActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:279:9-282:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:281:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:282:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:280:13-54
+activity#com.ylfcf.ppp.ui.YXBAgreementActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:284:9-287:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:286:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:287:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:285:13-52
+activity#com.ylfcf.ppp.ui.MyHongbaoActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:288:9-291:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:290:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:291:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:289:13-49
+activity#com.ylfcf.ppp.ui.BidXSBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:292:9-295:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:294:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:295:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:293:13-46
+activity#com.ylfcf.ppp.ui.ProductIntroActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:296:9-299:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:298:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:299:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:297:13-52
+activity#com.ylfcf.ppp.ui.YYYProductDataActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:300:9-303:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:302:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:303:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:301:13-54
+activity#com.ylfcf.ppp.ui.VIPProductRecordActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:304:9-307:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:306:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:307:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:305:13-56
+activity#com.ylfcf.ppp.ui.BorrowDetailXSMBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:308:9-311:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:310:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:311:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:309:13-56
+activity#com.ylfcf.ppp.ui.BidXSMBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:312:9-315:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:314:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:315:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:313:13-47
+activity#com.ylfcf.ppp.ui.ProductIntroXSMBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:316:9-319:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:318:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:319:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:317:13-56
+activity#com.ylfcf.ppp.ui.ProductDataXSMBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:320:9-323:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:322:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:323:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:321:13-55
+activity#com.ylfcf.ppp.ui.ProductSafetyXSMBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:324:9-327:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:326:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:327:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:325:13-57
+activity#com.ylfcf.ppp.ui.ProductInfoXSMBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:328:9-331:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:330:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:331:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:329:13-55
+activity#com.ylfcf.ppp.ui.PrizeRegionTempActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:332:9-335:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:334:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:335:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:333:13-55
+activity#com.ylfcf.ppp.ui.BidWDYActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:336:9-339:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:338:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:339:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:337:13-46
+activity#com.ylfcf.ppp.ui.BorrowDetailWDYActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:340:9-343:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:342:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:343:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:341:13-55
+activity#com.ylfcf.ppp.ui.WDYLendRecordDetailActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:344:9-347:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:346:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:347:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:345:13-59
+activity#com.ylfcf.ppp.ui.LXFXTempActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:348:9-351:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:350:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:351:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:349:13-48
+activity#com.ylfcf.ppp.ui.WDYProductDetailActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:352:9-355:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:354:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:355:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:353:13-56
+activity#com.ylfcf.ppp.ui.RechargeRecordActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:356:9-359:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:358:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:359:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:357:13-54
+activity#com.ylfcf.ppp.ui.RechargeProofActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:360:9-363:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:362:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:363:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:361:13-53
+activity#com.ylfcf.ppp.ui.SignTopicTempActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:364:9-367:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:366:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:367:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:365:13-53
+activity#com.ylfcf.ppp.ui.ActivitysRegionActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:368:9-371:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:370:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:371:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:369:13-55
+activity#com.ylfcf.ppp.ui.LXJ5TempActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:372:9-375:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:374:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:375:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:373:13-48
+activity#com.ylfcf.ppp.ui.MyFriendsActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:376:9-378:62
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:377:19-55
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:378:19-59
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:376:19-55
+activity#com.ylfcf.ppp.ui.ChooseJXQActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:379:9-381:62
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:380:19-55
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:381:19-59
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:379:19-55
+activity#com.ylfcf.ppp.ui.BorrowListYJYActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:382:9-384:62
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:383:19-55
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:384:19-59
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:382:19-59
+activity#com.ylfcf.ppp.ui.BorrowDetailYJYActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:385:9-387:62
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:386:19-55
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:387:19-59
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:385:19-61
+activity#com.ylfcf.ppp.ui.BidYJYActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:388:9-390:62
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:389:19-55
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:390:19-59
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:388:19-52
+activity#com.ylfcf.ppp.ui.ProductInfoYJYActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:391:9-393:62
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:392:19-55
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:393:19-59
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:391:19-60
+activity#com.ylfcf.ppp.ui.AccountCenterActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:394:9-396:62
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:395:19-55
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:396:19-59
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:394:19-59
+activity#com.umeng.socialize.editorpage.ShareActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:398:9-401:54
+	android:excludeFromRecents
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:400:13-46
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:401:13-51
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:399:13-72
+activity#com.ylfcf.ppp.wxapi.WXEntryActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:402:9-407:75
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:406:13-49
+	android:exported
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:405:13-36
+	android:configChanges
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:404:13-74
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:407:13-72
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:403:13-50
+activity#com.umeng.qq.tencent.AuthActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:409:9-420:20
+	android:launchMode
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:411:13-44
+	android:noHistory
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:412:13-37
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:410:13-61
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:414:13-419:29
+action#android.intent.action.VIEW
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:415:17-69
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:415:25-66
+category#android.intent.category.DEFAULT
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:416:17-76
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:416:27-73
+category#android.intent.category.BROWSABLE
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:417:17-78
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:417:27-75
+data
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:418:17-60
+	android:scheme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:418:23-57
+activity#com.umeng.qq.tencent.AssistActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:422:9-426:76
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:424:13-49
+	android:configChanges
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:426:13-74
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:425:13-72
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:423:13-63
+activity#com.ylfcf.ppp.sina.WBShareActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:428:9-437:20
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:431:13-49
+	android:configChanges
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:430:13-63
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:429:13-49
+intent-filter#android.intent.category.DEFAULT+com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:432:13-436:29
+action#com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:433:17-92
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:433:25-89
+activity#com.umeng.socialize.media.WBShareCallBackActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:443:9-449:20
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:448:13-49
+	android:exported
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:447:13-37
+	android:configChanges
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:445:13-63
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:446:13-72
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:444:13-77
+activity#com.sina.weibo.sdk.share.WbShareTransActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:451:9-460:20
+	android:launchMode
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:453:13-44
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:452:13-83
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:454:13-73
+activity#com.ylfcf.ppp.ui.ProductDataDetailsActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:466:9-469:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:468:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:469:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:467:13-58
+activity#com.ylfcf.ppp.ui.YXBProjectIntroActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:470:9-473:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:472:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:473:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:471:13-55
+activity#com.ylfcf.ppp.ui.ArticleListActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:474:9-477:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:476:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:477:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:475:13-51
+activity#com.ylfcf.ppp.ui.ArticleDetailsActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:478:9-481:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:480:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:481:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:479:13-54
+activity#com.ylfcf.ppp.ui.CommQuesActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:482:9-485:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:484:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:485:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:483:13-48
+activity#com.ylfcf.ppp.ui.RechargeChannelActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:486:9-489:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:488:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:489:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:487:13-55
+activity#com.ylfcf.ppp.ui.BorrowDetailXSBActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:490:9-493:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:492:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:493:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:491:13-55
+activity#com.ylfcf.ppp.ui.BorrowListZXDActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:494:9-497:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:496:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:497:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:495:13-53
+activity#com.ylfcf.ppp.ui.BorrowDetailYYYActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:498:9-501:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:500:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:501:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:499:13-55
+activity#com.ylfcf.ppp.ui.BidYYYActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:502:9-505:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:504:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:505:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:503:13-46
+activity#com.ylfcf.ppp.ui.BorrowListVIPActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:506:9-509:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:508:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:509:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:507:13-53
+activity#com.ylfcf.ppp.ui.YYYProductDetailActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:510:9-513:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:512:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:513:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:511:13-56
+activity#com.ylfcf.ppp.ui.YYYProductRecordActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:514:9-517:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:516:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:517:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:515:13-56
+activity#com.ylfcf.ppp.ui.YYYProductCJWTActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:518:9-521:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:520:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:521:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:519:13-54
+activity#com.ylfcf.ppp.ui.CompactActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:522:9-525:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:524:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:525:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:523:13-47
+activity#com.ylfcf.ppp.ui.RegisterVIPActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:526:9-529:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:528:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:529:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:527:13-51
+activity#com.ylfcf.ppp.ui.BidVIPActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:530:9-533:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:532:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:533:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:531:13-46
+activity#com.ylfcf.ppp.ui.BorrowDetailVIPActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:534:9-537:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:536:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:537:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:535:13-55
+activity#com.ylfcf.ppp.ui.VIPProductCJWTActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:538:9-541:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:540:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:541:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:539:13-54
+activity#com.ylfcf.ppp.ui.RegisterSucActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:542:9-545:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:544:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:545:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:543:13-51
+activity#com.ylfcf.ppp.ui.BorrowListSRZXActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:546:9-549:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:548:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:549:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:547:13-54
+activity#com.ylfcf.ppp.ui.BorrowDetailSRZXActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:550:9-553:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:552:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:553:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:551:13-56
+activity#com.ylfcf.ppp.ui.BidSRZXActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:554:9-557:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:556:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:557:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:555:13-47
+activity#com.ylfcf.ppp.ui.SRZXAppointActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:558:9-561:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:560:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:561:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:559:13-51
+activity#com.ylfcf.ppp.ui.MyJXQActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:562:9-565:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:564:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:565:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:563:13-45
+activity#com.ylfcf.ppp.ui.UserInvestRecordActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:566:9-569:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:568:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:569:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:567:13-56
+activity#com.ylfcf.ppp.ui.SignActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:570:9-573:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:572:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:573:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:571:13-44
+activity#com.ylfcf.ppp.ui.RechargeCompActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:574:9-577:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:576:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:577:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:575:13-52
+activity#com.ylfcf.ppp.ui.AccountSettingCompActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:578:9-581:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:580:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:581:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:579:13-58
+activity#com.ylfcf.ppp.ui.WithdrawCompActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:582:9-585:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:584:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:585:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:583:13-52
+activity#com.ylfcf.ppp.ui.PrizeRegion2TempActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:590:9-593:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:592:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:593:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:591:13-56
+activity#com.ylfcf.ppp.ui.YQHYTempActivity
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:594:9-597:56
+	android:screenOrientation
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:596:13-49
+	android:theme
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:597:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:595:13-48
+receiver#com.umeng.message.NotificationProxyBroadcastReceiver
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:600:9-602:49
+MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:126:9-128:40
+	android:exported
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:602:13-37
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:601:13-80
+meta-data#UMENG_APPKEY
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:605:9-607:66
+	android:value
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:607:13-53
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:606:13-40
+meta-data#UMENG_MESSAGE_SECRET
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:608:9-610:74
+	android:value
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:610:13-61
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:609:13-48
+meta-data#UMENG_CHANNEL
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:612:9-614:54
+	android:value
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:614:13-51
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:613:13-41
+meta-data#USER_FROM_SUB
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:616:9-618:54
+	android:value
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:618:13-51
+		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:617:13-41
+service#com.taobao.accs.ChannelService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:28:9-38:19
+	android:process
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:31:13-39
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:30:13-36
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:29:13-58
+intent-filter#com.taobao.accs.intent.action.SERVICE
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:32:13-34:29
+action#com.taobao.accs.intent.action.SERVICE
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:33:17-80
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:33:25-77
+intent-filter#com.taobao.accs.intent.action.ELECTION
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:35:13-37:29
+action#com.taobao.accs.intent.action.ELECTION
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:36:17-81
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:36:25-78
+service#com.taobao.accs.data.MsgDistributeService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:39:9-45:19
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:41:13-36
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:40:13-69
+intent-filter#com.taobao.accs.intent.action.RECEIVE
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:42:13-44:29
+action#com.taobao.accs.intent.action.RECEIVE
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:43:17-80
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:43:25-77
+receiver#com.taobao.accs.EventReceiver
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:47:9-64:20
+	android:process
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:49:13-39
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:48:13-57
+intent-filter#android.intent.action.BOOT_COMPLETED
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:50:13-52:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:51:17-79
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:51:25-76
+intent-filter#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:53:13-55:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:54:17-79
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:54:25-76
+intent-filter#android.intent.action.PACKAGE_REMOVED
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:56:13-60:29
+action#android.intent.action.PACKAGE_REMOVED
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:57:17-80
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:57:25-77
+intent-filter#android.intent.action.USER_PRESENT
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:61:13-63:29
+action#android.intent.action.USER_PRESENT
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:62:17-77
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:62:25-74
+receiver#com.taobao.accs.ServiceReceiver
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:65:9-74:20
+	android:process
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:67:13-39
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:66:13-59
+intent-filter#com.taobao.accs.intent.action.COMMAND
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:68:13-70:29
+action#com.taobao.accs.intent.action.COMMAND
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:69:17-80
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:69:25-77
+intent-filter#com.taobao.accs.intent.action.START_FROM_AGOO
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:71:13-73:29
+action#com.taobao.accs.intent.action.START_FROM_AGOO
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:72:17-88
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:72:25-85
+service#com.taobao.accs.ChannelService$KernelService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:76:9-78:42
+	android:process
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:78:13-39
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:77:13-72
+service#org.android.agoo.accs.AgooService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:79:9-85:19
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:81:13-36
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:80:13-61
+service#com.umeng.message.UmengIntentService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:86:9-93:19
+	android:process
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:89:13-39
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:88:13-36
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:87:13-64
+intent-filter#org.agoo.android.intent.action.RECEIVE
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:90:13-92:29
+action#org.agoo.android.intent.action.RECEIVE
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:91:17-81
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:91:25-78
+service#com.umeng.message.XiaomiIntentService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:94:9-101:19
+	android:process
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:97:13-39
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:96:13-36
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:95:13-65
+receiver#com.taobao.agoo.AgooCommondReceiver
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:103:9-115:20
+	android:process
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:106:13-39
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:105:13-36
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:104:13-63
+intent-filter#${applicationId}.intent.action.COMMAND
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:107:13-109:29
+action#${applicationId}.intent.action.COMMAND
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:108:17-81
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:108:25-78
+service#com.umeng.message.UmengMessageIntentReceiverService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:117:9-124:19
+	android:process
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:120:13-39
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:119:13-36
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:118:13-79
+intent-filter#org.android.agoo.client.MessageReceiverService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:121:13-123:29
+action#org.android.agoo.client.MessageReceiverService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:122:17-89
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:122:25-86
+service#com.umeng.message.UmengMessageCallbackHandlerService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:130:9-145:19
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:132:13-37
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:131:13-80
+intent-filter#com.umeng.messge.registercallback.action
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:133:13-135:29
+action#com.umeng.messge.registercallback.action
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:134:17-83
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:134:25-80
+intent-filter#com.umeng.message.enablecallback.action
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:136:13-138:29
+action#com.umeng.message.enablecallback.action
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:137:17-82
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:137:25-79
+intent-filter#com.umeng.message.disablecallback.action
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:139:13-141:29
+action#com.umeng.message.disablecallback.action
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:140:17-83
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:140:25-80
+intent-filter#com.umeng.message.message.handler.action
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:142:13-144:29
+action#com.umeng.message.message.handler.action
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:143:17-83
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:143:25-80
+service#com.umeng.message.UmengDownloadResourceService
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:146:9-148:40
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:148:13-37
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:147:13-74
+provider#com.umeng.message.provider.MessageProvider
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:150:9-155:20
+	android:authorities
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:152:13-65
+	android:exported
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:153:13-37
+	android:name
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:151:13-70
+grant-uri-permission
+ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:154:13-62
+	android:pathPattern
+		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:154:35-59

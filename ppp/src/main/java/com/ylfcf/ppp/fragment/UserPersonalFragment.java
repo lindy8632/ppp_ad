@@ -868,18 +868,18 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                 }
                 if(isLcs){
                     if("".equals(mUserInfo.getReal_name())){
-                        usernameTV.setText("您好，尊贵的"+mUserInfo.getUser_name());
+                        usernameTV.setText("您好！尊贵的"+mUserInfo.getUser_name());
                     }else{
-                        usernameTV.setText("您好，尊贵的"+mUserInfo.getReal_name());
+                        usernameTV.setText("您好！尊贵的"+mUserInfo.getReal_name());
                     }
                     headLogo.setBackgroundResource(R.drawable.my_account_personal_lcs_headlogo);
                     yqyjPrompt.setText("君子爱财，取自友道");
                     yqyjText.setText("元财道");
                 }else{
                     if("".equals(mUserInfo.getReal_name())){
-                        usernameTV.setText("您好，尊敬的"+mUserInfo.getUser_name());
+                        usernameTV.setText("您好！尊敬的"+mUserInfo.getUser_name());
                     }else{
-                        usernameTV.setText("您好，尊敬的"+mUserInfo.getReal_name());
+                        usernameTV.setText("您好！尊敬的"+mUserInfo.getReal_name());
                     }
                     headLogo.setBackgroundResource(R.drawable.my_account_personal_nor_headlogo);
                     yqyjPrompt.setText("");

@@ -148,7 +148,7 @@ public class UserFragment extends BaseFragment{
 		transaction.commit();
 	}
 
-	private void removeAllFragments(){
+	public void removeAllFragments(){
 		if(mUserLoginFragment != null){
 			transaction.remove(mUserLoginFragment);
 			mUserLoginFragment = null;
@@ -208,7 +208,6 @@ public class UserFragment extends BaseFragment{
 		YLFLogger.d("UserFragment -- onHiddenChanged");
 	}
 
-	//相当于activity的onResume()
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		super.setUserVisibleHint(isVisibleToUser);
@@ -216,6 +215,12 @@ public class UserFragment extends BaseFragment{
 		if(isVisibleToUser){
 			initMainLayout(null);
 		}
+	}
+
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		YLFLogger.d("UserFragment ------onDetach()");
 	}
 
 	@Override

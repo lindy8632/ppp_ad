@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ylfcf.ppp"
+    android:versionCode="159"
+    android:versionName="1.5.9" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="22" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <!-- 权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <!-- 检测联网方式，区分用户设备使用的是2G、3G或是WiFi -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 获取用户设备的mac地址，在平板设备上，无法通过imei标示设备，我们会将mac地址作为用户的唯一标识 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取用户设备的IMEI，通过IMEI和mac来唯一的标识用户。 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+
+    <!-- 【必选】用以设置前台是否显示通知 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <!-- 消息推送可选 -->
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <application
+        android:name="com.ylfcf.ppp.ui.YLFApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ylfcf.ppp.ui.IntroductionActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppMainStartLoad" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+            <activity
+            android:name=".ui.IntroductionActivity"
+            android:screenOrientation="portrait" />
+        -->
+
+
+        <!--
+         windowSoftInputMode属性不会将布局顶上去
+         android:theme="@style/Theme.AppStartLoad"  用户退出登录的时候会出问题
+        -->
+        <activity
+            android:name="com.ylfcf.ppp.ui.MainFragmentActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppStartLoad"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailZXDActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailYXBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidZXDActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidYXBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RegisteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ForgetPwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.GestureEditActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.GestureVerifyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WithdrawActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductDataActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductSafetyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.UserVerifyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ModifyLoginPwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.FeedbackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargeResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidSuccessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WithdrawListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BindCardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BrandIntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.AccountSettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.FundsDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.GestureSettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WithdrawPwdOptionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WithdrawPwdModifyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WithdrawPwdGetbackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WithdrawSuccessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.AwardDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.MyGiftsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.MyYuanMoneyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.MyTYJActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ChangeAddressActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.InvitateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.MyInvitationActivity"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RegisteAgreementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WithdrawDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.LimitPromptActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BannerDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <!-- android:process=":webview" -->
+        <activity
+            android:name="com.ylfcf.ppp.ui.BannerTopicActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+
+        <service
+            android:name="com.ylfcf.ppp.service.PreloadProcessService"
+            android:process=":webview" />
+
+        <activity
+            android:name="com.ylfcf.ppp.ui.BankVerifyRecActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YXBIntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YXBBidSuccessActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YXBTransRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <!-- 服务协议 -->
+        <activity
+            android:name="com.ylfcf.ppp.ui.YXBAgreementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.MyHongbaoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidXSBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductIntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YYYProductDataActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.VIPProductRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailXSMBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidXSMBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductIntroXSMBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductDataXSMBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductSafetyXSMBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductInfoXSMBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.PrizeRegionTempActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidWDYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailWDYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WDYLendRecordDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.LXFXTempActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WDYProductDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargeRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargeProofActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.SignTopicTempActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ActivitysRegionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.LXJ5TempActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.MyFriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ChooseJXQActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowListYJYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailYJYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidYJYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductInfoYJYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.AccountCenterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.UMDefault" />
+        <activity
+            android:name="com.ylfcf.ppp.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1105044430" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.ylfcf.ppp.sina.WBShareActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--
+            <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"></activity>
+        -->
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            <service
+            android:name="com.sina.weibo.sdk.net.DownloadService"
+            android:exported="false"/>
+        -->
+
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductDataDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YXBProjectIntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ArticleListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ArticleDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.CommQuesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargeChannelActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailXSBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowListZXDActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailYYYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidYYYActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowListVIPActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YYYProductDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YYYProductRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YYYProductCJWTActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.CompactActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RegisterVIPActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidVIPActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailVIPActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.VIPProductCJWTActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RegisterSucActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowListSRZXActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BorrowDetailSRZXActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BidSRZXActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.SRZXAppointActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.MyJXQActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.UserInvestRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.SignActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargeCompActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.AccountSettingCompActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.WithdrawCompActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.ProductIntroXSMBActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.PrizeRegion2TempActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.YQHYTempActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+
+        <!-- 监听通知点击或者忽略处理的广播 -->
+        <receiver
+            android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+            android:exported="false" />
+
+        <!-- 友盟的appkey -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="567cf33767e58e2b19000597" />
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="bc8973268d3246969f0196a3d474fdc4" />
+        <!-- 友盟的渠道统计 -->
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="anbeishichang" />
+        <!-- 用户来源 如果用户来源安卓app，则来源于哪个渠道平台。"官网App安卓版"表示来源于官网 -->
+        <meta-data
+            android:name="USER_FROM_SUB"
+            android:value="�����г�" />
+
+        <service
+            android:name="com.taobao.accs.ChannelService"
+            android:exported="true"
+            android:process=":channel" >
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.SERVICE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.ELECTION" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.taobao.accs.data.MsgDistributeService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.taobao.accs.EventReceiver"
+            android:process=":channel" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.taobao.accs.ServiceReceiver"
+            android:process=":channel" >
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.START_FROM_AGOO" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.taobao.accs.ChannelService$KernelService"
+            android:process=":channel" />
+        <service
+            android:name="org.android.agoo.accs.AgooService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.umeng.message.UmengIntentService"
+            android:exported="true"
+            android:process=":channel" >
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.umeng.message.XiaomiIntentService"
+            android:exported="true"
+            android:process=":channel" >
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.taobao.agoo.AgooCommondReceiver"
+            android:exported="true"
+            android:process=":channel" >
+            <intent-filter>
+                <action android:name="com.ylfcf.ppp.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.umeng.message.UmengMessageIntentReceiverService"
+            android:exported="true"
+            android:process=":channel" >
+            <intent-filter>
+                <action android:name="org.android.agoo.client.MessageReceiverService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.umeng.message.UmengMessageCallbackHandlerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.umeng.messge.registercallback.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.enablecallback.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.disablecallback.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.message.handler.action" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.umeng.message.UmengDownloadResourceService"
+            android:exported="false" />
+
+        <provider
+            android:name="com.umeng.message.provider.MessageProvider"
+            android:authorities="com.ylfcf.ppp.umeng.message"
+            android:exported="false" >
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+    </application>
+
+</manifest>
