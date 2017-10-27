@@ -47,6 +47,18 @@
         android:textSize="@dimen/common_measure_20dp"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/bid_success_activity_prompt_text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:gravity="left"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/common_measure_20dp"
+        android:visibility="gone"/>
+
     <!-- 继续投资 -->
     <Button
         android:id="@+id/bid_success_activity_continue_btn"

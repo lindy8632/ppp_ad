@@ -122,9 +122,11 @@ public class BidYYYActivity extends BaseActivity implements OnClickListener{
 						String.valueOf(hbET.getTag()));
 				break;
 			case REQUEST_INVEST_SUCCESS:
+				BaseInfo baseInfo = (BaseInfo) msg.obj;
 				Intent intentSuccess = new Intent(BidYYYActivity.this,
 						BidSuccessActivity.class);
 				intentSuccess.putExtra("from_where", "ÔªÔÂÓ¯");
+				intentSuccess.putExtra("base_info",baseInfo);
 				startActivity(intentSuccess);
 				mApp.finishAllActivityExceptMain();
 				break;

@@ -118,9 +118,11 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 						SettingsManager.USER_FROM,String.valueOf(hbET.getTag()),String.valueOf(jxqEditText.getTag()));
 				break;
 			case REQUEST_INVEST_SUCCESS:
+				BaseInfo baseInfo = (BaseInfo) msg.obj;
 				Intent intentSuccess = new Intent(BidSRZXActivity.this,
 						BidSuccessActivity.class);
 				intentSuccess.putExtra("from_where", "Ë½ÈË×ðÏí");
+				intentSuccess.putExtra("base_info",baseInfo);
 				startActivity(intentSuccess);
 				mApp.finishAllActivityExceptMain();
 				break;

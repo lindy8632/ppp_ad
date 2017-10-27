@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.ylfcf.ppp.entity.BaseInfo;
 import com.ylfcf.ppp.inter.Inter.OnCommonInter;
-import com.ylfcf.ppp.parse.JsonParseCommon;
+import com.ylfcf.ppp.parse.JsonParseInvest;
 import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
 import com.ylfcf.ppp.util.URLGenerator;
@@ -53,7 +53,7 @@ public class AsyncYYYInvest extends AsyncTaskBase{
 			if (result == null) {
 				result = BackType.FAILE;
 			} else {
-				baseInfo = JsonParseCommon.parseData(result);
+				baseInfo = JsonParseInvest.parseData(result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

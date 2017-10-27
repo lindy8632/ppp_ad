@@ -190,8 +190,9 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 						if(drawable != null){
 							int imageIntrinsicWidth = drawable.getIntrinsicWidth();
 							float imageIntrinsicHeight = (float)drawable.getIntrinsicHeight();
-							int curImageHeight = (int) (screen[0]*(imageIntrinsicHeight/imageIntrinsicWidth));
-							drawable.setBounds(0, 0, screen[0],curImageHeight);//四个参数含义为左上角、右下角坐标确定的一个矩形，图片就在这个矩形范围内画出来
+							int curImageWidth = screen[0] - 2*(getResources().getDimensionPixelSize(R.dimen.common_measure_20dp));//除去两个边距
+							int curImageHeight = (int) (curImageWidth*(imageIntrinsicHeight/imageIntrinsicWidth));
+							drawable.setBounds(0, 0, curImageWidth,curImageHeight);//四个参数含义为左上角、右下角坐标确定的一个矩形，图片就在这个矩形范围内画出来
 						}
 					} catch (MalformedURLException e) {
 						e.printStackTrace();
@@ -201,7 +202,12 @@ public class BannerDetailsActivity extends BaseActivity implements OnClickListen
 					return drawable;
 				}
 			};
-			CharSequence htmlText = Html.fromHtml(articleInfoTemp.getContent(),imageGetter, null);
+			CharSequence htmlText = null;
+			if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+				htmlText = Html.fromHtml(articleInfoTemp.getContent(),Html.FROM_HTML_MODE_LEGACY,imageGetter, null);
+			}else{
+				htmlText = Html.fromHtml(articleInfoTemp.getContent(),imageGetter, null);
+			}
 			Message msg = handler.obtainMessage(REFRESH_VIEW);
 			msg.obj = htmlText;
 			handler.sendMessage(msg);

@@ -82,8 +82,8 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 		this.setFocusable(true);
 		this.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
 		if("邀请有奖".equals(fromWhere)){
-			title = "注册赢iPhone8";
-			text = "动动手指注册认证，即可参与元立方抽奖活动，iPhone8、周大福黄金吊坠、388元现金……送不停";
+			title = "邀您注册 疯狂购物月 最高返现0.8%";
+			text = "元立方投资送补贴，嗨购双十一，还有重磅加息等你来！";
 			image = new UMImage(context, R.drawable.share_logo);
 		}else if("新春福利2017".equals(fromWhere)){
 			title = "小元喊你来领压岁钱";

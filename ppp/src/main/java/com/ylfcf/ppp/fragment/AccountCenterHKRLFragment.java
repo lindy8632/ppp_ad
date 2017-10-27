@@ -119,7 +119,7 @@ public class AccountCenterHKRLFragment extends BaseFragment implements OnClickLi
         arrowLeftImg.setOnClickListener(this);
         arrowRightImg = (ImageView)rootView.findViewById(R.id.account_center_hkrl_arrow_right);
         arrowRightImg.setOnClickListener(this);
-        curMonthTV = (TextView) rootView.findViewById(account_center_hkrl_date_tv);
+        curMonthTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_date_tv);
         curMonthTV.setOnClickListener(this);
         hkTotalMoneyTV = (TextView) rootView.findViewById(R.id.account_center_hkrl_curmonth_totalmoney);
         mExpCalendarView = (ExpCalendarView) rootView.findViewById(R.id.account_center_hkrl_calendarview);

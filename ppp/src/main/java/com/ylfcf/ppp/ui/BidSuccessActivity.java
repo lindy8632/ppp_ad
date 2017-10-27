@@ -2,6 +2,7 @@ package com.ylfcf.ppp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -25,6 +26,7 @@ public class BidSuccessActivity extends BaseActivity implements OnClickListener{
 	private TextView topTitleTV;
 	private TextView catRecords;
 	private TextView promptTV;
+	private TextView promptTV1;
 	private Button continueBtn;
 	private String fromWhere;
 	private BaseInfo mBaseInfo;
@@ -45,6 +47,7 @@ public class BidSuccessActivity extends BaseActivity implements OnClickListener{
 		topTitleTV = (TextView)findViewById(R.id.common_page_title);
 		topTitleTV.setText("投资");
 		promptTV = (TextView)findViewById(R.id.bid_success_activity_prompt_text);
+		promptTV1 = (TextView) findViewById(R.id.bid_success_activity_prompt_text1);
 		continueBtn = (Button)findViewById(R.id.bid_success_activity_continue_btn);
 		continueBtn.setOnClickListener(this);
 		catRecords = (TextView)findViewById(R.id.bid_success_activity_cat_record);
@@ -59,6 +62,23 @@ public class BidSuccessActivity extends BaseActivity implements OnClickListener{
 			}
 		}else{
 			promptTV.setVisibility(View.GONE);
+		}
+
+		String promptText1 = "";
+		if(mBaseInfo != null && mBaseInfo.getmInvestResultInfo() != null){
+			if(mBaseInfo.getmInvestResultInfo().getRed_bag_value() != null && !"".equals(mBaseInfo.getmInvestResultInfo().getRed_bag_value())
+					&& !"0".equals(mBaseInfo.getmInvestResultInfo().getRed_bag_value())){
+				promptTV1.setVisibility(View.VISIBLE);
+				promptText1 = "恭喜您获得<font color=\"#FD7323\">" + mBaseInfo.getmInvestResultInfo().getRed_bag_value() + "元" +
+						"</font>红包，可前往我的账户-奖励明细-我的红包查看。";
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+					promptTV1.setText(Html.fromHtml(promptText1,Html.FROM_HTML_MODE_LEGACY));
+				} else {
+					promptTV1.setText(Html.fromHtml(promptText1));
+				}
+			}
+		}else{
+			promptTV1.setVisibility(View.GONE);
 		}
 	}
 

@@ -105,9 +105,11 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 						SettingsManager.USER_FROM,"",String.valueOf(jxqEditText.getTag()));
 				break;
 			case REQUEST_INVEST_SUCCESS:
+				BaseInfo baseInfo = (BaseInfo) msg.obj;
 				Intent intentSuccess = new Intent(BidWDYActivity.this,
 						BidSuccessActivity.class);
 				intentSuccess.putExtra("from_where", "Œ»∂®”Ø");
+				intentSuccess.putExtra("base_info",baseInfo);
 				startActivity(intentSuccess);
 				mApp.finishAllActivityExceptMain();
 				break;

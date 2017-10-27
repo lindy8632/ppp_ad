@@ -7,6 +7,7 @@ package com.ylfcf.ppp.entity;
 public class InvestResultInfo implements java.io.Serializable{
     private String msg;
     private String daily_prize_res;
+    private String red_bag_value;//红包值
     private InvestStatus mInvestStatus;//投资状态
 
     public InvestResultInfo() {
@@ -34,5 +35,13 @@ public class InvestResultInfo implements java.io.Serializable{
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public String getRed_bag_value() {
+        return red_bag_value;
+    }
+
+    public void setRed_bag_value(String red_bag_value) {
+        this.red_bag_value = red_bag_value;
     }
 }

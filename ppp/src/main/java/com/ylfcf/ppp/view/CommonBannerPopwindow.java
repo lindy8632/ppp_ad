@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -45,14 +46,20 @@ public class CommonBannerPopwindow extends PopupWindow implements
         this.imageLoader = ImageLoaderManager.newInstance();
         options = ImageLoaderManager.configurationOption(R.drawable.icon_pop_empty,
                 R.drawable.icon_pop_empty);
-        findViews(convertView);
+        findViews(convertView,width,height);
     }
 
-    private void findViews(View popView) {
+    private void findViews(View popView,int screenWidth,int screenHeight) {
         deleteImg = (ImageView) popView.findViewById(R.id.common_banner_popwindow_delete_btn);
         deleteImg.setOnClickListener(this);
         contentImg = (ImageView) popView.findViewById(R.id.common_banner_popwindow_main_content);
         contentImg.setOnClickListener(this);
+        ViewGroup.LayoutParams params = contentImg.getLayoutParams();
+        params.width = screenWidth*6/7;
+        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        contentImg.setLayoutParams(params);
+        contentImg.setMaxWidth(screenWidth);
+        contentImg.setMaxHeight(screenHeight);//imageview自定义大小
         ImageLoaderManager.loadingImage(imageLoader, mPopBannerInfo.getPic(),contentImg, options, null, null);
         lp = context.getWindow().getAttributes();
         lp.alpha = 0.3f;

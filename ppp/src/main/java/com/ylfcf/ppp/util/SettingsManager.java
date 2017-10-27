@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import com.ylfcf.ppp.R;
@@ -444,8 +445,18 @@ public class SettingsManager extends DefaultPreferences {
      */
     public static int[] getScreenDispaly(Context context) {
 		WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-		int width = windowManager.getDefaultDisplay().getWidth();// 手机屏幕的宽度
-		int height = windowManager.getDefaultDisplay().getHeight();// 手机屏幕的高度
+		int width = 0;
+		int height = 0;
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+			DisplayMetrics dm = new DisplayMetrics();
+			windowManager.getDefaultDisplay().getMetrics(dm);
+			width  = dm.widthPixels ;
+			height = dm.heightPixels;
+		}else{
+			width = windowManager.getDefaultDisplay().getWidth();// 手机屏幕的宽度
+			height = windowManager.getDefaultDisplay().getHeight();// 手机屏幕的高度
+		}
+
 		int result[] = { width, height };
 		return result;
 	}

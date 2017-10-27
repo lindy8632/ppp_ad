@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.ylfcf.ppp"
-          android:versionCode="159"
-          android:versionName="1.5.9">
+          android:versionCode="160"
+          android:versionName="1.6.0">
 
     <uses-sdk
         android:minSdkVersion="9"
