@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ylfcf.ppp"
-    android:versionCode="159"
-    android:versionName="1.5.9" >
+    android:versionCode="160"
+    android:versionName="1.6.0" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -625,7 +625,7 @@
         <!-- 用户来源 如果用户来源安卓app，则来源于哪个渠道平台。"官网App安卓版"表示来源于官网 -->
         <meta-data
             android:name="USER_FROM_SUB"
-            android:value="�����г�" />
+            android:value="安贝市场" />
 
         <service
             android:name="com.taobao.accs.ChannelService"

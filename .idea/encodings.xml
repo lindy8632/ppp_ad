@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
-    <file url="file://$PROJECT_DIR$/ppp/build.gradle" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ppp/build.gradle" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ppp/proguard-project.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/AndroidManifest.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/async/AsyncBorrowInvest.java" charset="GBK" />
@@ -24,6 +24,6 @@
     <file url="file://$PROJECT_DIR$/ylfcfwidgetlibrary/src/main/java/com/example/ylfcf/view/MonthWeekData.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ylfcfwidgetlibrary/src/main/java/com/example/ylfcf/view/XRefreshContentView.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ylfcfwidgetlibrary/src/main/res/values/ids.xml" charset="UTF-8" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

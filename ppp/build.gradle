@@ -4,8 +4,8 @@ apply from: 'constants.gradle'
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
-    aaptOptions.cruncherEnabled = false //¶ÔpngÍ¼Æ¬µÄºÏÀíĞÔ¼ì²é
-    aaptOptions.useNewCruncher = false //¶ÔpngÍ¼Æ¬µÄºÏÀíĞÔ¼ì²é
+    aaptOptions.cruncherEnabled = false //å¯¹pngå›¾ç‰‡çš„åˆç†æ€§æ£€æŸ¥
+    aaptOptions.useNewCruncher = false //å¯¹pngå›¾ç‰‡çš„åˆç†æ€§æ£€æŸ¥
 
     defaultConfig {
         applicationId "com.ylfcf.ppp"
@@ -30,14 +30,14 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true //ÊÇ·ñ½øĞĞ»ìÏı²Ù×÷
+            minifyEnabled true //æ˜¯å¦è¿›è¡Œæ··æ·†æ“ä½œ
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
-            // ×Ô¶¨ÒåÊä³öÅäÖÃ
+            // è‡ªå®šä¹‰è¾“å‡ºé…ç½®
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        // Êä³öapkÃû³ÆÎªppp_v1.0_wandoujia.apk
+                        // è¾“å‡ºapkåç§°ä¸ºppp_v1.0_wandoujia.apk
                         def fileName = "ppp_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
@@ -47,75 +47,75 @@ android {
     }
     productFlavors {
         guanwang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "",
-                                        USER_FROM_SUB_VALUE:"¹ÙÍøApp°²×¿°æ"]}
+                                        USER_FROM_SUB_VALUE:"å®˜ç½‘Appå®‰å“ç‰ˆ"]}
         anzhuoshichang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhuoshichang",
-                                    USER_FROM_SUB_VALUE:"°²×¿ÊĞ³¡"]}
+                                    USER_FROM_SUB_VALUE:"å®‰å“å¸‚åœº"]}
         wandoujia {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia",
-                                           USER_FROM_SUB_VALUE:"Íã¶¹¼Ğ"]}
+                                           USER_FROM_SUB_VALUE:"è±Œè±†å¤¹"]}
         anzhi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi",
-                                       USER_FROM_SUB_VALUE:"°²ÖÇ"]}
+                                       USER_FROM_SUB_VALUE:"å®‰æ™º"]}
         meizu {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu",
-                                       USER_FROM_SUB_VALUE:"÷È×å"]}
+                                       USER_FROM_SUB_VALUE:"é­…æ—"]}
         xiaomi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi",
-                                        USER_FROM_SUB_VALUE:"Ğ¡Ã×"]}
+                                        USER_FROM_SUB_VALUE:"å°ç±³"]}
         nineone {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "91",
-                                    USER_FROM_SUB_VALUE:"91ÖúÊÖ"]}
+                                    USER_FROM_SUB_VALUE:"91åŠ©æ‰‹"]}
         huawei {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei",
-                                        USER_FROM_SUB_VALUE:"»ªÎª"]}
+                                        USER_FROM_SUB_VALUE:"åä¸º"]}
         threesixzero {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "360",
                                      USER_FROM_SUB_VALUE:"360"]}
         tengxun {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tengxun",
-                                         USER_FROM_SUB_VALUE:"ÌÚÑ¶Ó¦ÓÃ±¦"]}
+                                         USER_FROM_SUB_VALUE:"è…¾è®¯åº”ç”¨å®"]}
         leshangdian {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "leshangdian",
-                                             USER_FROM_SUB_VALUE:"ÀÖÉÌµê"]}
+                                             USER_FROM_SUB_VALUE:"ä¹å•†åº—"]}
         yingyonghui {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyonghui",
-                                             USER_FROM_SUB_VALUE:"Ó¦ÓÃ»ã"]}
+                                             USER_FROM_SUB_VALUE:"åº”ç”¨æ±‡"]}
         mumayi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "mumayi",
-                                        USER_FROM_SUB_VALUE:"Ä¾ÂìÒÏ"]}
+                                        USER_FROM_SUB_VALUE:"æœ¨èš‚èš"]}
         baidu {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu",
-                                       USER_FROM_SUB_VALUE:"°Ù¶ÈÊÖ»úÖúÊÖ"]}
+                                       USER_FROM_SUB_VALUE:"ç™¾åº¦æ‰‹æœºåŠ©æ‰‹"]}
         yingyongbei {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbei",
-                                             USER_FROM_SUB_VALUE:"Ó¦ÓÃ±´"]}
+                                             USER_FROM_SUB_VALUE:"åº”ç”¨è´"]}
         zhongguoyidong {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zhongguoyidong",
-                                                USER_FROM_SUB_VALUE:"ÖĞ¹úÒÆ¶¯"]}
+                                                USER_FROM_SUB_VALUE:"ä¸­å›½ç§»åŠ¨"]}
         jiwang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jiwang",
-                                        USER_FROM_SUB_VALUE:"¼«ÍøÓ¦ÓÃÊĞ³¡"]}
+                                        USER_FROM_SUB_VALUE:"æç½‘åº”ç”¨å¸‚åœº"]}
         jifengshichang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jifengshichang",
-                                                USER_FROM_SUB_VALUE:"»ú·æÊĞ³¡"]}
+                                                USER_FROM_SUB_VALUE:"æœºé”‹å¸‚åœº"]}
         twothreefourfive {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "2345",
-                                      USER_FROM_SUB_VALUE:"2345ÊÖ»úÓ¦ÓÃ"]}
+                                      USER_FROM_SUB_VALUE:"2345æ‰‹æœºåº”ç”¨"]}
         leshi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "leshi",
-                                       USER_FROM_SUB_VALUE:"ÀÖÊÓÓ¦ÓÃÊĞ³¡"]}
+                                       USER_FROM_SUB_VALUE:"ä¹è§†åº”ç”¨å¸‚åœº"]}
         oppo {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo",
-                                      USER_FROM_SUB_VALUE:"OPPO¿É¿ÉÈí¼şÉÌµê"]}
+                                      USER_FROM_SUB_VALUE:"OPPOå¯å¯è½¯ä»¶å•†åº—"]}
         jinli {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jinli",
-                                       USER_FROM_SUB_VALUE:"½ğÁ¢¿ª·¢ÕßÉçÇø"]}
+                                       USER_FROM_SUB_VALUE:"é‡‘ç«‹å¼€å‘è€…ç¤¾åŒº"]}
         dianxintianyi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dianxintianyi",
-                                               USER_FROM_SUB_VALUE:"µçĞÅÌìÒí¿Õ¼ä"]}
+                                               USER_FROM_SUB_VALUE:"ç”µä¿¡å¤©ç¿¼ç©ºé—´"]}
         anruan {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anruan",
-                                        USER_FROM_SUB_VALUE:"°²ÈíÊĞ³¡"]}
+                                        USER_FROM_SUB_VALUE:"å®‰è½¯å¸‚åœº"]}
         threeg {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "3g",
-                                    USER_FROM_SUB_VALUE:"3GÊĞ³¡"]}
+                                    USER_FROM_SUB_VALUE:"3Gå¸‚åœº"]}
         liqu {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "liqu",
-                                      USER_FROM_SUB_VALUE:"ÀúÈ¤ÊĞ³¡"]}
+                                      USER_FROM_SUB_VALUE:"å†è¶£å¸‚åœº"]}
         ppzhushou {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ppzhushou",
-                                           USER_FROM_SUB_VALUE:"PPÖúÊÖ°²×¿ÊĞ³¡"]}
+                                           USER_FROM_SUB_VALUE:"PPåŠ©æ‰‹å®‰å“å¸‚åœº"]}
         sanxing {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "sanxing",
-                                         USER_FROM_SUB_VALUE:"ÈıĞÇÓ¦ÓÃÉÌµê"]}
+                                         USER_FROM_SUB_VALUE:"ä¸‰æ˜Ÿåº”ç”¨å•†åº—"]}
         anbeishichang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anbeishichang",
-                                               USER_FROM_SUB_VALUE:"°²±´ÊĞ³¡"]}
+                                               USER_FROM_SUB_VALUE:"å®‰è´å¸‚åœº"]}
         anfenwang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anfenwang",
-                                           USER_FROM_SUB_VALUE:"°²·ÛÍø"]}
+                                           USER_FROM_SUB_VALUE:"å®‰ç²‰ç½‘"]}
         anzhuoyuan {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhuoyuan",
-                                            USER_FROM_SUB_VALUE:"°²×¿Ô°"]}
+                                            USER_FROM_SUB_VALUE:"å®‰å“å›­"]}
         taipingyang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "taipingyang",
-                                             USER_FROM_SUB_VALUE:"Ì«Æ½ÑóÍøÂç"]}
+                                             USER_FROM_SUB_VALUE:"å¤ªå¹³æ´‹ç½‘ç»œ"]}
         vivo {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo",
                                       USER_FROM_SUB_VALUE:"vivo"]}
         woshangdian {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "woshangdian",
-                                             USER_FROM_SUB_VALUE:"ÎÖÉÌµê"]}
+                                             USER_FROM_SUB_VALUE:"æ²ƒå•†åº—"]}
         momo {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "momo",
-                                      USER_FROM_SUB_VALUE:"Ä°Ä°"]}
+                                      USER_FROM_SUB_VALUE:"é™Œé™Œ"]}
     }
 }
 
@@ -129,10 +129,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.youth.banner:banner:1.4.9'
-    //ÂÖ²¥¿Ø¼ş ×îĞÂ°æ±¾
+    //è½®æ’­æ§ä»¶ æœ€æ–°ç‰ˆæœ¬
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.wx.wheelview:wheelview:1.3.3'
-    //Í¼Æ¬¼ÓÔØ
+    //å›¾ç‰‡åŠ è½½
 //    compile 'com.github.Cutta:GifView:1.1'
-    //gifÍ¼Æ¬¼ÓÔØ
+    //gifå›¾ç‰‡åŠ è½½
 }
