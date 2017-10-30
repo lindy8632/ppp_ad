@@ -208,6 +208,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 		mGifView.setGifImage(R.drawable.first_page_subject_gif);
 		mGifView.setShowDimension(mainActivity.getResources().getDimensionPixelSize(R.dimen.common_measure_63dp),
 				mainActivity.getResources().getDimensionPixelSize(R.dimen.common_measure_54dp));
+		mGifView.setOnClickListener(this);
 		bottomLayout = (LinearLayout) xsbLayout.findViewById(R.id.first_page_subject_bottom_layout);
 		bottomLayout.setOnClickListener(this);
 		tipsText = (TextView) xsbLayout
@@ -370,8 +371,8 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 		}
 	}
 
-	private void checkOct2017Active(String sysTime){
-		int flag = SettingsManager.checkActiveStatusBySysTime(sysTime,SettingsManager.activeOct2017_StartTime,SettingsManager.activeOct2017_EndTime);
+	private void checkNov2017Active(String sysTime){
+		int flag = SettingsManager.checkActiveStatusBySysTime(sysTime,SettingsManager.activeNov2017_StartTime,SettingsManager.activeNov2017_EndTime);
 		if(flag == 0){
 			//活动进行中
 			mGifView.setVisibility(View.VISIBLE);
@@ -444,7 +445,8 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 				startActivity(intentYYY);
 				break;
 			case R.id.first_page_subject_yzy_logo:
-				//元月盈
+			case R.id.first_page_subject_xsb_gif:
+				//元政盈
 				Intent intentYZY = new Intent(mainActivity,
 						BorrowListZXDActivity.class);
 				startActivity(intentYZY);
@@ -591,7 +593,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 			}
 			initBanner(bannerList);
 			defaultImg.setVisibility(View.GONE);
-			checkOct2017Active(baseInfo.getTime());
+			checkNov2017Active(baseInfo.getTime());
 			return;
 		}
 		AsyncBanner bannerTask = new AsyncBanner(mainActivity,
@@ -600,7 +602,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 					@Override
 					public void back(BaseInfo baseInfo) {
 						if (baseInfo != null) {
-							checkOct2017Active(baseInfo.getTime());
+							checkNov2017Active(baseInfo.getTime());
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
@@ -619,7 +621,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 								defaultImg.setVisibility(View.GONE);
 							}
 						}else{
-							checkOct2017Active(sdf1.format(new Date()));
+							checkNov2017Active(sdf1.format(new Date()));
 						}
 					}
 				});

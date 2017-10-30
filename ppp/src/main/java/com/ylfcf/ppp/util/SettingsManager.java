@@ -83,6 +83,11 @@ public class SettingsManager extends DefaultPreferences {
 	public static final String activeOct2017_StartTime = "2017-10-01 00:00:00";
 	public static final String activeOct2017_EndTime = "2017-10-08 23:59:59";
 
+	//2017年双11加息活动
+	public static final String activeNov2017_StartTime = "2017-10-10 00:00:00";
+	public static final String activeNov2017_EndTime = "2017-11-12 23:59:59";
+
+
 	public static final String USER_FROM = "安卓APP";//用户来源，是来源于元立方网站还是微信还是app等等。此处为写死
 	public static final String APP_FIRST	= "appfirst";//判断应用是否是首次打开。
 	public static final String USER_PASSWORD	= "password";
