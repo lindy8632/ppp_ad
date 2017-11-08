@@ -131,6 +131,8 @@ public class WithdrawListActivity extends BaseActivity implements
 					int position, long id) {
 				WithdrawOrderInfo orderInfo = (WithdrawOrderInfo) parent
 						.getAdapter().getItem(position);
+				if(orderInfo == null)
+					return;
 				Intent intent = new Intent(WithdrawListActivity.this,
 						WithdrawDetailsActivity.class);
 				intent.putExtra("WithdrawOrderInfo", orderInfo);

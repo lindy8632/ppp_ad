@@ -520,12 +520,12 @@
         "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\lxfx_getjxq_dialog_layout.xml"
     },
     {
-        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\cube_ptr_classic_default_header.xml",
-        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\cube_ptr_classic_default_header.xml"
-    },
-    {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\upush_notification.xml",
         "source": "D:\\GitRepository\\ppp_ad\\PushSDK\\build\\intermediates\\bundles\\default\\res\\layout\\upush_notification.xml"
+    },
+    {
+        "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\cube_ptr_classic_default_header.xml",
+        "source": "D:\\GitRepository\\ppp_ad\\ppp\\src\\main\\res\\layout\\cube_ptr_classic_default_header.xml"
     },
     {
         "merged": "D:\\GitRepository\\ppp_ad\\ppp\\build\\intermediates\\res\\merged\\anbeishichang\\debug\\layout\\lczq_lendrecord_detail_activity.xml",

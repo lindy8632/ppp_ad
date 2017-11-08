@@ -179,11 +179,9 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
         if (parent != null) {
             parent.removeView(rootView);
         }
-        YLFLogger.d("UserFragment -- onCreateView");
+        YLFLogger.d("UserPersonalFragment onCreateView()");
         handler.sendEmptyMessage(REQUEST_GET_USERINFO_WHAT);
         handler.sendEmptyMessage(REQUEST_YUANMONEY_WHAT);
-        //判断会员福利2期是否还在进行
-        handler.sendEmptyMessage(REQUEST_HYFL_WHAT);
         //检查是否实名绑卡
         checkIsVerify("初始化");
         return rootView;
@@ -328,9 +326,14 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
+        YLFLogger.d("UserPersonalFragment setUserVisibleHint()");
         if(isVisibleToUser && (!isBindcard || !isVerify)){
             checkIsVerify("初始化");
+        }
+        if(isVisibleToUser && SettingsManager.getHYFLFlag(getActivity().getApplicationContext(),
+                SettingsManager.getUserId(getActivity())+"hyfl02")){
+            //判断会员福利2期是否还在进行
+            handler.sendEmptyMessage(REQUEST_HYFL_WHAT);
         }
     }
 

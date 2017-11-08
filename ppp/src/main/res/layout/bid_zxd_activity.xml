@@ -652,7 +652,7 @@
                     android:id="@+id/bid_zxd_activity_compact_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="《借款协议》"
+                    android:text="《产品协议》"
                     android:textColor="@color/common_topbar_bg_color"
                     android:textSize="@dimen/common_measure_18dp"/>
                 

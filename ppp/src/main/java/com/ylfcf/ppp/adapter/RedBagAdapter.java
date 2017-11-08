@@ -95,6 +95,8 @@ public class RedBagAdapter extends ArrayAdapter<RedBagInfo> {
 					.findViewById(R.id.redbag_list_item_btn);
 			viewHolder.remark = (TextView) convertView
 					.findViewById(R.id.regbag_item_remark);
+			viewHolder.useFanweiTitleText = (TextView) convertView
+					.findViewById(R.id.regbag_item_usefanwei_title);
 			viewHolder.useFanweiText = (TextView) convertView
 					.findViewById(R.id.regbag_item_usefanwei);
 			convertView.setTag(viewHolder);
@@ -133,8 +135,9 @@ public class RedBagAdapter extends ArrayAdapter<RedBagInfo> {
 		} else {
 			viewHolder.btn.setVisibility(View.GONE);
 		}
-
-		viewHolder.useFanweiText.setText("适用范围："+info.getInvest_type());
+		viewHolder.useFanweiTitleText.setText("适用范围：");
+		viewHolder.useFanweiText.setText(info.getInvest_type().replace("元月通","元政盈32天").replace("元季融","元政盈92天")
+				.replace("元定和","元政盈182天").replace("元年鑫","元政盈365天"));
 		viewHolder.btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -150,7 +153,8 @@ public class RedBagAdapter extends ArrayAdapter<RedBagInfo> {
 		}
 		viewHolder.eduText.setText(Util.formatRate(info.getMoney()));
 		if("已使用".equals(info.getUse_status())){
-			viewHolder.useFanweiText.setText("投资标的：" + info.getBorrow_name());
+			viewHolder.useFanweiTitleText.setText("投资标的：");
+			viewHolder.useFanweiText.setText(info.getBorrow_name());
 			viewHolder.validityText.setText("使用时间：" + info.getUse_time());
 			viewHolder.useLimitText.setText("变现日期：" + info.getRepay_time().split(" ")[0]);
 		}else{
@@ -171,7 +175,7 @@ public class RedBagAdapter extends ArrayAdapter<RedBagInfo> {
 							+ needInvestMoneyI/10000d + "万元");
 				}
 			}else if(needInvestMoneyI <= 0){
-				viewHolder.useLimitText.setText("使用规则：无");
+				viewHolder.useLimitText.setText("使用规则：一 一");
 			}else{
 				viewHolder.useLimitText.setText("使用规则：单笔投资金额不低于"
 						+ needInvestMoneyI + "元");
@@ -187,6 +191,7 @@ public class RedBagAdapter extends ArrayAdapter<RedBagInfo> {
 	 */
 	class ViewHolder {
 		TextView eduText;// 额度
+		TextView useFanweiTitleText;//适用范围的title
 		TextView useFanweiText;//使用范围
 		TextView validityText;// 有效期
 		TextView useLimitText;// 使用限制

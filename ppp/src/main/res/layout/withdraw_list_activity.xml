@@ -16,8 +16,6 @@
             android:id="@+id/withdraw_list_activity_mainlayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="@dimen/common_measure_20dp"
-            android:layout_marginRight="@dimen/common_measure_20dp"
             android:visibility="gone" >
 
             <!-- android:dividerHeight="@dimen/common_measure_10dp" -->

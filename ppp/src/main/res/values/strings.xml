@@ -340,12 +340,12 @@
 400-150-1568），客户服务时间： 工作日 9:00-18:00。</string>
 
     <string name="comm_ques_account_2t">我的账号密码忘记了，该如何找回？</string>
-    <string name="comm_ques_account_2t_1d">（1）登录密码：在登录页面点“忘记密码”，根据页面提示进行验证身份后即可重置登录密码。</string>
-    <string name="comm_ques_account_2t_2d">（2）提现密码：在提现页面点击“找回提现密码”，获取验证码后输入验证码，再输入新密码，点击“提交修改”后即可完成提现密码重置。或在APP下端点击“我的”-“账户设置”-“提现密码”-“找回提现密码”，根据页面提示验证身份后输入新密码，即可完成提现密码重置。</string>
+    <string name="comm_ques_account_2t_1d">登录密码：在登录页面点“忘记密码”，根据页面提示进行验证身份后即可重置登录密码。</string>
+    <string name="comm_ques_account_2t_2d">提现密码：在提现页面点“找回提现密码”，获取验证码后输入验证码，再输入新密码，点击“提交修改”后即可完成提现密码重置。或在APP下端点击“我的-账户设置-提现密码-找回提现密码”，获取验证码后输入验证码，再输入新密码，点击“提交修改”后即可完成提现密码重置。</string>
 
     <string name="comm_ques_account_3t">我想修改密码，如何操作？</string>
-    <string name="comm_ques_account_3t_1d">登录密码：在APP下端点击“我的”-“账户设置”-“登录密码”，输入原始密码后，再输入新密码，点击“提交修改”即可完成修改。</string>
-    <string name="comm_ques_account_3t_2d">提现密码：在APP下端点击“我的”-“账户设置”-“提现密码”-“修改提现密码”，输入原始密码后，再输入新密码，点击“提交修改”即可完成修改。</string>
+    <string name="comm_ques_account_3t_1d">登录密码修改：在APP下端点击“我的-账户设置-登录密码”，输入原始密码后，再输入新密码，点击“提交修改”即可完成修改。</string>
+    <string name="comm_ques_account_3t_2d">提现密码修改：在APP下端点击“我的-账户设置-提现密码-修改提现密码”，输入原始密码后，再输入新密码，点击“提交修改”即可完成修改。</string>
 
     <string name="comm_ques_account_4t">我能申请多个账户吗？</string>
     <string name="comm_ques_account_4t_1d">您好，账户和实名信息是一对一的绑定关系，为了确保账户信息的唯一性，保护您的投资安全，同一个身份证号码不能注册两个账号。希望您理解。</string>
@@ -354,14 +354,13 @@
     <string name="comm_ques_account_5t_1d">您好，为了保障账户资金安全，已经绑定的银行卡是不建议进行更换。如您的银行卡出现挂失、注销、冻结、预留手机号码变更、姓名变更等特殊情况，建议您直接联系元立方客服寻求帮助，客服电话：400-150-1568。</string>
 
     <string name="comm_ques_recharge_1t">充值收费吗？充值有金额限制吗？</string>
-    <string name="comm_ques_recharge_1t_1d">您好，充值不收取手续费，全部有本平台垫付；充值金额1元起充，每天充值金额低于1000元的不得超过2笔；单日单卡成功充值次数最高为5次。</string>
+    <string name="comm_ques_recharge_1t_1d">您好，充值不收取手续费，全部由本平台垫付；充值金额1元起充，每天充值金额低于1000元的不得超过2笔。</string>
     <string name="comm_ques_recharge_2t">如何充值？</string>
-    <string name="comm_ques_recharge_2t_1d">您好，元立方金服支持快捷充值和个人网银充值。登录元立方账户后，您可以在“账户中心”，点击“充值”按钮。\n已绑定银行卡用户：可选择两种充值方式；\n
-            未绑定银行卡用户：只可选择“个人网银充值”方式；\n若选择快捷充值方式：在快捷充值界面，输入“充值金额”后，获取银行预留手机号验证码，输入“验证码”，点击“确认”。\n若选择个人网银充值方式：在个人网银充值界面选择相应的银行，输入“充值金额”后，点击“确认”。确认充值后，页面会跳转至对应银行充值页面，请根据实际操作完成充值。</string>
+    <string name="comm_ques_recharge_2t_1d">您好，可在元立方金服APP下端点击“我的”，进入“我的账户”页面，点击 “充值”，输入金额和验证码，点击“确认充值”即可。也可在元立方金服电脑端登录元立方金服官网，进入账户中心，点击“充值”，选择“个人网银充值”，选择您网银的所属银行，输入充值金额，点击“确定”，跳转到银行充值页面完成操作。</string>
     <string name="comm_ques_recharge_3t">为什么充值时提示充值金额超出每日限额呢？</string>
-    <string name="comm_ques_recharge_3t_1d">您好，每日支付限额与各银行的相关规定、以及您个人网银的设置有关，因此建议您参考充值界面的“充值限额”提示。</string>
+    <string name="comm_ques_recharge_3t_1d">您好，每日支付限额与银行的相关规定、以及您个人银行卡的设置有关。各家银行的规定都不一样，大部分银行的单日支付上限在500元-20万之间，具体可参考充值页面的银行单笔和单日充值额度说明。建议您登录个人网银修改您的支付限额，或者直接联系银行客服寻求帮助。</string>
     <string name="comm_ques_recharge_4t">充值银行卡和提现银行卡是否必须是同一张？</string>
-    <string name="comm_ques_recharge_4t_1d">您好，不是的。使用网银充值时可以使用平台上支持的任意银行卡，提现只能使用已绑定的银行卡。</string>
+    <string name="comm_ques_recharge_4t_1d">您好，在元立方金服APP上充值的银行卡和提现银行卡必须是同一张，在元立方金服电脑端网银充值，可使用提现银行卡以外的银行卡充值。</string>
     <string name="comm_ques_recharge_5t">支持哪些银行？各家银行充值限额如何？</string>
     <string name="comm_ques_recharge_5t_1d">您好，支持大部分国内商业银行充值，具体支持银行及支付上限可以参照充值页面的相关说明。</string>
     <string name="comm_ques_recharge_6t">提现收费吗？提现有金额限制吗？</string>
@@ -371,27 +370,27 @@
     <string name="comm_ques_recharge_8t">提现到账时间是多久？</string>
     <string name="comm_ques_recharge_8t_1d">您好，提现到账时间一般是T+1个工作日，如遇节假日会顺延。</string>
     <string name="comm_ques_recharge_9t">我现在急需用钱，能否提前回款呢？</string>
-    <string name="comm_ques_recharge_9t_1d">您好，成功投标后是无法申请提前回款的，除非项目方自愿提前还款。相关条款已在投资后生成的《借款合同》中详细说明。</string>
+    <string name="comm_ques_recharge_9t_1d">您好，成功投标后是无法申请提前回款的，除非项目方自愿提前还款。相关条款已在投资后生成的《产品协议》中详细说明。</string>
     <string name="comm_ques_recharge_10t">能否使用信用卡给账户充值？</string>
     <string name="comm_ques_recharge_10t_1d">您好，暂不支持信用卡充值。</string>
     <string name="comm_ques_recharge_11t">我充值资金具体什么间可以到账？</string>
     <string name="comm_ques_recharge_11t_1d">您好，一般情况下完成充值操作后，资金会立即到账。不排除在充值高峰期，到账时间会延迟，请以实际到账时间为准。</string>
     <string name="comm_ques_recharge_12t">如何查看我的充值记录？</string>
-    <string name="comm_ques_recharge_12t_1d">您好，您可以通过“资金管理”-“充值”-“充值记录”查看详情。</string>
+    <string name="comm_ques_recharge_12t_1d">APP下端点击“我的-充值-查看充值记录”。</string>
 
     <string name="comm_ques_interest_1t">我能取消投资吗？</string>
     <string name="comm_ques_interest_1t_1d">您好，在投资项目的招标期内，您投资的资金会被冻结，不能取消，这主要是为了保护所有投资者和借款方的利益。如果在募集期内募集到足够的资金，那么所有的冻结资金就会自动转入借款人的账户；如果在募集期内没有满标，那么之前冻结的资金就会退回到您的账户中。</string>
     <string name="comm_ques_interest_2t">投资是否收取手续费？</string>
     <string name="comm_ques_interest_2t_1d">您好，我们现在处于推广优惠期，对所有客户均不收取投资手续费。</string>
     <string name="comm_ques_interest_3t">我投资了之后会有合同吗？</string>
-    <string name="comm_ques_interest_3t_1d">您好，在您投资的标的满标后，系统会自动生成一份电子合同，您可以在您账户的投资管理-备注中查看合同内容。其中元月盈、私人尊享、薪盈计划满标后随即生成电子合同，元政盈系列和新手标满标后的次日生成电子合同。根据《合同法》的规定，电子合同与纸质合同具有同等法律效力，请您放心。</string>
+    <string name="comm_ques_interest_3t_1d">您好，在您投资的标的满标后，系统会自动生成一份电子合同，您可以在您账户的投资记录中点击“查看合同”，查看合同内容。其中元月盈、私人尊享、薪盈计划满标后随即生成电子合同，元政盈系列和新手标满标后的次日生成电子合同。根据《合同法》的规定，电子合同与纸质合同具有同等法律效力，请您放心。</string>
     <string name="comm_ques_interest_4t">收益是什么时候开始计算的？</string>
     <string name="comm_ques_interest_4t_1d">您好，为了综合平衡借款人和投资者双方的利益，所有客户的利息都是从满标次日起计算的。</string>
     <string name="comm_ques_interest_5t">收益是如何计算的呢？</string>
     <string name="comm_ques_interest_5t_1d">您好，投资收益计算方法为投资本金*年化收益率/365*投资天数。\n
   												例如，您若使用10000元本金投资32天标的，则投资收益=10000*6%/365*32=52.6元。</string>
-    <string name="comm_ques_interest_6t">你们网站投资项目的还款方式是怎样的？</string>
-    <string name="comm_ques_interest_6t_1d">您好，92天及以下期限的标的还款方式为一次性到期还本付息；92天以上标的为按月付息到期还本付息。</string>
+    <string name="comm_ques_interest_6t">你们项目的还款方式，还款日期是怎么设定的？</string>
+    <string name="comm_ques_interest_6t_1d">您好，项目的还款方式、还款日期和您投资标的的产品类型、投资时间以及投资期限有关。平台当前线上产品有以下3种还款方式：\n① 到期一次性还本付息；\n② 按月付息到期还本付息；\n③ 手动赎回，到期一次性还本付息；\n具体以实际投资合同为准。</string>
     <string name="comm_ques_interest_7t">你们具体还款日期怎么计算的？</string>
     <string name="comm_ques_interest_7t_1d">您好，到期日和您投资的标的时间和期限有关，假如您是在5月12日投资一个期限为32天的标的，5月13日满标，则6月15日为该笔投资的到期日。具体时间您可以参照投资合同中的【还款日期】。</string>
     <string name="comm_ques_interest_8t">为什么我的账户显示金额冻结？什么时候可以解冻？</string>

@@ -360,63 +360,6 @@
             android:background="@color/edittext_line_color" />
 
         <LinearLayout
-            android:id="@+id/comm_ques_interest_7t_main_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/common_measure_66dp"
-                android:layout_marginLeft="@dimen/common_measure_20dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/comm_ques_interest_7t"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/common_measure_20dp" />
-
-                <ImageView
-                    android:id="@+id/comm_ques_interest_arrow7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/common_measure_20dp"
-                    android:background="@drawable/my_account_arrow"
-                    android:scaleType="fitCenter" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/comm_ques_interest_7t_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/common_measure_20dp"
-                android:layout_marginRight="@dimen/common_measure_20dp"
-                android:orientation="vertical"
-                android:visibility="gone" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineSpacingMultiplier="1.4"
-                    android:layout_marginBottom="@dimen/common_measure_20dp"
-                    android:text="@string/comm_ques_interest_7t_1d"
-                    android:textColor="@color/gray1"
-                    android:textSize="@dimen/common_measure_18dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/common_measure_1dp"
-            android:background="@color/edittext_line_color" />
-
-        <LinearLayout
             android:id="@+id/comm_ques_interest_8t_main_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

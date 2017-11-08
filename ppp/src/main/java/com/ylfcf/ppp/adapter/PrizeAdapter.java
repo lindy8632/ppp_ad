@@ -277,7 +277,7 @@ public class PrizeAdapter extends ArrayAdapter<PrizeInfo> {
 				viewHolder.endTime.setText(info.getRemark());
 			}
 
-		}else if("WXCJ201710".equals(info.getActive_title())){
+		}else if("WXCJ201710".equals(info.getActive_title()) || "WXCJ201711".equals(info.getActive_title())){
 			//2017微信抽奖活动
 			viewHolder.endTime.setVisibility(View.VISIBLE);
 			viewHolder.catDetails.setVisibility(View.GONE);
@@ -293,6 +293,9 @@ public class PrizeAdapter extends ArrayAdapter<PrizeInfo> {
 				viewHolder.remark.setText("备注："+info.getRemark());
 			}else if(name != null && name.contains("流量")){
 				viewHolder.title.setText(info.getRewardInfoEntity().getMoney()+"M手机流量");
+				viewHolder.endTime.setText(info.getOperating_remark());
+				viewHolder.remark.setText("备注："+info.getRemark());
+			}else{
 				viewHolder.endTime.setText(info.getOperating_remark());
 				viewHolder.remark.setText("备注："+info.getRemark());
 			}

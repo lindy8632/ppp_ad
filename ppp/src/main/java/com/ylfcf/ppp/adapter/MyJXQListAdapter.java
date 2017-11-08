@@ -111,6 +111,7 @@ public class MyJXQListAdapter extends ArrayAdapter<JiaxiquanInfo>{
 		}else{
 			if(info.getBorrow_type().contains("元月通")&&info.getBorrow_type().contains("元季融")&&
 					info.getBorrow_type().contains("元定和")&&info.getBorrow_type().contains("元年鑫")){
+				//包含元月通、元季融、元定和、元年鑫这四种情况的时候，改成元政盈
 				List<String> typeList = new ArrayList<String>();
 				String[] types = info.getBorrow_type().split(",");
 				typeList.add("元政盈");
@@ -129,7 +130,8 @@ public class MyJXQListAdapter extends ArrayAdapter<JiaxiquanInfo>{
 				}
 				viewHolder.syfwText.setText(sb.toString());
 			}else{
-				viewHolder.syfwText.setText(info.getBorrow_type());
+				viewHolder.syfwText.setText(info.getBorrow_type().replace("元月通","元政盈32天").replace("元季融","元政盈92天")
+						.replace("元定和","元政盈182天").replace("元年鑫","元政盈365天"));
 			}
 		}
 		

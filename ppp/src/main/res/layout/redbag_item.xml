@@ -65,16 +65,30 @@
         </LinearLayout>
 
         <!-- 使用范围 -->
-        <TextView
-            android:id="@+id/regbag_item_usefanwei"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/common_measure_20dp"
             android:layout_marginRight="@dimen/common_measure_20dp"
-            android:layout_marginTop="@dimen/common_measure_6dp"
-            android:singleLine="true"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/common_measure_18dp"/>
+            android:layout_marginTop="@dimen/common_measure_6dp">
+
+            <TextView
+                android:id="@+id/regbag_item_usefanwei_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="适用范围："
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"/>
+
+            <TextView
+                android:id="@+id/regbag_item_usefanwei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_18dp"/>
+
+            </LinearLayout>
+
         
         <!-- 有效期 -->
         <TextView 

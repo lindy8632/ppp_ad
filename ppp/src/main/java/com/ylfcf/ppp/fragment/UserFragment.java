@@ -214,6 +214,10 @@ public class UserFragment extends BaseFragment{
 		YLFLogger.d("UserFragment -- setUserVisibleHint ---" + isVisibleToUser);
 		if(isVisibleToUser){
 			initMainLayout(null);
+			if(mUserCompFragment != null)
+				mUserCompFragment.setUserVisibleHint(true);
+			if(mUserPersonalFragment != null)
+				mUserPersonalFragment.setUserVisibleHint(true);
 		}
 	}
 

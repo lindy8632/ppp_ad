@@ -717,6 +717,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		double borrowBalanceDouble = 0d;
 		double hbDouble = 0d;//红包金额
 		double jxqDouble = 0d;//加息券
+		double androidRateD = 0d;//安卓加息字段
 		String yuanUsedMoneyStr = "0";
 		String yuanInputMoneyStr = "0";
 		try {
@@ -759,6 +760,11 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			jxqDouble = Double.parseDouble(jxqArrowLayout.getTag().toString());
 		} catch (Exception e) {
 		}
+		try{
+			androidRateD = Double.parseDouble(mProductInfo.getAndroid_interest_rate());
+		}catch (Exception e){
+
+		}
 		needRechargeMoeny = moneyInvest - yuanInputMoney;
 		// 判断投资金额是否大于账户余额
 		String userBanlance = userBalanceTV.getText().toString();
@@ -768,7 +774,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		int flagOtc = SettingsManager.checkActiveStatusBySysTime(mProductInfo.getAdd_time(),
 				SettingsManager.activeOct2017_StartTime,SettingsManager.activeOct2017_EndTime);//10月活动
 		int flagNov = SettingsManager.checkActiveStatusBySysTime(mProductInfo.getAdd_time(),
-				SettingsManager.activeNov2017_StartTime,SettingsManager.activeNov2017_EndTime);//10月活动
+				SettingsManager.activeNov2017_StartTime,SettingsManager.activeNov2017_EndTime);//11月活动
 		if (moneyInvest < 100L) {
 			Util.toastShort(BidZXDActivity.this, "投资金额不能小于100元");
 		} else if (moneyInvest % 100 != 0) {
@@ -799,8 +805,9 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			}else{
 				showInvestDialog();
 			}
-		}else if(flagNov == 0 && mProductInfo.getInterest_period().contains("365")){
-			//2017双十一活动加息 元年鑫才有加息
+		}else if(flagNov == 0 && mProductInfo.getInterest_period().contains("365") && SettingsManager.isPersonalUser(getApplicationContext())
+				&& androidRateD > 0){
+			//2017双十一活动加息 元年鑫才有加息(只针对个人用户)
 			if(hbDouble > 0){
 				showNovActivityPromptDialog("红包");
 			}else if(yuanInputMoney > 0){
@@ -1239,11 +1246,23 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 
 		}
 		days = limitInvest;
-		nhsyText.setText(Util.double2PointDouble((rateD + floatRateD + extraRateD)) + "%");//享的利率
+		int flagNov = SettingsManager.checkActiveStatusBySysTime(mProductInfo.getAdd_time(),
+				SettingsManager.activeNov2017_StartTime,SettingsManager.activeNov2017_EndTime);//11月双十一加息活动
+		if(SettingsManager.isCompanyUser(getApplicationContext())){
+			nhsyText.setText(Util.double2PointDouble((rateD + floatRateD)) + "%");//享的利率
+		}else{
+			nhsyText.setText(Util.double2PointDouble((rateD + floatRateD + extraRateD)) + "%");//享的利率
+		}
 
 		double income = 0d;
-		income = (rateD + extraRateD + floatRateD + couponRateD) * investMoney * days / 36500
+		if(SettingsManager.isCompanyUser(getApplicationContext())){
+			income = (rateD + floatRateD + couponRateD) * investMoney * days / 36500
 					+ (rateD + floatRateD) * hbMoneyD * days / 36500;//算上红包的收益，红包只算产品本身的基础利率产生的收益
+		}else{
+			income = (rateD + extraRateD + floatRateD + couponRateD) * investMoney * days / 36500
+					+ (rateD + floatRateD) * hbMoneyD * days / 36500;//算上红包的收益，红包只算产品本身的基础利率产生的收益
+		}
+
 		DecimalFormat df = new java.text.DecimalFormat("#.00");
 		if (income < 1) {
 			yjsyText.setText("0" + df.format(income));

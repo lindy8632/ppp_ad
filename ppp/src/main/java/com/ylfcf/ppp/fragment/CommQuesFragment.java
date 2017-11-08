@@ -1,9 +1,5 @@
 package com.ylfcf.ppp.fragment;
 
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.ui.ArticleListActivity;
-import com.ylfcf.ppp.ui.CommQuesActivity;
-
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.ui.CommQuesActivity;
 
 /**
  * 常见问题
@@ -36,11 +35,11 @@ public class CommQuesFragment extends BaseFragment implements OnClickListener{
 	
 	//收益和利率
 	private LinearLayout interestMain1tLayout,interestMain2tLayout,interestMain3tLayout,interestMain4tLayout,interestMain5tLayout,
-				interestMain6tLayout,interestMain7tLayout,interestMain8tLayout;
+				interestMain6tLayout,interestMain8tLayout;
 	private LinearLayout interestDetail1tLayout,interestDetail2tLayout,interestDetail3tLayout,interestDetail4tLayout,interestDetail5tLayout,
-				interestDetail6tLayout,interestDetail7tLayout,interestDetail8tLayout;
+				interestDetail6tLayout,interestDetail8tLayout;
 	private ImageView interestArrow1,interestArrow2,interestArrow3,interestArrow4,
-					interestArrow5,interestArrow6,interestArrow7,interestArrow8;
+					interestArrow5,interestArrow6,interestArrow8;
 
 	//充值和提现
 	private LinearLayout rechargeMain1tLayout,rechargeMain2tLayout,rechargeMain3tLayout,rechargeMain4tLayout,rechargeMain5tLayout,
@@ -107,6 +106,10 @@ public class CommQuesFragment extends BaseFragment implements OnClickListener{
 		accountArrow5 = (ImageView) view.findViewById(R.id.comm_ques_account_safe_fragment_arrow5);
 	}
 
+	/**
+	 * 收益和利率
+	 * @param view
+	 */
 	private void findInterestViews(View view) {
 		mainInterestLayout = (ScrollView) view.findViewById(R.id.comm_ques_interest_mainlayout);
 		
@@ -122,8 +125,6 @@ public class CommQuesFragment extends BaseFragment implements OnClickListener{
 		interestMain5tLayout.setOnClickListener(this);
 		interestMain6tLayout = (LinearLayout) view.findViewById(R.id.comm_ques_interest_6t_main_layout);
 		interestMain6tLayout.setOnClickListener(this);
-		interestMain7tLayout = (LinearLayout) view.findViewById(R.id.comm_ques_interest_7t_main_layout);
-		interestMain7tLayout.setOnClickListener(this);
 		interestMain8tLayout = (LinearLayout) view.findViewById(R.id.comm_ques_interest_8t_main_layout);
 		interestMain8tLayout.setOnClickListener(this);
 		
@@ -133,7 +134,6 @@ public class CommQuesFragment extends BaseFragment implements OnClickListener{
 		interestDetail4tLayout = (LinearLayout) view.findViewById(R.id.comm_ques_interest_4t_layout);
 		interestDetail5tLayout = (LinearLayout) view.findViewById(R.id.comm_ques_interest_5t_layout);
 		interestDetail6tLayout = (LinearLayout) view.findViewById(R.id.comm_ques_interest_6t_layout);
-		interestDetail7tLayout = (LinearLayout) view.findViewById(R.id.comm_ques_interest_7t_layout);
 		interestDetail8tLayout = (LinearLayout) view.findViewById(R.id.comm_ques_interest_8t_layout);
 		
 		interestArrow1 = (ImageView) view.findViewById(R.id.comm_ques_interest_arrow1);
@@ -142,7 +142,6 @@ public class CommQuesFragment extends BaseFragment implements OnClickListener{
 		interestArrow4 = (ImageView) view.findViewById(R.id.comm_ques_interest_arrow4);
 		interestArrow5 = (ImageView) view.findViewById(R.id.comm_ques_interest_arrow5);
 		interestArrow6 = (ImageView) view.findViewById(R.id.comm_ques_interest_arrow6);
-		interestArrow7 = (ImageView) view.findViewById(R.id.comm_ques_interest_arrow7);
 		interestArrow8 = (ImageView) view.findViewById(R.id.comm_ques_interest_arrow8);
 		
 	}
@@ -354,21 +353,6 @@ public class CommQuesFragment extends BaseFragment implements OnClickListener{
 					@Override
 					public void run() {
 						mainInterestLayout.scrollTo(0, mainInterestLayout.getHeight() + interestDetail6tLayout.getHeight());
-					}
-				});
-			}
-			break;
-		case R.id.comm_ques_interest_7t_main_layout:
-			if(interestDetail7tLayout.isShown()){
-				rotateEnd(interestArrow7);
-				interestDetail7tLayout.setVisibility(View.GONE);
-			}else{
-				rotateStart(interestArrow7);
-				interestDetail7tLayout.setVisibility(View.VISIBLE);
-				new Handler().post(new Runnable() {
-					@Override
-					public void run() {
-						mainInterestLayout.scrollTo(0, mainInterestLayout.getHeight() + interestDetail7tLayout.getHeight());
 					}
 				});
 			}

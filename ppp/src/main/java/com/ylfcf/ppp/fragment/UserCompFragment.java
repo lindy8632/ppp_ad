@@ -47,6 +47,7 @@ import com.ylfcf.ppp.ui.WithdrawCompActivity;
 import com.ylfcf.ppp.ui.WithdrawPwdGetbackActivity;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
+import com.ylfcf.ppp.util.YLFLogger;
 
 import java.text.DecimalFormat;
 
@@ -96,8 +97,8 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
                     requestUserInfo(SettingsManager.getUserId(getActivity().getApplicationContext()),"");
                     break;
                 case REQUEST_GET_USERINFO_SUCCESS:
-                    UserInfo info = (UserInfo)msg.obj;
-                    initData(info);
+                    mUserInfo = (UserInfo)msg.obj;
+                    initData(mUserInfo);
                     break;
             }
         }
@@ -131,6 +132,23 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
             parent.removeView(rootView);
         }
         return rootView;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        YLFLogger.d("UserCompFragment onHiddenChanged()");
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        YLFLogger.d("UserCompFragment setUserVisibleHint()");
+        if(isVisibleToUser && "0".equals(mUserInfo.getInit_pwd())&&!isShowCompLoginPWDDialog){
+            //企业用户没有修改初始登录密码
+            showCompLoginPwdDialog();
+        }else{
+            //已经修改过初始登录密码
+        }
     }
 
     private void findViews(View view){
@@ -198,7 +216,7 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
         }else{
             requestYilianAccount(info.getId(),false);
         }
-        if("0".equals(info.getInit_pwd())){
+        if("0".equals(mUserInfo.getInit_pwd())&&!isShowCompLoginPWDDialog && getParentFragment().getUserVisibleHint()){
             //企业用户没有修改初始登录密码
             showCompLoginPwdDialog();
         }else{

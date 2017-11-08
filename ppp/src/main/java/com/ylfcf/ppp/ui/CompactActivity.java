@@ -61,12 +61,10 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 		topLeftBtn = (LinearLayout)findViewById(R.id.common_topbar_left_layout);
 		topLeftBtn.setOnClickListener(this);
 		topTitleTV = (TextView)findViewById(R.id.common_page_title);
-		if("vip".equals(fromWhere)){
-			topTitleTV.setText("产品协议");
-		}else if("yjy".equals(fromWhere)){
-			topTitleTV.setText("项目协议合同");
+		if("wdy".equals(fromWhere)){
+			topTitleTV.setText("薪盈计划服务协议书");
 		}else{
-			topTitleTV.setText("借款协议");
+			topTitleTV.setText("产品协议");
 		}
 		
 		webview = (WebView) findViewById(R.id.yyy_compact_activity_wv);
