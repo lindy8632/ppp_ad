@@ -1,108 +1,103 @@
 package com.ylfcf.ppp.util;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 /**
  * Created by Administrator on 2017/11/8.
  */
 
 public class HttpsConnection {
-
-    private static TrustManager myX509TrustManager = new X509TrustManager() {
-        @Override
-        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-
-        }
-
-        @Override
-        public X509Certificate[] getAcceptedIssuers() {
-            return null;
-        }
-
-        @Override
-        public void checkServerTrusted(X509Certificate[] chain, String authType)
-                throws CertificateException {
-        }
-
-    };
+    private static final int REQUEST_TIME_OUT = 20 * 1000;
+    private static final int READ_TIME_OUT = 20 * 1000;
 
     public static String getConnection(String paramURL) throws Exception{
         return null;
     }
 
-    public static String postConnection(String url,String param,String data) throws Exception{
-        String result = null;
-
-
-        //使用此工具可以将键值对编码成"Key=Value&amp;Key2=Value2&amp;Key3=Value3&rdquo;形式的请求参数
-        String requestParam = encryptPrams(param);
+    public static String postConnection(String url,String param) throws Exception{
+        PrintWriter printWriter = null;
+        BufferedReader bufferedReader = null;
+        HttpsURLConnection httpsConn = null;
+                StringBuffer responseResult = new StringBuffer();
+        param = encryptPrams(param);
         try {
             //设置SSLContext
-            SSLContext sslcontext = SSLContext.getInstance("TLS");
-            sslcontext.init(null, new TrustManager[]{myX509TrustManager}, null);
+            SSLContext sslcontext = SSLContextUtil.getSSLContext();
 
             //打开连接
-            //要发送的POST请求url?Key=Value&amp;Key2=Value2&amp;Key3=Value3的形式
-            URL requestUrl = new URL(url + "?" + requestParam);
-            HttpsURLConnection httpsConn = (HttpsURLConnection)requestUrl.openConnection();
+            URL requestUrl = new URL(url);
+            httpsConn = (HttpsURLConnection)requestUrl.openConnection();
 
             //设置套接工厂
             httpsConn.setSSLSocketFactory(sslcontext.getSocketFactory());
 
-            //加入数据
+            httpsConn.setConnectTimeout(REQUEST_TIME_OUT);
+            httpsConn.setReadTimeout(READ_TIME_OUT);
+
+            // 设置通用的请求属性
+            httpsConn.setRequestProperty("accept", "*/*");
+            httpsConn.setRequestProperty("connection", "Keep-Alive");
+            httpsConn.setRequestProperty("Content-Length", String.valueOf(param.length()));
+
             httpsConn.setRequestMethod("POST");
             httpsConn.setDoOutput(true);
-            DataOutputStream out = new DataOutputStream(
-                    httpsConn.getOutputStream());
-            if (data != null)
-                out.writeBytes(data);
+            httpsConn.setDoInput(true);
 
-            out.flush();
-            out.close();
+            // 获取URLConnection对象对应的输出流
+            printWriter = new PrintWriter(httpsConn.getOutputStream());
+            // 发送请求参数
+            printWriter.write(param);
+            // flush输出流的缓冲
+            printWriter.flush();
 
             //获取输入流
             BufferedReader in = new BufferedReader(new InputStreamReader(httpsConn.getInputStream()));
             int code = httpsConn.getResponseCode();
             if (HttpsURLConnection.HTTP_OK == code){
-                String temp = in.readLine();
-                /*连接成一个字符串*/
-                while (temp != null) {
-                    if (result != null)
-                        result += temp;
-                    else
-                        result = temp;
-                    temp = in.readLine();
+                // 定义BufferedReader输入流来读取URL的ResponseData
+                bufferedReader = new BufferedReader(new InputStreamReader(httpsConn.getInputStream()));
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    responseResult.append(line);
                 }
+                return responseResult.toString();
             }
+            return null;
         } catch (KeyManagementException e) {
-            e.printStackTrace();
+            throw new Exception(e);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            throw new Exception(e);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            throw new Exception(e);
         } catch (ProtocolException e) {
-            e.printStackTrace();
+            throw new Exception(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new Exception(e);
+        }finally{
+            httpsConn.disconnect();
+            try {
+                if (printWriter != null) {
+                    printWriter.close();
+                }
+                if (bufferedReader != null) {
+                    bufferedReader.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
-
-        return result;
     }
 
     /**

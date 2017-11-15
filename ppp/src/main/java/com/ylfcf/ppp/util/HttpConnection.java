@@ -11,6 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+
 /**
  * http请求
  * @author Administrator
@@ -93,6 +96,13 @@ public class HttpConnection {
 			URL realUrl = new URL(url);
 			// 打开和URL之间的连接
 			httpURLConnection = (HttpURLConnection) realUrl.openConnection();
+			if(httpURLConnection instanceof HttpsURLConnection){
+				//如果是https请求
+				//设置SSLContext
+				SSLContext sslcontext = SSLContextUtil.getSSLContext();
+				//设置套接工厂
+				((HttpsURLConnection)httpURLConnection).setSSLSocketFactory(sslcontext.getSocketFactory());
+			}
 			httpURLConnection.setConnectTimeout(REQUEST_TIME_OUT);
 			httpURLConnection.setReadTimeout(READ_TIME_OUT);
 			// 设置通用的请求属性
