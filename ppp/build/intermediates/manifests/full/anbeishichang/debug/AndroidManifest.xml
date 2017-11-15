@@ -627,6 +627,17 @@
             android:name="USER_FROM_SUB"
             android:value="安贝市场" />
 
+        <!-- 阿里云热修复 -->
+        <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="24688737-1" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="9ff3b3fc4e09d608a734c0a08b0fe903" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCavu1ZF8OtKQFBRznbymsq8lfu6QNhMZq/G7gio/OA8cG5IC4GC5vng/JhLusPEsG//Ecp90vUPB7n/3dUpQgEYzoqof4mQ6JWwhjbj6WlIh6J693v3p6iaLKwkAS2aq1MAYmmyhJ/XHONWRr+Lf6pWJzIen/0jDMqn00479MDPWSoKOcJJ/S1CrnLNtvdc4GfKza9ywlavj4RxaDMauv2uRmbZJeSrm/hrq7742Js+2kozO38YthaPcP6G2J11OuekX1GnU/Ls6iSDXEk5HQ7RRfz9R0wzoo93gthve0eVgYj9VPQhet2FkHbCwoOmbYpvgGlhO4ym1teHidxucvRAgMBAAECggEAGKYG2mUdpwxcBdDZl3fjoCCf/w8gma+0DXLV3rasx8I6cEl+6zmYKMVsqyw1Bt6e+/ysPTQF4RV+esfHczUiVMiVcEsDV4b4acda/EYiRW5s3N00KcwVCpuQsu0Nwxy04+Fu0qFnVuAcC8zArvIWmVTjDE/u574ZPFXJkCMrQl2ajNraXZ20Yi3Wj7z1g5HL4M/CPaVfX0B0uzk9pgEuvYiE080D7SFMDooqJ+j8w+lNa5XgaOpJ9V6hKDXXexbzUkFs962t1tLUHVgRO7xaVTWEW/ZjVNPQDkhm6PnwUKazIoEO57sXFD5G0A/Ea6x+mbgcK0iVRR0SI0KaHdL0fQKBgQDUGgXegjD3XeBRiKB6LF+1GJH2LFNGZMTnZ38dQz4gUqct8G1eI66E+4LaEyj8HmYzM0SdmscsupHZv4T6O8jgYoHX7RkNabebwFrvdNGo9BJKTME7PRSnn523RauHhA8q4OnxUnmF/B/EiGelJqcqy+4S3B5mDETDpex96t4IvwKBgQC6xfd/sxSpt+386C5rry5x5ZY1xJvPgGNtYbYZOIWHCAVnoDpzIjYcGNsPGfFwKvkitgJw1LQyaa5auMK0OfzHvbj/yhzB/YUvwsIQlzE51yeVCpPovWDxD2QgxdnpjHhAfVT4MEKfUamCV4ES9mTRGxdSvAqUd8v0oXFQ1vM/bwKBgCXngKUDHz0VycDIaeVriK8UdQFJaphp6cZw+IaCPdgI7VeIYAMy3T1mtTvDsM9dn2YHA3wm7PFRZj9Dur/9byiqcgnklVWQTv/GoHmqps1K0Pn2PZIYmFhcbhMSoFTXhN5k02oNEyqepA67Ucpx3e4IA8PbEpOqHZ/ZRyo5jvSBAoGBAJAEMlGvXpF3l/TZe2HhVKjSZT7UeWhJEWG4ZFeSM7PpRXGgJTG+AYcsy00brgXVvQE84yjpeoEc6CpgKRIbXIUQD+R8jiwvNlGblVSBoJ1+/7B21ZIy5Ns8CPMUXHEvtVHU0n4FiHmc2F3+5zId96MdhqBvCqFstkHNcrjo5evVAoGACSRVvfXD0hIFF8IC1ZmiAma62Qdon2wplB7JQUxCYbfzUb/Jzf3l6y+OVlxM3PqQ2J5ySwzK2LD6wdQIYdu+Y5zzcSGUuz4mQVWa32V6nJYRUwOoIwdhVCJcfqyNY0739jwurtwxOPNQp+lbHYI+MHuriUiPqizPJLbb/2ezcnA=" />
+
         <service
             android:name="com.taobao.accs.ChannelService"
             android:exported="true"
@@ -750,6 +761,16 @@
             android:exported="false" >
             <grant-uri-permission android:pathPattern=".*" />
         </provider>
+
+        <service
+            android:name="com.taobao.sophix.aidl.DownloadService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.taobao.hotfix.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

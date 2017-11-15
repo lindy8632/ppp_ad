@@ -805,15 +805,14 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			}else{
 				showInvestDialog();
 			}
-		}else if(flagNov == 0 && mProductInfo.getInterest_period().contains("365") && SettingsManager.isPersonalUser(getApplicationContext())
-				&& androidRateD > 0){
+		}else if(SettingsManager.isPersonalUser(getApplicationContext()) && androidRateD > 0){
 			//2017双十一活动加息 元年鑫才有加息(只针对个人用户)
 			if(hbDouble > 0){
-				showNovActivityPromptDialog("红包");
+				showNovActivityPromptDialog("红包",androidRateD);
 			}else if(yuanInputMoney > 0){
-				showNovActivityPromptDialog("元金币");
+				showNovActivityPromptDialog("元金币",androidRateD);
 			}else if(jxqDouble > 0){
-				showNovActivityPromptDialog("加息券");
+				showNovActivityPromptDialog("加息券",androidRateD);
 			}else{
 				showInvestDialog();
 			}
@@ -917,7 +916,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 	 * 2017双11加息活动，个人用户投资元年鑫加息1.1%
 	 * @param flag
 	 */
-	private void showNovActivityPromptDialog(String flag){
+	private void showNovActivityPromptDialog(String flag,double androidRateD){
 		View contentView = LayoutInflater.from(this).inflate(R.layout.active_otc_dialog_layout, null);
 		final Button leftBtn = (Button) contentView.findViewById(R.id.active_otc_dialog_left_btn);
 		final Button rightBtn = (Button) contentView.findViewById(R.id.active_otc_dialog_right_btn);
@@ -927,26 +926,26 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			if("红包".equals(flag)){
 				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
 					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>红包</font>，" +
-							"将不能享受<font color='#31B2FE'>1.1%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+							"将不能享受<font color='#31B2FE'>" + androidRateD + "</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
 				} else {
 					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>红包</font>，" +
-							"将不能享受<font color='#31B2FE'>1.1%</font>的活动加息，是否要继续？"));
+							"将不能享受<font color='#31B2FE'>" + androidRateD + "</font>的活动加息，是否要继续？"));
 				}
 			}else if("元金币".equals(flag)){
 				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
 					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>元金币</font>，" +
-							"将不能享受<font color='#31B2FE'>1.1%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+							"将不能享受<font color='#31B2FE'>" + androidRateD + "</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
 				} else {
 					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>元金币</font>，" +
-							"将不能享受<font color='#31B2FE'>1.1%</font>的活动加息，是否要继续？"));
+							"将不能享受<font color='#31B2FE'>" + androidRateD + "</font>的活动加息，是否要继续？"));
 				}
 			}else if("加息券".equals(flag)){
 				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
 					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>加息券</font>，" +
-							"将不能享受<font color='#31B2FE'>1.1%</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
+							"将不能享受<font color='#31B2FE'>"+ androidRateD +"</font>的活动加息，是否要继续？",Html.FROM_HTML_MODE_LEGACY));
 				} else {
 					contentTV.setText(Html.fromHtml("您使用了<font color='#31B2FE'>加息券</font>，" +
-							"将不能享受<font color='#31B2FE'>1.1%</font>的活动加息，是否要继续？"));
+							"将不能享受<font color='#31B2FE'>" + androidRateD + "</font>的活动加息，是否要继续？"));
 				}
 			}
 		}

@@ -336,7 +336,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 				intent = new Intent(getActivity(),BorrowDetailXSBActivity.class);
 				startActivity(intent);
 			}else if(ActivityCode.DQLC_LIST_ACTIVITY.equals(info.getArticle_id())){
-				//定期理财产品列表页面
+				//元政盈列表页面
 				intent = new Intent(getActivity(),BorrowListZXDActivity.class);
 				startActivity(intent);
 			}else if(ActivityCode.VIP_LIST_ACTIVITY.equals(info.getArticle_id())){

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:2:1-622:12
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:2:1-633:12
 	package
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:4:11-34
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
@@ -36,6 +36,7 @@ MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrat
 MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.youth.banner:banner:1.4.9] C:\Users\Administrator\.android\build-cache\34c3ed598080eaa35ace803d4b5ac5631581cdee\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.wx.wheelview:wheelview:1.3.3] C:\Users\Administrator\.android\build-cache\edba68e4ffd3ae206323f3dd2144286c14487923\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Administrator\.android\build-cache\025240461d7d7ceddedae0eb23940c582858844e\output\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
@@ -65,6 +66,7 @@ MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\i
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:20:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:21:5-80
+MERGED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:14:5-80
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:21:22-77
 uses-permission#android.permission.DOWNLOAD_WITHOUT_NOTIFICATION
@@ -74,16 +76,19 @@ ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:22:5-88
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:24:5-79
 MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:12:5-79
+MERGED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:12:5-79
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:24:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:26:5-76
 MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:13:5-76
+MERGED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:13:5-76
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:26:22-73
 uses-permission#android.permission.INTERNET
 ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:27:5-67
 MERGED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:11:5-67
+MERGED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:11:5-67
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:27:22-64
 uses-permission#android.permission.CHANGE_NETWORK_STATE
@@ -198,7 +203,7 @@ ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:58:5-71
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:58:22-68
 application
-ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:60:5-620:19
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:60:5-631:19
 MERGED from [ppp_ad:library:unspecified] D:\GitRepository\ppp_ad\library\build\intermediates\bundles\default\AndroidManifest.xml:11:5-20
 MERGED from [ppp_ad:ylfcfwidgetlibrary:unspecified] D:\GitRepository\ppp_ad\ylfcfwidgetlibrary\build\intermediates\bundles\default\AndroidManifest.xml:11:5-15:19
 MERGED from [com.android.support:cardview-v7:25.1.1] C:\Users\Administrator\.android\build-cache\2a745ea31c390f1d4ff6f7504b6a3f6009dc22cc\output\AndroidManifest.xml:22:5-20
@@ -213,6 +218,7 @@ MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\
 MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\215e87613eeb688fca4614471ebf9833ea49f683\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\a168897d7351faa66d109c95142ee47c30a40674\output\AndroidManifest.xml:25:5-20
 MERGED from [com.wx.wheelview:wheelview:1.3.3] C:\Users\Administrator\.android\build-cache\edba68e4ffd3ae206323f3dd2144286c14487923\output\AndroidManifest.xml:11:5-14:19
+MERGED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:16:5-27:19
 	android:label
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:65:9-41
 	android:supportsRtl
@@ -1258,6 +1264,24 @@ ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:616:9-618:54
 		INJECTED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml
 	android:name
 		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:617:13-41
+meta-data#com.taobao.android.hotfix.IDSECRET
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:621:9-623:42
+	android:value
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:623:13-39
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:622:13-62
+meta-data#com.taobao.android.hotfix.APPSECRET
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:624:9-626:64
+	android:value
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:626:13-61
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:625:13-63
+meta-data#com.taobao.android.hotfix.RSASECRET
+ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:627:9-629:1656
+	android:value
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:629:13-1653
+	android:name
+		ADDED from D:\GitRepository\ppp_ad\ppp\src\main\AndroidManifest.xml:628:13-63
 service#com.taobao.accs.ChannelService
 ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:28:9-38:19
 	android:process
@@ -1448,3 +1472,15 @@ grant-uri-permission
 ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:154:13-62
 	android:pathPattern
 		ADDED from [ppp_ad:PushSDK:unspecified] D:\GitRepository\ppp_ad\PushSDK\build\intermediates\bundles\default\AndroidManifest.xml:154:35-59
+service#com.taobao.sophix.aidl.DownloadService
+ADDED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:17:9-25:19
+	android:exported
+		ADDED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:19:13-36
+	android:name
+		ADDED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:18:13-66
+intent-filter#android.intent.category.DEFAULT+com.taobao.hotfix.action
+ADDED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:20:13-24:29
+action#com.taobao.hotfix.action
+ADDED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:21:17-67
+	android:name
+		ADDED from [com.aliyun.ams:alicloud-android-hotfix:3.1.6] C:\Users\Administrator\.android\build-cache\638ccf71ac22a6142a65b45bedd5a0ac921fb40c\output\AndroidManifest.xml:21:25-64

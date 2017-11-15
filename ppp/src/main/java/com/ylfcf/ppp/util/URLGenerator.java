@@ -13,6 +13,11 @@ public class URLGenerator {
 	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
 	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
 
+	//https测试环境
+//	private static final String API_DOMAIN_URL = "https://test1.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "https://wap.test1.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "https://api.test1.ylfcf.com";//
+
 	//验证环境
 //	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
 //	private static final String WAP_DOMAIN_URL = "http://dev.wap.ylfcf.com";//WAP环境

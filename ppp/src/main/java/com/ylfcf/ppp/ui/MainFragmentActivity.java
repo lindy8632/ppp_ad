@@ -392,6 +392,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 			}
 		});
 		viewpager.setAdapter(fragmentAdapter);
+
 	}
 
 	public void setViewPagerCurPostion(int position){

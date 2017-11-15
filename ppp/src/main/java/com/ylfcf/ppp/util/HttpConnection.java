@@ -86,7 +86,6 @@ public class HttpConnection {
 		PrintWriter printWriter = null;
 		BufferedReader bufferedReader = null;
 		HttpURLConnection httpURLConnection = null;
-
 		StringBuffer responseResult = new StringBuffer();
 		param = encryptPrams(param);
 //		YLFLogger.d("接口：url-------"+url+"\n参数---------"+param);
