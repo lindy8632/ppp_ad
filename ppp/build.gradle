@@ -54,77 +54,148 @@ android {
         }
     }
     productFlavors {
-        guanwang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "",
-                                        USER_FROM_SUB_VALUE:"官网App安卓版"]}
-        anzhuoshichang { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhuoshichang",
-                                    USER_FROM_SUB_VALUE:"安卓市场"]}
-        wandoujia {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia",
-                                           USER_FROM_SUB_VALUE:"豌豆夹"]}
-        anzhi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi",
-                                       USER_FROM_SUB_VALUE:"安智"]}
-        meizu {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu",
-                                       USER_FROM_SUB_VALUE:"魅族"]}
-        xiaomi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi",
-                                        USER_FROM_SUB_VALUE:"小米"]}
-        nineone {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "91",
-                                    USER_FROM_SUB_VALUE:"91助手"]}
-        huawei {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei",
-                                        USER_FROM_SUB_VALUE:"华为"]}
-        threesixzero {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "360",
-                                     USER_FROM_SUB_VALUE:"360"]}
-        tengxun {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tengxun",
-                                         USER_FROM_SUB_VALUE:"腾讯应用宝"]}
-        leshangdian {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "leshangdian",
-                                             USER_FROM_SUB_VALUE:"乐商店"]}
-        yingyonghui {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyonghui",
-                                             USER_FROM_SUB_VALUE:"应用汇"]}
-        mumayi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "mumayi",
-                                        USER_FROM_SUB_VALUE:"木蚂蚁"]}
-        baidu {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu",
-                                       USER_FROM_SUB_VALUE:"百度手机助手"]}
-        yingyongbei {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbei",
-                                             USER_FROM_SUB_VALUE:"应用贝"]}
-        zhongguoyidong {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zhongguoyidong",
-                                                USER_FROM_SUB_VALUE:"中国移动"]}
-        jiwang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jiwang",
-                                        USER_FROM_SUB_VALUE:"极网应用市场"]}
-        jifengshichang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jifengshichang",
-                                                USER_FROM_SUB_VALUE:"机锋市场"]}
-        twothreefourfive {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "2345",
-                                      USER_FROM_SUB_VALUE:"2345手机应用"]}
-        leshi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "leshi",
-                                       USER_FROM_SUB_VALUE:"乐视应用市场"]}
-        oppo {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo",
-                                      USER_FROM_SUB_VALUE:"OPPO可可软件商店"]}
-        jinli {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jinli",
-                                       USER_FROM_SUB_VALUE:"金立开发者社区"]}
-        dianxintianyi {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dianxintianyi",
-                                               USER_FROM_SUB_VALUE:"电信天翼空间"]}
-        anruan {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anruan",
-                                        USER_FROM_SUB_VALUE:"安软市场"]}
-        threeg {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "3g",
-                                    USER_FROM_SUB_VALUE:"3G市场"]}
-        liqu {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "liqu",
-                                      USER_FROM_SUB_VALUE:"历趣市场"]}
-        ppzhushou {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ppzhushou",
-                                           USER_FROM_SUB_VALUE:"PP助手安卓市场"]}
-        sanxing {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "sanxing",
-                                         USER_FROM_SUB_VALUE:"三星应用商店"]}
-        anbeishichang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anbeishichang",
-                                               USER_FROM_SUB_VALUE:"安贝市场"]}
-        anfenwang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anfenwang",
-                                           USER_FROM_SUB_VALUE:"安粉网"]}
-        anzhuoyuan {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhuoyuan",
-                                            USER_FROM_SUB_VALUE:"安卓园"]}
-        taipingyang {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "taipingyang",
-                                             USER_FROM_SUB_VALUE:"太平洋网络"]}
-        vivo {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo",
-                                      USER_FROM_SUB_VALUE:"vivo"]}
-        woshangdian {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "woshangdian",
-                                             USER_FROM_SUB_VALUE:"沃商店"]}
-        momo {manifestPlaceholders = [UMENG_CHANNEL_VALUE: "momo",
-                                      USER_FROM_SUB_VALUE:"陌陌"]}
+        guanwang {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "",
+                                    USER_FROM_SUB_VALUE: "官网App安卓版"]
+        }
+        anzhuoshichang {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhuoshichang",
+                                    USER_FROM_SUB_VALUE: "安卓市场"]
+        }
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia",
+                                    USER_FROM_SUB_VALUE: "豌豆夹"]
+        }
+        anzhi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi",
+                                    USER_FROM_SUB_VALUE: "安智"]
+        }
+        meizu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu",
+                                    USER_FROM_SUB_VALUE: "魅族"]
+        }
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi",
+                                    USER_FROM_SUB_VALUE: "小米"]
+        }
+        nineone {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "91",
+                                    USER_FROM_SUB_VALUE: "91助手"]
+        }
+        huawei {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei",
+                                    USER_FROM_SUB_VALUE: "华为"]
+        }
+        threesixzero {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "360",
+                                    USER_FROM_SUB_VALUE: "360"]
+        }
+        tengxun {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "tengxun",
+                                    USER_FROM_SUB_VALUE: "腾讯应用宝"]
+        }
+        leshangdian {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "leshangdian",
+                                    USER_FROM_SUB_VALUE: "乐商店"]
+        }
+        yingyonghui {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyonghui",
+                                    USER_FROM_SUB_VALUE: "应用汇"]
+        }
+        mumayi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "mumayi",
+                                    USER_FROM_SUB_VALUE: "木蚂蚁"]
+        }
+        baidu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu",
+                                    USER_FROM_SUB_VALUE: "百度手机助手"]
+        }
+        yingyongbei {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbei",
+                                    USER_FROM_SUB_VALUE: "应用贝"]
+        }
+        zhongguoyidong {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zhongguoyidong",
+                                    USER_FROM_SUB_VALUE: "中国移动"]
+        }
+        jiwang {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jiwang",
+                                    USER_FROM_SUB_VALUE: "极网应用市场"]
+        }
+        jifengshichang {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jifengshichang",
+                                    USER_FROM_SUB_VALUE: "机锋市场"]
+        }
+        twothreefourfive {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "2345",
+                                    USER_FROM_SUB_VALUE: "2345手机应用"]
+        }
+        leshi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "leshi",
+                                    USER_FROM_SUB_VALUE: "乐视应用市场"]
+        }
+        oppo {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo",
+                                    USER_FROM_SUB_VALUE: "OPPO可可软件商店"]
+        }
+        jinli {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jinli",
+                                    USER_FROM_SUB_VALUE: "金立开发者社区"]
+        }
+        dianxintianyi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "dianxintianyi",
+                                    USER_FROM_SUB_VALUE: "电信天翼空间"]
+        }
+        anruan {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anruan",
+                                    USER_FROM_SUB_VALUE: "安软市场"]
+        }
+        threeg {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "3g",
+                                    USER_FROM_SUB_VALUE: "3G市场"]
+        }
+        liqu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "liqu",
+                                    USER_FROM_SUB_VALUE: "历趣市场"]
+        }
+        ppzhushou {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ppzhushou",
+                                    USER_FROM_SUB_VALUE: "PP助手安卓市场"]
+        }
+        sanxing {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "sanxing",
+                                    USER_FROM_SUB_VALUE: "三星应用商店"]
+        }
+        anbeishichang {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anbeishichang",
+                                    USER_FROM_SUB_VALUE: "安贝市场"]
+        }
+        anfenwang {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anfenwang",
+                                    USER_FROM_SUB_VALUE: "安粉网"]
+        }
+        anzhuoyuan {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhuoyuan",
+                                    USER_FROM_SUB_VALUE: "安卓园"]
+        }
+        taipingyang {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "taipingyang",
+                                    USER_FROM_SUB_VALUE: "太平洋网络"]
+        }
+        vivo {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo",
+                                    USER_FROM_SUB_VALUE: "vivo"]
+        }
+        woshangdian {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "woshangdian",
+                                    USER_FROM_SUB_VALUE: "沃商店"]
+        }
+        momo {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "momo",
+                                    USER_FROM_SUB_VALUE: "陌陌"]
+        }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/assets/'] } }
 }
 repositories {
     maven {
