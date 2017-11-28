@@ -3,6 +3,8 @@ package com.ylfcf.ppp.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,9 +16,10 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
 import android.webkit.JavascriptInterface;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -24,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.tencent.smtt.sdk.CookieSyncManager;
 import com.umeng.socialize.UMShareAPI;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.BannerInfo;
@@ -181,6 +185,10 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
         webview.getSettings().setDomStorageEnabled(true);
 		webview.addJavascriptInterface(new JavascriptAndroidInterface(this),"android");
 		webview.setLayerType(View.LAYER_TYPE_SOFTWARE,null);//加速
+		//android5.0以上默认不支持mix content,所以此处开启
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+			webview.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
+		}
 		webview.setWebViewClient(new WebViewClient(){
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -197,6 +205,11 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 					loadURL(url);
 				}
 				return true;
+			}
+
+			@Override
+			public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, SslError sslError) {
+				sslErrorHandler.proceed();
 			}
 		});
 		webview.setWebChromeClient(new WebChromeClient(){
@@ -431,6 +444,10 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		}else if(url.contains("/home/Ygzx/yjyOrderPro")){
 			//员工专属产品预约成功后刷新页面
 			webview.reload();
+		}else if(url.contains("/home/member/moneyManage")){
+			//资金明细
+			Intent intent = new Intent(BannerTopicActivity.this,FundsDetailsActivity.class);
+			startActivity(intent);
 		}else{
 			//请更新至最新版本
 //			Util.toastLong(BannerTopicActivity.this, url.toString());

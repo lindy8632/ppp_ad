@@ -647,7 +647,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		} else if (moneyInvest > borrowBalanceDouble) {
 			Util.toastLong(BidSRZXActivity.this, "标的剩余可投金额不足");
 		} else if (!compactCB.isChecked()) {
-			Util.toastLong(BidSRZXActivity.this, "请先阅读并同意借款协议");
+			Util.toastLong(BidSRZXActivity.this, "请先阅读并同意产品协议");
 		} else {
 			showInvestDialog();
 		}

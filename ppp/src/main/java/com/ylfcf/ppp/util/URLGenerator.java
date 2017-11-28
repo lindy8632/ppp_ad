@@ -14,9 +14,9 @@ public class URLGenerator {
 //	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
 
 	//https测试环境
-	private static final String API_DOMAIN_URL = "https://test1.ylfcf.com";//API环境
-	private static final String WAP_DOMAIN_URL = "https://wap.test1.ylfcf.com";//WAP环境
-	private static final String API2_DOMAIN_URL = "https://api.test1.ylfcf.com";//
+//	private static final String API_DOMAIN_URL = "https://test1.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "https://wap.test1.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "https://api.test1.ylfcf.com";//
 
 	//验证环境
 //	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
@@ -24,9 +24,9 @@ public class URLGenerator {
 //	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//测试环境
-//	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
-//	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+	private static final String API_DOMAIN_URL = "http://www.test.ylfcf.com";//API环境
+	private static final String WAP_DOMAIN_URL = "http://wap.test.ylfcf.com";//WAP环境
+	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
 
 	//朱礼涛开发环境
 //	private static final String API_DOMAIN_URL = "http://www.ylf.com";//API环境
@@ -36,7 +36,7 @@ public class URLGenerator {
 	//徐卫兵开发环境
 //	private static final String API_DOMAIN_URL = "http://www.m_ylf.com";//API环境
 //	private static final String WAP_DOMAIN_URL = "http://www.ylf_chat.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "http://api.dev.ylfcf.com";//
+//	private static final String API2_DOMAIN_URL = "http://www.api.com";//
 
 	//杨永豪开发环境
 //	private static final String API_DOMAIN_URL = "http://www.api.com";//API环境
@@ -309,6 +309,10 @@ public class URLGenerator {
 	private final String YGZX_BORROWINVEST_LIST_URL = "/ygzx/borrow_invest/getUserInvestList";//根据userid和borrowid获取用户投资的某支标的详情
 	//账户中心
 	private final String ACCOUNTLOG_REPAYMENTINFO_URL = "/user/account_log/repaymentInfo";//回款日历
+
+	//元企盈
+	private final String YQYREWARDLIST_URL = "/promoter/promoterLog/getYqyRewardList";//元企盈用于A级以及以下的用户的投资列表
+	private final String YQYCOMPUSER_FRIENDS_URL = "/promoter/promoterLog/getCompUserFriends";//元企盈A+用户的好友列表
 
 	private static URLGenerator mUrlGenerator;
 
@@ -3167,6 +3171,28 @@ public class URLGenerator {
 		StringBuffer sb = new StringBuffer();
 		sb.append("_URL_=").append(ACCOUNTLOG_REPAYMENTINFO_URL);
 		sb.append("&user_id=").append(userId);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 元企盈A+用户下面的好友列表
+	 * @param userId
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public String[] getYqyCompUserFriendsURL(String userId,String page,String pageSize){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(YQYCOMPUSER_FRIENDS_URL);
+		sb.append("&user_id=").append(userId).append("&page=").append(page).append("&page_size=").append(pageSize);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	public String[] getYqyRewardListURL(String extensionUserId,String page,String pageSize){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(YQYREWARDLIST_URL);
+		sb.append("&extension_user_id=").append(extensionUserId).append("&page=").
+				append(page).append("&page_size=").append(pageSize);
 		return new String[]{BASE_URL, sb.toString()};
 	}
 }

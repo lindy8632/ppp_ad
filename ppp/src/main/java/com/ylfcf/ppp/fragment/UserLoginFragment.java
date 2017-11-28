@@ -30,6 +30,7 @@ import com.ylfcf.ppp.util.Constants.UserType;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
+import com.ylfcf.ppp.widget.LoadingDialog;
 
 
 /**
@@ -45,6 +46,7 @@ public class UserLoginFragment extends BaseFragment implements View.OnClickListe
 
     private MainFragmentActivity mainActivity;
     private View rootView;
+    private LoadingDialog mLoadingDialog;
 
     private Button navPersonalBtn,navCompanyBtn;
     private View personalLoginLayout,companyLoginLayout;
@@ -134,6 +136,7 @@ public class UserLoginFragment extends BaseFragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mainActivity = (MainFragmentActivity) getActivity();
+        mLoadingDialog = new LoadingDialog(mainActivity,"正在加载...",R.anim.loading);
         if(rootView==null){
             rootView=inflater.inflate(R.layout.user_login_fragment, null);
         }
@@ -288,11 +291,13 @@ public class UserLoginFragment extends BaseFragment implements View.OnClickListe
      * @param pwd
      */
     private void requestLogin(String phone,String pwd){
-        mainActivity.loadingDialog.show();
+        if(mLoadingDialog != null){
+            mLoadingDialog.show();
+        }
         AsyncLogin loginTask = new AsyncLogin(mainActivity, phone, pwd, new OnLoginInter() {
             @Override
             public void back(final BaseInfo baseInfo) {
-                mainActivity.loadingDialog.dismiss();
+                mLoadingDialog.dismiss();
                 if(baseInfo == null){
                     Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
                     msg.obj = "您的网络不给力";
@@ -340,14 +345,14 @@ public class UserLoginFragment extends BaseFragment implements View.OnClickListe
      * @param password
      */
     private void requestCompLogin(String username,String password){
-        if(mainActivity.loadingDialog != null){
-            mainActivity.loadingDialog.show();
+        if(mLoadingDialog != null){
+            mLoadingDialog.show();
         }
         AsyncCompLogin loginTask = new AsyncCompLogin(mainActivity, username, password,
                 new OnCommonInter(){
                     @Override
                     public void back(final BaseInfo baseInfo) {
-                        mainActivity.loadingDialog.dismiss();
+                        mLoadingDialog.dismiss();
                         if(baseInfo == null){
                             Message msg = handler.obtainMessage(REQUEST_PERSONAL_LOGIN_EXCEPTION_WHAT);
                             msg.obj = "您的网络不给力";

@@ -58,6 +58,7 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 
 	private ImageView qrCodeImage;// 二维码
 	private Button invitateBtn;
+	private Button compUserFriendsBtn;//好友投资列表
 	private Button bottomBtn;//底部按钮
 	private Button catFriendsBtn;//查看好友详情
 	private TextView knowMoreTV;//了解更多
@@ -103,6 +104,13 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		qrCodeImage.setOnClickListener(this);
 		invitateBtn = (Button) findViewById(R.id.invitate_activity_btn);
 		invitateBtn.setOnClickListener(this);
+		compUserFriendsBtn = (Button) findViewById(R.id.invitate_activity_yqy_rewardlistbtn);
+		compUserFriendsBtn.setOnClickListener(this);
+		if(SettingsManager.isCompanyUser(getApplicationContext())){
+			compUserFriendsBtn.setVisibility(View.VISIBLE);
+		}else{
+			compUserFriendsBtn.setVisibility(View.GONE);
+		}
 		knowMoreTV = (TextView) findViewById(R.id.invitate_activity_know_more);
 		knowMoreTV.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG ); //下划线
 		knowMoreTV.getPaint().setAntiAlias(true);//抗锯齿
@@ -197,6 +205,11 @@ public class InvitateActivity extends BaseActivity implements OnClickListener {
 		case R.id.invitate_activity_btn_bottom_catfriends:
 			Intent intentFriends = new Intent(InvitateActivity.this,MyFriendsActivity.class);
 			startActivity(intentFriends);
+			break;
+		case R.id.invitate_activity_yqy_rewardlistbtn:
+			//好友投资
+			Intent intentComp = new Intent(InvitateActivity.this,CompUserFriendsActivity.class);
+			startActivity(intentComp);
 			break;
 		default:
 			break;

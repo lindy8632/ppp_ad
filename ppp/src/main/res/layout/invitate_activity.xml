@@ -151,6 +151,19 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/common_measure_24dp" />
 
+                    <Button
+                        android:id="@+id/invitate_activity_yqy_rewardlistbtn"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/common_measure_63dp"
+                        android:layout_marginLeft="@dimen/common_measure_20dp"
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:layout_marginTop="@dimen/common_measure_10dp"
+                        android:background="@drawable/blue_fillet_btn_selector"
+                        android:text="查看好友投资详情"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_measure_24dp"
+                        android:visibility="gone"/>
+
                     <LinearLayout
                         android:id="@+id/invitate_activity_btns_layout"
                         android:layout_width="match_parent"

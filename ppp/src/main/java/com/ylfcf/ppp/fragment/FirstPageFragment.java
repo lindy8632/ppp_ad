@@ -64,6 +64,7 @@ import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.YLFLogger;
+import com.ylfcf.ppp.widget.LoadingDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -95,6 +96,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 	private ViewPager subjectViewPager;// 系列标的viewpager
 	private Button hytjBtn,hdzqBtn;//壕友推荐 活动专区按钮
 	private Banner mBanner;
+	private LoadingDialog mLoadingDialog;
 
 	/*
 	 * 新手标
@@ -179,6 +181,7 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 							 @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		mainActivity = (MainFragmentActivity) getActivity();
 		fragmentManager = getActivity().getSupportFragmentManager();
+		mLoadingDialog = new LoadingDialog(mainActivity,"正在加载...",R.anim.loading);
 		if (rootView == null) {
 			rootView = inflater.inflate(R.layout.first_page_fragment, null);
 			findViews(rootView, inflater);
@@ -486,14 +489,14 @@ public class FirstPageFragment extends BaseFragment implements OnClickListener,O
 	 * @param type “充值”,“提现”,"邀请有奖"
 	 */
 	private void checkIsVerify(final String type){
-		if(mainActivity.loadingDialog != null){
-			mainActivity.loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		RequestApis.requestIsVerify(mainActivity, SettingsManager.getUserId(mainActivity.getApplicationContext()), new Inter.OnIsVerifyListener() {
 			@Override
 			public void isVerify(boolean flag, Object object) {
-				if(mainActivity.loadingDialog != null && mainActivity.loadingDialog.isShowing()){
-					mainActivity.loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				if("邀请有奖".equals(type)){
 					hytjBtn.setEnabled(true);

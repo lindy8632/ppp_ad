@@ -75,6 +75,15 @@ public class BaseInfo implements java.io.Serializable{
 	private FriendsPageInfo mFriendsPageInfo;
 	private RedBagInfo mRedBagInfo;
 	private RepaymentInfo mRepaymentInfo;//»Ø¿î
+	private YQYRewardPageInfo mYQYRewardPageInfo;
+
+	public YQYRewardPageInfo getmYQYRewardPageInfo() {
+		return mYQYRewardPageInfo;
+	}
+
+	public void setmYQYRewardPageInfo(YQYRewardPageInfo mYQYRewardPageInfo) {
+		this.mYQYRewardPageInfo = mYQYRewardPageInfo;
+	}
 
 	public RepaymentInfo getmRepaymentInfo() {
 		return mRepaymentInfo;

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/child_background"
+              android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_totalmoney_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="累计已赚取："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_totalmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
+        <!-- 本人的投资奖励-->
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_myself_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="本人的投资奖励："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_myselfmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_onemoney_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="直接好友的奖励："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_onemoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_twomoney_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="间接好友的奖励："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_twomoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myinvitation_activity_othermoney_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="来自历史好友的奖励："/>
+
+            <TextView
+                android:id="@+id/myinvitation_activity_othermoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/orange_text"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text=""/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_20dp"
+                android:text="元"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/myinvitation_activity_btns_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:layout_marginBottom="@dimen/common_measure_20dp"
+        android:gravity="center_horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/myinvitation_activity_top_cat_tipsbtn"
+            android:layout_width="@dimen/common_measure_150dp"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:layout_marginRight="@dimen/common_measure_10dp"
+            android:layout_toLeftOf="@+id/myinvitation_activity_top_btn"
+            android:background="@drawable/style_rect_fillet_filling_blue"
+            android:text="查看提示"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/myinvitation_activity_top_btn"
+            android:layout_width="@dimen/common_measure_150dp"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:background="@drawable/style_rect_fillet_filling_blue"
+            android:text="轻松赚奖励"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/myinvitation_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:dividerHeight="@dimen/common_measure_10dp"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="false"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:listSelector="#00000000"
+            android:scrollbars="none"
+            android:smoothScrollbar="true"/>
+
+        <TextView
+            android:id="@+id/myinvitation_activity_nodata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="暂无数据"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/common_measure_20dp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

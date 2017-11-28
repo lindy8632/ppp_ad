@@ -66,6 +66,7 @@ import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.util.YLFLogger;
+import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.text.DecimalFormat;
 
@@ -88,6 +89,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
 
     private MainFragmentActivity mainActivity;
     private View rootView;
+    private LoadingDialog mLoadingDialog;
 
     //个人用户顶部
     private TextView usernameTV;//个人用户的用户名
@@ -170,6 +172,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mainActivity = (MainFragmentActivity) getActivity();
+        mLoadingDialog = new LoadingDialog(mainActivity,"正在加载...",R.anim.loading);
         if(rootView == null){
             rootView = inflater.inflate(R.layout.user_personal_fragment, null);
         }
@@ -327,6 +330,8 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         YLFLogger.d("UserPersonalFragment setUserVisibleHint()");
+        if(getActivity() == null)
+            return;
         if(isVisibleToUser && (!isBindcard || !isVerify)){
             checkIsVerify("初始化");
         }
@@ -615,6 +620,8 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
      * @param activeTitle
      */
     private void requestActiveTime(String activeTitle){
+        if(mainActivity == null)
+            return;
         AsyncXCFLActiveTime task = new AsyncXCFLActiveTime(mainActivity, activeTitle,
                 new OnCommonInter() {
                     @Override
@@ -640,15 +647,15 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
      * @param type “充值”,“提现”，“邀请有奖”
      */
     private void checkIsVerify(final String type){
-        if(mainActivity.loadingDialog != null){
-            mainActivity.loadingDialog.show();
+        if(mLoadingDialog != null){
+            mLoadingDialog.show();
         }
         RequestApis.requestIsVerify(mainActivity, SettingsManager.getUserId(mainActivity), new OnIsVerifyListener() {
             @Override
             public void isVerify(boolean flag, Object object) {
                 isVerify = flag;
-                if(mainActivity.loadingDialog != null && mainActivity.loadingDialog.isShowing()){
-                    mainActivity.loadingDialog.dismiss();
+                if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+                    mLoadingDialog.dismiss();
                 }
                 if("邀请有奖".equals(type)){
                     rechargeBtn.setEnabled(true);

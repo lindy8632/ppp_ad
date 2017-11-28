@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_measure_10dp"
-        android:padding="@dimen/common_measure_10dp"
         android:background="@drawable/style_rect_filling_click_selector"
         android:orientation="vertical" >
 
@@ -33,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/common_measure_15dp"
+                    android:layout_marginLeft="@dimen/common_measure_10dp"
                     android:singleLine="true"
                     android:textColor="@color/black"
                     android:textSize="@dimen/common_measure_22dp" />
@@ -64,8 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/invest_records_yyy_item_layout1"
                 android:layout_marginTop="@dimen/common_measure_10dp"
-                android:layout_marginLeft="@dimen/common_measure_15dp"
-                android:layout_marginRight="@dimen/common_measure_15dp"
+                android:layout_marginLeft="@dimen/common_measure_10dp"
+                android:layout_marginRight="@dimen/common_measure_10dp"
                 android:orientation="horizontal" >
 
                 <!-- 首投日 -->

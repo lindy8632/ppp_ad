@@ -338,6 +338,21 @@ public class Util {
 			return df.format(data);
 		}
 	}
+
+	public static String double2PointDouble(String data){
+		double d = 0d;
+		try{
+			d = Double.parseDouble(data);
+		}catch (Exception e){
+
+		}
+		DecimalFormat df = new DecimalFormat("#.00");
+		if(d < 1){
+			return "0"+df.format(d);
+		}else{
+			return df.format(d);
+		}
+	}
 	
 	/**
 	 * 将double类型的数字转化成1位小数的字符串

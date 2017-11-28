@@ -74,7 +74,7 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 	}
 
 	public void show(View parentView, String url, String fromWhere, ShareInfo mShareInfo) {
-		this.url = url;
+		this.url = url == null? url:url.replace("#app","");
 		this.fromWhere = fromWhere;
 		this.setBackgroundDrawable(new PaintDrawable(R.color.transparent)); // 使得返回键有效
 		this.setAnimationStyle(R.style.bidPopwindowStyle);
@@ -82,8 +82,8 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 		this.setFocusable(true);
 		this.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
 		if("邀请有奖".equals(fromWhere)){
-			title = "邀您注册 疯狂购物月 最高返现0.8%";
-			text = "元立方投资送补贴，嗨购双十一，还有重磅加息等你来！";
+			title = "邀您注册，尽享元立方三周年送现金活动！";
+			text = "元立方三周年嘉年华，现金大派送，更有2%加息券送不停！";
 			image = new UMImage(context, R.drawable.share_logo);
 		}else if("新春福利2017".equals(fromWhere)){
 			title = "小元喊你来领压岁钱";

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -178,10 +179,15 @@ public class AccountCenterZHZCFragment extends BaseFragment implements View.OnCl
         jxqDetailBtn = (TextView) rootView.findViewById(R.id.account_center_zhzc_fragment_jxq_detail_btn);
         jxqDetailBtn.setOnClickListener(this);
 
-        initAccountData(mainActivity.getYLAccountInfo(),mainActivity.getHFAccountInfo(),mainActivity.getYJBInterestInfo());
         handler.sendEmptyMessage(REQUEST_YUANMONEY_ACCOUNT_WHAT);
         handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
         handler.sendEmptyMessage(REQUEST_HB_LIST_WHAT);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initAccountData(mainActivity.getYLAccountInfo(),mainActivity.getHFAccountInfo(),mainActivity.getYJBInterestInfo());
     }
 
     private void initAccountData(UserRMBAccountInfo yilianAccount,

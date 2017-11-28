@@ -637,7 +637,7 @@ public class BidYYYActivity extends BaseActivity implements OnClickListener{
 		} else if (needRechargeMoeny > borrowBalanceDouble) {
 			Util.toastLong(BidYYYActivity.this, "标的可投余额不足");
 		} else if(!compactCB.isChecked()){
-			Util.toastLong(BidYYYActivity.this, "请先阅读并同意项目协议合同");
+			Util.toastLong(BidYYYActivity.this, "请先阅读并同意产品协议");
 		}else{
 			showInvestDialog();
 		}

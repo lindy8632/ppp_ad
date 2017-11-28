@@ -14,7 +14,7 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/common_measure_70dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical" >
 
             <!-- 标的名字 -->
@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/common_measure_15dp"
+                android:layout_marginTop="@dimen/common_measure_5dp"
                 android:orientation="horizontal" >
 
                 <ImageView
@@ -38,9 +39,8 @@
                     android:id="@+id/invest_records_item_borrowname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/common_measure_22dp" />
+                    android:textSize="@dimen/common_measure_20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -49,6 +49,7 @@
                 android:layout_below="@+id/invest_records_borrowinfo_layout"
                 android:layout_marginLeft="@dimen/common_measure_15dp"
                 android:layout_marginTop="@dimen/common_measure_5dp"
+                android:layout_marginBottom="@dimen/common_measure_5dp"
                 android:orientation="horizontal" >
 
                 <TextView

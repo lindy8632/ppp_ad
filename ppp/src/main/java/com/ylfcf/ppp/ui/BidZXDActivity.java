@@ -793,7 +793,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		} else if (needRechargeMoeny > borrowBalanceDouble) {
 			Util.toastLong(BidZXDActivity.this, "标的可投余额不足");
 		} else if(!cb.isChecked()){
-			Util.toastLong(BidZXDActivity.this, "请先阅读并同意借款协议");
+			Util.toastLong(BidZXDActivity.this, "请先阅读并同意产品协议");
 		}else if(flagOtc == 0 && (mProductInfo.getInterest_period().contains("92")||mProductInfo.getInterest_period().contains("365"))){
 			//2017十月活动加息 元季融和元年鑫才有加息
 			if(hbDouble > 0){

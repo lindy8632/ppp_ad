@@ -57,7 +57,6 @@ import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.CommonBannerPopwindow;
 import com.ylfcf.ppp.view.UpdatePopupwindow;
-import com.ylfcf.ppp.widget.LoadingDialog;
 import com.ylfcf.ppp.widget.NavigationBarView;
 import com.ylfcf.ppp.widget.NoScrollViewPager;
 
@@ -99,8 +98,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
 	public static boolean isForeground = false;
 	private boolean isFirst = true;
-	public LoadingDialog loadingDialog;
-	
+
 	boolean hasTask = false;
 	boolean isExit = false;
 	Timer tExit = new Timer(); 
@@ -189,7 +187,6 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 		}else{
 //			AnalyticsConfig.enableEncrypt(true);//6.0.0∞Ê±æ“‘«∞
 		}
-		this.loadingDialog = mLoadingDialog;
 		downManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);

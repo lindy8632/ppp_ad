@@ -48,6 +48,7 @@ import com.ylfcf.ppp.ui.WithdrawPwdGetbackActivity;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.YLFLogger;
+import com.ylfcf.ppp.widget.LoadingDialog;
 
 import java.text.DecimalFormat;
 
@@ -62,6 +63,7 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
 
     private MainFragmentActivity mainActivity;
     private View rootView;
+    private LoadingDialog mLoadingDialog;
 
     private TextView usernameTVComp;//企业用户的用户名
     private TextView companyNameTV;//企业名
@@ -116,6 +118,7 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mainActivity = (MainFragmentActivity) getActivity();
+        mLoadingDialog = new LoadingDialog(mainActivity,"正在加载...",R.anim.loading);
         if(rootView==null){
             rootView=inflater.inflate(R.layout.user_comp_fragment, null);
         }
@@ -143,7 +146,7 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         YLFLogger.d("UserCompFragment setUserVisibleHint()");
-        if(isVisibleToUser && "0".equals(mUserInfo.getInit_pwd())&&!isShowCompLoginPWDDialog){
+        if(isVisibleToUser && mUserInfo != null && "0".equals(mUserInfo.getInit_pwd())&&!isShowCompLoginPWDDialog){
             //企业用户没有修改初始登录密码
             showCompLoginPwdDialog();
         }else{
@@ -383,14 +386,14 @@ public class UserCompFragment extends BaseFragment implements View.OnClickListen
      * @param type “充值”,“提现”，“邀请有奖”
      */
     private void checkIsVerify(final String type){
-        if(mainActivity.loadingDialog != null){
-            mainActivity.loadingDialog.show();
+        if(mLoadingDialog != null){
+            mLoadingDialog.show();
         }
         RequestApis.requestIsVerify(mainActivity, SettingsManager.getUserId(mainActivity), new OnIsVerifyListener() {
             @Override
             public void isVerify(boolean flag, Object object) {
-                if(mainActivity.loadingDialog != null && mainActivity.loadingDialog.isShowing()){
-                    mainActivity.loadingDialog.dismiss();
+                if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+                    mLoadingDialog.dismiss();
                 }
                 if("邀请有奖".equals(type)){
                     rechargeBtn.setEnabled(true);

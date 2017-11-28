@@ -427,7 +427,7 @@ public class BidVIPActivity extends BaseActivity implements OnClickListener {
 				} else if (needRechargeMoeny > borrowBalanceDouble) {
 					Util.toastLong(BidVIPActivity.this, "标的可投余额不足");
 				} else if(!compactCB.isChecked()){
-					Util.toastLong(BidVIPActivity.this, "请先阅读并同意借款协议");
+					Util.toastLong(BidVIPActivity.this, "请先阅读并同意产品协议");
 				} else {
 					showInvestDialog();
 				}
@@ -442,7 +442,7 @@ public class BidVIPActivity extends BaseActivity implements OnClickListener {
 			} else if (needRechargeMoeny > borrowBalanceDouble) {
 				Util.toastLong(BidVIPActivity.this, "标的可投余额不足");
 			} else if(!compactCB.isChecked()){
-				Util.toastLong(BidVIPActivity.this, "请先阅读并同意借款协议");
+				Util.toastLong(BidVIPActivity.this, "请先阅读并同意产品协议");
 			} else {
 				showInvestDialog();
 			}

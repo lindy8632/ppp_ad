@@ -35,6 +35,7 @@ import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.view.UpdatePopupwindow;
+import com.ylfcf.ppp.widget.LoadingDialog;
 
 
 /**
@@ -61,6 +62,7 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 	private TextView topTitle;
 	private LinearLayout topbarLeftLayout;
 	private View rootView;
+	private LoadingDialog mLoadingDialog;
 	
 	/**
 	 * 创建当前Fragment的实例对象
@@ -92,6 +94,7 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		mainActivity = (MainFragmentActivity) getActivity();
+		mLoadingDialog = new LoadingDialog(mainActivity,"正在加载...",R.anim.loading);
 		if(rootView==null){
             rootView=inflater.inflate(R.layout.more_fragment, null);
             findViews(rootView);
@@ -222,8 +225,8 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 	 * 用户退出
 	 */
 	private void logout(){
-		if(mainActivity.loadingDialog != null){
-			mainActivity.loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 			SettingsManager.setUser(mainActivity,"");
 			SettingsManager.setLoginPassword(mainActivity,"",true);
 			SettingsManager.setUserId(mainActivity,"");
@@ -235,7 +238,7 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 			new Handler().postDelayed(new Runnable(){
 				@Override
 				public void run() {
-					mainActivity.loadingDialog.dismiss();
+					mLoadingDialog.dismiss();
 					logoutBtn.setVisibility(View.GONE);
 					Util.toastShort(mainActivity, "用户已退出");
 					logoutSucListener.onLogoutSuc();
@@ -264,14 +267,14 @@ public class MoreFragment extends BaseFragment implements OnClickListener{
 	 * 检查是否有新版本
 	 */
 	private void checkVersion(int versionCode){
-		if(mainActivity.loadingDialog != null){
-			mainActivity.loadingDialog.show();
+		if(mLoadingDialog != null){
+			mLoadingDialog.show();
 		}
 		AsyncAPIQuery apiQueryTask = new AsyncAPIQuery(mainActivity, versionCode, new OnApiQueryBack() {
 			@Override
 			public void back(AppInfo info) {
-				if(mainActivity.loadingDialog != null && mainActivity.loadingDialog.isShowing()){
-					mainActivity.loadingDialog.dismiss();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+					mLoadingDialog.dismiss();
 				}
 				if(info != null){
 					String flag = info.getDo_update();

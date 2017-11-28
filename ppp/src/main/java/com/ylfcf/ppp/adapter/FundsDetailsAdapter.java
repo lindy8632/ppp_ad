@@ -105,12 +105,12 @@ public class FundsDetailsAdapter extends ArrayAdapter<FundsDetailsInfo>{
 		}
 		if("yxb".equals(investType)){
 			viewHolder.textName1.setText("可用金额：");
-			viewHolder.balance.setText(df.format(moneyD)+"元");
+			viewHolder.balance.setText(df.format(moneyD));
 			viewHolder.changedMoney.setText(null);
 		}else{
 			viewHolder.textName1.setText("可用余额：");
-			viewHolder.balance.setText(df.format(userMoneyD) +"元");
-			viewHolder.changedMoney.setText(Util.formatRate(String.valueOf(moneyD))+"元");
+			viewHolder.balance.setText(df.format(userMoneyD));
+			viewHolder.changedMoney.setText(Util.formatRate(String.valueOf(moneyD)));
 		}
 		if("现金券本金".equals(info.getRemark())){
 			viewHolder.typeText.setText("红包本金");

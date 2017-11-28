@@ -54,7 +54,9 @@ public class BankVerifyRecActivity extends BaseActivity implements OnClickListen
 			finish();
 			mApp.finishAllActivityExceptMain();
 			break;
-
+		case R.id.common_topbar_left_layout:
+			finish();
+			break;
 		default:
 			break;
 		}
