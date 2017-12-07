@@ -50,7 +50,7 @@ public class MyJXQUsedFragment extends BaseFragment{
 	private List<JiaxiquanInfo> jxqList = new ArrayList<JiaxiquanInfo>();
 	
 	private int pageNo = 1;
-	private int pageSize = 20;
+	private int pageSize = Integer.MAX_VALUE;
 	private boolean isFirst = true;
 	private boolean isLoadMore = false;// ¼ÓÔØ¸ü¶à
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -106,7 +106,6 @@ public class MyJXQUsedFragment extends BaseFragment{
 		if (parent != null) {
 			parent.removeView(rootView);
 		}
-//		handler.sendEmptyMessage(REQUEST_JXQ_LIST_WHAT);
 		return rootView;
 	}
 
