@@ -1,0 +1,1193 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From ImageLoaderLibrary:
+* ic_launcher-web.png
+* proguard-project.txt
+From library:
+* LICENSE
+* pom.xml
+From ppp:
+* doc\
+* doc\allclasses-frame.html
+* doc\allclasses-noframe.html
+* doc\android\
+* doc\android\support\
+* doc\android\support\v7\
+* doc\android\support\v7\appcompat\
+* doc\android\support\v7\appcompat\R.anim.html
+* doc\android\support\v7\appcompat\R.attr.html
+* doc\android\support\v7\appcompat\R.bool.html
+* doc\android\support\v7\appcompat\R.color.html
+* doc\android\support\v7\appcompat\R.dimen.html
+* doc\android\support\v7\appcompat\R.drawable.html
+* doc\android\support\v7\appcompat\R.html
+* doc\android\support\v7\appcompat\R.id.html
+* doc\android\support\v7\appcompat\R.integer.html
+* doc\android\support\v7\appcompat\R.layout.html
+* doc\android\support\v7\appcompat\R.string.html
+* doc\android\support\v7\appcompat\R.style.html
+* doc\android\support\v7\appcompat\R.styleable.html
+* doc\android\support\v7\appcompat\class-use\
+* doc\android\support\v7\appcompat\class-use\R.anim.html
+* doc\android\support\v7\appcompat\class-use\R.attr.html
+* doc\android\support\v7\appcompat\class-use\R.bool.html
+* doc\android\support\v7\appcompat\class-use\R.color.html
+* doc\android\support\v7\appcompat\class-use\R.dimen.html
+* doc\android\support\v7\appcompat\class-use\R.drawable.html
+* doc\android\support\v7\appcompat\class-use\R.html
+* doc\android\support\v7\appcompat\class-use\R.id.html
+* doc\android\support\v7\appcompat\class-use\R.integer.html
+* doc\android\support\v7\appcompat\class-use\R.layout.html
+* doc\android\support\v7\appcompat\class-use\R.string.html
+* doc\android\support\v7\appcompat\class-use\R.style.html
+* doc\android\support\v7\appcompat\class-use\R.styleable.html
+* doc\android\support\v7\appcompat\package-frame.html
+* doc\android\support\v7\appcompat\package-summary.html
+* doc\android\support\v7\appcompat\package-tree.html
+* doc\android\support\v7\appcompat\package-use.html
+* doc\com\
+* doc\com\handmark\
+* doc\com\handmark\pulltorefresh\
+* doc\com\handmark\pulltorefresh\library\
+* doc\com\handmark\pulltorefresh\library\R.anim.html
+* doc\com\handmark\pulltorefresh\library\R.attr.html
+* doc\com\handmark\pulltorefresh\library\R.color.html
+* doc\com\handmark\pulltorefresh\library\R.dimen.html
+* doc\com\handmark\pulltorefresh\library\R.drawable.html
+* doc\com\handmark\pulltorefresh\library\R.html
+* doc\com\handmark\pulltorefresh\library\R.id.html
+* doc\com\handmark\pulltorefresh\library\R.layout.html
+* doc\com\handmark\pulltorefresh\library\R.string.html
+* doc\com\handmark\pulltorefresh\library\R.styleable.html
+* doc\com\handmark\pulltorefresh\library\class-use\
+* doc\com\handmark\pulltorefresh\library\class-use\R.anim.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.attr.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.color.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.dimen.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.drawable.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.id.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.layout.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.string.html
+* doc\com\handmark\pulltorefresh\library\class-use\R.styleable.html
+* doc\com\handmark\pulltorefresh\library\package-frame.html
+* doc\com\handmark\pulltorefresh\library\package-summary.html
+* doc\com\handmark\pulltorefresh\library\package-tree.html
+* doc\com\handmark\pulltorefresh\library\package-use.html
+* doc\com\nostra13\
+* doc\com\nostra13\universalimageloader\
+* doc\com\nostra13\universalimageloader\R.drawable.html
+* doc\com\nostra13\universalimageloader\R.html
+* doc\com\nostra13\universalimageloader\R.string.html
+* doc\com\nostra13\universalimageloader\R.style.html
+* doc\com\nostra13\universalimageloader\class-use\
+* doc\com\nostra13\universalimageloader\class-use\R.drawable.html
+* doc\com\nostra13\universalimageloader\class-use\R.html
+* doc\com\nostra13\universalimageloader\class-use\R.string.html
+* doc\com\nostra13\universalimageloader\class-use\R.style.html
+* doc\com\nostra13\universalimageloader\package-frame.html
+* doc\com\nostra13\universalimageloader\package-summary.html
+* doc\com\nostra13\universalimageloader\package-tree.html
+* doc\com\nostra13\universalimageloader\package-use.html
+* doc\com\ylfcf\
+* doc\com\ylfcf\android\
+* doc\com\ylfcf\android\receiver\
+* doc\com\ylfcf\android\receiver\BootReceiver.html
+* doc\com\ylfcf\android\receiver\ConnectivityReceiver.html
+* doc\com\ylfcf\android\receiver\class-use\
+* doc\com\ylfcf\android\receiver\class-use\BootReceiver.html
+* doc\com\ylfcf\android\receiver\class-use\ConnectivityReceiver.html
+* doc\com\ylfcf\android\receiver\package-frame.html
+* doc\com\ylfcf\android\receiver\package-summary.html
+* doc\com\ylfcf\android\receiver\package-tree.html
+* doc\com\ylfcf\android\receiver\package-use.html
+* doc\com\ylfcf\ppp\
+* doc\com\ylfcf\ppp\BuildConfig.html
+* doc\com\ylfcf\ppp\Manifest.html
+* doc\com\ylfcf\ppp\Manifest.permission.html
+* doc\com\ylfcf\ppp\R.anim.html
+* doc\com\ylfcf\ppp\R.array.html
+* doc\com\ylfcf\ppp\R.attr.html
+* doc\com\ylfcf\ppp\R.bool.html
+* doc\com\ylfcf\ppp\R.color.html
+* doc\com\ylfcf\ppp\R.dimen.html
+* doc\com\ylfcf\ppp\R.drawable.html
+* doc\com\ylfcf\ppp\R.html
+* doc\com\ylfcf\ppp\R.id.html
+* doc\com\ylfcf\ppp\R.integer.html
+* doc\com\ylfcf\ppp\R.layout.html
+* doc\com\ylfcf\ppp\R.menu.html
+* doc\com\ylfcf\ppp\R.string.html
+* doc\com\ylfcf\ppp\R.style.html
+* doc\com\ylfcf\ppp\R.styleable.html
+* doc\com\ylfcf\ppp\adapter\
+* doc\com\ylfcf\ppp\adapter\ArticleAdapter.html
+* doc\com\ylfcf\ppp\adapter\BidListAdapter.html
+* doc\com\ylfcf\ppp\adapter\BorrowRecordsAdapter.html
+* doc\com\ylfcf\ppp\adapter\ExperienceAdapter.html
+* doc\com\ylfcf\ppp\adapter\ExtensionAdapter.html
+* doc\com\ylfcf\ppp\adapter\FundsDetailsAdapter.html
+* doc\com\ylfcf\ppp\adapter\LimitMoneyAdapter.html
+* doc\com\ylfcf\ppp\adapter\MainFragmentAdapter.html
+* doc\com\ylfcf\ppp\adapter\PrizeAdapter.html
+* doc\com\ylfcf\ppp\adapter\ProductDataAdapter.html
+* doc\com\ylfcf\ppp\adapter\RedBagAdapter.OnHBListItemClickListener.html
+* doc\com\ylfcf\ppp\adapter\RedBagAdapter.html
+* doc\com\ylfcf\ppp\adapter\RedBagInvestAdapter.html
+* doc\com\ylfcf\ppp\adapter\TYJListAdapter.OnTYJListItemClickListener.html
+* doc\com\ylfcf\ppp\adapter\TYJListAdapter.html
+* doc\com\ylfcf\ppp\adapter\UserInvestRecordAdapter.html
+* doc\com\ylfcf\ppp\adapter\WithdrawListAdapter.html
+* doc\com\ylfcf\ppp\adapter\YXBInvestRecordAdapter.html
+* doc\com\ylfcf\ppp\adapter\YXBRedeemRecordAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\
+* doc\com\ylfcf\ppp\adapter\class-use\ArticleAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\BidListAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\BorrowRecordsAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\ExperienceAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\ExtensionAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\FundsDetailsAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\LimitMoneyAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\MainFragmentAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\PrizeAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\ProductDataAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\RedBagAdapter.OnHBListItemClickListener.html
+* doc\com\ylfcf\ppp\adapter\class-use\RedBagAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\RedBagInvestAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\TYJListAdapter.OnTYJListItemClickListener.html
+* doc\com\ylfcf\ppp\adapter\class-use\TYJListAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\UserInvestRecordAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\WithdrawListAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\YXBInvestRecordAdapter.html
+* doc\com\ylfcf\ppp\adapter\class-use\YXBRedeemRecordAdapter.html
+* doc\com\ylfcf\ppp\adapter\package-frame.html
+* doc\com\ylfcf\ppp\adapter\package-summary.html
+* doc\com\ylfcf\ppp\adapter\package-tree.html
+* doc\com\ylfcf\ppp\adapter\package-use.html
+* doc\com\ylfcf\ppp\async\
+* doc\com\ylfcf\ppp\async\AsyncAPIQuery.html
+* doc\com\ylfcf\ppp\async\AsyncAccountTotalInfo.html
+* doc\com\ylfcf\ppp\async\AsyncAddPhoneInfo.html
+* doc\com\ylfcf\ppp\async\AsyncArticle.html
+* doc\com\ylfcf\ppp\async\AsyncArticleList.html
+* doc\com\ylfcf\ppp\async\AsyncAsscociatedCompany.html
+* doc\com\ylfcf\ppp\async\AsyncBanner.html
+* doc\com\ylfcf\ppp\async\AsyncBorrowInvest.html
+* doc\com\ylfcf\ppp\async\AsyncChangeAddress.html
+* doc\com\ylfcf\ppp\async\AsyncCheckDealPwd.html
+* doc\com\ylfcf\ppp\async\AsyncCheckRegister.html
+* doc\com\ylfcf\ppp\async\AsyncCurrentUserInvest.html
+* doc\com\ylfcf\ppp\async\AsyncCurrentUserRedbagList.html
+* doc\com\ylfcf\ppp\async\AsyncExperiencePageInfo.html
+* doc\com\ylfcf\ppp\async\AsyncExtensionPageInfo.html
+* doc\com\ylfcf\ppp\async\AsyncGetUserInfoByPhone.html
+* doc\com\ylfcf\ppp\async\AsyncHuiFuRMBAccount.html
+* doc\com\ylfcf\ppp\async\AsyncHuifuFundsDetailsList.html
+* doc\com\ylfcf\ppp\async\AsyncHuifuStatistic.html
+* doc\com\ylfcf\ppp\async\AsyncInvestRecord.html
+* doc\com\ylfcf\ppp\async\AsyncInvestTotalRecord.html
+* doc\com\ylfcf\ppp\async\AsyncLogin.html
+* doc\com\ylfcf\ppp\async\AsyncPrizeActive.html
+* doc\com\ylfcf\ppp\async\AsyncPrizeList.html
+* doc\com\ylfcf\ppp\async\AsyncProductInfo.html
+* doc\com\ylfcf\ppp\async\AsyncProductPageInfo.html
+* doc\com\ylfcf\ppp\async\AsyncProjectDetails.html
+* doc\com\ylfcf\ppp\async\AsyncRecharge.html
+* doc\com\ylfcf\ppp\async\AsyncRechargeOrder.html
+* doc\com\ylfcf\ppp\async\AsyncRedbgList.html
+* doc\com\ylfcf\ppp\async\AsyncRegiste.html
+* doc\com\ylfcf\ppp\async\AsyncSMSRegiste.html
+* doc\com\ylfcf\ppp\async\AsyncTYJPageInfo.html
+* doc\com\ylfcf\ppp\async\AsyncTaskBase.html
+* doc\com\ylfcf\ppp\async\AsyncUpdateUserInfo.html
+* doc\com\ylfcf\ppp\async\AsyncUserBankCard.html
+* doc\com\ylfcf\ppp\async\AsyncUserSelectOne.html
+* doc\com\ylfcf\ppp\async\AsyncUserVerify.html
+* doc\com\ylfcf\ppp\async\AsyncUserYUANAccount.html
+* doc\com\ylfcf\ppp\async\AsyncWithdraw.html
+* doc\com\ylfcf\ppp\async\AsyncWithdrawCancel.html
+* doc\com\ylfcf\ppp\async\AsyncWithdrawList.html
+* doc\com\ylfcf\ppp\async\AsyncYXBCheckRedeem.html
+* doc\com\ylfcf\ppp\async\AsyncYXBInvest.html
+* doc\com\ylfcf\ppp\async\AsyncYXBInvestRecord.html
+* doc\com\ylfcf\ppp\async\AsyncYXBNewAccount.html
+* doc\com\ylfcf\ppp\async\AsyncYXBProduct.html
+* doc\com\ylfcf\ppp\async\AsyncYXBProductLog.html
+* doc\com\ylfcf\ppp\async\AsyncYXBRedeem.html
+* doc\com\ylfcf\ppp\async\AsyncYXBRedeemRecord.html
+* doc\com\ylfcf\ppp\async\AsyncYXBUserAccount.html
+* doc\com\ylfcf\ppp\async\AsyncYiLianRMBAccount.html
+* doc\com\ylfcf\ppp\async\AsyncYilianFundsDetailsList.html
+* doc\com\ylfcf\ppp\async\AsyncYilianSMS.html
+* doc\com\ylfcf\ppp\async\AsyncYilianStatistic.html
+* doc\com\ylfcf\ppp\async\class-use\
+* doc\com\ylfcf\ppp\async\class-use\AsyncAPIQuery.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncAccountTotalInfo.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncAddPhoneInfo.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncArticle.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncArticleList.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncAsscociatedCompany.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncBanner.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncBorrowInvest.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncChangeAddress.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncCheckDealPwd.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncCheckRegister.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncCurrentUserInvest.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncCurrentUserRedbagList.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncExperiencePageInfo.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncExtensionPageInfo.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncGetUserInfoByPhone.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncHuiFuRMBAccount.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncHuifuFundsDetailsList.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncHuifuStatistic.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncInvestRecord.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncInvestTotalRecord.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncLogin.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncPrizeActive.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncPrizeList.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncProductInfo.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncProductPageInfo.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncProjectDetails.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncRecharge.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncRechargeOrder.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncRedbgList.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncRegiste.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncSMSRegiste.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncTYJPageInfo.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncTaskBase.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncUpdateUserInfo.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncUserBankCard.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncUserSelectOne.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncUserVerify.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncUserYUANAccount.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncWithdraw.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncWithdrawCancel.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncWithdrawList.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBCheckRedeem.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBInvest.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBInvestRecord.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBNewAccount.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBProduct.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBProductLog.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBRedeem.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBRedeemRecord.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYXBUserAccount.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYiLianRMBAccount.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYilianFundsDetailsList.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYilianSMS.html
+* doc\com\ylfcf\ppp\async\class-use\AsyncYilianStatistic.html
+* doc\com\ylfcf\ppp\async\package-frame.html
+* doc\com\ylfcf\ppp\async\package-summary.html
+* doc\com\ylfcf\ppp\async\package-tree.html
+* doc\com\ylfcf\ppp\async\package-use.html
+* doc\com\ylfcf\ppp\class-use\
+* doc\com\ylfcf\ppp\class-use\BuildConfig.html
+* doc\com\ylfcf\ppp\class-use\Manifest.html
+* doc\com\ylfcf\ppp\class-use\Manifest.permission.html
+* doc\com\ylfcf\ppp\class-use\R.anim.html
+* doc\com\ylfcf\ppp\class-use\R.array.html
+* doc\com\ylfcf\ppp\class-use\R.attr.html
+* doc\com\ylfcf\ppp\class-use\R.bool.html
+* doc\com\ylfcf\ppp\class-use\R.color.html
+* doc\com\ylfcf\ppp\class-use\R.dimen.html
+* doc\com\ylfcf\ppp\class-use\R.drawable.html
+* doc\com\ylfcf\ppp\class-use\R.html
+* doc\com\ylfcf\ppp\class-use\R.id.html
+* doc\com\ylfcf\ppp\class-use\R.integer.html
+* doc\com\ylfcf\ppp\class-use\R.layout.html
+* doc\com\ylfcf\ppp\class-use\R.menu.html
+* doc\com\ylfcf\ppp\class-use\R.string.html
+* doc\com\ylfcf\ppp\class-use\R.style.html
+* doc\com\ylfcf\ppp\class-use\R.styleable.html
+* doc\com\ylfcf\ppp\common\
+* doc\com\ylfcf\ppp\common\FileUtil.html
+* doc\com\ylfcf\ppp\common\SDCardUtil.html
+* doc\com\ylfcf\ppp\common\class-use\
+* doc\com\ylfcf\ppp\common\class-use\FileUtil.html
+* doc\com\ylfcf\ppp\common\class-use\SDCardUtil.html
+* doc\com\ylfcf\ppp\common\package-frame.html
+* doc\com\ylfcf\ppp\common\package-summary.html
+* doc\com\ylfcf\ppp\common\package-tree.html
+* doc\com\ylfcf\ppp\common\package-use.html
+* doc\com\ylfcf\ppp\db\
+* doc\com\ylfcf\ppp\db\DBGesturePwdManager.html
+* doc\com\ylfcf\ppp\db\DatabaseHelper.html
+* doc\com\ylfcf\ppp\db\class-use\
+* doc\com\ylfcf\ppp\db\class-use\DBGesturePwdManager.html
+* doc\com\ylfcf\ppp\db\class-use\DatabaseHelper.html
+* doc\com\ylfcf\ppp\db\package-frame.html
+* doc\com\ylfcf\ppp\db\package-summary.html
+* doc\com\ylfcf\ppp\db\package-tree.html
+* doc\com\ylfcf\ppp\db\package-use.html
+* doc\com\ylfcf\ppp\entity\
+* doc\com\ylfcf\ppp\entity\ADInfo.html
+* doc\com\ylfcf\ppp\entity\AccountTotalInfo.html
+* doc\com\ylfcf\ppp\entity\AppInfo.html
+* doc\com\ylfcf\ppp\entity\ArticleInfo.html
+* doc\com\ylfcf\ppp\entity\ArticlePageInfo.html
+* doc\com\ylfcf\ppp\entity\ArticleType.html
+* doc\com\ylfcf\ppp\entity\AssociatedCompanyInfo.html
+* doc\com\ylfcf\ppp\entity\AssociatedCompanyParentInfo.html
+* doc\com\ylfcf\ppp\entity\BankInfo.html
+* doc\com\ylfcf\ppp\entity\BannerInfo.html
+* doc\com\ylfcf\ppp\entity\BannerPageInfo.html
+* doc\com\ylfcf\ppp\entity\BaseInfo.html
+* doc\com\ylfcf\ppp\entity\BorrowType.html
+* doc\com\ylfcf\ppp\entity\ExperienceInfo.html
+* doc\com\ylfcf\ppp\entity\ExperiencePageInfo.html
+* doc\com\ylfcf\ppp\entity\ExtensionIncomeInfo.html
+* doc\com\ylfcf\ppp\entity\ExtensionPageInfo.html
+* doc\com\ylfcf\ppp\entity\ExtensionUserInfo.html
+* doc\com\ylfcf\ppp\entity\FundsDetailsInfo.html
+* doc\com\ylfcf\ppp\entity\FundsDetailsPageInfo.html
+* doc\com\ylfcf\ppp\entity\GesturePoint.html
+* doc\com\ylfcf\ppp\entity\GesturePwdEntity.html
+* doc\com\ylfcf\ppp\entity\InvestRecordInfo.html
+* doc\com\ylfcf\ppp\entity\InvestRecordPageInfo.html
+* doc\com\ylfcf\ppp\entity\MoneyStatus.html
+* doc\com\ylfcf\ppp\entity\PrizeActiveInfo.html
+* doc\com\ylfcf\ppp\entity\PrizeInfo.html
+* doc\com\ylfcf\ppp\entity\PrizePageInfo.html
+* doc\com\ylfcf\ppp\entity\ProductInfo.html
+* doc\com\ylfcf\ppp\entity\ProductPageInfo.html
+* doc\com\ylfcf\ppp\entity\ProjectCailiaoInfo.html
+* doc\com\ylfcf\ppp\entity\ProjectInfo.html
+* doc\com\ylfcf\ppp\entity\RechargeOrderInfo.html
+* doc\com\ylfcf\ppp\entity\RechargeTempInfo.html
+* doc\com\ylfcf\ppp\entity\RechargeType.html
+* doc\com\ylfcf\ppp\entity\RedBagInfo.html
+* doc\com\ylfcf\ppp\entity\RedBagPageInfo.html
+* doc\com\ylfcf\ppp\entity\RewardInfo.html
+* doc\com\ylfcf\ppp\entity\SMSType.html
+* doc\com\ylfcf\ppp\entity\StatisticInfo.html
+* doc\com\ylfcf\ppp\entity\TYJInfo.html
+* doc\com\ylfcf\ppp\entity\TYJPageInfo.html
+* doc\com\ylfcf\ppp\entity\TaskDate.html
+* doc\com\ylfcf\ppp\entity\TopicType.html
+* doc\com\ylfcf\ppp\entity\TouchType.html
+* doc\com\ylfcf\ppp\entity\UserCardInfo.html
+* doc\com\ylfcf\ppp\entity\UserInfo.html
+* doc\com\ylfcf\ppp\entity\UserRMBAccountInfo.html
+* doc\com\ylfcf\ppp\entity\UserYUANAccountInfo.html
+* doc\com\ylfcf\ppp\entity\WithdrawOrderInfo.html
+* doc\com\ylfcf\ppp\entity\WithdrawOrderPageInfo.html
+* doc\com\ylfcf\ppp\entity\WithdrawType.html
+* doc\com\ylfcf\ppp\entity\YJHBiteInfo.html
+* doc\com\ylfcf\ppp\entity\YXBCheckRedeemInfo.html
+* doc\com\ylfcf\ppp\entity\YXBInvestRecordInfo.html
+* doc\com\ylfcf\ppp\entity\YXBInvestRecordPageInfo.html
+* doc\com\ylfcf\ppp\entity\YXBProductInfo.html
+* doc\com\ylfcf\ppp\entity\YXBProductLogInfo.html
+* doc\com\ylfcf\ppp\entity\YXBRedeemRecordInfo.html
+* doc\com\ylfcf\ppp\entity\YXBRedeemRecordPageInfo.html
+* doc\com\ylfcf\ppp\entity\YXBUserAccountInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\
+* doc\com\ylfcf\ppp\entity\class-use\ADInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\AccountTotalInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\AppInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ArticleInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ArticlePageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ArticleType.html
+* doc\com\ylfcf\ppp\entity\class-use\AssociatedCompanyInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\AssociatedCompanyParentInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\BankInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\BannerInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\BannerPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\BaseInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\BorrowType.html
+* doc\com\ylfcf\ppp\entity\class-use\ExperienceInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ExperiencePageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ExtensionIncomeInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ExtensionPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ExtensionUserInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\FundsDetailsInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\FundsDetailsPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\GesturePoint.html
+* doc\com\ylfcf\ppp\entity\class-use\GesturePwdEntity.html
+* doc\com\ylfcf\ppp\entity\class-use\InvestRecordInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\InvestRecordPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\MoneyStatus.html
+* doc\com\ylfcf\ppp\entity\class-use\PrizeActiveInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\PrizeInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\PrizePageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ProductInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ProductPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ProjectCailiaoInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\ProjectInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\RechargeOrderInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\RechargeTempInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\RechargeType.html
+* doc\com\ylfcf\ppp\entity\class-use\RedBagInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\RedBagPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\RewardInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\SMSType.html
+* doc\com\ylfcf\ppp\entity\class-use\StatisticInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\TYJInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\TYJPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\TaskDate.html
+* doc\com\ylfcf\ppp\entity\class-use\TopicType.html
+* doc\com\ylfcf\ppp\entity\class-use\TouchType.html
+* doc\com\ylfcf\ppp\entity\class-use\UserCardInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\UserInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\UserRMBAccountInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\UserYUANAccountInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\WithdrawOrderInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\WithdrawOrderPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\WithdrawType.html
+* doc\com\ylfcf\ppp\entity\class-use\YJHBiteInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\YXBCheckRedeemInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\YXBInvestRecordInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\YXBInvestRecordPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\YXBProductInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\YXBProductLogInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\YXBRedeemRecordInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\YXBRedeemRecordPageInfo.html
+* doc\com\ylfcf\ppp\entity\class-use\YXBUserAccountInfo.html
+* doc\com\ylfcf\ppp\entity\package-frame.html
+* doc\com\ylfcf\ppp\entity\package-summary.html
+* doc\com\ylfcf\ppp\entity\package-tree.html
+* doc\com\ylfcf\ppp\entity\package-use.html
+* doc\com\ylfcf\ppp\fragment\
+* doc\com\ylfcf\ppp\fragment\BaoyingFragment.html
+* doc\com\ylfcf\ppp\fragment\BaseFragment.html
+* doc\com\ylfcf\ppp\fragment\CommQuesFragment.html
+* doc\com\ylfcf\ppp\fragment\FirstPageFragment.html
+* doc\com\ylfcf\ppp\fragment\FundDetailsYXBFragment.html
+* doc\com\ylfcf\ppp\fragment\FundDetailsZXDFragment.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\fragment\FundDetailsZXDFragment.html
+* doc\com\ylfcf\ppp\fragment\FundsHuifuDetailsFragment.html
+* doc\com\ylfcf\ppp\fragment\FundsYilianDetailsFragment.html
+* doc\com\ylfcf\ppp\fragment\InformationFragment.html
+* doc\com\ylfcf\ppp\fragment\LicaiFragment.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\fragment\LicaiFragment.html
+* doc\com\ylfcf\ppp\fragment\MoreFragment.OnLoginSuccessListener.html
+* doc\com\ylfcf\ppp\fragment\MoreFragment.html
+* doc\com\ylfcf\ppp\fragment\MyHBNousedFragment.html
+* doc\com\ylfcf\ppp\fragment\MyHBOverdueFragment.html
+* doc\com\ylfcf\ppp\fragment\MyHBUsedFragment.html
+* doc\com\ylfcf\ppp\fragment\MyTYJNousedFragment.html
+* doc\com\ylfcf\ppp\fragment\MyTYJOverdueFragment.html
+* doc\com\ylfcf\ppp\fragment\MyTYJUsedFragment.html
+* doc\com\ylfcf\ppp\fragment\NewsFragment.html
+* doc\com\ylfcf\ppp\fragment\NoticeFragment.html
+* doc\com\ylfcf\ppp\fragment\ProductInfoFragment.OnProductInfoListener.html
+* doc\com\ylfcf\ppp\fragment\ProductInfoFragment.html
+* doc\com\ylfcf\ppp\fragment\ProductRecordFragment.html
+* doc\com\ylfcf\ppp\fragment\ProductSafetyFragment.OnProductSafetyListener.html
+* doc\com\ylfcf\ppp\fragment\ProductSafetyFragment.html
+* doc\com\ylfcf\ppp\fragment\SuyingFragment.html
+* doc\com\ylfcf\ppp\fragment\UserFragment.html
+* doc\com\ylfcf\ppp\fragment\WenyingFragment.html
+* doc\com\ylfcf\ppp\fragment\YJHFragment.html
+* doc\com\ylfcf\ppp\fragment\YXBInvestRecordFragment.html
+* doc\com\ylfcf\ppp\fragment\YXBRedeemRecordFragment.html
+* doc\com\ylfcf\ppp\fragment\ZXDFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\
+* doc\com\ylfcf\ppp\fragment\class-use\BaoyingFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\BaseFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\CommQuesFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\FirstPageFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\FundDetailsYXBFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\FundDetailsZXDFragment.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\fragment\class-use\FundDetailsZXDFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\FundsHuifuDetailsFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\FundsYilianDetailsFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\InformationFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\LicaiFragment.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\fragment\class-use\LicaiFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\MoreFragment.OnLoginSuccessListener.html
+* doc\com\ylfcf\ppp\fragment\class-use\MoreFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\MyHBNousedFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\MyHBOverdueFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\MyHBUsedFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\MyTYJNousedFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\MyTYJOverdueFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\MyTYJUsedFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\NewsFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\NoticeFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\ProductInfoFragment.OnProductInfoListener.html
+* doc\com\ylfcf\ppp\fragment\class-use\ProductInfoFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\ProductRecordFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\ProductSafetyFragment.OnProductSafetyListener.html
+* doc\com\ylfcf\ppp\fragment\class-use\ProductSafetyFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\SuyingFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\UserFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\WenyingFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\YJHFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\YXBInvestRecordFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\YXBRedeemRecordFragment.html
+* doc\com\ylfcf\ppp\fragment\class-use\ZXDFragment.html
+* doc\com\ylfcf\ppp\fragment\package-frame.html
+* doc\com\ylfcf\ppp\fragment\package-summary.html
+* doc\com\ylfcf\ppp\fragment\package-tree.html
+* doc\com\ylfcf\ppp\fragment\package-use.html
+* doc\com\ylfcf\ppp\inter\
+* doc\com\ylfcf\ppp\inter\Inter.OnApiQueryBack.html
+* doc\com\ylfcf\ppp\inter\Inter.OnBorrowInvestInter.html
+* doc\com\ylfcf\ppp\inter\Inter.OnCommonInter.html
+* doc\com\ylfcf\ppp\inter\Inter.OnGetUserInfoByPhone.html
+* doc\com\ylfcf\ppp\inter\Inter.OnInvestRecordListInter.html
+* doc\com\ylfcf\ppp\inter\Inter.OnLoginInter.html
+* doc\com\ylfcf\ppp\inter\Inter.OnProjectDetails.html
+* doc\com\ylfcf\ppp\inter\Inter.OnQueryProductList.html
+* doc\com\ylfcf\ppp\inter\Inter.OnRegisteInter.html
+* doc\com\ylfcf\ppp\inter\Inter.OnUpdateUserInfoInter.html
+* doc\com\ylfcf\ppp\inter\Inter.OnUserBankCardInter.html
+* doc\com\ylfcf\ppp\inter\Inter.OnUserRMBAccountInter.html
+* doc\com\ylfcf\ppp\inter\Inter.OnUserYUANAccountInter.html
+* doc\com\ylfcf\ppp\inter\Inter.html
+* doc\com\ylfcf\ppp\inter\class-use\
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnApiQueryBack.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnBorrowInvestInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnCommonInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnGetUserInfoByPhone.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnInvestRecordListInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnLoginInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnProjectDetails.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnQueryProductList.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnRegisteInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnUpdateUserInfoInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnUserBankCardInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnUserRMBAccountInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.OnUserYUANAccountInter.html
+* doc\com\ylfcf\ppp\inter\class-use\Inter.html
+* doc\com\ylfcf\ppp\inter\package-frame.html
+* doc\com\ylfcf\ppp\inter\package-summary.html
+* doc\com\ylfcf\ppp\inter\package-tree.html
+* doc\com\ylfcf\ppp\inter\package-use.html
+* doc\com\ylfcf\ppp\package-frame.html
+* doc\com\ylfcf\ppp\package-summary.html
+* doc\com\ylfcf\ppp\package-tree.html
+* doc\com\ylfcf\ppp\package-use.html
+* doc\com\ylfcf\ppp\parse\
+* doc\com\ylfcf\ppp\parse\JsonParseAccountInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseAppUpdate.html
+* doc\com\ylfcf\ppp\parse\JsonParseArticle.html
+* doc\com\ylfcf\ppp\parse\JsonParseArticlePageInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseAsscociatedCompany.html
+* doc\com\ylfcf\ppp\parse\JsonParseBanner.html
+* doc\com\ylfcf\ppp\parse\JsonParseCommon.html
+* doc\com\ylfcf\ppp\parse\JsonParseExperiencePageInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseExtensionPageInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseFundsDetailsList.html
+* doc\com\ylfcf\ppp\parse\JsonParseInvest.html
+* doc\com\ylfcf\ppp\parse\JsonParseInvestRecordList.html
+* doc\com\ylfcf\ppp\parse\JsonParseLogin.html
+* doc\com\ylfcf\ppp\parse\JsonParsePrizeActive.html
+* doc\com\ylfcf\ppp\parse\JsonParsePrizePageInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseProductInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseProductPageInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseProjectDetails.html
+* doc\com\ylfcf\ppp\parse\JsonParseRecharge.html
+* doc\com\ylfcf\ppp\parse\JsonParseRedBagPageInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseRegiste.html
+* doc\com\ylfcf\ppp\parse\JsonParseSMSRegiste.html
+* doc\com\ylfcf\ppp\parse\JsonParseStatistic.html
+* doc\com\ylfcf\ppp\parse\JsonParseTYJPageInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseUpdateUserInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseUserBank.html
+* doc\com\ylfcf\ppp\parse\JsonParseUserInfo.html
+* doc\com\ylfcf\ppp\parse\JsonParseUserRMBAccount.html
+* doc\com\ylfcf\ppp\parse\JsonParseUserYUANAccount.html
+* doc\com\ylfcf\ppp\parse\JsonParseWithdrawList.html
+* doc\com\ylfcf\ppp\parse\JsonParseYXBCheckRedeem.html
+* doc\com\ylfcf\ppp\parse\JsonParseYXBInvestRecord.html
+* doc\com\ylfcf\ppp\parse\JsonParseYXBProduct.html
+* doc\com\ylfcf\ppp\parse\JsonParseYXBProductLog.html
+* doc\com\ylfcf\ppp\parse\JsonParseYXBRedeemRecord.html
+* doc\com\ylfcf\ppp\parse\JsonParseYXBUserCenter.html
+* doc\com\ylfcf\ppp\parse\class-use\
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseAccountInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseAppUpdate.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseArticle.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseArticlePageInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseAsscociatedCompany.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseBanner.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseCommon.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseExperiencePageInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseExtensionPageInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseFundsDetailsList.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseInvest.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseInvestRecordList.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseLogin.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParsePrizeActive.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParsePrizePageInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseProductInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseProductPageInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseProjectDetails.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseRecharge.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseRedBagPageInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseRegiste.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseSMSRegiste.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseStatistic.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseTYJPageInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseUpdateUserInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseUserBank.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseUserInfo.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseUserRMBAccount.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseUserYUANAccount.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseWithdrawList.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseYXBCheckRedeem.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseYXBInvestRecord.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseYXBProduct.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseYXBProductLog.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseYXBRedeemRecord.html
+* doc\com\ylfcf\ppp\parse\class-use\JsonParseYXBUserCenter.html
+* doc\com\ylfcf\ppp\parse\package-frame.html
+* doc\com\ylfcf\ppp\parse\package-summary.html
+* doc\com\ylfcf\ppp\parse\package-tree.html
+* doc\com\ylfcf\ppp\parse\package-use.html
+* doc\com\ylfcf\ppp\ptr\
+* doc\com\ylfcf\ppp\ptr\PtrClassicDefaultHeader.html
+* doc\com\ylfcf\ppp\ptr\PtrClassicFrameLayout.html
+* doc\com\ylfcf\ppp\ptr\PtrDefaultHandler.html
+* doc\com\ylfcf\ppp\ptr\PtrFrameLayout.LayoutParams.html
+* doc\com\ylfcf\ppp\ptr\PtrFrameLayout.html
+* doc\com\ylfcf\ppp\ptr\PtrHandler.html
+* doc\com\ylfcf\ppp\ptr\PtrIndicator.html
+* doc\com\ylfcf\ppp\ptr\PtrUIHandler.html
+* doc\com\ylfcf\ppp\ptr\PtrUIHandlerHolder.html
+* doc\com\ylfcf\ppp\ptr\PtrUIHandlerHook.html
+* doc\com\ylfcf\ppp\ptr\class-use\
+* doc\com\ylfcf\ppp\ptr\class-use\PtrClassicDefaultHeader.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrClassicFrameLayout.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrDefaultHandler.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrFrameLayout.LayoutParams.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrFrameLayout.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrHandler.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrIndicator.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrUIHandler.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrUIHandlerHolder.html
+* doc\com\ylfcf\ppp\ptr\class-use\PtrUIHandlerHook.html
+* doc\com\ylfcf\ppp\ptr\package-frame.html
+* doc\com\ylfcf\ppp\ptr\package-summary.html
+* doc\com\ylfcf\ppp\ptr\package-tree.html
+* doc\com\ylfcf\ppp\ptr\package-use.html
+* doc\com\ylfcf\ppp\receiver\
+* doc\com\ylfcf\ppp\receiver\DownLoadCompleteReceiver.html
+* doc\com\ylfcf\ppp\receiver\JpushReceiver.html
+* doc\com\ylfcf\ppp\receiver\NetworkStatusReceiver.NetworkStateListener.html
+* doc\com\ylfcf\ppp\receiver\NetworkStatusReceiver.html
+* doc\com\ylfcf\ppp\receiver\class-use\
+* doc\com\ylfcf\ppp\receiver\class-use\DownLoadCompleteReceiver.html
+* doc\com\ylfcf\ppp\receiver\class-use\JpushReceiver.html
+* doc\com\ylfcf\ppp\receiver\class-use\NetworkStatusReceiver.NetworkStateListener.html
+* doc\com\ylfcf\ppp\receiver\class-use\NetworkStatusReceiver.html
+* doc\com\ylfcf\ppp\receiver\package-frame.html
+* doc\com\ylfcf\ppp\receiver\package-summary.html
+* doc\com\ylfcf\ppp\receiver\package-tree.html
+* doc\com\ylfcf\ppp\receiver\package-use.html
+* doc\com\ylfcf\ppp\sina\
+* doc\com\ylfcf\ppp\sina\WBShareActivity.html
+* doc\com\ylfcf\ppp\sina\class-use\
+* doc\com\ylfcf\ppp\sina\class-use\WBShareActivity.html
+* doc\com\ylfcf\ppp\sina\package-frame.html
+* doc\com\ylfcf\ppp\sina\package-summary.html
+* doc\com\ylfcf\ppp\sina\package-tree.html
+* doc\com\ylfcf\ppp\sina\package-use.html
+* doc\com\ylfcf\ppp\ui\
+* doc\com\ylfcf\ppp\ui\AccountSettingActivity.html
+* doc\com\ylfcf\ppp\ui\ArticleDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\ArticleListActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\ArticleListActivity.html
+* doc\com\ylfcf\ppp\ui\AwardDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\BankVerifyActivity.html
+* doc\com\ylfcf\ppp\ui\BankVerifyRecActivity.html
+* doc\com\ylfcf\ppp\ui\BannerDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\BannerTopicActivity.html
+* doc\com\ylfcf\ppp\ui\BaseActivity.html
+* doc\com\ylfcf\ppp\ui\BidSuccessActivity.html
+* doc\com\ylfcf\ppp\ui\BidYJHActivity.html
+* doc\com\ylfcf\ppp\ui\BidYXBActivity.html
+* doc\com\ylfcf\ppp\ui\BidZXDActivity.OnHBWindowItemClickListener.html
+* doc\com\ylfcf\ppp\ui\BidZXDActivity.OnTYJWindowItemClickListener.html
+* doc\com\ylfcf\ppp\ui\BidZXDActivity.html
+* doc\com\ylfcf\ppp\ui\BindCardActivity.html
+* doc\com\ylfcf\ppp\ui\BorrowDetailYJHActivity.html
+* doc\com\ylfcf\ppp\ui\BorrowDetailYXBActivity.html
+* doc\com\ylfcf\ppp\ui\BorrowDetailZXDActivity.html
+* doc\com\ylfcf\ppp\ui\BorrowListActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\BorrowListActivity.html
+* doc\com\ylfcf\ppp\ui\BrandIntroActivity.html
+* doc\com\ylfcf\ppp\ui\ChangeAddressActivity.html
+* doc\com\ylfcf\ppp\ui\ChangeTransPwdActivity.html
+* doc\com\ylfcf\ppp\ui\CommQuesActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\CommQuesActivity.html
+* doc\com\ylfcf\ppp\ui\FeedbackActivity.html
+* doc\com\ylfcf\ppp\ui\ForgetPwdActivity.html
+* doc\com\ylfcf\ppp\ui\FundsDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\GestureEditActivity.html
+* doc\com\ylfcf\ppp\ui\GestureSettingActivity.html
+* doc\com\ylfcf\ppp\ui\GestureVerifyActivity.html
+* doc\com\ylfcf\ppp\ui\GetbackTransPwdActivity.html
+* doc\com\ylfcf\ppp\ui\IntroductionActivity.html
+* doc\com\ylfcf\ppp\ui\InvitateActivity.html
+* doc\com\ylfcf\ppp\ui\LimitPromptActivity.html
+* doc\com\ylfcf\ppp\ui\LoginActivity.html
+* doc\com\ylfcf\ppp\ui\MainFragmentActivity.MessageReceiver.html
+* doc\com\ylfcf\ppp\ui\MainFragmentActivity.OnDownLoadListener.html
+* doc\com\ylfcf\ppp\ui\MainFragmentActivity.OnFirstPageDQListener.html
+* doc\com\ylfcf\ppp\ui\MainFragmentActivity.OnFirstPageZXDOnClickListener.html
+* doc\com\ylfcf\ppp\ui\MainFragmentActivity.OnNetStatusChangeListener.html
+* doc\com\ylfcf\ppp\ui\MainFragmentActivity.OnRequestBorrowListListener.html
+* doc\com\ylfcf\ppp\ui\MainFragmentActivity.OnYXBDataListener.html
+* doc\com\ylfcf\ppp\ui\MainFragmentActivity.html
+* doc\com\ylfcf\ppp\ui\ModifyLoginPwdActivity.html
+* doc\com\ylfcf\ppp\ui\MyGiftsActivity.html
+* doc\com\ylfcf\ppp\ui\MyHongbaoActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\MyHongbaoActivity.html
+* doc\com\ylfcf\ppp\ui\MyInvitationActivity.html
+* doc\com\ylfcf\ppp\ui\MyTYJActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\MyTYJActivity.html
+* doc\com\ylfcf\ppp\ui\MyYuanMoneyActivity.html
+* doc\com\ylfcf\ppp\ui\ProductDataActivity.html
+* doc\com\ylfcf\ppp\ui\ProductDataDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\ProductInfoActivity.html
+* doc\com\ylfcf\ppp\ui\ProductRecordActivity.html
+* doc\com\ylfcf\ppp\ui\ProductSafetyActivity.html
+* doc\com\ylfcf\ppp\ui\RechargeActivity.OnSpinnerItemClickListener.html
+* doc\com\ylfcf\ppp\ui\RechargeActivity.html
+* doc\com\ylfcf\ppp\ui\RechargeNoticeActivity.html
+* doc\com\ylfcf\ppp\ui\RechargeResultActivity.html
+* doc\com\ylfcf\ppp\ui\RegisteActivity.html
+* doc\com\ylfcf\ppp\ui\RegisteAgreementActivity.html
+* doc\com\ylfcf\ppp\ui\SplashActivity.html
+* doc\com\ylfcf\ppp\ui\TransPwdSettingActivity.html
+* doc\com\ylfcf\ppp\ui\UserVerifyActivity.html
+* doc\com\ylfcf\ppp\ui\UserZXDInvestRecordActivity.html
+* doc\com\ylfcf\ppp\ui\WithdrawActivity.html
+* doc\com\ylfcf\ppp\ui\WithdrawDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\WithdrawListActivity.html
+* doc\com\ylfcf\ppp\ui\WithdrawSuccessActivity.html
+* doc\com\ylfcf\ppp\ui\YJHIntroActivity.html
+* doc\com\ylfcf\ppp\ui\YJHRepaySourceActivity.html
+* doc\com\ylfcf\ppp\ui\YJHSafetyActivity.html
+* doc\com\ylfcf\ppp\ui\YLFApplication.html
+* doc\com\ylfcf\ppp\ui\YXBAccountCenterActivity.html
+* doc\com\ylfcf\ppp\ui\YXBAgreementActivity.html
+* doc\com\ylfcf\ppp\ui\YXBBidSuccessActivity.html
+* doc\com\ylfcf\ppp\ui\YXBIntroActivity.html
+* doc\com\ylfcf\ppp\ui\YXBProjectIntroActivity.html
+* doc\com\ylfcf\ppp\ui\YXBTransRecordActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\YXBTransRecordActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\
+* doc\com\ylfcf\ppp\ui\class-use\AccountSettingActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ArticleDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ArticleListActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\class-use\ArticleListActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\AwardDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BankVerifyActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BankVerifyRecActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BannerDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BannerTopicActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BaseActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BidSuccessActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BidYJHActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BidYXBActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BidZXDActivity.OnHBWindowItemClickListener.html
+* doc\com\ylfcf\ppp\ui\class-use\BidZXDActivity.OnTYJWindowItemClickListener.html
+* doc\com\ylfcf\ppp\ui\class-use\BidZXDActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BindCardActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BorrowDetailYJHActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BorrowDetailYXBActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BorrowDetailZXDActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BorrowListActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\class-use\BorrowListActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\BrandIntroActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ChangeAddressActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ChangeTransPwdActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\CommQuesActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\class-use\CommQuesActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\FeedbackActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ForgetPwdActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\FundsDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\GestureEditActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\GestureSettingActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\GestureVerifyActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\GetbackTransPwdActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\IntroductionActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\InvitateActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\LimitPromptActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\LoginActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\MainFragmentActivity.MessageReceiver.html
+* doc\com\ylfcf\ppp\ui\class-use\MainFragmentActivity.OnDownLoadListener.html
+* doc\com\ylfcf\ppp\ui\class-use\MainFragmentActivity.OnFirstPageDQListener.html
+* doc\com\ylfcf\ppp\ui\class-use\MainFragmentActivity.OnFirstPageZXDOnClickListener.html
+* doc\com\ylfcf\ppp\ui\class-use\MainFragmentActivity.OnNetStatusChangeListener.html
+* doc\com\ylfcf\ppp\ui\class-use\MainFragmentActivity.OnRequestBorrowListListener.html
+* doc\com\ylfcf\ppp\ui\class-use\MainFragmentActivity.OnYXBDataListener.html
+* doc\com\ylfcf\ppp\ui\class-use\MainFragmentActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ModifyLoginPwdActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\MyGiftsActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\MyHongbaoActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\class-use\MyHongbaoActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\MyInvitationActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\MyTYJActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\class-use\MyTYJActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\MyYuanMoneyActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ProductDataActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ProductDataDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ProductInfoActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ProductRecordActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\ProductSafetyActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\RechargeActivity.OnSpinnerItemClickListener.html
+* doc\com\ylfcf\ppp\ui\class-use\RechargeActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\RechargeNoticeActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\RechargeResultActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\RegisteActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\RegisteAgreementActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\SplashActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\TransPwdSettingActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\UserVerifyActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\UserZXDInvestRecordActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\WithdrawActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\WithdrawDetailsActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\WithdrawListActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\WithdrawSuccessActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YJHIntroActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YJHRepaySourceActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YJHSafetyActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YLFApplication.html
+* doc\com\ylfcf\ppp\ui\class-use\YXBAccountCenterActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YXBAgreementActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YXBBidSuccessActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YXBIntroActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YXBProjectIntroActivity.html
+* doc\com\ylfcf\ppp\ui\class-use\YXBTransRecordActivity.MyPagerAdapter.html
+* doc\com\ylfcf\ppp\ui\class-use\YXBTransRecordActivity.html
+* doc\com\ylfcf\ppp\ui\package-frame.html
+* doc\com\ylfcf\ppp\ui\package-summary.html
+* doc\com\ylfcf\ppp\ui\package-tree.html
+* doc\com\ylfcf\ppp\ui\package-use.html
+* doc\com\ylfcf\ppp\util\
+* doc\com\ylfcf\ppp\util\BackType.html
+* doc\com\ylfcf\ppp\util\Constants.html
+* doc\com\ylfcf\ppp\util\CountDownAsyncTask.html
+* doc\com\ylfcf\ppp\util\DefaultPreferences.html
+* doc\com\ylfcf\ppp\util\HttpConnection.html
+* doc\com\ylfcf\ppp\util\ImageAuthCode.html
+* doc\com\ylfcf\ppp\util\ImageLoaderManager.html
+* doc\com\ylfcf\ppp\util\MainJson.html
+* doc\com\ylfcf\ppp\util\MarketUtils.html
+* doc\com\ylfcf\ppp\util\SettingsManager.html
+* doc\com\ylfcf\ppp\util\SimpleCrypto.html
+* doc\com\ylfcf\ppp\util\UMengStatistics.html
+* doc\com\ylfcf\ppp\util\URLGenerator.html
+* doc\com\ylfcf\ppp\util\Util.html
+* doc\com\ylfcf\ppp\util\YLFLogger.html
+* doc\com\ylfcf\ppp\util\class-use\
+* doc\com\ylfcf\ppp\util\class-use\BackType.html
+* doc\com\ylfcf\ppp\util\class-use\Constants.html
+* doc\com\ylfcf\ppp\util\class-use\CountDownAsyncTask.html
+* doc\com\ylfcf\ppp\util\class-use\DefaultPreferences.html
+* doc\com\ylfcf\ppp\util\class-use\HttpConnection.html
+* doc\com\ylfcf\ppp\util\class-use\ImageAuthCode.html
+* doc\com\ylfcf\ppp\util\class-use\ImageLoaderManager.html
+* doc\com\ylfcf\ppp\util\class-use\MainJson.html
+* doc\com\ylfcf\ppp\util\class-use\MarketUtils.html
+* doc\com\ylfcf\ppp\util\class-use\SettingsManager.html
+* doc\com\ylfcf\ppp\util\class-use\SimpleCrypto.html
+* doc\com\ylfcf\ppp\util\class-use\UMengStatistics.html
+* doc\com\ylfcf\ppp\util\class-use\URLGenerator.html
+* doc\com\ylfcf\ppp\util\class-use\Util.html
+* doc\com\ylfcf\ppp\util\class-use\YLFLogger.html
+* doc\com\ylfcf\ppp\util\package-frame.html
+* doc\com\ylfcf\ppp\util\package-summary.html
+* doc\com\ylfcf\ppp\util\package-tree.html
+* doc\com\ylfcf\ppp\util\package-use.html
+* doc\com\ylfcf\ppp\view\
+* doc\com\ylfcf\ppp\view\HBListPopupwindow.html
+* doc\com\ylfcf\ppp\view\InvitateFriendsPopupwindow.html
+* doc\com\ylfcf\ppp\view\RechargeSpinnerPopwindow.html
+* doc\com\ylfcf\ppp\view\TYJListPopupwindow.html
+* doc\com\ylfcf\ppp\view\UpdatePopupwindow.html
+* doc\com\ylfcf\ppp\view\WithdrawRulePopupwindow.html
+* doc\com\ylfcf\ppp\view\YuanMoneyRulePopwindow.html
+* doc\com\ylfcf\ppp\view\class-use\
+* doc\com\ylfcf\ppp\view\class-use\HBListPopupwindow.html
+* doc\com\ylfcf\ppp\view\class-use\InvitateFriendsPopupwindow.html
+* doc\com\ylfcf\ppp\view\class-use\RechargeSpinnerPopwindow.html
+* doc\com\ylfcf\ppp\view\class-use\TYJListPopupwindow.html
+* doc\com\ylfcf\ppp\view\class-use\UpdatePopupwindow.html
+* doc\com\ylfcf\ppp\view\class-use\WithdrawRulePopupwindow.html
+* doc\com\ylfcf\ppp\view\class-use\YuanMoneyRulePopwindow.html
+* doc\com\ylfcf\ppp\view\package-frame.html
+* doc\com\ylfcf\ppp\view\package-summary.html
+* doc\com\ylfcf\ppp\view\package-tree.html
+* doc\com\ylfcf\ppp\view\package-use.html
+* doc\com\ylfcf\ppp\viewflow\
+* doc\com\ylfcf\ppp\viewflow\CircleFlowIndicator.html
+* doc\com\ylfcf\ppp\viewflow\FlowIndicator.html
+* doc\com\ylfcf\ppp\viewflow\ViewFlow.ViewLazyInitializeListener.html
+* doc\com\ylfcf\ppp\viewflow\ViewFlow.ViewSwitchListener.html
+* doc\com\ylfcf\ppp\viewflow\ViewFlow.html
+* doc\com\ylfcf\ppp\viewflow\class-use\
+* doc\com\ylfcf\ppp\viewflow\class-use\CircleFlowIndicator.html
+* doc\com\ylfcf\ppp\viewflow\class-use\FlowIndicator.html
+* doc\com\ylfcf\ppp\viewflow\class-use\ViewFlow.ViewLazyInitializeListener.html
+* doc\com\ylfcf\ppp\viewflow\class-use\ViewFlow.ViewSwitchListener.html
+* doc\com\ylfcf\ppp\viewflow\class-use\ViewFlow.html
+* doc\com\ylfcf\ppp\viewflow\package-frame.html
+* doc\com\ylfcf\ppp\viewflow\package-summary.html
+* doc\com\ylfcf\ppp\viewflow\package-tree.html
+* doc\com\ylfcf\ppp\viewflow\package-use.html
+* doc\com\ylfcf\ppp\viewpagerindicator\
+* doc\com\ylfcf\ppp\viewpagerindicator\CirclePageIndicator.html
+* doc\com\ylfcf\ppp\viewpagerindicator\PageIndicator.html
+* doc\com\ylfcf\ppp\viewpagerindicator\class-use\
+* doc\com\ylfcf\ppp\viewpagerindicator\class-use\CirclePageIndicator.html
+* doc\com\ylfcf\ppp\viewpagerindicator\class-use\PageIndicator.html
+* doc\com\ylfcf\ppp\viewpagerindicator\package-frame.html
+* doc\com\ylfcf\ppp\viewpagerindicator\package-summary.html
+* doc\com\ylfcf\ppp\viewpagerindicator\package-tree.html
+* doc\com\ylfcf\ppp\viewpagerindicator\package-use.html
+* doc\com\ylfcf\ppp\widget\
+* doc\com\ylfcf\ppp\widget\ArcProgressbar.html
+* doc\com\ylfcf\ppp\widget\BaseViewPager.html
+* doc\com\ylfcf\ppp\widget\BottomSingleView.html
+* doc\com\ylfcf\ppp\widget\CycleViewPager.ImageCycleViewListener.html
+* doc\com\ylfcf\ppp\widget\CycleViewPager.html
+* doc\com\ylfcf\ppp\widget\CycleViewPagerHandler.html
+* doc\com\ylfcf\ppp\widget\GestureContentView.html
+* doc\com\ylfcf\ppp\widget\GestureDrawline.GestureCallBack.html
+* doc\com\ylfcf\ppp\widget\GestureDrawline.html
+* doc\com\ylfcf\ppp\widget\GridViewWithHeaderAndFooter.html
+* doc\com\ylfcf\ppp\widget\ImageViewFactory.html
+* doc\com\ylfcf\ppp\widget\LoadMoreListView.OnLoadMoreListener.html
+* doc\com\ylfcf\ppp\widget\LoadMoreListView.html
+* doc\com\ylfcf\ppp\widget\LoadingDialog.html
+* doc\com\ylfcf\ppp\widget\LockIndicator.html
+* doc\com\ylfcf\ppp\widget\NavigationBarView.html
+* doc\com\ylfcf\ppp\widget\NoScrollViewPager.html
+* doc\com\ylfcf\ppp\widget\PagerSlidingTabStrip.IconTabProvider.html
+* doc\com\ylfcf\ppp\widget\PagerSlidingTabStrip.html
+* doc\com\ylfcf\ppp\widget\RefreshLayout.OnLoadListener.html
+* doc\com\ylfcf\ppp\widget\RefreshLayout.html
+* doc\com\ylfcf\ppp\widget\RiseNumberBase.html
+* doc\com\ylfcf\ppp\widget\RiseNumberTextView.EndListener.html
+* doc\com\ylfcf\ppp\widget\RiseNumberTextView.html
+* doc\com\ylfcf\ppp\widget\RoundProgressBar.html
+* doc\com\ylfcf\ppp\widget\ZoomImageView.html
+* doc\com\ylfcf\ppp\widget\class-use\
+* doc\com\ylfcf\ppp\widget\class-use\ArcProgressbar.html
+* doc\com\ylfcf\ppp\widget\class-use\BaseViewPager.html
+* doc\com\ylfcf\ppp\widget\class-use\BottomSingleView.html
+* doc\com\ylfcf\ppp\widget\class-use\CycleViewPager.ImageCycleViewListener.html
+* doc\com\ylfcf\ppp\widget\class-use\CycleViewPager.html
+* doc\com\ylfcf\ppp\widget\class-use\CycleViewPagerHandler.html
+* doc\com\ylfcf\ppp\widget\class-use\GestureContentView.html
+* doc\com\ylfcf\ppp\widget\class-use\GestureDrawline.GestureCallBack.html
+* doc\com\ylfcf\ppp\widget\class-use\GestureDrawline.html
+* doc\com\ylfcf\ppp\widget\class-use\GridViewWithHeaderAndFooter.html
+* doc\com\ylfcf\ppp\widget\class-use\ImageViewFactory.html
+* doc\com\ylfcf\ppp\widget\class-use\LoadMoreListView.OnLoadMoreListener.html
+* doc\com\ylfcf\ppp\widget\class-use\LoadMoreListView.html
+* doc\com\ylfcf\ppp\widget\class-use\LoadingDialog.html
+* doc\com\ylfcf\ppp\widget\class-use\LockIndicator.html
+* doc\com\ylfcf\ppp\widget\class-use\NavigationBarView.html
+* doc\com\ylfcf\ppp\widget\class-use\NoScrollViewPager.html
+* doc\com\ylfcf\ppp\widget\class-use\PagerSlidingTabStrip.IconTabProvider.html
+* doc\com\ylfcf\ppp\widget\class-use\PagerSlidingTabStrip.html
+* doc\com\ylfcf\ppp\widget\class-use\RefreshLayout.OnLoadListener.html
+* doc\com\ylfcf\ppp\widget\class-use\RefreshLayout.html
+* doc\com\ylfcf\ppp\widget\class-use\RiseNumberBase.html
+* doc\com\ylfcf\ppp\widget\class-use\RiseNumberTextView.EndListener.html
+* doc\com\ylfcf\ppp\widget\class-use\RiseNumberTextView.html
+* doc\com\ylfcf\ppp\widget\class-use\RoundProgressBar.html
+* doc\com\ylfcf\ppp\widget\class-use\ZoomImageView.html
+* doc\com\ylfcf\ppp\widget\package-frame.html
+* doc\com\ylfcf\ppp\widget\package-summary.html
+* doc\com\ylfcf\ppp\widget\package-tree.html
+* doc\com\ylfcf\ppp\widget\package-use.html
+* doc\com\ylfcf\ppp\wxapi\
+* doc\com\ylfcf\ppp\wxapi\WXEntryActivity.html
+* doc\com\ylfcf\ppp\wxapi\class-use\
+* doc\com\ylfcf\ppp\wxapi\class-use\WXEntryActivity.html
+* doc\com\ylfcf\ppp\wxapi\package-frame.html
+* doc\com\ylfcf\ppp\wxapi\package-summary.html
+* doc\com\ylfcf\ppp\wxapi\package-tree.html
+* doc\com\ylfcf\ppp\wxapi\package-use.html
+* doc\constant-values.html
+* doc\deprecated-list.html
+* doc\help-doc.html
+* doc\index-files\
+* doc\index-files\index-1.html
+* doc\index-files\index-10.html
+* doc\index-files\index-11.html
+* doc\index-files\index-12.html
+* doc\index-files\index-13.html
+* doc\index-files\index-14.html
+* doc\index-files\index-15.html
+* doc\index-files\index-16.html
+* doc\index-files\index-17.html
+* doc\index-files\index-18.html
+* doc\index-files\index-19.html
+* doc\index-files\index-2.html
+* doc\index-files\index-20.html
+* doc\index-files\index-21.html
+* doc\index-files\index-22.html
+* doc\index-files\index-23.html
+* doc\index-files\index-24.html
+* doc\index-files\index-25.html
+* doc\index-files\index-26.html
+* doc\index-files\index-3.html
+* doc\index-files\index-4.html
+* doc\index-files\index-5.html
+* doc\index-files\index-6.html
+* doc\index-files\index-7.html
+* doc\index-files\index-8.html
+* doc\index-files\index-9.html
+* doc\index.html
+* doc\overview-frame.html
+* doc\overview-summary.html
+* doc\overview-tree.html
+* doc\package-list
+* doc\resources\
+* doc\resources\background.gif
+* doc\resources\tab.gif
+* doc\resources\titlebar.gif
+* doc\resources\titlebar_end.gif
+* doc\serialized-form.html
+* doc\stylesheet.css
+* proguard\
+* proguard\dump.txt
+* proguard\mapping.txt
+* proguard\seeds.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:23.4.0
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:23.4.0
+gson-2.2.4.jar => com.google.code.gson:gson:2.2.4
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.2.4.jar => version 2.2.4 in com.google.code.gson:gson:2.2.4
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+android-support-v7-appcompat => [com.android.support:appcompat-v7:23.4.0]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In ImageLoaderLibrary:
+* AndroidManifest.xml => imageLoaderLibrary\src\main\AndroidManifest.xml
+* assets\ => imageLoaderLibrary\src\main\assets
+* res\ => imageLoaderLibrary\src\main\res\
+* src\ => imageLoaderLibrary\src\main\java\
+In library:
+* AndroidManifest.xml => library\src\main\AndroidManifest.xml
+* assets\ => library\src\main\assets
+* lint.xml => library\lint.xml
+* res\ => library\src\main\res\
+* src\ => library\src\main\java\
+In ppp:
+* AndroidManifest.xml => ppp\src\main\AndroidManifest.xml
+* assets\ => ppp\src\main\assets
+* libs\arm64-v8a\libjpush220.so => ppp\src\main\jniLibs\arm64-v8a\libjpush220.so
+* libs\arm64-v8a\libline-sdk-encryption.so => ppp\src\main\jniLibs\arm64-v8a\libline-sdk-encryption.so
+* libs\arm64-v8a\libweibosdkcore.so => ppp\src\main\jniLibs\arm64-v8a\libweibosdkcore.so
+* libs\armeabi-v7a\libjpush220.so => ppp\src\main\jniLibs\armeabi-v7a\libjpush220.so
+* libs\armeabi-v7a\libline-sdk-encryption.so => ppp\src\main\jniLibs\armeabi-v7a\libline-sdk-encryption.so
+* libs\armeabi-v7a\libweibosdkcore.so => ppp\src\main\jniLibs\armeabi-v7a\libweibosdkcore.so
+* libs\armeabi\libjpush220.so => ppp\src\main\jniLibs\armeabi\libjpush220.so
+* libs\armeabi\libline-sdk-encryption.so => ppp\src\main\jniLibs\armeabi\libline-sdk-encryption.so
+* libs\armeabi\libweibosdkcore.so => ppp\src\main\jniLibs\armeabi\libweibosdkcore.so
+* libs\com.umeng.message.lib_v2.6.0.jar => ppp\libs\com.umeng.message.lib_v2.6.0.jar
+* libs\httpmime-4.1.3.jar => ppp\libs\httpmime-4.1.3.jar
+* libs\jpush-android-2.2.0.jar => ppp\libs\jpush-android-2.2.0.jar
+* libs\jsoup-1.7.2.jar => ppp\libs\jsoup-1.7.2.jar
+* libs\libammsdk.jar => ppp\libs\libammsdk.jar
+* libs\libapshare.jar => ppp\libs\libapshare.jar
+* libs\libddshare.jar => ppp\libs\libddshare.jar
+* libs\line-android-sdk-3.1.19.jar => ppp\libs\line-android-sdk-3.1.19.jar
+* libs\master-nineoldandroids-library.jar => ppp\libs\master-nineoldandroids-library.jar
+* libs\mips64\libjpush220.so => ppp\src\main\jniLibs\mips64\libjpush220.so
+* libs\mips64\libline-sdk-encryption.so => ppp\src\main\jniLibs\mips64\libline-sdk-encryption.so
+* libs\mips64\libweibosdkcore.so => ppp\src\main\jniLibs\mips64\libweibosdkcore.so
+* libs\mips\libjpush220.so => ppp\src\main\jniLibs\mips\libjpush220.so
+* libs\mips\libline-sdk-encryption.so => ppp\src\main\jniLibs\mips\libline-sdk-encryption.so
+* libs\mips\libweibosdkcore.so => ppp\src\main\jniLibs\mips\libweibosdkcore.so
+* libs\mta-sdk-1.6.2.jar => ppp\libs\mta-sdk-1.6.2.jar
+* libs\open_sdk_r5756_lite.jar => ppp\libs\open_sdk_r5756_lite.jar
+* libs\SocialSDK_QQ_Full.jar => ppp\libs\SocialSDK_QQ_Full.jar
+* libs\SocialSDK_Sina_Full.jar => ppp\libs\SocialSDK_Sina_Full.jar
+* libs\SocialSDK_WeiXin_Full.jar => ppp\libs\SocialSDK_WeiXin_Full.jar
+* libs\umeng-analytics-v5.6.3.jar => ppp\libs\umeng-analytics-v5.6.3.jar
+* libs\umeng_shareboard_widget.jar => ppp\libs\umeng_shareboard_widget.jar
+* libs\umeng_social_api.jar => ppp\libs\umeng_social_api.jar
+* libs\umeng_social_net.jar => ppp\libs\umeng_social_net.jar
+* libs\umeng_social_shareboard.jar => ppp\libs\umeng_social_shareboard.jar
+* libs\umeng_social_shareview.jar => ppp\libs\umeng_social_shareview.jar
+* libs\umeng_social_tool.jar => ppp\libs\umeng_social_tool.jar
+* libs\weiboSDKCore_3.1.4.jar => ppp\libs\weiboSDKCore_3.1.4.jar
+* libs\x86\libjpush220.so => ppp\src\main\jniLibs\x86\libjpush220.so
+* libs\x86\libline-sdk-encryption.so => ppp\src\main\jniLibs\x86\libline-sdk-encryption.so
+* libs\x86\libweibosdkcore.so => ppp\src\main\jniLibs\x86\libweibosdkcore.so
+* libs\x86_64\libjpush220.so => ppp\src\main\jniLibs\x86_64\libjpush220.so
+* libs\x86_64\libline-sdk-encryption.so => ppp\src\main\jniLibs\x86_64\libline-sdk-encryption.so
+* libs\x86_64\libweibosdkcore.so => ppp\src\main\jniLibs\x86_64\libweibosdkcore.so
+* libs\zxing.jar => ppp\libs\zxing.jar
+* lint.xml => ppp\lint.xml
+* proguard-project.txt => ppp\proguard-project.txt
+* res\ => ppp\src\main\res\
+* src\ => ppp\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
