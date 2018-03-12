@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/common_measure_40dp"
+              android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_50dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <!-- 充值时间 -->
+        <TextView
+            android:id="@+id/recharge_record_item_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_16dp" />
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <!-- 充值金额 -->
+
+        <TextView
+            android:id="@+id/recharge_record_item_money"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_16dp" />
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <!-- 充值状态 -->
+
+        <TextView
+            android:id="@+id/recharge_record_item_status"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/gray1"
+            android:textSize="@dimen/common_measure_16dp" />
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+        <!-- 操作 -->
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/recharge_record_item_proof"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/common_measure_16dp" />
+
+            <TextView
+                android:id="@+id/recharge_record_item_from"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:text="充值来源"
+                android:textColor="@color/gray1"
+                android:textSize="@dimen/common_measure_16dp"/>
+
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="@dimen/common_measure_1dp"
+            android:layout_height="match_parent"
+            android:background="@color/edittext_line_color"/>
+
+    </LinearLayout>
+
+</LinearLayout>

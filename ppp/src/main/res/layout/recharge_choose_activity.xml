@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/recharge_choose_activity_mainlayout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/child_background"
+              android:orientation="vertical">
+
+    <include layout="@layout/common_topbar" />
+
+    <!--快捷支付-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_280dp"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/recharge_choose_activity_kjzf"
+            android:layout_width="@dimen/common_measure_180dp"
+            android:layout_height="@dimen/common_measure_210dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/kjcz_img"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_280dp"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/recharge_choose_activity_pos"
+            android:layout_width="@dimen/common_measure_180dp"
+            android:layout_height="@dimen/common_measure_210dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pos_img"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

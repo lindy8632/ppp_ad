@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/style_rect_fillet_filling_white">
+
+    <Button
+        android:id="@+id/active_notlogin_del_btn"
+        android:layout_width="@dimen/common_measure_30dp"
+        android:layout_height="@dimen/common_measure_30dp"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:layout_marginRight="@dimen/common_measure_10dp"
+        android:layout_marginBottom="@dimen/common_measure_10dp"
+        android:background="@drawable/qxj_del_btn_logo"
+        android:layout_gravity="right"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/common_popwindow_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left|top"
+            android:textSize="@dimen/common_measure_20dp"
+            android:textColor="@color/gray1"
+            android:text="您未登录，分享好友参加活动注册后，将不能与您的好友形成推荐关系。"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginBottom="@dimen/common_measure_20dp">
+
+        <Button
+            android:id="@+id/active_notlogin_left_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_measure_50dp"
+            android:layout_weight="1"
+            android:background="@drawable/style_rect_fillet_blue"
+            android:gravity="center"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_20dp"
+            android:text="我知道了，暂不登录"/>
+
+        <Button
+            android:id="@+id/active_notlogin_right_btn"
+            android:layout_width="@dimen/common_measure_100dp"
+            android:layout_height="@dimen/common_measure_50dp"
+            android:layout_marginLeft="@dimen/common_measure_10dp"
+            android:background="@drawable/blue_fillet_btn_selector"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_measure_20dp"
+            android:text="登录"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

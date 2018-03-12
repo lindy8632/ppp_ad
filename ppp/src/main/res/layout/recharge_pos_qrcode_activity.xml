@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/child_background">
+
+    <include layout="@layout/common_topbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_measure_20dp"
+        android:paddingTop="@dimen/common_measure_20dp"
+        android:paddingBottom="@dimen/common_measure_20dp"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/common_measure_40dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/common_measure_28dp"
+                android:layout_height="@dimen/common_measure_27dp"
+                android:src="@drawable/pos_suc_img"
+                android:layout_marginRight="@dimen/common_measure_5dp"/>
+
+            <TextView
+                android:id="@+id/recharge_pos_qrcode_activity_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="确定向的元立方账户充值"
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/common_measure_300dp"
+            android:layout_height="@dimen/common_measure_300dp"
+            android:background="@color/transparent_background_20">
+
+            <ImageView
+                android:id="@+id/recharge_pos_qrcode_activity_qrcode"
+                android:layout_width="@dimen/common_measure_300dp"
+                android:layout_height="@dimen/common_measure_300dp"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/recharge_pos_qrcode_activity_qrfail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/common_measure_10dp"
+                android:paddingRight="@dimen/common_measure_10dp"
+                android:layout_centerInParent="true"
+                android:text="此付款码已失效"
+                android:textSize="@dimen/common_measure_20dp"
+                android:textColor="@color/white"
+                android:background="@color/transparent_background_90"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/recharge_pos_qrcode_activity_ordernum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_measure_20dp"
+        android:gravity="center_horizontal"
+        android:text="订单号："
+        android:textColor="@color/black"
+        android:textSize="@dimen/common_measure_18dp"/>
+
+    <Button
+        android:id="@+id/recharge_pos_qrcode_activity_recreate_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:layout_marginTop="@dimen/common_measure_30dp"
+        android:layout_marginRight="@dimen/common_measure_20dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:gravity="center"
+        android:text="重新生成付款码"
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_measure_24dp"
+        android:background="@drawable/blue_fillet_btn_selector"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_60dp"
+        android:layout_marginTop="@dimen/common_measure_10dp"
+        android:layout_marginLeft="@dimen/common_measure_20dp"
+        android:layout_marginRight="@dimen/common_measure_20dp">
+
+        <Button
+            android:id="@+id/recharge_pos_qrcode_activity_catoperation_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/common_measure_5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="查看使用说明"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_24dp"
+            android:background="@drawable/style_rect_fillet_blue"/>
+
+        <Button
+            android:id="@+id/recharge_pos_qrcode_activity_catrecord_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/common_measure_5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="查看充值记录"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_24dp"
+            android:background="@drawable/style_rect_fillet_blue"/>
+
+    </LinearLayout>
+
+</LinearLayout>

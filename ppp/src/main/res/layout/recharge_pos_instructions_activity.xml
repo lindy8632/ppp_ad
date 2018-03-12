@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/child_background">
+
+    <include layout="@layout/common_topbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/common_measure_15dp"
+                android:layout_marginBottom="@dimen/common_measure_15dp"
+                android:paddingLeft="@dimen/common_measure_20dp"
+                android:paddingRight="@dimen/common_measure_20dp"
+                android:paddingTop="@dimen/common_measure_15dp"
+                android:paddingBottom="@dimen/common_measure_15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray4"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:text="1、如何使用POS充值？"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_20dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:text="@string/pos_instruction_string1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/common_measure_20dp"
+                android:paddingRight="@dimen/common_measure_20dp"
+                android:paddingTop="@dimen/common_measure_15dp"
+                android:paddingBottom="@dimen/common_measure_15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray4"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:text="2、充值额度"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_20dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:text="@string/pos_instruction_string2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/common_measure_15dp"
+                android:layout_marginBottom="@dimen/common_measure_15dp"
+                android:paddingLeft="@dimen/common_measure_20dp"
+                android:paddingRight="@dimen/common_measure_20dp"
+                android:paddingTop="@dimen/common_measure_15dp"
+                android:paddingBottom="@dimen/common_measure_15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray4"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:text="3、付款安全"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_measure_20dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/common_measure_18dp"
+                    android:text="@string/pos_instruction_string3"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_measure_50dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/common_measure_16dp"
+                android:text="本使用说明最终解释权归深圳元立方金融服务有限公司所有。"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
