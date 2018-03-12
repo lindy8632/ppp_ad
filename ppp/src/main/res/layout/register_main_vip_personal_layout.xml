@@ -119,7 +119,7 @@
             <Button
                 android:id="@+id/registe_main_vip_personal_authnum_btn"
                 android:layout_width="@dimen/common_measure_150dp"
-                android:layout_height="@dimen/common_measure_58dp"
+                android:layout_height="@dimen/common_measure_45dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="@dimen/common_measure_23dp"
                 android:background="@drawable/blue_fillet_btn_selector"
@@ -157,7 +157,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="@dimen/common_measure_20dp"
                 android:background="@null"
-                android:hint=" 请输入理财经理号（必填）"
+                android:hint=" 请输入投资经理号（必填）"
                 android:inputType="number"
                 android:maxLength="11"
                 android:singleLine="true"

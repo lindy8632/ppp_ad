@@ -7,6 +7,7 @@ import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -72,7 +73,13 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 		webSettings.setJavaScriptEnabled(true);  
 		webSettings.setJavaScriptCanOpenWindowsAutomatically(true);  
 		webSettings.setUseWideViewPort(true);//关键点  
-		
+		webview.setWebViewClient(new WebViewClient(){
+			@Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+				view.loadUrl(url);
+				return true;
+			}
+		});
 		webview.setWebChromeClient(new WebChromeClient(){
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {	
@@ -121,23 +128,64 @@ public class CompactActivity extends BaseActivity implements OnClickListener{
 				contentURL = URLGenerator.VIP_COMPACT.replace("userid", SettingsManager.getUserId(CompactActivity.this)).
 						replace("recordid", investInfo.getId());
 			}else if("yyy".equals(fromWhere)){
-				contentURL = URLGenerator.YYY_COMPACT.replace("userid", SettingsManager.getUserId(CompactActivity.this)).
-						replace("recordid", investInfo.getId());
+				if(investInfo.getFirst_borrow_time().compareTo(SettingsManager.eleContract_startTime) < 0
+						|| SettingsManager.isCompanyUser(getApplicationContext())){
+					//电子签章上线之前的合同
+					contentURL = URLGenerator.YYY_COMPACT.replace("userid", SettingsManager.getUserId(CompactActivity.this)).
+							replace("recordid", investInfo.getId());
+				}else{
+					//电子签章上线之后的合同
+					contentURL = URLGenerator.YYY_PDF_COMPACT.replace("userid", SettingsManager.getUserId(CompactActivity.this)).
+							replace("recordid", investInfo.getId());
+				}
 			}else if("srzx".equals(fromWhere)){
-				contentURL = URLGenerator.SRZX_COMPACT.replace("userid", SettingsManager.getUserId(CompactActivity.this)).
-						replace("recordid", investInfo.getBorrow_id());
+				if(investInfo.getInterest_start_time().compareTo(SettingsManager.eleContract_startTime) < 0
+						|| SettingsManager.isCompanyUser(getApplicationContext())){
+					//电子签章上线之前的合同
+					contentURL = URLGenerator.SRZX_COMPACT.replace("userid", SettingsManager.getUserId(CompactActivity.this)).
+							replace("recordid", investInfo.getBorrow_id());
+				}else{
+					//电子签章上线之后的合同
+					contentURL = URLGenerator.SRZX_PDF_COMPACT.replace("userid", SettingsManager.getUserId(CompactActivity.this)).
+							replace("recordid", investInfo.getBorrow_id());
+				}
+
 			}else if("yzy".equals(fromWhere)){
-				contentURL = URLGenerator.ZXD_XSB_COMPACT.replace("recordid", investInfo.getId())
-						.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				if(investInfo.getStart_time().compareTo(SettingsManager.eleContract_startTime) < 0
+						|| SettingsManager.isCompanyUser(getApplicationContext())){
+					//电子签章上线之前的合同
+					contentURL = URLGenerator.ZXD_XSB_COMPACT.replace("recordid", investInfo.getId())
+							.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				}else{
+					//电子签章上线之后的合同
+					contentURL = URLGenerator.ZXD_XSB_PDF_COMPACT.replace("recordid", investInfo.getId())
+							.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				}
 			}else if("xsmb".equals(fromWhere)){
 				contentURL = URLGenerator.XSMB_COMPACT.replace("recordid", investInfo.getId())
 						.replace("userid", SettingsManager.getUserId(CompactActivity.this));
 			}else if("wdy".equals(fromWhere)){
-				contentURL = URLGenerator.WDY_COMPACT.replace("recordid", investInfo.getId())
-						.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				if(investInfo.getAdd_time().compareTo(SettingsManager.eleContract_startTime) < 0
+						|| SettingsManager.isCompanyUser(getApplicationContext())){
+					//电子签章上线之前的合同
+					contentURL = URLGenerator.WDY_COMPACT.replace("recordid", investInfo.getId())
+							.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				}else{
+					//电子签章上线之后的合同
+					contentURL = URLGenerator.WDY_PDF_COMPACT.replace("recordid", investInfo.getId())
+							.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				}
 			}else if("yjy".equals(fromWhere)){
-				contentURL = URLGenerator.YJY_COMPACT.replace("recordid", investInfo.getBorrow_id())
-						.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				if(investInfo.getInterest_start_time().compareTo(SettingsManager.eleContract_startTime) < 0
+						|| SettingsManager.isCompanyUser(getApplicationContext())){
+					//电子签章上线之前的合同
+					contentURL = URLGenerator.YJY_COMPACT.replace("recordid", investInfo.getBorrow_id())
+							.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				}else{
+					//电子签章上线之后的合同
+					contentURL = URLGenerator.YJY_PDF_COMPACT.replace("recordid", investInfo.getBorrow_id())
+							.replace("userid", SettingsManager.getUserId(CompactActivity.this));
+				}
 			}
 		}
 		webview.loadUrl(contentURL);

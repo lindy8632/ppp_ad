@@ -82,8 +82,8 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 		this.setFocusable(true);
 		this.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
 		if("邀请有奖".equals(fromWhere)){
-			title = "邀您注册，尽享元立方三周年送现金活动！";
-			text = "元立方三周年嘉年华，现金大派送，更有2%加息券送不停！";
+			title = "元立方邀您来注册，即享新春加息1%";
+			text = "金犬闹新春，海量加息券送不停，最高1%";
 			image = new UMImage(context, R.drawable.share_logo);
 		}else if("新春福利2017".equals(fromWhere)){
 			title = "小元喊你来领压岁钱";
@@ -95,15 +95,15 @@ public class InvitateFriendsPopupwindow extends PopupWindow implements
 			image = new UMImage(context, R.drawable.lxfx_share_logo);
 		}else if("三月份签到活动".equals(fromWhere)){
 			title = "天天签到，天天领取加息券！";
-			text = "3月1日起，每日签到小元都会送您一张加息券，为您理财添彩头。";
+			text = "3月1日起，每日签到小元都会送您一张加息券，为您投资添彩头。";
 			image = new UMImage(context, R.drawable.sign_share_logo);
 		}else if("会员福利二期".equals(fromWhere)){
 			title = "会员福利，免费礼品天天领!";
 			text = "3月15日起，每天登录元立方金服，20种礼品任您选，只求您登录不要您出钱。";
 			image = new UMImage(context, R.drawable.hyfl2_share_logo);
 		}else if("四月份推广活动".equals(fromWhere)){
-			title = "邀请好友理财，奖励高达1.3%";
-			text = "邀好友来元立方理财，可获好友年化投资额高达1.3%的奖励！";
+			title = "邀请好友投资，奖励高达1.3%";
+			text = "邀好友来元立方投资，可获好友年化投资额高达1.3%的奖励！";
 			image = new UMImage(context, R.drawable.yqhy_share_logo);
 		}else if("每周一抢现金".equals(fromWhere)){
 			title = "每周一，抢现金，人人有份！";

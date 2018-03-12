@@ -51,7 +51,7 @@
                         android:paddingRight="@dimen/common_measure_8dp"
                         android:layout_marginRight="@dimen/common_measure_20dp"
                         android:background="@drawable/style_rect_fillet_orange"
-                        android:text="懒人理财 加加加息"
+                        android:text="懒人投资 加加加息"
                         android:textColor="@color/orange_text"
                         android:textSize="@dimen/common_measure_18dp"
                         android:visibility="gone" />
@@ -154,7 +154,7 @@
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="预期年化收益率"
+                            android:text="年化利率"
                             android:textColor="@color/gray1"
                             android:textSize="@dimen/common_measure_16dp" />
                     </LinearLayout>

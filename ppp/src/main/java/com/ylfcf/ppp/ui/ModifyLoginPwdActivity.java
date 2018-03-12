@@ -156,7 +156,7 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 		}
 	}
 
-	private void requestModifyPwd(String userId, String newPwd, String phone,final String initPwd) {
+	private void requestModifyPwd(String userId, final String newPwd, String phone, final String initPwd) {
 		if (mLoadingDialog != null && !isFinishing()) {
 			mLoadingDialog.show();
 		}
@@ -169,6 +169,7 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 							int resultCode = SettingsManager
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
+								SettingsManager.setLoginPassword(ModifyLoginPwdActivity.this,newPwd,true);
 								if("0".equals(initPwd) || "".equals(initPwd)){
 									requestUserInfo(
 											SettingsManager
@@ -177,12 +178,17 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 													.getUser(getApplicationContext()),
 											"");
 								}else if("1".equals(initPwd)){
+									if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+										mLoadingDialog.dismiss();
+									}
 									Util.toastShort(ModifyLoginPwdActivity.this,
 											"密码已修改成功");
 									finish();
 								}
-								
 							} else {
+								if(mLoadingDialog != null && mLoadingDialog.isShowing()){
+									mLoadingDialog.dismiss();
+								}
 								Util.toastShort(ModifyLoginPwdActivity.this,
 										baseInfo.getMsg());
 							}
@@ -213,9 +219,9 @@ public class ModifyLoginPwdActivity extends BaseActivity implements
 									.getResultCode(baseInfo);
 							if (resultCode == 0) {
 								userInfo = baseInfo.getUserInfo();
-								SettingsManager.setLoginPassword(
-										getApplicationContext(),
-										userInfo.getPassword(), true);
+//								SettingsManager.setLoginPassword(
+//										getApplicationContext(),
+//										userInfo.getPassword(), true);
 								if(SettingsManager.isPersonalUser(getApplicationContext())){
 									Util.toastShort(ModifyLoginPwdActivity.this,
 											"密码已修改成功");

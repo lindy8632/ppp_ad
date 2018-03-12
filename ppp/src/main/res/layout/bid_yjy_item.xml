@@ -151,7 +151,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:text="预期年化收益率"
+                    android:text="年化利率"
                     android:textColor="@color/gray1"
                     android:textSize="@dimen/common_measure_16dp" />
             </LinearLayout>

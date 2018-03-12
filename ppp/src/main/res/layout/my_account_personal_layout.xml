@@ -234,7 +234,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="您尚未完成实名认证，点击去实名"
                 android:textColor="@color/orange_text"
                 android:textSize="@dimen/common_measure_18dp"/>
 
@@ -284,7 +283,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="仅属于员工的高收益定制理财产品"
+                    android:text="仅属于员工的高收益定制投资产品"
                     android:textColor="@color/gray1"
                     android:textSize="@dimen/common_measure_17dp"/>
 
@@ -364,7 +363,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/common_measure_23dp"
                     android:layout_weight="1"
-                    android:text="预期年化收益率"
+                    android:text="年化利率"
                     android:textSize="@dimen/common_measure_16dp"
                     android:textColor="@color/gray1"/>
 

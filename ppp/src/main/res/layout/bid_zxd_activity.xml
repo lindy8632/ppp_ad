@@ -95,8 +95,8 @@
                             	android:layout_marginRight="@dimen/common_measure_50dp"
                             	android:text="多投多赚"
                             	android:textColor="@color/white"
-                            android:textSize="@dimen/common_measure_20dp" 
-                            android:visibility="gone"/>
+                                android:textSize="@dimen/common_measure_20dp"
+                                android:visibility="gone"/>
                             
                         </LinearLayout>
                         
@@ -253,7 +253,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="预期年化收益率"
+                                android:text="年化利率"
                                 android:textColor="@color/gray2"
                                 android:textSize="@dimen/common_measure_16dp" />
 
@@ -324,57 +324,80 @@
                 android:layout_height="@dimen/common_measure_1dp"
                 android:background="@color/edittext_line_color" />
 
+            <TextView
+                android:id="@+id/bid_zxd_activity_daoju_prompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginBottom="@dimen/common_measure_8dp"
+                android:layout_marginTop="@dimen/common_measure_8dp"
+                android:text="您有可使用的道具："
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/common_topbar_bg_color"
+                android:visibility="gone"/>
+
             <View
                 android:id="@+id/bid_zxd_activity_line1"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/common_measure_1dp"
-                android:layout_marginTop="@dimen/common_measure_12dp"
-                android:background="@color/edittext_line_color" />
+                android:background="@color/edittext_line_color"
+                android:visibility="gone"/>
 
             <!-- 元金币 -->
 
             <LinearLayout
                 android:id="@+id/bid_zxd_activity_yjb_layout"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/common_measure_80dp"
+                android:layout_height="@dimen/common_measure_60dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/common_measure_30dp"
-                android:paddingRight="@dimen/common_measure_30dp" >
+                android:paddingLeft="@dimen/common_measure_20dp"
+                android:paddingRight="@dimen/common_measure_20dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="@dimen/common_measure_30dp"
                     android:layout_height="@dimen/common_measure_30dp"
                     android:src="@drawable/yuanjinbi_logo" />
 
+                <TextView
+                    android:id="@+id/bid_zxd_activity_yjb_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_measure_30dp"
+                    android:layout_weight="1"
+                    android:text="使用元金币"
+                    android:textColor="@color/gray1"
+                    android:textSize="@dimen/common_measure_20dp" />
+
                 <EditText
                     android:id="@+id/bid_zxd_activity_yuanmoney_et"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_measure_20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:hint="请输入元金币金额"
+                    android:layout_width="@dimen/common_measure_100dp"
+                    android:layout_height="@dimen/common_measure_40dp"
+                    android:background="@drawable/style_rect_deep_gray"
                     android:inputType="number"
+                    android:gravity="center"
                     android:textCursorDrawable="@null"
-                    android:textColor="@color/gray2"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/edittext_hint_color"
                     android:textSize="@dimen/common_measure_20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="元"
-                    android:textColor="@color/edittext_hint_color"
-                    android:textSize="@dimen/common_measure_24dp" />
+                <ImageView
+                    android:id="@+id/bid_zxd_activity_yjb_duihao"
+                    android:layout_width="@dimen/common_measure_20dp"
+                    android:layout_height="@dimen/common_measure_20dp"
+                    android:layout_marginLeft="@dimen/common_measure_20dp"
+                    android:src="@drawable/duihao_unselected"/>
+
             </LinearLayout>
 
             <View
                 android:id="@+id/bid_zxd_activity_line2"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/common_measure_1dp"
-                android:background="@color/edittext_line_color" />
+                android:background="@color/edittext_line_color"
+                android:visibility="gone"/>
 
             <!-- 元金币余额 -->
 
@@ -386,7 +409,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
                 android:layout_marginBottom="@dimen/common_measure_10dp"
-                android:layout_marginTop="@dimen/common_measure_10dp" >
+                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -433,18 +457,20 @@
                 android:id="@+id/bid_zxd_activity_line3"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/common_measure_1dp"
-                android:background="@color/edittext_line_color" />
+                android:background="@color/edittext_line_color"
+                android:visibility="gone"/>
 
             <!-- 体验金 -->
 
             <LinearLayout
                 android:id="@+id/bid_zxd_activity_tyj_layout"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/common_measure_80dp"
+                android:layout_height="@dimen/common_measure_60dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/common_measure_30dp"
+                android:clickable="true"
+                android:paddingLeft="@dimen/common_measure_20dp"
                 android:visibility="gone" >
 
                 <ImageView
@@ -457,6 +483,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/common_measure_20dp"
+                    android:clickable="false"
+                    android:duplicateParentState="true"
                     android:layout_weight="1"
                     android:background="@null"
                     android:focusable="false"
@@ -473,12 +501,12 @@
                     android:layout_height="fill_parent" >
 
                     <ImageView
-                        android:layout_width="@dimen/common_measure_18dp"
-                        android:layout_height="@dimen/common_measure_20dp"
+                        android:layout_width="@dimen/common_measure_16dp"
+                        android:layout_height="@dimen/common_measure_16dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/common_measure_30dp"
-                        android:src="@drawable/arrow_logo" />
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:src="@drawable/arrow_right" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -490,17 +518,14 @@
                 android:visibility="gone" />
 
             <!-- 红包 -->
-
             <LinearLayout
                 android:id="@+id/bid_zxd_activity_hb_layout"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/common_measure_80dp"
+                android:layout_height="@dimen/common_measure_60dp"
                 android:background="@color/white"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/common_measure_30dp"
+                android:paddingLeft="@dimen/common_measure_20dp"
                 android:visibility="gone" >
 
                 <ImageView
@@ -513,28 +538,29 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/common_measure_20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
+                    android:layout_weight="1"
+                    android:background="@null"
                     android:hint="请选择红包"
                     android:inputType="number"
                     android:textColor="@color/gray2"
                     android:textColorHint="@color/edittext_hint_color"
-                    android:textSize="@dimen/common_measure_18dp" />
+                    android:textSize="@dimen/common_measure_20dp" />
 
                 <RelativeLayout
                     android:id="@+id/bid_zxd_activity_hb_arrow_layout"
-                    android:layout_width="@dimen/common_measure_100dp"
-                    android:layout_height="fill_parent" >
+                    android:layout_width="@dimen/common_measure_50dp"
+                    android:layout_height="fill_parent"
+                    android:tag="0">
 
                     <ImageView
-                        android:layout_width="@dimen/common_measure_18dp"
-                        android:layout_height="@dimen/common_measure_20dp"
+                        android:layout_width="@dimen/common_measure_16dp"
+                        android:layout_height="@dimen/common_measure_16dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/common_measure_30dp"
-                        android:src="@drawable/arrow_logo" />
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:src="@drawable/arrow_right" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -543,26 +569,26 @@
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/common_measure_1dp"
                 android:background="@color/edittext_line_color"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <!-- 加息券 -->
 
             <LinearLayout
                 android:id="@+id/bid_zxd_activity_jxq_layout"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/common_measure_80dp"
-                android:layout_marginTop="@dimen/common_measure_10dp" 
+                android:layout_height="@dimen/common_measure_60dp"
                 android:background="@color/white"
+                android:descendantFocusability="blocksDescendants"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/common_measure_30dp"
+                android:paddingLeft="@dimen/common_measure_20dp"
                 android:visibility="gone" >
 
                 <ImageView
-                    android:layout_width="@dimen/common_measure_36dp"
-                    android:layout_height="@dimen/common_measure_36dp"
+                    android:layout_width="@dimen/common_measure_30dp"
+                    android:layout_height="@dimen/common_measure_30dp"
                     android:src="@drawable/jxq_bg" />
 
                 <EditText
@@ -572,25 +598,27 @@
                     android:layout_marginLeft="@dimen/common_measure_20dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:enabled="false"
+                    android:focusableInTouchMode="false"
+                    android:clickable="true"
                     android:hint="请选择加息券"
                     android:inputType="number"
                     android:textColor="@color/gray2"
                     android:textColorHint="@color/edittext_hint_color"
-                    android:textSize="@dimen/common_measure_18dp" />
+                    android:textSize="@dimen/common_measure_20dp" />
 
                 <RelativeLayout
                     android:id="@+id/bid_zxd_activity_jxq_arrow_layout"
-                    android:layout_width="@dimen/common_measure_100dp"
+                    android:layout_width="@dimen/common_measure_50dp"
                     android:layout_height="fill_parent" >
 
                     <ImageView
-                        android:layout_width="@dimen/common_measure_18dp"
-                        android:layout_height="@dimen/common_measure_20dp"
+                        android:layout_width="@dimen/common_measure_16dp"
+                        android:layout_height="@dimen/common_measure_16dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/common_measure_30dp"
-                        android:src="@drawable/arrow_logo" />
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:src="@drawable/arrow_right" />
+
                 </RelativeLayout>
             </LinearLayout>
             
@@ -637,7 +665,7 @@
                     android:id="@+id/bid_zxd_activity_cb"
 			    	android:layout_width="@dimen/common_measure_35dp"
 			    	android:layout_height="@dimen/common_measure_35dp"
-			    	android:layout_marginRight="@dimen/common_measure_10dp"
+			    	android:layout_marginRight="@dimen/common_measure_5dp"
 			    	android:button="@drawable/checkbox_selector"
 			    	android:checked="true"/>       
                 

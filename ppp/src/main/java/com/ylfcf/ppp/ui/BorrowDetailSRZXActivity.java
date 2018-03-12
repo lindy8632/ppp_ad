@@ -372,16 +372,13 @@ public class BorrowDetailSRZXActivity extends BaseActivity implements
 					BorrowDetailSRZXActivity.this).isEmpty()
 					&& !SettingsManager.getUser(BorrowDetailSRZXActivity.this)
 							.isEmpty();
-			Intent intent = new Intent();
 			// 1、检测是否已经登录
 			if (isLogin) {
 				//判断是否实名绑卡
-//				checkIsVerify("政信贷投资");
-				intent.putExtra("PRODUCT_INFO", productInfo);
-				intent.setClass(BorrowDetailSRZXActivity.this, BidSRZXActivity.class);
-				startActivity(intent);
+				checkIsVerify("投资");
 			} else {
 				// 未登录，跳转到登录页面
+				Intent intent = new Intent();
 				intent.setClass(BorrowDetailSRZXActivity.this, LoginActivity.class);
 				startActivity(intent);
 			}
@@ -436,7 +433,10 @@ public class BorrowDetailSRZXActivity extends BaseActivity implements
 			public void isVerify(boolean flag, Object object) {
 				if(flag){
 					//用户已经实名
-					checkIsBindCard(type);
+					Intent intent = new Intent();
+					intent.putExtra("PRODUCT_INFO", productInfo);
+					intent.setClass(BorrowDetailSRZXActivity.this, BidSRZXActivity.class);
+					startActivity(intent);
 				}else{
 					//用户没有实名
 					Intent intent = new Intent(BorrowDetailSRZXActivity.this,UserVerifyActivity.class);
@@ -445,8 +445,8 @@ public class BorrowDetailSRZXActivity extends BaseActivity implements
 					bundle.putSerializable("PRODUCT_INFO", productInfo);
 					intent.putExtra("bundle", bundle);
 					startActivity(intent);
-					bidBtn.setEnabled(true);
 				}
+				bidBtn.setEnabled(true);
 			}
 			@Override
 			public void isSetWithdrawPwd(boolean flag, Object object) {

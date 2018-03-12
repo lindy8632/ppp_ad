@@ -299,6 +299,14 @@ public class PrizeAdapter extends ArrayAdapter<PrizeInfo> {
 				viewHolder.endTime.setText(info.getOperating_remark());
 				viewHolder.remark.setText("备注："+info.getRemark());
 			}
+		}else if("WXCJ20171227".equals(info.getActive_title()) || "WINTER20180111".equals(info.getActive_title())){
+			//2017三周年微信抽奖活动/冬日送温暖微信活动
+			viewHolder.endTime.setVisibility(View.VISIBLE);
+			viewHolder.catDetails.setVisibility(View.GONE);
+			String name = info.getName();
+			viewHolder.title.setText(name);
+			viewHolder.endTime.setText(info.getOperating_remark());
+			viewHolder.remark.setText("备注："+info.getRemark());
 		}else{
 			viewHolder.endTime.setVisibility(View.VISIBLE);
 			viewHolder.catDetails.setVisibility(View.GONE);

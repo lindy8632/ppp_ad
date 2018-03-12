@@ -76,6 +76,15 @@ public class BaseInfo implements java.io.Serializable{
 	private RedBagInfo mRedBagInfo;
 	private RepaymentInfo mRepaymentInfo;//»Ø¿î
 	private YQYRewardPageInfo mYQYRewardPageInfo;
+	private TLOrderInfo tlOrderInfo;
+
+	public TLOrderInfo getTlOrderInfo() {
+		return tlOrderInfo;
+	}
+
+	public void setTlOrderInfo(TLOrderInfo tlOrderInfo) {
+		this.tlOrderInfo = tlOrderInfo;
+	}
 
 	public YQYRewardPageInfo getmYQYRewardPageInfo() {
 		return mYQYRewardPageInfo;

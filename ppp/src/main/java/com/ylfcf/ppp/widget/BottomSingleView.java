@@ -1,7 +1,5 @@
 package com.ylfcf.ppp.widget;
 
-import com.ylfcf.ppp.R;
-
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -20,9 +18,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+import com.ylfcf.ppp.R;
+
 /**
- * 仿微信底部导航 图标字体颜色渐变
- * 
+ *
  * @author Administrator
  * 
  */
@@ -53,7 +52,7 @@ public class BottomSingleView extends View {
 		changeColor = getResources().getColor(R.color.default_text_color_end);
 		textSize = typedArray.getDimensionPixelSize(
 				R.styleable.ylf_ppp_textSizeP,
-				resources.getDimensionPixelSize(R.dimen.common_measure_12dp));// 字体大小
+				resources.getDimensionPixelSize(R.dimen.common_measure_12dp));//
 		text = typedArray.getString(R.styleable.ylf_ppp_text);
 		normalBitmap = ((BitmapDrawable) typedArray
 				.getDrawable(R.styleable.ylf_ppp_normalBitmap)).getBitmap();
@@ -85,6 +84,7 @@ public class BottomSingleView extends View {
 		textPaint.setTypeface(Typeface.SANS_SERIF);
 
 		initTextColorAnimator();
+
 	}
 
 	private int width;
@@ -171,10 +171,10 @@ public class BottomSingleView extends View {
 	private ValueAnimator colorAnimator;
 	private int DEFULT_TEXT_COLOR = getResources().getColor(
 			R.color.defult_text_color);
-	private int changeColor; // 位字体被选中的最终颜色
+	private int changeColor; //
 
 	private void initTextColorAnimator() {
-		colorAnimator = ValueAnimator.ofInt(DEFULT_TEXT_COLOR, changeColor);// 颜色渐变在两者之间
+		colorAnimator = ValueAnimator.ofInt(DEFULT_TEXT_COLOR, changeColor);
 		colorAnimator.setEvaluator(new ArgbEvaluator());
 		colorAnimator.addUpdateListener(new AnimatorUpdateListener() {
 			@Override

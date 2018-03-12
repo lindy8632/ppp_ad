@@ -40,6 +40,7 @@ import com.ylfcf.ppp.util.SimpleCrypto;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.util.YLFLogger;
+import com.ylfcf.ppp.view.ActiveNotLoginPopwindow;
 import com.ylfcf.ppp.view.InvitateFriendsPopupwindow;
 
 import java.net.URLEncoder;
@@ -72,7 +73,14 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			switch (msg.what) {
 				case POPUPWINDOW_START_WHAT:
 					ShareInfo info = (ShareInfo)msg.obj;
-					showFriendsSharedWindow(info.getTitle(),info.getContent(),info.getActiveURL(),info.getSharePicURL());
+					if(userid == null || "".equals(userid)){
+						//未登录
+						showNotLoginPromptWindow(info);
+					}else{
+						//已登录
+						showFriendsSharedWindow(info.getTitle(),info.getContent(),info.getActiveURL(),
+								info.getSharePicURL());
+					}
 					break;
 				case DOWNLOAD_PIC_WHAT:
 
@@ -133,6 +141,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		}else if(!isFirstLoad && webview != null && banner != null) {
 			if(banner.getLink_url().contains("mdFestivalLottery")){
 				webview.reload();
+			}else{
 			}
 		}
 		YLFLogger.d("activity"+"BannerTopicActivity-------OnResume()"+"----------isFirstLoad:"+isFirstLoad+"--------------userid:"+userid);
@@ -172,7 +181,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			topTitleTV.setText("幸运转盘");
 		}else if(TopicType.YYY_JX.equals(topicType)){
 			topLayout.setBackgroundColor(getResources().getColor(R.color.topic_yyyjiaxi_topcolor));
-			topTitleTV.setText("懒人理财 加加加息");
+			topTitleTV.setText("懒人投资 加加加息");
 		}else if(TopicType.TUIGUANGYUAN.equals(topicType)){
 			topTitleTV.setText("推广员专题详情");
 		}else if(TopicType.FRIENDS_CIRCLE.equals(topicType)){
@@ -182,6 +191,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		}
 		webview.getSettings().setSupportZoom(false);
         webview.getSettings().setJavaScriptEnabled(true);  //支持js
+		webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);//允许js弹窗
         webview.getSettings().setDomStorageEnabled(true);
 		webview.addJavascriptInterface(new JavascriptAndroidInterface(this),"android");
 		webview.setLayerType(View.LAYER_TYPE_SOFTWARE,null);//加速
@@ -251,6 +261,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 				super.onRequestFocus(view);
 				YLFLogger.d("activity"+"BannerTopicActivity-------onRequestFocus()");
 			}
+
 		});
 		webview.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
@@ -258,6 +269,32 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 				return true;
 			}
 		});
+	}
+
+	/**
+	 * 分享活动时未登录的弹窗
+	 */
+	private void showNotLoginPromptWindow(final ShareInfo info){
+		View popView = LayoutInflater.from(this).inflate(R.layout.active_notlogin_window, null);
+		int[] screen = SettingsManager.getScreenDispaly(BannerTopicActivity.this);
+		int width = screen[0]*4/5;
+		int height = screen[1]*1/4;
+		ActiveNotLoginPopwindow popwindow = new ActiveNotLoginPopwindow(BannerTopicActivity.this, popView,
+				width, height, new NotLoginWindowBtnsListener() {
+			@Override
+			public void leftBtnBack() {
+				//左侧按钮  暂不登录
+				showFriendsSharedWindow(info.getTitle(),info.getContent(),info.getActiveURL(), info.getSharePicURL());
+			}
+
+			@Override
+			public void rightBtnBack() {
+				//去登录
+				Intent intent = new Intent(BannerTopicActivity.this,LoginActivity.class);
+				startActivity(intent);
+			}
+		});
+		popwindow.show(mainLayout);
 	}
 
 	private void loadURL(){
@@ -343,7 +380,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		info.setContent(content);
 		info.setActiveURL(activeURL);
 		info.setSharePicURL(picURL);
-		popwindow.show(mainLayout, banner.getLink_url(),"",info);
+		popwindow.show(mainLayout, activeURL,"",info);
 	}
 
 	/**
@@ -384,7 +421,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			Intent intent = new Intent(BannerTopicActivity.this,RegisterVIPActivity.class);
 			startActivity(intent);
 		}else if(url.contains("/home/promotion/hdInvite") || url.contains("/home/promotion/hdinvite") ||
-				url.contains("/promotion/hdInvite")){
+				url.contains("/promotion/hdInvite") || url.contains("/home/company/coInvite")){
 			//跳转到邀请好友页面，首先判断有没有登录
 			shared();
 		}else if(url.contains("/home/index/promoter")){
@@ -448,6 +485,29 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			//资金明细
 			Intent intent = new Intent(BannerTopicActivity.this,FundsDetailsActivity.class);
 			startActivity(intent);
+		}else if(url.contains("/home/Index/yuanGoldCoin")){
+			//元金币使用规则
+			Intent intentBanner = new Intent(this,BannerSimpleTopicActivity.class);
+			BannerInfo bannerInfo = new BannerInfo();
+			bannerInfo.setLink_url(URLGenerator.YUANMONEY_RULE_URL);
+			intentBanner.putExtra("BannerInfo", bannerInfo);
+			startActivity(intentBanner);
+		}else if(url.contains("/home/index/increaseInterest")){
+			//加息券使用规则
+			Intent intentBanner = new Intent(this,BannerSimpleTopicActivity.class);
+			BannerInfo bannerInfo = new BannerInfo();
+			bannerInfo.setArticle_id("120");
+			bannerInfo.setLink_url(URLGenerator.JXQ_RULE_URL);
+			intentBanner.putExtra("BannerInfo", bannerInfo);
+			startActivity(intentBanner);
+		}else if(url.contains("/home/index/redbag")){
+			//红包使用规则
+			Intent intentBanner = new Intent(this,BannerSimpleTopicActivity.class);
+			BannerInfo bannerInfo = new BannerInfo();
+			bannerInfo.setArticle_id("80");
+			bannerInfo.setLink_url(URLGenerator.REDBAG_RULE_URL);
+			intentBanner.putExtra("BannerInfo", bannerInfo);
+			startActivity(intentBanner);
 		}else{
 			//请更新至最新版本
 //			Util.toastLong(BannerTopicActivity.this, url.toString());
@@ -459,6 +519,7 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 		if(userId != null && !"".equals(userId)){
 			//已登录
 			if(SettingsManager.isPersonalUser(getApplicationContext())){
+				//个人用户
 				if("壕友推荐".equals(banner.getFrom_where()) || "人脉收益".equals(banner.getFrom_where())){
 					Intent intent = new Intent();
 					setResult(200,intent);
@@ -467,7 +528,10 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 					checkIsVerify("邀请有奖");
 				}
 			}else{
-				
+				//企业用户
+				Intent intent = new Intent(BannerTopicActivity.this,InvitateActivity.class);
+				intent.putExtra("is_verify", true);
+				startActivity(intent);
 			}
 		}else{
 			//未登录
@@ -610,5 +674,13 @@ public class BannerTopicActivity extends BaseActivity implements OnClickListener
 			public void isSetWithdrawPwd(boolean flag, Object object) {
 			}
 		});
+	}
+
+	/**
+	 * 未登录弹窗按钮监听
+	 */
+	public interface NotLoginWindowBtnsListener{
+		void leftBtnBack();
+		void rightBtnBack();
 	}
 }

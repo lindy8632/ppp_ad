@@ -17,6 +17,7 @@
     <color name="blue4">#98D8FE</color>
     <color name="blue5">#E1F3FF</color>
     <color name="blue6">#d4eaf7</color>
+    <color name="blue7">#ecf8fc</color>
     <color name="transparent">#00000000</color>
     <color name="url">#EF5400</color>
     <color name="subDescription">#828282</color>
@@ -48,6 +49,7 @@
 	
 	<color name="transparent_background">#30000000</color>
     <color name="transparent_background_20">#20000000</color>
+    <color name="transparent_background_90">#90000000</color>
 	
 	<color name="wish_deliver_edit_hint_color">#BBBBBB</color>
 	
@@ -59,7 +61,7 @@
     <color name="defult_text_color">#868686</color>
     <color name="default_text_color_end">#31B2FE</color> 
     
-    <color name="edittext_line_color">#e5e5e5</color>
+    <color name="edittext_line_color">#eaeaea</color>
     <color name="common_topbar_bg_color">#31B2FE</color>
     <color name="edittext_hint_color">#cccccc</color>
     <color name="signed_today_bg_color">#3366FF</color>

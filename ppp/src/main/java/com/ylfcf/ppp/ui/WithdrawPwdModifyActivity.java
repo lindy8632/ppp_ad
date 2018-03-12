@@ -1,6 +1,8 @@
 package com.ylfcf.ppp.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -30,6 +32,10 @@ import com.ylfcf.ppp.util.Util;
  *
  */
 public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickListener{
+	private static final int REQUEST_USERINFO_WHAT = 23610;
+	private static final int REQUEST_USERINFO_SUC = 23611;
+	private static final int REQUEST_USERINFO_NODATA = 23612;
+
 	private static final String className = "WithdrawPwdModifyActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
@@ -42,16 +48,35 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 	private Button cmpBtn;
 	private UserInfo userInfo;
 
+	private Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			switch(msg.what){
+				case REQUEST_USERINFO_WHAT:
+					requestUserInfo(SettingsManager.getUserId(getApplicationContext()), SettingsManager.getUser(getApplicationContext()));
+					break;
+				case REQUEST_USERINFO_SUC:
+					userInfo = (UserInfo)msg.obj;
+					if(userInfo != null){
+						if(SettingsManager.isPersonalUser(getApplicationContext())){
+							userName.setText(Util.hidRealName(userInfo.getReal_name()));
+						}else if(SettingsManager.isCompanyUser(getApplicationContext())){
+							userName.setText(userInfo.getReal_name());
+						}
+					}
+					break;
+			}
+		}
+	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.withdrawpwd_modify_activity);
-		userInfo = (UserInfo) getIntent().getSerializableExtra("USERINFO");
 		findViews();
-		if(userInfo == null ){
-			requestUserInfo(SettingsManager.getUserId(getApplicationContext()), SettingsManager.getUser(getApplicationContext()));
-		}
+		handler.sendEmptyMessage(REQUEST_USERINFO_WHAT);
 	}
 	
 	private void findViews(){
@@ -61,13 +86,6 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 		topTitleTV.setText("–ﬁ∏ƒÃ·œ÷√‹¬Î");
 		
 		userName = (TextView)findViewById(R.id.modify_transpwd_activity_name);
-		if(userInfo != null){
-			if(SettingsManager.isPersonalUser(getApplicationContext())){
-				userName.setText(Util.hidRealName(userInfo.getReal_name()));
-			}else if(SettingsManager.isCompanyUser(getApplicationContext())){
-				userName.setText(userInfo.getReal_name());
-			}
-		}
 		oldPwdET = (EditText)findViewById(R.id.modify_transpwd_activity_oldpwd);
 		newPwdET = (EditText)findViewById(R.id.modify_transpwd_activity_newpwd);
 		newPwdRepeatET = (EditText)findViewById(R.id.modify_transpwd_activity_newpwd_repeat);
@@ -137,7 +155,7 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 		}
 	}
 	
-	private void requestModifyPwd(String userId,String newPwd,String phone){
+	private void requestModifyPwd(String userId,final String newPwd,String phone){
 		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
@@ -180,10 +198,9 @@ public class WithdrawPwdModifyActivity extends BaseActivity implements OnClickLi
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);
 					if(resultCode == 0){
-						userInfo = baseInfo.getUserInfo();
-						if(userInfo != null){
-							userName.setText(Util.hidRealName(userInfo.getReal_name()));
-						}
+						Message msg = handler.obtainMessage(REQUEST_USERINFO_SUC);
+						msg.obj = baseInfo.getUserInfo();
+						handler.sendMessage(msg);
 					}
 				}
 			}

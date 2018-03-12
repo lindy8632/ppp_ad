@@ -208,7 +208,7 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 					if(!managerCode.isEmpty()){
 						requestRegiste(phoneNum, pwd, "",managerCode);
 					}else{
-						Util.toastShort(RegisterVIPActivity.this, "请输入理财经理号");	
+						Util.toastShort(RegisterVIPActivity.this, "请输入投资经理号");
 					}
 				} else {
 					Util.toastShort(RegisterVIPActivity.this, "手机验证码输入错误");
@@ -438,7 +438,7 @@ public class RegisterVIPActivity extends BaseActivity implements OnClickListener
 								//获取成功
 								registeBtn.setEnabled(true);
 								managerName.setVisibility(View.VISIBLE);
-								managerName.setText("理财经理姓名："+baseInfo.getMsg());
+								managerName.setText("投资经理姓名："+baseInfo.getMsg());
 								managerNum.setEnabled(false);
 							}else{
 								//获取失败

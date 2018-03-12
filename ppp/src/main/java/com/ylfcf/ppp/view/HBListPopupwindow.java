@@ -1,17 +1,16 @@
 package com.ylfcf.ppp.view;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -22,6 +21,8 @@ import com.ylfcf.ppp.adapter.RedBagInvestAdapter;
 import com.ylfcf.ppp.entity.RedBagInfo;
 import com.ylfcf.ppp.ui.BidZXDActivity.OnHBWindowItemClickListener;
 
+import java.util.List;
+
 /**
  * 当前用户可用红包列表的window
  * 
@@ -31,12 +32,16 @@ import com.ylfcf.ppp.ui.BidZXDActivity.OnHBWindowItemClickListener;
 public class HBListPopupwindow extends PopupWindow implements OnClickListener {
 	private ListView hbListView;
 	private TextView titleText;
+	private ImageView xImg;
 	private LayoutInflater layoutInflater;
 	private View headerView;
+	private TextView headerText;
+	private ImageView hearderImg;
 	private OnHBWindowItemClickListener onItemClickListener;
 	private RedBagInvestAdapter adapter;
 	private Activity context;
 	private String title;
+	private int position;//上次选择的位置
 	private WindowManager.LayoutParams lp = null;
 
 	public HBListPopupwindow(Context context) {
@@ -44,10 +49,11 @@ public class HBListPopupwindow extends PopupWindow implements OnClickListener {
 	}
 
 	public HBListPopupwindow(Context context, View convertView, int width,
-			int height,String title) {
+			int height,String title,int position) {
 		super(convertView, LayoutParams.MATCH_PARENT, height);
 		this.context = (Activity) context;
 		this.title = title;
+		this.position = position;
 		findViews(convertView);
 	}
 
@@ -60,8 +66,18 @@ public class HBListPopupwindow extends PopupWindow implements OnClickListener {
 				.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 		headerView = layoutInflater.inflate(R.layout.red_bag_listview_header,
 				null);
+		hearderImg = headerView.findViewById(R.id.red_bag_listview_header_img);
+		headerText = headerView.findViewById(R.id.red_bag_listview_header_text);
+		if(position == 0){
+			hearderImg.setImageResource(R.drawable.duihao_selected);
+			headerText.setTextColor(context.getResources().getColor(R.color.black));
+		}else{
+			hearderImg.setImageResource(R.drawable.duihao_unselected);
+			headerText.setTextColor(context.getResources().getColor(R.color.gray1));
+		}
 		titleText = (TextView) popView
 				.findViewById(R.id.tyj_list_popupwindow_title);
+		xImg = (ImageView) popView.findViewById(R.id.tyj_list_popupwindow_x_img);
 		titleText.setText(title);
 		hbListView = (ListView) popView
 				.findViewById(R.id.tyj_list_popupwindow_listview);
@@ -75,7 +91,13 @@ public class HBListPopupwindow extends PopupWindow implements OnClickListener {
 				}
 			}
 		});
-		adapter = new RedBagInvestAdapter(context);
+		xImg.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dismiss();
+			}
+		});
+		adapter = new RedBagInvestAdapter(context,position-1);
 		hbListView.addHeaderView(headerView);
 		hbListView.setAdapter(adapter);
 	}

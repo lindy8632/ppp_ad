@@ -83,6 +83,8 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 					.findViewById(R.id.extension_listview_item_collected_time);
 			viewHolder.borrowNameTV = (TextView) convertView
 					.findViewById(R.id.extension_listview_item_borrowname);
+			viewHolder.periodTV = (TextView) convertView
+					.findViewById(R.id.extension_listview_item_qixian);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -95,6 +97,11 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 		viewHolder.nameTV.setText("姓名: "+Util.hidRealName2(info.getInvest_user_name()));
 		viewHolder.interestStartTime.setText(info.getInterest_start_time().split(" ")[0]);
 		viewHolder.collectedTime.setText("预计到账时间: "+info.getReturn_time().split(" ")[0]);
+		if(info.getBorrow_name().contains("薪盈计划")){
+			viewHolder.periodTV.setText("标的期限: "+info.getInterest_period()+"个月");
+		}else{
+			viewHolder.periodTV.setText("标的期限: "+info.getInterest_period()+"天");
+		}
 		return convertView;
 	}
 
@@ -111,6 +118,7 @@ public class ExtensionAdapter extends ArrayAdapter<ExtensionNewInfo> {
 		TextView nameTV;
 		TextView interestStartTime;//起息时间
 		TextView collectedTime;//预计到账时间
+		TextView periodTV;//期限
 		TextView borrowNameTV;//标的名字
 	}
 

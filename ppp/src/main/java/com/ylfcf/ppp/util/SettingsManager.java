@@ -87,6 +87,7 @@ public class SettingsManager extends DefaultPreferences {
 	public static final String activeNov2017_StartTime = "2017-10-10 00:00:00";
 	public static final String activeNov2017_EndTime = "2017-11-12 23:59:59";
 
+	public static final String eleContract_startTime = "2017-12-14 00:00:00";//电子签章上线时间
 
 	public static final String USER_FROM = "安卓APP";//用户来源，是来源于元立方网站还是微信还是app等等。此处为写死
 	public static final String APP_FIRST	= "appfirst";//判断应用是否是首次打开。
@@ -164,7 +165,7 @@ public class SettingsManager extends DefaultPreferences {
 	/**
 	 * 申请提现
 	 */
-	private static final String SMS_APPLY_CASH_TEMP = "a:2:{s:11:\"VERIFY_CODE\";s:4:\"AUTHCODE\";s:9:\"REAL_NAME\";s:11:\"USERNAME\";}";
+	private static final String SMS_APPLY_CASH_TEMP = "a:2:{s:11:\"VERIFY_CODE\";s:4:\"AUTHCODE\";s:9:\"REAL_NAME\";s:NAMELENGTH:\"USERNAME\";}";
 	
 	/**
 	 * 申请提现 --  企业
@@ -937,7 +938,7 @@ public class SettingsManager extends DefaultPreferences {
 	 */
 	public static String[] getSMSWithdrawApplyParams(String username){
 		String authCode = getSMSAuthCode();
-		String params = SMS_APPLY_CASH_TEMP.replace("USERNAME", username).replace("AUTHCODE", authCode);
+		String params = SMS_APPLY_CASH_TEMP.replace("USERNAME", username).replace("NAMELENGTH",String.valueOf(username.length()*3)).replace("AUTHCODE", authCode);
 		return new String[]{authCode,params};	
 	}
 	

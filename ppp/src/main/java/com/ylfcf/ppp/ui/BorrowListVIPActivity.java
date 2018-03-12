@@ -100,7 +100,7 @@ public class BorrowListVIPActivity extends BaseActivity implements
 		topLeftLayout = (LinearLayout) findViewById(R.id.common_topbar_left_layout);
 		topLeftLayout.setOnClickListener(this);
 		topTitle = (TextView) findViewById(R.id.common_page_title);
-		topTitle.setText("VIP理财");
+		topTitle.setText("VIP投资");
 		
 		View topLayout = LayoutInflater.from(this).inflate(
 				R.layout.dq_zxdlist_toplayout, null);

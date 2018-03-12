@@ -1,28 +1,27 @@
 package com.ylfcf.ppp.view;
 
-import java.util.List;
-
-import com.ylfcf.ppp.R;
-import com.ylfcf.ppp.adapter.JXQInvestAdapter;
-import com.ylfcf.ppp.adapter.RedBagInvestAdapter;
-import com.ylfcf.ppp.entity.JiaxiquanInfo;
-import com.ylfcf.ppp.entity.RedBagInfo;
-import com.ylfcf.ppp.ui.BidZXDActivity.OnHBWindowItemClickListener;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout.LayoutParams;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.adapter.JXQInvestAdapter;
+import com.ylfcf.ppp.entity.JiaxiquanInfo;
+import com.ylfcf.ppp.ui.BidZXDActivity.OnHBWindowItemClickListener;
+
+import java.util.List;
 /**
  * 加息券
  * @author Mr.liu
@@ -33,10 +32,13 @@ public class JXQListPopupwindow extends PopupWindow implements OnClickListener{
 	private TextView titleText;
 	private LayoutInflater layoutInflater;
 	private View headerView;
+	private ImageView hearderImg;
+	private ImageView xImg;
 	private OnHBWindowItemClickListener onItemClickListener;
 	private JXQInvestAdapter adapter;
 	private Activity context;
 	private String title;
+	private int position;
 	private WindowManager.LayoutParams lp = null;
 
 	public JXQListPopupwindow(Context context) {
@@ -44,10 +46,11 @@ public class JXQListPopupwindow extends PopupWindow implements OnClickListener{
 	}
 
 	public JXQListPopupwindow(Context context, View convertView, int width,
-			int height,String title) {
+			int height,String title,int position) {
 		super(convertView, LayoutParams.MATCH_PARENT, height);
 		this.context = (Activity) context;
 		this.title = title;
+		this.position = position;
 		findViews(convertView);
 	}
 
@@ -62,6 +65,16 @@ public class JXQListPopupwindow extends PopupWindow implements OnClickListener{
 				null);
 		TextView footText = (TextView) headerView.findViewById(R.id.red_bag_listview_header_text);
 		footText.setText("不使用加息券");
+		hearderImg = headerView.findViewById(R.id.red_bag_listview_header_img);
+		if(position == 0){
+			hearderImg.setImageResource(R.drawable.duihao_selected);
+			footText.setTextColor(context.getResources().getColor(R.color.black));
+		}else{
+			hearderImg.setImageResource(R.drawable.duihao_unselected);
+			footText.setTextColor(context.getResources().getColor(R.color.gray1));
+		}
+		xImg = (ImageView) popView.findViewById(R.id.tyj_list_popupwindow_x_img);
+
 		titleText = (TextView) popView
 				.findViewById(R.id.tyj_list_popupwindow_title);
 		titleText.setText(title);
@@ -77,7 +90,13 @@ public class JXQListPopupwindow extends PopupWindow implements OnClickListener{
 				}
 			}
 		});
-		adapter = new JXQInvestAdapter(context);
+		xImg.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dismiss();
+			}
+		});
+		adapter = new JXQInvestAdapter(context,position - 1);
 		jxqListView.addHeaderView(headerView);
 		jxqListView.setAdapter(adapter);
 	}

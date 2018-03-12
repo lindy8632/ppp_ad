@@ -19,6 +19,24 @@ public class UserCardInfo implements java.io.Serializable {
 	private String bank_code;//银行
 	private String type;//用户类型，vip用户还是普通用户
 	private String is_binding;// 是否绑定
+	private String real_name;
+	private String bind_id;
+
+	public String getReal_name() {
+		return real_name;
+	}
+
+	public void setReal_name(String real_name) {
+		this.real_name = real_name;
+	}
+
+	public String getBind_id() {
+		return bind_id;
+	}
+
+	public void setBind_id(String bind_id) {
+		this.bind_id = bind_id;
+	}
 
 	public String getId() {
 		return id;

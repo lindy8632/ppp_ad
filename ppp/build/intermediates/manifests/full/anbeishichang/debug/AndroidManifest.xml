@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ylfcf.ppp"
-    android:versionCode="161"
-    android:versionName="1.6.1" >
+    android:versionCode="166"
+    android:versionName="1.6.6" >
 
     <uses-sdk
         android:minSdkVersion="17"
-        android:targetSdkVersion="22" />
+        android:targetSdkVersion="26" />
 
     <supports-screens
         android:anyDensity="true"
@@ -58,13 +58,14 @@
     <application
         android:name="com.ylfcf.ppp.ui.YLFApplication"
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.ylfcf.ppp.ui.IntroductionActivity"
+            android:name="com.ylfcf.ppp.ui.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppMainStartLoad" >
@@ -74,12 +75,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-            <activity
-            android:name=".ui.IntroductionActivity"
+        <activity
+            android:name="com.ylfcf.ppp.ui.IntroductionActivity"
             android:screenOrientation="portrait" />
-        -->
-
 
         <!--
          windowSoftInputMode属性不会将布局顶上去
@@ -373,6 +371,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
         <activity
+            android:name="com.ylfcf.ppp.ui.CompUserFriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
             android:name="com.ylfcf.ppp.ui.LXJ5TempActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
@@ -402,6 +404,26 @@
             android:theme="@style/AnimActivityTheme" />
         <activity
             android:name="com.ylfcf.ppp.ui.AccountCenterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.BannerSimpleTopicActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargeChooseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargePosActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargePosQRCodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AnimActivityTheme" />
+        <activity
+            android:name="com.ylfcf.ppp.ui.RechargePosInstructionsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AnimActivityTheme" />
         <activity

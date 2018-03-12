@@ -170,7 +170,7 @@ public class LicaiFragment extends BaseFragment implements OnClickListener{
 		topLeftLayout = (LinearLayout) topLayout.findViewById(R.id.common_topbar_left_layout);
 		topLeftLayout.setVisibility(View.GONE);
 		topTitle = (TextView) topLayout.findViewById(R.id.common_page_title);
-		topTitle.setText("我要理财");
+		topTitle.setText("我要投资");
 		
 		mScrollView = (ScrollView) view.findViewById(R.id.licai_fragment_main_scrollview);
 		dqlcCounts = (TextView)view.findViewById(R.id.licai_fragment_dqlc_counts);

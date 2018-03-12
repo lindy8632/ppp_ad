@@ -116,7 +116,7 @@ public class MyYuanMoneyActivity extends BaseActivity implements OnClickListener
 			if(userCoinD > 0){
 				bidBtn.setText("立即使用元金币");
 			}else{
-				bidBtn.setText("我要理财");
+				bidBtn.setText("我要投资");
 			}
 		}catch (Exception e){
 			e.printStackTrace();

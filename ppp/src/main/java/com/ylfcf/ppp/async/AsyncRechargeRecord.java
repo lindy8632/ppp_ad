@@ -8,6 +8,7 @@ import com.ylfcf.ppp.parse.JsonParseRechargeRecordPageInfo;
 import com.ylfcf.ppp.util.BackType;
 import com.ylfcf.ppp.util.HttpConnection;
 import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.YLFLogger;
 
 /**
  * 充值记录
@@ -47,6 +48,7 @@ public class AsyncRechargeRecord extends AsyncTaskBase{
 			} else {
 				baseInfo = JsonParseRechargeRecordPageInfo.parseData(result);
 			}
+			YLFLogger.d("充值记录："+baseInfo.getMsg());
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = BackType.ERROR;

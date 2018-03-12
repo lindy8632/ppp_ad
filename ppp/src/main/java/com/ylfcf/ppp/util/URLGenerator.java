@@ -5,18 +5,22 @@ import java.io.UnsupportedEncodingException;
 /**
  * URL类
  * @author Administrator
- *
  */
 public class URLGenerator {
 	//正式环境
-	private static final String API_DOMAIN_URL = "http://www.ylfcf.com";//API环境
-	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
-	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
+//	private static final String API_DOMAIN_URL = "http://www.ylfcf.com";//API环境
+//	private static final String WAP_DOMAIN_URL = "http://wap.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "http://api.ylfcf.com";//
+
+	//正式环境HTTPS
+	private static final String API_DOMAIN_URL = "https://www.ylfcf.com";//API环境
+	private static final String WAP_DOMAIN_URL = "https://wap.ylfcf.com";//WAP环境
+	private static final String API2_DOMAIN_URL = "https://api.ylfcf.com";//
 
 	//https测试环境
 //	private static final String API_DOMAIN_URL = "https://test1.ylfcf.com";//API环境
 //	private static final String WAP_DOMAIN_URL = "https://wap.test1.ylfcf.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "https://api.test1.ylfcf.com";//
+//	private static final String API 2_DOMAIN_URL = "https://api.test1.ylfcf.com";//
 
 	//验证环境
 //	private static final String API_DOMAIN_URL = "http://www.dev.ylfcf.com";//API环境
@@ -49,8 +53,8 @@ public class URLGenerator {
 
 	//https
 //	private static final String API_DOMAIN_URL = "https://test1.ylfcf.com";
-//	private static final String WAP_DOMAIN_URL = "https://wap.test.ylfcf.com";//WAP环境
-//	private static final String API2_DOMAIN_URL = "https://api.dev.ylfcf.com";//
+//	private static final String WAP_DOMAIN_URL = "https://wap.test1.ylfcf.com";//WAP环境
+//	private static final String API2_DOMAIN_URL = "https://api.test1.ylfcf.com";//
 
 	//开发环境局域网
 //	private static final String API_DOMAIN_URL = "http://web.dev.com";
@@ -82,18 +86,23 @@ public class URLGenerator {
 	public static final String LXJ5_WAP_URL = WAP_DOMAIN_URL + "/home/index/qxj";//五月份抢现金活动
 	public static final String PROMOTED_BASE_URL = WAP_DOMAIN_URL + "/home/index/friendReg";// 邀请注册的二维码
 	public static final String YYY_COMPACT = API_DOMAIN_URL + "/borrow-yyyprotocol-userid-recordid.html";// 元月盈借款协议url
+	public static final String YYY_PDF_COMPACT = API_DOMAIN_URL + "/borrow/exportYyyProtocolPdf?id=userid&invest=recordid";// 元月盈借款协议url PDF
 	public static final String VIP_COMPACT = API_DOMAIN_URL + "/home/vip/vipProtocol/id/userid/invest/recordid";// vip产品的借款协议，userid和recordid为0时为空模板
 	public static final String VIP_BLANK_COMPACT = API_DOMAIN_URL + "/home/vip/vipProtocol/borrow/borrowid";//vip空白合同
 	public static final String SRZX_COMPACT = API_DOMAIN_URL + "/appoint/borrowProtocolData/id/recordid/info/userid";//私人尊享合同
+	public static final String SRZX_PDF_COMPACT = API_DOMAIN_URL + "/appoint/exportDataProtocolPdf/id/recordid/info/userid";//私人尊享合同pdf
 	public static final String SRZX_BLANK_COMPACT = API_DOMAIN_URL + "/appoint/borrowProtocol/id/borrowid";//私人尊享空合同
 	public static final String ZXD_XSB_COMPACT = API_DOMAIN_URL + "/home/downfiles/protocol?id=recordid&info=userid";//元政盈和新手标有数据的合同
+	public static final String ZXD_XSB_PDF_COMPACT = API_DOMAIN_URL + "//member/agreement/exportYzyPdf?id=recordid&info=userid";//元政盈和新手标有数据的合同
 	public static final String ZXD_XSB_BLANK_COMPACT = API_DOMAIN_URL + "/downfiles/index/id/borrowid";//元政盈和新手标空白合同
 	public static final String XSMB_BLANK_COMPACT = API_DOMAIN_URL + "/home/seckill/seckillProtocol/id/borrowid";//限时秒标合同空模板
 	public static final String XSMB_COMPACT = API_DOMAIN_URL + "/home/seckill/protocolData/id/recordid/info/userid";//限时秒标有数据的合同
 	public static final String WDY_BLANK_COMPACT = API_DOMAIN_URL + "/wdy/wdyContract/id/borrowid";//稳定盈合同空模板
 	public static final String WDY_COMPACT = API_DOMAIN_URL + "/wdy/wdyContractData/id/recordid/info/userid";//稳定盈有数据的合同
+	public static final String WDY_PDF_COMPACT = API_DOMAIN_URL + "/wdy/exportDataProtocolPdf/id/recordid/info/userid";//稳定盈有数据的合同pdf
 	public static final String YJY_BLANK_COMPACT = API_DOMAIN_URL + "/ygzx/ygzxProtocol/id/borrowid";//稳定盈合同空模板
 	public static final String YJY_COMPACT = API_DOMAIN_URL + "/ygzx/ygzxProtocol/id/recordid/info/userid";//稳定盈有数据的合同
+	public static final String YJY_PDF_COMPACT = API_DOMAIN_URL + "/ygzx/exportDataProtocolPdf/id/recordid/info/userid";//稳定盈有数据的合同
 
 	public static final String VIP_CJWT_URL = WAP_DOMAIN_URL + "/home/vip/vipquestion.html#app";// vip常见问题
 	public static final String YYY_CJWT_URL = WAP_DOMAIN_URL + "/home/yyy/yyyquestion#app";// 元月盈的常见问题
@@ -313,6 +322,10 @@ public class URLGenerator {
 	//元企盈
 	private final String YQYREWARDLIST_URL = "/promoter/promoterLog/getYqyRewardList";//元企盈用于A级以及以下的用户的投资列表
 	private final String YQYCOMPUSER_FRIENDS_URL = "/promoter/promoterLog/getCompUserFriends";//元企盈A+用户的好友列表
+
+	//通联POS支付
+	private final String TL_GETORDERNUM_URL = "/tl/bank/get/order.num";//获取交易单号
+	private final String TL_GETORDERSTATUS_URL = "/tl/bank/return/order.success.info";//获取订单交易状态
 
 	private static URLGenerator mUrlGenerator;
 
@@ -3193,6 +3206,35 @@ public class URLGenerator {
 		sb.append("_URL_=").append(YQYREWARDLIST_URL);
 		sb.append("&extension_user_id=").append(extensionUserId).append("&page=").
 				append(page).append("&page_size=").append(pageSize);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 获取通联pos支付交易单号
+	 * @param userId
+	 * @param amount 支付金额
+	 * @param from  来源:android ios pc
+	 * @return
+	 */
+	public String[] getTLOrderNum(String userId,String amount,String from){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(TL_GETORDERNUM_URL);
+		sb.append("&user_id=").append(userId).append("&amount=").
+				append(amount).append("&from=").append(from);
+		return new String[]{BASE_URL, sb.toString()};
+	}
+
+	/**
+	 * 获取通联pos支付交易状态
+	 * @param userId
+	 * @param orderId 订单id
+	 * @return
+	 */
+	public String[] getTLOrderStatus(String userId,String orderId){
+		StringBuffer sb = new StringBuffer();
+		sb.append("_URL_=").append(TL_GETORDERSTATUS_URL);
+		sb.append("&user_id=").append(userId).append("&order=").
+				append(orderId);
 		return new String[]{BASE_URL, sb.toString()};
 	}
 }

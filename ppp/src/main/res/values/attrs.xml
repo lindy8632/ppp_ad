@@ -44,7 +44,7 @@
     <declare-styleable name="ViewFlow">
         <attr name="sidebuffer" format="integer" />
     </declare-styleable>
-    <declare-styleable name="ylf_ppp"> 
+    <declare-styleable name="ylf_ppp">
          <attr name="textColorP"  format="reference|color"/>
          <attr name="textSizeP"  format="reference|dimension"/>
          <attr name="text" format="reference|string"></attr>

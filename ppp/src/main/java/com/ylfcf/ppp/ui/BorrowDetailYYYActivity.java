@@ -296,7 +296,7 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 			// 1、检测是否已经登录
 			if (isLogin) {
 				//判断是否实名绑卡
-				checkIsVerify("元月盈投资"); //在标的详情页面只判断是否实名，不判断有没有绑卡
+				checkIsVerify("投资"); //在标的详情页面只判断是否实名，不判断有没有绑卡
 			} else {
 				// 未登录，跳转到登录页面
 				intent.setClass(BorrowDetailYYYActivity.this, LoginActivity.class);
@@ -375,15 +375,11 @@ public class BorrowDetailYYYActivity extends BaseActivity implements
 			public void isVerify(boolean flag, Object object) {
 				if(flag){
 					Intent intent = new Intent();
-					//用户已经实名
-//					checkIsBindCard(type);
-					if("元月盈投资".equals(type)){
 						//那么直接跳到充值页面
 						intent.putExtra("PRODUCT_INFO", productInfo);
 						intent.setClass(BorrowDetailYYYActivity.this, BidYYYActivity.class);
 						startActivity(intent);
 						bidBtn.setEnabled(true);
-					}
 				}else{
 					//用户没有实名
 					Intent intent = new Intent(BorrowDetailYYYActivity.this,UserVerifyActivity.class);

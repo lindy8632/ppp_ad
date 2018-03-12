@@ -11,7 +11,7 @@ import com.ylfcf.ppp.util.URLGenerator;
 import com.ylfcf.ppp.util.YLFLogger;
 
 /**
- * 投资  ---- 新手标、定期理财
+ * 投资  ---- 新手标、定期投资
  * @author Administrator
  *
  */

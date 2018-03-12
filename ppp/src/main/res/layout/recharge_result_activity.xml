@@ -93,7 +93,7 @@
         android:layout_marginLeft="@dimen/common_measure_20dp"
         android:layout_marginRight="@dimen/common_measure_20dp"
         android:background="@drawable/blue_fillet_btn_selector"
-        android:text="我要理财"
+        android:text="立即投资"
         android:textColor="@color/white"
         android:textSize="@dimen/common_measure_26dp" />
     

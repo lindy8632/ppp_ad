@@ -109,6 +109,13 @@ public class MyInvitationActivity extends BaseActivity implements
 		default:
 			break;
 		}
+		switch (resultCode){
+		case 200:
+			finish();
+			break;
+		default:
+			break;
+		}
 	}
 
 	@Override

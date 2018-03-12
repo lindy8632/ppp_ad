@@ -157,7 +157,7 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         	if(info.getInterest_period().contains("92")){
             	//元季融
             	viewHolder.angleImg.setImageResource(R.drawable.yjr_list_logo);
-            	viewHolder.nhsyText.setText("预期年化收益率");
+            	viewHolder.nhsyText.setText("年化利率");
 				if(SettingsManager.checkActiveStatusBySysTime(sysTimeStr,
 						SettingsManager.activeJuly2017_StartTime,SettingsManager.activeJuly2017_EndTime) == 0){
 					//2017年七月份活动正在进行中
@@ -168,17 +168,17 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
             }else if(info.getInterest_period().contains("32")){
             	//元月通
             	viewHolder.angleImg.setImageResource(R.drawable.yyt_list_logo);
-            	viewHolder.nhsyText.setText("预期年化收益率");
+            	viewHolder.nhsyText.setText("年化利率");
             }else if(info.getInterest_period().contains("182")){
             	//元定和
             	viewHolder.angleImg.setImageResource(R.drawable.ydh_list_logo);
-            	viewHolder.nhsyText.setText("预期年化收益率");
+            	viewHolder.nhsyText.setText("年化利率");
             }else if(info.getInterest_period().contains("365")){
             	viewHolder.angleImg.setImageResource(R.drawable.ynx_list_logo);
-            	viewHolder.nhsyText.setText("预期年化收益率");
+            	viewHolder.nhsyText.setText("年化利率");
             }else{
             	viewHolder.angleImg.setImageResource(R.color.transparent);
-            	viewHolder.nhsyText.setText("预期年化收益率");
+            	viewHolder.nhsyText.setText("年化利率");
             }
         }else if(BorrowType.VIP.equals(info.getBorrow_type())){
         	viewHolder.nhsyText.setText("业绩比较基准");
@@ -186,7 +186,7 @@ public class BidListAdapter extends ArrayAdapter<ProductInfo> {
         	viewHolder.angleImg.setImageResource(R.drawable.licai_vip_logo);
         }else{
         	viewHolder.angleImg.setImageResource(R.color.transparent);
-        	viewHolder.nhsyText.setText("预期年化收益率");
+        	viewHolder.nhsyText.setText("年化利率");
         }
         
         double extraInterestD = 0d;

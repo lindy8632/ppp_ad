@@ -2,18 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-	<TextView 
-	    android:id="@+id/red_bag_listview_header_text"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/common_measure_60dp"
-        android:layout_marginLeft="@dimen/common_measure_20dp"
-        android:layout_marginRight="@dimen/common_measure_20dp"
-        android:singleLine="true"
-        android:text="不使用红包"
-        android:textColor="@color/gray1"
-        android:textSize="@dimen/common_measure_20dp"
-        android:gravity="center_vertical"/>
-    
+    android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginTop="@dimen/common_measure_12dp"
+		android:layout_marginBottom="@dimen/common_measure_12dp"
+		android:gravity="center_vertical"
+		android:background="@drawable/style_rect_gray"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/red_bag_listview_header_text"
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/common_measure_60dp"
+			android:layout_weight="1"
+			android:layout_marginLeft="@dimen/common_measure_30dp"
+			android:singleLine="true"
+			android:text="不使用红包"
+			android:textColor="@color/gray1"
+			android:textSize="@dimen/common_measure_20dp"
+			android:gravity="center_vertical"/>
+
+		<ImageView
+			android:id="@+id/red_bag_listview_header_img"
+			android:layout_width="@dimen/common_measure_20dp"
+			android:layout_height="@dimen/common_measure_20dp"
+			android:layout_marginRight="@dimen/common_measure_20dp"
+			android:src="@drawable/duihao_unselected"/>
+
+	</LinearLayout>
+
 </LinearLayout>

@@ -17,28 +17,24 @@
             android:id="@+id/common_popwindow_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent" 
-            android:gravity="center"
+            android:gravity="left|center_vertical"
             android:textSize="@dimen/common_measure_20dp"
             android:textColor="@color/gray1"/>
         
     </LinearLayout>
     
-    <View 
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/common_measure_1dp"
-        android:background="@color/edittext_line_color"/>
-    
-    <Button 
+    <Button
         android:id="@+id/common_popwindow_btn"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/common_measure_60dp"
         android:layout_marginLeft="@dimen/common_measure_20dp"
         android:layout_marginRight="@dimen/common_measure_20dp"
-        android:background="@null"
+        android:layout_marginBottom="@dimen/common_measure_20dp"
+        android:background="@drawable/blue_fillet_btn_selector"
         android:gravity="center"
-        android:textColor="@color/common_topbar_bg_color"
-        android:textSize="@dimen/common_measure_20dp"
-        android:text="我知道了"/>
+        android:textColor="@color/white"
+        android:textSize="@dimen/common_measure_24dp"
+        android:text="确定"/>
 
 </LinearLayout>
 

@@ -1,17 +1,18 @@
 package com.ylfcf.ppp.view;
 
-import com.ylfcf.ppp.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.ylfcf.ppp.R;
+import com.ylfcf.ppp.ui.RechargeChooseActivity;
 
 /**
  * 一个通用的弹出框
@@ -27,16 +28,20 @@ public class CommonPopwindow extends PopupWindow implements
 	private Activity context;
 	private WindowManager.LayoutParams lp = null;
 	private String type;
+	private String contentStr;
+	private RechargeChooseActivity.OKBtnListener okBtnListener = null;
 	
 	public CommonPopwindow(Context context) {
 		super(context);
 	}
 
 	public CommonPopwindow(Context context, View convertView,
-			int width, int height,String type) {
+			int width, int height,String type,String contentStr,RechargeChooseActivity.OKBtnListener okBtnListener) {
 		super(convertView, width, height);
 		this.context = (Activity) context;
 		this.type = type;
+		this.contentStr = contentStr;
+		this.okBtnListener = okBtnListener;
 		findViews(convertView);
 	}
 
@@ -53,7 +58,19 @@ public class CommonPopwindow extends PopupWindow implements
 			content.setText("如需进行下一步操作，请先进行绑卡。");
 		}else if("设置提现密码".equals(type)){
 			content.setText("如需进行下一步操作，请先设置提现密码。");
+		}else{
+			content.setText(contentStr);
 		}
+		content.post(new Runnable() {
+			@Override
+			public void run() {
+				if(content.getLineCount() == 1){
+					content.setGravity(Gravity.CENTER);
+				}else{
+					content.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);
+				}
+			}
+		});
 	}
 
 	@Override
@@ -76,11 +93,12 @@ public class CommonPopwindow extends PopupWindow implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.common_popwindow_btn:
+			if(okBtnListener != null)
+				okBtnListener.back();
 			this.dismiss();
 			break;
 		default:
 			break;
 		}
 	}
-
 }

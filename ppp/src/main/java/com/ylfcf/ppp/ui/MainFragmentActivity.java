@@ -741,7 +741,7 @@ public class MainFragmentActivity extends BasePermissionActivity implements OnCl
 //		request.setAllowedNetworkTypes(Request.NETWORK_MOBILE);
         // 设置通知栏标题
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-        request.setTitle("元立方理财");
+        request.setTitle("元立方投资");
         request.setDescription("正在下载...");
         request.setAllowedOverRoaming(false);
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();

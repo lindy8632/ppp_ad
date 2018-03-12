@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="预期年化收益率"
+                android:text="年化利率"
                 android:textColor="@color/white"
                 android:textSize="@dimen/common_measure_20dp"/>
             

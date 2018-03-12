@@ -474,7 +474,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 					if(!managerCode.isEmpty()){
 						requestVIPRegiste(phoneVIPNum, pwd, "",managerCode);
 					}else{
-						Util.toastShort(RegisteActivity.this, "请输入理财经理号");
+						Util.toastShort(RegisteActivity.this, "请输入投资经理号");
 					}
 				} else {
 					Util.toastShort(RegisteActivity.this, "手机验证码输入错误");
@@ -813,6 +813,7 @@ public class RegisteActivity extends BaseActivity implements OnClickListener {
 						SettingsManager.setUserId(RegisteActivity.this, userInfo.getId());
 						SettingsManager.setUserName(RegisteActivity.this, userInfo.getUser_name());
 						SettingsManager.setUserRegTime(RegisteActivity.this, userInfo.getReg_time());
+//						SettingsManager.setMainFirstpageFlag(RegisteActivity.this,true);
 						addPhoneInfo(userInfo.getId(), phone, "", "");
 					}
 					Intent intent = new Intent(RegisteActivity.this,RegisterSucActivity.class);

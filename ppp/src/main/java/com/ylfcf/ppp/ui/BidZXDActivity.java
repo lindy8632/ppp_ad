@@ -99,11 +99,15 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 	private ImageView deleteImg;// x号
 	private TextView yjsyText;// 预计收益
 
+	private TextView daojuPromptTV;
+
 	// 元金币
 	private EditText yuanMoneyET;// 元金币
 	private TextView yuanUsedTV;// 元金币可用金额
 	private TextView yuanBalanceTV;// 元金币余额
 	private ImageView borrowLogo;
+	private TextView yjbText;
+	private ImageView yjbDuihaoImg;
 	private LinearLayout yjbLayout;
 	private LinearLayout yjbBalanceLayout;// 元金币余额
 
@@ -219,7 +223,6 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.bid_zxd_activity);
 
-		usePromptList.add("元金币");
 		mProductInfo = (ProductInfo) getIntent().getSerializableExtra(
 				"PRODUCT_INFO");
 		
@@ -280,7 +283,13 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 
 	private void updateUsePrompt(List<String> usePromptList){
 		StringBuffer sb = new StringBuffer();
+		if(usePromptList != null && usePromptList.size() > 0){
+			daojuPromptTV.setVisibility(View.VISIBLE);
+		}else{
+			daojuPromptTV.setVisibility(View.GONE);
+		}
 		if(usePromptList != null && usePromptList.size() > 1){
+
 			for(int i=0;i<usePromptList.size();i++){
 				String prompt = usePromptList.get(i);
 				if(i == usePromptList.size() - 1){
@@ -293,6 +302,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			usePrompt.setText(sb.toString()+"只能使用其中一种");
 		}else{
 			usePrompt.setVisibility(View.GONE);
+			yjbLayoutVisible(View.GONE);
 		}
 	}
 	
@@ -412,39 +422,57 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		line4 = findViewById(R.id.bid_zxd_activity_line4);
 		line5 = findViewById(R.id.bid_zxd_activity_line5);
 
+		daojuPromptTV = (TextView) findViewById(R.id.bid_zxd_activity_daoju_prompt);
 		yjbLayout = (LinearLayout) findViewById(R.id.bid_zxd_activity_yjb_layout);
 		yjbBalanceLayout = (LinearLayout) findViewById(R.id.bid_zxd_activity_yjb_balance_layout);
+		yjbDuihaoImg = (ImageView) findViewById(R.id.bid_zxd_activity_yjb_duihao);
+		yjbText = (TextView) findViewById(R.id.bid_zxd_activity_yjb_text);
 		tyjLayout = (LinearLayout) findViewById(R.id.bid_zxd_activity_tyj_layout);
 		hbLayout = (LinearLayout) findViewById(R.id.bid_zxd_activity_hb_layout);
 		hbLayout.setOnClickListener(this);
 		hbEditText = (EditText) findViewById(R.id.bid_zxd_activity_hb_et);
+		hbEditText.setOnClickListener(this);
 		hbArrowLayout = (RelativeLayout) findViewById(R.id.bid_zxd_activity_hb_arrow_layout);
 		hbArrowLayout.setOnClickListener(this);
 		jxqLayout = (LinearLayout) findViewById(R.id.bid_zxd_activity_jxq_layout);
 		jxqLayout.setOnClickListener(this);
 		jxqEditText = (EditText) findViewById(R.id.bid_zxd_activity_jxq_et);
+		jxqEditText.setOnClickListener(this);
 		jxqArrowLayout = (RelativeLayout) findViewById(R.id.bid_zxd_activity_jxq_arrow_layout);
 		jxqArrowLayout.setOnClickListener(this);
 		cb = (CheckBox) findViewById(R.id.bid_zxd_activity_cb);
 		compactText = (TextView) findViewById(R.id.bid_zxd_activity_compact_text);
 		compactText.setOnClickListener(this);
 		// 判断体验金和元金币是否开启，来进行相应布局的显示和隐藏
-		if (mProductInfo != null) {
-			if ("开启".equals(mProductInfo.getIs_coin())) {
-				// 元金币开启
-				yjbLayout.setVisibility(View.VISIBLE);
-				yjbBalanceLayout.setVisibility(View.VISIBLE);
-				line1.setVisibility(View.VISIBLE);
-				line2.setVisibility(View.VISIBLE);
-			} else {
-				// 元金币关闭
-				yjbLayout.setVisibility(View.GONE);
-				yjbBalanceLayout.setVisibility(View.GONE);
-				line1.setVisibility(View.GONE);
-				line2.setVisibility(View.GONE);
-			}
+	}
+
+	private void checkYjbLayoutVisible(){
+		if(mUserYUANAccountInfo == null){
+			yjbLayoutVisible(View.GONE);
+			return;
+		}
+		double useCoinD = 0d;
+		try{
+			useCoinD = Double.parseDouble(mUserYUANAccountInfo.getUse_coin());
+		}catch (Exception e){
 		}
 
+		if ("开启".equals(mProductInfo.getIs_coin()) && useCoinD > 0) {
+			// 元金币开启
+			usePromptList.add("元金币");
+			updateUsePrompt(usePromptList);
+			yjbLayoutVisible(View.VISIBLE);
+		} else {
+			// 元金币关闭
+			yjbLayoutVisible(View.GONE);
+		}
+	}
+
+	private void yjbLayoutVisible(int isVisible){
+		yjbLayout.setVisibility(isVisible);
+		yjbBalanceLayout.setVisibility(isVisible);
+		line1.setVisibility(isVisible);
+		line2.setVisibility(isVisible);
 	}
 
 	float extraRateF = 0f;
@@ -514,15 +542,29 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			}
 			if(yuanMoneyI > yuanMoneyCurUsedI){
 				//输入的金额不会大于当前可用最大金额
+				yuanMoneyI = yuanMoneyCurUsedI;
 				yuanMoneyET.setText(String.valueOf(yuanMoneyCurUsedI));
+				yuanMoneyET.setSelection(yuanmoneyCurUsed.length());
+			}else{
 			}
-			//其他道具置零
-			jxqEditText.setText(null);
-			jxqEditText.setTag("");
-			jxqArrowLayout.setTag("0");
-			hbEditText.setText("");
-			hbEditText.setTag("");
-			hbArrowLayout.setTag("0");
+			if(yuanMoneyI > 0){
+				yjbDuihaoImg.setImageResource(R.drawable.duihao_selected);
+				yjbText.setTextColor(getResources().getColor(R.color.black));
+
+				//其他道具置零
+				jxqEditText.setText(null);
+				jxqEditText.setTag("");
+				jxqArrowLayout.setTag("0");
+				jxqArrowLayout.setTag(R.id.tag_third,0);
+				hbEditText.setText("");
+				hbEditText.setTag("");
+				hbArrowLayout.setTag(R.id.tag_first,"0");
+				hbArrowLayout.setTag(R.id.tag_second,"0");
+				hbArrowLayout.setTag(R.id.tag_third,0);
+			}else{
+				yjbDuihaoImg.setImageResource(R.drawable.duihao_unselected);
+				yjbText.setTextColor(getResources().getColor(R.color.gray1));
+			}
 			updateInterest();
 		}
 
@@ -552,7 +594,8 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					floatRateStr = "0.3";
 				}
 				computeIncome(mProductInfo.getInterest_rate(),
-						mProductInfo.getAndroid_interest_rate(),floatRateStr, (String)jxqArrowLayout.getTag(),investMoney,(String)hbArrowLayout.getTag(),
+						mProductInfo.getAndroid_interest_rate(),floatRateStr, (String)jxqArrowLayout.getTag(),
+						investMoney,(String)hbArrowLayout.getTag(R.id.tag_first),
 						mProductInfo.getInvest_horizon());
 				computeUsedYuanMoney(investMoney);// 计算可使用的元金币
 			} catch (Exception e) {
@@ -603,6 +646,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			break;
 		case R.id.bid_zxd_activity_hb_arrow_layout:
 		case R.id.bid_zxd_activity_hb_layout:
+		case R.id.bid_zxd_activity_hb_et:
 			checkHB();
 			break;
 		case R.id.bid_zxd_activity_dtdz_btn:
@@ -615,6 +659,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			break;
 		case R.id.bid_zxd_activity_jxq_arrow_layout:
 		case R.id.bid_zxd_activity_jxq_layout:
+		case R.id.bid_zxd_activity_jxq_et:
 			checkJXQ();
 			break;
 		case R.id.bid_zxd_activity_compact_text:
@@ -716,6 +761,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		double userBanlanceDouble = 0d;
 		double borrowBalanceDouble = 0d;
 		double hbDouble = 0d;//红包金额
+		double hbNeedMoneyD = 0d;
 		double jxqDouble = 0d;//加息券
 		double androidRateD = 0d;//安卓加息字段
 		String yuanUsedMoneyStr = "0";
@@ -745,15 +791,20 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		} catch (Exception e) {
 		}
 		try {
-			hbMoney = Double.parseDouble(hbArrowLayout.getTag().toString());
+			hbMoney = Double.parseDouble(hbArrowLayout.getTag(R.id.tag_first).toString());//红包金额
 		} catch (Exception e) {
+		}
+		try{
+			hbNeedMoneyD = Double.parseDouble(hbArrowLayout.getTag(R.id.tag_second).toString());//红包限制金额
+		}catch (Exception e){
+
 		}
 		try {
 			jxqMoney = Double.parseDouble(jxqArrowLayout.getTag().toString());
 		} catch (Exception e) {
 		}
 		try {
-			hbDouble = Double.parseDouble(hbArrowLayout.getTag().toString());
+			hbDouble = Double.parseDouble(hbArrowLayout.getTag(R.id.tag_first).toString());
 		} catch (Exception e) {
 		}
 		try {
@@ -788,7 +839,9 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 			Util.toastLong(BidZXDActivity.this, sb.toString()+"不能同时使用");
 		} else if (yuanInputMoney > yuanUsedMoney) {
 			Util.toastLong(BidZXDActivity.this, "元金币使用超限");
-		} else if (needRechargeMoeny > userBanlanceDouble + yuanInputMoney) {
+		} else if(moneyInvest < hbNeedMoneyD){
+			Util.toastLong(BidZXDActivity.this, "投资金额尚未达到"+hbArrowLayout.getTag(R.id.tag_second).toString()+"元红包的单笔投资金额要求");
+		}else if (needRechargeMoeny > userBanlanceDouble + yuanInputMoney) {
 			Util.toastLong(BidZXDActivity.this, "账户余额不足");
 		} else if (needRechargeMoeny > borrowBalanceDouble) {
 			Util.toastLong(BidZXDActivity.this, "标的可投余额不足");
@@ -1048,7 +1101,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		//使用加息券
 		if(jxqMoney > 0){
 			yjbjxqLayout.setVisibility(View.VISIBLE);
-			yjbjxqText.setText(jxqMoney+"%的加息券");
+			yjbjxqText.setText(Util.formatRate(String.valueOf(jxqMoney))+"%的加息券");
 		}else{
 			yjbjxqLayout.setVisibility(View.GONE);
 		}
@@ -1056,7 +1109,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		totalMoneyTV.setText(moneyInvest + "");
 		yuanMoneyTV.setText(bonusMoney + "");
 		benjinTV.setText((int)benjinD + "");
-		hbMoneyTV.setText((int)hbMoney+"元红包");
+		hbMoneyTV.setText(Util.formatRate(String.valueOf(hbMoney))+"元红包");
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this,
 				R.style.Dialog_Transparent); // 先得到构造器
@@ -1118,7 +1171,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		}
 		computeIncome(mProductInfo.getInterest_rate(),
 				mProductInfo.getAndroid_interest_rate(), floatRateStr,(String)jxqArrowLayout.getTag(),investMoneyInt,
-				(String)hbArrowLayout.getTag(),mProductInfo.getInvest_horizon());
+				(String)hbArrowLayout.getTag(R.id.tag_first),mProductInfo.getInvest_horizon());
 	}
 
 	/**
@@ -1145,7 +1198,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		}
 		computeIncome(mProductInfo.getInterest_rate(),
 				mProductInfo.getAndroid_interest_rate(),floatRateStr,(String)jxqArrowLayout.getTag(), investMoneyInt,
-				(String)hbArrowLayout.getTag(),mProductInfo.getInvest_horizon());
+				(String)hbArrowLayout.getTag(R.id.tag_first),mProductInfo.getInvest_horizon());
 	}
 
 	/**
@@ -1170,7 +1223,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 		}
 		computeIncome(mProductInfo.getInterest_rate(),
 				mProductInfo.getAndroid_interest_rate(),floatRateStr,(String)jxqArrowLayout.getTag(), investMoneyInt,
-				(String)hbArrowLayout.getTag(),mProductInfo.getInvest_horizon());
+				(String)hbArrowLayout.getTag(R.id.tag_first),mProductInfo.getInvest_horizon());
 	}
 	
 	private void resetInvestMoneyET() {
@@ -1396,19 +1449,18 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					public void back(BaseInfo baseInfo) {
 						if (baseInfo != null) {
 							sysTimeStr = baseInfo.getTime();
-							int resultCode = SettingsManager
-									.getResultCode(baseInfo);
+							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if (resultCode == 0) {
-								mUserYUANAccountInfo = baseInfo
-										.getYuanAccountInfo();
+								mUserYUANAccountInfo = baseInfo.getYuanAccountInfo();
 								if (mUserYUANAccountInfo != null) {
-									yuanBalanceTV.setText(mUserYUANAccountInfo
-											.getUse_coin());
+									yuanBalanceTV.setText(Util.formatRate(mUserYUANAccountInfo
+											.getUse_coin()));
 								}
 							}
 						}else{
 							sysTimeStr = sdf.format(new Date());
 						}
+						checkYjbLayoutVisible();
 					}
 				});
 		yuanAccountTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
@@ -1436,11 +1488,9 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 								if ("开启".equals(mProductInfo.getIs_TYJ())) {
 									// 体验金开启
 									tyjLayout.setVisibility(View.VISIBLE);
-									line4.setVisibility(View.VISIBLE);
 								} else {
 									// 体验金关闭
 									tyjLayout.setVisibility(View.GONE);
-									line4.setVisibility(View.GONE);
 								}
 								TYJPageInfo pageInfo = baseInfo
 										.getmTYJPageInfo();
@@ -1450,7 +1500,6 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 								}
 							} else {
 								tyjLayout.setVisibility(View.GONE);
-								line4.setVisibility(View.GONE);
 							}
 						}else{
 							sysTimeStr = sdf.format(new Date());
@@ -1483,10 +1532,12 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 								}
 								if (hbList.size() < 1) {
 									hbLayout.setVisibility(View.GONE);
+									line4.setVisibility(View.GONE);
 									line5.setVisibility(View.GONE);
 								} else {
 //									if (extraRateF <= 0) {
 										hbLayout.setVisibility(View.VISIBLE);
+										line4.setVisibility(View.VISIBLE);
 										line5.setVisibility(View.VISIBLE);
 										usePromptList.add("红包");
 										updateUsePrompt(usePromptList);
@@ -1497,6 +1548,7 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 								}
 							} else {
 								hbLayout.setVisibility(View.GONE);
+								line4.setVisibility(View.GONE);
 								line5.setVisibility(View.GONE);
 							}
 						}else{
@@ -1576,16 +1628,24 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 				R.layout.tyj_list_popwindow, null);
 		int[] screen = SettingsManager.getScreenDispaly(BidZXDActivity.this);
 		int width = screen[0];
-		int height = screen[1] * 1 / 3;
+		int height = screen[1] * 1 / 3 + getResources().getDimensionPixelSize(R.dimen.common_measure_100dp);
+		int hbCurPosition = 0;
+		try{
+			hbCurPosition = (int)hbArrowLayout.getTag(R.id.tag_third);
+		}catch (Exception e){
+			hbCurPosition = 0;
+		}
 		HBListPopupwindow popwindow = new HBListPopupwindow(
-				BidZXDActivity.this, popView, width, height,"请选择红包");
+				BidZXDActivity.this, popView, width, height,"选择红包 (共"+hbList.size()+"个)",hbCurPosition);
 		popwindow.show(mainLayout, hbList, new OnHBWindowItemClickListener() {
 			@Override
 			public void onItemClickListener(View view, int position) {
+				hbArrowLayout.setTag(R.id.tag_third,position);
 				if (position == 0) {
 					hbEditText.setText("");
 					hbEditText.setTag("");
-					hbArrowLayout.setTag("0");
+					hbArrowLayout.setTag(R.id.tag_first,"0");
+					hbArrowLayout.setTag(R.id.tag_second,"0");
 					updateInterest();
 				} else {
 					RedBagInfo info = hbList.get(position - 1);
@@ -1602,22 +1662,27 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					}
 					if(investMoney < limitMoney){
 						hbEditText.setText("");
-						Util.toastLong(BidZXDActivity.this, "投资金额尚未达到"+info.getMoney()+"元红包的单笔投资金额要求");
+						hbArrowLayout.setTag(R.id.tag_third,0);
+						Util.toastLong(BidZXDActivity.this, "您的投资金额不满足红包要求");
 					}else{
 						//同时置零其他几种道具
 						yuanMoneyET.setText(null);
 						jxqEditText.setText(null);
 						jxqEditText.setTag("");
 						jxqArrowLayout.setTag("0");
+						jxqArrowLayout.setTag(R.id.tag_third,0);
 
-						if(limitMoney >= 10000 && limitMoney % 10000 == 0){
-							hbEditText.setText(info.getMoney()+"元红包，"+"需投资"+limitMoney/10000+"万元及以上可用");
+						if(limitMoney >= 10000){
+							hbEditText.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())+"元</font>红包，"
+									+"需投资"+Util.formatRate(String.valueOf(limitMoney/10000d))+"万元及以上可用"));
 						}else{
-							hbEditText.setText(info.getMoney()+"元红包，"+"需投资"+info.getNeed_invest_money()+"元及以上可用");
+							hbEditText.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())+"元</font>红包，"
+									+"需投资"+info.getNeed_invest_money()+"元及以上可用"));
 						}
 
 						hbEditText.setTag(info.getId());
-						hbArrowLayout.setTag(info.getMoney());
+						hbArrowLayout.setTag(R.id.tag_first,info.getMoney());
+						hbArrowLayout.setTag(R.id.tag_second,info.getNeed_invest_money());
 						updateInterest();//红包也计算利息
 					}
 				}
@@ -1637,12 +1702,19 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 				R.layout.tyj_list_popwindow, null);
 		int[] screen = SettingsManager.getScreenDispaly(BidZXDActivity.this);
 		int width = screen[0];
-		int height = screen[1] * 1 / 3;
+		int height = screen[1] * 1 / 3 + getResources().getDimensionPixelSize(R.dimen.common_measure_100dp);
+		int jxqCurPosition = 0;
+		try{
+			jxqCurPosition = (int)jxqArrowLayout.getTag(R.id.tag_third);
+		}catch (Exception e){
+			jxqCurPosition = 0;
+		}
 		JXQListPopupwindow popwindow = new JXQListPopupwindow(
-				BidZXDActivity.this, popView, width, height,"请选择加息券");
+				BidZXDActivity.this, popView, width, height,"选择加息券 (共"+jxqList.size()+"个)",jxqCurPosition);
 		popwindow.show(mainLayout, jxqList, new OnHBWindowItemClickListener() {
 			@Override
 			public void onItemClickListener(View view, int position) {
+				jxqArrowLayout.setTag(R.id.tag_third,position);
 				if (position == 0) {
 					jxqEditText.setText(null);
 					jxqEditText.setTag("");
@@ -1663,18 +1735,22 @@ public class BidZXDActivity extends BaseActivity implements OnClickListener {
 					}
 					if(investMoney < limitMoney){
 						jxqEditText.setText("");
+						jxqArrowLayout.setTag(R.id.tag_third,0);
 						Util.toastLong(BidZXDActivity.this, "您的投资金额不满足加息券要求");
 					}else{
 						//同时置零其他几种道具
 						yuanMoneyET.setText(null);
 						hbEditText.setText("");
 						hbEditText.setTag("");
-						hbArrowLayout.setTag("0");
+						hbArrowLayout.setTag(R.id.tag_first,"0");
+						hbArrowLayout.setTag(R.id.tag_second,"0");
+						hbArrowLayout.setTag(R.id.tag_third,0);
 
-						if(limitMoney >= 10000 && limitMoney % 10000 == 0){
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney/10000)+"万元及以上可用");
+						if(limitMoney >= 10000){
+							jxqEditText.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())+"%</font>加息券，"
+									+"需投资"+Util.formatRate(String.valueOf(limitMoney/10000))+"万元及以上可用"));
 						}else{
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney)+"元及以上可用");
+							jxqEditText.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())+"%</font>加息券，"+"需投资"+(int)(limitMoney)+"元及以上可用"));
 						}
 						jxqEditText.setTag(info.getId());
 						jxqArrowLayout.setTag(info.getMoney());

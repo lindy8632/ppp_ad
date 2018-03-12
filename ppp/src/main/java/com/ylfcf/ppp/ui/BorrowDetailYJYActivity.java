@@ -350,16 +350,13 @@ public class BorrowDetailYJYActivity extends BaseActivity implements View.OnClic
                         BorrowDetailYJYActivity.this).isEmpty()
                         && !SettingsManager.getUser(BorrowDetailYJYActivity.this)
                         .isEmpty();
-                Intent intent = new Intent();
                 // 1、检测是否已经登录
                 if (isLogin) {
                     //判断是否实名绑卡
-//				checkIsVerify("政信贷投资");
-                    intent.putExtra("PRODUCT_INFO", productInfo);
-                    intent.setClass(BorrowDetailYJYActivity.this, BidYJYActivity.class);
-                    startActivity(intent);
+				    checkIsVerify("投资");
                 } else {
                     // 未登录，跳转到登录页面
+                    Intent intent = new Intent();
                     intent.setClass(BorrowDetailYJYActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
@@ -414,7 +411,10 @@ public class BorrowDetailYJYActivity extends BaseActivity implements View.OnClic
             public void isVerify(boolean flag, Object object) {
                 if(flag){
                     //用户已经实名
-                    checkIsBindCard(type);
+                    Intent intent = new Intent();
+                    intent.putExtra("PRODUCT_INFO", productInfo);
+                    intent.setClass(BorrowDetailYJYActivity.this, BidYJYActivity.class);
+                    startActivity(intent);
                 }else{
                     //用户没有实名
                     Intent intent = new Intent(BorrowDetailYJYActivity.this,UserVerifyActivity.class);
@@ -423,8 +423,8 @@ public class BorrowDetailYJYActivity extends BaseActivity implements View.OnClic
                     bundle.putSerializable("PRODUCT_INFO", productInfo);
                     intent.putExtra("bundle", bundle);
                     startActivity(intent);
-                    bidBtn.setEnabled(true);
                 }
+                bidBtn.setEnabled(true);
             }
             @Override
             public void isSetWithdrawPwd(boolean flag, Object object) {

@@ -151,7 +151,6 @@ public class IntroductionActivity extends BaseActivity {
 			} catch (OutOfMemoryError e) {
 				return null;
 			}
-
 			return bitmap;
 		}
 

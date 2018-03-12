@@ -126,7 +126,7 @@ public class BorrowListYJYAdapter extends ArrayAdapter<ProductInfo> {
         } catch (Exception e) {
         }
         viewHolder.angleImg.setImageResource(R.drawable.my_account_personal_zscp_huangguan_logo);
-        viewHolder.nhsyText.setText("预期年化收益率");
+        viewHolder.nhsyText.setText("年化利率");
 
         double extraInterestD = 0d;
         String extraInterest = info.getAndroid_interest_rate();

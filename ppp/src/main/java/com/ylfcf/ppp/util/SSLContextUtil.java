@@ -13,6 +13,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 
 /**
+ * 预埋证书到客户端，有可能在证书更新的时候造成老版本访问不了服务器。
  * Created by Administrator on 2017/11/15.
  */
 

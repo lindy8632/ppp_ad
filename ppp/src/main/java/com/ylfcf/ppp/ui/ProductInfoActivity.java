@@ -178,19 +178,19 @@ public class ProductInfoActivity extends BaseActivity implements
 				sygzLayout.setVisibility(View.VISIBLE);
 				sygzTV.setVisibility(View.VISIBLE);
 				sygzImg.setVisibility(View.VISIBLE);
-				sygzTV.setText("32天定期理财产品”预期年化收益率“6%起步,根据投资本金的增加,上调预期年化收益率,6.3%封顶。");
+				sygzTV.setText("32天定期投资产品”年化利率“6%起步,根据投资本金的增加,上调年化利率,6.3%封顶。");
 				sygzImg.setBackgroundResource(R.drawable.borrow_details_yyt_sygz_img);
 	        }else if(productInfo.getInterest_period().contains("92") && SettingsManager.checkFloatRate(productInfo)){
 	        	sygzLayout.setVisibility(View.VISIBLE);
 				sygzTV.setVisibility(View.VISIBLE);
 				sygzImg.setVisibility(View.VISIBLE);
-	        	sygzTV.setText("92天定期理财产品”预期年化收益率“6.5%起步,根据投资本金的增加,上调预期年化收益率,6.8%封顶。");
+	        	sygzTV.setText("92天定期投资产品”年化利率“6.5%起步,根据投资本金的增加,上调年化利率,6.8%封顶。");
 				sygzImg.setBackgroundResource(R.drawable.borrow_details_yjr_sygz_img);
 	        }else if(productInfo.getInterest_period().contains("182") && SettingsManager.checkFloatRate(productInfo)){
 	        	sygzLayout.setVisibility(View.VISIBLE);
 				sygzTV.setVisibility(View.VISIBLE);
 				sygzImg.setVisibility(View.VISIBLE);
-	        	sygzTV.setText("182天定期理财产品”预期年化收益率“7%起步,根据投资本金的增加,上调预期年化收益率,7.3%封顶。");
+	        	sygzTV.setText("182天定期投资产品”年化利率“7%起步,根据投资本金的增加,上调年化利率,7.3%封顶。");
 				sygzImg.setBackgroundResource(R.drawable.borrow_details_ydh_sygz_img);
 	        }
 		}

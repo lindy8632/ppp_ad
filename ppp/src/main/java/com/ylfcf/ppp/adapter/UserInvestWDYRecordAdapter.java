@@ -125,7 +125,7 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 		viewHolder.catBidRecords.setTag(R.id.tag_first,info);
 		viewHolder.catBidRecords.setTag(R.id.tag_second,curPosition);
 		if("投资中".equals(info.getStatus())){
-			viewHolder.nhllTitleTV.setText("本期预期年化收益率");
+			viewHolder.nhllTitleTV.setText("本期年化利率");
 			viewHolder.investType.setText("在投");
 			viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_yellow);
 			viewHolder.interestMoneyTitle.setText("预期收益");
@@ -156,7 +156,7 @@ public class UserInvestWDYRecordAdapter extends ArrayAdapter<InvestRecordInfo>{
 				viewHolder.interestMoney.setText("0元");
 			}
 		}else if("已还款".equals(info.getStatus())){
-			viewHolder.nhllTitleTV.setText("本期预期年化收益率");
+			viewHolder.nhllTitleTV.setText("本期年化利率");
 			viewHolder.investType.setText(info.getStatus());
 			viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_gray);
 			viewHolder.nextAddTime.setText("还款日期："+info.getInterest_end_time().split(" ")[0]);

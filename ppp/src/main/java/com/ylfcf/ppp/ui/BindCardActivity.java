@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -81,6 +82,7 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 	
 	private CountDownAsyncTask countDownAsynTask = null;
 	private final long intervalTime = 1000L;
+	private boolean isBindcard = false;
 	
 	private Handler handler = new Handler() {
 		@Override
@@ -202,12 +204,14 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 		promptBtn = (ImageView) findViewById(R.id.bind_card_activity_prompt_btn);
 		promptBtn.setOnClickListener(this);
 		bankPromptTV = (TextView) findViewById(R.id.bind_card_activity_bankprompt);
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				showBindCardPrompt();
-			}
-		}, 500L);
+		if("充值".equals(type) || "提现".equals(type)){
+			new Handler().postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					showBindCardPrompt();
+				}
+			}, 500L);
+		}
 	}
 
 	@Override
@@ -242,7 +246,12 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 			break;
 		}
 	}
-	
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		return super.onKeyDown(keyCode, event);
+	}
+
 	/**
 	 * 将银行列表保存到内存
 	 * @param bankList
@@ -346,37 +355,45 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 		Intent intent = new Intent();
 		if("充值".equals(type)){
 			intent.setClass(BindCardActivity.this, RechargeActivity.class);
+			startActivity(intent);
 		}else if("提现".equals(type)){
 			intent.setClass(BindCardActivity.this, WithdrawPwdGetbackActivity.class);
 			intent.putExtra("type", "设置");
+			startActivity(intent);
 		}else if("邀请有奖".equals(type)){
 			intent.setClass(BindCardActivity.this, InvitateActivity.class);
 			intent.putExtra("is_verify", true);
+			startActivity(intent);
 		}else if("新手标投资".equals(type)){
 			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
 			intent.setClass(BindCardActivity.this, BidXSBActivity.class);
+			startActivity(intent);
 		}else if("政信贷投资".equals(type)){
 			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
 			intent.setClass(BindCardActivity.this, BidZXDActivity.class);
+			startActivity(intent);
 		}else if("元月盈投资".equals(type)){
 			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
 			intent.setClass(BindCardActivity.this, BidYYYActivity.class);
+			startActivity(intent);
 		}else if("稳定盈投资".equals(type)){
 			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
 			intent.setClass(BindCardActivity.this, BidWDYActivity.class);
+			startActivity(intent);
 		}else if("VIP投资".equals(type)){
 			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
 			intent.setClass(BindCardActivity.this, BidVIPActivity.class);
+			startActivity(intent);
 		}else if("私人尊享".equals(type)){
 			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
 			intent.setClass(BindCardActivity.this, BidSRZXActivity.class);
+			startActivity(intent);
 		}else if("元聚盈".equals(type)){
 			intent.putExtra("PRODUCT_INFO", getIntent().getBundleExtra("bundle").getSerializable("PRODUCT_INFO"));
 			intent.setClass(BindCardActivity.this, BidYJYActivity.class);
+			startActivity(intent);
 		}else{
-			intent.setClass(BindCardActivity.this, MainFragmentActivity.class);
 		}
-		startActivity(intent);
 		finish();
 	}
 
@@ -387,8 +404,8 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 		View popView = LayoutInflater.from(this).inflate(R.layout.common_popwindow, null);
 		int[] screen = SettingsManager.getScreenDispaly(BindCardActivity.this);
 		int width = screen[0]*4/5;
-		int height = screen[1]*1/5;
-		CommonPopwindow popwindow = new CommonPopwindow(BindCardActivity.this,popView, width, height,"绑卡");
+		int height = screen[1]*1/4;
+		CommonPopwindow popwindow = new CommonPopwindow(BindCardActivity.this,popView, width, height,"绑卡","",null);
 		popwindow.show(mainLayout);
 	}
 	
@@ -450,6 +467,7 @@ public class BindCardActivity extends BaseActivity implements OnClickListener {
 							int resultCode = SettingsManager.getResultCode(baseInfo);
 							if(resultCode == 0){
 								//表示绑卡成功
+								isBindcard = true;
 								bindcardSuc();
 							}else{
 								Util.toastShort(BindCardActivity.this, baseInfo.getMsg());

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -86,12 +87,14 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 
 	private ProductInfo mProductInfo;
 	private int moneyInvest = 0;//投资金额
+	private double jxqMoneyD = 0d;
 	private Button investBtn;
 
 	private LinearLayout mainLayout;
-	private View line1;// 分割线
+	private View line1,line2;// 分割线
 	private CheckBox cb;
 	private TextView compactText;//借款协议
+	private TextView daojuPrompt;
 
 	private Handler handler = new Handler() {
 		@Override
@@ -147,7 +150,8 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 						}
 					}
 					if(jxqList.size() > 0){
-						jxqLayout.setVisibility(View.VISIBLE);
+						daojuPrompt.setVisibility(View.VISIBLE);
+						jxqLayoutVisible(View.VISIBLE);
 					}
 					break;
 			default:
@@ -250,6 +254,7 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 		}
 		mainLayout = (LinearLayout) findViewById(R.id.bid_activity_mainlayout);
 		line1 = findViewById(R.id.bid_wdy_activity_line1);
+		line2 = findViewById(R.id.bid_wdy_activity_line2);
 
 		cb = (CheckBox) findViewById(R.id.bid_wdy_activity_cb);
 		compactText = (TextView) findViewById(R.id.bid_wdy_activity_compact_text);
@@ -258,11 +263,18 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 		jxqLayout = (LinearLayout) findViewById(R.id.bid_wdy_activity_jxq_layout);
 		jxqLayout.setOnClickListener(this);
 		jxqEditText = (EditText) findViewById(R.id.bid_wdy_activity_jxq_et);
+		jxqEditText.setOnClickListener(this);
 		jxqArrowLayout = (RelativeLayout) findViewById(R.id.bid_wdy_activity_jxq_arrow_layout);
 		jxqArrowLayout.setOnClickListener(this);
-
+		daojuPrompt = (TextView) findViewById(R.id.bid_wdy_activity_daoju_prompt);
 	}
-	
+
+	private void jxqLayoutVisible(int isVisible){
+		line1.setVisibility(isVisible);
+		jxqLayout.setVisibility(isVisible);
+		line2.setVisibility(isVisible);
+	}
+
 	float extraRateF = 0f;
 	int borrowBalanceTemp = 0;
 
@@ -370,6 +382,7 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 			break;
 		case R.id.bid_wdy_activity_jxq_arrow_layout:
 		case R.id.bid_wdy_activity_jxq_layout:
+		case R.id.bid_wdy_activity_jxq_et:
 			checkJXQ();
 			break;
 		default:
@@ -421,12 +434,19 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 				R.layout.tyj_list_popwindow, null);
 		int[] screen = SettingsManager.getScreenDispaly(BidWDYActivity.this);
 		int width = screen[0];
-		int height = screen[1] * 1 / 3;
+		int height = screen[1] * 1 / 3 + getResources().getDimensionPixelSize(R.dimen.common_measure_100dp);
+		int jxqCurPosition = 0;
+		try{
+			jxqCurPosition = (int)jxqArrowLayout.getTag(R.id.tag_third);
+		}catch (Exception e){
+			jxqCurPosition = 0;
+		}
 		JXQListPopupwindow popwindow = new JXQListPopupwindow(
-				BidWDYActivity.this, popView, width, height,"请选择加息券");
+				BidWDYActivity.this, popView, width, height,"请选择加息券 (共"+jxqList.size()+"个)",jxqCurPosition);
 		popwindow.show(mainLayout, jxqList, new OnHBWindowItemClickListener() {
 			@Override
 			public void onItemClickListener(View view, int position) {
+				jxqArrowLayout.setTag(R.id.tag_third,position);
 				if (position == 0) {
 					jxqEditText.setText(null);
 					jxqEditText.setTag("");
@@ -447,12 +467,15 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 					}
 					if(investMoney < limitMoney){
 						jxqEditText.setText("");
+						jxqArrowLayout.setTag(R.id.tag_third,0);
 						Util.toastLong(BidWDYActivity.this, "您的投资金额不满足加息券要求");
 					}else{
 						if(limitMoney >= 10000){
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney/10000)+"万元及以上可用");
+							jxqEditText.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())
+									+"%</font>加息券，"+"需投资"+Util.formatRate(String.valueOf(limitMoney/10000))+"万元及以上可用"));
 						}else{
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney)+"元及以上可用");
+							jxqEditText.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())
+									+"%</font>加息券，"+"需投资"+(int)(limitMoney)+"元及以上可用"));
 						}
 						jxqEditText.setTag(info.getId());
 						jxqArrowLayout.setTag(info.getMoney());
@@ -508,6 +531,11 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 		try {
 			investLowestD = Double.parseDouble(mProductInfo.getInvest_lowest());
 		} catch (Exception e) {
+		}
+		try{
+			jxqMoneyD = Double.parseDouble(jxqArrowLayout.getTag().toString());
+		}catch (Exception e){
+
 		}
 		needRechargeMoeny = moneyInvest;
 		// 判断投资金额是否大于账户余额
@@ -591,7 +619,15 @@ public class BidWDYActivity extends BaseActivity implements OnClickListener{
 				.findViewById(R.id.invest_prompt_layout_total);
 		LinearLayout yuanMoneyLayout = (LinearLayout) contentView.findViewById(R.id.invest_prompt_yjb_layout_detail);
 		yuanMoneyLayout.setVisibility(View.GONE);
+		LinearLayout jxqLayout = (LinearLayout) contentView.findViewById(R.id.invest_prompt_yjbjxq_layout_detail);
+		TextView jxqText = (TextView) contentView.findViewById(R.id.invest_prompt_layout_yjbjxq_count);
 		totalMoneyTV.setText(moneyInvest + "");
+		if(jxqMoneyD > 0){
+			jxqLayout.setVisibility(View.VISIBLE);
+			jxqText.setText(Util.formatRate(String.valueOf(jxqMoneyD))+"%的加息券");
+		}else{
+			jxqLayout.setVisibility(View.GONE);
+		}
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this,
 				R.style.Dialog_Transparent); // 先得到构造器

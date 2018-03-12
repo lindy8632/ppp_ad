@@ -229,7 +229,7 @@ public class WithdrawActivity extends BaseActivity implements OnClickListener{
 	 */
 	private void sendSMScode(){
 		String params[] = null;
-		String userName = SettingsManager.getUserName(getApplicationContext());
+		String userName = usercardInfo.getReal_name();
 		String userPhone = SettingsManager.getUser(getApplicationContext());
 		if(userName != null && !"".equals(userName)){
 			params = SettingsManager.getSMSWithdrawApplyParams(userName);//拼接短信验证码格式

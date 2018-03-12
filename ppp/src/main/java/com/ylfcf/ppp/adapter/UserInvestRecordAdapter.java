@@ -159,7 +159,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
-			viewHolder.nhsyText.setText("预期年化收益率");
+			viewHolder.nhsyText.setText("年化利率");
 			viewHolder.addLayout.setVisibility(View.VISIBLE);
 			viewHolder.remarkLayout.setVisibility(View.GONE);
 			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);			
@@ -249,7 +249,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
-			viewHolder.nhsyText.setText("预期年化收益率");
+			viewHolder.nhsyText.setText("年化利率");
 			viewHolder.addLayout.setVisibility(View.VISIBLE);
 			viewHolder.remarkLayout.setVisibility(View.GONE);
 			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);
@@ -291,7 +291,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
-			viewHolder.nhsyText.setText("预期年化收益率");
+			viewHolder.nhsyText.setText("年化利率");
 			viewHolder.addLayout.setVisibility(View.GONE);
 			viewHolder.remarkLayout.setVisibility(View.VISIBLE);
 			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);
@@ -328,7 +328,7 @@ public class UserInvestRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.catCompactBtn.setEnabled(true);
 				viewHolder.catCompactBtn.setBackgroundResource(R.drawable.style_rect_fillet_filling_blue);
 			}
-			viewHolder.nhsyText.setText("预期年化收益率");
+			viewHolder.nhsyText.setText("年化利率");
 			viewHolder.addLayout.setVisibility(View.GONE);
 			viewHolder.remarkLayout.setVisibility(View.VISIBLE);
 			viewHolder.catCompactBtn.setVisibility(View.VISIBLE);

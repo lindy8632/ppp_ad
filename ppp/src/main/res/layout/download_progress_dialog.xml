@@ -13,7 +13,7 @@
 	    android:layout_marginTop="@dimen/common_measure_30dp"
 	    android:layout_marginBottom="@dimen/common_measure_20dp"
 	    android:layout_marginLeft="@dimen/common_measure_20dp"
-	    android:text="元立方理财"
+	    android:text="元立方投资"
 	    android:textSize="@dimen/common_measure_20dp"
 	    android:textColor="@color/gray"/>
 	

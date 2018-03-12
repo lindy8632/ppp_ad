@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -79,6 +80,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	private TextView borrowBalanceTV;// 标的剩余可投金额
 	private Button rechargeBtn;// 充值
 	private TextView usePrompt;//使用说明，加息券，元金币不能同时使用等
+	private TextView daojuUsePrompt;
 
 	private Button descendBtn;// 递减按钮
 	private Button increaseBtn;// 递增按钮
@@ -91,7 +93,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 	private EditText hbET;//红包输入框
 	private EditText jxqEditText;
 	private RelativeLayout hbArrowLayout;
-	private View line1,line2;
+	private View line1,line2,line3;
 	private LinearLayout jxqLayout;// 加息券
 	private RelativeLayout jxqArrowLayout;// 加息券的箭头
 
@@ -160,7 +162,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 						}
 					}
 					if(jxqList.size() > 0){
-						jxqLayout.setVisibility(View.VISIBLE);
+						jxqLayoutVisible(View.VISIBLE);
 						usePromptList.add("加息券");
 						updateUsePrompt(usePromptList);
 					}
@@ -216,6 +218,7 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		topTitleTV = (TextView) findViewById(R.id.common_page_title);
 		topTitleTV.setText("投资");
 
+		daojuUsePrompt = (TextView) findViewById(R.id.bid_srzx_activity_daoju_prompt);
 		usePrompt = (TextView) findViewById(R.id.bid_srzx_activity_use_prompt);
 		borrowName = (TextView) findViewById(R.id.bid_srzx_activity_borrow_name);
 		borrowName.setText(mProductInfo.getBorrow_name());
@@ -267,33 +270,41 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		hbLayout = (LinearLayout) findViewById(R.id.bid_srzx_activity_hb_layout);
 		hbLayout.setOnClickListener(this);
 		hbET = (EditText) findViewById(R.id.bid_srzx_activity_hb_et);
+		hbET.setOnClickListener(this);
 		hbArrowLayout = (RelativeLayout) findViewById(R.id.bid_srzx_activity_hb_arrow_layout);
 		hbArrowLayout.setOnClickListener(this);
 		line1 = findViewById(R.id.bid_srzx_activity_line1);
 		line2 = findViewById(R.id.bid_srzx_activity_line2);
+		line3 = findViewById(R.id.bid_srzx_activity_line3);
 		jxqLayout = (LinearLayout) findViewById(R.id.bid_srzx_activity_jxq_layout);
 		jxqLayout.setOnClickListener(this);
 		jxqArrowLayout = (RelativeLayout) findViewById(R.id.bid_srzx_activity_jxq_arrow_layout);
 		jxqArrowLayout.setOnClickListener(this);
 		jxqEditText = (EditText) findViewById(R.id.bid_srzx_activity_jxq_et);
+		jxqEditText.setOnClickListener(this);
 	}
 
 	private void updateUsePrompt(List<String> usePromptList){
-		StringBuffer sb = new StringBuffer();
-		if(usePromptList != null && usePromptList.size() > 1){
-			for(int i=0;i<usePromptList.size();i++){
-				String prompt = usePromptList.get(i);
-				if(i == usePromptList.size() - 1){
-					sb.append(prompt);
-				}else{
-					sb.append(prompt).append("、");
-				}
-			}
-			usePrompt.setVisibility(View.VISIBLE);
-			usePrompt.setText(sb.toString()+"只能使用其中一种");
+		if(usePromptList != null && usePromptList.size() > 0){
+			daojuUsePrompt.setVisibility(View.VISIBLE);
 		}else{
-			usePrompt.setVisibility(View.GONE);
+			daojuUsePrompt.setVisibility(View.GONE);
 		}
+		if(usePromptList == null || usePromptList.size() < 2){
+			return;
+		}
+		StringBuffer sb = new StringBuffer();
+		for(int i=0;i<usePromptList.size();i++){
+			String prompt = usePromptList.get(i);
+			if(i == usePromptList.size() - 1){
+				sb.append(prompt);
+			}else{
+				sb.append(prompt).append("、");
+			}
+		}
+
+		usePrompt.setVisibility(View.VISIBLE);
+		usePrompt.setText(sb.toString()+"只能使用其中一种");
 	}
 
 	/**
@@ -374,6 +385,26 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		}
 	};
 
+	/**
+	 * 隐藏显示红包布局
+	 * @param isVisible
+	 */
+	private void hbLayoutVisible(int isVisible){
+		line1.setVisibility(isVisible);
+		hbLayout.setVisibility(isVisible);
+		line2.setVisibility(isVisible);
+	}
+
+	/**
+	 * 隐藏显示加息券布局
+	 * @param isVisible
+	 */
+	private void jxqLayoutVisible(int isVisible){
+		line2.setVisibility(isVisible);
+		jxqLayout.setVisibility(isVisible);
+		line3.setVisibility(isVisible);
+	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -411,10 +442,12 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 			break;
 		case R.id.bid_srzx_activity_hb_layout:
 		case R.id.bid_srzx_activity_hb_arrow_layout:
+		case R.id.bid_srzx_activity_hb_et:
 			checkHB();
 			break;
 		case R.id.bid_srzx_activity_jxq_arrow_layout:
 		case R.id.bid_srzx_activity_jxq_layout:
+		case R.id.bid_srzx_activity_jxq_et:
 			checkJXQ();
 			break;
 		default:
@@ -442,12 +475,19 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 				R.layout.tyj_list_popwindow, null);
 		int[] screen = SettingsManager.getScreenDispaly(BidSRZXActivity.this);
 		int width = screen[0];
-		int height = screen[1] * 1 / 3;
+		int height = screen[1] * 1 / 3 + getResources().getDimensionPixelSize(R.dimen.common_measure_100dp);
+		int hbCurPosition = 0;
+		try{
+			hbCurPosition = (int)hbArrowLayout.getTag(R.id.tag_third);
+		}catch (Exception e){
+			hbCurPosition = 0;
+		}
 		HBListPopupwindow popwindow = new HBListPopupwindow(
-				BidSRZXActivity.this, popView, width, height,"请选择红包");
+				BidSRZXActivity.this, popView, width, height,"选择红包 (共"+hbList.size()+"个)",hbCurPosition);
 		popwindow.show(mainLayout, hbList, new OnHBWindowItemClickListener() {
 			@Override
 			public void onItemClickListener(View view, int position) {
+				hbArrowLayout.setTag(R.id.tag_third,position);
 				if (position == 0) {
 					hbET.setText("");
 					hbET.setTag("");
@@ -468,17 +508,21 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 					}
 					if(investMoney < limitMoney){
 						hbET.setText("");
-						Util.toastLong(BidSRZXActivity.this, "投资金额尚未达到"+info.getMoney()+"元红包的单笔投资金额要求");
+						hbArrowLayout.setTag(R.id.tag_third,0);
+						Util.toastLong(BidSRZXActivity.this, "您的投资金额不满足红包要求");
 					}else{
 						//其他加息道具置零
 						jxqEditText.setText(null);
 						jxqEditText.setTag("");
 						jxqArrowLayout.setTag("0");
+						jxqArrowLayout.setTag(R.id.tag_third,0);
 
-						if(limitMoney >= 10000 && limitMoney % 10000 == 0){
-							hbET.setText(info.getMoney()+"元红包，"+"需投资"+limitMoney/10000+"万元及以上可用");
+						if(limitMoney >= 10000){
+							hbET.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())+"元</font>红包，需投资"
+									+Util.formatRate(String.valueOf(limitMoney/10000d))+"万元及以上可用"));
 						}else{
-							hbET.setText(info.getMoney()+"元红包，"+"需投资"+limitMoney+"元及以上可用");
+							hbET.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())+"元</font>红包，需投资"
+									+limitMoney+"元及以上可用"));
 						}
 						hbET.setTag(info.getId());
 						hbArrowLayout.setTag(info.getMoney());
@@ -501,12 +545,19 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 				R.layout.tyj_list_popwindow, null);
 		int[] screen = SettingsManager.getScreenDispaly(BidSRZXActivity.this);
 		int width = screen[0];
-		int height = screen[1] * 1 / 3;
+		int height = screen[1] * 1 / 3 + getResources().getDimensionPixelSize(R.dimen.common_measure_100dp);
+		int jxqCurPosition = 0;
+		try{
+			jxqCurPosition = (int)jxqArrowLayout.getTag(R.id.tag_third);
+		}catch (Exception e){
+			jxqCurPosition = 0;
+		}
 		JXQListPopupwindow popwindow = new JXQListPopupwindow(
-				BidSRZXActivity.this, popView, width, height,"请选择加息券");
+				BidSRZXActivity.this, popView, width, height,"选择加息券 (共"+jxqList.size()+"个)",jxqCurPosition);
 		popwindow.show(mainLayout, jxqList, new OnHBWindowItemClickListener() {
 			@Override
 			public void onItemClickListener(View view, int position) {
+				jxqArrowLayout.setTag(R.id.tag_third,position);
 				if (position == 0) {
 					jxqEditText.setText(null);
 					jxqEditText.setTag("");
@@ -527,17 +578,21 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 					}
 					if(investMoney < limitMoney){
 						jxqEditText.setText("");
+						jxqArrowLayout.setTag(R.id.tag_third,0);
 						Util.toastLong(BidSRZXActivity.this, "您的投资金额不满足加息券要求");
 					}else{
 						//其他加息道具置零
 						hbET.setText("");
 						hbET.setTag("");
 						hbArrowLayout.setTag("0");
+						hbArrowLayout.setTag(R.id.tag_third,0);
 
-						if(limitMoney >= 10000 && limitMoney%10000 == 0){
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney/10000)+"万元及以上可用");
+						if(limitMoney >= 10000){
+							jxqEditText.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())
+									+"%</font>加息券，"+"需投资"+Util.formatRate(String.valueOf(limitMoney/10000))+"万元及以上可用"));
 						}else{
-							jxqEditText.setText(info.getMoney()+"%的加息券，"+"需投资"+(int)(limitMoney)+"元及以上可用");
+							jxqEditText.setText(Html.fromHtml("<font color='#31B2FE'>"+Util.formatRate(info.getMoney())
+									+"%</font>加息券，"+"需投资"+(int)(limitMoney)+"元及以上可用"));
 						}
 						jxqEditText.setTag(info.getId());
 						jxqArrowLayout.setTag(info.getMoney());
@@ -675,18 +730,18 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 		detailLayout.setVisibility(View.GONE);
 		if(hbMoneyD > 0){
 			hbLayout.setVisibility(View.VISIBLE);
-			hbMoneyTV.setText((int)hbMoneyD+"元红包");
+			hbMoneyTV.setText(Util.formatRate(String.valueOf(hbMoneyD))+"元红包");
 		}else{
 			hbLayout.setVisibility(View.GONE);
 		}
         //使用加息券
         if(jxqMoneyD > 0){
             yjbjxqLayout.setVisibility(View.VISIBLE);
-            yjbjxqText.setText(jxqMoneyD+"%的加息券");
+            yjbjxqText.setText(Util.formatRate(String.valueOf(jxqMoneyD))+"%的加息券");
         }else{
             yjbjxqLayout.setVisibility(View.GONE);
         }
-        hbMoneyTV.setText((int)hbMoneyD+"元红包");
+        hbMoneyTV.setText(Util.formatRate(String.valueOf(hbMoneyD))+"元红包");
 		totalMoney.setText(moneyInvest + "");
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this,
@@ -905,31 +960,17 @@ public class BidSRZXActivity extends BaseActivity implements OnClickListener{
 									hbList.addAll(pageInfo.getRedbagList());
 								}
 								if (hbList.size() < 1) {
-									hbLayout.setVisibility(View.GONE);
-									line1.setVisibility(View.GONE);
-									line2.setVisibility(View.GONE);
+									hbLayoutVisible(View.GONE);
 								} else {
 									usePromptList.add("红包");
 									updateUsePrompt(usePromptList);
-//									if (extraRateF <= 0) {
-										hbLayout.setVisibility(View.VISIBLE);
-										line1.setVisibility(View.VISIBLE);
-										line2.setVisibility(View.VISIBLE);
-//									} else {
-//										hbLayout.setVisibility(View.GONE);
-//										line1.setVisibility(View.GONE);
-//										line2.setVisibility(View.GONE);
-//									}
+									hbLayoutVisible(View.VISIBLE);
 								}
 							} else {
-								hbLayout.setVisibility(View.GONE);
-								line1.setVisibility(View.GONE);
-								line2.setVisibility(View.GONE);
+								hbLayoutVisible(View.GONE);
 							}
 						}else{
-							hbLayout.setVisibility(View.GONE);
-							line1.setVisibility(View.GONE);
-							line2.setVisibility(View.GONE);
+							hbLayoutVisible(View.GONE);
 						}
 					}
 				});

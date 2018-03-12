@@ -285,13 +285,31 @@
                 android:layout_height="@dimen/common_measure_1dp"
                 android:background="@color/edittext_line_color" />
 
+            <TextView
+                android:id="@+id/bid_wdy_activity_daoju_prompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_measure_20dp"
+                android:layout_marginBottom="@dimen/common_measure_8dp"
+                android:layout_marginTop="@dimen/common_measure_8dp"
+                android:text="您有可使用的道具："
+                android:textSize="@dimen/common_measure_18dp"
+                android:textColor="@color/common_topbar_bg_color"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/bid_wdy_activity_line1"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_measure_1dp"
+                android:background="@color/edittext_line_color"
+                android:visibility="gone"/>
+
             <!-- 加息券 -->
 
             <LinearLayout
                 android:id="@+id/bid_wdy_activity_jxq_layout"
                 android:layout_width="fill_parent"
-                android:layout_height="@dimen/common_measure_80dp"
-                android:layout_marginTop="@dimen/common_measure_10dp"
+                android:layout_height="@dimen/common_measure_60dp"
                 android:background="@color/white"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
@@ -301,8 +319,8 @@
                 android:visibility="gone" >
 
                 <ImageView
-                    android:layout_width="@dimen/common_measure_36dp"
-                    android:layout_height="@dimen/common_measure_36dp"
+                    android:layout_width="@dimen/common_measure_30dp"
+                    android:layout_height="@dimen/common_measure_30dp"
                     android:src="@drawable/jxq_bg" />
 
                 <EditText
@@ -312,16 +330,17 @@
                     android:layout_marginLeft="@dimen/common_measure_20dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:enabled="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:hint="请选择加息券"
                     android:inputType="number"
                     android:textColor="@color/gray2"
                     android:textColorHint="@color/edittext_hint_color"
-                    android:textSize="@dimen/common_measure_18dp" />
+                    android:textSize="@dimen/common_measure_20dp" />
 
                 <RelativeLayout
                     android:id="@+id/bid_wdy_activity_jxq_arrow_layout"
-                    android:layout_width="@dimen/common_measure_100dp"
+                    android:layout_width="@dimen/common_measure_50dp"
                     android:layout_height="fill_parent" >
 
                     <ImageView
@@ -329,17 +348,17 @@
                         android:layout_height="@dimen/common_measure_20dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/common_measure_30dp"
-                        android:src="@drawable/arrow_logo" />
+                        android:layout_marginRight="@dimen/common_measure_20dp"
+                        android:src="@drawable/arrow_right" />
                 </RelativeLayout>
             </LinearLayout>
 
             <View
-                android:id="@+id/bid_wdy_activity_line1"
+                android:id="@+id/bid_wdy_activity_line2"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/common_measure_1dp"
-                android:layout_marginTop="@dimen/common_measure_12dp"
-                android:background="@color/edittext_line_color" />
+                android:background="@color/edittext_line_color"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/bid_wdy_activity_borrow_bidBtn"
@@ -366,7 +385,7 @@
                     android:id="@+id/bid_wdy_activity_cb"
                     android:layout_width="@dimen/common_measure_35dp"
                     android:layout_height="@dimen/common_measure_35dp"
-                    android:layout_marginRight="@dimen/common_measure_10dp"
+                    android:layout_marginRight="@dimen/common_measure_5dp"
                     android:button="@drawable/checkbox_selector"
                     android:checked="true" />
 

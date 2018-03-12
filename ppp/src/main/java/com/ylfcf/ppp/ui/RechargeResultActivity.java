@@ -63,17 +63,15 @@ public class RechargeResultActivity extends BaseActivity implements
 		investBtn.setOnClickListener(this);
 		catProofBtn = (Button) findViewById(R.id.recharge_result_proof_btn);
 		catProofBtn.setOnClickListener(this);
-
+		double rechargeMoney = 0d;
+		try {
+			rechargeMoney = Double.parseDouble(tempInfo.getRechargeMoney());
+		} catch (Exception e) {
+		}
 		if ("recharge".equals(tempInfo.getType())) {
 			// 充值跳转过来的
-			double rechargeMoney = 0d;
-			try {
-				rechargeMoney = Double.parseDouble(tempInfo.getRechargeMoney());
-			} catch (Exception e) {
-			}
 			topTitleTV.setText("充值");
 			moneyLayout.setVisibility(View.VISIBLE);
-
 			moneyTV.setText(Util.double2PointDouble(rechargeMoney));
 			promptTV.setText("操作成功,充值订单正在处理");
 		} else if ("bindcard".equals(tempInfo.getType())) {
@@ -81,6 +79,13 @@ public class RechargeResultActivity extends BaseActivity implements
 			topTitleTV.setText("绑卡认证");
 			moneyLayout.setVisibility(View.GONE);
 			promptTV.setText("操作成功,绑卡认证正在处理");
+		}else if("pos".equals(tempInfo.getType())){
+			// POS充值跳转过来的
+			topTitleTV.setText("充值");
+			moneyLayout.setVisibility(View.VISIBLE);
+			moneyTV.setText(Util.double2PointDouble(rechargeMoney));
+			catProofBtn.setVisibility(View.GONE);
+			promptTV.setText("充值成功");
 		}
 	}
 

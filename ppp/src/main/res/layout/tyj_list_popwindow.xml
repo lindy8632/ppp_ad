@@ -4,26 +4,40 @@
     android:layout_height="match_parent"
     android:background="@color/child_background"
     android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_measure_60dp">
+
+        <TextView
+            android:id="@+id/tyj_list_popupwindow_title"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="选择体验金"
+            android:textColor="@color/common_topbar_bg_color"
+            android:textSize="@dimen/common_measure_20dp"/>
+
+        <ImageView
+            android:id="@+id/tyj_list_popupwindow_x_img"
+            android:layout_width="@dimen/common_measure_25dp"
+            android:layout_height="@dimen/common_measure_25dp"
+            android:src="@drawable/x_img"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/common_measure_20dp"/>
+
+    </RelativeLayout>
     
-    <TextView 
-        android:id="@+id/tyj_list_popupwindow_title"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/common_measure_60dp"
-        android:gravity="center"
-        android:text="请选择体验金"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/common_measure_22dp"/>
-    
-    <View 
+    <View
         android:layout_width="fill_parent"
         android:layout_height="@dimen/common_measure_1dp"
-        android:background="@color/edittext_hint_color"/>
+        android:background="@color/edittext_line_color"/>
     
     <ListView 
         android:id="@+id/tyj_list_popupwindow_listview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:divider="@color/edittext_line_color"
         android:dividerHeight="@dimen/common_measure_1dp"
         android:layout_weight="1"/>
 

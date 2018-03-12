@@ -1,11 +1,7 @@
 package com.ylfcf.ppp.adapter;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,13 +12,18 @@ import android.widget.TextView;
 import com.ylfcf.ppp.R;
 import com.ylfcf.ppp.entity.RechargeRecordInfo;
 import com.ylfcf.ppp.util.Util;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * 充值记录
  * @author Mr.liu
  *
  */
 public class RechargeRecordAdapter extends ArrayAdapter<RechargeRecordInfo>{
-	private static final int RESOURCE_ID = R.layout.wdy_lendrecord_item;  
+	private static final int RESOURCE_ID = R.layout.recharge_record_item;
 	private Context context;
 	private List<RechargeRecordInfo> rechargeList = null;
 	private LayoutInflater layoutInflater = null;
@@ -73,11 +74,11 @@ public class RechargeRecordAdapter extends ArrayAdapter<RechargeRecordInfo>{
 		if(convertView == null){
 			viewHolder = new ViewHolder();
 			convertView = layoutInflater.inflate(RESOURCE_ID, null);
-			viewHolder.rechargeTime = (TextView)convertView.findViewById(R.id.wdy_lendrecord_item_plandate);
-			viewHolder.rechargeMoney = (TextView)convertView.findViewById(R.id.wdy_lendrecord_item_realdate);
-			viewHolder.status = (TextView)convertView.findViewById(R.id.wdy_lendrecord_item_money);
-			viewHolder.option = (TextView)convertView.findViewById(R.id.wdy_lendrecord_item_option);
-			
+			viewHolder.rechargeTime = (TextView)convertView.findViewById(R.id.recharge_record_item_time);
+			viewHolder.rechargeMoney = (TextView)convertView.findViewById(R.id.recharge_record_item_money);
+			viewHolder.status = (TextView)convertView.findViewById(R.id.recharge_record_item_status);
+			viewHolder.proof = (TextView)convertView.findViewById(R.id.recharge_record_item_proof);
+			viewHolder.from = (TextView)convertView.findViewById(R.id.recharge_record_item_from);
 			convertView.setTag(viewHolder);
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -96,16 +97,52 @@ public class RechargeRecordAdapter extends ArrayAdapter<RechargeRecordInfo>{
 			viewHolder.rechargeMoney.setText(info.getAccount()+"元");
 		}
 		viewHolder.status.setText(info.getStatus());
+
 		if("成功".equals(info.getStatus())){
-			viewHolder.option.setText("查看转账凭证");
-			viewHolder.option.setEnabled(true);
-			viewHolder.option.setTextColor(context.getResources().getColor(R.color.common_topbar_bg_color));
+			if("宝付".equals(info.getDo_type())){
+				if(info.getBank() != null && !"".equals(info.getBank())){
+					if(Util.isNumeric(info.getBank())){
+						//如果是数字字符串，则是网银充值
+						viewHolder.proof.setVisibility(View.VISIBLE);
+						viewHolder.proof.setText("查看转账凭证");
+						viewHolder.proof.setEnabled(true);
+						viewHolder.proof.setTextColor(context.getResources().getColor(R.color.common_topbar_bg_color));
+						viewHolder.from.setGravity(Gravity.TOP);
+						viewHolder.from.setText("网银充值");
+					}else{
+						//快捷充值
+						viewHolder.proof.setVisibility(View.VISIBLE);
+						viewHolder.proof.setText("查看转账凭证");
+						viewHolder.proof.setEnabled(true);
+						viewHolder.proof.setTextColor(context.getResources().getColor(R.color.common_topbar_bg_color));
+						viewHolder.from.setGravity(Gravity.TOP);
+						viewHolder.from.setText("快捷充值");
+					}
+				} else{
+					viewHolder.proof.setEnabled(false);
+					viewHolder.proof.setVisibility(View.GONE);
+					viewHolder.from.setText("一 一");
+					viewHolder.from.setGravity(Gravity.CENTER);
+				}
+			}else if("通联".equals(info.getDo_type())){
+				viewHolder.proof.setEnabled(false);
+				viewHolder.proof.setVisibility(View.GONE);
+				viewHolder.from.setGravity(Gravity.CENTER);
+				viewHolder.from.setText("POS充值");
+			}else{
+				viewHolder.proof.setEnabled(false);
+				viewHolder.proof.setVisibility(View.GONE);
+				viewHolder.from.setGravity(Gravity.CENTER);
+				viewHolder.from.setText(info.getDo_type()+"充值");
+			}
 		}else{
-			viewHolder.option.setText("一 一");
-			viewHolder.option.setEnabled(false);
-			viewHolder.option.setTextColor(context.getResources().getColor(R.color.gray1));
+			viewHolder.proof.setEnabled(false);
+			viewHolder.proof.setVisibility(View.GONE);
+			viewHolder.from.setText("一 一");
+			viewHolder.from.setGravity(Gravity.CENTER);
 		}
-		viewHolder.option.setOnClickListener(new OnClickListener() {
+
+		viewHolder.proof.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				onItemClickListener.onClick(v, info);
@@ -123,7 +160,8 @@ public class RechargeRecordAdapter extends ArrayAdapter<RechargeRecordInfo>{
 		TextView rechargeTime;//充值时间
 		TextView rechargeMoney;//充值金额
 		TextView status;//充值状态
-		TextView option;//操作
+		TextView proof;//充值凭证
+		TextView from;//充值来源
 	}
 
 	public interface OnRechargeRecordItemClickListener{

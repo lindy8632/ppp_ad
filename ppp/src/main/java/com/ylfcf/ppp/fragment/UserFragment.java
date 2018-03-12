@@ -89,6 +89,8 @@ public class UserFragment extends BaseFragment{
 		return rootView;
 	}
 
+
+
 	private void findViews(View view){
 		topLayout = view.findViewById(R.id.user_fragment_toplayout);
 		topbarLeftLayout = (LinearLayout) topLayout.findViewById(R.id.common_topbar_left_layout);
@@ -232,6 +234,7 @@ public class UserFragment extends BaseFragment{
 		super.onResume();
 		UMengStatistics.statisticsOnPageStart(className);
 		YLFLogger.d("UserFragment ------onResume()");
+		initMainLayout(null);
 	}
 
 	@Override

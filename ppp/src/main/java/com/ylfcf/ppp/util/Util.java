@@ -516,6 +516,12 @@ public class Util {
 		Matcher matcher	= pattern.matcher(phoneNo);
 		return matcher.find();
 	}
+
+	//ÅÐ¶Ï×Ö·û´®ÊÇ·ñÎªÊý×Ö×Ö·û´®
+	public static boolean isNumeric(String str){
+		Pattern pattern = Pattern.compile("[0-9]*");
+		return pattern.matcher(str).matches();
+	}
 	
 	public static boolean checkPassword(String password) {
     	if(password.length()>=6&&password.length()<=16&&password.indexOf(" ")<=0)

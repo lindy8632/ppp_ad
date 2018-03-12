@@ -360,7 +360,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.6"
-                android:text="元信宝募集到的资金流向，包括但不限于投资于私募债投资品种，资金闲置期间可投资于具有稳健收益、流动性较好的资本与金融工具，包括但不限于货币市场基金、银行存款、低风险银行理财产品、取得基金业协会颁发的管理人登记证书的私募管理人发行的私募投资基金、收益权拆分转让产品等，以及法律法规或中国证监会允许基金投资的其他金融产品。\n"
+                android:text="元信宝募集到的资金流向，包括但不限于投资于私募债投资品种，资金闲置期间可投资于具有稳健收益、流动性较好的资本与金融工具，包括但不限于货币市场基金、银行存款、低风险银行投资产品、取得基金业协会颁发的管理人登记证书的私募管理人发行的私募投资基金、收益权拆分转让产品等，以及法律法规或中国证监会允许基金投资的其他金融产品。\n"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/common_measure_18dp" />
             

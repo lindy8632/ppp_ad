@@ -22,16 +22,16 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
     <output url="file://$MODULE_DIR$/build/intermediates/classes/anbeishichang/debug" />
     <output-test url="file://$MODULE_DIR$/build/intermediates/classes/test/anbeishichang/debug" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/anbeishichang/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/anbeishichang/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/anbeishichang/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/anbeishichang/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/anbeishichang/debug" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/anbeishichang/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/anbeishichang/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/anbeishichang/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichangDebug/res" type="java-resource" />
@@ -41,6 +41,21 @@
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichangDebug/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichangDebug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichangDebug/shaders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/anbeishichang/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/anbeishichang/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestAnbeishichangDebug/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestAnbeishichangDebug/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestAnbeishichangDebug/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestAnbeishichangDebug/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestAnbeishichangDebug/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestAnbeishichangDebug/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestAnbeishichangDebug/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/test/anbeishichang/debug" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/assets" type="java-test-resource" />
@@ -48,13 +63,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testAnbeishichangDebug/shaders" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/androidTest/anbeishichang/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/anbeishichang/debug" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/anbeishichang/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichang/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichang/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/anbeishichang/assets" type="java-resource" />
@@ -83,6 +91,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/debug/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/shaders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDebug/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testDebug/assets" type="java-test-resource" />
@@ -93,6 +108,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/assets" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/aidl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
@@ -111,74 +127,85 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/shaders" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
-<<<<<<< Updated upstream
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
-=======
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/build-info" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-safeguard" />
->>>>>>> Stashed changes
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-runtime-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-verifier" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-resources" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-support" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/merged-not-compiled-resources" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/proguard-rules" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res_stripped" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/shaders" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/split-apk" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/splits-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
-    <orderEntry type="library" exported="" name="jsoup-1.7.2" level="project" />
-    <orderEntry type="library" exported="" name="libammsdk" level="project" />
-    <orderEntry type="library" exported="" name="libapshare" level="project" />
-    <orderEntry type="library" exported="" name="zxing" level="project" />
-    <orderEntry type="library" exported="" name="SocialSDK_Sina_Full" level="project" />
-    <orderEntry type="library" exported="" name="umeng_social_shareview" level="project" />
-    <orderEntry type="library" exported="" name="open_sdk_r5756_lite" level="project" />
-    <orderEntry type="library" exported="" name="weiboSDKCore_3.1.4" level="project" />
-    <orderEntry type="library" exported="" name="support-fragment-25.0.1" level="project" />
-    <orderEntry type="library" exported="" name="jpush-android-2.2.0" level="project" />
-    <orderEntry type="library" exported="" name="animated-vector-drawable-23.4.0" level="project" />
-    <orderEntry type="library" exported="" name="cardview-v7-25.1.1" level="project" />
-    <orderEntry type="library" exported="" name="support-core-ui-25.0.1" level="project" />
-    <orderEntry type="library" exported="" name="umeng_social_shareboard" level="project" />
-    <orderEntry type="library" exported="" name="sun.misc.BASE64Decoder" level="project" />
-    <orderEntry type="library" exported="" name="support-vector-drawable-23.4.0" level="project" />
-    <orderEntry type="library" exported="" name="line-android-sdk-3.1.19" level="project" />
-    <orderEntry type="library" exported="" name="umeng_shareboard_widget" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-23.4.0" level="project" />
-    <orderEntry type="library" exported="" name="support-core-utils-25.0.1" level="project" />
-    <orderEntry type="library" exported="" name="master-nineoldandroids-library" level="project" />
-    <orderEntry type="library" exported="" name="libddshare" level="project" />
-    <orderEntry type="library" exported="" name="httpmime-4.1.3" level="project" />
-    <orderEntry type="library" exported="" name="umeng_social_net" level="project" />
-    <orderEntry type="library" exported="" name="umeng_social_api" level="project" />
-    <orderEntry type="library" exported="" name="mta-sdk-1.6.2" level="project" />
-    <orderEntry type="library" exported="" name="umeng_social_tool" level="project" />
-    <orderEntry type="library" exported="" name="SocialSDK_QQ_Full" level="project" />
-    <orderEntry type="library" exported="" name="support-compat-25.0.1" level="project" />
-    <orderEntry type="library" exported="" name="SocialSDK_WeiXin_Full" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-25.0.1" level="project" />
-    <orderEntry type="library" exported="" name="com.umeng.message.lib_v2.6.0" level="project" />
-    <orderEntry type="library" exported="" name="support-media-compat-25.0.1" level="project" />
-    <orderEntry type="library" exported="" name="umeng-analytics-v5.6.3" level="project" />
-    <orderEntry type="library" exported="" name="recyclerview-v7-25.0.1" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-25.1.1" level="project" />
-    <orderEntry type="module" module-name="imageLoaderLibrary" exported="" />
-    <orderEntry type="module" module-name="library" exported="" />
-    <orderEntry type="module" module-name="ylfcfwidgetlibrary" exported="" />
-    <orderEntry type="library" exported="" scope="TEST" name="runner-0.5" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="espresso-idling-resource-2.2.2" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="hamcrest-library-1.3" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="hamcrest-integration-1.3" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="jsr305-2.0.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="espresso-core-2.2.2" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="exposed-instrumentation-api-publish-0.5" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="rules-0.5" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="javax.annotation-api-1.2" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="javax.inject-1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="javawriter-2.1.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\SocialSDK_QQ_Simplify.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\umeng_social_api.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\umeng_social_shareboard.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\zxing.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:appcompat-v7-23.4.0" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\SocialSDK_WeChat_Simplify.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.aliyun.ams:alicloud-android-utdid:1.1.5.3@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\GifView.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:animated-vector-drawable-23.4.0" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\jsoup-1.7.2.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\master-nineoldandroids-library.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:support-core-ui-25.0.1" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170801_113025.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.aliyun.ams:alicloud-android-utils:1.0.3@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:support-media-compat-25.0.1" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\httpmime-4.1.3.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\mta-sdk-1.6.2.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\umeng_social_shareview.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.wx.wheelview:wheelview-1.3.3" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\libddshare.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\sun.misc.BASE64Decoder.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\PushSDK\libs\com.umeng.message_3.1.2a.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.aliyun.ams:alicloud-android-hotfix-3.1.6" level="project" />
+    <orderEntry type="library" name="com.android.support:support-v4-25.0.1" level="project" />
+    <orderEntry type="library" name="com.android.support:support-fragment-25.0.1" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\libammsdk.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:support-vector-drawable-23.4.0" level="project" />
+    <orderEntry type="library" name="com.android.support:support-core-utils-25.0.1" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\line-android-sdk-3.1.19.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.2.4@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\umeng_social_net.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.umeng.analytics:analytics:6.1.4@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:support-compat-25.0.1" level="project" />
+    <orderEntry type="library" name="com.android.support:support-annotations:25.0.1@jar" level="project" />
+    <orderEntry type="library" name="com.youth.banner:banner-1.4.9" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\open_sdk_r5788_lite.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\umeng_social_tool.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\libapshare.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:recyclerview-v7-25.0.1" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\json_simple-1.1.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\umeng_shareboard_widget.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:D.\GitRepository\ppp_ad\ppp\libs\SocialSDK_Sina_Simplify.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="com.github.bumptech.glide:glide:3.7.0@jar" level="project" />
+    <orderEntry type="module" module-name="PushSDK" />
+    <orderEntry type="module" module-name="imageLoaderLibrary" />
+    <orderEntry type="module" module-name="library" />
+    <orderEntry type="module" module-name="ylfcfwidgetlibrary" />
   </component>
 </module>

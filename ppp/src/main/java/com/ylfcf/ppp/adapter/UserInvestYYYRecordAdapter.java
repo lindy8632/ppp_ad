@@ -109,7 +109,7 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 		viewHolder.applyOrCancelBtn.setTag(R.id.tag_first,info);
 		viewHolder.applyOrCancelBtn.setTag(R.id.tag_second,curPosition);
 		if("投资中".equals(info.getReturn_status())){
-			viewHolder.nhllTitleTV.setText("本期预期年化收益率");
+			viewHolder.nhllTitleTV.setText("本期年化利率");
 			viewHolder.investType.setText(info.getInvest_status());
 			viewHolder.investType.setTextColor(context.getResources().getColor(R.color.white));
 			if("首投".equals(info.getInvest_status())){
@@ -118,7 +118,7 @@ public class UserInvestYYYRecordAdapter extends ArrayAdapter<InvestRecordInfo> {
 				viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_orange);
 			}
 		}else{
-			viewHolder.nhllTitleTV.setText("本期实际年化收益率");
+			viewHolder.nhllTitleTV.setText("本期年化利率");
 			viewHolder.investType.setText(info.getReturn_status());
 			viewHolder.investType.setTextColor(context.getResources().getColor(R.color.gray));
 			viewHolder.investType.setBackgroundResource(R.drawable.style_rect_fillet_filling_edit_white);

@@ -26,7 +26,8 @@
                 android:layout_margin="@dimen/common_measure_20dp"
                 android:background="@drawable/style_rect_fillet_filling_blue2"
                 android:orientation="horizontal"
-                android:padding="@dimen/common_measure_10dp" >
+                android:padding="@dimen/common_measure_10dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -49,6 +50,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="@dimen/common_measure_20dp"
                 android:layout_marginRight="@dimen/common_measure_20dp"
+                android:layout_marginTop="@dimen/common_measure_20dp"
                 android:orientation="vertical" >
 
                 <LinearLayout

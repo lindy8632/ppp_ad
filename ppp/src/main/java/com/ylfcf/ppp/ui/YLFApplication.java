@@ -125,6 +125,17 @@ public class YLFApplication extends android.app.Application {
 		return mainActivity;
 	}
 
+	public InvitateActivity getInvitateActivity(){
+		InvitateActivity invitateActivity = null;
+		for (Activity activity : activityList) {
+			if (activity instanceof InvitateActivity) {
+				invitateActivity = (InvitateActivity) activity;
+				break;
+			}
+		}
+		return invitateActivity;
+	}
+
 	/**
 	 * @return
 	 */

@@ -2,17 +2,18 @@ apply plugin: 'com.android.application'
 apply from: 'constants.gradle'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     aaptOptions.cruncherEnabled = false //对png图片的合理性检查
     aaptOptions.useNewCruncher = false //对png图片的合理性检查
 
     defaultConfig {
         applicationId "com.ylfcf.ppp"
         minSdkVersion 17
-        targetSdkVersion 22
-        versionCode 161
-        versionName "1.6.1"
+        targetSdkVersion 26
+        versionCode 166
+        versionName "1.6.6"
+        flavorDimensions "versionCode"//gradle升级到3.0之后需要的配置。保持flavor的版本跟发布版本是同一个额版本
     }
 
     compileOptions {
@@ -37,13 +38,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
             // 自定义输出配置
             applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        // 输出apk名称为ppp_v1.0_wandoujia.apk
-                        def fileName = "ppp_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
-                        output.outputFile = new File(outputFile.parent, fileName)
-                    }
+                variant.outputs.all { output ->
+                    outputFileName = "driver_${variant.productFlavors[0].name}_v${variant.versionName}.apk"
                 }
             }
         }

@@ -22,13 +22,13 @@ public class RegisterSucActivity extends BaseActivity implements OnClickListener
 	private static final String className = "RegisterSucActivity";
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
-	
+
 	private ImageView logo;
 	private Button verifyBtn;//立即实名认证
 	private Button catMoneyBtn;//查看元金币
 	private Button ztcBtn;//轻松赚提成
 	private String extensionCode = "";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class RegisterSucActivity extends BaseActivity implements OnClickListener
 		topLeftBtn.setOnClickListener(this);
 		topTitleTV = (TextView) findViewById(R.id.common_page_title);
 		topTitleTV.setText("注册成功");
-		
+
 		logo = (ImageView) findViewById(R.id.register_suc_activity_logo);
 		verifyBtn = (Button) findViewById(R.id.register_suc_activity_verify_btn);
 		verifyBtn.setOnClickListener(this);
@@ -62,29 +62,32 @@ public class RegisterSucActivity extends BaseActivity implements OnClickListener
 	public void onClick(View v) {
 		Intent intent = new Intent();
 		switch (v.getId()) {
-		case R.id.common_topbar_left_layout:
-			finish();
-			break;
-		case R.id.register_suc_activity_verify_btn:
-			//立即认证
-			intent.setClass(RegisterSucActivity.this,UserVerifyActivity.class);
-			startActivity(intent);
-			finish();
-			break;
-		case R.id.register_suc_activity_catyuanmoney_btn:
-			//查看元金币
-			intent.setClass(RegisterSucActivity.this,MyYuanMoneyActivity.class);
-			startActivity(intent);
-			finish();
-			break;
-		case R.id.register_suc_activity_layout_ztc_btn:
-			//轻松赚提成
-			intent.setClass(RegisterSucActivity.this,InvitateActivity.class);
-			startActivity(intent);
-			finish();
-			break;
-		default:
-			break;
+			case R.id.common_topbar_left_layout:
+				finish();
+				break;
+			case R.id.register_suc_activity_verify_btn:
+				//立即认证
+				intent.setClass(RegisterSucActivity.this,UserVerifyActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putString("type","注册成功");
+				intent.putExtra("bundle",bundle);
+				startActivity(intent);
+				finish();
+				break;
+			case R.id.register_suc_activity_catyuanmoney_btn:
+				//查看元金币
+				intent.setClass(RegisterSucActivity.this,MyYuanMoneyActivity.class);
+				startActivity(intent);
+				finish();
+				break;
+			case R.id.register_suc_activity_layout_ztc_btn:
+				//轻松赚提成
+				intent.setClass(RegisterSucActivity.this,InvitateActivity.class);
+				startActivity(intent);
+				finish();
+				break;
+			default:
+				break;
 		}
 	}
 

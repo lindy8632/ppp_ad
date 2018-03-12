@@ -23,7 +23,7 @@
         android:layout_weight="1"
         toolbar:normalBitmap="@drawable/nav_borrowlist_unselect"
         toolbar:pitchBitmap="@drawable/nav_borrowlist_select"
-        toolbar:text="理财"
+        toolbar:text="投资"
         toolbar:textColor="@color/gray3" />
 
     <com.ylfcf.ppp.widget.BottomSingleView

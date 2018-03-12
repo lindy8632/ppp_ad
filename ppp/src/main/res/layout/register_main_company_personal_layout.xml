@@ -83,7 +83,7 @@
             <Button
                 android:id="@+id/registe_main_company_authnum_btn"
                 android:layout_width="@dimen/common_measure_150dp"
-                android:layout_height="@dimen/common_measure_58dp"
+                android:layout_height="@dimen/common_measure_45dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="@dimen/common_measure_23dp"
                 android:background="@drawable/blue_fillet_btn_selector"
@@ -203,8 +203,8 @@
         android:layout_weight="1" >
 
         <ImageView
-            android:layout_width="@dimen/common_measure_335dp"
-            android:layout_height="@dimen/common_measure_48dp"
+            android:layout_width="@dimen/common_measure_280dp"
+            android:layout_height="@dimen/common_measure_40dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/common_measure_148dp"

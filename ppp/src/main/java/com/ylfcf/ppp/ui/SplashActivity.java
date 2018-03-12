@@ -201,12 +201,12 @@ public class SplashActivity extends BaseActivity {
 				}
 			}
 		}
-		handler.sendEmptyMessageDelayed(GOTO_MAINACTIVITY, 2000L);
 		bannerTask = new AsyncBanner(SplashActivity.this,
 				String.valueOf(0), String.valueOf(20), status, type,
 				new OnCommonInter() {
 					@Override
 					public void back(BaseInfo baseInfo) {
+						handler.sendEmptyMessageDelayed(GOTO_MAINACTIVITY, 2000L);
 					}
 				});
 		bannerTask.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);

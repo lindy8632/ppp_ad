@@ -1,11 +1,13 @@
 package com.ylfcf.ppp.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.text.Html;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +57,7 @@ import com.ylfcf.ppp.ui.LXFXTempActivity;
 import com.ylfcf.ppp.ui.MainFragmentActivity;
 import com.ylfcf.ppp.ui.PrizeRegion2TempActivity;
 import com.ylfcf.ppp.ui.RechargeActivity;
+import com.ylfcf.ppp.ui.RechargeChooseActivity;
 import com.ylfcf.ppp.ui.RechargeCompActivity;
 import com.ylfcf.ppp.ui.UserInvestRecordActivity;
 import com.ylfcf.ppp.ui.UserVerifyActivity;
@@ -65,6 +68,7 @@ import com.ylfcf.ppp.util.Constants;
 import com.ylfcf.ppp.util.RequestApis;
 import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.URLGenerator;
+import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.util.YLFLogger;
 import com.ylfcf.ppp.widget.LoadingDialog;
 
@@ -86,6 +90,8 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
     private static final int REQUEST_HYFL_WHAT = 1009;
 
     private static final int REQUEST_LCS_WHAT = 1010;
+    private static final int VERIFY_INTENT = 1011;//实名成功
+    private static final int BINDCARD_INTENT = 1012;//绑卡成功
 
     private MainFragmentActivity mainActivity;
     private View rootView;
@@ -136,8 +142,8 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
             super.handleMessage(msg);
             switch (msg.what) {
                 case REQUEST_GET_USERINFO_WHAT:
-                    requestUserInfo(SettingsManager.getUserId(getActivity().getApplicationContext()),
-                            SettingsManager.getUser(getActivity().getApplicationContext()));
+                    requestUserInfo(SettingsManager.getUserId(mainActivity.getApplicationContext()),
+                            SettingsManager.getUser(mainActivity.getApplicationContext()));
                     break;
                 case REQUEST_GET_USERINFO_SUCCESS:
                     mUserInfo = (UserInfo) msg.obj;
@@ -150,7 +156,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                     requestYilianAccount(mUserInfo.getId(),false);
                     break;
                 case REQUEST_YUANMONEY_WHAT:
-                    requestYuanMoney(SettingsManager.getUserId(getActivity().getApplicationContext()));
+                    requestYuanMoney(SettingsManager.getUserId(mainActivity.getApplicationContext()));
                     break;
                 case REQUEST_HYFL_WHAT:
                     requestActiveTime("HYFL_02");
@@ -167,11 +173,16 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
         return fragment;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mainActivity = (MainFragmentActivity) context;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mainActivity = (MainFragmentActivity) getActivity();
         mLoadingDialog = new LoadingDialog(mainActivity,"正在加载...",R.anim.loading);
         if(rootView == null){
             rootView = inflater.inflate(R.layout.user_personal_fragment, null);
@@ -241,6 +252,15 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode){
+            case 1021:
+                Util.toastLong(mainActivity,"实名成功");
+                break;
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.my_account_personal_withdraw_btn:
@@ -251,12 +271,12 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
             case R.id.my_account_personal_recharge_btn:
                 //充值
                 if(SettingsManager.isPersonalUser(mainActivity)){
-                    checkIsVerify("充值");
+                    Intent intent = new Intent(mainActivity,RechargeChooseActivity.class);
+                    startActivity(intent);
                 }else if(SettingsManager.isCompanyUser(mainActivity)){
                     Intent intentRechargeComp = new Intent(mainActivity,RechargeCompActivity.class);
                     startActivity(intentRechargeComp);
                 }
-
                 break;
             case R.id.my_account_personal_jlmx_layout:
                 Intent intentAward = new Intent(mainActivity,AwardDetailsActivity.class);
@@ -294,7 +314,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                 break;
             case R.id.my_account_personal_zscp_yy_btn:
                 //元聚盈预约
-                Intent intentYJYAppoint = new Intent(getActivity(),BannerTopicActivity.class);
+                Intent intentYJYAppoint = new Intent(mainActivity,BannerTopicActivity.class);
                 BannerInfo info = new BannerInfo();
                 info.setArticle_id(Constants.TopicType.YJY_APPOINT);
                 info.setLink_url(URLGenerator.YJY_TOPIC_URL);
@@ -307,11 +327,15 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                 Intent intent = new Intent();
                 if(!isVerify){
                     //未实名
-                    intent.setClass(getActivity(),UserVerifyActivity.class);
+                    intent.setClass(mainActivity,UserVerifyActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type","标示条");
+                    intent.putExtra("bundle",bundle);
+                    startActivity(intent);
                 }else if(!isBindcard){
-                    intent.setClass(getActivity(),BindCardActivity.class);
+                    intent.setClass(mainActivity,BindCardActivity.class);
+                    startActivity(intent);
                 }
-                startActivity(intent);
                 break;
             case R.id.my_account_personal_x_img:
                 unverifyLayout.setVisibility(View.GONE);
@@ -328,17 +352,37 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        YLFLogger.d("UserPersonalFragment onResume()");
+        handler.sendEmptyMessage(REQUEST_GET_USERINFO_WHAT);
+        handler.sendEmptyMessage(REQUEST_YUANMONEY_WHAT);
+        if(!isVerify || !isBindcard){
+            checkIsVerify("初始化");
+        }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        YLFLogger.d("UserPersonalFragment onHiddenChanged():"+hidden);
+    }
+
+    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         YLFLogger.d("UserPersonalFragment setUserVisibleHint()");
-        if(getActivity() == null)
+        if(mainActivity == null)
             return;
         if(isVisibleToUser && (!isBindcard || !isVerify)){
             checkIsVerify("初始化");
         }
-        if(isVisibleToUser && SettingsManager.getHYFLFlag(getActivity().getApplicationContext(),
-                SettingsManager.getUserId(getActivity())+"hyfl02")){
+        if(isVisibleToUser && SettingsManager.getHYFLFlag(mainActivity.getApplicationContext(),
+                SettingsManager.getUserId(mainActivity.getApplicationContext())+"hyfl02")){
             //判断会员福利2期是否还在进行
             handler.sendEmptyMessage(REQUEST_HYFL_WHAT);
+        }
+        //如果实名绑卡还未完成，则返回的时候刷新下
+        if(unverifyLayout.getVisibility() == View.VISIBLE){
+            checkIsVerify("初始化");
         }
     }
 
@@ -356,7 +400,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
         }else{
             idcardLogo.setBackgroundResource(R.drawable.my_account_personal_idcard_logo);
             bankcardLogo.setBackgroundResource(R.drawable.my_account_personal_bankcard_logo);
-            unverifyPromptTV.setText("您尚未完成实名认证，点击去实名");
+            unverifyPromptTV.setText(Html.fromHtml("您尚未完成实名认证，点击去实名"));
         }
     }
 
@@ -450,8 +494,8 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
         builder.setView(contentView);
         builder.setCancelable(false);
         final AlertDialog dialog = builder.create();
-        final String keyLXFX = SettingsManager.getUserId(getActivity())+"lxfx";
-        final String keyHYFL = SettingsManager.getUserId(getActivity())+"hyfl02";
+        final String keyLXFX = SettingsManager.getUserId(mainActivity)+"lxfx";
+        final String keyHYFL = SettingsManager.getUserId(mainActivity)+"hyfl02";
         leftBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -630,7 +674,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                             int resultCode = SettingsManager.getResultCode(baseInfo);
                             if (resultCode == 0) {
                                 //活动已开始
-                                requestPrizeList(SettingsManager.getUserId(getActivity().getApplicationContext()));
+                                requestPrizeList(SettingsManager.getUserId(mainActivity.getApplicationContext()));
                             } else if (resultCode == -3) {
                                 //活动结束
                             } else if (resultCode == -2) {
@@ -699,7 +743,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
             public void isSetWithdrawPwd(boolean flag, Object object) {
                 //用户是否已经设置提现密码
                 isSetWithdrawPwd = flag;
-                if(SettingsManager.isCompanyUser(getActivity().getApplicationContext())&&"提现".equals(type)){
+                if(SettingsManager.isCompanyUser(mainActivity.getApplicationContext())&&"提现".equals(type)){
                     rechargeBtn.setEnabled(true);
                     withdrawBtn.setEnabled(true);
                     yqyjLayout.setEnabled(true);
@@ -842,7 +886,7 @@ public class UserPersonalFragment extends BaseFragment implements View.OnClickLi
                                 //
                             }else{
                                 //没有领取过,福利计划2期
-                                if(SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(getActivity())+"hyfl02")){
+                                if(SettingsManager.getLXFXJXQFlag(mainActivity,SettingsManager.getUserId(mainActivity)+"hyfl02")){
                                     showGetJXQDialog("HYFL_02");
                                 }
                             }

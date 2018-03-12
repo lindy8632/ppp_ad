@@ -3,6 +3,8 @@ package com.ylfcf.ppp.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,6 +22,7 @@ import com.ylfcf.ppp.util.SettingsManager;
 import com.ylfcf.ppp.util.UMengStatistics;
 import com.ylfcf.ppp.util.Util;
 import com.ylfcf.ppp.view.CommonPopwindow;
+import com.ylfcf.ppp.view.VerifySucPopwindow;
 
 /**
  * 用户实名认证页面
@@ -41,8 +44,18 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 	private LinearLayout topLeftBtn;
 	private TextView topTitleTV;
 	private LinearLayout mainLayout;
-	
+
 	private String type = "";//充值、提现；表示是从充值流程还是提现流程跳转过来的。
+	private String rechargeType = "";//充值类型 kjcz:快捷充值 pos:pos机充值
+	private boolean isVerify = false;
+
+	private Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+		}
+	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,6 +64,7 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 		Bundle bundle = getIntent().getBundleExtra("bundle");
 		if(bundle != null){
 			type = bundle.getString("type");
+			rechargeType = bundle.getString("recharge_type");
 		}
 		findViews();
 		
@@ -68,14 +82,16 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 		
 		commitBtn = (Button)findViewById(R.id.user_verify_activity_sure_btn);
 		commitBtn.setOnClickListener(this);
-		
-		new Handler().postDelayed(new Runnable() {
-			
-			@Override
-			public void run() {
-				showVerifyPrompt();
-			}
-		}, 500L);
+
+//		if(!"充值".equals(type)){
+//			handler.postDelayed(new Runnable() {
+//
+//				@Override
+//				public void run() {
+//					showVerifyPrompt();
+//				}
+//			}, 500L);
+//		}
 	}
 	
 	@Override
@@ -85,10 +101,41 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 			chackData();
 			break;
 		case R.id.common_topbar_left_layout:
+			if(isVerify && "邀请有奖".equals(type)){
+				try{
+					mApp.getInvitateActivity().finish();
+				}catch (Exception e){
+					e.printStackTrace();
+				}
+				Intent intent = new Intent(UserVerifyActivity.this,InvitateActivity.class);
+				intent.putExtra("is_verify", true);
+				startActivity(intent);
+			}
 			finish();
 			break;
 		default:
 			break;
+		}
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			System.out.println("按下了back键   onKeyDown()");
+			if("邀请有奖".equals(type)){
+				try{
+					mApp.getInvitateActivity().finish();
+				}catch (Exception e){
+					e.printStackTrace();
+				}
+				Intent intent = new Intent(UserVerifyActivity.this,InvitateActivity.class);
+				intent.putExtra("is_verify", true);
+				startActivity(intent);
+			}
+			finish();
+			return false;
+		}else {
+			return super.onKeyDown(keyCode, event);
 		}
 	}
 
@@ -109,6 +156,7 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		handler.removeCallbacksAndMessages(null);
 	}
 	
 	private void chackData(){
@@ -135,10 +183,71 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 		int[] screen = SettingsManager.getScreenDispaly(UserVerifyActivity.this);
 		int width = screen[0]*4/5;
 		int height = screen[1]*1/5;
-		CommonPopwindow popwindow = new CommonPopwindow(UserVerifyActivity.this,popView, width, height,"实名认证");
+		CommonPopwindow popwindow = new CommonPopwindow(UserVerifyActivity.this,popView, width, height,"实名认证","",null);
 		popwindow.show(mainLayout);
 	}
-	
+
+	/**
+	 * 认证成功的弹窗
+	 */
+	private void showVerifySucPrompt(){
+		View popView = LayoutInflater.from(this).inflate(
+				R.layout.verify_suc_popwindow_layout, null);
+		int[] screen = SettingsManager.getScreenDispaly(this);
+		int width = screen[0] * 6 / 7;
+		int height = screen[1] /3;
+		VerifySucPopwindow popwindow = new VerifySucPopwindow(UserVerifyActivity.this,
+				popView, width, height,new OnPopRechargeBtnListener(){
+			@Override
+			public void back() {
+				//去充值
+				if("投资".equals(type) || "提现".equals(type) || "标示条".equals(type) || "邀请有奖".equals(type)
+						|| "注册成功".equals(type)){
+					Intent intent = new Intent(UserVerifyActivity.this,RechargeChooseActivity.class);
+					startActivity(intent);
+				}else{
+					if("kjcz".equals(rechargeType)){
+						//快捷充值
+						Intent intent = new Intent(UserVerifyActivity.this,BindCardActivity.class);
+						Bundle bundle = new Bundle();
+						bundle.putString("type","充值");
+						intent.putExtra("bundle",bundle);
+						startActivity(intent);
+					}else if("pos".equals(rechargeType)){
+						//pos支付
+						Intent intent = new Intent(UserVerifyActivity.this,RechargePosActivity.class);
+						startActivity(intent);
+					}
+				}
+				if("邀请有奖".equals(type)){
+					try{
+						mApp.getInvitateActivity().finish();
+					}catch (Exception e){
+						e.printStackTrace();
+					}
+				}
+				finish();
+			}
+		},new OnPopCancelBtnListener(){
+			@Override
+			public void back() {
+				//下次再说
+				if("邀请有奖".equals(type)){
+					try{
+						mApp.getInvitateActivity().finish();
+					}catch (Exception e){
+						e.printStackTrace();
+					}
+					Intent intent = new Intent(UserVerifyActivity.this,InvitateActivity.class);
+					intent.putExtra("is_verify", true);
+					startActivity(intent);
+				}
+				finish();
+			}
+		});
+		popwindow.show(mainLayout);
+	}
+
 	/**
 	 * 用户实名认证
 	 * @param userId
@@ -149,7 +258,7 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 		if(mLoadingDialog != null && !isFinishing()){
 			mLoadingDialog.show();
 		}
-		AsyncBFVerify task = new AsyncBFVerify(UserVerifyActivity.this, userId, idNumber, realName, new OnCommonInter() {
+		final AsyncBFVerify task = new AsyncBFVerify(UserVerifyActivity.this, userId, idNumber, realName, new OnCommonInter() {
 			@Override
 			public void back(BaseInfo baseInfo) {
 				if(mLoadingDialog != null && mLoadingDialog.isShowing()){
@@ -158,23 +267,16 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 				if(baseInfo != null){
 					int resultCode = SettingsManager.getResultCode(baseInfo);
 					if(resultCode == 0){
-						Util.toastShort(UserVerifyActivity.this, "实名认证成功");
-						if("邀请有奖".equals(type)){
-							Intent intent = new Intent(UserVerifyActivity.this,InvitateActivity.class);
-							intent.putExtra("is_verify", true);
-							startActivity(intent);
-						}else if("中秋大转盘分享".equals(type)){
+						isVerify = true;
+						if("中秋大转盘分享".equals(type)){
 							Intent intent = new Intent();
 							setResult(101,intent);
 							finish();
 						}else if("领取加息券".equals(type)){
 							finish();
 						}else{
-							Intent intent = new Intent(UserVerifyActivity.this,BindCardActivity.class);
-							intent.putExtra("bundle", getIntent().getBundleExtra("bundle"));
-							startActivity(intent);
+							showVerifySucPrompt();
 						}
-						finish();
 					}else{
 						Util.toastShort(UserVerifyActivity.this, baseInfo.getMsg());
 					}
@@ -182,6 +284,20 @@ public class UserVerifyActivity extends BaseActivity implements OnClickListener{
 			}
 		});
 		task.executeAsyncTask(SettingsManager.FULL_TASK_EXECUTOR);
+	}
+
+	/**
+	 * 实名认证成功的弹窗 监听“去充值按钮”
+	 */
+	public interface OnPopRechargeBtnListener{
+		void back();
+	}
+
+	/**
+	 * 实名认证成功的弹窗 监听“下次再说按钮”
+	 */
+	public interface OnPopCancelBtnListener{
+		void back();
 	}
 	
 }

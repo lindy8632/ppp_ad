@@ -18,6 +18,9 @@
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/ui/MyGiftsActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/ui/YLFApplication.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/java/com/ylfcf/ppp/util/URLGenerator.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ppp/src/main/res/drawable-hdpi/duihao_selected.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ppp/src/main/res/drawable-hdpi/duihao_unselected.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ppp/src/main/res/drawable-hdpi/x_img.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ppp/src/main/res/layout/swipe_layout.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ylfcfwidgetlibrary/src/main/java/com/example/ylfcf/inter/OnBottomLoadMoreTime.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ylfcfwidgetlibrary/src/main/java/com/example/ylfcf/inter/OnExpDateClickListener.java" charset="GBK" />

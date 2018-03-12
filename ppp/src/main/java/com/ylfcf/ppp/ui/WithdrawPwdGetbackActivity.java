@@ -159,7 +159,7 @@ public class WithdrawPwdGetbackActivity extends BaseActivity implements OnClickL
 		int[] screen = SettingsManager.getScreenDispaly(WithdrawPwdGetbackActivity.this);
 		int width = screen[0]*4/5;
 		int height = screen[1]*1/5;
-		CommonPopwindow popwindow = new CommonPopwindow(WithdrawPwdGetbackActivity.this,popView, width, height,"设置提现密码");
+		CommonPopwindow popwindow = new CommonPopwindow(WithdrawPwdGetbackActivity.this,popView, width, height,"设置提现密码","",null);
 		popwindow.show(mainLayout);
 	}
 	

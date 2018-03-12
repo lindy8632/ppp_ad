@@ -100,7 +100,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="预期年化收益率"
+                                android:text="年化利率"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/common_measure_20dp" />
                             
@@ -304,7 +304,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="预期年化收益率 "
+                                android:text="年化利率"
                                 android:textColor="@color/gray2"
                                 android:textSize="@dimen/common_measure_16dp" />
                             
@@ -393,7 +393,7 @@
                     android:id="@+id/bid_xsmb_activity_cb"
 			    	android:layout_width="@dimen/common_measure_35dp"
 			    	android:layout_height="@dimen/common_measure_35dp"
-			    	android:layout_marginRight="@dimen/common_measure_10dp"
+			    	android:layout_marginRight="@dimen/common_measure_5dp"
 			    	android:button="@drawable/checkbox_selector"
 			    	android:checked="true"/>       
                 

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="GifView">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/ppp/libs/GifView.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
