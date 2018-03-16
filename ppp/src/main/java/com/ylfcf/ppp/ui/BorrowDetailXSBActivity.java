@@ -470,6 +470,7 @@ public class BorrowDetailXSBActivity extends BaseActivity implements
 			Intent intent = new Intent();
 			//  1¡¢¼ì²âÊÇ·ñÒÑ¾­µÇÂ¼
 			if (isLogin) {
+				if(productInfo != null)
 				isCanbuyXSB(SettingsManager.getUserId(getApplicationContext()), productInfo.getId());
 			} else {
 				// Î´µÇÂ¼£¬Ìø×ªµ½µÇÂ¼Ò³Ãæ

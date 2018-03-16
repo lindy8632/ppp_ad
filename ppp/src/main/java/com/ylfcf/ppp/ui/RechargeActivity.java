@@ -237,8 +237,12 @@ public class RechargeActivity extends BaseActivity implements OnClickListener {
 				break;
 			}
 		}
-		int bankLogoId = SettingsManager.bankLogosMap.get(bankCode);
-		bankLogoImg.setImageResource(bankLogoId);
+		try{
+			int bankLogoId = SettingsManager.bankLogosMap.get(bankCode);
+			bankLogoImg.setImageResource(bankLogoId);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		bankCardTV.setText("¿¨ºÅ£º" + Util.hiddenBankCard(bankCardInfo.getBank_card()));
 		String singleQuota = "",dailyQuota = "";
 		if("0".equals(bankList.get(position).getSingle_quota())){

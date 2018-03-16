@@ -63,14 +63,14 @@ public class ProductIntroActivity extends BaseActivity implements OnClickListene
 		topTitleTV = (TextView)findViewById(R.id.common_page_title);
 		if("xsb".equals(fromWhere)){
 			topTitleTV.setText("新手标介绍");
-			loadURL = URLGenerator.XSB_XMJS_URL.replace("borrowid", productInfo.getId());
+			loadURL = URLGenerator.XSB_XMJS_URL.replace("borrowid", productInfo == null?"borrowid":productInfo.getId());
 		}else if("yyy".equals(fromWhere)){
 			topTitleTV.setText("元月盈介绍");
 			loadURL = URLGenerator.YYY_XMJS_URL;
 		}else if("wdy".equals(fromWhere)){
 			//稳定赢，薪盈计划
 			topTitleTV.setText("薪盈计划介绍");
-			loadURL = URLGenerator.XYJH_XMJS_URL.replace("borrowid", productInfo.getId());
+			loadURL = URLGenerator.XYJH_XMJS_URL.replace("borrowid", productInfo == null?"borrowid":productInfo.getId());
 		}
 		
 		webview = (WebView) findViewById(R.id.yyyintro_activity_wv);

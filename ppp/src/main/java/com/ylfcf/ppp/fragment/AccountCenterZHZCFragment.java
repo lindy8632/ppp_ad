@@ -215,7 +215,7 @@ public class AccountCenterZHZCFragment extends BaseFragment implements View.OnCl
             djBalance = Double.parseDouble(yilianAccount.getFrozen_money());
         } catch (Exception e) {
         }
-        freezeMoneyTV.setText(yilianAccount.getFrozen_money());
+        freezeMoneyTV.setText(String.valueOf(djBalance));
         if(dsBalance < 1){
             waitMoneyTV.setText("0"+df.format(dsBalance));
         }else{
